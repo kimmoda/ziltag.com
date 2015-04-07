@@ -17,4 +17,7 @@ class User < ActiveRecord::Base
 
   # other
 
+  def to_s
+    email
+  end
 end

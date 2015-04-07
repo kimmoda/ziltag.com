@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   # constants
 
   # attributes
+  mount_uploader :image, ImageUploader
 
   # associations
   belongs_to :user
