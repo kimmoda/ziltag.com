@@ -5,4 +5,8 @@ module AdminHelper
     ret << alert_message(alert, :danger) if alert
     ret
   end
+
+  def link_li_for model
+    link_li model.model_name.human, polymorphic_path(model)
+  end
 end

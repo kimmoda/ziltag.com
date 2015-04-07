@@ -9,4 +9,10 @@ module BootstrapHelper
   def icon_tag name
     content_tag :span, nil, class: "glyphicon glyphicon-#{name}"
   end
+
+  def link_li name, path
+    active = request.path == path ? :active : nil
+    link = link_to name, path
+    content_tag :li, link, class: active
+  end
 end

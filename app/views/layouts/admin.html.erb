@@ -13,10 +13,10 @@
     <%= flash_messages %>
     <div class="col-sm-2">
       <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><%= link_to Admin::User.model_name.human, Admin::User %></li>
-        <li role="presentation"><%= link_to Admin::Photo.model_name.human, Admin::Photo %></li>
-        <li role="presentation"><%= link_to Admin::Post.model_name.human, Admin::Post %></li>
-        <li role="presentation"><%= link_to Admin::Comment.model_name.human, Admin::Comment %></li>
+        <%= link_li_for Admin::User %>
+        <%= link_li_for Admin::Photo %>
+        <%= link_li_for Admin::Post %>
+        <%= link_li_for Admin::Comment %>
       </ul>
     </div>
     <div class="col-sm-10"><%= yield %></div>
