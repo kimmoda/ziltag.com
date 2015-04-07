@@ -9,10 +9,20 @@ zh-TW:
     created: '已新增%{model}！'
     updated: '已更新%{model}！'
     destroyed: '已刪除%{model}！'
+  attributes:
+    title: 標題
+    user: 會員
   activerecord:
     models:
       user: 會員
+      post: 樂貼
+      photo: 圖片
+      comment: 留言
     attributes:
+      post:
+        content: 內容
+      photo:
+        image: 圖片路徑
       user:
         email: 電子郵件
         password: 密碼
