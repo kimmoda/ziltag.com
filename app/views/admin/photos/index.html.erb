@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1><%= Admin::Photo.model_name.human %> <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-plus', title: t('scaffold.new')), new_admin_photo_path, class: 'btn btn-success btn-lg' %></h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Admin::Photo.human_attribute_name(:user) %></th>
+      <th><%= Admin::Photo.human_attribute_name(:title) %></th>
+      <th><%= Admin::Photo.human_attribute_name(:image) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_photos.each do |admin_photo| %>
+      <tr>
+        <td><%= admin_photo.user %></td>
+        <td><%= admin_photo.title %></td>
+        <td><%= admin_photo.image %></td>
+        <td>
+          <%= link_to icon_tag(:search), admin_photo, title: t('scaffold.show'), class: 'btn btn-info' %>
+          <%= link_to icon_tag(:edit), edit_admin_photo_path(admin_photo), title: t('scaffold.edit'), class: 'btn btn-warning' %>
+          <%= link_to icon_tag(:trash), admin_photo, title: t('scaffold.destroy'), class: 'btn btn-danger', method: :delete, data: { confirm: t('scaffold.are_you_sure') } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

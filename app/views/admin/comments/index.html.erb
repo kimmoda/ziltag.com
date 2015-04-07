@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1><%= Admin::Comment.model_name.human %> <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-plus', title: t('scaffold.new')), new_admin_comment_path, class: 'btn btn-success btn-lg' %></h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Admin::Comment.human_attribute_name(:user) %></th>
+      <th><%= Admin::Comment.human_attribute_name(:commentable) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_comments.each do |admin_comment| %>
+      <tr>
+        <td><%= admin_comment.user %></td>
+        <td><%= admin_comment.commentable %></td>
+        <td>
+          <%= link_to icon_tag(:search), admin_comment, title: t('scaffold.show'), class: 'btn btn-info' %>
+          <%= link_to icon_tag(:edit), edit_admin_comment_path(admin_comment), title: t('scaffold.edit'), class: 'btn btn-warning' %>
+          <%= link_to icon_tag(:trash), admin_comment, title: t('scaffold.destroy'), class: 'btn btn-danger', method: :delete, data: { confirm: t('scaffold.are_you_sure') } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

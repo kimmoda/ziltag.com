@@ -1,0 +1,10 @@
+<div class="page-header">
+  <h1>編輯 <%= Admin::Post.model_name.human %></h1>
+</div>
+
+<%= render 'form' %>
+
+<hr>
+
+<%= link_to t('scaffold.show'), @admin_post, class: 'btn btn-default' %>
+<%= link_to t('scaffold.back'), admin_posts_path, class: 'btn btn-default' %>

@@ -1,0 +1,15 @@
+<p>
+  <strong><%= Admin::Comment.human_attribute_name(:user) %>:</strong>
+  <%= @admin_comment.user %>
+</p>
+
+<p>
+  <strong><%= Admin::Comment.human_attribute_name(:commentable) %>:</strong>
+  <%= @admin_comment.commentable %>
+</p>
+
+
+<hr>
+
+<%= link_to t('scaffold.edit'), edit_admin_comment_path(@admin_comment), class: 'btn btn-default' %>
+<%= link_to t('scaffold.back'), admin_comments_path, class: 'btn btn-default' %>
