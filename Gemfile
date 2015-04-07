@@ -4,6 +4,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'kaminari'
 gem 'rails-i18n'
+gem 'carrierwave'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
