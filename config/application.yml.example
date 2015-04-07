@@ -1,0 +1,6 @@
+development:
+test:
+production:
+  http_basic_authentication:
+    name: NAME
+    password: PASSWORD
