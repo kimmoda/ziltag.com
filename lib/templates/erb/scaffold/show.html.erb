@@ -1,0 +1,12 @@
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+<p>
+  <strong><%%= <%= class_name %>.human_attribute_name(:<%= attribute.name %>) %>:</strong>
+  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+</p>
+
+<% end -%>
+
+<hr>
+
+<%%= link_to t('scaffold.edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-default' %>
+<%%= link_to t('scaffold.back'), <%= index_helper %>_path, class: 'btn btn-default' %>

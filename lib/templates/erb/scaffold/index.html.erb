@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1><%%= <%= class_name %>.model_name.human %> <%%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-plus', title: t('scaffold.new')), new_<%= singular_table_name %>_path, class: 'btn btn-success btn-lg' %></h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+      <th><%%= <%= class_name %>.human_attribute_name(:<%= attribute.name %>) %></th>
+<% end -%>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+      <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+<% end -%>
+        <td>
+          <%%= link_to icon_tag(:search), <%= singular_table_name %>, title: t('scaffold.show'), class: 'btn btn-info' %>
+          <%%= link_to icon_tag(:edit), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), title: t('scaffold.edit'), class: 'btn btn-warning' %>
+          <%%= link_to icon_tag(:trash), <%= singular_table_name %>, title: t('scaffold.destroy'), class: 'btn btn-danger', method: :delete, data: { confirm: t('scaffold.are_you_sure') } %>
+        </td>
+      </tr>
+    <%% end %>
+  </tbody>
+</table>

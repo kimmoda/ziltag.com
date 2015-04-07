@@ -1,0 +1,18 @@
+zh-TW:
+  scaffold:
+    new: 新增
+    show: 檢視
+    back: 返回
+    edit: 編輯
+    destroy: 刪除
+    are_you_sure: 你確定？
+    created: '已新增%{model}！'
+    updated: '已更新%{model}！'
+    destroyed: '已刪除%{model}！'
+  activerecord:
+    models:
+      user: 會員
+    attributes:
+      user:
+        email: 電子郵件
+        password: 密碼

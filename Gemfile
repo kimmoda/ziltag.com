@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'simple_form'
+gem 'kaminari'
+gem 'rails-i18n'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
