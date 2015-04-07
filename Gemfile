@@ -5,6 +5,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
+gem 'settingslogic'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
