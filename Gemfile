@@ -6,6 +6,7 @@ gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'settingslogic'
+gem 'mini_magick'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
