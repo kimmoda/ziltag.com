@@ -1,6 +1,8 @@
 development:
 test:
 production:
-  http_basic_authentication:
-    name: NAME
-    password: PASSWORD
+  admin:
+    path: PATH
+    http_basic_authentication:
+      name: NAME
+      password: PASSWORD
