@@ -17,7 +17,7 @@
       <tr>
         <td><%= admin_photo.user %></td>
         <td><%= admin_photo.title %></td>
-        <td><%= admin_photo.image %></td>
+        <td><%= image_tag admin_photo.image.thumb %></td>
         <td>
           <%= link_to icon_tag(:search), admin_photo, title: t('scaffold.show'), class: 'btn btn-info' %>
           <%= link_to icon_tag(:edit), edit_admin_photo_path(admin_photo), title: t('scaffold.edit'), class: 'btn btn-warning' %>

@@ -22,7 +22,7 @@ zh-TW:
       post:
         content: 內容
       photo:
-        image: 圖片路徑
+        image: 圖片
       user:
         email: 電子郵件
         password: 密碼

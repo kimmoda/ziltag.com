@@ -10,7 +10,7 @@
 
 <p>
   <strong><%= Admin::Photo.human_attribute_name(:image) %>:</strong>
-  <%= @admin_photo.image %>
+  <%= link_to image_tag(@admin_photo.image.thumb), @admin_photo.image_url %>
 </p>
 
 
