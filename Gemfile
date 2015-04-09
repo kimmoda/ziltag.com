@@ -8,6 +8,10 @@ gem 'carrierwave'
 gem 'settingslogic'
 gem 'mini_magick'
 
+group :development, :test do
+  gem 'ffaker'
+end
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
 end
