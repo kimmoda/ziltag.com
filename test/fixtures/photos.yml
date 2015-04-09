@@ -1,6 +1,6 @@
-<% 30.times do |i| %>
+<% 10.times do |i| %>
 <% 2.times do |j| %>
-photo_<%= 30*i + j %>:
+photo_<%= 2*i + j %>:
   user: user_<%= i %>
   title: <%= FFaker::LoremCN.word %>
 <% end %>

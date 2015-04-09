@@ -1,0 +1,7 @@
+<% 20.times.each do |n| %>
+ziltag_<%= n %>:
+  post: post_<%= n %>
+  photo: photo_<%= n %>
+  x: <%= rand(200) %>
+  y: <%= rand(200) %>
+<% end %>
