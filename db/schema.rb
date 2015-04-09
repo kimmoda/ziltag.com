@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20150407092942) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
+    t.integer  "user_id",          null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20150407092942) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
     t.string   "title"
-    t.string   "image"
+    t.string   "image",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20150407092942) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "title"
-    t.text     "content"
+    t.string   "title",      null: false
+    t.text     "content",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,10 +71,10 @@ ActiveRecord::Schema.define(version: 20150407092942) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "ziltaggings", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "photo_id"
-    t.integer  "x"
-    t.integer  "y"
+    t.integer  "post_id",    null: false
+    t.integer  "photo_id",   null: false
+    t.integer  "x",          null: false
+    t.integer  "y",          null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
