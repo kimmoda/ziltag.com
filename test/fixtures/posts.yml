@@ -1,0 +1,8 @@
+<% 30.times do |i| %>
+<% 2.times do |j| %>
+post_<%= 30*i + j %>:
+  user: user_<%= i %>
+  title: <%= FFaker::LoremCN.word %>
+  content: <%= FFaker::LoremCN.paragraphs.map!{|p| "<p>#{p}</p>"}.join %>
+<% end %>
+<% end %>
