@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
   has_many :ziltaggings
 
   # validations
+  validates :user, :title, :content, presence: true
 
   # callbacks
 
