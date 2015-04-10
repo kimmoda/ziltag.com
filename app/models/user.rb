@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   # associations
 
   # validations
+  validates :email, presence: true
 
   # callbacks
 
