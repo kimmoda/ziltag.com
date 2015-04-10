@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   # associations
+  has_many :posts
+  has_many :photos
+  has_many :comments, as: :commentable
 
   # validations
   validates :email, presence: true
