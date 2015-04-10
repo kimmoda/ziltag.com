@@ -53,6 +53,6 @@ class Admin::UsersController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def admin_user_params
-      params.require(:admin_user).permit(:email)
+      params.require(:admin_user).permit(:email, :avatar, :avatar_cache, :remove_avatar)
     end
 end

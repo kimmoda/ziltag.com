@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # constants
 
   # attributes
+  mount_uploader :avatar, AvatarUploader
 
   # associations
 
