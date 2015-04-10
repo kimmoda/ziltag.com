@@ -15,7 +15,6 @@ end
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-select2', '~> 4.0.0.rc.2'
-  gem 'rails-assets-select2-bootstrap-css'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
