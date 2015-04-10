@@ -11,6 +11,7 @@ class Photo < ActiveRecord::Base
   has_many :ziltaggings
 
   # validations
+  validates :user, :image, presence: true
 
   # callbacks
 
