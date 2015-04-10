@@ -3,12 +3,6 @@
   <%= @admin_user.email %>
 </p>
 
-<p>
-  <strong><%= Admin::User.human_attribute_name(:password) %>:</strong>
-  <%= @admin_user.password %>
-</p>
-
-
 <hr>
 
 <%= link_to t('scaffold.edit'), edit_admin_user_path(@admin_user), class: 'btn btn-default' %>
