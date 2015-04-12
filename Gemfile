@@ -8,6 +8,11 @@ gem 'carrierwave'
 gem 'settingslogic'
 gem 'mini_magick'
 
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+end
+
 group :development, :test do
   gem 'ffaker'
 end
