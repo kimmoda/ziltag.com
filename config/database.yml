@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: ziltag_production
-  username: ziltag
+  database: ziltag
+  username: deploy
   password: <%= ENV['ZILTAG_DATABASE_PASSWORD'] %>
