@@ -7,6 +7,11 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 
+# This line should be removed after capistrano-rails is ready
+# https://github.com/capistrano/rails/issues/33
+# https://github.com/rails/sprockets-rails/issues/229
+gem 'sprockets', '2.12.3'
+
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
