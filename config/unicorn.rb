@@ -2,7 +2,7 @@ APP_ROOT = '/var/www/ziltag'
 worker_processes 4
 user 'deploy'
 working_directory "#{APP_ROOT}/current"
-listen "/var/run/.unicorn.sock", :backlog => 64
+listen "#{APP_ROOT}/shared/tmp/sockets/.unicorn.sock", :backlog => 64
 # listen 8080, :tcp_nopush => true
 timeout 30
 pid "#{APP_ROOT}/shared/tmp/pids/unicorn.pid"
