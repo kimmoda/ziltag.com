@@ -157,7 +157,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    settingslogic (2.0.9)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -212,7 +211,6 @@ DEPENDENCIES
   rails-i18n
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  settingslogic
   simple_form
   spring
   turbolinks

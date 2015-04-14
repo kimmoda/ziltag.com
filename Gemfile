@@ -5,7 +5,6 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
-gem 'settingslogic'
 gem 'mini_magick'
 
 group :development do
