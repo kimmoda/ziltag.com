@@ -6,6 +6,7 @@ gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'unicorn'
 
 # This line should be removed after capistrano-rails is ready
 # https://github.com/capistrano/rails/issues/33
