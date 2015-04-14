@@ -24,7 +24,7 @@ set :deploy_to, '/var/www/ziltag'
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+set :linked_files, fetch(:linked_files, []).push('config/init.conf')
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -35,8 +35,9 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
+after 'deploy:publishing', 'deploy:restart'
 
+namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -44,6 +45,9 @@ namespace :deploy do
       #   execute :rake, 'cache:clear'
       # end
     end
-  end
 
+    on roles(:app) do
+      execute :sudo, '/etc/init.d/unicorn', 'upgrade'
+    end
+  end
 end
