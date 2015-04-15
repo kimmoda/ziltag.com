@@ -3,6 +3,8 @@ $(document).on 'ready page:load', () ->
     $element = $(element)
     resource = element.dataset.select2Resource
     $element.select2
+      theme: 'bootstrap'
+      width: 'style'
       ajax:
         url: "/admin/#{resource}.json"
         data: (params) ->
