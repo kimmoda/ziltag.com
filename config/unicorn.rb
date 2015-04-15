@@ -11,18 +11,12 @@ stderr_path "#{APP_ROOT}/shared/log/unicorn.stderr.log"
 stdout_path "#{APP_ROOT}/shared/log/unicorn.stdout.log"
 
 preload_app true
-GC.respond_to?(:copy_on_write_friendly=) and
-  GC.copy_on_write_friendly = true
+GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
 
 check_client_connection false
 
-run_once = true
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-  if run_once
-    # do_something_once_here ...
-    run_once = false # prevent from firing again
-  end
 end
 
 after_fork do |server, worker|
