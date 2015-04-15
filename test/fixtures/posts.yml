@@ -2,7 +2,7 @@
 <% 2.times do |j| %>
 post_<%= 2*i + j %>:
   user: user_<%= i %>
-  title: <%= FFaker::LoremCN.word %>
-  content: <%= FFaker::LoremCN.paragraphs.map!{|p| "<p>#{p}</p>"}.join %>
+  title: <%= "標題 #{2*i + j}" %>
+  content: <%= "<p>段落一</p><p>段落二</p><p>段落三</p>" %>
 <% end %>
 <% end %>

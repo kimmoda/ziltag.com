@@ -78,7 +78,6 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.5.2)
-    ffaker (2.0.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -209,7 +208,6 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
-  ffaker
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

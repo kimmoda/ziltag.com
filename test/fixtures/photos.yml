@@ -2,7 +2,7 @@
 <% 2.times do |j| %>
 photo_<%= 2*i + j %>:
   user: user_<%= i %>
-  title: <%= FFaker::LoremCN.word %>
-  image: <%= rand(30) + 1 %>.jpg
+  title: <%= "標題 #{2*i + j}" %>
+  image: ''
 <% end %>
 <% end %>
