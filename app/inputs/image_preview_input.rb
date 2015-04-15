@@ -6,7 +6,10 @@ class ImagePreviewInput < SimpleForm::Inputs::FileInput
       out << template.image_tag(object.send(attribute_name).thumb.url)
       unless required_field?
         out << template.tag(:br)
-        out << @builder.check_box("remove_#{attribute_name}") << ' ' << object.class.human_attribute_name("remove_#{attribute_name}")
+        if object.persisted?
+          out << @builder.check_box("remove_#{attribute_name}")
+          out << ' ' << object.class.human_attribute_name("remove_#{attribute_name}")
+        end
       end
       out << @builder.hidden_field("#{attribute_name}_cache")
     end
