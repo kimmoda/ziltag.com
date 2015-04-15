@@ -1,4 +1,12 @@
 production:
+  action_mailer:
+    default_url_options:
+      host: ziltag.com
+    smtp_settings:
+      address: ADDRESS,
+      port: PORT,
+      user_name: USER_NAME,
+      password: PASSWORD
   admin:
     path: PATH
     http_basic_authentication:
