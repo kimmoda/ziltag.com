@@ -8,8 +8,3 @@ development:
 test:
   <<: *default
   database: ziltag_test
-production:
-  <<: *default
-  database: ziltag
-  username: deploy
-  password: <%= ENV['ZILTAG_DATABASE_PASSWORD'] %>
