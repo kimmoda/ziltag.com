@@ -7,9 +7,5 @@ module Devise
     def reset_password_instructions
       Devise::Mailer.reset_password_instructions(User.first, '')
     end
-
-    def unlock_instructions
-      Devise::Mailer.unlock_instructions(User.first, '')
-    end
   end
 end
