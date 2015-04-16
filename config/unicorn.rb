@@ -15,6 +15,10 @@ GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
 
 check_client_connection false
 
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{APP_ROOT}/current/Gemfile"
+end
+
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
 end
