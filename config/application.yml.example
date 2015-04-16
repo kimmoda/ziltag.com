@@ -7,6 +7,14 @@ production:
       port: PORT,
       user_name: USER_NAME,
       password: PASSWORD
+  carrierwave:
+    storage: :fog
+    fog_credentials:
+      provider: AWS
+      aws_access_key_id: AWS_ACCESS_KEY_ID
+      aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+      region: ap-northeast-1
+    fog_directory: FOG_DIRECTORY
   admin:
     path: PATH
     http_basic_authentication:
