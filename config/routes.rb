@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  namespace :admin, path: (Rails.env.development? ? :admin : Settings.admin.path) do
+  namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do
     root action: :home
     resources :users, :comments, :posts, :photos
   end
