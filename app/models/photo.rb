@@ -9,6 +9,7 @@ class Photo < ActiveRecord::Base
   # associations
   belongs_to :user
   has_many :ziltaggings
+  has_many :posts, through: :ziltaggings
 
   # validations
   validates :user, :image, presence: true
