@@ -1,5 +1,5 @@
 namespace :dev do
-  task setup: %i[db:schema:load clear_uploads fake_data]
+  task setup: %i[db:setup clear_uploads fake_data]
 
   task fake_data: :clear_uploads do
     images = Dir[Rails.root.join('test/fixtures/images/*')].map!{|path| File.open(path)}
@@ -23,4 +23,4 @@ namespace :dev do
   task clear_uploads: :environment do
     rm_rf File.join(CarrierWave.root, 'uploads')
   end
-end
+end unless Rails.env.production?
