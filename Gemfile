@@ -23,6 +23,7 @@ gem 'mini_magick'
 # https://github.com/capistrano/rails/issues/33
 # https://github.com/rails/sprockets-rails/issues/229
 gem 'sprockets', '2.12.3'
+gem 'fog'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
