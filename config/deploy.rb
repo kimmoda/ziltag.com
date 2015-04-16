@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'ziltag'
-set :repo_url, 'git@github.com:tonytonyjan/ziltag.git'
+set :repo_url, 'git@github.com:ziltag/ziltag.com.git'
 set :ssh_options, {forward_agent: true, keys: %w[~/.ssh/ziltag]}
 
 # Default branch is :master
