@@ -17,7 +17,7 @@
       <tr>
         <td><%= admin_post.user %></td>
         <td><%= admin_post.title %></td>
-        <td><%= admin_post.content %></td>
+        <td><%= truncate strip_tags admin_post.content %></td>
         <td>
           <%= link_to icon_tag(:search), admin_post, title: t('scaffold.show'), class: 'btn btn-info' %>
           <%= link_to icon_tag(:edit), edit_admin_post_path(admin_post), title: t('scaffold.edit'), class: 'btn btn-warning' %>
