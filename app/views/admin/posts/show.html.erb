@@ -10,7 +10,7 @@
 
 <p>
   <strong><%= Admin::Post.human_attribute_name(:content) %>:</strong>
-  <%= @admin_post.content %>
+  <div class="well"><%= sanitize @admin_post.content %></div>
 </p>
 
 
