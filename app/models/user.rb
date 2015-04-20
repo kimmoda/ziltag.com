@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   # associations
   has_many :posts
   has_many :photos
-  has_many :comments, as: :commentable
+  has_many :comments, primary_key: :email, foreign_key: :email
 
   # validations
   validates :email, presence: true

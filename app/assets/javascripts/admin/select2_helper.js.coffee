@@ -2,7 +2,11 @@ $(document).on 'ready page:load', () ->
   $('[data-select2-resource]').each (index, element) ->
     $element = $(element)
     resource = element.dataset.select2Resource
+    text = element.dataset.select2Text
+    id = element.dataset.select2Id
     $element.select2
+      templateSelection: (data) -> data[text] || data.text
+      templateResult: (data) -> data[text] || data.text
       theme: 'bootstrap'
       width: 'style'
       ajax:

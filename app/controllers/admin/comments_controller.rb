@@ -4,6 +4,7 @@ class Admin::CommentsController < AdminController
   # GET /admin/comments
   def index
     @admin_comments = Admin::Comment.all.order('id DESC').page(params[:page])
+    @admin_comments = Admin::Select2.query(@admin_comments, :text, params[:q])
   end
 
   # GET /admin/comments/1
@@ -53,6 +54,8 @@ class Admin::CommentsController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def admin_comment_params
-      params.require(:admin_comment).permit(:user_id, :commentable_id, :commentable_type)
+      params.require(:admin_comment).permit(
+        :text, :image_url, :email, :x, :y, :comment_id
+      )
     end
 end

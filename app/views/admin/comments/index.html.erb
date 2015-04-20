@@ -5,8 +5,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th><%= Admin::Comment.human_attribute_name(:user) %></th>
-      <th><%= Admin::Comment.human_attribute_name(:commentable) %></th>
+      <th><%= Admin::Comment.human_attribute_name(:root) %></th>
+      <th><%= Admin::Comment.human_attribute_name(:email) %></th>
+      <th><%= Admin::Comment.human_attribute_name(:image_url) %></th>
+      <th><%= Admin::Comment.human_attribute_name(:text) %></th>
       <th></th>
     </tr>
   </thead>
@@ -14,8 +16,10 @@
   <tbody>
     <% @admin_comments.each do |admin_comment| %>
       <tr>
-        <td><%= admin_comment.user %></td>
-        <td><%= admin_comment.commentable %></td>
+        <td><%= link_to admin_comment.root, [:admin, admin_comment.root] if admin_comment.root %></td>
+        <td><%= link_to_if admin_comment.user, admin_comment.email, [:admin, admin_comment.user] %></td>
+        <td><%= admin_comment.image_url %></td>
+        <td><%= admin_comment.text %></td>
         <td>
           <%= link_to icon_tag(:search), admin_comment, title: t('scaffold.show'), class: 'btn btn-info' %>
           <%= link_to icon_tag(:edit), edit_admin_comment_path(admin_comment), title: t('scaffold.edit'), class: 'btn btn-warning' %>

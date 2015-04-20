@@ -1,13 +1,29 @@
 <p>
-  <strong><%= Admin::Comment.human_attribute_name(:user) %>:</strong>
-  <%= @admin_comment.user %>
+  <strong><%= Admin::Comment.human_attribute_name(:root) %>:</strong>
+  <%= @admin_comment.root %>
 </p>
 
 <p>
-  <strong><%= Admin::Comment.human_attribute_name(:commentable) %>:</strong>
-  <%= @admin_comment.commentable %>
+  <strong><%= Admin::Comment.human_attribute_name(:email) %>:</strong>
+  <%= link_to_if @admin_comment.user, @admin_comment.email, [:admin, @admin_comment.user] %>
 </p>
 
+<p>
+  <strong><%= Admin::Comment.human_attribute_name(:text) %>:</strong>
+  <%= @admin_comment.text %>
+</p>
+
+<p>
+  <strong><%= Admin::Comment.human_attribute_name(:x) %>:</strong>
+  <%= @admin_comment.x %>
+</p>
+
+<p>
+  <strong><%= Admin::Comment.human_attribute_name(:y) %>:</strong>
+  <%= @admin_comment.y %>
+</p>
+
+<%= image_tag @admin_comment.image_url %>
 
 <hr>
 

@@ -29,3 +29,7 @@ zh-TW:
         password: 密碼
         avatar: 頭像
         remove_avatar: 刪除頭像
+      comment:
+        root: 原 PO
+        image_url: 圖片網址
+        text: 內容

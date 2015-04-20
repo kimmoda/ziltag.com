@@ -6,8 +6,6 @@ class Admin::Comment < Comment
   # attributes
 
   # associations
-  belongs_to :user
-  belongs_to :commentable, polymorphic: true
 
   # validations
 
