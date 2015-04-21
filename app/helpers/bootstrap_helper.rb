@@ -11,7 +11,7 @@ module BootstrapHelper
   end
 
   def link_li name, path
-    active = request.path == path ? :active : nil
+    active = request.path.start_with?(path) ? :active : nil
     link = link_to name, path
     content_tag :li, link, class: active
   end
