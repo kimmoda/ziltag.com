@@ -56,7 +56,7 @@ namespace :dev do
           post = user.posts.create!(title: "標題 #{user.id}-#{i}", content: "<p>內文</p><p>內文</p><p>內文</p>")
           @posts << post
           Ziltagging.create!(
-            image_url: 'http://localhost:3000' << photo.image_url,
+            image_url: photo.image_url,
             post: post, x: rand(200), y: rand(200)
           )
           dot
@@ -73,7 +73,7 @@ namespace :dev do
         @photos.each do |photo|
           @comments << user.comments.create!(
             x: rand(200), y: rand(200), text: '一句話',
-            image_url: 'http://localhost:3000' << photo.image_url
+            image_url: photo.image_url
           )
           dot
         end
