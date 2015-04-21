@@ -1,11 +1,16 @@
 <p>
   <strong><%= Admin::Comment.human_attribute_name(:root) %>:</strong>
-  <%= @admin_comment.root %>
+  <%= link_to @admin_comment.root, [:admin, @admin_comment.root] if @admin_comment.root %>
 </p>
 
 <p>
   <strong><%= Admin::Comment.human_attribute_name(:email) %>:</strong>
   <%= link_to_if @admin_comment.user, @admin_comment.email, [:admin, @admin_comment.user] %>
+</p>
+
+<p>
+  <strong><%= Admin::Comment.human_attribute_name(:image_url) %>:</strong>
+  <%= @admin_comment.image_url %>
 </p>
 
 <p>
