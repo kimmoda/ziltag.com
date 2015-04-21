@@ -1,14 +1,14 @@
 $(document).on 'ready page:load', () ->
   $imgs = $('img[data-sticker]')
-  hash = {}
+  return if $imgs.length == 0
+  url_hash = {}
   image_urls = $.map $imgs, (img) ->
     url = URI(img.src).absoluteTo(window.location.href).normalize().href()
-    hash[url] = img
+    url_hash[url] = img
     url
   $.getJSON '/admin/ziltaggings.json', image_url: image_urls, (ziltags) ->
     for ziltag in ziltags
       sticker = "<a title=\"#{ziltag.title}\" href=\"#{ziltag.link}\"><img src=\"<%= asset_path('sticker.png') %>\" class=\"img-circle\" width=\"50%\"/></a>"
-      console.log ziltag
-      $(hash[ziltag.image_url])
+      $(url_hash[ziltag.image_url])
         .wrap('<div style="position:relative"></div>')
         .after("<div style=\"position:absolute;left:#{ziltag.x}px;top:#{ziltag.y}px;\">#{sticker}</div>")
