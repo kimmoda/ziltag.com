@@ -6,7 +6,6 @@ class Admin::Photo < Photo
   # attributes
 
   # associations
-  belongs_to :user
 
   # validations
 
