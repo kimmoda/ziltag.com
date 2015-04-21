@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do
     root action: :home
     resources :users, :comments, :posts, :photos
+    resources :ziltaggings, only: :index
   end
 end
