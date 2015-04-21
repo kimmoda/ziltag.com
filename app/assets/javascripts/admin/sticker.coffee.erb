@@ -7,7 +7,7 @@ $(document).on 'ready page:load', () ->
     url
   $.getJSON '/admin/ziltaggings.json', image_url: image_urls, (ziltags) ->
     for ziltag in ziltags
-      sticker = "<a title=\"#{ziltag.title}\" href=\"#{ziltag.link}\"><img src=\"<%= asset_path('sticker.png') %>\" width=\"50%\"/></a>"
+      sticker = "<a title=\"#{ziltag.title}\" href=\"#{ziltag.link}\"><img src=\"<%= asset_path('sticker.png') %>\" class=\"img-circle\" width=\"50%\"/></a>"
       console.log ziltag
       $(hash[ziltag.image_url])
         .wrap('<div style="position:relative"></div>')
