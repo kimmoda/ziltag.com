@@ -10,7 +10,7 @@ namespace :dev do
 
   namespace :fake do
     desc '產生假資料'
-    task all: %i[users photos posts comments]
+    task all: %i[users photos posts comments child_comments]
 
     desc '清空圖片'
     task clear_uploads: :environment do |t|
