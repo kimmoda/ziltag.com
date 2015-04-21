@@ -9,6 +9,10 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :ziltaggings
 
+  def photos
+    ziltaggings.map(&:photo)
+  end
+
   # validations
   validates :user, :title, :content, presence: true
 
