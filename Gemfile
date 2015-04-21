@@ -19,10 +19,6 @@ gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
-# TODO: This should be removed after capistrano-rails is ready for sprockets 3
-# https://github.com/capistrano/rails/issues/33
-# https://github.com/rails/sprockets-rails/issues/229
-gem 'sprockets', '2.12.3'
 gem 'fog'
 
 source 'https://rails-assets.org' do
