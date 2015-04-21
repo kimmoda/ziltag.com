@@ -13,7 +13,7 @@
   <%= link_to image_tag(@admin_photo.image.thumb), @admin_photo.image_url %>
 </p>
 
-<%= image_tag @admin_photo.image_url, data: {sticker: ''} %>
+<%= image_tag(@admin_photo.image_url, data: {sticker: '', new_post: new_admin_post_path}) %>
 
 <hr>
 

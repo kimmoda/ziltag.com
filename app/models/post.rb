@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   # associations
   belongs_to :user
   has_many :ziltaggings
+  accepts_nested_attributes_for :ziltaggings
 
   def photos
     ziltaggings.map(&:photo)

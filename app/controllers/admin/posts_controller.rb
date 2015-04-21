@@ -13,6 +13,13 @@ class Admin::PostsController < AdminController
   # GET /admin/posts/new
   def new
     @admin_post = Admin::Post.new
+    if params[:image_url].present? && params[:x].present? && params[:y].present?
+      @admin_post.ziltaggings.new(
+        image_url: params[:image_url],
+        x: params[:x],
+        y: params[:y]
+      )
+    end
   end
 
   # GET /admin/posts/1/edit
@@ -53,6 +60,6 @@ class Admin::PostsController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def admin_post_params
-      params.require(:admin_post).permit(:user_id, :title, :content)
+      params.require(:admin_post).permit(:user_id, :title, :content, ziltaggings_attributes: [:id, :x, :y, :image_url])
     end
 end
