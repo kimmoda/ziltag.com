@@ -7,7 +7,6 @@ class Ziltagging < ActiveRecord::Base
 
   # associations
   belongs_to :post
-  belongs_to :photo
 
   # validations
 

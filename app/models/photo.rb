@@ -1,6 +1,8 @@
 class Photo < ActiveRecord::Base
   # scopes
 
+  # scope :posts, ->(){ Post.where() }
+
   # constants
 
   # attributes
@@ -8,8 +10,14 @@ class Photo < ActiveRecord::Base
 
   # associations
   belongs_to :user
-  has_many :ziltaggings
-  has_many :posts, through: :ziltaggings
+
+  def ziltaggings
+    Ziltagging.where(image_url: image_url)
+  end
+
+  def posts
+    Post.joins(:ziltaggings).where(ziltaggings: {image_url: image_url})
+  end
 
   # validations
   validates :user, :image, presence: true

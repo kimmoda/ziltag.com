@@ -6,12 +6,11 @@ namespace :dev do
   Rake::TaskManager.record_task_metadata = true
 
   desc '佈置開發環境'
-  task setup: %i[db:setup clear_uploads fake_data]
+  task setup: %i[db:setup fake:all]
 
   namespace :fake do
     desc '產生假資料'
-    task :all do
-    end
+    task all: %i[users photos posts comments]
 
     desc '清空圖片'
     task clear_uploads: :environment do |t|
@@ -56,7 +55,10 @@ namespace :dev do
         user.photos.each_with_index do |photo, i|
           post = user.posts.create!(title: "標題 #{user.id}-#{i}", content: "<p>內文</p><p>內文</p><p>內文</p>")
           @posts << post
-          Ziltagging.create! photo: photo, post: post, x: rand(200), y: rand(200)
+          Ziltagging.create!(
+            image_url: 'http://localhost:3000' << photo.image_url,
+            post: post, x: rand(200), y: rand(200)
+          )
           dot
         end
       end

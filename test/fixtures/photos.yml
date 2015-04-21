@@ -1,8 +1,12 @@
-<% 10.times do |i| %>
-<% 2.times do |j| %>
-photo_<%= 2*i + j %>:
-  user: user_<%= i %>
-  title: <%= "標題 #{2*i + j}" %>
-  image: ''
-<% end %>
-<% end %>
+tony:
+  user: tony
+  title: 大兜照片
+  image: tony.jpg
+tony_2:
+  user: tony
+  title: 大兜照片二
+  image: tony_2.jpg
+david:
+  user: david
+  title: 測試照片
+  image: david.jpg

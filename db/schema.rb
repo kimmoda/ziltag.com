@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420061017) do
+ActiveRecord::Schema.define(version: 20150421111628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,19 +77,18 @@ ActiveRecord::Schema.define(version: 20150420061017) do
 
   create_table "ziltaggings", force: :cascade do |t|
     t.integer  "post_id",    null: false
-    t.integer  "photo_id",   null: false
     t.integer  "x",          null: false
     t.integer  "y",          null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image_url",  null: false
   end
 
-  add_index "ziltaggings", ["photo_id"], name: "index_ziltaggings_on_photo_id", using: :btree
+  add_index "ziltaggings", ["image_url"], name: "index_ziltaggings_on_image_url", using: :btree
   add_index "ziltaggings", ["post_id"], name: "index_ziltaggings_on_post_id", using: :btree
 
   add_foreign_key "comments", "comments"
   add_foreign_key "photos", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "ziltaggings", "photos"
   add_foreign_key "ziltaggings", "posts"
 end
