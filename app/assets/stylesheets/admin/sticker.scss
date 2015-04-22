@@ -1,0 +1,14 @@
+// 樂貼在滑鼠移過去的效果
+// 滑過前：半透明
+// 滑過後：不透明
+
+img.sticker{
+  opacity: 0.5;
+  transition: opacity .25s ease-in-out;
+ -moz-transition: opacity .25s ease-in-out;
+ -webkit-transition: opacity .25s ease-in-out;
+}
+
+img.sticker:hover{
+  opacity: inherit;
+}
