@@ -1,6 +1,6 @@
 <p>
   <strong><%= Admin::Post.human_attribute_name(:user) %>:</strong>
-  <%= @admin_post.user %>
+  <%= link_to @admin_post.user, [:admin, @admin_post.user] %>
 </p>
 
 <p>

@@ -6,7 +6,6 @@ class Admin::Post < Post
   # attributes
 
   # associations
-  belongs_to :user
 
   # validations
 
