@@ -13,8 +13,21 @@
   <%= link_to image_tag(@admin_photo.image.thumb), @admin_photo.image_url %>
 </p>
 
-<%= image_tag(@admin_photo.image_url, data: {sticker: '', new_post: new_admin_post_path}) %>
-<p>點擊圖片任一處新增樂貼</p>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="page-header">
+      <h2><%= Post.model_name.human %></h2>
+    </div>
+    <%= image_tag(@admin_photo.image_url, data: {sticker: '', new_post: new_admin_post_path}) %>
+    <p>點擊圖片任一處新增樂貼</p>
+  </div>
+  <div class="col-sm-6">
+    <div class="page-header">
+      <h2><%= Comment.model_name.human %></h2>
+    </div>
+    <%= image_tag(@admin_photo.image_url, data: {comment_sticker: ''}) %>
+  </div>
+</div>
 
 <hr>
 

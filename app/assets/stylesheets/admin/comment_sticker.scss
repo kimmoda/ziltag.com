@@ -1,0 +1,24 @@
+.comment_sticker{
+  position: absolute;
+  background-color: white;
+  opacity: 0.5;
+  padding: 0px 5px 0px;
+  border-radius: 5px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.comment_sticker:hover{
+  opacity: inherit;
+  max-width: inherit;
+  overflow: inherit;
+  text-overflow: inherit;
+  white-space: inherit;
+  width: 230px;
+}
