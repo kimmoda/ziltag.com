@@ -4,7 +4,7 @@ $(document).on 'ready page:load', () ->
   $imgs = $('img[data-sticker]')
   return if $imgs.length == 0
   url_hash = {}
-  image_urls = $.map $imgs, (img) ->
+  image_urls = for img in $imgs
     url = URI(img.src).absoluteTo(window.location.href).normalize().href()
     url_hash[url] ||= []
     url_hash[url].push img
@@ -13,5 +13,6 @@ $(document).on 'ready page:load', () ->
     for ziltag in ziltags
       sticker = "<a title=\"#{ziltag.title}\" href=\"#{ziltag.link}\"><img src=\"<%= asset_path('sticker.png') %>\" class=\"img-circle sticker\"/></a>"
       for img in url_hash[ziltag.image_url]
-        $(img).wrap('<div style="position:relative"></div>')
-          .after("<div style=\"position:absolute;left:#{ziltag.x - 12.5}px;top:#{ziltag.y - 12.5}px;\">#{sticker}</div>")
+        $img = $(img)
+        $img.wrap('<div style="position:relative;" data-wrapper="true"></div>') unless $img.parent().data('wrapper')
+        $img.after("<div style=\"position:absolute;left:#{ziltag.x - 12.5}px;top:#{ziltag.y - 12.5}px;\">#{sticker}</div>")
