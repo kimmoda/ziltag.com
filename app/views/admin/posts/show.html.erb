@@ -17,7 +17,7 @@
 <div class="row">
   <% @admin_post.photos.each do |photo| %>
     <div class="col-xs-6 col-md-3">
-      <%= image_tag photo.image_url, data: {sticker: ''} %>
+      <%= link_to image_tag(photo.image_url, data: {sticker: ''}), [:admin, photo] %>
     </div>
   <% end %>
 </div>
