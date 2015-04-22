@@ -10,7 +10,9 @@ class Ziltagging < ActiveRecord::Base
   belongs_to :post
 
   def photo
-    Photo.find_by(image: File.basename(image_url))
+    # TODO 若會影響效能再考慮在 photos 建立快取欄位，並索引
+    candidates = Photo.where(image: File.basename(image_url))
+    candidates.find{ |i| i.image_url == image_url }
   end
 
   # validations
