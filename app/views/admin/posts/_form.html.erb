@@ -8,10 +8,18 @@
   </div>
 
   <%= f.simple_fields_for :ziltaggings do |ff| %>
-    <%= ff.input :image_url %>
-    <%= ff.input :x %>
-    <%= ff.input :y %>
+    <%= ff.input :image_url, as: :hidden %>
+    <%= ff.input :x, as: :hidden %>
+    <%= ff.input :y, as: :hidden %>
+    <div style="position:relative">
+      <%= image_tag ff.object.image_url %>
+      <div style="position:absolute;left:<%= ff.object.x - 12.5 %>px;top:<%= ff.object.y - 12.5 %>px">
+        <%= image_tag 'sticker.png', class: 'img-circle' %>
+      </div>
+    </div>
   <% end %>
+
+  <br>
 
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-primary btn-lg' %>

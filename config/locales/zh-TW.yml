@@ -12,6 +12,7 @@ zh-TW:
   attributes:
     title: 標題
     user: 會員
+    image_url: 圖片網址
   activerecord:
     models:
       user: 會員
@@ -31,5 +32,4 @@ zh-TW:
         remove_avatar: 刪除頭像
       comment:
         root: 原 PO
-        image_url: 圖片網址
         text: 內容
