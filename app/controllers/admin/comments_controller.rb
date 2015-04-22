@@ -15,6 +15,7 @@ class Admin::CommentsController < AdminController
   # GET /admin/comments/new
   def new
     @admin_comment = Admin::Comment.new
+    @admin_comment.assign_attributes params.permit(:image_url, :x, :y)
   end
 
   # GET /admin/comments/1/edit
