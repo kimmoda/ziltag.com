@@ -6,11 +6,12 @@ $(document).on 'ready page:load', () ->
   url_hash = {}
   image_urls = $.map $imgs, (img) ->
     url = URI(img.src).absoluteTo(window.location.href).normalize().href()
-    url_hash[url] = img
+    url_hash[url] ||= []
+    url_hash[url].push img
     url
   $.getJSON '/admin/ziltaggings.json', image_url: image_urls, (ziltags) ->
     for ziltag in ziltags
       sticker = "<a title=\"#{ziltag.title}\" href=\"#{ziltag.link}\"><img src=\"<%= asset_path('sticker.png') %>\" class=\"img-circle sticker\"/></a>"
-      $(url_hash[ziltag.image_url])
-        .wrap('<div style="position:relative"></div>')
-        .after("<div style=\"position:absolute;left:#{ziltag.x - 12.5}px;top:#{ziltag.y - 12.5}px;\">#{sticker}</div>")
+      for img in url_hash[ziltag.image_url]
+        $(img).wrap('<div style="position:relative"></div>')
+          .after("<div style=\"position:absolute;left:#{ziltag.x - 12.5}px;top:#{ziltag.y - 12.5}px;\">#{sticker}</div>")
