@@ -28,7 +28,10 @@ namespace :dev do
       print t.comment
       @users = []
       10.times do |i|
-        @users << User.create!(email: "user_#{i}@example.com", password: 'password', avatar: @images.sample)
+        user = User.new(email: "user_#{i}@example.com", username: "user_#{i}", password: 'password', avatar: @images.sample)
+        user.skip_confirmation!
+        user.save!
+        @users << user
         dot
       end
       done

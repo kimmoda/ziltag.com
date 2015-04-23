@@ -9,6 +9,13 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <ul>
+    <li><%= link_to '登入', new_user_session_path %></li>
+    <li><%= link_to '登出', destroy_user_session_path, method: :delete %></li>
+    <li><%= link_to '註冊', new_user_registration_path %></li>
+    <li><%= link_to '忘記密碼', new_user_password_path %></li>
+    <li><%= link_to '重寄驗證信', new_user_confirmation_path %></li>
+  </ul>
   <%= yield %>
 </body>
 </html>
