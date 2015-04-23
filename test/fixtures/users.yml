@@ -1,7 +1,9 @@
 tony:
   email: tonytonyjan@ziltag.com
+  username: tonytonyjan
   encrypted_password: <%= Devise.bcrypt(User, 'password') %>
   avatar: tony_avatar.jpg
 david:
   email: david@ziltag.com
+  username: david
   encrypted_password: <%= Devise.bcrypt(User, 'password') %>
