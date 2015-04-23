@@ -1,8 +1,7 @@
 .comment_sticker{
-  position: absolute;
   background-color: white;
   opacity: 0.5;
-  padding: 0px 5px 0px;
+  padding: 0px 5px 0px 0px;
   border-radius: 5px;
   max-width: 200px;
   overflow: hidden;
@@ -21,4 +20,8 @@
   text-overflow: inherit;
   white-space: inherit;
   width: 230px;
+}
+
+.comment_sticker>img{
+  border-radius: 5px;
 }

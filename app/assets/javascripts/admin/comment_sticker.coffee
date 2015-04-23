@@ -15,4 +15,4 @@ $(document).on 'ready page:load', () ->
       for img in url_hash[comment.image_url]
         $img = $(img)
         $img.wrap('<div style="position:relative;" data-wrapper="true"></div>') unless $img.parent().data('wrapper')
-        $img.after("<a href=\"#{comment.link}\"><div style=\"left:#{comment.x}px;top:#{comment.y}px;\" class=\"comment_sticker\">#{comment.text}</div></a>")
+        $img.after("<div style=\"position:absolute;left:#{comment.x}px;top:#{comment.y}px;\"><div class=\"comment_sticker\"><img src=\"#{comment.avatar}\" width=\"20px\"/> #{comment.text}</div></div>")

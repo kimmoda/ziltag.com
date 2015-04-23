@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
   # scopes
 
   # constants
+  GUEST_AVATAR = "#{Rails.configuration.asset_host}/images/fallback/tiny_guest.png".freeze
 
   # attributes
 
@@ -17,5 +18,9 @@ class Comment < ActiveRecord::Base
   # other
   def to_s
     text
+  end
+
+  def avatar_url
+    user ? user.avatar.thumb.url : GUEST_AVATAR
   end
 end
