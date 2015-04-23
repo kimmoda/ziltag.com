@@ -22,12 +22,7 @@
 <div class="page-header">
   <h2><%= Comment.model_name.human %></h2>
 </div>
-<div style="position:relative">
-  <%= image_tag(@admin_photo.image_url, data: {comment_sticker: '', new_comment: new_admin_comment_path}) %>
-  <div style="position:absolute;left:10px;top:10px">
-    <div class="comment_sticker"><%= image_tag User.first.avatar.thumb, width: 20 %> hello</div>
-  </div>
-</div>
+<%= image_tag(@admin_photo.image_url, data: {comment_sticker: '', new_comment: new_admin_comment_path}) %>
 <p>點擊圖片任一處新增留言</p>
 
 <hr>
