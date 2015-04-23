@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :comments, primary_key: :email, foreign_key: :email
 
   # validations
-  validates :email, presence: true
+  validates :email, :username, presence: true, uniqueness: true
 
   # callbacks
 

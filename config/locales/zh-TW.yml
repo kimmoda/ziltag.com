@@ -27,6 +27,7 @@ zh-TW:
         remove_image: 刪除圖片
       user:
         email: 電子郵件
+        username: 帳號
         password: 密碼
         avatar: 頭像
         remove_avatar: 刪除頭像

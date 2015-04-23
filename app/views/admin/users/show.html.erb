@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <strong><%= Admin::User.human_attribute_name(:username) %>:</strong>
+  <%= @admin_user.username %>
+</p>
+
+<p>
   <strong><%= Admin::User.human_attribute_name(:avatar) %>:</strong>
   <%= link_to image_tag(@admin_user.avatar.thumb), @admin_user.avatar_url %>
 </p>

@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th><%= Admin::User.human_attribute_name(:email) %></th>
+      <th><%= Admin::User.human_attribute_name(:username) %></th>
       <th><%= Admin::User.human_attribute_name(:avatar) %></th>
       <th></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @admin_users.each do |admin_user| %>
       <tr>
         <td><%= admin_user.email %></td>
+        <td><%= admin_user.username %></td>
         <td><%= image_tag admin_user.avatar.thumb %></td>
         <td>
           <%= link_to icon_tag(:search), admin_user, title: t('scaffold.show'), class: 'btn btn-info' %>
