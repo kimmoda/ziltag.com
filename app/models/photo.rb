@@ -1,8 +1,6 @@
 class Photo < ActiveRecord::Base
   # scopes
 
-  # scope :posts, ->(){ Post.where() }
-
   # constants
 
   # attributes
