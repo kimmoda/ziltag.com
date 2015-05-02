@@ -18,7 +18,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'carrierwave-vips'
 gem 'fog'
 
 source 'https://rails-assets.org' do
