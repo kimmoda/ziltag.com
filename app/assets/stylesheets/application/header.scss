@@ -1,0 +1,27 @@
+@import "colors";
+header.header{
+  box-sizing: border-box;
+  
+  nav.header_nav{
+    margin-bottom: 0;
+    padding-top: 8px;
+    background-color: $main_white_color;
+    border:none;
+    border-bottom: 1px solid red;
+  }
+  
+  ul.nav_list{
+    margin-bottom: 0;
+    position: relative;
+    top:5px;
+    > li{
+      > a{
+        color: $main_gray_color;
+      }
+    }
+  }
+  
+  button.btn_search{
+    background-color: $main_gray_color;
+  }
+}
