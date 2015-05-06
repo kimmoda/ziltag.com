@@ -36,5 +36,6 @@ http://localhost:3000/rails/mailers/
 - 一個功能/樣式定義一個檔案，並註解使用方法。
 - JS 應用 `data-*` 找元件，CSS 則用 `class`，誤將行為與樣式共用 `class` 屬性。
 - Bower 在 rails 上的使用是在 `Gemfile` 定義 gem，以 `rails-assets-名稱` 的方式安裝。
+- Gemfile 新增東西後要 `bundle install`，然後再重開 server，Rails 才抓得到。
 - 盡量使用有 bower 控管的 JS/CSS 函式庫，若函式庫非 bower 所管理，則丟到 `vender/assets/{stylesheets,javascripts}` 下，並在 `application.{js,css}` 中透過註解 `require` 引用。
 - 為了支援 rails turbolinks 的加速功能，載入頁面除了監聽 `ready` 之外，也請監聽 `page:load` 事件，例如 `$(document).on('ready page:load', myListener);`
