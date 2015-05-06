@@ -25,6 +25,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-select2', '~> 4.0.0.rc.2'
   gem 'rails-assets-URIjs'
+  gem 'rails-assets-font-awesome'
   gem 'rails-assets-select2-bootstrap-theme'
 end
 
