@@ -1,4 +1,7 @@
 /*
 = require font-awesome
+= require bootstrap
+= require select2
+= require select2-bootstrap-theme
 = require_tree ./application
 */

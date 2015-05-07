@@ -1,2 +1,17 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="section_post">
+  
+  <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
+  
+</section><!-- /.section_post -->
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).on('ready page:load', function(){
+      
+      $('a.btn_share').on('click', function(e){
+        e.preventDefault();
+        $(this).closest("li").find("div[data-share-zone]").toggleClass("hidden");
+      });
+    });
+  </script>
+<% end %>

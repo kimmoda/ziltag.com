@@ -1,0 +1,92 @@
+<header class="header">
+  <nav class="navbar navbar-default header_nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-2 col_logo">
+          <h1 class="h1_title"><a href="/"><%= image_tag("logo.png", :alt => "Ziltag", :title => "Ziltag") %></a></h1>
+        </div><!-- /.col-* -->
+        
+        <div class="col-xs-7 col_search">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default btn_search" type="button"><i class="fa fa-search"></i></button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-* -->
+        
+        <div class="col-xs-3 col_user_info">
+          <% if user_signed_in? %>
+            <ul class="list-inline pull-right nav_list is_login">
+            
+              <li>
+                <a href="#" class="only_link plus"><i class="fa fa-plus fa-2x"></i></a>
+              </li>
+              <li>
+                <div class="btn-group btn_custom_group">
+                  <button type="button" class="btn btn-default dropdown-toggle btn_notificaion" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-bell fa-2x"></i>
+                  </button>
+                  <ul class="dropdown-menu notification_center_list" role="menu">
+                    <% 3.times do %>
+                      <li class="notification_item">
+                        <a href="#" class="notification_link">
+                          <div class="notification_div">
+                            
+                            <div class="notification_img">
+                              <img src="http://placehold.it/50x50" class="user_profile_img">
+                              <div class="user_profile_info">
+                                <span class="username">Dribbble</span>
+                                <span class="others">13m</span>
+                              </div><!-- /.user_profile_info -->
+                            </div><!-- /.notification_img -->
+                            <p class="para">文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+                          </div><!-- /.notification_div -->
+                        </a><!-- /.notification_link -->
+                      </li>
+                    <% end %>
+                    
+                    <li><a href="#" class="text-right">More...</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="only_link lightbulb"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+              </li>
+              <li>
+                <div class="btn-group btn_custom_group">
+                  <button type="button" class="btn btn-default dropdown-toggle btn_user_profile" data-toggle="dropdown" aria-expanded="false">
+                    <img src="http://placehold.it/50x50" class="user_profile_img">
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="user_name">
+                      <a href="#">
+                        David Peterson<br>
+                        <span class="email">dpeterson@gmail.com</span>
+                      </a>
+                    </li>
+                    <li><a href="#">設定</a></li>
+                    <li><a href="#">幫助</a></li>
+                    <li><a href="#">隱私條款</a></li>
+                    <li><%= link_to '登出', destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </div>
+              </li>
+              
+            </ul>
+          <% else %>
+            <ul class="list-inline pull-right nav_list is_login not_login">
+              <li><%= link_to '登入', new_user_session_path, :class => "nav_link" %></li>
+              <li><%= link_to '註冊', new_user_registration_path, :class => "nav_link" %></li>
+              
+              <li><%= link_to '忘記密碼', new_user_password_path %></li>
+              <li><%= link_to '重寄驗證信', new_user_confirmation_path %></li>
+            </ul>
+          <% end %>
+          
+          
+        </div><!-- /.col-* -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </nav>
+</header><!-- /.header -->

@@ -1,0 +1,128 @@
+@import "colors";
+header.header{
+  box-sizing: border-box;
+  div.col_logo{
+    padding-right: 0;
+  }
+  div.col_search{
+    padding-left: 0;
+  }
+  div.col_user_info{
+    @media screen and (max-width:991px){
+      padding-left:0;
+    }
+  }
+  h1.h1_title{
+    margin:0;
+    padding:0;
+    font-size: 1em;
+  }
+  nav.header_nav{
+    margin-bottom: 0;
+    padding-top: 8px;
+    background-color: $main_white_color;
+    border:none;
+  }
+  
+  ul.nav_list{
+    margin-bottom: 0;
+    position: relative;
+    top:-4px;
+    &.not_login{
+      top:8px;
+      > li{
+        margin-left:5px;
+      }
+    }
+    > li{
+      margin-left:10px;
+      @media screen and (max-width:1199px){
+        margin-left:0px;
+      }
+      > a{
+        color: $main_gray_color;
+        &.only_link{
+          position: relative;
+          top:6px;
+        }
+        &.lightbulb{
+          color: $main_red_color;
+        }
+        &.plus{
+          color: $main_gray_color;
+        }
+      }
+      div.btn_custom_group{
+        
+        button.btn_user_profile, button.btn_notificaion{
+          border:none;
+          background: none;
+          box-shadow: none;
+          padding:0;
+          img.user_profile_img{
+            border-radius: 50%;
+          }
+        }
+        button.btn_notificaion{
+          color: $main_gray_color;
+        }
+        span.email{
+          font-size: 10px;
+          color: $main_gray_color;
+        }
+        ul.dropdown-menu{
+          right:0;
+          left:auto;
+          &.notification_center_list{
+            min-width: 400px;
+          }
+          > li{
+            &.user_name{
+              > a{
+                line-height: 14px;
+              }
+            }
+            &.notification_item{
+              > a.notification_link {
+                border-bottom: 1px solid $main_gray_color;
+                display: inline-block;
+                white-space: normal;
+                div.notification_div{
+                  padding-top:5px;
+                  div.notification_img{
+                    img.user_profile_img{
+                      border-radius:50%;
+                      vertical-align: middle;
+                    }
+                    div.user_profile_info{
+                      display: inline-block;
+                      vertical-align: middle;
+                      span.username{
+                        display: block;
+                      }
+                      span.others{
+                        display: block;
+                        color: $main_gray_color;
+                      }
+                    }
+                  }
+                  p.para{
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                  }
+                }
+              }
+              
+            }
+          }
+        }
+      }
+      
+    }
+  }
+  
+  button.btn_search{
+    background-color: $main_gray_color;
+    color: $main_white_color;
+  }
+}

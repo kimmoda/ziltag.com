@@ -4,7 +4,7 @@ class Ziltagging < ActiveRecord::Base
   # constants
 
   # attributes
-  delegate :title, to: :post
+  delegate :title, :content, :user, to: :post
 
   # associations
   belongs_to :post

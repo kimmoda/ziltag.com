@@ -7,15 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-controller="<%= controller_path %>" data-action="<%= action_name %>">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <ul>
-    <li><%= link_to '登入', new_user_session_path %></li>
-    <li><%= link_to '登出', destroy_user_session_path, method: :delete %></li>
-    <li><%= link_to '註冊', new_user_registration_path %></li>
-    <li><%= link_to '忘記密碼', new_user_password_path %></li>
-    <li><%= link_to '重寄驗證信', new_user_confirmation_path %></li>
-  </ul>
-  <%= yield %>
+
+  <%= render :partial => "/layouts/partials/header" %>
+  
+  
+  
+  
+  <div class="container-fluid layout_fluid" data-layout="outer">
+    
+    <div class="fill_white" data-layout="outer_fill_white"></div>
+    <div class="custom_header_line" data-layout="custom_header_line"></div>
+    
+    <div class="container" data-layout="inner">
+      <div class="row">
+        
+        <div class="col-xs-2 col_left">
+          <%= render :partial => "/layouts/partials/sidebar" %>
+        </div>
+        
+        <div class="col-xs-10 col_right" data-layout="col_right">
+        
+          <% if notice %>
+            <div class="alert alert-info"><%= notice %></div>
+          <% end %>
+          
+          <% if alert %>
+            <div class="alert alert-danger"><%= alert %></div>
+          <% end %>
+          
+          <%= yield %>
+          
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.container -->
+  
+  
+  
+  <%= yield :javascripts %>
 </body>
 </html>

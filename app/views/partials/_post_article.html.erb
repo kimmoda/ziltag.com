@@ -1,0 +1,45 @@
+<article class="post_article">
+
+  <div class="block_right">
+    <%= image_tag ziltagging.image_url, class: :post_image %>
+  </div><!-- /.block_right -->
+  
+  <div class="block_left">
+    <time datetime="2014-12-22" class="datetime">發表於 <%= l ziltagging.post.created_at, format: :long %></time>
+    
+    <h2 class="post_title"><%= ziltagging.title %></h2>
+    <div class="post_content">
+    <%= sanitize ziltagging.content %>
+    </div>
+    
+    <div class="post_user_profile">
+      <a href="#" class="profile_link"><%= image_tag ziltagging.user.avatar.thumb, class: :user_profile_img %></a>
+      <div class="follow_user_div">
+        <a href="#" class="user_name"><%= ziltagging.user.username %></a><br>
+        
+        <!-- 以下2個按鈕要切換 -->
+        <a class="btn btn-default btn-xs follow_user">關注用戶</a>
+        <a class="btn btn-default btn-xs follow_user cancel">取消追蹤</a>
+      </div><!-- /.follow_user_div -->
+      
+      <ul class="list-unstyled list-inline pull-right other_funcs">
+        <li class="share_item">
+          <a href="#" class="btn_share"><i class="fa fa-share"></i></a>
+          <div class="share_zone hidden" data-share-zone>
+            <%= image_tag("other_triangle.png", :class => "other_triangle") %>
+            <ul class="list-unstyled list-inline share_list">
+              <li><a href="#" class="icon_share fb"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+              <li><a href="#" class="icon_share twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+              <li><a href="#" class="icon_share tumblr"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+              <li><a href="#" class="icon_share googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            </ul>
+          </div><!-- /.share_zone -->
+        </li>
+        <li>
+          <a href="#" class="btn_precious"><i class="fa fa-star"></i></a>
+          <a href="#" class="btn_precious cancel"><i class="fa fa-star"></i></a>
+        </li>
+      </ul><!-- /.other_funcs -->
+    </div><!-- /.post_user_profile -->
+  </div><!-- /.block_left -->
+</article><!-- /.post_article -->
