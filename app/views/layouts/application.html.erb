@@ -10,13 +10,7 @@
 
   <%= render :partial => "/layouts/partials/header" %>
   
-  <% if notice %>
-    <p class="notice"><%= notice %></p>
-  <% end %>
   
-  <% if alert %>
-    <p class="alert"><%= alert %></p>
-  <% end %>
   
   
   <div class="container-fluid layout_fluid" data-layout="outer">
@@ -32,6 +26,14 @@
         </div>
         
         <div class="col-xs-10 col_right" data-layout="col_right">
+        
+          <% if notice %>
+            <div class="alert alert-info"><%= notice %></div>
+          <% end %>
+          
+          <% if alert %>
+            <div class="alert alert-danger"><%= alert %></div>
+          <% end %>
           
           <%= yield %>
           
