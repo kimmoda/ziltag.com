@@ -2,7 +2,8 @@
 
 ## 相依套件
 
-- vips
+- ruby 2.2.2
+- graphicsmagick
 - postgresql
 
 ## 開發準備
