@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/projects/a08f57bd-e891-4bb0-8e0f-60b00a5d993d/402412/badge.svg)](https://semaphoreci.com/billtag/ziltag-com)
+
 # 開發者文件
 
 ## 相依套件
