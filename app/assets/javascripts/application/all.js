@@ -14,5 +14,8 @@ var allJs = {
     // 針對 div[data-layout=custom_header_line] 分隔線
     var col_right = $("div[data-layout=col_right]").outerWidth();
     $("div[data-layout=custom_header_line]").css("width", (col_right + left_side_width) + "px");
+    
+    // 調整 aside.aside 的高度
+    $("aside[data-layout=aside]").css("height", $("div[data-layout=col_right]").outerHeight() + "px");
   },
 };
