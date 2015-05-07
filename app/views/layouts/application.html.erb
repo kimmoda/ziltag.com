@@ -26,17 +26,8 @@
         </div>
         
         <div class="col-xs-10 col_right" data-layout="col_right">
-        
-          <% if notice %>
-            <div class="alert alert-info"><%= notice %></div>
-          <% end %>
-          
-          <% if alert %>
-            <div class="alert alert-danger"><%= alert %></div>
-          <% end %>
-          
+          <%= flash_messages %>
           <%= yield %>
-          
         </div>
       </div><!-- /.row -->
     </div><!-- /.container -->
