@@ -1,0 +1,134 @@
+@import "colors";
+article.post_article{
+  border:1px solid $third_gray_color;
+  margin-top: 20px;
+  background-color: $main_white_color;
+  box-shadow: 0 5px 5px $third_gray_color;
+  &:before, &:after{
+    content: "";
+    display: block;
+  }
+  &:after{
+    clear: both;
+  }
+  
+  div.block_left{
+    float:left;
+    vertical-align: top;
+    padding:20px;
+    width:68%;
+    @media screen and (min-width:992px) and (max-width:1199px){
+      width:60%;
+    }
+    @media screen and (max-width:991px){
+      width:49%;
+    }
+    time.datetime{
+      color: $main_gray_color;
+    }
+    h2.post_title{
+      margin:{
+        top:5px;
+        bottom:5px;
+        left:0;
+        right:0;
+      };
+      height: 55px;
+      overflow: hidden;
+      padding:0;
+      font-size: 24px;
+    }
+    p.post_content{
+      margin-top: 10px;
+      height: 105px;
+      overflow: scroll;
+    }
+    div.post_user_profile{
+      a.profile_link{
+        display: inline-block;
+        vertical-align: middle;
+        img.user_profile_img{
+          border-radius: 50%;
+        }
+      }
+      div.follow_user_div{
+        margin-left:10px;
+        display: inline-block;
+        vertical-align: middle;
+        a.user_name{
+          color: $main_black_color;
+        }
+        a.follow_user{
+          display: inline-block;
+          border:1px solid $fourth_gray_color;
+          background-color: $secondary_gray_color;
+          color: $main_gray_color;
+          &.cancel{
+            background-color: $main_red_color;
+            color: $main_white_color;
+          }
+        }
+      }
+      ul.other_funcs{
+        position: relative;
+        top:10px;
+        > li{
+          > a{
+            &.btn_share{
+              color: $main_gray_color;
+              font-size: 24px;
+            }
+            &.btn_precious{
+              color: $main_gray_color;
+              font-size: 24px;
+              &.cancel{
+                color: $main_red_color;
+              }
+            }
+          }
+          &.share_item{
+            position: relative;
+            div.share_zone{
+              text-align: center;
+              padding:5px 10px;
+              position: absolute;
+              right:0;
+              bottom:-80px;
+              width:170px;
+              background-color: $main_white_color;
+              box-shadow: 0 3px 10px $main_gray_color;
+              img.other_triangle{
+                position: absolute;
+                right:10px;
+                top:-8px;
+              }
+              ul.share_list{
+                > li{
+                  > a.icon_share{
+                    &.fb{
+                      color:#667EB9;
+                    }
+                    &.twitter{
+                      color: #5DD7FC;
+                    }
+                    &.tumblr{
+                      color: #708A97;
+                    }
+                    &.googleplus{
+                      color: #F35E47;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  div.block_right{
+    float:right;
+    border:1px soild green;
+    vertical-align: top;
+  }
+}

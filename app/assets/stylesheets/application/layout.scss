@@ -1,8 +1,36 @@
+@import "colors";
 @media screen and (max-width:767px){
   .container{
     width:768px !important;
   }
   nav.navbar{
     width:768px !important;
+  }
+}
+div.layout_fluid{
+  background-color: $secondary_gray_color;
+  position: relative;
+  padding:0;
+  @media screen and (max-width:767px){
+    width:768px !important;
+  }
+  div.fill_white{
+    background-color: $main_white_color;
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+  }
+  div.custom_header_line{
+    position: absolute;
+    top:0;
+    right:0;
+    height: 1px;
+    border-top:1px solid $main_gray_color;
+  }
+  div.col_left{
+    padding-right: 0;
+  }
+  div.col_right{
   }
 }

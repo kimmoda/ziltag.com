@@ -1,0 +1,53 @@
+@import "colors";
+aside.aside{
+  border-right: 1px solid $main_gray_color;
+  background-color: $main_white_color;
+  ul.aside_list{
+    padding:{
+      top:10px;
+      bottom:10px;
+    };
+    margin-right: 30px;
+    border-bottom: 1px solid $main_gray_color;
+    > li{
+      margin-bottom: 10px;
+      > a{
+        display: inline-block;
+        color: $main_black_color;
+      }
+    }
+  }
+  
+  section.aside_section{
+    padding-top: 10px;
+    h2.list_title{
+      color: #EE2E24;
+      font-size: 1em;
+      margin:0;
+      padding:0;
+    }
+    ul.aside_list{
+      padding-top: 15px;
+    }
+  }
+  img.profile_image{
+    border-radius: 50%;
+  }
+  
+  footer.aisde_footer{
+    p.para{
+      margin-bottom: 0px;
+      color: $main_gray_color;
+      font-size: 10px;
+    }
+    ul.footer_list{
+      margin-bottom: 0;
+      > li{
+        > a{
+          color: $main_gray_color;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

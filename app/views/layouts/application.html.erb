@@ -10,32 +10,38 @@
 
   <%= render :partial => "/layouts/partials/header" %>
   
-  <!--
-  <p class="notice"><%#= notice %></p>
-  -->
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
   
-  <!--
-  <p class="alert"><%#= alert %></p>
-  -->
+  <% if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
   
   
-  <div class="container">
-    <div class="row">
-      
-      <div class="col-xs-2">
-        <%= render :partial => "/layouts/partials/sidebar" %>
-      </div>
-      
-      <div class="col-sm-10">
-        <%= yield %>
-      </div>
-    </div><!-- /.row -->
+  <div class="container-fluid layout_fluid" data-layout="outer">
+    
+    <div class="fill_white" data-layout="outer_fill_white"></div>
+    <div class="custom_header_line" data-layout="custom_header_line"></div>
+    
+    <div class="container" data-layout="inner">
+      <div class="row">
+        
+        <div class="col-xs-2 col_left">
+          <%= render :partial => "/layouts/partials/sidebar" %>
+        </div>
+        
+        <div class="col-xs-10 col_right" data-layout="col_right">
+          
+          <%= yield %>
+          
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
   </div><!-- /.container -->
   
   
-  <script>
-    $(function(){
-    });
-  </script>
+  
+  <%= yield :javascripts %>
 </body>
 </html>
