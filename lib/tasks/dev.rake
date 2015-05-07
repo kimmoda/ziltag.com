@@ -28,7 +28,7 @@ namespace :dev do
       print t.comment
       @users = []
       10.times do |i|
-        user = User.new(email: "user_#{i}@example.com", username: "user_#{i}", password: 'password', avatar: @images.sample)
+        user = User.new(email: Faker::Internet.safe_email, username: Faker::Internet.user_name, password: 'password', avatar: @images.sample)
         user.skip_confirmation!
         user.save!
         @users << user
@@ -56,7 +56,7 @@ namespace :dev do
       @posts = []
       @users.each do |user|
         user.photos.each_with_index do |photo, i|
-          post = user.posts.create!(title: "標題 #{user.id}-#{i}", content: "<p>內文</p><p>內文</p><p>內文</p>")
+          post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p>"}.join)
           @posts << post
           Ziltagging.create!(
             image_url: photo.image_url,
