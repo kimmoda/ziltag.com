@@ -56,13 +56,13 @@
               <li>
                 <div class="btn-group btn_custom_group">
                   <button type="button" class="btn btn-default dropdown-toggle btn_user_profile" data-toggle="dropdown" aria-expanded="false">
-                    <img src="http://placehold.it/50x50" class="user_profile_img">
+                    <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
                   </button>
                   <ul class="dropdown-menu" role="menu">
                     <li class="user_name">
                       <a href="#">
-                        David Peterson<br>
-                        <span class="email">dpeterson@gmail.com</span>
+                        <%= current_user.username %><br>
+                        <span class="email"><%= current_user.email %></span>
                       </a>
                     </li>
                     <li><a href="#">設定</a></li>
