@@ -18,4 +18,19 @@ var allJs = {
     // 調整 aside.aside 的高度
     $("aside[data-layout=aside]").css("height", $("div[data-layout=col_right]").outerHeight() + "px");
   },
+  
+  // 選擇圖片預覽圖
+  readURL: function(selectedFile) {
+    if (selectedFile.files && selectedFile.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        
+        $("button[data-trigger-select-image]").addClass("hidden");
+        $("div[data-profile-img-block]").removeClass("hidden");
+        
+        $('img[' + $(selectedFile).data("target") + ']').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(selectedFile.files[0]);
+    }
+  }
 };
