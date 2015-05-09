@@ -95,15 +95,4 @@
   </nav>
 </header><!-- /.header -->
 
-
 <%= render :partial => "/partials/modals/signupModal" %>
-
-
-
-<script>
-  $(document).on('ready page:load', function(){
-    $('a[data-target=#signupModal]').on('click', function(e){
-      e.preventDefault();
-    });
-  });
-</script>
