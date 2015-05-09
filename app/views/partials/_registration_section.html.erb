@@ -3,19 +3,18 @@
     <%= f.error_notification %>
     
     <div class="text-center form_photo" data-form-photo>
-      
-      <button type="button" class="text-center btn_profile_img" data-trigger-select-image>
+
+      <button type="button" class="text-center btn_profile_img <%= :hidden if f.object.avatar? %>" data-trigger-select-image>
         <i class="fa fa-user fa-2x"></i><br>
         上傳相片
       </button>
-      
-      
-      <div class="text-center show_profile_img_div hidden" data-profile-img-block>
-        <%= image_tag("test.png", :class => "img-responsive show_profile_img", "data-profile-img" => "") %>
+
+      <div class="text-center show_profile_img_div <%= :hidden unless f.object.avatar? %>" data-profile-img-block>
+        <%= image_tag f.object.avatar.url, class: 'img-responsive show_profile_img', data: {profile_img: ''} %>
       </div><!-- /.show_profile_img_div -->
-      
-      
-      <input type='file' class="hidden" data-target="data-profile-img" data-profile-input>
+
+      <%= f.file_field :avatar, class: :hidden, data: {target: :'data-profile-img', profile_input: true} %>
+      <%= f.hidden_field :avatar_cache %>
     </div><!-- /.form_photo -->
     
     <div class="form_inputs">
