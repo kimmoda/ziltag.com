@@ -1,0 +1,64 @@
+<section class="c_registration_section">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name) ) do |f| %>
+    <%= f.error_notification %>
+    
+    <div class="text-center form_photo" data-form-photo>
+      
+      <button type="button" class="text-center btn_profile_img" data-trigger-select-image>
+        <i class="fa fa-user fa-2x"></i><br>
+        上傳相片
+      </button>
+      
+      
+      <div class="text-center show_profile_img_div hidden" data-profile-img-block>
+        <%= image_tag("test.png", :class => "img-responsive show_profile_img", "data-profile-img" => "") %>
+      </div><!-- /.show_profile_img_div -->
+      
+      
+      <input type='file' class="hidden" data-target="data-profile-img" data-profile-input>
+    </div><!-- /.form_photo -->
+    
+    <div class="form_inputs">
+      <div class="each_input_div">
+        <%= f.input :username, required: true, label: false, :placeholder => "用戶名稱" %>
+        <i class="fa fa-user"></i>
+      </div><!-- /.each_input_div -->
+      
+      <div class="each_input_div">
+        <%= f.input :email, required: true, label: false, autofocus: true, :placeholder => "Email 信箱" %>
+        <i class="fa fa-envelope"></i>
+      </div><!-- /.each_input_div -->
+      
+      <div class="each_input_div">
+        <%= f.input :password, required: true, label: false, hint: ("#{@minimum_password_length} characters minimum" if @validatable), :placeholder => "密碼" %>
+        <i class="fa fa-lock"></i>
+      </div><!-- /.each_input_div -->
+      
+      <div class="each_input_div">
+        <%= f.input :password_confirmation, required: true, label: false, :placeholder => "密碼確認" %>
+        <i class="fa fa-lock"></i>
+      </div><!-- /.each_input_div -->
+    </div><!-- /.form_inputs -->
+    
+    <div class="form_actions">
+      <%= f.button :submit, "註冊", :class => "btn-block btn_register" %>
+    </div>
+    
+    <p class="para_hint">點擊註冊即表示您同意我們的<a href="#">使用者條款</a>與<a href="#">隱私權政策</a>。</p>
+  <% end %>
+  
+  <%#= render "devise/shared/links" %>
+</section><!-- /.c_registration_section -->
+
+<script>
+  $(document).on('ready page:load', function(){
+    
+    $("button[data-trigger-select-image], div[data-profile-img-block]").on('click', function(){
+      $(this).closest("div[data-form-photo]").find("input[data-profile-input]").click();
+    });
+    
+    $("input[data-profile-input]").change(function(){
+      allJs.readURL(this);
+    });
+  });
+</script>

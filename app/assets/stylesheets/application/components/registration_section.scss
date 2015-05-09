@@ -1,0 +1,91 @@
+/* 註冊區塊 */
+
+@import "../colors";
+section.c_registration_section{
+  input.btn_register{
+    background-color: $main_gray_color;
+    color: $main_white_color;
+  }
+  
+  div.form_photo{
+    margin-bottom: 15px;
+    button.btn_profile_img{
+      width:100px;
+      height: 100px;
+      border-radius: 50%;
+      border:1px solid $main_gray_color;
+      background-color: $main_white_color;
+      color: $main_gray_color;
+      box-sizing: border-box;
+      outline: none;
+    }
+    
+    div.show_profile_img_div{
+      width:100px;
+      height: 100px;
+      border-radius: 50%;
+      border:1px solid $main_gray_color;
+      box-sizing: border-box;
+      overflow: hidden;
+      display: inline-block;
+      cursor: pointer;
+      img.show_profile_img{
+        position: relative;
+        top:50%;
+        
+        -webkit-transform:translate(0, -50%);
+        -moz-transform:translate(0, -50%);
+        -ms-transform:translate(0, -50%);
+        -o-transform:translate(0, -50%);
+        transform:translate(0, -50%);
+      }
+    }
+      
+    
+    
+  }
+  
+  div.form_inputs{
+    border:1px solid $main_gray_color;
+    border-radius: 10px;
+    padding:15px;
+    div.form-group:last-child{
+      margin-bottom: 0;
+    }
+    p.help-block, span.help-block{
+      margin-bottom: 0;
+    }
+    p.help-block{
+      margin-top: 0;
+    }
+    
+    div.each_input_div{
+      position: relative;
+      input.form-control{
+        box-shadow: none;
+        border-radius: 0;
+        border:{
+          top:none;
+          left:0;
+          right:0;
+          bottom: 1px solid $main_gray_color;
+        };
+        padding-left:30px;
+      }
+      i.fa{
+        position: absolute;
+        top:10px;
+        left:5px;
+        color: $main_gray_color;
+      }
+    }
+  }
+  div.form_actions{
+    margin-top: 15px;
+  }
+  p.para_hint{
+    color: $main_gray_color;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+}

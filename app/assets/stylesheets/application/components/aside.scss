@@ -1,4 +1,6 @@
-@import "colors";
+/* 側邊欄 */
+
+@import "../colors";
 aside.aside{
   border-right: 1px solid $main_gray_color;
   background-color: $main_white_color;

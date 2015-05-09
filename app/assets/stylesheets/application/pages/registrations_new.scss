@@ -1,0 +1,11 @@
+/* 註冊頁 */
+
+@import "../colors";
+body.registrations.new, body.registrations.create{
+  nav.header_nav{
+    border-bottom: 1px solid $main_gray_color;
+  }
+  div.normal_container{
+    padding-top: 20px;
+  }
+}
