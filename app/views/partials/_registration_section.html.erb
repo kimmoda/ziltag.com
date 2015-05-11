@@ -29,7 +29,7 @@
       </div><!-- /.each_input_div -->
       
       <div class="each_input_div">
-        <%= f.input :password, required: true, label: false, hint: ("#{@minimum_password_length} characters minimum" if @validatable), :placeholder => "密碼" %>
+        <%= f.input :password, required: true, label: false, hint: (t('.minimum_hint', length: @minimum_password_length) if @validatable), :placeholder => "密碼" %>
         <i class="fa fa-lock"></i>
       </div><!-- /.each_input_div -->
       

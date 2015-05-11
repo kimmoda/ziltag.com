@@ -1,4 +1,4 @@
 en:
-  activerecord:
-    models:
-      user: User
+  partials:
+    registration_section:
+      minimum_hint: '%{length} characters minimum'

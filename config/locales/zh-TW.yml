@@ -1,4 +1,7 @@
 zh-TW:
+  partials:
+    registration_section:
+      minimum_hint: '至少 %{length} 個字'
   scaffold:
     new: 新增
     show: 檢視
