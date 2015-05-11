@@ -31,6 +31,7 @@ zh-TW:
         password: 密碼
         avatar: 頭像
         remove_avatar: 刪除頭像
+        remember_me: 勿忘我
       comment:
         root: 原 PO
         text: 內容
