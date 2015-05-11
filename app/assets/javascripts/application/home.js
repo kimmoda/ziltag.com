@@ -4,5 +4,10 @@ $(document).on('ready page:load', function(){
       e.preventDefault();
       $(this).closest("li").find("div[data-share-zone]").toggleClass("hidden");
     });
+    
+    
+    
+    // 貼上sticker
+    ZiltagSticker.appendImg();
   }
 });

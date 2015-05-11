@@ -1,7 +1,10 @@
 <article class="post_article">
 
-  <div class="block_right">
-    <%= image_tag ziltagging.image_url, class: :post_image, data: {ziltag_x: ziltagging.x, ziltag_y: ziltagging.y} %>
+  <div class="block_right text-center">
+    <article class="c_ziltag_sticker_article_on_home" data-ziltag-sticker-article>
+      <%= image_tag ziltagging.image_url, class: :post_image, data: {ziltag_x: ziltagging.x, ziltag_y: ziltagging.y}, "data-show-sticker": "" %>
+      <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
+    </article><!-- /.c_ziltag_sticker_article_on_home -->
   </div><!-- /.block_right -->
   
   <div class="block_left">
