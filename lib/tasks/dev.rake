@@ -97,21 +97,27 @@ namespace :dev do
       done
     end # task
 
-    desc '產生長寬不一的圖'
+    desc '產生 10 張長寬不一的樂貼'
     task rectangle_photos: %i[users] do |t|
       print t.comment
-      files = %w[400x200 200x400].map!{ |name| [name, File.open(Rails.root.join("test/fixtures/images/#{name}.jpg"))] }.to_h
+      file_400x200 = File.open(Rails.root.join('test/fixtures/images/400x200.jpg'))
+      file_200x400 = File.open(Rails.root.join('test/fixtures/images/200x400.jpg'))
       user = User.last
-      files.each do |name, file|
-        photo = user.photos.create! title: name, image: file
-        file.close
-        post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p>"}.join)
-        Ziltagging.create!(
-          image_url: photo.image_url,
-          post: post, x: rand(200), y: rand(200)
-        )
-        dot
-      end
+      photo_400x200 = user.photos.create! title: '400x200', image: file_400x200
+      photo_200x400 = user.photos.create! title: '200x400', image: file_200x400
+
+      post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p>"}.join)
+      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 10, y: 10; dot
+      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 10, y: 190; dot
+      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 390, y: 190; dot
+      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 390, y: 10; dot
+      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 100 + rand(300), y: rand(200); dot
+
+      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 10, y: 10; dot
+      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 10, y: 390; dot
+      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 190, y: 390; dot
+      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 190, y: 10; dot
+      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: rand(200), y: 100 + rand(300); dot
       done
     end
 
