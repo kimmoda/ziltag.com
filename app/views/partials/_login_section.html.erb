@@ -1,0 +1,27 @@
+<section class="c_login_section">
+  <%= vertical_form resource, as: resource_name, url: session_path(resource_name), html: {enctype: 'multipart/form-data'} do |f| %>
+    
+    <h2 class="text-center login_title">歡迎回來！</h2>
+    
+    <div class="form_inputs">
+      <div class="each_input_div">
+        <%= f.input :login, required: false, autofocus: true, label: false, :placeholder => "Email 信箱" %>
+        <i class="fa fa-envelope"></i>
+      </div>
+      <div class="each_input_div">
+        <%= f.input :password, required: false, label: false, :placeholder => "密碼" %>
+        <i class="fa fa-lock"></i>
+      </div>
+      
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div><!-- /.form_inputs -->
+    
+    <p class="para_hint">忘記密碼？請按<%= link_to '這裡', new_user_password_path %></p>
+    
+    <div class="form_actions">
+      <%= f.button :submit, "登入", :class => "btn-block btn_login" %>
+    </div><!-- /.form_actions -->
+  <% end %>
+  
+  <%#= render "devise/shared/links" %>
+</section><!-- /.c_login_section -->

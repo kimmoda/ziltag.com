@@ -76,12 +76,8 @@
             </ul>
           <% else %>
             <ul class="list-inline pull-right nav_list is_login not_login">
-              <li><%= link_to '登入', new_user_session_path, :class => "nav_link" %></li>
+              <li><%= link_to '登入', "#", :class => "nav_link", "data-toggle" => "modal", "data-target" => "#loginModal" %></li>
               <li><%= link_to '註冊', "#", :class => "nav_link", "data-toggle" => "modal", "data-target" => "#signupModal" %></li>
-              
-              <!--
-              new_user_registration_path
-              -->
               
               <li><%= link_to '忘記密碼', new_user_password_path %></li>
               <li><%= link_to '重寄驗證信', new_user_confirmation_path %></li>
@@ -96,3 +92,4 @@
 </header><!-- /.header -->
 
 <%= render :partial => "/partials/modals/signupModal" %>
+<%= render :partial => "/partials/modals/loginModal" %>
