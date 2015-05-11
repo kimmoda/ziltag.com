@@ -10,7 +10,7 @@ namespace :dev do
 
   namespace :fake do
     desc '產生假資料'
-    task all: %i[users photos posts comments child_comments]
+    task all: %i[posts comments child_comments rectangle_photos]
 
     desc '清空圖片'
     task clear_uploads: :environment do |t|
@@ -96,5 +96,24 @@ namespace :dev do
       end
       done
     end # task
+
+    desc '產生長寬不一的圖'
+    task rectangle_photos: %i[users] do |t|
+      print t.comment
+      files = %w[400x200 200x400].map!{ |name| [name, File.open(Rails.root.join("test/fixtures/images/#{name}.jpg"))] }.to_h
+      user = User.last
+      files.each do |name, file|
+        photo = user.photos.create! title: name, image: file
+        file.close
+        post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p>"}.join)
+        Ziltagging.create!(
+          image_url: photo.image_url,
+          post: post, x: rand(200), y: rand(200)
+        )
+        dot
+      end
+      done
+    end
+
   end # namespace :fake
 end unless Rails.env.production?
