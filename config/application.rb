@@ -28,6 +28,7 @@ module Ziltag
       g.helper = false
       g.jbuilder = false
       g.test_framework = false
+      g.skip_routes = true
     end
   end
 end
