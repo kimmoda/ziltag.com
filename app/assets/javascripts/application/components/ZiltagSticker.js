@@ -44,7 +44,7 @@ var ZiltagSticker = {
           
           if( (parseInt($(this).outerHeight()) - that.place.y) <= that.default_height){
             $(this).css({
-              bottom: "0px"
+              top: "-" + ($(this).outerHeight()-that.default_height) + "px"
             });
           }else{
             $(this).css({
@@ -54,14 +54,14 @@ var ZiltagSticker = {
           
         }
       }
-      if( move_direction == "horizontal" ){
+      if( that.move_direction == "horizontal" ){
         var move = that.place.x - that.default_width;
         if( move >= 0){
           
           
           if( (parseInt($(this).outerWidth()) - that.place.x) <= that.default_width){
             $(this).css({
-              right: "0px"
+              left: "-" + ($(this).outerWidth()-that.default_width) + "px"
             });
           }else{
             $(this).css({
