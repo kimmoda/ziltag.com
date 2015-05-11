@@ -132,5 +132,9 @@ article.post_article{
     float:right;
     border:1px soild green;
     vertical-align: top;
+    width:300px;
+    height: 300px;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 }
