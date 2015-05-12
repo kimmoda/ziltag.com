@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  resources :ziltaggings, only: :index
+  resources :ziltaggings, only: %i[index show]
 
   devise_for :users
 
