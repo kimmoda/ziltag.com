@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.association :user, as: :select2 %>
     <%= f.input :title %>
-    <%= f.input :content %>
+    <%= f.input :content, input_html: {data: {redactor: ''}} %>
   </div>
 
   <%= f.simple_fields_for :ziltaggings do |ff| %>
