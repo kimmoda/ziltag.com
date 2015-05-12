@@ -55,7 +55,7 @@ namespace :dev do
       print t.comment
       @posts = []
       @users.each do |user|
-        user.photos.each_with_index do |photo, i|
+        user.photos.each do |photo|
           post = user.posts.create!(
             title: Faker::Lorem.sentence,
             content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join
