@@ -56,7 +56,10 @@ namespace :dev do
       @posts = []
       @users.each do |user|
         user.photos.each_with_index do |photo, i|
-          post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p>"}.join)
+          post = user.posts.create!(
+            title: Faker::Lorem.sentence,
+            content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join
+          )
           @posts << post
           Ziltagging.create!(
             image_url: photo.image_url,
@@ -106,7 +109,7 @@ namespace :dev do
       photo_400x200 = user.photos.create! title: '400x200', image: file_400x200
       photo_200x400 = user.photos.create! title: '200x400', image: file_200x400
 
-      post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p>"}.join)
+      post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join)
       Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 10, y: 10; dot
       Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 10, y: 190; dot
       Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 390, y: 190; dot

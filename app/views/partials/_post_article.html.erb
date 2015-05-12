@@ -12,7 +12,7 @@
     
     <h2 class="post_title"><%= ziltagging.title %></h2>
     <div class="post_content">
-    <%= sanitize ziltagging.content %>
+    <%= sanitize ziltagging.content, tags: %w[p] %>
     </div>
     
     <div class="post_user_profile">
