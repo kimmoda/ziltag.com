@@ -1,0 +1,49 @@
+<article class="c_ziltag_article" data-ziltag-article>
+  <div class="ziltag_img">
+    <img src="http://placehold.it/390x260" class="img-responsive">
+  </div><!-- /.ziltag_img -->
+  <div class="main_info">
+    <div class="top_layer">
+      <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
+      
+      <div class="user_info">
+        <%= render :partial => "/partials/follow_block" %>
+        <p class="username">Victor Gumdrop</p>
+        <time datetime="2015-03-01" class="post_time">Posted on Mar. 1, 2015</time>
+      </div><!-- /.user_info -->
+    </div><!-- /.top_layer -->
+    
+    <div class="bottom_layer">
+      <button class="btn btn-default btn_slide" data-switch-msg-list><span class="content_line"></span> <i class="fa fa-caret-left"></i><i class="fa fa-caret-down hidden"></i></button>
+      
+      <ul class="list-unstyled msg_list" data-msg-list>
+        <li data-first-item>
+          <h3 class="h3_title">How to create beautiful typography</h3>
+          <p class="msg_para">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus tellus lorem, a scelerisque dui imperdiet non. Aliquam rhoncus aliquam tristique. Integer velit enim,
+          </p>
+          
+          <div class="icon_star">
+            <i class="fa fa-star fa-2x"></i>
+          </div><!-- /.icon_star -->
+        </li>
+        
+        <% 3.times do %>
+          <li class="custom_hidden" data-not-first-item>
+            <h3 class="h3_title">How to create beautiful typography</h3>
+            <p class="msg_para">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus tellus lorem, a scelerisque dui imperdiet non. Aliquam rhoncus aliquam tristique. Integer velit enim,
+            </p>
+            
+            <div class="icon_star">
+            <i class="fa fa-star fa-2x active"></i>
+          </div><!-- /.icon_star -->
+          </li>
+        <% end %>
+        
+      </ul>
+      
+    </div><!-- /.bottom_layer -->
+    
+  </div><!-- /.main_info -->
+</article><!-- /.ziltag_article -->

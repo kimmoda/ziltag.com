@@ -1,0 +1,122 @@
+/* 以圖找貼的區塊 */
+
+@import "../colors";
+article.c_ziltag_article{
+  display: inline-block;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+  border:1px solid $main_gray_color;
+  margin-top: 20px;
+  margin-right: 20px;
+  width:390px;
+  vertical-align: top;
+  div.ziltag_img{
+  
+  }
+  div.main_info{
+    border-radius: 0 0 5px 5px;
+    padding:0 15px 15px 15px;
+    background-color: $main_white_color;
+    div.top_layer{
+      position: relative;
+      img.user_profile_img{
+        width:80px;
+        height: 80px;
+        border-radius: 50%;
+        border:3px solid $main_white_color;
+        position: absolute;
+        top:-30px;
+        left:0;
+      }
+      div.user_info{
+        padding-top:5px;
+        padding-left:90px;
+        div.follow_block{
+          float: right;
+          margin-top: 5px;
+        }
+        p.username{
+          font-size: 16px;
+          color: $fifth_gray_color;
+          margin:0;
+        }
+        time.post_time{
+          font-size: 11px;
+          color: $fifth_gray_color;
+        }
+      }
+    }
+    
+    div.bottom_layer{
+      button.btn_slide{
+        width:100%;
+        padding:0;
+        margin-top: 5px;
+        position: relative;
+        left:-2px;
+        border:none;
+        background: none;
+        outline: none;
+        span.content_line{
+          display: inline-block;
+          border-top:1px solid $main_gray_color;
+          width: 96%;
+          position: relative;
+          top:-6px;
+        }
+        i.fa{
+          color: $main_gray_color;
+          font-size: 20px;
+        }
+      }
+      ul.msg_list{
+        margin-bottom: 0;
+        > li{
+          position: relative;
+          border-bottom: 1px solid $main_gray_color;
+          padding:{
+            top:8px;
+            bottom:8px;
+          };
+          &:first-child{
+            padding-top: 0;
+            border-bottom: none;
+          }
+          &:last-child{
+            border-bottom: none;
+          }
+          &.custom_hidden{
+            display: none;
+          }
+          &.add_bottom_line{
+            border-bottom: 1px solid $main_gray_color;
+          }
+          h3.h3_title{
+            font-size: 14px;
+            color: $fifth_gray_color;
+            margin:0;
+          }
+          p.msg_para{
+            font-size: 12px;
+            color: $fifth_gray_color;
+            margin-top: 5px;
+            margin-bottom: 0;
+            width:90%;
+          }
+          div.icon_star{
+            position: absolute;
+            right:5px;
+            top:20px;
+            i.fa{
+              color: $main_gray_color;
+              &.active{
+                color: $main_red_color;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+  }
+}

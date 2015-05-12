@@ -1,2 +1,23 @@
-<h1>Ziltaggings#index</h1>
-<p>Find me in app/views/ziltaggings/index.html.erb</p>
+<div class="container-fluid layout_fluid" data-layout="outer">
+    
+  <div class="fill_white" data-layout="outer_fill_white"></div>
+  <div class="custom_header_line" data-layout="custom_header_line"></div>
+  
+  <div class="container" data-layout="inner">
+    <div class="row">
+      
+      <div class="col-xs-2 col_left">
+        <%= render :partial => "/layouts/partials/sidebar" %>
+      </div>
+      
+      <div class="col-xs-10 col_right" data-layout="col_right">
+        <%= flash_messages %>
+        <section class="find_ziltag_by_img_section">
+          <% 3.times do %>
+            <%= render :partial => "/partials/ziltag_article" %>
+          <% end %>
+        </section><!-- /.find_ziltag_by_img_section -->
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /.container -->
