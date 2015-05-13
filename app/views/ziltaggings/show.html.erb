@@ -34,7 +34,7 @@
                   
                   
                   <div class="profile_img_block">
-                    <img src="http://lorempixel.com/50/50/" class="profile_img">
+                    <%= image_tag @ziltagging.user.avatar.thumb, class: :profile_img %>
                   </div><!-- /.profile_img -->
                   <div class="profile_basic">
                     <p class="user_name">Victor Gumdrop</p>
@@ -59,7 +59,7 @@
               <h2 class="post_title">How to create beautiful typography in 3 days.</h2>
               
               <div class="ziltag_block">
-                <img src="http://lorempixel.com/1000/500/" class="img-responsive">
+                <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y} %>
               </div><!-- /.ziltag_block -->
               
               <div class="address_block">
