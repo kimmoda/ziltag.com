@@ -11,9 +11,12 @@
     <time datetime="2014-12-22" class="datetime">發表於 <%= l ziltagging.post.created_at, format: :long %></time>
     
     <h2 class="post_title"><%= ziltagging.title %></h2>
-    <div class="post_content">
-    <%= sanitize ziltagging.content, tags: %w[p] %>
-    </div>
+    <div class="post_content_block">
+      <div class="post_content">
+        <%= sanitize ziltagging.content, tags: %w[p] %>
+      </div>
+      <a href="#" class="btn btn-default btn-xs see_more">看更多…</a>
+    </div><!-- /.post_content_block -->
     
     <div class="post_user_profile">
       <a href="#" class="profile_link"><%= image_tag ziltagging.user.avatar.thumb, class: :user_profile_img %></a>

@@ -40,12 +40,22 @@ article.post_article{
       padding:0;
       font-size: 24px;
     }
-    div.post_content{
-      margin-top: 10px;
-      height: 105px;
-      overflow: scroll;
+    div.post_content_block{
+      position: relative;
+      div.post_content{
+        margin-top: 10px;
+        height: 105px;
+        overflow: hidden;
+      }
+      a.see_more{
+        position: absolute;
+        bottom:0px;
+        right:0px;
+      }
     }
+    
     div.post_user_profile{
+      margin-top: 10px;
       a.profile_link{
         display: inline-block;
         vertical-align: middle;
