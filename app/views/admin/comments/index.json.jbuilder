@@ -1,6 +1,6 @@
 json.results(@admin_comments) do |admin_comment|
   json.extract! admin_comment, :id, :text, :image_url, :x, :y
-  json.avatar admin_comment.avatar_url
+  json.avatar (admin_comment.user || User.new).avatar.thumb.url
 end
 
 json.pagination do

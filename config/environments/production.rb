@@ -78,8 +78,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   Settings.action_mailer.each do |key, value|
-    config.action_mailer.send("#{key}=", value.symbolize_keys)
+    config.action_mailer.send("#{key}=", value.respond_to?(:symbolize_keys) ? value.symbolize_keys : value)
   end
-
-  config.asset_host = Settings.asset_host
 end
