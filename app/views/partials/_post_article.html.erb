@@ -15,7 +15,7 @@
       <div class="post_content">
         <%= sanitize ziltagging.content, tags: %w[p] %>
       </div>
-      <a href="#" class="btn btn-default btn-xs see_more">看更多…</a>
+      <%= link_to '看更多', ziltagging, class: 'btn btn-default btn-xs see_more' %>
     </div><!-- /.post_content_block -->
     
     <div class="post_user_profile">
