@@ -80,4 +80,6 @@ Rails.application.configure do
   Settings.action_mailer.each do |key, value|
     config.action_mailer.send("#{key}=", value.symbolize_keys)
   end
+
+  config.asset_host = Settings.asset_host
 end
