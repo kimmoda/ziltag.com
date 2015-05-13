@@ -1,0 +1,15 @@
+<%= image_tag 'logo.png' %>
+
+<p>Hello,</p>
+
+<p>Thank you for using Ziltag. <%= @email %> was used to create a Ziltag account. We would like to verify the registration.</p>
+
+<%= link_to 'VERIFY', confirmation_url(@resource, confirmation_token: @token), style: 'background-color: red; color: white; padding: 10px 30px; border-radius: 5px;' %>
+
+<p>Click the button above to verify your account.</p>
+
+<p>If you can't click on the button, use the link below:</p>
+
+<p><%= link_to confirmation_url(@resource, confirmation_token: @token), confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>If you didn't create this account, please <a href="mailto:hi@ziltag.com">contact us</a>.</p>
