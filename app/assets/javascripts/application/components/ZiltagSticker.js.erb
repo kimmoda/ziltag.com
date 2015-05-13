@@ -1,0 +1,152 @@
+var ZiltagSticker = {
+  place:{
+    x: 0,
+    y: 0
+  },
+  
+  move_direction: "",
+  default_width: 300,
+  default_height: 300,
+  
+  mode: ["default", "responsive"],
+  
+  ratio:1,
+  
+  // 貼上主要紅色樂貼
+  appendImg: function(){
+    var that = this;
+    $("article[data-ziltag-sticker-article]").each(function(){
+      
+      switch( $(this).data("ziltag-mode") ){
+        case that.mode[0]:
+            // Step1：圖片寬、高比較大小
+            if( that.compareSide(parseInt($(this).outerWidth()), parseInt($(this).outerHeight())) ){
+              
+              // Step2：縮放的比例
+              that.ratio = that.calculateRatio( $(this).children("img[data-show-sticker]").width() );
+              $(this).children("img[data-show-sticker]").css("width", that.default_width);
+              
+              that.move_direction = "vertical";
+            }else{
+            
+              // Step2：縮放的比例
+              that.ratio = that.calculateRatio( $(this).children("img[data-show-sticker]").height() );
+              $(this).children("img[data-show-sticker]").css("height", that.default_width);
+              
+              that.move_direction = "horizontal";
+            }
+          break;
+          
+        case that.mode[1]:
+          
+          var original_image_width = $(this).children("img[data-show-sticker]")[0].naturalWidth;
+          if( original_image_width > $(this).parent().width() ){
+            // Step2：縮放的比例
+            that.ratio = parseInt($(this).parent().width()) / original_image_width;
+          }
+          break;
+      }
+      
+      
+      
+      
+      
+      
+      
+      that.place.x = $(this).children("img[data-show-sticker]").data("ziltag-x") * that.ratio;
+      that.place.y = $(this).children("img[data-show-sticker]").data("ziltag-y") * that.ratio;
+      
+      
+      
+      // Step3：樂貼位置
+      that.stickerPos( $(this) );
+      
+      
+      
+      // Step4：移動圖片
+      switch( $(this).data("ziltag-mode") ){
+        case that.mode[0]:
+          
+          if( that.move_direction == "vertical" ){
+            var move = that.place.y - that.default_height;
+            if( move >= 0){
+              
+              if( (parseInt($(this).outerHeight()) - that.place.y) <= that.default_height){
+                $(this).css({
+                  top: "-" + ($(this).outerHeight()-that.default_height) + "px"
+                });
+              }else{
+                $(this).css({
+                  top: "-" + ((that.default_height/2) + move) + "px"
+                });
+              }
+              
+            }
+          }
+          if( that.move_direction == "horizontal" ){
+            var move = that.place.x - that.default_width;
+            if( move >= 0){
+              
+              
+              if( (parseInt($(this).outerWidth()) - that.place.x) <= that.default_width){
+                $(this).css({
+                  left: "-" + ($(this).outerWidth()-that.default_width) + "px"
+                });
+              }else{
+                $(this).css({
+                  left: "-" + ((that.default_width/2) + move) + "px"
+                });
+              }
+              
+              
+            }
+          }
+          break;
+      }
+      
+      
+      
+    });
+    
+  },
+  
+  // 貼上所有其它灰色的樂貼
+  appendOtherZiltags: function(){
+    var all_other_ziltags = JSON.parse($("#other_ziltaggings").html());
+    var that = this;
+    $("img[data-sticker-others]").remove();
+    $.each(all_other_ziltags, function(index, value){
+      
+      that.place.x = parseInt(value.x * that.ratio);
+      that.place.y = parseInt(value.y * that.ratio);
+      
+      $("article[data-ziltag-sticker-article]").append("<a href='" + value.link + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+      
+    });
+  },
+  
+  // 比較寬、高，哪個數值較大
+  compareSide: function(width, height){
+    if (width <= height){
+      return true;
+    }
+    return false;
+  },
+  
+  // 計算比例
+  calculateRatio: function(side_length){
+    if( this.move_direction == "vertical" ){
+      return (this.default_width / side_length);
+    }
+    return (this.default_height / side_length);
+  },
+  
+  // 樂貼位置
+  stickerPos: function(theElement){
+    $(theElement).find("img[data-sticker]").css({
+      left: this.place.x,
+      top: this.place.y
+    }).removeClass("hidden");
+  }
+  
+}

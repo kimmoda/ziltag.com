@@ -58,9 +58,11 @@
             <section class="main_content">
               <h2 class="post_title"><%= @ziltagging.title %></h2>
               
-              <div class="ziltag_block">
-                <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y} %>
-              </div><!-- /.ziltag_block -->
+              <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-ziltag-sticker-article>
+                <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y}, "data-show-sticker": "" %>
+                
+                <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
+              </article><!-- /.c_ziltag_sticker_article -->
               
               <div class="address_block">
                 <div class="left_block">

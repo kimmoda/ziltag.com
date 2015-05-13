@@ -1,7 +1,8 @@
-article.c_ziltag_sticker_article_on_home{
+article.c_ziltag_sticker_article{
   display: inline-block;
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
   img.ziltag_sticker{
     width:34px;
     height: 29px;
