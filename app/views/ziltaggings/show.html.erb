@@ -38,7 +38,7 @@
                   </div><!-- /.profile_img -->
                   <div class="profile_basic">
                     <p class="user_name">Victor Gumdrop</p>
-                    <time datetime="2015-03-01" class="datetime">Posted on Mar. 1, 2015</time>
+                    <time datetime="<%= @ziltagging.created_at.to_s(:db) %>" class="datetime">發表於 <%= l @ziltagging.created_at, format: :long %></time>
                     
                     <!-- 這個.follow_block在 #5 有抽離成partial，所以在此不做多餘處理，僅示意 -->
                     <div class="follow_block">
@@ -56,7 +56,7 @@
             </header><!-- /.post_header -->
             
             <section class="main_content">
-              <h2 class="post_title">How to create beautiful typography in 3 days.</h2>
+              <h2 class="post_title"><%= @ziltagging.title %></h2>
               
               <div class="ziltag_block">
                 <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y} %>
@@ -74,9 +74,7 @@
                 <a href="#" class="btn btn-default btn-xs add_reminder">新增提醒</a>
               </div><!-- /.address_block -->
               
-              <div class="context_block">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet pellentesque massa. Duis at tristique metus. Mauris vestibulum sem sit amet posuere maximus. Vivamus non odio vulputate, facilisis mauris in, blandit erat. Integer vel nulla eget velit bibendum consequat. Phasellus tempor sit amet libero eu vulputate. Quisque aliquet mauris ac metus dapibus, vel venenatis urna lacinia. Quisque at imperdiet tortor, at sagittis turpis. Pellentesque vel sollicitudin felis. Curabitur fringilla sit amet justo sed blandit. Integer ut diam vel turpis posuere dignissim non at est.
-              </div><!-- /.context_block -->
+              <div class="context_block"><%= sanitize @ziltagging.content %></div><!-- /.context_block -->
               
             </section><!-- /.main_content -->
             
