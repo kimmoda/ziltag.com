@@ -1,14 +1,14 @@
 <article class="c_ziltag_article" data-ziltag-article>
   <div class="ziltag_img">
-    <img src="http://placehold.it/390x260" class="img-responsive">
+    <%= image_tag photo.image_url, class: :'img-responsive' %>
   </div><!-- /.ziltag_img -->
   <div class="main_info">
     <div class="top_layer">
-      <img src="http://placehold.it/50x50" class="user_profile_img">
+      <%= image_tag photo.user.avatar.thumb.url, class: :user_profile_img %>
       <div class="user_info">
         <%= render :partial => "/partials/follow_block" %>
-        <p class="username">Victor Gumdrop</p>
-        <time datetime="2015-03-01" class="post_time">Posted on Mar. 1, 2015</time>
+        <p class="username"><%= photo.user.username %></p>
+        <time datetime="<%= photo.created_at.to_s(:db) %>" class="post_time">發表於 <%= l photo.created_at, format: :long %></time>
       </div><!-- /.user_info -->
     </div><!-- /.top_layer -->
     
