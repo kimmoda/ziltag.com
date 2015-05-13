@@ -72,6 +72,16 @@ namespace 'dev:fake' do
       Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: rand(200), y: 100 + rand(300)
     end
 
+    fakeup '在第一個樂貼的圖上產生 10 個額外的樂貼' do
+      photo = Ziltagging.find(1).photo
+      10.times do
+        photo.ziltaggings.create!(
+          x: rand(200), y: rand(200),
+          post: @posts.sample
+        )
+      end
+    end
+
   end
 
   task hook_activerecord: :environment do

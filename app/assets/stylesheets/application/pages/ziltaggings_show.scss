@@ -1,0 +1,9 @@
+/* 樂貼展開頁 */
+
+@import "../colors";
+body.ziltaggings.show{
+  section.ziltag_single_page{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

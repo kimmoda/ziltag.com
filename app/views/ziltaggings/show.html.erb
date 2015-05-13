@@ -1,2 +1,91 @@
-<h1>Ziltaggings#show</h1>
-<p>Find me in app/views/ziltaggings/show.html.erb</p>
+<div class="container-fluid layout_fluid" data-layout="outer">
+    
+  <div class="fill_white" data-layout="outer_fill_white"></div>
+  <div class="custom_header_line" data-layout="custom_header_line"></div>
+  
+  <div class="container" data-layout="inner">
+    <div class="row">
+      
+      <div class="col-xs-2 col_left">
+        <%= render :partial => "/layouts/partials/sidebar" %>
+      </div>
+      
+      <div class="col-xs-10 col_right" data-layout="col_right">
+        <%= flash_messages %>
+        <section class="ziltag_single_page">
+          
+          <article class="post_ziltag_article">
+            <header class="post_header">
+              
+              <div class="user_profile_info">
+                
+                <div class="profile_info_block">
+                  
+                  <div class="pull-right operation_block">
+                    <div class="btn_cross text-right">
+                      <a href="#" class="btn_remove"><i class="fa fa-remove fa-2x"></i></a>
+                    </div><!-- /.btn_cross -->
+                    <ul class="list-unstyled list-inline other_list">
+                      <li><a href="#"><i class="fa fa-share fa-2x"></i></a></li>
+                      <li><a href="#"><i class="fa fa-star fa-2x"></i></a></li>
+                      <li><a href="#"><i class="fa fa-comment fa-2x"></i></a></li>
+                    </ul>
+                  </div><!-- /.operation_block -->
+                  
+                  
+                  <div class="profile_img_block">
+                    <%= image_tag @ziltagging.user.avatar.thumb, class: :profile_img %>
+                  </div><!-- /.profile_img -->
+                  <div class="profile_basic">
+                    <p class="user_name">Victor Gumdrop</p>
+                    <time datetime="<%= @ziltagging.created_at.to_s(:db) %>" class="datetime">發表於 <%= l @ziltagging.created_at, format: :long %></time>
+                    
+                    <!-- 這個.follow_block在 #5 有抽離成partial，所以在此不做多餘處理，僅示意 -->
+                    <div class="follow_block">
+                      <a class="btn btn-default btn-xs follow_user">關注用戶</a>
+                      <a class="btn btn-default btn-xs follow_user cancel">取消追蹤</a>
+                    </div><!-- /.follow_block -->
+                    
+                  </div><!-- /.profile_basic -->
+                </div><!-- /.profile_info_block -->
+                
+                
+                
+              </div><!-- /.user_profile_info -->
+              
+            </header><!-- /.post_header -->
+            
+            <section class="main_content">
+              <h2 class="post_title"><%= @ziltagging.title %></h2>
+              
+              <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-ziltag-sticker-article>
+                <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y}, "data-show-sticker": "" %>
+                
+                <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
+              </article><!-- /.c_ziltag_sticker_article -->
+              
+              <div class="address_block">
+                <div class="left_block">
+                  <i class="fa fa-map-marker fa-2x"></i>
+                </div>
+                <div class="right_block">
+                  <p class="para1">Ziltag 微廣科技總部</p>
+                  <p class="para2">台北市內湖區瑞光路192號</p>
+                  
+                </div><!-- /.right_block -->
+                <a href="#" class="btn btn-default btn-xs add_reminder">新增提醒</a>
+              </div><!-- /.address_block -->
+              
+              <div class="context_block"><%= sanitize @ziltagging.content %></div><!-- /.context_block -->
+              
+            </section><!-- /.main_content -->
+            
+          </article><!-- /.post_ziltag_article -->
+          
+        </section><!-- /.ziltag_single_page -->
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /.container -->
+
+<script type="application/json" id="other_ziltaggings"><%= raw render partial: 'ziltaggings.json', object: @other_ziltaggings %></script>
