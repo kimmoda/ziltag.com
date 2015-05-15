@@ -15,7 +15,7 @@ $(document).on('ready page:load', function(){
       console.log(data); //TODO
       
       $("[data-user-username]").html(data.user.username);
-      $("[data-user-avatar]").attr("src", "http://" + data.user.avatar);
+      $("[data-user-avatar]").attr("src", data.user.avatar);
       $("[data-post-title]").html(data.post.title);
       $("[data-post-content]").html(data.post.content);
       //$("[data-modal-post-ziltag-article]").find("[data-ziltag-x]").attr("data-ziltag-x", data.x);
