@@ -32,5 +32,37 @@ var allJs = {
       }
       reader.readAsDataURL(selectedFile.files[0]);
     }
-  }
+  },
+  
+  // 滑出視窗的動畫排版
+  data_ziltag_modal_layout: function(){
+    var the_width = $("div[data-layout=col_right]").width() + (( $(window).width() - $("div[data-layout=inner]").width() ) / 2);
+    $("article[data-modal-post-ziltag-article]").css({
+      "width": the_width + "px",
+      "height": ($(window).height() - 70) + "px",
+      "right": - the_width + "px"
+    });
+  },
+  // 動態從右至左跑出
+  data_ziltag_modal_layout_after_click: function(){
+    
+    $("article[data-modal-post-ziltag-article]").animate({
+      "right": "0px"
+    });
+    
+    $("body").css({
+      "overflow": "hidden"
+    });
+  },
+  // 動態從右至左跑出
+  data_ziltag_modal_layout_back: function(theElement){
+    
+    $("article[data-modal-post-ziltag-article]").animate({
+      "right":  - $(theElement).closest("article[data-modal-post-ziltag-article]").width() + "px"
+    });
+    
+    $("body").css({
+      "overflow": "auto"
+    });
+  },
 };
