@@ -4,7 +4,7 @@ $(document).on('ready page:load', function(){
   if(document.body.dataset.controller == 'pages' && document.body.dataset.action == 'home'){
     
     // 滑出視窗的版面控制
-    allJs.data_ziltag_modal_layout();
+    allJs.data_ziltag_modal_layout("close");
     
     $('a.btn_remove').on('click', function(e){
       e.preventDefault();
@@ -39,6 +39,6 @@ $(document).on('ready page:load', function(){
 $(window).resize(function(){
   
   // 滑出視窗的版面控制
-  allJs.data_ziltag_modal_layout();
+  allJs.data_ziltag_modal_layout("open");
   
 });
