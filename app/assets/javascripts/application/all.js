@@ -35,11 +35,11 @@ var allJs = {
   },
   
   // 滑出視窗的動畫排版
-  data_ziltag_modal_layout: function(status){
+  data_ziltag_modal_layout: function(){
     
     var the_width = $("div[data-layout=col_right]").width() + (( $(window).width() - $("div[data-layout=inner]").width() ) / 2);
     
-    if( status == "close"){
+    if( $("article[data-modal-post-ziltag-article]").attr("data-modal-status") == "close"){
       $("article[data-modal-post-ziltag-article]").css({
         "width": the_width + "px",
         "height": ($(window).height() - 70) + "px",
@@ -47,7 +47,7 @@ var allJs = {
       });
     }
     
-    if( status == "open" ){
+    if( $("article[data-modal-post-ziltag-article]").attr("data-modal-status") == "open" ){
       $("article[data-modal-post-ziltag-article]").css({
         "width": the_width + "px",
         "height": ($(window).height() - 70) + "px",
@@ -59,6 +59,10 @@ var allJs = {
   // 動態從右至左跑出
   data_ziltag_modal_layout_after_click: function(){
     
+    if( $("article[data-modal-post-ziltag-article]").attr("data-modal-status") == "close" ){
+      $("article[data-modal-post-ziltag-article]").attr("data-modal-status", "open");
+    }
+    
     $("article[data-modal-post-ziltag-article]").animate({
       "right": "0px"
     });
@@ -69,7 +73,9 @@ var allJs = {
   },
   // 動態從右至左跑出
   data_ziltag_modal_layout_back: function(theElement){
-    
+    if( $("article[data-modal-post-ziltag-article]").attr("data-modal-status") == "open" ){
+      $("article[data-modal-post-ziltag-article]").attr("data-modal-status", "close");
+    }
     $("article[data-modal-post-ziltag-article]").animate({
       "right":  - $(theElement).closest("article[data-modal-post-ziltag-article]").width() + "px"
     });

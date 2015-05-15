@@ -12,102 +12,110 @@ var ZiltagSticker = {
   
   ratio:1,
   
-  // 貼上主要紅色樂貼
+  // 貼上圖片
   appendImg: function(){
     var that = this;
     $("article[data-ziltag-sticker-article]").each(function(){
       
-      switch( $(this).data("ziltag-mode") ){
-        case that.mode[0]:
-            // Step1：圖片寬、高比較大小
-            if( that.compareSide(parseInt($(this).outerWidth()), parseInt($(this).outerHeight())) ){
-              
-              // Step2：縮放的比例
-              that.ratio = that.calculateRatio( $(this).children("img[data-show-sticker]").width() );
-              $(this).children("img[data-show-sticker]").css("width", that.default_width);
-              
-              that.move_direction = "vertical";
-            }else{
-            
-              // Step2：縮放的比例
-              that.ratio = that.calculateRatio( $(this).children("img[data-show-sticker]").height() );
-              $(this).children("img[data-show-sticker]").css("height", that.default_width);
-              
-              that.move_direction = "horizontal";
-            }
-          break;
-          
-        case that.mode[1]:
-          
-          var original_image_width = $(this).children("img[data-show-sticker]")[0].naturalWidth;
-          if( original_image_width > $(this).parent().width() ){
-            // Step2：縮放的比例
-            that.ratio = parseInt($(this).parent().width()) / original_image_width;
-          }
-          break;
-      }
-      
-      
-      
-      
-      
-      
-      
-      that.place.x = $(this).children("img[data-show-sticker]").data("ziltag-x") * that.ratio;
-      that.place.y = $(this).children("img[data-show-sticker]").data("ziltag-y") * that.ratio;
-      
-      
-      
-      // Step3：樂貼位置
-      that.stickerPos( $(this) );
-      
-      
-      
-      // Step4：移動圖片
-      switch( $(this).data("ziltag-mode") ){
-        case that.mode[0]:
-          
-          if( that.move_direction == "vertical" ){
-            var move = that.place.y - that.default_height;
-            if( move >= 0){
-              
-              if( (parseInt($(this).outerHeight()) - that.place.y) <= that.default_height){
-                $(this).css({
-                  top: "-" + ($(this).outerHeight()-that.default_height) + "px"
-                });
-              }else{
-                $(this).css({
-                  top: "-" + ((that.default_height/2) + move) + "px"
-                });
-              }
-              
-            }
-          }
-          if( that.move_direction == "horizontal" ){
-            var move = that.place.x - that.default_width;
-            if( move >= 0){
-              
-              
-              if( (parseInt($(this).outerWidth()) - that.place.x) <= that.default_width){
-                $(this).css({
-                  left: "-" + ($(this).outerWidth()-that.default_width) + "px"
-                });
-              }else{
-                $(this).css({
-                  left: "-" + ((that.default_width/2) + move) + "px"
-                });
-              }
-              
-              
-            }
-          }
-          break;
-      }
-      
-      
+      that.appendMainZiltag( $(this) );
       
     });
     
+  },
+  
+  // 貼上圖片：給首頁modal用
+  appendImgOnModal: function(){
+    var that = this;
+    $("article[data-ziltag-sticker-article][data-is-modal='true']").each(function(){
+      that.appendMainZiltag( $(this) );
+      
+    });
+    
+  },
+  
+  // 貼上主要紅色樂貼
+  appendMainZiltag: function(theElement){
+
+    switch( $(theElement).data("ziltag-mode") ){
+      case this.mode[0]:
+          // Step1：圖片寬、高比較大小
+          if( this.compareSide(parseInt($(theElement).outerWidth()), parseInt($(theElement).outerHeight())) ){
+            
+            // Step2：縮放的比例
+            this.ratio = this.calculateRatio( $(theElement).children("img[data-show-sticker]").width() );
+            $(theElement).children("img[data-show-sticker]").css("width", this.default_width);
+            
+            this.move_direction = "vertical";
+          }else{
+          
+            // Step2：縮放的比例
+            this.ratio = this.calculateRatio( $(theElement).children("img[data-show-sticker]").height() );
+            $(theElement).children("img[data-show-sticker]").css("height", this.default_width);
+            
+            this.move_direction = "horizontal";
+          }
+        break;
+        
+      case this.mode[1]:
+        var original_image_width = $(theElement).children("img[data-show-sticker]")[0].naturalWidth;
+        if( original_image_width > $(theElement).parent().width() ){
+          // Step2：縮放的比例
+          this.ratio = parseInt($(theElement).parent().width()) / original_image_width;
+        }
+        break;
+    }
+    
+    
+    this.place.x = $(theElement).children("img[data-show-sticker]").attr("data-ziltag-x") * this.ratio;
+    this.place.y = $(theElement).children("img[data-show-sticker]").attr("data-ziltag-y") * this.ratio;
+    
+    
+    
+    // Step3：樂貼位置
+    this.stickerPos( $(theElement) );
+    
+    
+    
+    // Step4：移動圖片
+    switch( $(theElement).data("ziltag-mode") ){
+      case this.mode[0]:
+        
+        if( this.move_direction == "vertical" ){
+          var move = this.place.y - this.default_height;
+          if( move >= 0){
+            
+            if( (parseInt($(theElement).outerHeight()) - this.place.y) <= that.default_height){
+              $(theElement).css({
+                top: "-" + ($(theElement).outerHeight()-this.default_height) + "px"
+              });
+            }else{
+              $(theElement).css({
+                top: "-" + ((this.default_height/2) + move) + "px"
+              });
+            }
+            
+          }
+        }
+        if( this.move_direction == "horizontal" ){
+          var move = this.place.x - this.default_width;
+          if( move >= 0){
+            
+            
+            if( (parseInt($(theElement).outerWidth()) - this.place.x) <= this.default_width){
+              $(theElement).css({
+                left: "-" + ($(theElement).outerWidth()-this.default_width) + "px"
+              });
+            }else{
+              $(theElement).css({
+                left: "-" + ((this.default_width/2) + move) + "px"
+              });
+            }
+            
+            
+          }
+        }
+        break;
+    }
   },
   
   // 貼上所有其它灰色的樂貼
