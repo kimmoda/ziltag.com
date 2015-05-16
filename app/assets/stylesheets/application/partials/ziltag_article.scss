@@ -116,4 +116,12 @@ article.post_ziltag_article{
       font-size: 18px;
     }
   }
+  
+  &.mode_modal{
+    position: fixed;
+    top:70px;
+    right:0;
+    z-index: 9999;
+    overflow-y: scroll;
+  }
 }

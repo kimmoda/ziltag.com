@@ -15,7 +15,7 @@
       <div class="post_content">
         <%= sanitize ziltagging.content, tags: %w[p] %>
       </div>
-      <%= link_to '看更多', ziltagging, class: 'btn btn-default btn-xs see_more' %>
+      <%= link_to '看更多', ziltagging_path(ziltagging, format: :json), class: 'btn btn-default btn-xs see_more', remote: true, data: {ziltag_modal: ''} %>
     </div><!-- /.post_content_block -->
     
     <div class="post_user_profile">
