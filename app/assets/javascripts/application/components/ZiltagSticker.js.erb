@@ -16,9 +16,7 @@ var ZiltagSticker = {
   appendImg: function(){
     var that = this;
     $("article[data-ziltag-sticker-article]").each(function(){
-      
       that.appendMainZiltag( $(this) );
-      
     });
     
   },
@@ -28,7 +26,6 @@ var ZiltagSticker = {
     var that = this;
     $("article[data-ziltag-sticker-article][data-is-modal='true']").each(function(){
       that.appendMainZiltag( $(this) );
-      
     });
     
   },
