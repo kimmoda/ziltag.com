@@ -61,6 +61,8 @@ var ZiltagSticker = {
         if( original_image_width > $(theElement).parent().width() ){
           // Step2：縮放的比例
           this.ratio = parseInt($(theElement).parent().width()) / original_image_width;
+        }else{
+          this.ratio = 1;
         }
         break;
     }
@@ -119,8 +121,9 @@ var ZiltagSticker = {
   },
   
   // 貼上所有其它灰色的樂貼
-  appendOtherZiltags: function(){
-    var all_other_ziltags = JSON.parse($("#other_ziltaggings").html());
+  appendOtherZiltags: function(articleElement, data){
+    
+    var all_other_ziltags = JSON.parse(data);
     var that = this;
     $("img[data-sticker-others]").remove();
     $.each(all_other_ziltags, function(index, value){
@@ -128,7 +131,7 @@ var ZiltagSticker = {
       that.place.x = parseInt(value.x * that.ratio);
       that.place.y = parseInt(value.y * that.ratio);
       
-      $("article[data-ziltag-sticker-article]").append("<a href='" + value.link + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+      $(articleElement).append("<a href='" + value.link + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
       
     });
   },

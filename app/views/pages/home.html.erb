@@ -44,7 +44,7 @@
         </div><!-- /.profile_img -->
         <div class="profile_basic">
           <p class="user_name" data-user-username></p>
-          <time datetime="<%#= @ziltagging.created_at.to_s(:db) %>" class="datetime">發表於 <%#= l @ziltagging.created_at, format: :long %></time>
+          <time datetime="" class="datetime">發表於 <span data-dreated-at></span></time>
           
           <!-- 這個.follow_block在 #5 有抽離成partial，所以在此不做多餘處理，僅示意 -->
           <div class="follow_block">
@@ -67,7 +67,7 @@
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-is-modal="true" data-ziltag-sticker-article>
       <%#= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y}, "data-show-sticker": "" %>
       
-      <img src="http://lorempixel.com/1000/500/" class="img-responsive" data-ziltag-x="", data-ziltag-y="" data-show-sticker>
+      <img src="#" class="img-responsive" data-ziltag-x="", data-ziltag-y="" data-image_url data-show-sticker>
       
       <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
     </article><!-- /.c_ziltag_sticker_article -->
@@ -77,8 +77,8 @@
         <i class="fa fa-map-marker fa-2x"></i>
       </div>
       <div class="right_block">
-        <p class="para1">Ziltag 微廣科技總部</p>
-        <p class="para2">台北市內湖區瑞光路192號</p>
+        <p class="para1" data-location-name></p>
+        <p class="para2" data-location-address></p>
         
       </div><!-- /.right_block -->
       <a href="#" class="btn btn-default btn-xs add_reminder">新增提醒</a>
