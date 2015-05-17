@@ -82,6 +82,12 @@ namespace 'dev:fake' do
       end
     end
 
+    fakeup '產生追蹤' do
+      User.find_each do |follower|
+        @users.sample(2).each{ |leader| Following.create follower: follower, leader: leader }
+      end
+    end
+
   end
 
   task hook_activerecord: :environment do

@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :photos
   has_many :comments, primary_key: :email, foreign_key: :email
+  has_many :_followers, class_name: Following, foreign_key: :leader_id
+  has_many :_leaders, class_name: Following, foreign_key: :follower_id
+  has_many :followers, class_name: User, through: :_followers
+  has_many :leaders, class_name: User, through: :_leaders
 
   # validations
   validates :email, presence: true, uniqueness: true
@@ -31,6 +35,18 @@ class User < ActiveRecord::Base
       where(conditions.to_hash).first
     end
     ret
+  end
+
+  def follow? leader
+    leaders.exists?(leader.id)
+  end
+
+  def follow! leader
+    leaders << leader unless follow?(leader)
+  end
+
+  def unfollow! leader
+    leaders.delete(leader) if follow?(leader)
   end
 
   def to_s
