@@ -41,6 +41,14 @@ class User < ActiveRecord::Base
     leaders.exists?(leader.id)
   end
 
+  def follow! leader
+    leaders << leader unless follow?(leader)
+  end
+
+  def unfollow! leader
+    leaders.delete(leader) if follow?(leader)
+  end
+
   def to_s
     email
   end
