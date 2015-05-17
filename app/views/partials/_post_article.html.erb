@@ -22,10 +22,8 @@
       <a href="#" class="profile_link"><%= image_tag ziltagging.user.avatar.thumb, class: :user_profile_img %></a>
       <div class="follow_user_div">
         <a href="#" class="user_name"><%= ziltagging.user.username %></a><br>
-        
-        <!-- 以下2個按鈕要切換 -->
-        <a class="btn btn-default btn-xs follow_user">關注用戶</a>
-        <a class="btn btn-default btn-xs follow_user cancel">取消追蹤</a>
+
+        <%= following_button ziltagging.user %>
       </div><!-- /.follow_user_div -->
       
       <ul class="list-unstyled list-inline pull-right other_funcs">
