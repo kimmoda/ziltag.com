@@ -11,7 +11,7 @@ $(document).on('ready page:load', function(){
   }
 });
 
-$(window).load(function(){
+$(window).on('load page:load', function(){
   
   if(document.body.dataset.controller == 'pages' && document.body.dataset.action == 'home'){
     // 貼上sticker
