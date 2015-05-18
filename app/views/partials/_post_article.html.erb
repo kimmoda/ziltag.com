@@ -13,7 +13,7 @@
     <h2 class="post_title"><%= ziltagging.title %></h2>
     <div class="post_content_block">
       <div class="post_content">
-        <%= sanitize ziltagging.content, tags: %w[p] %>
+        <%= truncate sanitize(ziltagging.content, tags: %w[p]), length: 250, escape: false %>
       </div>
       <%= link_to '看更多', ziltagging_path(ziltagging, format: :json), class: 'btn btn-default btn-xs see_more', remote: true, data: {ziltag_modal: ''} %>
     </div><!-- /.post_content_block -->
