@@ -17,6 +17,12 @@ var allJs = {
     
     // 調整 aside.aside 的高度
     $("aside[data-layout=aside]").css("height", $("div[data-layout=col_right]").outerHeight() + "px");
+    
+    $('header.header').affix({
+      offset: {
+        top: 25
+      }
+    });
   },
   
   // 選擇圖片預覽圖

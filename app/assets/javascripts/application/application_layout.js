@@ -1,5 +1,4 @@
 $(document).on('page:load', function(){
-    
   allJs.tune_layout();
 });
 
