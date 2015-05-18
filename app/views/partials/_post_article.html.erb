@@ -3,19 +3,22 @@
   <div class="block_right text-center">
     <article class="c_ziltag_sticker_article" data-ziltag-mode="default" data-ziltag-sticker-article>
       <%= image_tag ziltagging.image_url, class: :post_image, data: {ziltag_x: ziltagging.x, ziltag_y: ziltagging.y}, "data-show-sticker": "" %>
-      <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
+      <a href="<%= ziltagging_path(ziltagging, format: :json) %>" data-remote="true" data-ziltag-modal>
+        <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
+      </a>
     </article><!-- /.c_ziltag_sticker_article_on_home -->
   </div><!-- /.block_right -->
   
   <div class="block_left">
     <time datetime="<%= ziltagging.post.created_at.to_s(:db) %>" class="datetime">發表於 <%= l ziltagging.post.created_at, format: :long %></time>
     
-    <h2 class="post_title"><%= ziltagging.title %></h2>
+    <h2 class="post_title"><%= link_to ziltagging.title, ziltagging_path(ziltagging, format: :json), class: '', remote: true, data: {ziltag_modal: ''} %></h2>
     <div class="post_content_block">
-      <div class="post_content">
-        <%= truncate sanitize(ziltagging.content, tags: %w[p]), length: 250, escape: false %>
-      </div>
-      <%= link_to '看更多', ziltagging_path(ziltagging, format: :json), class: 'btn btn-default btn-xs see_more', remote: true, data: {ziltag_modal: ''} %>
+      <a href="<%= ziltagging_path(ziltagging, format: :json) %>" class="post_content_link" data-remote="true" data-ziltag-modal>
+        <div class="post_content">
+          <%= truncate sanitize(ziltagging.content, tags: %w[p]), length: 250, escape: false %>
+        </div>
+      </a>
     </div><!-- /.post_content_block -->
     
     <div class="post_user_profile">
