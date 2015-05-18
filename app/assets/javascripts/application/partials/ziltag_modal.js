@@ -13,8 +13,6 @@ $(document).on('ready page:load', function(){
     });
     
     $('[data-ziltag-modal]').on('ajax:success', function(event, data){
-      //console.log(data); //TODO
-      
       window.history.pushState(null, null, data.link);
       
       $("[data-user-username]").html(data.user.username);
