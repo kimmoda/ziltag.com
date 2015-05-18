@@ -39,13 +39,22 @@ article.post_article{
       overflow: hidden;
       padding:0;
       font-size: 24px;
+      a {
+        color: $main_black_color;
+        text-decoration: none;
+      }
     }
     div.post_content_block{
       position: relative;
+      a.post_content_link{
+        text-decoration: none;
+        display: inline-block;
+      }
       div.post_content{
         margin-top: 10px;
         height: 105px;
         overflow: hidden;
+        color:$main_black_color;
       }
       a.see_more{
         position: absolute;
