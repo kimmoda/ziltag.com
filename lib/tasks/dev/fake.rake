@@ -38,7 +38,7 @@ namespace 'dev:fake' do
         @photos.each do |photo|
           @comments << user.comments.create!(
             x: rand(200), y: rand(200), text: Faker::Lorem.sentence,
-            image_url: photo.image_url
+            image_url: "http://localhost:3000#{photo.image_url}"
           )
         end
       end
@@ -46,7 +46,7 @@ namespace 'dev:fake' do
       @comments.each do |comment|
         @users.sample.comments.create!(
           x: rand(200), y: rand(200), text: Faker::Lorem.sentence , root: comment,
-          image_url: comment.image_url
+          image_url: "http://localhost:3000#{comment.image_url}"
         )
       end
     end
