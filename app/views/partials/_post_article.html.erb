@@ -8,7 +8,7 @@
   </div><!-- /.block_right -->
   
   <div class="block_left">
-    <time datetime="2014-12-22" class="datetime">發表於 <%= l ziltagging.post.created_at, format: :long %></time>
+    <time datetime="<%= ziltagging.post.created_at.to_s(:db) %>" class="datetime">發表於 <%= l ziltagging.post.created_at, format: :long %></time>
     
     <h2 class="post_title"><%= ziltagging.title %></h2>
     <div class="post_content_block">
