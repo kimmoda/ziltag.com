@@ -40,7 +40,6 @@
                     <p class="user_name">Victor Gumdrop</p>
                     <time datetime="<%= @ziltagging.created_at.to_s(:db) %>" class="datetime">發表於 <%= l @ziltagging.created_at, format: :long %></time>
                     
-                    <!-- 這個.follow_block在 #5 有抽離成partial，所以在此不做多餘處理，僅示意 -->
                     <div class="follow_block">
                       <%= following_button @ziltagging.user %>
                     </div><!-- /.follow_block -->

@@ -72,22 +72,12 @@ article.post_article{
           border-radius: 50%;
         }
       }
-      div.follow_user_div{
+      div.follow_user_block{
         margin-left:10px;
         display: inline-block;
         vertical-align: middle;
         a.user_name{
           color: $main_black_color;
-        }
-        a.follow_user{
-          display: inline-block;
-          border:1px solid $fourth_gray_color;
-          background-color: $secondary_gray_color;
-          color: $main_gray_color;
-          &.cancel{
-            background-color: $main_red_color;
-            color: $main_white_color;
-          }
         }
       }
       ul.other_funcs{
