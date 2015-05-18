@@ -42,3 +42,12 @@ http://localhost:3000/rails/mailers/
 - Gemfile 新增東西後要 `bundle install`，然後再重開 server，Rails 才抓得到。
 - 盡量使用有 bower 控管的 JS/CSS 函式庫，若函式庫非 bower 所管理，則丟到 `vender/assets/{stylesheets,javascripts}` 下，並在 `application.{js,css}` 中透過註解 `require` 引用。
 - 為了支援 rails turbolinks 的加速功能，載入頁面除了監聽 `ready` 之外，也請監聽 `page:load` 事件，例如 `$(document).on('ready page:load', myListener);`
+
+# 登入登出
+
+可再網址加上 `sign_in` 或 `sign_out` 改變登入狀態，例：
+
+```
+http://localhost:3000?sign_in
+http://localhost:3000?sign_out
+```
