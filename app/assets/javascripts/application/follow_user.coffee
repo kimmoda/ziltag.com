@@ -2,7 +2,7 @@
 # <a class="btn btn-default btn-xs follow_user" data-follow-user>關注用戶</a>
 # <a class="btn btn-default btn-xs follow_user cancel" data-follow-user-cancel>取消追蹤</a>
 $(document).on 'ready page:load', () ->
-  $('[data-follow-user]').on 'ajax:success', () ->
+  $('body').on 'ajax:success', '[data-follow-user]', () ->
     $(this).hide().siblings('[data-follow-user-cancel]').show()
-  $('[data-follow-user-cancel]').on 'ajax:success', () ->
+  $('body').on 'ajax:success', '[data-follow-user-cancel]', () ->
     $(this).hide().siblings('[data-follow-user]').show()

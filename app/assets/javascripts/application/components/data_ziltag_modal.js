@@ -12,6 +12,8 @@ $(document).on('ready page:load', function(){
     $("[data-modal-post-ziltag-article]").find("[data-show-sticker]").attr("data-ziltag-x", data.x).attr("data-ziltag-y", data.y);
     $("[data-location-name]").html(data.location.name);
     $("[data-location-address]").html(data.location.address);
+    $("[data-location-address]").html(data.location.address);
+    $("[data-follow-block]").html(data.following_button)
     
     $("[data-image_url]").attr("src", data.image_url);
     
