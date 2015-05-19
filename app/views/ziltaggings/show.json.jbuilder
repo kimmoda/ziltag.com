@@ -19,3 +19,5 @@ end
 json.other_ziltaggings do
   json.partial! 'ziltaggings', ziltaggings: @other_ziltaggings
 end
+
+json.following_button following_button(@ziltagging.user)
