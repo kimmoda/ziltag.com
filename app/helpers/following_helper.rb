@@ -4,7 +4,7 @@ module FollowingHelper
   def following_button leader
     return unless user_signed_in?
     ret = ActiveSupport::SafeBuffer.new
-    following_params = {follower_id: current_user.id, leader_id: leader.id}
+    following_params = {leader_id: leader.id}
 
     ret << link_to('關注用戶', follow_path(following_params),
       method: :post, remote: true, class: :'btn btn-default btn-xs follow_user',
