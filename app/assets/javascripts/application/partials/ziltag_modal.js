@@ -9,8 +9,9 @@ $(document).on('ready page:load', function(){
     $('a[data-btn-remove]').on('click', function(e){
       e.preventDefault();
       window.history.replaceState(null, null, "/");
-      allJs.data_ziltag_modal_layout_back($(this));
+      allJs.data_ziltag_modal_layout_back();
     });
+    
     
     
     
@@ -41,5 +42,5 @@ $(window).resize(function(){
 
 window.addEventListener("popstate", function(e) {
   window.history.replaceState(null, null, "/");
-  allJs.data_ziltag_modal_layout_back($('a[data-btn-remove]'));
+  allJs.data_ziltag_modal_layout_back();
 });

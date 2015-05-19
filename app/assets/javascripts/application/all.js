@@ -77,13 +77,17 @@ var allJs = {
       "overflow": "hidden"
     });
   },
-  // 動態從右至左跑出
-  data_ziltag_modal_layout_back: function(theElement){
-    if( $("article[data-modal-post-ziltag-article]").attr("data-modal-status") == "open" ){
-      $("article[data-modal-post-ziltag-article]").attr("data-modal-status", "close");
+  // 動態縮回
+  data_ziltag_modal_layout_back: function(){
+    
+    var theElement = $("article[data-modal-post-ziltag-article]");
+    
+    if( $(theElement).attr("data-modal-status") == "open" ){
+      $(theElement).attr("data-modal-status", "close");
     }
-    $("article[data-modal-post-ziltag-article]").animate({
-      "right":  - $(theElement).closest("article[data-modal-post-ziltag-article]").width() + "px"
+    
+    $(theElement).animate({
+      "right":  - $(theElement).width() + "px"
     });
     
     $("body").css({
