@@ -13,7 +13,19 @@
       <div class="col-xs-10 col_right" data-layout="col_right">
         <%= flash_messages %>
         <section class="find_ziltag_by_img_section">
-          <%= render partial: 'partials/ziltag_article', collection: @photos, as: :photo %>
+          
+          <div class="row">
+            <div class="col-xs-4">
+              <%= render partial: 'partials/ziltag_article', collection: @photos, as: :photo %>
+            </div>
+            <div class="col-xs-4">
+              <%= render partial: 'partials/ziltag_article', collection: @photos, as: :photo %>
+            </div>
+            <div class="col-xs-4">
+              <%= render partial: 'partials/ziltag_article', collection: @photos, as: :photo %>
+            </div>
+          </div><!-- /.row -->
+          
         </section><!-- /.find_ziltag_by_img_section -->
       </div>
     </div><!-- /.row -->

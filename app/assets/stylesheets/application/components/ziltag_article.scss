@@ -7,11 +7,11 @@ article.c_ziltag_article{
   box-sizing: border-box;
   border:1px solid $main_gray_color;
   margin-top: 20px;
-  margin-right: 20px;
-  width:390px;
   vertical-align: top;
+  width:100%;
   div.ziltag_img{
-  
+    box-sizing: border-box;
+    
   }
   div.main_info{
     border-radius: 0 0 5px 5px;

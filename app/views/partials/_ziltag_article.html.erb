@@ -1,13 +1,14 @@
 <article class="c_ziltag_article" data-ziltag-article>
-  <div class="ziltag_img">
-    <%= image_tag photo.image_url, class: :'img-responsive' %>
+  <div class="ziltag_img text-center">
+    <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-ziltag-sticker-article>
+      <%= image_tag photo.image_url, class: :'img-responsive' %>
+      <script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: photo.ziltaggings %></script>
+    </article>
   </div><!-- /.ziltag_img -->
   <div class="main_info">
     <div class="top_layer">
-      <article>
-        <%= image_tag photo.user.avatar.thumb.url, class: :user_profile_img %>
-        <script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: photo.ziltaggings %></script>
-      </article>
+      <%= image_tag photo.user.avatar.thumb.url, class: :user_profile_img %>
+      
       <div class="user_info">
         <div class="follow_block">
           <a class="btn btn-default btn-xs c_btn_follow_user">關注用戶</a>
