@@ -6,7 +6,7 @@
     <div class="top_layer">
       <article>
         <%= image_tag photo.user.avatar.thumb.url, class: :user_profile_img %>
-        
+        <script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: photo.ziltaggings %></script>
       </article>
       <div class="user_info">
         <div class="follow_block">
