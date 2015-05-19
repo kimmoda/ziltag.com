@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def follow? leader
-    leaders.exists?(leader.id)
+    leaders.index(leader)
   end
 
   def follow! leader
