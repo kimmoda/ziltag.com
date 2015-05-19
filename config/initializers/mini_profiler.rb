@@ -1,0 +1,1 @@
+Rack::MiniProfiler.config.skip_paths << '/uploads' << '/images' if Rails.env.development?

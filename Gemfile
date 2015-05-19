@@ -32,12 +32,13 @@ end
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
+  gem 'rack-mini-profiler'
+  gem 'web-console', '~> 2.0'
+  gem 'faker'
 end
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'faker'
 end
 
