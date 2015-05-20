@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class PagesControllerTest < ActionController::TestCase
-  test 'should get home' do
-    get :home
+class PhotosControllerTest < ActionController::TestCase
+  test "should get index" do
+    get :index
     assert_response :success
 
     sign_in(:user, users(:tony))
-    get :home
+    get :index
     assert_response :success
   end
 
