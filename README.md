@@ -1,14 +1,12 @@
 [![Build Status](https://semaphoreci.com/api/v1/projects/a08f57bd-e891-4bb0-8e0f-60b00a5d993d/402412/badge.svg)](https://semaphoreci.com/billtag/ziltag-com)
 
-# 開發者文件
-
-## 相依套件
+# 相依套件
 
 - ruby 2.2.2
 - graphicsmagick
 - postgresql
 
-## 開發準備
+# 開發準備
 
 ```
 $ bundle
@@ -16,14 +14,14 @@ $ bin/rake dev:setup
 $ rails s
 ```
 
-## 開發規矩
+# 開發規矩
 
 - 一律在 `dev` 分支上開發
 - 一律使用 `git pull --rebase`。
 - 1 個 issue 1 個 branch，命名方式為 `issues/#ID`。
 - branch 開發好後送 pull request，只有 PM 可以 merge
 
-## 部署方式
+# 部署方式
 
 push 後會自動測試、測試通過後會自動部署
 
