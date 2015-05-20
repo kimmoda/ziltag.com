@@ -3,7 +3,7 @@ class Admin::PhotosController < AdminController
 
   # GET /admin/photos
   def index
-    @admin_photos = Admin::Photo.all.order('id DESC').page(params[:page])
+    @admin_photos = Admin::Photo.includes(:user).order('id DESC').page(params[:page])
   end
 
   # GET /admin/photos/1
@@ -53,6 +53,6 @@ class Admin::PhotosController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def admin_photo_params
-      params.require(:admin_photo).permit(:user_id, :source, :image, :image_cache, :remove_image)
+      params.require(:admin_photo).permit(:user_id, :source, :image, :image_cache, :remove_image, :remote_image_url)
     end
 end
