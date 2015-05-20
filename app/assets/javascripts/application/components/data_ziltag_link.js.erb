@@ -2,10 +2,10 @@
 
 $(document).on('ready page:load', function(){
 
-  $(document).on('mouseover', '[data-ziltag-link]', function(){
+  $('[data-ziltag-sticker-article]').on('mouseover', '[data-ziltag-link]', function(){
     $(this).children("img").attr("src", "<%= asset_path('ziltag_sticker.png') %>");
   });
-  $(document).on('mouseout', '[data-ziltag-link]', function(){
+  $('[data-ziltag-sticker-article]').on('mouseout', '[data-ziltag-link]', function(){
     $(this).children("img").attr("src", "<%= asset_path('ziltag_sticker_others.png') %>");
   });
 
