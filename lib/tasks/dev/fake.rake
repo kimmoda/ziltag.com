@@ -51,6 +51,16 @@ namespace 'dev:fake' do
       end
     end
 
+    fakeup '在第一個樂貼的圖上產生 10 個額外的樂貼' do
+      photo = Ziltagging.find(1).photo
+      10.times do
+        photo.ziltaggings.create!(
+          x: rand(200), y: rand(200),
+          post: @posts.sample
+        )
+      end
+    end
+
     fakeup '產生 10 張長寬不一的樂貼' do
       file_400x200 = File.open(Rails.root.join('test/fixtures/images/400x200.jpg'))
       file_200x400 = File.open(Rails.root.join('test/fixtures/images/200x400.jpg'))
@@ -70,16 +80,6 @@ namespace 'dev:fake' do
       Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 190, y: 390
       Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 190, y: 10
       Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: rand(200), y: 100 + rand(300)
-    end
-
-    fakeup '在第一個樂貼的圖上產生 10 個額外的樂貼' do
-      photo = Ziltagging.find(1).photo
-      10.times do
-        photo.ziltaggings.create!(
-          x: rand(200), y: rand(200),
-          post: @posts.sample
-        )
-      end
     end
 
     fakeup '產生追蹤' do
