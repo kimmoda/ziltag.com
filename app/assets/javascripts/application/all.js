@@ -18,11 +18,18 @@ var allJs = {
     // 調整 aside.aside 的高度
     $("aside[data-layout=aside]").css("height", $("div[data-layout=col_right]").outerHeight() + "px");
     
-    $('header.header').affix({
-      offset: {
-        top: 25
+    $(window).on("scroll", function(){
+      if( $(window).scrollTop() >= 1 ){
+        $("header.header").css({
+          "border-bottom": "1px solid #979797"
+        });
+      }else{
+        $("header.header").css({
+          "border-bottom": "0"
+        });
       }
     });
+    
   },
   
   // 選擇圖片預覽圖
@@ -48,7 +55,7 @@ var allJs = {
     if( $("article[data-modal-post-ziltag-article]").attr("data-modal-status") == "close"){
       $("article[data-modal-post-ziltag-article]").css({
         "width": the_width + "px",
-        "height": ($(window).height() - 70) + "px",
+        "height": ($(window).height() - 60) + "px",
         "right": - the_width + "px"
       });
     }
@@ -56,7 +63,7 @@ var allJs = {
     if( $("article[data-modal-post-ziltag-article]").attr("data-modal-status") == "open" ){
       $("article[data-modal-post-ziltag-article]").css({
         "width": the_width + "px",
-        "height": ($(window).height() - 70) + "px",
+        "height": ($(window).height() - 60) + "px",
         "right": "0px"
       });
     }

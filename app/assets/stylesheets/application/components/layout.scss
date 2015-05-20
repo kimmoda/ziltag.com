@@ -9,6 +9,11 @@
     width:768px !important;
   }
 }
+body{
+  @media screen and (min-width:768px){
+    padding-top: 60px;
+  }
+}
 div.layout_fluid{
   background-color: $secondary_gray_color;
   position: relative;
