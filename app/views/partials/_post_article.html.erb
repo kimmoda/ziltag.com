@@ -16,7 +16,7 @@
     <div class="post_content_block">
       <a href="<%= ziltagging_path(ziltagging, format: :json) %>" class="post_content_link" data-remote="true" data-ziltag-modal>
         <div class="post_content">
-          <%= truncate sanitize(ziltagging.content, tags: %w[p]), length: 250, escape: false %>
+          <%= summary ziltagging.content %>
         </div>
       </a>
     </div><!-- /.post_content_block -->

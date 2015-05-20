@@ -22,29 +22,13 @@
       <button class="btn btn-default btn_slide" data-switch-msg-list><span class="content_line"></span> <i class="fa fa-caret-left"></i><i class="fa fa-caret-down hidden"></i></button>
       
       <ul class="list-unstyled msg_list" data-msg-list>
-        <li data-first-item>
-          <h3 class="h3_title">How to create beautiful typography</h3>
-          <p class="msg_para">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus tellus lorem, a scelerisque dui imperdiet non. Aliquam rhoncus aliquam tristique. Integer velit enim,
-          </p>
-          
-          <div class="icon_star">
-            <a href="#"><i class="fa fa-star fa-2x"></i></a>
-            <a href="#" class="active"><i class="fa fa-star fa-2x active"></i></a>
-          </div><!-- /.icon_star -->
-        </li>
-        
-        <% 3.times do %>
-          <li class="custom_hidden" data-not-first-item>
-            <h3 class="h3_title">How to create beautiful typography</h3>
-            <p class="msg_para">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus tellus lorem, a scelerisque dui imperdiet non. Aliquam rhoncus aliquam tristique. Integer velit enim,
-            </p>
-            
-            <div class="icon_star">
-              <a href="#"><i class="fa fa-star fa-2x active"></i></a>
-              <a href="#" class="active"><i class="fa fa-star fa-2x active"></i></a>
-            </div><!-- /.icon_star -->
+        <% photo.ziltaggings.each_with_index do |ziltagging, i| %>
+          <% if i == 0 %>
+          <li data-first-item data-ziltagging-id="<%= ziltagging.id %>">
+          <% else %>
+          <li class="custom_hidden" data-not-first-item data-ziltagging-id="<%= ziltagging.id %>">
+          <% end %>
+            <%= render partial: 'post', object: ziltagging.post %>
           </li>
         <% end %>
         
