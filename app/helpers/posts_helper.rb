@@ -1,4 +1,5 @@
 module PostsHelper
+  # TODO: 寫 test
   def summary content, length: 250, **options
     paragraphs = sanitize(content, tags: %w[p]).scan(/<p>(.*?)<\/p>/).map!(&:first)
     paragraphs = [content] if paragraphs.blank?
