@@ -83,7 +83,7 @@ var ZiltagSticker = {
           var move = this.place.y - this.default_height;
           if( move >= 0){
             
-            if( (parseInt($(theElement).outerHeight()) - this.place.y) <= that.default_height){
+            if( (parseInt($(theElement).outerHeight()) - this.place.y) <= this.default_height){
               $(theElement).css({
                 top: "-" + ($(theElement).outerHeight()-this.default_height) + "px"
               });
