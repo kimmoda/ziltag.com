@@ -13,7 +13,7 @@
       <div class="col-xs-10 col_right" data-layout="col_right">
         <%= flash_messages %>
         <section class="photos_index">
-          
+          <!-- TODO: 這裡重複 render 了兩次同樣的內容，未來可能需要想辦法改進效能 -->
           <!-- 1200px 以上(包含1200px)，顯示3欄 -->
           <div class="row visible-lg">
             <% slice_transpose(@photos, 3).each do |photos| %>

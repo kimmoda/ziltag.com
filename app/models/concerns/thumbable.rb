@@ -8,7 +8,7 @@ module Thumbable
     end
   end
 
-  # TODO resize_to_fill 在 graphicsmagick 上會有問題
+  # TODO: resize_to_fill 在 graphicsmagick 上會有問題
   # https://github.com/carrierwaveuploader/carrierwave/issues/1520
   def resize_to_fill_space(width, height, gravity = 'Center')
     manipulate! do |image|

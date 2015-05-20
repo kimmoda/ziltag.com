@@ -1,6 +1,6 @@
 // 樂貼滑進的特效
 $(document).on('ready page:load', function(){
-
+  // TODO: 重複點擊相同的文章，會重複發送請求索取 JSON 資料，可以在第一次發送時就 cache 結果，減輕伺服器負擔。
   $('[data-ziltag-modal]').on('ajax:success', function(event, data){
     // 置換內容
     ZiltagSticker.replaceModalData(data);
