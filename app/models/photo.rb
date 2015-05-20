@@ -8,27 +8,19 @@ class Photo < ActiveRecord::Base
 
   # associations
   belongs_to :user
-  has_many :ziltaggings, foreign_key: :image_url, primary_key: :url
+  has_many :ziltaggings
   has_many :posts, through: :ziltaggings
+  has_many :comments
 
   # validations
   validates :user, :image, presence: true
 
   # callbacks
-  before_save :previous_ziltaggings, if: :image_changed?
-  after_save :cache_url, :update_ziltaggings, if: :image_changed?
+  after_create :set_source, if: ->{ source.blank? }
 
   # other
-  def previous_ziltaggings
-    @previous_ziltaggings = ziltaggings
-  end
-
-  def cache_url
-    update_column :url, image_url
-  end
-
-  def update_ziltaggings
-    @previous_ziltaggings.update_all image_url: image_url
+  def set_source
+    update_column :source, image_url
   end
 
 end

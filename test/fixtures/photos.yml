@@ -1,18 +1,12 @@
 tony:
-  id: 1
   user: tony
-  title: 大兜照片
   image: tony.jpg
-  url: http://localhost:3000/uploads/photos/image/1/tony.jpg
+  source: http://localhost:3000/uploads/photos/image/1/tony.jpg
 tony_2:
-  id: 2
   user: tony
-  title: 大兜照片二
   image: tony_2.jpg
-  url: http://localhost:3000/uploads/photos/image/2/tony.jpg
+  source: http://localhost:3000/uploads/photos/image/2/tony.jpg
 david:
-  id: 3
   user: david
-  title: 測試照片
   image: david.jpg
-  url: http://localhost:3000/uploads/photos/image/3/tony.jpg
+  source: http://localhost:3000/uploads/photos/image/3/tony.jpg
