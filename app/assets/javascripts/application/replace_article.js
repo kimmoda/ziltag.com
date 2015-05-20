@@ -1,7 +1,8 @@
-// 樂貼滑進的特效
+// data-replace-article
+// 用於點擊灰色樂貼時，置換內容
 $(document).on('ready page:load', function(){
-
-  $('[data-ziltag-modal]').on('ajax:success', function(event, data){
+  $('[data-modal-post-ziltag-article]').on('ajax:success', '[data-replace-article]', function(e, data){
+    
     // 置換內容
     ZiltagSticker.replaceModalData(data);
     
@@ -9,9 +10,5 @@ $(document).on('ready page:load', function(){
     ZiltagSticker.appendImgOnModal();
     ZiltagSticker.appendOtherZiltags($("article[data-ziltag-sticker-article][data-is-modal='true']"), JSON.stringify(data.other_ziltaggings), false);
     
-    // 動態從右至左跑出
-    allJs.data_ziltag_modal_layout_after_click();
-    
   });
-
 });
