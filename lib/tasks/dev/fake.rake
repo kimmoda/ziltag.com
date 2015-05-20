@@ -14,7 +14,7 @@ namespace 'dev:fake' do
     fakeup '產生圖片' do
       @photos = []
       @users.each do |user|
-        @photos << user.photos.create!(title: Faker::Lorem.sentence, image: @images.sample)
+        @photos << user.photos.create!(image: @images.sample)
       end
     end
 
@@ -65,21 +65,21 @@ namespace 'dev:fake' do
       file_400x200 = File.open(Rails.root.join('test/fixtures/images/400x200.jpg'))
       file_200x400 = File.open(Rails.root.join('test/fixtures/images/200x400.jpg'))
       user = User.last
-      photo_400x200 = user.photos.create! title: '400x200', image: file_400x200
-      photo_200x400 = user.photos.create! title: '200x400', image: file_200x400
+      photo_400x200 = user.photos.create! image: file_400x200
+      photo_200x400 = user.photos.create! image: file_200x400
 
       post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join)
-      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 10, y: 10
-      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 10, y: 190
-      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 390, y: 190
-      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 390, y: 10
-      Ziltagging.create! image_url: photo_400x200.image_url, post: post, x: 100 + rand(300), y: rand(200)
+      Ziltagging.create! photo: photo_400x200, post: post, x: 10, y: 10
+      Ziltagging.create! photo: photo_400x200, post: post, x: 10, y: 190
+      Ziltagging.create! photo: photo_400x200, post: post, x: 390, y: 190
+      Ziltagging.create! photo: photo_400x200, post: post, x: 390, y: 10
+      Ziltagging.create! photo: photo_400x200, post: post, x: 100 + rand(300), y: rand(200)
 
-      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 10, y: 10
-      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 10, y: 390
-      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 190, y: 390
-      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: 190, y: 10
-      Ziltagging.create! image_url: photo_200x400.image_url, post: post, x: rand(200), y: 100 + rand(300)
+      Ziltagging.create! photo: photo_200x400, post: post, x: 10, y: 10
+      Ziltagging.create! photo: photo_200x400, post: post, x: 10, y: 390
+      Ziltagging.create! photo: photo_200x400, post: post, x: 190, y: 390
+      Ziltagging.create! photo: photo_200x400, post: post, x: 190, y: 10
+      Ziltagging.create! photo: photo_200x400, post: post, x: rand(200), y: 100 + rand(300)
     end
 
     fakeup '產生追蹤' do
