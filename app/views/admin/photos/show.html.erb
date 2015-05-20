@@ -4,8 +4,13 @@
 </p>
 
 <p>
-  <strong><%= Admin::Photo.human_attribute_name(:title) %>:</strong>
-  <%= @admin_photo.title %>
+  <strong><%= Admin::Photo.human_attribute_name(:source) %>:</strong>
+  <%= @admin_photo.source %>
+</p>
+
+<p>
+  <strong><%= Admin::Photo.human_attribute_name(:image_url) %>:</strong>
+  <%= @admin_photo.image_url %>
 </p>
 
 <p>
