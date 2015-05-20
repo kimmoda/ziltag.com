@@ -1,0 +1,40 @@
+<div class="container-fluid layout_fluid" data-layout="outer">
+    
+  <div class="fill_white" data-layout="outer_fill_white"></div>
+  <div class="custom_header_line" data-layout="custom_header_line"></div>
+  
+  <div class="container" data-layout="inner">
+    <div class="row">
+      
+      <div class="col-xs-2 col_left">
+        <%= render :partial => "/layouts/partials/sidebar" %>
+      </div>
+      
+      <div class="col-xs-10 col_right" data-layout="col_right">
+        <%= flash_messages %>
+        <section class="photos_index">
+          
+          <!-- 1200px 以上(包含1200px)，顯示3欄 -->
+          <div class="row visible-lg">
+            <% slice_transpose(@photos, 3).each do |photos| %>
+            <div class="col-lg-4">
+            <%= render partial: 'partials/photo_article', collection: photos, as: :photo %>
+            </div>
+            <% end %>
+          </div><!-- /.row -->
+          
+          <!-- 1200px 以下(不包含1200px)，顯示2欄 -->
+          <div class="row hidden-lg">
+            <%= slice_transpose(@photos, 2).each do |photos| %>
+            <div class="col-xs-6">
+            <%= render partial: 'partials/photo_article', collection: photos, as: :photo %>
+            </div>
+            <% end %>
+          </div><!-- /.row -->
+          
+          
+        </section><!-- /.find_ziltag_by_img_section -->
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /.container -->

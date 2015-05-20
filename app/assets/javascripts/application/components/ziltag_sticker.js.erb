@@ -118,17 +118,25 @@ var ZiltagSticker = {
   },
   
   // 貼上所有其它灰色的樂貼
-  appendOtherZiltags: function(articleElement, data){
-    
+  appendOtherZiltags: function(articleElement, data, ziltag_link_hover){
     var all_other_ziltags = JSON.parse(data);
     var that = this;
-    $("img[data-sticker-others]").remove();
+    
+    if($(articleElement).data("remove-ziltag")){
+      $("img[data-sticker-others]").remove();
+    }
+    
     $.each(all_other_ziltags, function(index, value){
       
       that.place.x = parseInt(value.x * that.ratio);
       that.place.y = parseInt(value.y * that.ratio);
       
-      $(articleElement).append("<a href='" + value.link + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+      if(ziltag_link_hover){
+        $(articleElement).append("<a href='" + value.link + "' data-ziltag-id='" + value.id + "' data-ziltag-link><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+      }else{
+        $(articleElement).append("<a href='" + value.link + "' data-ziltag-id='" + value.id + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+      }
+      
       
     });
   },

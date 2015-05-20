@@ -1,0 +1,40 @@
+<article class="photo_article" data-photo-article>
+  <div class="ziltag_img text-center">
+    <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="false" data-ziltag-sticker-article>
+      <%= image_tag photo.image_url, class: :'img-responsive' %>
+      <script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: photo.ziltaggings %></script>
+    </article>
+  </div><!-- /.ziltag_img -->
+  <div class="main_info">
+    <div class="top_layer">
+      <%= image_tag photo.user.avatar.thumb.url, class: :user_profile_img %>
+      
+      <div class="user_info">
+        <div class="follow_block">
+          <%= following_button photo.user %>
+        </div>
+        <p class="username"><%= photo.user.username %></p>
+        <time datetime="<%= photo.created_at.to_s(:db) %>" class="post_time">發表於 <%= l photo.created_at, format: :long %></time>
+      </div><!-- /.user_info -->
+    </div><!-- /.top_layer -->
+    
+    <div class="bottom_layer">
+      <button class="btn btn-default btn_slide" data-switch-msg-list><span class="content_line"></span> <i class="fa fa-caret-left"></i><i class="fa fa-caret-down hidden"></i></button>
+      
+      <ul class="list-unstyled msg_list" data-msg-list>
+        <% photo.ziltaggings.each_with_index do |ziltagging, i| %>
+          <% if i == 0 %>
+          <li data-first-item data-ziltagging-id="<%= ziltagging.id %>">
+          <% else %>
+          <li class="custom_hidden" data-not-first-item data-ziltagging-id="<%= ziltagging.id %>">
+          <% end %>
+            <%= render partial: 'post', object: ziltagging.post %>
+          </li>
+        <% end %>
+        
+      </ul>
+      
+    </div><!-- /.bottom_layer -->
+    
+  </div><!-- /.main_info -->
+</article><!-- /.photo_article -->

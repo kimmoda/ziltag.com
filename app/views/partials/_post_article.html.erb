@@ -1,7 +1,7 @@
 <article class="post_article">
 
   <div class="block_right text-center">
-    <article class="c_ziltag_sticker_article" data-ziltag-mode="default" data-ziltag-sticker-article>
+    <article class="c_ziltag_sticker_article" data-ziltag-mode="default" data-remove-ziltag="true" data-ziltag-sticker-article>
       <%= image_tag ziltagging.image_url, class: :post_image, data: {ziltag_x: ziltagging.x, ziltag_y: ziltagging.y}, "data-show-sticker": "" %>
       <a href="<%= ziltagging_path(ziltagging, format: :json) %>" data-remote="true" data-ziltag-modal>
         <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
@@ -16,7 +16,7 @@
     <div class="post_content_block">
       <a href="<%= ziltagging_path(ziltagging, format: :json) %>" class="post_content_link" data-remote="true" data-ziltag-modal>
         <div class="post_content">
-          <%= truncate sanitize(ziltagging.content, tags: %w[p]), length: 250, escape: false %>
+          <%= summary ziltagging.content %>
         </div>
       </a>
     </div><!-- /.post_content_block -->
@@ -25,7 +25,6 @@
       <a href="#" class="profile_link"><%= image_tag ziltagging.user.avatar.thumb, class: :user_profile_img %></a>
       <div class="follow_user_block">
         <a href="#" class="user_name"><%= ziltagging.user.username %></a><br>
-
         <%= following_button ziltagging.user %>
       </div><!-- /.follow_user_div -->
       
