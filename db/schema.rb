@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517035932) do
+ActiveRecord::Schema.define(version: 20150520175114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,16 @@ ActiveRecord::Schema.define(version: 20150517035932) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "text",       null: false
-    t.string   "image_url",  null: false
     t.string   "email",      null: false
     t.integer  "x",          null: false
     t.integer  "y",          null: false
     t.integer  "comment_id"
+    t.integer  "photo_id",   null: false
   end
 
   add_index "comments", ["comment_id"], name: "index_comments_on_comment_id", using: :btree
   add_index "comments", ["email"], name: "index_comments_on_email", using: :btree
-  add_index "comments", ["image_url"], name: "index_comments_on_image_url", using: :btree
+  add_index "comments", ["photo_id"], name: "index_comments_on_photo_id", using: :btree
 
   create_table "followings", force: :cascade do |t|
     t.integer  "follower_id", null: false
@@ -42,15 +42,14 @@ ActiveRecord::Schema.define(version: 20150517035932) do
   add_index "followings", ["leader_id", "follower_id"], name: "index_followings_on_leader_id_and_follower_id", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.string   "title"
+    t.integer  "user_id"
     t.string   "image",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "url"
+    t.string   "source"
   end
 
-  add_index "photos", ["url"], name: "index_photos_on_url", using: :btree
+  add_index "photos", ["source"], name: "index_photos_on_source", unique: true, using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
@@ -95,16 +94,18 @@ ActiveRecord::Schema.define(version: 20150517035932) do
     t.integer  "y",          null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "image_url",  null: false
+    t.integer  "photo_id",   null: false
   end
 
-  add_index "ziltaggings", ["image_url"], name: "index_ziltaggings_on_image_url", using: :btree
+  add_index "ziltaggings", ["photo_id"], name: "index_ziltaggings_on_photo_id", using: :btree
   add_index "ziltaggings", ["post_id"], name: "index_ziltaggings_on_post_id", using: :btree
 
   add_foreign_key "comments", "comments"
+  add_foreign_key "comments", "photos"
   add_foreign_key "followings", "users", column: "follower_id"
   add_foreign_key "followings", "users", column: "leader_id"
   add_foreign_key "photos", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "ziltaggings", "photos"
   add_foreign_key "ziltaggings", "posts"
 end
