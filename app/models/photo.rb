@@ -16,7 +16,7 @@ class Photo < ActiveRecord::Base
   validates :user, :image, presence: true
 
   # callbacks
-  after_create :set_source, if: ->{ source.blank? }
+  after_save :set_source, if: ->{ source.blank? }
 
   # other
   def set_source
