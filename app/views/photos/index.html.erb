@@ -16,25 +16,20 @@
           
           <!-- 1200px 以上(包含1200px)，顯示3欄 -->
           <div class="row visible-lg">
+            <% @photos.each do |photo| %>
             <div class="col-lg-4">
-              <%= render partial: 'partials/photo_article', collection: @photos, as: :photo %>
+              <%= render partial: 'partials/photo_article', object: photo, as: :photo %>
             </div>
-            <div class="col-lg-4">
-              <%= render partial: 'partials/photo_article', collection: @photos, as: :photo %>
-            </div>
-            <div class="col-lg-4">
-              <%= render partial: 'partials/photo_article', collection: @photos, as: :photo %>
-            </div>
+            <% end %>
           </div><!-- /.row -->
           
           <!-- 1200px 以下(不包含1200px)，顯示2欄 -->
           <div class="row hidden-lg">
+            <%= @photos.each do |photo| %>
             <div class="col-xs-6">
-              <%= render partial: 'partials/photo_article', collection: @photos, as: :photo %>
+              <%= render partial: 'partials/photo_article', object: photo, as: :photo %>
             </div>
-            <div class="col-xs-6">
-              <%= render partial: 'partials/photo_article', collection: @photos, as: :photo %>
-            </div>
+            <% end %>
           </div><!-- /.row -->
           
           
