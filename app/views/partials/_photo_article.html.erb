@@ -11,11 +11,7 @@
       
       <div class="user_info">
         <div class="follow_block">
-          <%#= following_button ziltagging.user %>
-          
-          <a class="btn btn-default btn-xs c_btn_follow_user">關注用戶</a>
-          <a class="btn btn-default btn-xs c_btn_follow_user cancel">取消追蹤</a>
-          
+          <%= following_button photo.user %>
         </div>
         <p class="username"><%= photo.user.username %></p>
         <time datetime="<%= photo.created_at.to_s(:db) %>" class="post_time">發表於 <%= l photo.created_at, format: :long %></time>
