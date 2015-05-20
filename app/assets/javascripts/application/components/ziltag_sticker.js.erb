@@ -162,6 +162,25 @@ var ZiltagSticker = {
       left: this.place.x,
       top: this.place.y
     }).removeClass("hidden");
+  },
+  
+  // 置換modal的內容
+  replaceModalData: function(data){
+    window.history.pushState(null, null, data.link);
+    
+    $("[data-user-username]").html(data.user.username);
+    $("[data-user-avatar]").attr("src", data.user.avatar);
+    $("[data-post-title]").html(data.post.title);
+    
+    $("[data-post-content]").html(data.post.content);
+    $("[data-dreated-at]").html(data.created_at);
+    
+    $("[data-modal-post-ziltag-article]").find("[data-show-sticker]").attr("data-ziltag-x", data.x).attr("data-ziltag-y", data.y);
+    
+    $("[data-location-name]").html(data.location.name);
+    $("[data-location-address]").html(data.location.address);
+    $("[data-follow-block]").html(data.following_button);
+    $("[data-image_url]").attr("src", data.image_url);
   }
   
 }

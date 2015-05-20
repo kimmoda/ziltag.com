@@ -7,7 +7,7 @@
         
         <div class="pull-right operation_block">
           <div class="btn_cross text-right">
-            <a href="#" class="btn_remove"><i class="fa fa-remove fa-2x"></i></a>
+            <a href="#" class="btn_remove" data-btn-remove><i class="fa fa-remove fa-2x"></i></a>
           </div><!-- /.btn_cross -->
           <ul class="list-unstyled list-inline other_list">
             <li><a href="#"><i class="fa fa-share fa-2x"></i></a></li>
@@ -40,10 +40,7 @@
     <h2 class="post_title" data-post-title></h2>
     
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-is-modal="true" data-remove-ziltag="true" data-ziltag-sticker-article>
-      <%#= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y}, "data-show-sticker": "" %>
-      
       <img class="img-responsive" data-ziltag-x="", data-ziltag-y="" data-image_url data-show-sticker>
-      
       <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
     </article><!-- /.c_ziltag_sticker_article -->
     

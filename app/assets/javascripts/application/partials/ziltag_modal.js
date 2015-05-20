@@ -12,9 +12,6 @@ $(document).on('ready page:load', function(){
       allJs.data_ziltag_modal_layout_back();
     });
     
-    
-    
-    
   }
   
 });
