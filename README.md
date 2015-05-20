@@ -51,3 +51,22 @@ http://localhost:3000/rails/mailers/
 http://localhost:3000?sign_in
 http://localhost:3000?sign_out
 ```
+
+# Commit Message Hook
+
+此 `.git/hooks/commit-msg` 腳本會根據分支名稱，自動在 commit message 上面加上 issue number，便於在 Github 上索引：
+
+```sh
+#!/bin/sh
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [[ $CURRENT_BRANCH =~ ^issues[^[:digit:]]*([[:digit:]]+)$ ]]; then
+  ISSUE_NUMBER=\#${BASH_REMATCH[1]}
+  grep -vE '^\s*#' $1 | grep -q $ISSUE_NUMBER || echo [\#${BASH_REMATCH[1]}] >> $1
+fi
+```
+
+設定該檔案可執行：
+
+```sh
+chmod +x .git/hooks/commit-msg
+```
