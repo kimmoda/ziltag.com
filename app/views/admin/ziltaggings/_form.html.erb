@@ -1,0 +1,14 @@
+<%= simple_form_for(@admin_ziltagging) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :post, as: :select2 %>
+    <%= f.association :photo, as: :select2 %>
+    <%= f.input :x %>
+    <%= f.input :y %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>

@@ -19,7 +19,8 @@ zh-TW:
   activerecord:
     models:
       user: 會員
-      post: 樂貼
+      post: 文章
+      ziltagging: 樂貼
       photo: 圖片
       comment: 留言
     attributes:

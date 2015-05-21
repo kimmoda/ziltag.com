@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :ziltaggings
+  end
   root 'pages#home'
 
   devise_for :users
@@ -12,7 +15,6 @@ Rails.application.routes.draw do
 
   namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do
     root action: :home
-    resources :users, :comments, :posts, :photos
-    resources :ziltaggings, only: :index
+    resources :users, :comments, :posts, :photos, :ziltaggings
   end
 end

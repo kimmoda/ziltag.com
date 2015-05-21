@@ -1,0 +1,25 @@
+<p>
+  <strong><%= Admin::Ziltagging.human_attribute_name(:post) %>:</strong>
+  <%= @admin_ziltagging.post %>
+</p>
+
+<p>
+  <strong><%= Admin::Ziltagging.human_attribute_name(:photo) %>:</strong>
+  <%= @admin_ziltagging.photo %>
+</p>
+
+<p>
+  <strong><%= Admin::Ziltagging.human_attribute_name(:x) %>:</strong>
+  <%= @admin_ziltagging.x %>
+</p>
+
+<p>
+  <strong><%= Admin::Ziltagging.human_attribute_name(:y) %>:</strong>
+  <%= @admin_ziltagging.y %>
+</p>
+
+
+<hr>
+
+<%= link_to t('scaffold.edit'), edit_admin_ziltagging_path(@admin_ziltagging), class: 'btn btn-default' %>
+<%= link_to t('scaffold.back'), admin_ziltaggings_path, class: 'btn btn-default' %>

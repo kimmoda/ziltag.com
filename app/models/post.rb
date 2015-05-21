@@ -20,5 +20,8 @@ class Post < ActiveRecord::Base
   # callbacks
 
   # other
+  def to_s
+    title
+  end
 
 end
