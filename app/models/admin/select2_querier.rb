@@ -1,6 +1,6 @@
 class Admin::Select2Querier
   ATTRIBUTES = ActiveSupport::HashWithIndifferentAccess.new(
-    posts: :title, users: :username, photos: :image, comments: :text
+    posts: :title, users: :username, photos: :source, comments: :text
   )
 
   attr_accessor :plural
