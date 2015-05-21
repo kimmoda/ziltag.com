@@ -3,7 +3,7 @@ class Admin::CommentsController < AdminController
 
   # GET /admin/comments
   def index
-    @admin_comments = Admin::Comment.all.order('id DESC').page(params[:page])
+    @admin_comments = Admin::Comment.includes(:user).order('id DESC').page(params[:page])
     @admin_comments = Admin::Select2.query(@admin_comments, :text, params[:q])
     @admin_comments = @admin_comments.where(image_url: params[:image_url], root: nil) if params[:image_url]
   end
