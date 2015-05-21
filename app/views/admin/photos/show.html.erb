@@ -21,7 +21,7 @@
 <div class="page-header">
   <h2><%= Post.model_name.human %></h2>
 </div>
-<%= image_tag(@admin_photo.image_url, data: {sticker: '', new_post: new_admin_post_path}) %>
+<%= image_tag(@admin_photo.image_url, data: {sticker: '', new_post: '', photo_id: @admin_photo.id}) %>
 <p>點擊圖片任一處新增樂貼</p>
 
 <div class="page-header">

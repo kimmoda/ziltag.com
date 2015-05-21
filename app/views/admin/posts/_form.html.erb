@@ -8,7 +8,7 @@
   </div>
 
   <%= f.simple_fields_for :ziltaggings do |ff| %>
-    <%= ff.input :image_url, as: :hidden %>
+    <%= ff.association :photo, as: :select2 %>
     <%= ff.input :x, as: :hidden %>
     <%= ff.input :y, as: :hidden %>
     <div style="position:relative">

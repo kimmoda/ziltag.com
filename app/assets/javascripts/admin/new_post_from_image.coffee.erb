@@ -2,7 +2,7 @@
 # <img src="blablabla" data-new-post="/admin/posts/new">
 $(document).on 'ready page:load', () ->
   $('img[data-new-post]').click (e) ->
-    window.location.href = URI(this.dataset.newPost).search
-      image_url: URI(this.src).absoluteTo(window.location.href).normalize()
+    window.location.href = URI('<%= Rails.application.routes.url_helpers.new_admin_post_path %>').search
+      photo_id: this.dataset.photoId
       x: e.offsetX
       y: e.offsetY
