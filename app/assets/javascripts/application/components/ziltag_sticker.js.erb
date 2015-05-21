@@ -122,6 +122,21 @@ var ZiltagSticker = {
     var all_other_ziltags = JSON.parse(data);
     var that = this;
     
+    switch( $(articleElement).data("ziltag-mode") ){
+      
+      case this.mode[1]:
+        var original_image_width = $(articleElement).children("img[data-show-sticker]")[0].naturalWidth;
+        if( original_image_width > $(articleElement).parent().width() ){
+          this.ratio = parseInt($(articleElement).parent().width()) / original_image_width;
+        }else{
+          this.ratio = 1;
+        }
+        break;
+      default:
+        break;
+    }
+    
+    
     if($(articleElement).data("remove-ziltag")){
       $("img[data-sticker-others]").remove();
     }
