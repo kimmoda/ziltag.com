@@ -6,8 +6,6 @@ class Admin::Ziltagging < Ziltagging
   # attributes
 
   # associations
-  belongs_to :post
-  belongs_to :photo
 
   # validations
 

@@ -4,7 +4,6 @@ class Admin::UsersController < AdminController
   # GET /admin/users
   def index
     @admin_users = Admin::User.all.order('id DESC').page(params[:page])
-    @admin_users = Admin::Select2.query(@admin_users, :email, params[:q])
   end
 
   # GET /admin/users/1
