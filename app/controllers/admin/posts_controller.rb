@@ -4,7 +4,6 @@ class Admin::PostsController < AdminController
   # GET /admin/posts
   def index
     @admin_posts = Admin::Post.all.order('id DESC').page(params[:page])
-    @admin_posts = Admin::Select2.query(@admin_posts, :title, params[:q])
   end
 
   # GET /admin/posts/1
