@@ -4,6 +4,7 @@ class Admin::PhotosController < AdminController
   # GET /admin/photos
   def index
     @admin_photos = Admin::Photo.includes(:user).order('id DESC').page(params[:page])
+    @admin_photos = Admin::Select2.query(@admin_photos, :image, params[:q])
   end
 
   # GET /admin/photos/1

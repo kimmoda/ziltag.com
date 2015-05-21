@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   # constants
 
   # attributes
+  delegate :image_url, to: :photo
 
   # associations
   belongs_to :user, primary_key: :email, foreign_key: :email
