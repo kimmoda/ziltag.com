@@ -6,8 +6,8 @@ class Admin::Select2ControllerTest < ActionController::TestCase
     assert_equal [posts(:tony)], assigns(:posts)
     assert_response :success
 
-    get :query, plural: :posts, q: '顆顆'
-    assert_equal [], assigns(:posts)
+    get :query, plural: :comments, q: '拉拉'
+    assert_equal [comments(:tony), comments(:guest)].sort!, assigns(:comments).to_a.sort!
     assert_response :success
   end
 

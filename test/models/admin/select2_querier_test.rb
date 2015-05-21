@@ -16,7 +16,8 @@ class Admin::Select2QuerierTest < ActiveSupport::TestCase
   end
 
   test '#query' do
-    skip
+    assert_equal [posts(:tony)], Admin::Select2Querier.new(:posts).query('大兜')
+    assert_equal [comments(:tony), comments(:guest)].sort!, Admin::Select2Querier.new(:comments).query('拉拉').to_a.sort!
   end
 
 end
