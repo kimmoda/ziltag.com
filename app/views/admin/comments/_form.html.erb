@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :email %>
-    <%= f.association :root, as: :select2 %>
+    <%= f.association :root, as: :select2, input_html: {data: {placeholder: '請選擇', allow_clear: true}} %>
     <%= f.association :photo, as: :select2 %>
     <%= f.input :text %>
     <%= f.input :x %>
