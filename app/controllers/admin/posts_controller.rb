@@ -13,10 +13,10 @@ class Admin::PostsController < AdminController
   # GET /admin/posts/new
   def new
     @admin_post = Admin::Post.new
-    @photo = Admin::Photo.find params[:photo_id]
     if params[:photo_id].present? && params[:x].present? && params[:y].present?
+      photo = Admin::Photo.find params[:photo_id]
       @admin_post.ziltaggings.new(
-        photo: @photo,
+        photo: photo,
         x: params[:x],
         y: params[:y]
       )

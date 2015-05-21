@@ -15,7 +15,10 @@ class Admin::CommentsController < AdminController
   # GET /admin/comments/new
   def new
     @admin_comment = Admin::Comment.new
-    @admin_comment.assign_attributes params.permit(:image_url, :x, :y)
+    if params[:photo_id].present? && params[:x].present? && params[:y].present?
+      photo = Photo.find params[:photo_id]
+      @admin_comment.assign_attributes(photo: photo, x: params[:x], y: params[:y])
+    end
   end
 
   # GET /admin/comments/1/edit
@@ -57,7 +60,7 @@ class Admin::CommentsController < AdminController
     # Only allow a trusted parameter "white list" through.
     def admin_comment_params
       params.require(:admin_comment).permit(
-        :text, :email, :x, :y, :comment_id
+        :text, :email, :x, :y, :comment_id, :photo_id
       )
     end
 end
