@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :ziltaggings, only: :show
-  resources :photos, only: :index
+  resources :photos, only: %i[index show]
 
   post 'redactor/images'
 
