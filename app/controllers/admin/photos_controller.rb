@@ -54,6 +54,6 @@ class Admin::PhotosController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def admin_photo_params
-      params.require(:admin_photo).permit(:user_id, :source, :image, :image_cache, :remove_image, :remote_image_url)
+      params.require(:admin_photo).permit(:user_id, :image, :image_cache, :remove_image, :remote_image_url)
     end
 end
