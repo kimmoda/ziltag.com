@@ -9,11 +9,6 @@
 </p>
 
 <p>
-  <strong><%= Admin::Comment.human_attribute_name(:image_url) %>:</strong>
-  <%= @admin_comment.image_url %>
-</p>
-
-<p>
   <strong><%= Admin::Comment.human_attribute_name(:text) %>:</strong>
   <%= @admin_comment.text %>
 </p>
@@ -28,7 +23,7 @@
   <%= @admin_comment.y %>
 </p>
 
-<%= image_tag @admin_comment.image_url, data: {comment_sticker: ''} %>
+<%= image_tag @admin_comment.photo.image_url, data: {comment_sticker: ''} %>
 
 <hr>
 

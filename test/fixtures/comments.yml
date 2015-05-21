@@ -1,12 +1,12 @@
 tony:
   x: <%= rand(200) %>
   y: <%= rand(200) %>
-  image_url: http://localhost:3000/uploads/photos/image/339078012/tony.jpg
   email: tonytonyjan@ziltag.com
+  photo: tony
   text: 拉拉拉
 guest:
   x: <%= rand(200) %>
   y: <%= rand(200) %>
   email: ''
-  image_url: http://localhost:3000/uploads/photos/image/339078012/tony.jpg
+  photo: tony
   text: 拉拉拉我是匿名訪客

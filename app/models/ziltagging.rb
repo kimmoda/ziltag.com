@@ -5,15 +5,20 @@ class Ziltagging < ActiveRecord::Base
 
   # attributes
   delegate :title, :content, :user, to: :post
+  delegate :image_url, to: :photo
 
   # associations
   belongs_to :post
-  belongs_to :photo, foreign_key: :image_url, primary_key: :url
+  belongs_to :photo
 
   # validations
+  validates :post, :photo, presence: true
 
   # callbacks
 
   # other
+  def other_ziltaggings
+    photo.ziltaggings.where.not(id: id)
+  end
 
 end

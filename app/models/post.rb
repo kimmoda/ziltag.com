@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
 
   # associations
   belongs_to :user
-  has_many :ziltaggings
+  has_many :ziltaggings, inverse_of: :post
   accepts_nested_attributes_for :ziltaggings
 
   def photos
