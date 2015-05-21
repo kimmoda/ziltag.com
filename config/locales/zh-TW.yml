@@ -31,6 +31,7 @@ zh-TW:
         source: 來源網址
         image_url: 備份網址
         remove_image: 刪除圖片
+        remote_image_url: 透過網址上傳圖片
       user:
         email: 電子郵件
         username: 帳號

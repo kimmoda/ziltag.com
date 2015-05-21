@@ -5,6 +5,7 @@ $(document).on 'ready page:load', () ->
   return if $imgs.length == 0
   url_hash = {}
   image_urls = for img in $imgs
+    img.src
     url = URI(img.src).absoluteTo(window.location.href).normalize().href()
     url_hash[url] ||= []
     url_hash[url].push img

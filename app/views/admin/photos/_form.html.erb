@@ -3,7 +3,8 @@
 
   <div class="form-inputs">
     <%= f.association :user, as: :select2 %>
-    <%= f.input :source %>
+    <%= f.input :source, as: :url %>
+    <%= f.input :remote_image_url %>
     <%= f.input :image, as: :image_preview %>
   </div>
 

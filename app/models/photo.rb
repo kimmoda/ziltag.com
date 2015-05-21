@@ -20,7 +20,9 @@ class Photo < ActiveRecord::Base
 
   # other
   def set_source
-    update_column :source, image_url
+    uri = URI(remote_image_url.presence || image_url)
+    uri.normalize!
+    update_column :source, uri.to_s
   end
 
 end
