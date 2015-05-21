@@ -4,7 +4,7 @@ class Admin::CommentsController < AdminController
   # GET /admin/comments
   def index
     @admin_comments = Admin::Comment.includes(:user, :photo, :root).order('comments.id DESC').page(params[:page])
-    @admin_comments = @admin_comments.where(photos: {source: params[:image_url]}, root: nil) if params[:image_url]
+    @admin_comments = @admin_comments.is_root.where_image_url_is(params[:image_url]) if params[:image_url]
   end
 
   # GET /admin/comments/1

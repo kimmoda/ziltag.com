@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
   # scopes
+  scope :where_image_url_is, ->(url){ joins(:photo).where(photos: {source: url}) }
+  scope :is_root, ->{ where(root: nil) }
 
   # constants
 
