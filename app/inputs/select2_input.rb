@@ -4,8 +4,7 @@ class Select2Input < SimpleForm::Inputs::CollectionSelectInput
 
     input_html_options.deep_merge!(
       data: {
-        select2_resource: @reflection.table_name,
-        select2_text: options[:text]
+        select2_resource: @reflection.table_name
       }
     )
 
