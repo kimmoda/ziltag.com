@@ -11,7 +11,7 @@ class Admin::Select2QuerierTest < ActiveSupport::TestCase
   test '#search_column' do
     assert_equal :title, Admin::Select2Querier.new(:posts).search_column
     assert_equal :username, Admin::Select2Querier.new(:users).search_column
-    assert_equal :image, Admin::Select2Querier.new(:photos).search_column
+    assert_equal :source, Admin::Select2Querier.new(:photos).search_column
     assert_equal :text, Admin::Select2Querier.new(:comments).search_column
   end
 
