@@ -1,1 +1,100 @@
-<%= debug @photo %>
+<div class="container-fluid layout_fluid" data-layout="outer">
+    
+  <div class="fill_white" data-layout="outer_fill_white"></div>
+  <div class="custom_header_line" data-layout="custom_header_line"></div>
+  
+  <div class="container" data-layout="inner">
+    <div class="row">
+      
+      <div class="col-xs-2 col_left">
+        <%= render :partial => "/layouts/partials/sidebar" %>
+      </div>
+      
+      <div class="col-xs-10 col_right" data-layout="col_right">
+        
+        <section class="photos_show">
+          
+          <article class="photos_show_article">
+            <div class="show_msg">
+              顯示加貼：
+              <select>
+                <option value="0" selected>關</option>
+                <option value="1">開</option>
+              </select>
+            </div><!-- /.show_msg -->
+            
+            <div class="img_block">
+              <article class="c_ziltag_sticker_article">
+                <img src="http://lorempixel.com/1000/500/" class="img-responsive">
+                <div class="other_func">
+                  <ul class="list-unstyled list-inline other_func_ul">
+                    <li><a href="#">加貼留言</a></li>
+                    <li><a href="#">引用相片</a></li>
+                  </ul>
+                </div><!-- /.other_func -->
+              </article><!-- /.c_ziltag_sticker_article -->
+            </div><!-- /.img_block -->
+            
+            <div class="contents_block">
+              
+              <ul class="list-unstyled contents_block_list">
+                <% 5.times do %>
+                  <li>
+                    <div class="item_block">
+                      
+                      <h2 class="post_title"><a class="" data-ziltag-modal="" data-remote="true" href="/ziltaggings/29.json">Laudantium blanditiis eius sint est animi voluptas.</a></h2>
+                      <div class="post_content_block">
+                        <a href="/#" class="post_content_link" data-remote="true" data-ziltag-modal="">
+                          <div class="post_content">
+                            <p>Consequatur sunt expedita quos sapiente quidem omnis. Tempore adipisci sit animi id est numquam. Explicabo illo commodi. Blanditiis soluta aut.</p><p>Asperiores ut ea. Et natus commodi minima quia eaque ut numquam. Nam sunt est pariatur iure porro.</p><p>Sapien...</p>
+                          </div>
+                        </a>
+                      </div><!-- /.post_content_block -->
+                      
+                      <div class="post_user_profile">
+                        <a href="#" class="profile_link"><img class="user_profile_img" src="http://localhost:3000/uploads/users/avatar/10/thumb_8.jpg" alt="Thumb 8"></a>
+                        <div class="follow_user_block">
+                          <a href="#" class="user_name">kylie</a><br>
+                          <div class="follow_block">
+                            <a class="btn btn-default btn-xs follow_user" data-follow-user="" data-leader-id="10" data-remote="true" rel="nofollow" data-method="post" href="/follow?leader_id=10">關注用戶</a>
+                            <a class="btn btn-default btn-xs follow_user cancel" data-follow-user-cancel="" data-leader-id="10" style="display:none" data-remote="true" rel="nofollow" data-method="delete" href="/unfollow?leader_id=10">取消追蹤</a>
+                          </div><!-- /.follow_block -->
+                          <time datetime="2015-05-21 18:09:29" class="datetime">發表於 2015年5月22日 02:09</time>
+                        </div><!-- /.follow_user_div -->
+                        
+                        <ul class="list-unstyled list-inline pull-right other_funcs">
+                          <li class="share_item">
+                            <a href="#" class="btn_share"><i class="fa fa-share"></i></a>
+                            <div class="share_zone hidden" data-share-zone="">
+                              <img class="other_triangle" src="/assets/other_triangle-82eeec09d03edff1a2c1ae334ac772818588f345ac7107c5242cbedc1bd908c1.png" alt="Other triangle 82eeec09d03edff1a2c1ae334ac772818588f345ac7107c5242cbedc1bd908c1">
+                              <ul class="list-unstyled list-inline share_list">
+                                <li><a href="#" class="icon_share fb"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                                <li><a href="#" class="icon_share twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+                                <li><a href="#" class="icon_share tumblr"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+                                <li><a href="#" class="icon_share googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+                              </ul>
+                            </div><!-- /.share_zone -->
+                          </li>
+                          <li>
+                            <a href="#" class="btn_precious"><i class="fa fa-star"></i></a>
+                            <a href="#" class="btn_precious cancel"><i class="fa fa-star"></i></a>
+                          </li>
+                        </ul><!-- /.other_funcs -->
+                      </div><!-- /.post_user_profile -->
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+              
+              
+            </div><!-- /.contents_block -->
+            
+          </article><!-- /.photo_section_article -->
+          
+        </section><!-- /.photo_section -->
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /.container -->
+
+<%#= debug @photo %>
