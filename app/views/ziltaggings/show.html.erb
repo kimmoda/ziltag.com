@@ -38,7 +38,7 @@
                   </div><!-- /.profile_img -->
                   <div class="profile_basic">
                     <p class="user_name">Victor Gumdrop</p>
-                    <time datetime="<%= @ziltagging.created_at.to_s(:db) %>" class="datetime">發表於 <%= l @ziltagging.created_at, format: :long %></time>
+                    <%= time_info @ziltagging.created_at %>
                     
                     <div class="follow_block">
                       <%= following_button @ziltagging.user %>

@@ -14,7 +14,7 @@
           <%= following_button photo.user %>
         </div>
         <p class="username"><%= photo.user.username %></p>
-        <time datetime="<%= photo.created_at.to_s(:db) %>" class="post_time">發表於 <%= l photo.created_at, format: :long %></time>
+        <%= time_info photo.created_at, class: :post_time %>
       </div><!-- /.user_info -->
     </div><!-- /.top_layer -->
     
