@@ -25,7 +25,7 @@
             
             <div class="img_block">
               <article class="c_ziltag_sticker_article">
-                <img src="http://lorempixel.com/1000/500/" class="img-responsive">
+                <%= image_tag @photo.image, class: :'img-responsive' %>
                 <div class="other_func">
                   <ul class="list-unstyled list-inline other_func_ul">
                     <li><a href="#">加貼留言</a></li>
@@ -38,26 +38,25 @@
             <div class="contents_block">
               
               <ul class="list-unstyled contents_block_list">
-                <% 3.times do %>
+                <% @photo.posts.each do |post| %>
                   <li>
                     <div class="item_block">
                       
-                      <h2 class="post_title">Laudantium blanditiis eius sint est animi voluptas.</h2>
+                      <h2 class="post_title"><%= post.title %></h2>
                       <div class="post_content_block">
                         <div class="post_content">
-                          <p>Consequatur sunt expedita quos sapiente quidem omnis. Tempore adipisci sit animi id est numquam. Explicabo illo commodi. Blanditiis soluta aut.</p><p>Asperiores ut ea. Et natus commodi minima quia eaque ut numquam. Nam sunt est pariatur iure porro.</p><p>Sapien...</p>
+                          <%= summary post.content %>
                         </div>
                       </div><!-- /.post_content_block -->
                       
                       <div class="post_user_profile">
-                        <a href="#" class="profile_link"><img class="user_profile_img" src="http://localhost:3000/uploads/users/avatar/10/thumb_8.jpg" alt="Thumb 8"></a>
+                        <a href="#" class="profile_link"><%= image_tag post.user.avatar.thumb.url, class: :user_profile_img %></a>
                         <div class="follow_user_block">
-                          <a href="#" class="user_name">kylie</a><br>
+                          <a href="#" class="user_name"><%= post.user.username %></a><br>
                           <div class="follow_block">
-                            <a class="btn btn-default btn-xs follow_user" data-follow-user="" data-leader-id="10" data-remote="true" rel="nofollow" data-method="post" href="/follow?leader_id=10">關注用戶</a>
-                            <a class="btn btn-default btn-xs follow_user cancel" data-follow-user-cancel="" data-leader-id="10" style="display:none" data-remote="true" rel="nofollow" data-method="delete" href="/unfollow?leader_id=10">取消追蹤</a>
+                            <%= following_button post.user %>
                           </div><!-- /.follow_block -->
-                          <time datetime="2015-05-21 18:09:29" class="datetime">發表於 2015年5月22日 02:09</time>
+                          <%= time_tag post.created_at, class: :datetime %>
                         </div><!-- /.follow_user_div -->
                         
                         <ul class="list-unstyled list-inline pull-right other_funcs">
