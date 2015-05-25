@@ -9,7 +9,6 @@ class FollowingControllerTest < ActionController::TestCase
   end
 
   test "should post follow" do
-    @david, @tony = users(:david), users(:tony)
     refute @david.follow?(@tony)
     sign_in @david
     post :follow, leader_id: @tony.id

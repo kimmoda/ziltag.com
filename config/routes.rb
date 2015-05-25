@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     delete :unfollow
   end
 
+  controller :collecting do
+    post :collect
+    delete :uncollect
+  end
+
   namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do
     root action: :home
     resources :users, :comments, :posts, :photos, :ziltaggings
