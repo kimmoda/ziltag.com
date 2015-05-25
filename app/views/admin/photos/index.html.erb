@@ -14,7 +14,7 @@
   <tbody>
     <% @admin_photos.each do |admin_photo| %>
       <tr>
-        <td><%= link_to admin_photo.user, [:admin, admin_photo.user] %></td>
+        <td><%= link_to_if admin_photo.user, admin_photo.user, [:admin, admin_photo.user] %></td>
         <td><%= image_tag admin_photo.image.thumb %></td>
         <td>
           <%= link_to icon_tag(:search), admin_photo, title: t('scaffold.show'), class: 'btn btn-info' %>

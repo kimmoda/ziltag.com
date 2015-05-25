@@ -1,6 +1,6 @@
 <p>
   <strong><%= Admin::Photo.human_attribute_name(:user) %>:</strong>
-  <%= link_to @admin_photo.user, [:admin, @admin_photo.user] %>
+  <%= link_to_if  @admin_photo.user, @admin_photo.user, [:admin, @admin_photo.user] %>
 </p>
 
 <p>
