@@ -40,32 +40,26 @@
             <div class="contents_block">
               
               <ul class="list-unstyled msg_list">
-                <% @photo.posts.each do |post| %>
-                  <%# @photo.ziltaggings.each do |ziltagging| %>
-                  
-                  <!-- 這裡li要帶入data-ziltagging-id -->
-                  <!--
-                  <li data-ziltagging-id="<%#= ziltagging.id %>">
-                  -->
-                  <li>
+                <% @photo.ziltaggings.each do |ziltagging| %>
+                  <li data-ziltagging-id="<% ziltagging.id %>">
                   
                     <div class="item_block">
                       
-                      <h2 class="post_title"><%= post.title %></h2>
+                      <h2 class="post_title"><%= ziltagging.title %></h2>
                       <div class="post_content_block">
                         <div class="post_content">
-                          <%= summary post.content %>
+                          <%= summary ziltagging.content %>
                         </div>
                       </div><!-- /.post_content_block -->
                       
                       <div class="post_user_profile">
-                        <a href="#" class="profile_link"><%= image_tag post.user.avatar.thumb.url, class: :user_profile_img %></a>
+                        <a href="#" class="profile_link"><%= image_tag ziltagging.user.avatar.thumb.url, class: :user_profile_img %></a>
                         <div class="follow_user_block">
-                          <a href="#" class="user_name"><%= post.user.username %></a><br>
+                          <a href="#" class="user_name"><%= ziltagging.user.username %></a><br>
                           <div class="follow_block">
-                            <%= following_button post.user %>
+                            <%= following_button ziltagging.user %>
                           </div><!-- /.follow_block -->
-                          <%= time_info post.created_at %>
+                          <%= time_info ziltagging.post.created_at %>
                         </div><!-- /.follow_user_div -->
                         
                         <ul class="list-unstyled list-inline pull-right other_funcs">
