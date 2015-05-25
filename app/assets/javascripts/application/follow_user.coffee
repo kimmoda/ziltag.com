@@ -1,6 +1,6 @@
 # 此檔案定義了 data-follow-user 與 data-follow-user-cancel，需要兩兩成對使用，例：
-# <a class="btn btn-default btn-xs follow_user" data-follow-user>關注用戶</a>
-# <a class="btn btn-default btn-xs follow_user cancel" data-follow-user-cancel>取消追蹤</a>
+# <a class="btn btn-default btn-xs follow_user" data-follow-user data-leader-id="ID">關注用戶</a>
+# <a class="btn btn-default btn-xs follow_user cancel" data-follow-user-cancel data-leader-id="ID">取消追蹤</a>
 toggle = (leader_id, action) ->
   data_leader_id = "[data-leader-id=\"#{leader_id}\"]"
   data_follow_user = "#{data_leader_id}[data-follow-user]"
