@@ -14,7 +14,7 @@ $ bin/rake dev:setup
 $ rails s
 ```
 
-# 開發規矩
+# Git 流程
 
 - 一律在 `dev` 分支上開發
 - 一律使用 `git pull --rebase`。
