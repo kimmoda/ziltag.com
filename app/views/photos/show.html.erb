@@ -24,22 +24,31 @@
             </div><!-- /.show_msg -->
             
             <div class="img_block">
-              <article class="c_ziltag_sticker_article">
-                <%= image_tag @photo.image, class: :'img-responsive' %>
+              <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="false" data-ziltag-sticker-article>
+                <%= image_tag @photo.image, class: :'img-responsive', "data-show-sticker": "" %>
                 <div class="other_func">
                   <ul class="list-unstyled list-inline other_func_ul">
                     <li><a href="#">加貼留言</a></li>
                     <li><a href="#">引用相片</a></li>
                   </ul>
                 </div><!-- /.other_func -->
+                
+                <script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: @photo.ziltaggings %></script>
               </article><!-- /.c_ziltag_sticker_article -->
             </div><!-- /.img_block -->
             
             <div class="contents_block">
               
-              <ul class="list-unstyled contents_block_list">
+              <ul class="list-unstyled msg_list">
                 <% @photo.posts.each do |post| %>
+                  <%# @photo.ziltaggings.each do |ziltagging| %>
+                  
+                  <!-- 這裡li要帶入data-ziltagging-id -->
+                  <!--
+                  <li data-ziltagging-id="<%#= ziltagging.id %>">
+                  -->
                   <li>
+                  
                     <div class="item_block">
                       
                       <h2 class="post_title"><%= post.title %></h2>
@@ -93,5 +102,3 @@
     </div><!-- /.row -->
   </div><!-- /.container -->
 </div><!-- /.container -->
-
-<script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: @photo.ziltaggings %></script>
