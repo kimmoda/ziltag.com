@@ -23,6 +23,15 @@ $(window).on('load page:load', function(){
       $(this).closest("[data-photo-article]").find("a[data-ziltag-id=" + $(this).data("ziltagging-id") + "]").children("img").attr("src", "<%= asset_path('ziltag_sticker_others.png') %>");
     });
     
+    // 是否切換顯示加貼
+    $("[data-show-ziltag-messages]").on("change", function(){
+      $("[data-ziltag-messages]").toggleClass("hidden");
+      $("[data-ziltag-id]").toggleClass("hidden");
+    });
+    
+    // 發佈
+    ZiltagMessages.data_send_message();
+    
   }
   
 });

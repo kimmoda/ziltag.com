@@ -1,0 +1,63 @@
+<section class="g_ziltag_messages hidden" data-ziltag-messages>
+                  
+  <div class="main_contents">
+    
+    <div class="user_avatar_block">
+      <div class="user_avatar">
+        <img src="http://lorempixel.com/30/30/" class="img-responsive">
+      </div><!-- /.user_avatar -->
+    </div><!-- /.user_avatar_block -->
+    
+    <div class="right_block">
+      
+      <div class="triangle"></div>
+      
+      <div class="all_msg_block">
+        <ul class="list-unstyled all_msg_list" data-all-msg-list>
+          <li>
+            <div class="message_item_block">
+              <div class="msg_user_avatar">
+                <img src="http://lorempixel.com/30/30/" class="img-responsive">
+              </div><!-- /.msg_user_avatar -->
+              
+              <p>Dribble <span class="pull-right">13m</span></p>
+              <div>文字文字文字</div>
+            </div><!-- /.message_item_block -->
+          </li>
+          <li>
+            <div class="message_item_block">
+              <div class="msg_user_avatar">
+                <img src="http://lorempixel.com/30/30/" class="img-responsive">
+              </div><!-- /.msg_user_avatar -->
+              
+              <p>Dribble <span class="pull-right">13m</span></p>
+              <div>文字文字文字</div>
+            </div><!-- /.message_item_block -->
+          </li>
+        </ul>
+      </div><!-- /.all_msg_block -->
+      
+      <div class="send_msg_block" data-send-msg-block>
+        <textarea data-user-input-message></textarea>
+        <button type="button" class="btn btn-default btn-xs pull-right" data-send-message>發佈</button>
+      </div><!-- /.send_msg_block -->
+      
+    </div><!-- /.right_block -->
+    
+    
+  </div><!-- /.main_contents -->
+  
+</section><!-- /.ziltag_message -->
+
+<script id="all_msg_list_item" type="text/x-handlebars-template">
+  <li>
+    <div class="message_item_block">
+      <div class="msg_user_avatar">
+        <img src="http://lorempixel.com/30/30/" class="img-responsive">
+      </div><!-- /.msg_user_avatar -->
+      
+      <p>Dribble <span class="pull-right">13m</span></p>
+      <div>{{message}}</div>
+    </div><!-- /.message_item_block -->
+  </li>
+</script>

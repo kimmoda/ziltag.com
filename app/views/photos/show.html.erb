@@ -17,7 +17,7 @@
           <article class="photos_show_article" data-photo-article>
             <div class="show_msg">
               顯示加貼：
-              <select>
+              <select data-show-ziltag-messages>
                 <option value="0" selected>關</option>
                 <option value="1">開</option>
               </select>
@@ -32,6 +32,9 @@
                     <li><a href="#">引用相片</a></li>
                   </ul>
                 </div><!-- /.other_func -->
+                
+                <!-- 加貼 -->
+                <%= render :partial => "/partials/ziltag_messages" %>
                 
                 <script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: @photo.ziltaggings %></script>
               </article><!-- /.c_ziltag_sticker_article -->

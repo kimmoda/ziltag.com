@@ -234,6 +234,7 @@ GEM
     rails-assets-bootstrap (3.3.4)
       rails-assets-jquery (>= 1.9.1)
     rails-assets-font-awesome (4.3.0)
+    rails-assets-handlebars (3.0.3)
     rails-assets-jquery (2.1.4)
     rails-assets-select2 (4.0.0)
     rails-assets-select2-bootstrap-theme (0.1.0.beta.3)
@@ -328,6 +329,7 @@ DEPENDENCIES
   rails-assets-URIjs!
   rails-assets-bootstrap!
   rails-assets-font-awesome!
+  rails-assets-handlebars!
   rails-assets-select2 (~> 4.0.0.rc.2)!
   rails-assets-select2-bootstrap-theme!
   rails-i18n
