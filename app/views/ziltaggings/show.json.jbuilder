@@ -21,3 +21,4 @@ json.other_ziltaggings do
 end
 
 json.following_button following_button(@ziltagging.user)
+json.collecting_button collecting_button(@ziltagging.post)

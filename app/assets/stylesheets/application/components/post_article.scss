@@ -89,13 +89,7 @@ article.post_article{
               color: $main_gray_color;
               font-size: 24px;
             }
-            &.btn_precious{
-              color: $main_gray_color;
-              font-size: 24px;
-              &.cancel{
-                color: $main_red_color;
-              }
-            }
+            
           }
           &.share_item{
             position: relative;
