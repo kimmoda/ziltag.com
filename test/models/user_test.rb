@@ -36,4 +36,35 @@ class UserTest < ActiveSupport::TestCase
     @tony.unfollow!(@david)
     refute @tony.follow?(@david)
   end
+
+  test '#collect?' do
+    assert @tony.collect? posts(:david)
+    refute @david.collect? posts(:tony)
+  end
+
+  test '#collect!' do
+    refute @david.collect?(posts(:tony))
+    @david.collect!(posts(:tony))
+    assert @david.collect?(posts(:tony))
+  end
+
+  test '#uncollect' do
+    assert @tony.collect?(posts(:david))
+    @tony.uncollect!(posts(:david))
+    refute @tony.collect?(posts(:david))
+  end
+
+  test 'collect twice' do
+    refute @david.collect?(posts(:tony))
+    @david.collect!(posts(:tony))
+    @david.collect!(posts(:tony))
+    assert @david.collect?(posts(:tony))
+  end
+
+  test 'uncollect twice' do
+    assert @tony.collect?(posts(:david))
+    @tony.uncollect!(posts(:david))
+    @tony.uncollect!(posts(:david))
+    refute @tony.collect?(posts(:david))
+  end
 end

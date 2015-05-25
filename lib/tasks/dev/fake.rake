@@ -84,7 +84,13 @@ namespace 'dev:fake' do
 
     fakeup '產生追蹤' do
       User.find_each do |follower|
-        @users.sample(2).each{ |leader| Following.create follower: follower, leader: leader }
+        @users.sample(2).each{ |leader| Following.create! follower: follower, leader: leader }
+      end
+    end
+
+    fakeup '產生收藏' do
+      User.find_each do |user|
+        @posts.sample(2).each{ |post| Collecting.create! user: user, post: post }
       end
     end
 

@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_many :_leaders, class_name: Following, foreign_key: :follower_id
   has_many :followers, class_name: User, through: :_followers
   has_many :leaders, class_name: User, through: :_leaders
+  has_many :collectings
+  has_many :collected_posts, through: :collectings, source: :post
 
   # validations
   validates :email, presence: true, uniqueness: true
@@ -47,6 +49,18 @@ class User < ActiveRecord::Base
 
   def unfollow! leader
     leaders.delete(leader) if follow?(leader)
+  end
+
+  def collect? post
+    collected_posts.index(post)
+  end
+
+  def collect! post
+    collected_posts << post unless collect?(post)
+  end
+
+  def uncollect! post
+    collected_posts.delete(post) if collect?(post)
   end
 
   def to_s
