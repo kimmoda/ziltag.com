@@ -1,11 +1,11 @@
 <p>
   <strong><%= Admin::Ziltagging.human_attribute_name(:post) %>:</strong>
-  <%= @admin_ziltagging.post %>
+  <%= link_to @admin_ziltagging.title, [:admin, @admin_ziltagging.post] %>
 </p>
 
 <p>
   <strong><%= Admin::Ziltagging.human_attribute_name(:photo) %>:</strong>
-  <%= @admin_ziltagging.photo %>
+  <%= link_to @admin_ziltagging.image_url, [:admin, @admin_ziltagging.photo] %>
 </p>
 
 <p>
