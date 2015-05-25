@@ -14,7 +14,7 @@
         
         <section class="photos_show">
           
-          <article class="photos_show_article">
+          <article class="photos_show_article" data-photo-article>
             <div class="show_msg">
               顯示加貼：
               <select>
@@ -41,7 +41,7 @@
               
               <ul class="list-unstyled msg_list">
                 <% @photo.ziltaggings.each do |ziltagging| %>
-                  <li data-ziltagging-id="<% ziltagging.id %>">
+                  <li data-ziltagging-id="<%= ziltagging.id %>">
                   
                     <div class="item_block">
                       

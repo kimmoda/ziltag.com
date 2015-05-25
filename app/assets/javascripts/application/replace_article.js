@@ -8,7 +8,7 @@ $(document).on('ready page:load', function(){
     
     // 貼上sticker
     ZiltagSticker.appendImgOnModal();
-    ZiltagSticker.appendOtherZiltags($("article[data-ziltag-sticker-article][data-is-modal='true']"), JSON.stringify(data.other_ziltaggings), false);
+    ZiltagSticker.appendOtherZiltags($("article[data-ziltag-sticker-article][data-is-modal='true']"), JSON.stringify(data.other_ziltaggings), true, false, false);
     
   });
 });
