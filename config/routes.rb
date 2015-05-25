@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :ziltaggings, only: :show
   resources :photos, only: :index
 
+  post 'redactor/images'
+
   controller :following do
     post :follow
     delete :unfollow
