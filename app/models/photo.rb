@@ -13,7 +13,7 @@ class Photo < ActiveRecord::Base
   has_many :comments
 
   # validations
-  validates :user, :image, presence: true
+  validates :image, presence: true
 
   # callbacks
   after_save :set_source, if: ->{ source.blank? }
