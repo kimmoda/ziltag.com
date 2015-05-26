@@ -4,6 +4,6 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find params[:id]
+    @photo = Photo.includes(posts: :user).find params[:id]
   end
 end
