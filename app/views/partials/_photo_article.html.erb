@@ -1,7 +1,7 @@
 <article class="photo_article" data-photo-article>
   <div class="ziltag_img text-center">
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="false" data-ziltag-sticker-article>
-      <%= image_tag photo.image_url, class: :'img-responsive', "data-show-sticker": "" %>
+      <%= link_to image_tag(photo.image_url, class: :'img-responsive', "data-show-sticker": ""), photo %>
       <script type="application/json" id="all_ziltaggings"><%= raw render partial: 'ziltaggings/ziltaggings.json', object: photo.ziltaggings %></script>
     </article>
   </div><!-- /.ziltag_img -->
@@ -14,7 +14,7 @@
           <%= following_button photo.user %>
         </div>
         <p class="username"><%= photo.user.username %></p>
-        <time datetime="<%= photo.created_at.to_s(:db) %>" class="post_time">發表於 <%= l photo.created_at, format: :long %></time>
+        <%= time_info photo.created_at, class: :post_time %>
       </div><!-- /.user_info -->
     </div><!-- /.top_layer -->
     

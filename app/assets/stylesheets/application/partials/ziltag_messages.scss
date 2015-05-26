@@ -1,0 +1,93 @@
+/* 加貼 */
+
+@import "../colors";
+section.g_ziltag_messages{
+  position: absolute;
+  width:180px;
+  top:20px;
+  left:10px;
+  z-index: 5;
+  div.main_contents{
+    width:100%;
+    padding-left:40px;
+    
+    div.user_avatar_block{
+      position: absolute;
+      top:0;
+      left:0;
+      div.user_avatar{
+        width:30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border:2px solid $main_white_color;
+      }
+    }
+    
+    div.right_block{
+      background-color: $main_white_color;
+      padding:10px;
+      border-radius: 3px;
+      position: relative;
+      box-shadow: 0 5px 5px $fifth_gray_color;
+      div.triangle{
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 8px 8px 0;
+        border-color: transparent $main_white_color transparent transparent;
+        position: absolute;
+        top:7px;
+        left:-7px;
+      }
+      div.all_msg_block{
+        ul.all_msg_list{
+          > li{
+            border-bottom: 1px solid $sixth_gray_color;
+            padding:{
+              top:5px;
+              bottom:5px;
+            };
+            div.message_item_block{
+              padding-left:30px;
+              position: relative;
+              div.msg_user_avatar{
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top:0;
+                left:0;
+                border-radius: 50%;
+                overflow: hidden;
+              }
+              
+              
+              p{
+                margin:0;
+              }
+            }
+            
+          }
+        }
+      }
+      
+      div.send_msg_block{
+        &:after{
+          content: "";
+          clear:both;
+        }
+        &:after{
+          display: block;
+        }
+        textarea{
+          width:100%;
+          outline: none;
+          border:1px solid $sixth_gray_color;
+        }
+      }
+    }
+    
+    
+    
+  }
+}

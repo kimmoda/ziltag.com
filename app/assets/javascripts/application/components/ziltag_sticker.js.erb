@@ -117,15 +117,23 @@ var ZiltagSticker = {
     }
   },
   
-  // 貼上所有其它灰色的樂貼
-  appendOtherZiltags: function(articleElement, data, ziltag_link_hover){
+  /**
+   * 貼上所有其它灰色的樂貼
+   *
+   * @param articleElement: <article> 的元素
+   * @param data: ziltag 的資料，即座標
+   * @param is_remote: bool，點擊是否要去抓資料
+   * @param ziltag_link_hover: bool，指定滑鼠移過時是否要換樂貼圖(紅或灰)
+   * @param interaction: 如無互動模式，即代入false，其它的目前有 "slide_to_post"
+   */
+  appendOtherZiltags: function(articleElement, data, is_remote, ziltag_link_hover, interaction){
     var all_other_ziltags = JSON.parse(data);
     var that = this;
     
     switch( $(articleElement).data("ziltag-mode") ){
       
       case this.mode[1]:
-        var original_image_width = $(articleElement).children("img[data-show-sticker]")[0].naturalWidth;
+        var original_image_width = document.querySelector("img[data-show-sticker]").naturalWidth;
         if( original_image_width > $(articleElement).parent().width() ){
           this.ratio = parseInt($(articleElement).parent().width()) / original_image_width;
         }else{
@@ -146,13 +154,46 @@ var ZiltagSticker = {
       that.place.x = parseInt(value.x * that.ratio);
       that.place.y = parseInt(value.y * that.ratio);
       
-      if(ziltag_link_hover){
-        $(articleElement).append("<a href='" + value.link + ".json' data-remote data-replace-article data-ziltag-id='" + value.id + "' data-ziltag-link><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+      if(is_remote){
+        if(ziltag_link_hover){
+          $(articleElement).append("<a href='" + value.link + ".json' data-ziltag-interaction='" + interaction + "' data-remote data-replace-article data-ziltag-id='" + value.id + "' data-ziltag-link><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+        }else{
+          $(articleElement).append("<a href='" + value.link + ".json' data-ziltag-interaction='" + interaction + "' data-remote data-replace-article data-ziltag-id='" + value.id + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+        }
       }else{
-        $(articleElement).append("<a href='" + value.link + ".json' data-remote data-replace-article data-ziltag-id='" + value.id + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+        if(ziltag_link_hover){
+          $(articleElement).append("<a href='#' data-ziltag-interaction='" + interaction + "' data-ziltag-id='" + value.id + "' data-ziltag-link><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+        }else{
+          $(articleElement).append("<a href='#' data-ziltag-interaction='" + interaction + "' data-ziltag-id='" + value.id + "'><img src=\"<%= asset_path('ziltag_sticker_others.png') %>\" class='ziltag_sticker' style='left:" + that.place.x + "px;top:" + that.place.y + "px;' data-sticker-others></a>");
+        }
       }
       
+      
+      
     });
+  },
+  
+  // 樂貼互動模式
+  interactionMode: function(){
+    
+    $("article[data-ziltag-sticker-article]").find("a[data-ziltag-id]").each(function(e){
+      $(this).on("click", function(e){
+        e.preventDefault();
+        switch( $(this).data("ziltag-interaction") ){
+          case "slide_to_post":
+            $('html, body').animate({
+              scrollTop: $("li[data-ziltagging-id=" + $(this).attr("data-ziltag-id") + "]").offset().top - 62
+            }, 750);
+            break;
+          default:
+            break;
+        }
+      });
+      
+      
+      
+    });
+    
   },
   
   // 比較寬、高，哪個數值較大
