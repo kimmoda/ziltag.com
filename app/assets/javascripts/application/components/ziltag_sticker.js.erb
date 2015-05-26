@@ -133,7 +133,7 @@ var ZiltagSticker = {
     switch( $(articleElement).data("ziltag-mode") ){
       
       case this.mode[1]:
-        var original_image_width = $(articleElement).children("img[data-show-sticker]")[0].naturalWidth;
+        var original_image_width = document.querySelector("img[data-show-sticker]").naturalWidth;
         if( original_image_width > $(articleElement).parent().width() ){
           this.ratio = parseInt($(articleElement).parent().width()) / original_image_width;
         }else{
