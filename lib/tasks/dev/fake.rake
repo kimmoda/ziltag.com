@@ -94,6 +94,16 @@ namespace 'dev:fake' do
       end
     end
 
+    fakeup '產生中文樂貼' do
+      post = @users.sample.posts.create!(
+        title: '測試',
+        content: "<p>#{'測試'*125}</p>",
+      )
+      post.ziltaggings.create!(
+        x: rand(100), y: rand(100), photo: @photos.sample
+      )
+    end
+
   end
 
   task hook_activerecord: :environment do
