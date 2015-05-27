@@ -3,7 +3,7 @@
 @import "../colors";
 article.post_article{
   border:1px solid $third_gray_color;
-  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: $main_white_color;
   box-shadow: 0 5px 5px $third_gray_color;
   &:before, &:after{
