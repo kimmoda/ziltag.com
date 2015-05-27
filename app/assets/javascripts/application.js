@@ -3,6 +3,6 @@
 //= require bootstrap
 //= require turbolinks
 //= require handlebars
-//= require imagesloaded/imagesloaded.pkgd.js
+//= require imagesloaded/imagesloaded.pkgd
 //= require masonry/dist/masonry.pkgd
 //= require_tree ./application
