@@ -1,0 +1,10 @@
+body[data-controller="photos"][data-action="index"]{
+  section.photos_index > div.item{
+    width: 300px;
+    margin-bottom: 10px;
+
+    > img{
+      width: 100%;
+    }
+  }
+}
