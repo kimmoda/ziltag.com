@@ -29,6 +29,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-select2-bootstrap-theme'
   gem 'rails-assets-handlebars'
   gem 'rails-assets-masonry'
+  gem 'rails-assets-imagesloaded'
 end
 
 group :development do

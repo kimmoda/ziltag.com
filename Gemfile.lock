@@ -245,6 +245,9 @@ GEM
       rails-assets-get-style-property (~> 1.0)
     rails-assets-get-style-property (1.0.4)
     rails-assets-handlebars (3.0.3)
+    rails-assets-imagesloaded (3.1.8)
+      rails-assets-eventEmitter (~> 4.0)
+      rails-assets-eventie (>= 1.0.4, < 2)
     rails-assets-jquery (2.1.4)
     rails-assets-masonry (3.3.0)
       rails-assets-fizzy-ui-utils (~> 1.0.1)
@@ -353,6 +356,7 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-font-awesome!
   rails-assets-handlebars!
+  rails-assets-imagesloaded!
   rails-assets-masonry!
   rails-assets-select2 (~> 4.0.0.rc.2)!
   rails-assets-select2-bootstrap-theme!
