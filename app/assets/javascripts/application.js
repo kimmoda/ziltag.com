@@ -3,4 +3,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require handlebars
+//= require masonry
 //= require_tree ./application
