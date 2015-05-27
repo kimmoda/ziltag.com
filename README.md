@@ -68,17 +68,3 @@ fi
 ```sh
 chmod +x .git/hooks/commit-msg
 ```
-
-# 樂貼格式
-
-```html
-<div class="ziltag_wrapper" data-ziltag-wrapper>
-  <img src="">
-  <a class="ziltag_sticker" data-ziltag-sticker data-x="10" data-y="10"></a>
-  <a class="ziltag_sticker" data-ziltag-sticker data-x="10" data-y="390"></a>
-  <a class="ziltag_sticker" data-ziltag-sticker data-x="190" data-y="390"></a>
-  <a class="ziltag_sticker" data-ziltag-sticker data-x="190" data-y="10"></a>
-  <a class="ziltag_sticker" data-ziltag-sticker data-x="17" data-y="332"></a>
-  ...
-</div>
-```
