@@ -20,6 +20,15 @@ header.header{
   div.col_logo{
   }
   div.col_search{
+    padding-left: 0;
+  }
+  div.custom_header_line{
+    position: absolute;
+    bottom:0;
+    right:0;
+    height: 1px;
+    border-top:1px solid $main_gray_color;
+    z-index: 999;
   }
   div.col_user_info{
     @media screen and (max-width:991px){

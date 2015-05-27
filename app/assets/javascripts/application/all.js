@@ -9,30 +9,16 @@ var allJs = {
     }else{
       var left_side_width = ($(window).width() - $("div[data-layout=inner]").width()) / 2;
     }
-    $("div[data-layout=outer]").children("div[data-layout=outer_fill_white]").css("width", left_side_width + "px");
     
     // 針對 div[data-layout=custom_header_line] 分隔線
     var col_right = $("div[data-layout=col_right]").outerWidth();
-    $("div[data-layout=custom_header_line]").css("width", (col_right + left_side_width) + "px");
+    $("div[data-layout=custom_header_line]").css("width", (col_right + left_side_width + 1) + "px");
     
     // 調整 aside.aside 的高度及寬度
-    $("aside[data-layout=aside]").css("height", $("div[data-layout=col_right]").outerHeight() + "px");
+    $("aside[data-layout=aside]").css("height", ($(window).height() - 60) + "px");
     $("aside[data-layout=aside]").css({
       "padding-left": left_side_width + "px",
       "width": ( left_side_width + $("div[data-layout=col_logo]").width() ) + "px"
-    });
-    
-    
-    $(window).on("scroll", function(){
-      if( $(window).scrollTop() >= 1 ){
-        $("header.header").css({
-          "border-bottom": "1px solid #979797"
-        });
-      }else{
-        $("header.header").css({
-          "border-bottom": "0"
-        });
-      }
     });
     
   },

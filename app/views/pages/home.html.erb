@@ -48,11 +48,11 @@
       
       
       
-      <div class="col-xs-10 col-xs-offset-2">
+      <div class="col-xs-10 col-xs-offset-2 col_right" data-layout="col_right">
         <%= flash_messages %>
         
         
-        <section class="section_post" style="border:1px solid red;">
+        <section class="section_post">
           <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
         </section>
         

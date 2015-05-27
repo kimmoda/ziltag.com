@@ -8,6 +8,8 @@ aside.aside{
   top:60px;
   left:0;
   min-width: 128px;
+  overflow: scroll;
+  padding-bottom: 10px;
   ul.aside_list{
     padding:{
       top:10px;
