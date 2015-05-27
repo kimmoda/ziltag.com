@@ -1,3 +1,4 @@
+<!--
 <div class="container-fluid layout_fluid" data-layout="outer">
     
   <div class="fill_white" data-layout="outer_fill_white"></div>
@@ -6,18 +7,60 @@
   <div class="container" data-layout="inner">
     <div class="row">
       
-      <div class="col-xs-2 col_left">
-        <%= render :partial => "/layouts/partials/sidebar" %>
+      <div class="col-xs-2 col_left" style="position:fixed;top:60px;min-width:128px;">
+        <%#= render :partial => "/layouts/partials/sidebar" %>
       </div>
       
-      <div class="col-xs-10 col_right" data-layout="col_right">
-        <%= flash_messages %>
-        <section class="section_post">
-          <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
-        </section><!-- /.section_post -->
+      <div class="col-xs-10 col-xs-offset-2 col_right" data-layout="col_right">
+        <%#= flash_messages %>
+        <section class="section_post" style="border:1px solid red;">
+          <%#= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
+        </section>
       </div>
-    </div><!-- /.row -->
-  </div><!-- /.container -->
-</div><!-- /.container -->
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+-->
+
+
+<div class="container-fluid layout_fluid" >
+  
+  <%= render :partial => "/layouts/partials/sidebar" %>
+  
+  <div class="container" data-layout="inner">
+    <div class="row">
+      
+      
+      
+      <div class="col-xs-10 col-xs-offset-2">
+        <%= flash_messages %>
+        
+        
+        <section class="section_post" style="border:1px solid red;">
+          <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
+        </section>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 
 <%= render :partial => "/partials/modals/post_ziltag_article_modal" %>
