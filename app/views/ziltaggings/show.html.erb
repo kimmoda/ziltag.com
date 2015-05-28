@@ -1,49 +1,77 @@
 <div class="container-fluid layout_fluid" data-layout="outer">
     
-  <div class="fill_white" data-layout="outer_fill_white"></div>
-  <div class="custom_header_line" data-layout="custom_header_line"></div>
+  <%= render :partial => "/layouts/partials/sidebar" %>
   
   <div class="container" data-layout="inner">
     <div class="row">
       
-      <div class="col-xs-2 col_left">
-        <%= render :partial => "/layouts/partials/sidebar" %>
-      </div>
-      
-      <div class="col-xs-10 col_right" data-layout="col_right">
+      <div class="col-xs-10 col-xs-offset-2 col_right" data-layout="col_right">
         <%= flash_messages %>
         <section class="ziltag_single_page">
           
           <article class="post_ziltag_article">
-            <header class="post_header">
+            
+            
+            <section class="main_content">
+              
+              <div class="btn-group switch_func" data-component="tag_or_msg">
+                <button type="button" class="btn btn-default btn-sm active">樂貼</button>
+                <button type="button" class="btn btn-default btn-sm">留言</button>
+              </div><!-- /.switch_func -->
+              
+              <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
+                <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y}, "data-show-sticker": "" %>
+                
+                <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
+                
+                <div class="func_block">
+                  <ul class="list-unstyled list-inline func_block_list">
+                    <li><a href="#">留言</a></li>
+                    <li><a href="#">新增樂貼</a></li>
+                  </ul>
+                </div><!-- /.func_block -->
+              </article><!-- /.c_ziltag_sticker_article -->
+              
+              <h2 class="post_title"><%= @ziltagging.title %></h2>
               
               <div class="user_profile_info">
                 
                 <div class="profile_info_block">
                   
                   <div class="pull-right operation_block">
-                    <div class="btn_cross text-right">
-                      <a href="#" class="btn_remove"><i class="fa fa-remove fa-2x"></i></a>
-                    </div><!-- /.btn_cross -->
                     <ul class="list-unstyled list-inline other_list">
-                      <li><a href="#"><i class="fa fa-share fa-2x"></i></a></li>
+                      <li>
+                        
+                        <button href="#" data-container="body" data-html="true" data-toggle="popover" data-placement="top"
+                          data-content='
+                          <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=台北市內湖區瑞光路192號&z=16&output=embed&t="></iframe>
+                          <div class="address_block_in_popover">
+                            <p class="para1">Ziltag 微廣科技總部</p>
+                            <p class="para2">台北市內湖區瑞光路192號</p>
+                            <ul class="list-unstyled list-inline other_list_in_popover">
+                              <li><a href="#"><i class="fa fa-share"></i></a></li>
+                              <li><%= collecting_button @ziltagging.post %></li>
+                            </ul>
+                          </div>' data-component="show_popover"><i class="fa fa-map-marker"></i>
+                        </button>
+                        
+                      </li>
+                      <li><a href="#"><i class="fa fa-share"></i></a></li>
                       <li><%= collecting_button @ziltagging.post %></li>
-                      <li><a href="#"><i class="fa fa-comment fa-2x"></i></a></li>
                     </ul>
                   </div><!-- /.operation_block -->
-                  
                   
                   <div class="profile_img_block">
                     <%= image_tag @ziltagging.user.avatar.thumb, class: :profile_img %>
                   </div><!-- /.profile_img -->
                   <div class="profile_basic">
-                    <p class="user_name">Victor Gumdrop</p>
+                    <div class="user_name_and_follow">
+                      <p class="user_name">Victor Gumdrop</p>
+                      <div class="follow_block">
+                        <%= following_button @ziltagging.user %>
+                      </div><!-- /.follow_block -->
+                    </div>
                     <%= time_info @ziltagging.created_at %>
-                    
-                    <div class="follow_block">
-                      <%= following_button @ziltagging.user %>
-                    </div><!-- /.follow_block -->
-                    
                   </div><!-- /.profile_basic -->
                 </div><!-- /.profile_info_block -->
                 
@@ -51,31 +79,8 @@
                 
               </div><!-- /.user_profile_info -->
               
-            </header><!-- /.post_header -->
-            
-            <section class="main_content">
-              <h2 class="post_title"><%= @ziltagging.title %></h2>
-              
-              <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
-                <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y}, "data-show-sticker": "" %>
-                
-                <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
-              </article><!-- /.c_ziltag_sticker_article -->
-              
-              <div class="address_block">
-                <div class="left_block">
-                  <i class="fa fa-map-marker fa-2x"></i>
-                </div>
-                <div class="right_block">
-                  <p class="para1">Ziltag 微廣科技總部</p>
-                  <p class="para2">台北市內湖區瑞光路192號</p>
-                  
-                </div><!-- /.right_block -->
-                <a href="#" class="btn btn-default btn-xs add_reminder">新增提醒</a>
-              </div><!-- /.address_block -->
-              
               <div class="context_block"><%= sanitize @ziltagging.content %></div><!-- /.context_block -->
-              
+              <button class="scroll_to_top" data-component="scroll_top"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
             </section><!-- /.main_content -->
             
           </article><!-- /.post_ziltag_article -->

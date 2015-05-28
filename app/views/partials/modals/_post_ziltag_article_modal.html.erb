@@ -1,18 +1,56 @@
 <article class="post_ziltag_article mode_modal" data-modal-status="close" data-modal-post-ziltag-article>
-  <header class="post_header">
+  
+  
+  <section class="main_content">
+    
+    <div class="btn_cross text-right">
+      <a href="#" class="btn_remove" data-btn-remove><i class="fa fa-remove fa-2x"></i></a>
+    </div><!-- /.btn_cross -->
+    
+    <div class="btn-group switch_func" data-component="tag_or_msg">
+      <button type="button" class="btn btn-default btn-sm active">樂貼</button>
+      <button type="button" class="btn btn-default btn-sm">留言</button>
+    </div><!-- /.switch_func -->
+    
+    <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-is-modal="true" data-remove-ziltag="true" data-ziltag-sticker-article>
+      <img class="img-responsive" data-ziltag-x="", data-ziltag-y="" data-image_url data-show-sticker>
+      <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
+      
+      <div class="func_block">
+        <ul class="list-unstyled list-inline func_block_list">
+          <li><a href="#">留言</a></li>
+          <li><a href="#">新增樂貼</a></li>
+        </ul>
+      </div><!-- /.func_block -->
+    </article><!-- /.c_ziltag_sticker_article -->
+    
+    <h2 class="post_title" data-post-title></h2>
     
     <div class="user_profile_info">
       
       <div class="profile_info_block">
         
         <div class="pull-right operation_block">
-          <div class="btn_cross text-right">
-            <a href="#" class="btn_remove" data-btn-remove><i class="fa fa-remove fa-2x"></i></a>
-          </div><!-- /.btn_cross -->
+          
           <ul class="list-unstyled list-inline other_list">
-            <li><a href="#"><i class="fa fa-share fa-2x"></i></a></li>
+            <li>
+                        
+              <button href="#" data-html="true" data-toggle="popover" data-placement="top"
+                data-content='
+                <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=台北市內湖區瑞光路192號&z=16&output=embed&t="></iframe>
+                <div class="address_block_in_popover">
+                  <p class="para1">Ziltag 微廣科技總部</p>
+                  <p class="para2">台北市內湖區瑞光路192號</p>
+                  <ul class="list-unstyled list-inline other_list_in_popover">
+                    <li><a href="#"><i class="fa fa-share"></i></a></li>
+                    <li data-precious-block></li>
+                  </ul>
+                </div>' data-component="show_popover"><i class="fa fa-map-marker"></i>
+              </button>
+              
+            </li>
+            <li><a href="#"><i class="fa fa-share"></i></a></li>
             <li data-precious-block></li>
-            <li><a href="#"><i class="fa fa-comment fa-2x"></i></a></li>
           </ul>
         </div><!-- /.operation_block -->
         
@@ -21,11 +59,13 @@
           <img class="profile_img" data-user-avatar>
         </div><!-- /.profile_img -->
         <div class="profile_basic">
-          <p class="user_name" data-user-username></p>
-          <time datetime="" class="datetime">發表於 <span data-dreated-at></span></time>
           
-          <div class="follow_block" data-follow-block>
-          </div><!-- /.follow_block -->
+          <div class="user_name_and_follow">
+            <p class="user_name" data-user-username></p>
+            <div class="follow_block" data-follow-block></div><!-- /.follow_block -->
+          </div>
+          
+          <time datetime="" class="datetime">發表於 <span data-dreated-at></span></time>
           
         </div><!-- /.profile_basic -->
       </div><!-- /.profile_info_block -->
@@ -34,30 +74,9 @@
       
     </div><!-- /.user_profile_info -->
     
-  </header><!-- /.post_header -->
-  
-  <section class="main_content">
-    <h2 class="post_title" data-post-title></h2>
-    
-    <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-is-modal="true" data-remove-ziltag="true" data-ziltag-sticker-article>
-      <img class="img-responsive" data-ziltag-x="", data-ziltag-y="" data-image_url data-show-sticker>
-      <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
-    </article><!-- /.c_ziltag_sticker_article -->
-    
-    <div class="address_block">
-      <div class="left_block">
-        <i class="fa fa-map-marker fa-2x"></i>
-      </div>
-      <div class="right_block">
-        <p class="para1" data-location-name></p>
-        <p class="para2" data-location-address></p>
-        
-      </div><!-- /.right_block -->
-      <a href="#" class="btn btn-default btn-xs add_reminder">新增提醒</a>
-    </div><!-- /.address_block -->
     
     <div class="context_block" data-post-content></div><!-- /.context_block -->
-    
+    <button class="scroll_to_top" data-component="scroll_top"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
   </section><!-- /.main_content -->
   
 </article><!-- /.post_ziltag_article -->
