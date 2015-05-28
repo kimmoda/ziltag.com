@@ -17,12 +17,11 @@
             <%= div_for photo, class: 'item ziltag_wrapper' do %>
               <%= image_tag photo.image_url %>
               <% photo.ziltaggings.each do |ziltagging| %>
-                <%= link_to ''.freeze, ziltagging_path(ziltagging, format: :json), remote: true, data: {x: ziltagging.x, y: ziltagging.y} %>
+                <%= link_to ''.freeze, ziltagging_path(ziltagging, format: :json), remote: true, data: {x: ziltagging.x, y: ziltagging.y, ziltag_modal: ''} %>
               <% end %>
             <% end %>
           <% end %>
         </section>
-
       </div>
     </div><!-- /.row -->
   </div><!-- /.container -->
