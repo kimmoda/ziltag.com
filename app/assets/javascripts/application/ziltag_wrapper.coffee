@@ -1,8 +1,8 @@
-ziltag_sticker = () ->
+ziltag_wrapper = () ->
   for wrapper in document.getElementsByClassName('ziltag_wrapper')
-    img = wrapper.getElementsByTagName('img')[0]
-    tags = wrapper.getElementsByClassName('ziltag_sticker')
-    do (img, tags) ->
+    do (wrapper) ->
+      img = wrapper.getElementsByTagName('img')[0]
+      tags = wrapper.getElementsByTagName('a')
       img.addEventListener 'load', () ->
         ratio_x = img.clientWidth / img.naturalWidth
         ratio_y = img.clientHeight / img.naturalHeight
@@ -11,4 +11,4 @@ ziltag_sticker = () ->
           tag.style.left = tag.dataset.x * ratio_x + 'px'
           tag.style.top = tag.dataset.y * ratio_y + 'px'
 
-document.addEventListener event, ziltag_sticker for event in ['DOMContentLoaded', 'page:load']
+document.addEventListener event, ziltag_wrapper for event in ['DOMContentLoaded', 'page:load']

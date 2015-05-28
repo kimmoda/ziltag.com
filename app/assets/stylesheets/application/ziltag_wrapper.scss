@@ -1,0 +1,18 @@
+.ziltag_wrapper{
+  position: relative;
+
+  a{
+    position: absolute;
+    background-image: image-url('ziltag_sticker_others.png');
+    width: 34px;
+    height: 29px;
+    opacity: 0.8;
+    z-index: 1;
+    transition: opacity 0.5s;
+  }
+
+  a:hover{
+    opacity: 1;
+    background-image: image-url('ziltag_sticker.png');
+  }
+}

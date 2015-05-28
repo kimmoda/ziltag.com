@@ -6,18 +6,18 @@
 <a href="/ziltaggings/1.json" data-remote data-ziltag-model></a>
 ```
 
-# `.ziltag_wrapper`、`.ziltag_sticker`
+# `.ziltag_wrapper`
 
 用於將樂貼顯示在圖片上。
 
 ```html
 <div class="ziltag_wrapper">
   <img src="">
-  <a class="ziltag_sticker" data-x="10" data-y="10"></a>
-  <a class="ziltag_sticker" data-x="10" data-y="390"></a>
-  <a class="ziltag_sticker" data-x="190" data-y="390"></a>
-  <a class="ziltag_sticker" data-x="190" data-y="10"></a>
-  <a class="ziltag_sticker" data-x="17" data-y="332"></a>
+  <a data-x="10" data-y="10"></a>
+  <a data-x="10" data-y="390"></a>
+  <a data-x="190" data-y="390"></a>
+  <a data-x="190" data-y="10"></a>
+  <a data-x="17" data-y="332"></a>
   ...
 </div>
 ```
