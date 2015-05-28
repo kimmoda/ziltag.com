@@ -21,10 +21,6 @@ $ rails s
 - 1 個 issue 1 個 branch，命名方式為 `issues/#ID`。
 - branch 開發好後送 pull request，只有 PM 可以 merge
 
-# 部署方式
-
-push 後會自動測試、測試通過後會自動部署
-
 # Email 預覽
 
 http://localhost:3000/rails/mailers/
@@ -39,7 +35,26 @@ http://localhost:3000/rails/mailers/
 - Bower 在 rails 上的使用是在 `Gemfile` 定義 gem，以 `rails-assets-名稱` 的方式安裝。
 - Gemfile 新增東西後要 `bundle install`，然後再重開 server，Rails 才抓得到。
 - 盡量使用有 bower 控管的 JS/CSS 函式庫，若函式庫非 bower 所管理，則丟到 `vender/assets/{stylesheets,javascripts}` 下，並在 `application.{js,css}` 中透過註解 `require` 引用。
-- 為了支援 rails turbolinks 的加速功能，載入頁面除了監聽 `ready` 之外，也請監聽 `page:load` 事件，例如 `$(document).on('ready page:load', myListener);`
+- 為了支援 rails turbolinks 的加速功能，載入頁面需要額外監聽 `page:load` 事件，詳見下方範例。
+
+若有 js 檔案需要再某個 controller 的某個 action 下執行，需幾檔案放在 `app/assets/javascripts/application/{CONTROLLER_NAME}/{ACTION_NAME}.js`，並使用 `run_in`：
+
+```js
+// 檔案請放在 application/photos/index.js
+run_in('photos', 'index', function(){
+  // 此函式會在進入 photos#index 頁面的時候執行
+});
+```
+
+監聽 turbolinks 事件示範：
+
+```js
+// 純 JS（建議）
+main(function(){});
+
+// 使用 jQuery（不建議）
+$(document).on('ready page:load', function(){})
+```
 
 # 登入登出
 

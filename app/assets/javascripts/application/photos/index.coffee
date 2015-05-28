@@ -1,5 +1,4 @@
-photos_index = () ->
-  return unless document.body.dataset.controller == 'photos' && document.body.dataset.action == 'index'
+run_in 'photos', 'index', () ->
   container = document.querySelector('section.photos_index')
   imagesLoaded container, () ->
     msnry = new Masonry container, {
@@ -7,4 +6,3 @@ photos_index = () ->
       gutter: 10
       itemSelector: '.item'
     }
-document.addEventListener event, photos_index for event in ['DOMContentLoaded', 'page:load']
