@@ -74,6 +74,7 @@ var allJs = {
     $("body").css({
       "overflow": "hidden"
     });
+    
   },
   // 動態縮回
   data_ziltag_modal_layout_back: function(){
