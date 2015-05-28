@@ -3,18 +3,20 @@
 # <a href="#" class="btn_precious cancel" data-precious-cancel data-post-id="ID"><i class="fa fa-star"></i></a>
 toggle = (post_id, action) ->
   data_post_id = "[data-post-id=\"#{post_id}\"]"
-  data_precious = "#{data_post_id}[data-precious]"
-  data_precious_cancle = "#{data_post_id}[data-precious-cancel]"
+  preciouss = document.querySelectorAll "#{data_post_id}[data-precious]"
+  precious_cancles = document.querySelectorAll "#{data_post_id}[data-precious-cancel]"
   switch action
     when 'collect'
-      $(data_precious).hide()
-      $(data_precious_cancle).show()
+      precious.style.display = 'none' for precious in preciouss
+      precious_cancle.style.display = '' for precious_cancle in precious_cancles
     when 'uncollect'
-      $(data_precious_cancle).hide()
-      $(data_precious).show()
+      precious_cancle.style.display = 'none' for precious_cancle in precious_cancles
+      precious.style.display = '' for precious in preciouss
 
-$(document).on 'ready page:load', () ->
-  $('body').on 'ajax:success', '[data-precious]', () ->
+main = () ->
+  $(document.body).on 'ajax:success', '[data-precious]', () ->
     toggle(this.dataset.postId, 'collect')
-  $('body').on 'ajax:success', '[data-precious-cancel]', () ->
+  $(document.body).on 'ajax:success', '[data-precious-cancel]', () ->
     toggle(this.dataset.postId, 'uncollect')
+
+document.addEventListener event, main for event in ['DOMContentLoaded', 'page:load']

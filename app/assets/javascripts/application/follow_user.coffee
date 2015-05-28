@@ -3,18 +3,20 @@
 # <a class="btn btn-default btn-xs follow_user cancel" data-follow-user-cancel data-leader-id="ID">取消追蹤</a>
 toggle = (leader_id, action) ->
   data_leader_id = "[data-leader-id=\"#{leader_id}\"]"
-  data_follow_user = "#{data_leader_id}[data-follow-user]"
-  data_follow_user_cancle = "#{data_leader_id}[data-follow-user-cancel]"
+  follow_users = document.querySelectorAll "#{data_leader_id}[data-follow-user]"
+  follow_users_cancle = document.querySelectorAll "#{data_leader_id}[data-follow-user-cancel]"
   switch action
     when 'follow'
-      $(data_follow_user).hide()
-      $(data_follow_user_cancle).show()
+      follow_user.style.display = 'none' for follow_user in follow_users
+      follow_user_cancle.style.display = '' for follow_user_cancle in follow_users_cancle
     when 'unfollow'
-      $(data_follow_user_cancle).hide()
-      $(data_follow_user).show()
+      follow_user_cancle.style.display = 'none' for follow_user_cancle in follow_users_cancle
+      follow_user.style.display = '' for follow_user in follow_users
 
-$(document).on 'ready page:load', () ->
-  $('body').on 'ajax:success', '[data-follow-user]', () ->
+main = () ->
+  $(document.body).on 'ajax:success', '[data-follow-user]', () ->
     toggle(this.dataset.leaderId, 'follow')
-  $('body').on 'ajax:success', '[data-follow-user-cancel]', () ->
+  $(document.body).on 'ajax:success', '[data-follow-user-cancel]', () ->
     toggle(this.dataset.leaderId, 'unfollow')
+
+document.addEventListener event, main for event in ['DOMContentLoaded', 'page:load']
