@@ -8,7 +8,7 @@ window.main = (fn) ->
 window.define_component = (class_name, fn) ->
   main () ->
     document.addEventListener 'DOMNodeInserted', (e) ->
-      fn e.target if e.target.classList.contains(class_name)
+      fn e.target if e.target.classList?.contains?(class_name)
     for root_element in document.getElementsByClassName(class_name)
       fn root_element
 
