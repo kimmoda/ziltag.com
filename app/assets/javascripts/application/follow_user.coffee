@@ -13,10 +13,8 @@ toggle = (leader_id, action) ->
       follow_user_cancle.style.display = 'none' for follow_user_cancle in follow_users_cancle
       follow_user.style.display = '' for follow_user in follow_users
 
-main = () ->
+main () ->
   $(document.body).on 'ajax:success', '[data-follow-user]', () ->
     toggle(this.dataset.leaderId, 'follow')
   $(document.body).on 'ajax:success', '[data-follow-user-cancel]', () ->
     toggle(this.dataset.leaderId, 'unfollow')
-
-document.addEventListener event, main for event in ['DOMContentLoaded', 'page:load']

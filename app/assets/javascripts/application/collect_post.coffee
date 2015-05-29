@@ -13,10 +13,8 @@ toggle = (post_id, action) ->
       precious_cancle.style.display = 'none' for precious_cancle in precious_cancles
       precious.style.display = '' for precious in preciouss
 
-main = () ->
+main () ->
   $(document.body).on 'ajax:success', '[data-precious]', () ->
     toggle(this.dataset.postId, 'collect')
   $(document.body).on 'ajax:success', '[data-precious-cancel]', () ->
     toggle(this.dataset.postId, 'uncollect')
-
-document.addEventListener event, main for event in ['DOMContentLoaded', 'page:load']
