@@ -22,6 +22,7 @@ var ZiltagSticker = {
   },
   
   // 貼上圖片：給首頁modal用
+  /*
   appendImgOnModal: function(){
     var that = this;
     $("article[data-ziltag-sticker-article][data-is-modal='true']").each(function(){
@@ -29,6 +30,7 @@ var ZiltagSticker = {
     });
     
   },
+  */
   
   // 貼上主要紅色樂貼
   appendMainZiltag: function(theElement){
@@ -240,6 +242,18 @@ var ZiltagSticker = {
     $("[data-follow-block]").html(data.following_button);
     $("[data-precious-block]").html(data.collecting_button);
     $("[data-image_url]").attr("src", data.image_url);
+  },
+  
+  appendImgOnModal: function(data){
+    var ziltag_wrapper = $("[data-modal-post-ziltag-article]").find(".ziltag_wrapper");
+    $(ziltag_wrapper).html("");
+    $(ziltag_wrapper).append("<img src='" + data.image_url + "'>");
+    $(ziltag_wrapper).append("<a data-x='" + data.x + "' data-y='" + data.y + "' class='active'></a>");
+    
+    $.each(data.other_ziltaggings, function(index, value){
+      $(ziltag_wrapper).append("<a data-x='" + value.x + "' data-y='" + value.y + "'></a>");
+    });
+    
   }
   
 }
