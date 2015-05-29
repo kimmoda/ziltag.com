@@ -1,9 +1,9 @@
 # 點擊展開樂貼
 
-用於 `a[data-remote]` 上，點擊後展開樂貼。
+用於 `a[data-ziltag-modal]` 上，點擊後展開樂貼。
 
 ```html
-<a href="/ziltaggings/1.json" data-remote data-ziltag-model></a>
+<a href="/ziltaggings/1.json" data-remote data-ziltag-modal></a>
 ```
 
 # 顯示圖片與樂貼
