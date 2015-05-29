@@ -4,7 +4,7 @@ main(function(){
   function show(){
     var rect = section_post.getBoundingClientRect();
     modal.style.left = rect.left + 'px';
-    return modal.style.width = document.body.clientWidth - rect.left + 'px';
+    modal.style.width = document.body.clientWidth - rect.left + 'px';
   };
   window.addEventListener('resize', show);
 });
