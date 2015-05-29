@@ -2,24 +2,20 @@
 
 @import "../colors";
 
-@mixin foo($color, $background-color){
-  @extend .btn;
-  @extend .btn-xs;
+a.follow{
   display: inline-block;
   border:1px solid $fourth_gray_color;
-  background-color: $background-color;
-  color: $color;
-  &:hover{
-    text-decoration: none;
-    background-color: $background-color;
-    color: $color;
-  }
-}
-
-a.follow{
-  @include foo($main_gray_color, $secondary_gray_color);
+  background-color: $secondary_gray_color;
+  color: $main_gray_color;
+  @extend .btn;
+  @extend .btn-xs;
 }
 
 a.unfollow{
-  @include foo($main_white_color, $main_red_color);
+  background-color: $main_red_color;
+  color: $main_white_color;
+  &:hover{
+    color: $main_white_color;
+  }
+  @extend a.follow;
 }
