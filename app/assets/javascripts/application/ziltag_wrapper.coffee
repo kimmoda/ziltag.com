@@ -1,4 +1,4 @@
-ziltag_wrapper = (wrapper) ->
+define_component 'ziltag_wrapper', (wrapper) ->
   img = wrapper.getElementsByTagName('img')[0]
   tags = wrapper.getElementsByTagName('a')
 
@@ -11,9 +11,3 @@ ziltag_wrapper = (wrapper) ->
 
   if img.complete then handler()
   else img.addEventListener 'load', handler
-
-main () ->
-  document.addEventListener 'DOMNodeInserted', (e) ->
-    ziltag_wrapper e.target if e.target.className == 'ziltag_wrapper'
-  for wrapper in document.getElementsByClassName('ziltag_wrapper')
-    ziltag_wrapper wrapper
