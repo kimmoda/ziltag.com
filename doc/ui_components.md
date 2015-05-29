@@ -1,4 +1,4 @@
-# `[data-ziltag-model]`
+# 點擊展開樂貼
 
 用於 `a[data-remote]` 上，點擊後展開樂貼。
 
@@ -6,9 +6,7 @@
 <a href="/ziltaggings/1.json" data-remote data-ziltag-model></a>
 ```
 
-# `.ziltag_wrapper`
-
-用於將樂貼顯示在圖片上。
+# 顯示圖片與樂貼
 
 ```html
 <div class="ziltag_wrapper">
@@ -22,7 +20,34 @@
 </div>
 ```
 
-相關檔案：
+# 分享按鈕
 
-- `app/assets/stylesheets/application/ziltag_sticker.scss`
-- `app/assets/javascripts/application/ziltag_sticker.coffee`
+```html
+<li class="share_item">
+  <a href="#"></a>
+  <div>
+    <img src="" alt="">
+    <ul>
+      <li><a href="#" class="icon_share fb"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+      <li><a href="#" class="icon_share twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+      <li><a href="#" class="icon_share tumblr"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+      <li><a href="#" class="icon_share googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+      ...
+    </ul>
+  </div>
+</li>
+```
+
+# 追蹤按鈕
+
+```html
+<a class="follow" data-leader-id="ID">關注用戶</a>
+<a class="unfollow" data-leader-id="ID">取消追蹤</a>
+```
+
+# 收藏按鈕
+
+```html
+<a href="#" class="collect" data-post-id="ID"><i class="fa fa-star"></i></a>
+<a href="#" class="uncollect" data-post-id="ID"><i class="fa fa-star"></i></a>
+```
