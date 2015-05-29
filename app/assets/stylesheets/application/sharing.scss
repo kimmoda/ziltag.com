@@ -1,0 +1,50 @@
+@import 'application/colors';
+.share_item{
+  position: relative;
+  >a{
+    color: $main_gray_color;
+    font-size: 24px;
+    @extend .fa;
+    @extend .fa-share;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  >div{
+    display: none;
+    text-align: center;
+    padding:5px 10px;
+    position: absolute;
+    right:0;
+    bottom:-80px;
+    width:170px;
+    background-color: $main_white_color;
+    box-shadow: 0 3px 10px $main_gray_color;
+    >img{
+      position: absolute;
+      right:10px;
+      top:-8px;
+    }
+    >ul{
+      >li{
+        > a.icon_share{
+          &.fb{
+            color:#667EB9;
+          }
+          &.twitter{
+            color: #5DD7FC;
+          }
+          &.tumblr{
+            color: #708A97;
+          }
+          &.googleplus{
+            color: #F35E47;
+          }
+        }
+      }
+      @extend .list-unstyled;
+      @extend .list-inline;
+    }
+  }
+}

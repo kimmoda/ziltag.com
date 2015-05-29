@@ -83,51 +83,6 @@ article.post_article{
       ul.other_funcs{
         position: relative;
         top:10px;
-        > li{
-          > a{
-            &.btn_share{
-              color: $main_gray_color;
-              font-size: 24px;
-            }
-            
-          }
-          &.share_item{
-            position: relative;
-            div.share_zone{
-              text-align: center;
-              padding:5px 10px;
-              position: absolute;
-              right:0;
-              bottom:-80px;
-              width:170px;
-              background-color: $main_white_color;
-              box-shadow: 0 3px 10px $main_gray_color;
-              img.other_triangle{
-                position: absolute;
-                right:10px;
-                top:-8px;
-              }
-              ul.share_list{
-                > li{
-                  > a.icon_share{
-                    &.fb{
-                      color:#667EB9;
-                    }
-                    &.twitter{
-                      color: #5DD7FC;
-                    }
-                    &.tumblr{
-                      color: #708A97;
-                    }
-                    &.googleplus{
-                      color: #F35E47;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
