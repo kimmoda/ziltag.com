@@ -1,4 +1,4 @@
-$(document).on('page:load', function(){
+main(function(){
   allJs.tune_layout();
 });
 

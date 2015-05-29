@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function(){
+main(function(){
   $("button[data-trigger-select-image], div[data-profile-img-block]").on('click', function(){
     $(this).closest("div[data-form-photo]").find("input[data-profile-input]").click();
   });
