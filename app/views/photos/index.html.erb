@@ -11,15 +11,9 @@
 
       <div class="col-xs-10 col_right" data-layout="col_right">
         <%= flash_messages %>
-
         <section class="photos_index">
           <% @photos.each do |photo| %>
-            <%= div_for photo, class: 'item ziltag_wrapper' do %>
-              <%= image_tag photo.image_url %>
-              <% photo.ziltaggings.each do |ziltagging| %>
-                <%= link_to ''.freeze, ziltagging_path(ziltagging, format: :json), remote: true, data: {x: ziltagging.x, y: ziltagging.y, ziltag_modal: ''} %>
-              <% end %>
-            <% end %>
+            <%= ziltag_wrapper photo, photo.ziltaggings %>
           <% end %>
         </section>
       </div>

@@ -1,7 +1,6 @@
 // 切換樂貼或留言
 
-$(document).on('ready page:load', function(){
-  
+main(function(){
   if( $("[data-component=tag_or_msg]").length > 0 ){
     $("[data-component=tag_or_msg]").find("button").each(function(){
       
@@ -11,8 +10,8 @@ $(document).on('ready page:load', function(){
       
     });
   }
-
 });
+
 
 $(window).on('load page:load', function(){
 });

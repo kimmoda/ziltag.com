@@ -5,5 +5,5 @@
 //= require handlebars
 //= require imagesloaded/imagesloaded.pkgd
 //= require masonry/dist/masonry.pkgd
-//= require run_in
+//= require runner
 //= require_tree ./application

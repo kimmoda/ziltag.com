@@ -40,14 +40,9 @@ http://localhost:3000/rails/mailers/
 
 若有 js 檔案需要再某個 controller 的某個 action 下執行，需幾檔案放在 `app/assets/javascripts/application/{CONTROLLER_NAME}/{ACTION_NAME}.js`，並使用 `run_in`：
 
-```js
-// 檔案請放在 application/photos/index.js
-run_in('photos', 'index', function(){
-  // 此函式會在進入 photos#index 頁面的時候執行
-});
-```
+## main(function)
 
-監聽 turbolinks 事件示範：
+`function` 會在網頁載好或是 `page:load` 事件發生時執行，且不依賴 jQuery。
 
 ```js
 // 純 JS（建議）
@@ -55,6 +50,17 @@ main(function(){});
 
 // 使用 jQuery（不建議）
 $(document).on('ready page:load', function(){})
+``````
+
+## run_in('controller', 'action', function)
+
+`function` 會在特定的 `controller` 或 `action` 中觸發。
+
+```js
+// 檔案請放在 application/photos/index.js
+run_in('photos', 'index', function(){
+  // 此函式會在進入 photos#index 頁面的時候執行
+});
 ```
 
 # 登入登出

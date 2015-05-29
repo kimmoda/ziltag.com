@@ -20,10 +20,7 @@
               </div><!-- /.switch_func -->
               
               <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
-                <%= image_tag @ziltagging.image_url, class: :'img-responsive', data: {ziltag_x: @ziltagging.x, ziltag_y: @ziltagging.y}, "data-show-sticker": "" %>
-                
-                <%= image_tag("ziltag_sticker.png", :class => "ziltag_sticker hidden", "data-sticker": "") %>
-                
+                <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging %>
                 <div class="func_block">
                   <ul class="list-unstyled list-inline func_block_list">
                     <li><a href="#">留言</a></li>

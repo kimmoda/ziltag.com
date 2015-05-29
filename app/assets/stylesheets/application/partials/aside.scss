@@ -7,9 +7,14 @@ aside.aside{
   position: fixed;
   top:60px;
   left:0;
-  min-width: 128px;
   overflow: scroll;
   padding-bottom: 10px;
+  @media screen and (max-width:767px){
+    padding-left:15px !important;
+    position: absolute;
+    top:0px;
+    
+  }
   ul.aside_list{
     padding:{
       top:10px;

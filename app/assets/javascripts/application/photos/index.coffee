@@ -4,5 +4,5 @@ run_in 'photos', 'index', () ->
     msnry = new Masonry container, {
       columnWidth: 300
       gutter: 10
-      itemSelector: '.item'
+      itemSelector: '.ziltag_wrapper'
     }
