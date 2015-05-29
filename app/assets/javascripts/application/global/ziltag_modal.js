@@ -29,10 +29,6 @@ main(function(){
   }
 });
 
-$(window).load(function(){
-  
-});
-
 $(window).resize(function(){
   
   // 滑出視窗的版面控制
