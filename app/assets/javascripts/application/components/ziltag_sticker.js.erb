@@ -245,14 +245,15 @@ var ZiltagSticker = {
   },
   
   appendImgOnModal: function(data){
-    var ziltag_wrapper = $("[data-modal-post-ziltag-article]").find(".ziltag_wrapper");
-    $(ziltag_wrapper).html("");
-    $(ziltag_wrapper).append("<img src='" + data.image_url + "'>");
-    $(ziltag_wrapper).append("<a data-x='" + data.x + "' data-y='" + data.y + "' class='active'></a>");
     
-    $.each(data.other_ziltaggings, function(index, value){
-      $(ziltag_wrapper).append("<a data-x='" + value.x + "' data-y='" + value.y + "'></a>");
-    });
+    var source   = $("#handlebar_ziltag_wrapper").html();
+    var template = Handlebars.compile(source);
+    var context = {image_url: data.image_url, x: data.x, y: data.y, other_ziltaggings: data.other_ziltaggings};
+    var html    = template(context);
+    
+    var ziltag_wrapper = $("[data-modal-post-ziltag-article]").find("[data-ziltag-sticker-article]");
+    $(ziltag_wrapper).find(".ziltag_wrapper").remove();
+    $(ziltag_wrapper).prepend(html);
     
   }
   
