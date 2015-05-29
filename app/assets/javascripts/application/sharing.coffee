@@ -19,7 +19,6 @@ main () ->
     do (li) ->
       btn = li.getElementsByTagName('a')[0]
       popup = li.getElementsByTagName('div')[0]
-      console.log btn, popup
       btn.addEventListener 'click', (e) ->
         e.preventDefault()
         popup.style.display = if popup.style.display == 'unset' then '' else 'unset'
