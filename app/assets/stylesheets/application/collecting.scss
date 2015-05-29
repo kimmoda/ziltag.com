@@ -1,0 +1,13 @@
+/* 星星收藏按鈕 */
+
+@import "application/colors";
+
+a.collect{
+  color: $main_gray_color;
+  font-size: 24px;
+}
+
+a.uncollect{
+  @extend a.collect;
+  color: $main_red_color;
+}
