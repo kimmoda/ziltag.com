@@ -1,0 +1,25 @@
+/* 關注用戶 & 取消追蹤 */
+
+@import "../colors";
+
+@mixin foo($color, $background-color){
+  @extend .btn;
+  @extend .btn-xs;
+  display: inline-block;
+  border:1px solid $fourth_gray_color;
+  background-color: $background-color;
+  color: $color;
+  &:hover{
+    text-decoration: none;
+    background-color: $background-color;
+    color: $color;
+  }
+}
+
+a.follow{
+  @include foo($main_gray_color, $secondary_gray_color);
+}
+
+a.unfollow{
+  @include foo($main_white_color, $main_red_color);
+}
