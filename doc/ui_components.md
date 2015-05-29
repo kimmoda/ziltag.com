@@ -8,6 +8,8 @@
 
 # 顯示圖片與樂貼
 
+參考：http://codepen.io/tonytonyjan/pen/mJRrwR
+
 ```html
 <div class="ziltag_wrapper">
   <img src="">
@@ -23,7 +25,7 @@
 
 # 在 300x300 範圍內顯示圖片與一個樂貼
 
-需要搭背 `.ziltag_wrapper` 使用，會依照比例縮放填滿 300x300，並且移動到樂貼出現的位置。
+只要在 `.ziltag_wrapper` 外面包一層 `.ziltag_thumb` 即可使用，會依照比例縮放填滿 300x300，並且移動到樂貼出現的位置。
 
 參考：http://codepen.io/tonytonyjan/pen/KpNjQv/
 
