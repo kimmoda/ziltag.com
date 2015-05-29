@@ -5,7 +5,7 @@ var allJs = {
     
     // 針對 div[data-layout=outer_fill_white] 的留白區
     if( $(window).width() < 768 ){
-      var left_side_width = 30;
+      var left_side_width = 0;
     }else{
       var left_side_width = ($(window).width() - $("div[data-layout=inner]").width()) / 2;
     }
@@ -16,10 +16,18 @@ var allJs = {
     
     // 調整 aside.aside 的高度及寬度
     $("aside[data-layout=aside]").css("height", ($(window).height() - 60) + "px");
-    $("aside[data-layout=aside]").css({
-      "padding-left": left_side_width + "px",
-      "width": ( left_side_width + $("div[data-layout=col_logo]").width() ) + "px"
-    });
+    if( $(window).width() < 768 ){
+      $("aside[data-layout=aside]").css({
+        "padding-left": left_side_width + "px",
+        "width": ( 30 + $("div[data-layout=col_logo]").width() ) + "px"
+      });
+    }else{
+      $("aside[data-layout=aside]").css({
+        "padding-left": left_side_width + "px",
+        "width": ( left_side_width + $("div[data-layout=col_logo]").width() ) + "px"
+      });
+    }
+    
     
   },
   

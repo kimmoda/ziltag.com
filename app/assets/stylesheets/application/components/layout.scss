@@ -32,8 +32,10 @@ div.layout_fluid{
   div.col_left{
   }
   div.col_right{
-    padding-left:0;
     padding-top: 15px;
+    @media screen and (min-width:768px){
+      padding-left: 0;
+    }
     div.alert{
       margin-top:20px;
     }
