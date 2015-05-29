@@ -4,11 +4,9 @@
   >a{
     color: $main_gray_color;
     font-size: 24px;
+    text-decoration: none;
     @extend .fa;
     @extend .fa-share;
-    &:hover{
-      text-decoration: none;
-    }
   }
 
   >div{
