@@ -16,7 +16,7 @@ frame = document.createElement 'iframe'
 frame.id = 'ziltag_frame'
 frag = document.createDocumentFragment()
 
-style.appendChild document.createTextNode('<%= Rails.application.assets['embedded.css'].source %>')
+style.textContent = '<%= Rails.application.assets['embedded.css'].source %>'
 spinner.appendChild document.createElement('div')
 spinner.appendChild document.createElement('div')
 modal.appendChild spinner
