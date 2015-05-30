@@ -21,4 +21,4 @@ main () ->
       popup = li.getElementsByTagName('div')[0]
       btn.addEventListener 'click', (e) ->
         e.preventDefault()
-        popup.style.display = if popup.style.display == 'unset' then '' else 'unset'
+        popup.style.display = if popup.style.display == 'initial' then '' else 'initial'
