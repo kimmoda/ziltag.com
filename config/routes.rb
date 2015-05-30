@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     delete :uncollect
   end
 
+  namespace :embedded do
+    get :photos, format: true, constraints: {format: :json}
+    get 'ziltagging/:id', action: :ziltagging, format: false, as: :ziltagging
+    get :preview if Rails.env.development?
+  end
+
   namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do
     root action: :home
     resources :users, :comments, :posts, :photos, :ziltaggings

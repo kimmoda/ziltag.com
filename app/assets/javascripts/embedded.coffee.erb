@@ -1,0 +1,78 @@
+# <style>...</style>
+# <div id="ziltag_shadow"></div>
+# <div id="ziltag_modal">
+#   <div id="spinner"><div></div><div></div></div>
+#   <iframe id="ziltag_frame"></iframe>
+# </div>
+
+style = document.createElement('style')
+shadow = document.createElement 'div'
+shadow.id = 'ziltag_shadow'
+modal = document.createElement 'div'
+modal.id = 'ziltag_modal'
+spinner = document.createElement 'div'
+spinner.id = 'ziltag_spinner'
+frame = document.createElement 'iframe'
+frame.id = 'ziltag_frame'
+frag = document.createDocumentFragment()
+
+style.appendChild document.createTextNode('<%= Rails.application.assets['embedded.css'].source %>')
+spinner.appendChild document.createElement('div')
+spinner.appendChild document.createElement('div')
+modal.appendChild spinner
+modal.appendChild frame
+frag.appendChild style
+frag.appendChild shadow
+frag.appendChild modal
+document.body.appendChild frag
+
+open = (link) ->
+  shadow.style.opacity = 0.5;
+  shadow.style.pointerEvents = 'initial'
+  modal.style.left = '20%'
+  frame.src = link
+
+close = () ->
+  shadow.style.opacity = ''
+  shadow.style.pointerEvents = ''
+  modal.style.left = ''
+
+build_tag = (left, top, link) ->
+  tag = document.createElement('div')
+  tag.dataset.link = link
+  tag.className = 'ziltag_tag'
+  tag.style.left = left + 'px'
+  tag.style.top = top + 'px'
+  tag.addEventListener 'click', () -> open this.dataset.link
+  tag
+
+composite = (image, ziltaggings) ->
+  handler = () ->
+    rect = image.getBoundingClientRect()
+    ratio_x = image.clientWidth / image.naturalWidth
+    ratio_y = image.clientHeight / image.naturalHeight
+    frag = document.createDocumentFragment()
+    for tag in ziltaggings
+      frag.appendChild build_tag(rect.left + tag.x * ratio_x, rect.top + tag.y * ratio_y, tag.link)
+    document.body.appendChild frag
+  if image.complete then handler()
+  else image.addEventListener 'load', handler
+
+modal.addEventListener 'transitionend', (e) ->
+  frame.style.display = '' if this.style.left == ''
+frame.addEventListener 'load', () ->
+  this.style.display = 'initial'
+shadow.addEventListener 'click', close
+
+images = document.getElementsByTagName('img')
+src_x_image = {}
+src_x_image[image.src] = image for image in images
+image_urls = Object.keys(src_x_image)
+
+request = new XMLHttpRequest()
+request.open('GET', '<%= ::Rails.application.routes.url_helpers.embedded_photos_url(host: (Rails.env.production? ? Settings.host : 'localhost:3000'.freeze), format: :json) %>?q[]=' + (encodeURIComponent(url) for url in image_urls).join('&q[]='))
+request.onload = () ->
+  if request.status >= 200 && request.status < 400
+    for photo in JSON.parse(request.responseText)
+      composite src_x_image[photo.q], photo.ziltaggings
+request.send()

@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   # scopes
+  scope :search_by_urls, ->(urls){ includes(:ziltaggings).where(source: urls) }
 
   # constants
 

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>樂貼趣</title>
+  <%= stylesheet_link_tag    'embedded/ziltagging' %>
+  <%= javascript_include_tag 'embedded/ziltagging' %>
+</head>
+<body>
+  <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging %>
+  <h1><%= @ziltagging.title %></h1>
+  <div><%= sanitize @ziltagging.content %></div>
+</body>
+</html>

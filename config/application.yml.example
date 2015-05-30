@@ -1,4 +1,5 @@
 production:
+  host: ziltag.com
   action_mailer:
     asset_host: ziltag.com
     default_url_options:

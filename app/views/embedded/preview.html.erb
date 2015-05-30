@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>樂貼外掛預覽</title>
+</head>
+<body>
+  <% Photo.order('random()').limit(3).each_with_index do |photo, i| %>
+    <%= image_tag photo.source, height: 300 %>
+  <% end %>
+  <%= javascript_include_tag asset_url('embedded.js') %>
+</body>
+</html>
