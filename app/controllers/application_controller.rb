@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-  before_action :set_login if Rails.env.development?
+  before_action :set_login, :set_flash if Rails.env.development?
 
 protected
 
@@ -16,6 +16,13 @@ protected
         sign_in(:user, User.first)
       elsif params.has_key? :sign_out
         sign_out(:user)
+      end
+    end
+
+    def set_flash
+      if params.has_key? :flash
+        flash.now[:alert] = '警告訊息'
+        flash.now[:notice] = '通知訊息'
       end
     end
   end

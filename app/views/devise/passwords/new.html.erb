@@ -1,32 +1,21 @@
 <div class="container normal_container">
-  <div class="row">
-    
+  <%= flash_messages %>
+  <div class="row">  
     <div class="col-xs-10 col-sm-8">
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
         <h2 class="forget_pwd_title">讓我們協助您找回密碼</h2>
         <div class="form_inputs">
-          <label class="hint_txt">請輸入您的註冊Email</label>
-          
+          <label class="hint_txt">請輸入您的註冊Email</label>          
           <div class="custom_group">
             <%= f.input :email, required: true, autofocus: true, label: false %>
             <div class="form_actions">
               <%= f.button :submit, "寄送", class: "btn_send_pwd" %>
             </div>
-          </div><!-- /.custom_group -->
-          
-        </div><!-- /.form_inputs -->
-      
-        
+          </div>
+        </div>
       <% end %>
-    </div><!-- /.col-* -->
-    
-    
-  </div><!-- /.row -->
-</div><!-- /.normal_container -->
 
-
-
-
-
-<%#= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
