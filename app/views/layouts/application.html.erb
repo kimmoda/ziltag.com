@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body data-controller="<%= controller_path %>" data-action="<%= action_name %>" class="<%= controller_name %> <%= action_name %>">
+<body data-controller="<%= controller_path %>" data-action="<%= action_name %>" class="<%= controller_name %> <%= action_name %> <%= controller.send(:_layout) %>">
   <%= render :partial => "/layouts/partials/header" %>
   <%= content_for?(:content) ? yield(:content) : yield %>
   <%= render :partial => "/partials/modals/post_ziltag_article_modal" %>

@@ -1,10 +1,8 @@
-/* 註冊頁 */
-
-@import "../colors";
-body.sessions.new{
-  nav.header_nav{
+body.normal{
+  header.header > nav.header_nav{
     border-bottom: 1px solid $main_gray_color;
   }
+
   div.normal_container{
     padding-top: 20px;
   }

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout 'normal', if: ->{ devise_controller? }
+  layout :layout_by_resource
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
   before_action :set_login, :set_flash if Rails.env.development?
@@ -9,6 +9,10 @@ protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username << :email << :avatar << :avatar_cache
     devise_parameter_sanitizer.for(:sign_in) << :login
+  end
+
+  def layout_by_resource
+    devise_controller? ? 'normal'.freeze : 'application'.freeze
   end
 
   if Rails.env.development?
