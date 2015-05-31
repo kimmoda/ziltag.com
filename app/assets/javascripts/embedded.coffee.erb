@@ -74,7 +74,7 @@ modal.addEventListener 'transitionend', (e) -> frame.style.display = '' if this.
 shadow.addEventListener 'click', close
 
 images = {}
-images[image.src] = image for image in document.getElementsByTagName('img')
+images[image.src] = image for image in document.querySelectorAll(ziltag_img_selector ? 'img')
 image_urls = Object.keys(images)
 request = new XMLHttpRequest()
 params = (encodeURIComponent(url) for url in image_urls).join('&q[]=')
