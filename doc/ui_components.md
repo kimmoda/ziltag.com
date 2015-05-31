@@ -70,3 +70,21 @@
 <a href="#" class="collect" data-post-id="ID"><i class="fa fa-star"></i></a>
 <a href="#" class="uncollect" data-post-id="ID"><i class="fa fa-star"></i></a>
 ```
+
+# 分享按鈕
+
+```html
+<li class="share_item">
+  <a href="#"></a>
+  <div>
+    <img src="" alt="">
+    <ul>
+      <li><a href="#" class="icon_share fb"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+      <li><a href="#" class="icon_share twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+      <li><a href="#" class="icon_share tumblr"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+      <li><a href="#" class="icon_share googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+      ...
+    </ul>
+  </div>
+</li>
+```

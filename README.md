@@ -72,6 +72,14 @@ http://localhost:3000?sign_in
 http://localhost:3000?sign_out
 ```
 
+# 顯示 flash 訊息
+
+可在網址加上 `flash`，例：
+
+```
+http://localhost:3000?flash
+```
+
 # 外掛預覽
 
 http://localhost:3000/embedded/preview
