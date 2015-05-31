@@ -72,6 +72,10 @@ http://localhost:3000?sign_in
 http://localhost:3000?sign_out
 ```
 
+# 外掛預覽
+
+http://localhost:3000/embedded/preview
+
 # Commit Message Hook
 
 此 `.git/hooks/commit-msg` 腳本會根據分支名稱，自動在 commit message 上面加上 issue number，便於在 Github 上索引：
