@@ -1,6 +1,11 @@
 body.normal{
-  header.header > nav.header_nav{
-    border-bottom: 1px solid $main_gray_color;
+  > header.header{
+    > div.custom_header_line{
+      display: none;
+    }
+    > nav.header_nav{
+      border-bottom: 1px solid $main_gray_color;
+    }
   }
 
   div.normal_container{
