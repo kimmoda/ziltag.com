@@ -8,11 +8,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-controller="<%= controller_path %>" data-action="<%= action_name %>" class="<%= controller_name %> <%= action_name %>">
-
   <%= render :partial => "/layouts/partials/header" %>
-  
-  <%= yield %>
-  
+  <%= content_for?(:content) ? yield(:content) : yield %>
   <%= render :partial => "/partials/modals/post_ziltag_article_modal" %>
   
 </body>
