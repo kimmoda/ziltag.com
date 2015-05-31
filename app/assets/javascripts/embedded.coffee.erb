@@ -82,17 +82,16 @@ request.open('GET', '<%= ::Rails.application.routes.url_helpers.embedded_photos_
 
 request.onload = () ->
   if request.status >= 200 && request.status < 400
-    window.addEventListener 'load', () ->
-      for photo in JSON.parse(request.responseText)
-        tags = for ziltagging in photo.ziltaggings
-          tag = Factory.tag(ziltagging)
-          tag.addEventListener 'click', () -> open this.dataset.link
-          frag.appendChild tag
-          tag
-        photo = new Photo images[photo.q], tags
-        photos.push photo
-        photo.render()
-      document.body.appendChild frag
-request.send()
+    for photo in JSON.parse(request.responseText)
+      tags = for ziltagging in photo.ziltaggings
+        tag = Factory.tag(ziltagging)
+        tag.addEventListener 'click', () -> open this.dataset.link
+        frag.appendChild tag
+        tag
+      photo = new Photo images[photo.q], tags
+      photos.push photo
+      photo.render()
+    document.body.appendChild frag
+window.addEventListener 'load', () -> request.send() # TODO 其實等載入與送 ajax 請求可以同時做
 
 window.addEventListener 'resize', render
