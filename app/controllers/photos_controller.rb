@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  layout 'sidebar'.freeze
+
   def index
     @photos = Photo.includes(:user, ziltaggings: [:post]).order('created_at DESC').limit(10)
   end
@@ -6,4 +8,5 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.includes(posts: :user).find params[:id]
   end
+
 end

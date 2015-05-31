@@ -1,13 +1,3 @@
-<div class="container-fluid layout_fluid">
-  <%= render :partial => "/layouts/partials/sidebar" %>
-  <div class="container" data-layout="inner">
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-2 col_right" data-layout="col_right">
-        <%= flash_messages %>
-        <section class="section_post">
-          <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
-        </section>
-      </div>      
-    </div>
-  </div>
-</div>
+<section class="section_post">
+  <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
+</section>

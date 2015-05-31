@@ -1,22 +1,5 @@
-<div class="container-fluid layout_fluid">
-  <div class="fill_white" data-layout="outer_fill_white"></div>
-  <div class="custom_header_line" data-layout="custom_header_line"></div>
-  
-  <div class="container" data-layout="inner">
-    <div class="row">
-      
-      <div class="col-xs-2 col_left">
-        <%= render :partial => "/layouts/partials/sidebar" %>
-      </div>
-
-      <div class="col-xs-10 col_right" data-layout="col_right">
-        <%= flash_messages %>
-        <section class="photos_index">
-          <% @photos.each do |photo| %>
-            <%= ziltag_wrapper photo, photo.ziltaggings %>
-          <% end %>
-        </section>
-      </div>
-    </div><!-- /.row -->
-  </div><!-- /.container -->
-</div><!-- /.container -->
+<section class="photos_index">
+  <% @photos.each do |photo| %>
+    <%= ziltag_wrapper photo, photo.ziltaggings %>
+  <% end %>
+</section>
