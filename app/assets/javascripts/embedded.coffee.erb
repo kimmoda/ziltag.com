@@ -47,16 +47,13 @@ build_tag = (left, top, link) ->
   tag
 
 composite = (image, ziltaggings) ->
-  handler = () ->
-    rect = image.getBoundingClientRect()
-    ratio_x = image.clientWidth / image.naturalWidth
-    ratio_y = image.clientHeight / image.naturalHeight
-    frag = document.createDocumentFragment()
-    for tag in ziltaggings
-      frag.appendChild build_tag(rect.left + tag.x * ratio_x, rect.top + tag.y * ratio_y, tag.link)
-    document.body.appendChild frag
-  if image.complete then handler()
-  else image.addEventListener 'load', handler
+  rect = image.getBoundingClientRect()
+  ratio_x = image.clientWidth / image.naturalWidth
+  ratio_y = image.clientHeight / image.naturalHeight
+  frag = document.createDocumentFragment()
+  for tag in ziltaggings
+    frag.appendChild build_tag(rect.left + tag.x * ratio_x, rect.top + tag.y * ratio_y, tag.link)
+  document.body.appendChild frag
 
 modal.addEventListener 'transitionend', (e) ->
   frame.style.display = '' if this.style.left == ''
@@ -73,6 +70,7 @@ request = new XMLHttpRequest()
 request.open('GET', '<%= ::Rails.application.routes.url_helpers.embedded_photos_url(host: (Rails.env.production? ? Settings.host : 'localhost:3000'), format: :json) %>?q[]=' + (encodeURIComponent(url) for url in image_urls).join('&q[]='))
 request.onload = () ->
   if request.status >= 200 && request.status < 400
-    for photo in JSON.parse(request.responseText)
-      composite src_x_image[photo.q], photo.ziltaggings
+    window.addEventListener 'load', () ->
+      for photo in JSON.parse(request.responseText)
+        composite src_x_image[photo.q], photo.ziltaggings
 request.send()
