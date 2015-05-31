@@ -70,7 +70,7 @@ src_x_image[image.src] = image for image in images
 image_urls = Object.keys(src_x_image)
 
 request = new XMLHttpRequest()
-request.open('GET', '<%= ::Rails.application.routes.url_helpers.embedded_photos_url(host: (Rails.env.production? ? Settings.host : 'localhost:3000'.freeze), format: :json) %>?q[]=' + (encodeURIComponent(url) for url in image_urls).join('&q[]='))
+request.open('GET', '<%= ::Rails.application.routes.url_helpers.embedded_photos_url(host: (Rails.env.production? ? Settings.host : 'localhost:3000'), format: :json) %>?q[]=' + (encodeURIComponent(url) for url in image_urls).join('&q[]='))
 request.onload = () ->
   if request.status >= 200 && request.status < 400
     for photo in JSON.parse(request.responseText)
