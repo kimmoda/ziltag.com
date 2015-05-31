@@ -1,30 +1,56 @@
-# <style>...</style>
-# <div id="ziltag_shadow"></div>
-# <div id="ziltag_modal">
-#   <div id="spinner"><div></div><div></div></div>
-#   <iframe id="ziltag_frame"></iframe>
-# </div>
+Factory =
+  style: () ->
+    _style = document.createElement('style')
+    _style.textContent = '<%= Rails.application.assets['embedded.css'].source %>'
+    _style
+  shadow: () ->
+    _shadow = document.createElement 'div'
+    _shadow.id = 'ziltag_shadow'
+    _shadow
+  modal: () ->
+    _modal = document.createElement 'div'
+    _modal.id = 'ziltag_modal'
+    _modal.spinner = @spinner()
+    _modal.frame = @frame()
+    _modal.appendChild _modal.spinner
+    _modal.appendChild _modal.frame
+    _modal
+  frame: () ->
+    _frame = document.createElement 'iframe'
+    _frame.id = 'ziltag_frame'
+    _frame.addEventListener 'load', () -> this.style.display = 'initial'
+    _frame
+  spinner: () ->
+    _spinner = document.createElement 'div'
+    _spinner.id = 'ziltag_spinner'
+    _spinner.appendChild document.createElement('div')
+    _spinner.appendChild document.createElement('div')
+    _spinner
+  tag: (data) ->
+    _tag = document.createElement('div')
+    _tag.className = 'ziltag_tag'
+    _tag.dataset.x = data.x
+    _tag.dataset.y = data.y
+    _tag.dataset.link = data.link
+    _tag
 
-style = document.createElement('style')
-shadow = document.createElement 'div'
-shadow.id = 'ziltag_shadow'
-modal = document.createElement 'div'
-modal.id = 'ziltag_modal'
-spinner = document.createElement 'div'
-spinner.id = 'ziltag_spinner'
-frame = document.createElement 'iframe'
-frame.id = 'ziltag_frame'
+class Photo
+  constructor: (@image, @ziltaggings) ->
+  render: () ->
+    rect = @image.getBoundingClientRect()
+    ratio_x = @image.clientWidth / @image.naturalWidth
+    ratio_y = @image.clientHeight / @image.naturalHeight
+    for tag in @ziltaggings
+      tag.style.left = window.scrollX + rect.left + tag.dataset.x * ratio_x + 'px'
+      tag.style.top = window.scrollY + rect.top + tag.dataset.y * ratio_y + 'px'
+
+photos = []
+style = Factory.style()
+shadow = Factory.shadow()
+modal = Factory.modal()
+spinner = modal.spinner
+frame = modal.frame
 frag = document.createDocumentFragment()
-
-style.textContent = '<%= Rails.application.assets['embedded.css'].source %>'
-spinner.appendChild document.createElement('div')
-spinner.appendChild document.createElement('div')
-modal.appendChild spinner
-modal.appendChild frame
-frag.appendChild style
-frag.appendChild shadow
-frag.appendChild modal
-document.body.appendChild frag
 
 open = (link) ->
   shadow.style.opacity = 0.5;
@@ -37,40 +63,36 @@ close = () ->
   shadow.style.pointerEvents = ''
   modal.style.left = ''
 
-build_tag = (left, top, link) ->
-  tag = document.createElement('div')
-  tag.dataset.link = link
-  tag.className = 'ziltag_tag'
-  tag.style.left = left + 'px'
-  tag.style.top = top + 'px'
-  tag.addEventListener 'click', () -> open this.dataset.link
-  tag
+render = () ->
+  photo.render() for photo in photos
 
-composite = (image, ziltaggings) ->
-  rect = image.getBoundingClientRect()
-  ratio_x = image.clientWidth / image.naturalWidth
-  ratio_y = image.clientHeight / image.naturalHeight
-  frag = document.createDocumentFragment()
-  for tag in ziltaggings
-    frag.appendChild build_tag(rect.left + tag.x * ratio_x, rect.top + tag.y * ratio_y, tag.link)
-  document.body.appendChild frag
+frag.appendChild style
+frag.appendChild shadow
+frag.appendChild modal
 
-modal.addEventListener 'transitionend', (e) ->
-  frame.style.display = '' if this.style.left == ''
-frame.addEventListener 'load', () ->
-  this.style.display = 'initial'
+modal.addEventListener 'transitionend', (e) -> frame.style.display = '' if this.style.left == ''
 shadow.addEventListener 'click', close
 
-images = document.getElementsByTagName('img')
-src_x_image = {}
-src_x_image[image.src] = image for image in images
-image_urls = Object.keys(src_x_image)
-
+images = {}
+images[image.src] = image for image in document.getElementsByTagName('img')
+image_urls = Object.keys(images)
 request = new XMLHttpRequest()
-request.open('GET', '<%= ::Rails.application.routes.url_helpers.embedded_photos_url(host: (Rails.env.production? ? Settings.host : 'localhost:3000'), format: :json) %>?q[]=' + (encodeURIComponent(url) for url in image_urls).join('&q[]='))
+params = (encodeURIComponent(url) for url in image_urls).join('&q[]=')
+request.open('GET', '<%= ::Rails.application.routes.url_helpers.embedded_photos_url(host: (Rails.env.production? ? Settings.host : 'localhost:3000'), format: :json) %>?q[]=' + params)
+
 request.onload = () ->
   if request.status >= 200 && request.status < 400
     window.addEventListener 'load', () ->
       for photo in JSON.parse(request.responseText)
-        composite src_x_image[photo.q], photo.ziltaggings
+        tags = for ziltagging in photo.ziltaggings
+          tag = Factory.tag(ziltagging)
+          tag.addEventListener 'click', () -> open this.dataset.link
+          frag.appendChild tag
+          tag
+        photo = new Photo images[photo.q], tags
+        photos.push photo
+        photo.render()
+      document.body.appendChild frag
 request.send()
+
+window.addEventListener 'resize', render
