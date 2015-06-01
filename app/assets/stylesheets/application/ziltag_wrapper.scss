@@ -9,6 +9,7 @@
     opacity: 0.8;
     z-index: 1;
     transition: opacity 0.5s;
+    background-repeat: no-repeat;
   }
 
   >a.active,>a:hover{
