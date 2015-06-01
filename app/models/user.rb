@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :followers, class_name: User, through: :_followers
   has_many :leaders, class_name: User, through: :_leaders
   has_many :collectings
-  has_many :collected_posts, through: :collectings, source: :post
+  has_many :collected_posts, through: :collectings, source: :collectable, source_type: Post
 
   # validations
   validates :email, presence: true, uniqueness: true
