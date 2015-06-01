@@ -9,6 +9,7 @@ $spinner_translate: 100px;
   height: 29px;
   opacity: 0.5;
   background-image: image-url('ziltag_sticker.png');
+  background-repeat: no-repeat;
   transition: opacity 0.3s;
   &:hover{
     opacity: 1;
