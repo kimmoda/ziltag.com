@@ -67,8 +67,8 @@
 # 收藏按鈕
 
 ```html
-<a href="#" class="collect" data-post-id="ID"><i class="fa fa-star"></i></a>
-<a href="#" class="uncollect" data-post-id="ID"><i class="fa fa-star"></i></a>
+<a href="#" class="collect UNIQUE_CLASS" data-class="UNIQUE_CLASS"><i class="fa fa-star"></i></a>
+<a href="#" class="uncollect UNIQUE_CLASS" data-class="UNIQUE_CLASS"><i class="fa fa-star"></i></a>
 ```
 
 # 分享按鈕

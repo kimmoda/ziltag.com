@@ -90,7 +90,7 @@ namespace 'dev:fake' do
 
     fakeup '產生收藏' do
       User.find_each do |user|
-        @posts.sample(2).each{ |post| Collecting.create! user: user, post: post }
+        @posts.sample(2).each{ |post| Collecting.create! user: user, collectable: post }
       end
     end
 

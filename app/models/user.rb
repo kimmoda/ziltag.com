@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :followers, class_name: User, through: :_followers
   has_many :leaders, class_name: User, through: :_leaders
   has_many :collectings
-  has_many :collected_posts, through: :collectings, source: :post
+  has_many :collected_posts, through: :collectings, source: :collectable, source_type: Post
 
   # validations
   validates :email, presence: true, uniqueness: true
@@ -51,16 +51,16 @@ class User < ActiveRecord::Base
     leaders.delete(leader) if follow?(leader)
   end
 
-  def collect? post
-    collected_posts.index(post)
+  def collect? record
+    collectings.index{|c| c.collectable == record }
   end
 
-  def collect! post
-    collected_posts << post unless collect?(post)
+  def collect! record
+    collectings.create!(collectable: record) unless collectings.exists? collectable: record
   end
 
-  def uncollect! post
-    collected_posts.delete(post) if collect?(post)
+  def uncollect! record
+    collectings.destroy collectings.find_by(collectable: record) if collectings.exists? collectable: record
   end
 
   def to_s
