@@ -11,20 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525013519) do
+ActiveRecord::Schema.define(version: 20150601083625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "collectings", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "post_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "collectable_id",   null: false
+    t.string   "collectable_type", null: false
   end
 
-  add_index "collectings", ["post_id", "user_id"], name: "index_collectings_on_post_id_and_user_id", unique: true, using: :btree
-  add_index "collectings", ["user_id", "post_id"], name: "index_collectings_on_user_id_and_post_id", unique: true, using: :btree
+  add_index "collectings", ["collectable_type", "collectable_id"], name: "index_collectings_on_collectable_type_and_collectable_id", using: :btree
+  add_index "collectings", ["user_id", "collectable_id", "collectable_type"], name: "index_collectings_on_user_id_and_collectable", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -110,7 +111,6 @@ ActiveRecord::Schema.define(version: 20150525013519) do
   add_index "ziltaggings", ["photo_id"], name: "index_ziltaggings_on_photo_id", using: :btree
   add_index "ziltaggings", ["post_id"], name: "index_ziltaggings_on_post_id", using: :btree
 
-  add_foreign_key "collectings", "posts"
   add_foreign_key "collectings", "users"
   add_foreign_key "comments", "comments"
   add_foreign_key "comments", "photos"
