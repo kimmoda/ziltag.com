@@ -4,7 +4,7 @@
 
 <p>非常感謝您使用 Ziltag 樂貼趣。您以 <%= @email %> 這個信箱註冊了一個 Zitlag 帳號，在開始之前，我們想請您確認本次註冊。</p>
 
-<%= link_to '確認', confirmation_url(@resource, confirmation_token: @token), style: 'background-color: red; color: white; padding: 10px 30px; border-radius: 5px;' %>
+<%= link_to '確認', confirmation_url(@resource, confirmation_token: @token), style: 'background-color: red; color: white; padding: 10px 30px; border-radius: 5px; text-decoration: none' %>
 
 <p>請您點擊上方的確認按鈕來確認註冊。</p>
 
