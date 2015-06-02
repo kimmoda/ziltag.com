@@ -1,10 +1,168 @@
+
 #ziltag_modal{
   position: fixed;
   top: 59px;
   left: 100%;
   height: 100%;
-  background-color: black;
+  background-color: gray;
   transition: left 0.5s;
   overflow: auto;
-  z-index: 9527;
+  z-index: 6;
+  
+  article.post_ziltag_article{
+    background-color: $main_white_color;
+    border:1px solid #ddd;
+    position: relative;
+    section.main_content{
+      padding:{
+        top:20px;
+        left:55px;
+        right:55px;
+        bottom:100px;
+      };
+      div.btn_cross{
+        position: absolute;
+        right:50px;
+        top:20px;
+        z-index: 9;
+        a{
+          color: $main_gray_color;
+        }
+      }
+      div.switch_func{
+        display: block;
+        margin-bottom: 10px;
+        &:after{
+          content: "";
+          display: block;
+          clear:both;
+        }
+        button.btn{
+          color: $main_gray_color;
+          border:1px solid $main_gray_color;
+          background-color: $seventh_gray_color;
+          outline: none;
+          &.active{
+            color:white;
+            background-color: $main_gray_color;
+          }
+        }
+      }
+      h2.post_title{
+        font-size: 40px;
+        color: $fifth_gray_color;
+        margin-top: 0;
+      }
+      
+      div.user_profile_info{
+        border-bottom:1px solid $fourth_gray_color;
+        padding:{
+          left:0;
+          right:0;
+          top:20px;
+          bottom:20px;
+        };
+        
+        div.profile_info_block{
+          position: relative;
+          div.profile_img_block{
+            width:50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top:0;
+            left:0;
+            overflow: hidden;
+          }
+          div.profile_basic{
+            padding-left:60px;
+            div.user_name_and_follow{
+              margin-bottom: 5px;
+              p.user_name{
+                display: inline-block;
+                font-size: 18px;
+                color: $fifth_gray_color;
+                margin:0;
+              }
+              div.follow_block{
+                display: inline-block;
+                position: relative;
+                margin-left: 10px;
+              }
+            }
+            
+            time.datetime{
+              font-size: 14px;
+              color: $main_gray_color;
+            }
+            
+          }
+          
+          div.operation_block{
+            margin-top: 10px;
+            ul.other_list{
+              margin:0;
+              > li{
+                padding:0;
+                margin-left: 8px;
+                button{
+                  font-size: 24px;
+                  margin:0;
+                  padding:0;
+                  border:none;
+                  background: none;
+                  color:$main_gray_color;
+                  outline: none;
+                }
+              }
+            }
+          }
+          
+        }
+      }
+      
+      div.context_block{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+      button.scroll_to_top{
+        position: absolute;
+        right:20px;
+        bottom:0;
+        border:none;
+        background: none;
+        outline:none;
+      }
+    }
+    
+  }
+  
+  div.popover{
+    z-index: 8;
+    min-width: 250px;
+  }
+  div.address_block_in_popover{
+    position: relative;
+    p.para1{
+      font-size: 16px;
+      color: $fifth_gray_color;
+    }
+    p.para2{
+      font-size: 12px;
+      color: $fifth_gray_color;
+      margin:0;
+    }
+    ul.other_list_in_popover{
+      position: absolute;
+      right:0;
+      bottom:0;
+      > li{
+        > a{
+          font-size: 24px;
+          color:$main_gray_color; 
+        }
+      }
+    }
+  }
 }
