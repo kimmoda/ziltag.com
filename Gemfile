@@ -43,5 +43,6 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'spring'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
