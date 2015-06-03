@@ -7,7 +7,7 @@
 <script id="handlebar_ziltag_wrapper" type="text/x-handlebars-template">
   <div class="ziltag_wrapper">
     <img src="{{image_url}}">
-    <a data-x="{{x}}" data-y="{{y}}" class="active" data-remote href="{{link}}.json"></a>
+    <a data-x="{{x}}" data-y="{{y}}" data-ziltag-replace  data-remote href="{{link}}.json" class="active"></a>
     
     {{#each other_ziltaggings}}
       <a data-x="{{x}}" data-y="{{y}}" data-ziltag-replace data-remote href="{{link}}.json"></a>
