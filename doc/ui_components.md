@@ -91,12 +91,10 @@
 
 # 樂貼顯示模組
 
-## modal
 ```html
-<%= render :partial => "/partials/modals/post_ziltag_article_modal" %>
-```
+<!-- modal：呈現空的模板，資料透過 JS 塞入 -->
+<%= render 'partials/ziltag_article', type: :modal %>
 
-## 獨立頁
-```html
-<%= render 'partials/ziltag_article' %>
+<!-- 獨立頁：資料透過 server 塞入 -->
+<%= render 'partials/ziltag_article', type: :page %>
 ```
