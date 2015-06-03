@@ -1,9 +1,11 @@
-# 點擊展開樂貼
+# 樂貼點擊的行為
 
-用於 `a[data-ziltag-modal]` 上，點擊後展開樂貼。
+- `data-ziltag-modal`：滑出
+- `data-ziltag-replace`：取代當前樂貼顯示模組的內容
 
 ```html
 <a href="/ziltaggings/1.json" data-remote data-ziltag-modal></a>
+<a href="/ziltaggings/1.json" data-remote data-ziltag-replace></a>
 ```
 
 # 顯示圖片與樂貼

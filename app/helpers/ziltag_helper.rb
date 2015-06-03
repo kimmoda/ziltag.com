@@ -5,14 +5,22 @@ module ZiltagHelper
     end
   end
 
-  def ziltag_wrapper photo, ziltaggings, active: nil
+  def ziltag_wrapper photo, ziltaggings, active: nil, interact: :modal
+    case interact
+    when :modal
+      data_ziltag = {ziltag_modal: ''}
+    when :replace
+      data_ziltag = {ziltag_replace: ''}
+    else raise "Unknown interact type: #{interact}"
+    end
+
     content_tag :div, class: :ziltag_wrapper do
       concat image_tag photo.image_url
       Array(ziltaggings).each do |ziltagging|
         link_options = {
           class: (:active if Array(active).include? ziltagging),
           remote: true,
-          data: {ziltag_modal: true, x: ziltagging.x, y: ziltagging.y}
+          data: {x: ziltagging.x, y: ziltagging.y}.merge!(data_ziltag)
         }
         concat link_to '', ziltagging_path(ziltagging, format: :json), link_options
       end
