@@ -1,9 +1,4 @@
-<% if type == :page %>
-<% end %>
-<% if type == :modal %>
-<% end %>
 <article class="post_ziltag_article">
-  
   
   <section class="main_content">
     
@@ -18,9 +13,9 @@
 
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
       
-      <!-- 底下這行：只有獨立頁才會有 -->
-      <%#= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging %>
-      
+      <% if type == :page %>
+        <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging %>
+      <% end %>
       
       <div class="func_block">
         <ul class="list-unstyled list-inline func_block_list">
@@ -32,8 +27,9 @@
     
     <h2 class="post_title" data-post-title>
       
-      <!-- 底下這行：只有獨立頁才會有 -->
-      <%#= @ziltagging.title %>
+      <% if type == :page %>
+        <%= @ziltagging.title %>
+      <% end %>
     
     </h2>
     
@@ -55,8 +51,11 @@
                   <ul class="list-unstyled list-inline other_list_in_popover">
                     <li><a href="#"><i class="fa fa-share"></i></a></li>
                     <li data-precious-block>
-                      <!-- 底下這行：只有獨立頁才會有 -->
-                      <%#= collecting_button @ziltagging.post %>
+                    
+                      <% if type == :page %>
+                        <%= collecting_button @ziltagging.post %>
+                      <% end %>
+                      
                     </li>
                   </ul>
                 </div>' data-component="show_popover"><i class="fa fa-map-marker"></i>
@@ -65,19 +64,21 @@
             </li>
             <%= render 'partials/share_item' %>
             <li data-precious-block>
-              <!-- 底下這行：只有獨立頁才會有 -->
-              <%#= collecting_button @ziltagging.post %>
+              <% if type == :page %>
+                <%= collecting_button @ziltagging.post %>
+              <% end %>
             </li>
           </ul>
         </div><!-- /.operation_block -->
 
         <div class="profile_img_block">
           
-          <!-- 底下這行：modal頁才會有 -->
-          <img class="profile_img" data-user-avatar>
-          
-          <!-- 底下這行：獨立頁才會有 -->
-          <%#= image_tag @ziltagging.user.avatar.thumb, class: :profile_img %>
+          <% if type == :page %>
+            <%= image_tag @ziltagging.user.avatar.thumb, class: :profile_img %>
+          <% end %>
+          <% if type == :modal %>
+            <img class="profile_img" data-user-avatar>
+          <% end %>
           
         </div><!-- /.profile_img_block -->
         <div class="profile_basic">
@@ -85,17 +86,19 @@
             <p class="user_name" data-user-username>Victor Gumdrop</p>
             <div class="follow_block" data-follow-block>
               
-              <!-- 底下這行：獨立頁才會有 -->
-              <%#= following_button @ziltagging.user %>
+              <% if type == :page %>
+                <%= following_button @ziltagging.user %>
+              <% end %>
               
             </div><!-- /.follow_block -->
           </div>
           
-          <!-- 底下這行：modal頁才會有 -->
-          <time datetime="" class="datetime">發表於 <span data-dreated-at></span></time>
-          
-          <!-- 底下這行：獨立頁才會有 -->
-          <%#= time_info @ziltagging.created_at %>
+          <% if type == :page %>
+            <%= time_info @ziltagging.created_at %>
+          <% end %>
+          <% if type == :modal %>
+            <time datetime="" class="datetime">發表於 <span data-dreated-at></span></time>
+          <% end %>
           
         </div><!-- /.profile_basic -->
       </div><!-- /.profile_info_block -->
@@ -103,8 +106,9 @@
     
     <div class="context_block" data-post-content>
       
-      <!-- 底下這行：獨立頁才會有 -->
-      <%#= sanitize @ziltagging.content %>
+      <% if type == :page %>
+        <%= sanitize @ziltagging.content %>
+      <% end %>
       
     </div><!-- /.context_block -->
     <button class="scroll_to_top" data-component="scroll_top"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
