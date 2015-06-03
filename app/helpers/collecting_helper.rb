@@ -7,9 +7,12 @@ module CollectingHelper
     when :uncollect then :delete
       link_method = :delete
       link_style = current_user.collect?(record) ? nil : :'display:none'
+    else raise "Unknown dom_class: #{dom_class}"
     end
 
-    link_to(fa(:star), collect_path(id: record.id, type: record.class.name),
+    link_options = {id: record.id, type: record.class.name}
+    link_path = dom_class == :collect ? collect_path(link_options) : uncollect_path(link_options)
+    link_to(fa(:star), link_path,
       data: {class: dom_id(record)},
       class: "#{dom_class} #{dom_id(record)}",
       method: link_method,
