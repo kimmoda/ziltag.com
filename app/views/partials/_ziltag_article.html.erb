@@ -15,7 +15,7 @@
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
       
       <!-- 底下這行：只有獨立頁才會有 -->
-      <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging %>
+      <%#= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging %>
       
       
       <div class="func_block">
@@ -29,7 +29,7 @@
     <h2 class="post_title" data-post-title>
       
       <!-- 底下這行：只有獨立頁才會有 -->
-      <%= @ziltagging.title %>
+      <%#= @ziltagging.title %>
     
     </h2>
     
@@ -52,7 +52,7 @@
                     <li><a href="#"><i class="fa fa-share"></i></a></li>
                     <li data-precious-block>
                       <!-- 底下這行：只有獨立頁才會有 -->
-                      <%= collecting_button @ziltagging.post %>
+                      <%#= collecting_button @ziltagging.post %>
                     </li>
                   </ul>
                 </div>' data-component="show_popover"><i class="fa fa-map-marker"></i>
@@ -62,7 +62,7 @@
             <%= render 'partials/share_item' %>
             <li data-precious-block>
               <!-- 底下這行：只有獨立頁才會有 -->
-              <%= collecting_button @ziltagging.post %>
+              <%#= collecting_button @ziltagging.post %>
             </li>
           </ul>
         </div><!-- /.operation_block -->
@@ -70,10 +70,10 @@
         <div class="profile_img_block">
           
           <!-- 底下這行：modal頁才會有 -->
-          <!--<img class="profile_img" data-user-avatar>-->
+          <img class="profile_img" data-user-avatar>
           
           <!-- 底下這行：獨立頁才會有 -->
-          <%= image_tag @ziltagging.user.avatar.thumb, class: :profile_img %>
+          <%#= image_tag @ziltagging.user.avatar.thumb, class: :profile_img %>
           
         </div><!-- /.profile_img_block -->
         <div class="profile_basic">
@@ -82,16 +82,16 @@
             <div class="follow_block" data-follow-block>
               
               <!-- 底下這行：獨立頁才會有 -->
-              <%= following_button @ziltagging.user %>
+              <%#= following_button @ziltagging.user %>
               
             </div><!-- /.follow_block -->
           </div>
           
           <!-- 底下這行：modal頁才會有 -->
-          <!--<time datetime="" class="datetime">發表於 <span data-dreated-at></span></time>-->
+          <time datetime="" class="datetime">發表於 <span data-dreated-at></span></time>
           
           <!-- 底下這行：獨立頁才會有 -->
-          <%= time_info @ziltagging.created_at %>
+          <%#= time_info @ziltagging.created_at %>
           
         </div><!-- /.profile_basic -->
       </div><!-- /.profile_info_block -->
@@ -100,7 +100,7 @@
     <div class="context_block" data-post-content>
       
       <!-- 底下這行：獨立頁才會有 -->
-      <%= sanitize @ziltagging.content %>
+      <%#= sanitize @ziltagging.content %>
       
     </div><!-- /.context_block -->
     <button class="scroll_to_top" data-component="scroll_top"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
