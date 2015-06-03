@@ -88,3 +88,15 @@
   </div>
 </li>
 ```
+
+# 樂貼顯示模組
+
+## modal
+```html
+<%= render :partial => "/partials/modals/post_ziltag_article_modal" %>
+```
+
+## 獨立頁
+```html
+<%= render 'partials/ziltag_article' %>
+```
