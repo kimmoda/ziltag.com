@@ -4,6 +4,10 @@ class EmbeddedControllerTest < ActionController::TestCase
   test "should get ziltagging" do
     get :ziltagging, id: ziltaggings(:tony)
     assert_response :success
+
+    sign_in(:user, users(:tony))
+    get :ziltagging, id: ziltaggings(:tony)
+    assert_response :success
   end
 
   test "should get photos" do
