@@ -38,7 +38,7 @@ main(function(){
     $("[data-modal-post-ziltag-article]").attr("data-modal-status", "open");
     
     // 置換內容
-    ZiltagSticker.replaceModalData(data);
+    ZiltagSticker.replaceModalData(data, null);
     
     ZiltagSticker.appendImgOnModal(data);
     
