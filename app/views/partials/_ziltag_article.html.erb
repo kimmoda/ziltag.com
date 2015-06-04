@@ -14,7 +14,7 @@
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
       
       <% if type == :page %>
-        <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging %>
+        <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging, interact: :replace %>
       <% end %>
       
       <div class="func_block">

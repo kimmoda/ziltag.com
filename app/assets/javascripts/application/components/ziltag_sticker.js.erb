@@ -2,7 +2,7 @@ var ZiltagSticker = {
   
   
   // 置換modal的內容
-  replaceModalData: function(data){
+  replaceModalData: function(data, thisElement){
     window.history.pushState(null, null, data.link);
     
     $("[data-user-username]").html(data.user.username);
@@ -19,6 +19,15 @@ var ZiltagSticker = {
     $("[data-follow-block]").html(data.following_button);
     $("[data-precious-block]").html(data.collecting_button);
     $("[data-image_url]").attr("src", data.image_url);
+    
+    // 切換紅灰樂貼
+    if( thisElement !== null ){
+      thisElement.classList.add('active');
+      other_a_tags = thisElement.parentNode.getElementsByTagName('a');
+      for(var i = 0; i < other_a_tags.length; i++)
+        if(other_a_tags[i] !== thisElement) other_a_tags[i].classList.remove('active');
+    }
+    
   },
   
   // modal 視窗
@@ -26,7 +35,11 @@ var ZiltagSticker = {
     
     var source   = $("#handlebar_ziltag_wrapper").html();
     var template = Handlebars.compile(source);
-    var context = {image_url: data.image_url, x: data.x, y: data.y, other_ziltaggings: data.other_ziltaggings};
+    var context = {
+      image_url: data.image_url, x: data.x, y: data.y,
+      other_ziltaggings: data.other_ziltaggings,
+      link: data.link
+    };
     var html    = template(context);
     
     var ziltag_wrapper = $("[data-modal-post-ziltag-article]").find("[data-ziltag-sticker-article]");
