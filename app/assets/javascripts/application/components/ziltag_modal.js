@@ -14,22 +14,23 @@ function showPostModal(){
   });
 };
 
+function back_page(){
+  ziltag_modal.modal.style.left = '100%';
+  $("body").css("overflow", "auto");
+  $("[data-modal-post-ziltag-article]").attr("data-modal-status", "close");
+}
+
 main(function(){
   
   ziltag_modal.modal = document.getElementById('ziltag_modal');
   ziltag_modal.section_post = document.querySelector('[data-layout="col_right"]');
   
   
-  $('a[data-btn-remove]').attr("data-back-path", location.pathname);
+  $('a[data-btn-remove]').attr("data-back-path", location.pathname + location.search);
   
   $('a[data-btn-remove]').on('click', function(e){
     e.preventDefault();
     window.history.back();
-    ziltag_modal.modal.style.left = '100%';
-    $("body").css({
-      "overflow": "auto"
-    });
-    $("[data-modal-post-ziltag-article]").attr("data-modal-status", "close");
   });
   
   // TODO: 重複點擊相同的文章，會重複發送請求索取 JSON 資料，可以在第一次發送時就 cache 結果，減輕伺服器負擔。
@@ -58,5 +59,7 @@ $(window).resize(function(){
 });
 
 window.addEventListener("popstate", function(e) {
+  e.preventDefault();
   window.history.replaceState(null, null, $('a[data-btn-remove]').attr("data-back-path"));
+  back_page()
 });
