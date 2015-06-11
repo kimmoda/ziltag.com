@@ -1,0 +1,17 @@
+run_in 'photos', 'index', ->
+  $container = $('section.photos_index')
+  imagesLoaded $container, ->
+    $container.masonry
+      columnWidth: 300
+      gutter: 10
+      itemSelector: '.ziltag_wrapper'
+
+  page = 0
+  window.addEventListener 'optimizedScroll', ->
+    scrollTop = document.documentElement?.scrollTop || document.body.scrollTop
+    scrolledToBottom = (scrollTop + window.innerHeight + 500) >= document.body.scrollHeight
+    if scrolledToBottom
+      $.get '<%= ::Rails.application.routes.url_helpers.photos_path %>', page: page+=1, scroll: true, (data) ->
+        $items = $(data)
+        imagesLoaded $items, ->
+          $container.append($items).masonry().masonry( 'appended', $items)

@@ -1,5 +1,3 @@
 <section class="photos_index">
-  <% @photos.each do |photo| %>
-    <%= ziltag_wrapper photo, photo.ziltaggings %>
-  <% end %>
+  <%= render @photos %>
 </section>
