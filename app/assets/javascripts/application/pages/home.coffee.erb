@@ -1,0 +1,23 @@
+# 捲動載入
+throttle = (type, name, obj) ->
+  obj = obj || window
+  running = false
+  func = ->
+    return if running
+    running = true
+    requestAnimationFrame ->
+      obj.dispatchEvent(new CustomEvent(name))
+      running = false;
+  obj.addEventListener(type, func)
+
+throttle('scroll', 'optimizedScroll')
+
+page = 0
+
+window.addEventListener 'optimizedScroll', ->
+  scrollTop = document.documentElement?.scrollTop || document.body.scrollTop
+  scrolledToBottom = (scrollTop + window.innerHeight) >= document.body.scrollHeight
+  if scrolledToBottom
+    $.get '/', page: page+=1, scroll: true, (data) ->
+      section = document.getElementsByClassName('section_post')[0]
+      section.insertAdjacentHTML 'beforeend', data
