@@ -1,5 +1,5 @@
 # ref: https://developer.mozilla.org/en-US/docs/Web/Events/scroll
-throttle = (type, name, obj) ->
+window.throttle = (type, name, obj) ->
   obj = obj || window
   running = false
   func = ->
