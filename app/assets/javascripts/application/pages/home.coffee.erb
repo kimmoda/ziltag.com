@@ -1,12 +1,5 @@
-# 捲動載入
 run_in 'pages', 'home', ->
-
-  page = 0
-
-  window.addEventListener 'optimizedScroll', ->
-    scrollTop = document.documentElement?.scrollTop || document.body.scrollTop
-    scrolledToBottom = (scrollTop + window.innerHeight + 500) >= document.body.scrollHeight
-    if scrolledToBottom
-      $.get '/', page: page+=1, scroll: true, (data) ->
-        section = document.getElementsByClassName('section_post')[0]
-        section.insertAdjacentHTML 'beforeend', data
+  scroll_to_bottom (page) ->
+    $.get '/', page: page+=1, scroll: true, (data) ->
+      section = document.getElementsByClassName('section_post')[0]
+      section.insertAdjacentHTML 'beforeend', data
