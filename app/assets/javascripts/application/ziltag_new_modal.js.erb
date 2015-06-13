@@ -1,14 +1,14 @@
 // 新增樂貼
 
 // 準備傳送資料的 Object
-var obj_post_data = {};
+var obj_post_data = {post: {ziltaggings_attributes: {0: {}}}};
 
 var newZiltag = {
   
   posX:0,
   posY:0,
   
-  postImageUrl:"http://notes.carlos-studio.com/ajax_upload_image/upload.php",
+  postImageUrl: "<%= ::Rails.application.routes.url_helpers.photos_path(format: 'json') %>",
   
   dropFile:{},
   
@@ -107,9 +107,9 @@ var newZiltag = {
     
     newZiltag.posX = parseInt(e.pageX - posX);
     newZiltag.posY = parseInt(e.pageY - posY);
-    
-    obj_post_data.x = parseInt(newZiltag.posX / image_ratio);
-    obj_post_data.y = parseInt(newZiltag.posY / image_ratio);
+
+    obj_post_data.post.ziltaggings_attributes[0].x = parseInt(newZiltag.posX / image_ratio);
+    obj_post_data.post.ziltaggings_attributes[0].y = parseInt(newZiltag.posY / image_ratio);
   }
   
 };
@@ -212,7 +212,7 @@ main(function(){
         {
           $("div.init_zone, div.edit_zone").toggleClass("hidden");
           $("img.uploaded_image").attr("src", $("img.user_image").attr("src"));
-          console.log(data);
+          obj_post_data.post.ziltaggings_attributes[0].photo_id = data.id
         }
       });
     });
@@ -240,8 +240,11 @@ main(function(){
     
     $(".ziltag_content").redactor({
       buttons: ['image', 'link'],
-      imageUpload: '/url',
-      plugins: ['video']
+      imageUpload: '/redactor/images',
+      plugins: ['video'],
+      lang: 'zh_tw',
+      uploadImageFields:
+        {authenticity_token: document.querySelector('meta[name="csrf-token"]').content}
     });
     
     $(".ziltag_tags").tagsInput({
@@ -253,17 +256,15 @@ main(function(){
     // 資料儲存
     $("button.ziltag_save").on("click", function(e){
       e.preventDefault();
-      var form_string = $(this).closest("form").serialize();
-      form_string_array = form_string.split("&");
-      $.each(form_string_array, function(index, value){
-        var data = value.split("=");
-        obj_post_data[data[0]] = data[1];
+      form_string_array = $(this).closest("form").serializeArray()
+      $.each(form_string_array, function(index, pair){
+        obj_post_data[pair.name] = pair.value;
       });
       
       // 標題
-      var this_title = $(this).closest("form").find("input[name=ziltag_title]").val();
+      var this_title = $(this).closest("form").find("input.ziltag_title").val();
       // 內文
-      var this_content = $(this).closest("form").find('textarea[name=ziltag_msg]').redactor('code.get');
+      var this_content = $(this).closest("form").find('textarea.ziltag_content').redactor('code.get');
       // 標籤
       var this_tags = $(this).closest("form").find('input.ziltag_tags').val();
       
@@ -297,9 +298,9 @@ main(function(){
       
       // 傳送圖片內容至後端
       $.ajax({
-    		url: '代入後端 url',
+    		url: '<%= ::Rails.application.routes.url_helpers.posts_path(format: 'json') %>',
     		type: 'POST',
-    		data: JSON.stringify(obj_post_data),
+    		data: obj_post_data,
     		dataType: 'json',
     		success: function(data){
     		  console.log(data);

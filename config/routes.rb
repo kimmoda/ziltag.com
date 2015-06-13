@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :ziltaggings, only: :show
   resources :photos, only: %i[index show]
-  resources :posts, only: :create, format: true, constraints: {format: :json}
+  resources :posts, :photos, only: :create, format: true, constraints: {format: :json}
 
   post 'redactor/images'
 
