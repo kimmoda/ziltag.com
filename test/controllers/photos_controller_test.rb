@@ -16,7 +16,7 @@ class PhotosControllerTest < ActionController::TestCase
       format: :json,
       photo: {image: fixture_file_upload('/images/1.jpg', 'image/jpeg', :binary)}
     assert_response :success
-    assert_equal({'id' => 339078013}, JSON.parse(response.body))
+    assert JSON.parse(response.body).key?('id')
   end
 
 end
