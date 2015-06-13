@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: %i[update destroy]
+  before_action :set_post, only: %i[show update destroy]
 
   # GET /posts.json
   def index
     @posts = current_user.posts.page(params[:page]).per(10)
+  end
+
+  # GET /posts/:id.json
+  def show
   end
 
   # POST /posts.json
