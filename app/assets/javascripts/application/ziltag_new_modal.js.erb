@@ -268,34 +268,7 @@ main(function(){
       // 標籤
       var this_tags = $(this).closest("form").find('input.ziltag_tags').val();
       
-      if( obj_post_data.ziltag_id != "" ){
-        var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + obj_post_data.ziltag_id + "]");
-        $(post_list_item).find("h3.title").html(this_title);
-        $(post_list_item).find("div.post_contents").html(this_content);
-        $(post_list_item).find("div.all_tags").html(this_tags);
-      }else{
-        var d = new Date();
-        var return_id = d.getTime();
-        
-        // 貼上樂貼
-        var source   = $("#handlebar_ziltag_sticker").html();
-        var template = Handlebars.compile(source);
-        var context = {x: newZiltag.posX, y: newZiltag.posY, id: return_id};
-        var html    = template(context);
-        $("#ziltag_new_modal div.ziltag_wrapper").append(html);
-        
-        
-        // 放入文章
-        var source   = $("#handlebar_ziltag_msg").html();
-        var template = Handlebars.compile(source);
-        var context = {ziltag_title: this_title, ziltag_msg: this_content, id: return_id, ziltag_tags: this_tags};
-        var html    = template(context);
-        $("#ziltag_new_modal ul.post_list li").addClass("hidden");
-        $("#ziltag_new_modal ul.post_list").prepend(html);
-      }
-      
-      $(this).closest(".modal").modal("hide");
-      
+      var that = $(this);
       // 傳送圖片內容至後端
       $.ajax({
     		url: '<%= ::Rails.application.routes.url_helpers.posts_path(format: 'json') %>',
@@ -304,6 +277,35 @@ main(function(){
     		dataType: 'json',
     		success: function(data){
     		  console.log(data);
+    		  
+    		  var post_list_item_length = $("#ziltag_new_modal ul.post_list li[data-id=" + data.ziltaggings[0].id + "]").length;
+    		  if( post_list_item > 0 ){
+            var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + data.ziltaggings[0].id + "]");
+            $(post_list_item).find("h3.title").html(this_title);
+            $(post_list_item).find("div.post_contents").html(this_content);
+            $(post_list_item).find("div.all_tags").html(this_tags);
+          }else{
+            
+            // 貼上樂貼
+            var source   = $("#handlebar_ziltag_sticker").html();
+            var template = Handlebars.compile(source);
+            var context = {x: newZiltag.posX, y: newZiltag.posY, id: data.ziltaggings[0].id};
+            var html    = template(context);
+            $("#ziltag_new_modal div.ziltag_wrapper").append(html);
+            
+            
+            // 放入文章
+            var source   = $("#handlebar_ziltag_msg").html();
+            var template = Handlebars.compile(source);
+            var context = {ziltag_title: this_title, ziltag_msg: this_content, id: data.ziltaggings[0].id, ziltag_tags: this_tags};
+            var html    = template(context);
+            $("#ziltag_new_modal ul.post_list li").addClass("hidden");
+            $("#ziltag_new_modal ul.post_list").prepend(html);
+          }
+          
+          $(that).closest(".modal").modal("hide");
+    		  
+    		  
     		}
     	});
       
