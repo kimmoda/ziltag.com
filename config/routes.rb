@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   devise_for :users
-  resources :ziltaggings, only: :show
-  resources :photos, only: %i[index show]
-  resources :posts, :photos, only: :create, format: true, constraints: {format: :json}
+  resources :ziltaggings, only: %i[show update destroy]
+  resources :photos, only: %i[index show create]
+  resources :posts, only: %i[create update destroy]
 
   post 'redactor/images'
 

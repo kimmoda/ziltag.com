@@ -1,7 +1,7 @@
 // 新增樂貼
 
 // 準備傳送資料的 Object
-var obj_post_data = {post: {ziltaggings_attributes: {0: {}}}};
+var obj_post_data = {post: {}, ziltagging: {}};
 
 var newZiltag = {
   
@@ -108,8 +108,8 @@ var newZiltag = {
     newZiltag.posX = parseInt(e.pageX - posX);
     newZiltag.posY = parseInt(e.pageY - posY);
 
-    obj_post_data.post.ziltaggings_attributes[0].x = parseInt(newZiltag.posX / image_ratio);
-    obj_post_data.post.ziltaggings_attributes[0].y = parseInt(newZiltag.posY / image_ratio);
+    obj_post_data.ziltagging.x = parseInt(newZiltag.posX / image_ratio);
+    obj_post_data.ziltagging.y = parseInt(newZiltag.posY / image_ratio);
   }
   
 };
@@ -212,7 +212,7 @@ main(function(){
         {
           $("div.init_zone, div.edit_zone").toggleClass("hidden");
           $("img.uploaded_image").attr("src", $("img.user_image").attr("src"));
-          obj_post_data.post.ziltaggings_attributes[0].photo_id = data.id
+          obj_post_data.ziltagging.photo_id = data.id
         }
       });
     });
