@@ -1,3 +1,31 @@
+# 取得文章列表
+
+請求
+
+`GET /posts.json`
+
+變數 | 型別 | 說明
+---  | ---  | ---
+page | 數字 | 顯示第 n 頁，可用於捲動載入
+
+回應
+
+```json
+[
+  {
+    "id": 167,
+    "title": "test",
+    "content": "<p>test</p>",
+    "summary": "test",
+    "first_photo": {
+      "id": 152,
+      "image_url": "http://localhost:3000/uploads/photos/image/152/Screenshot_2015-03-08_03.30.22.png",
+      "thumb": "http://localhost:3000/uploads/photos/image/152/thumb_Screenshot_2015-03-08_03.30.22.png"
+    }
+  }, ...
+]
+```
+
 # 同時新增文章與樂貼
 
 請求

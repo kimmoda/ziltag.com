@@ -2,6 +2,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: %i[update destroy]
 
+  # GET /posts.json
+  def index
+    @posts = current_user.posts.page(params[:page]).per(10)
+  end
+
   # POST /posts.json
   def create
     @post = current_user.posts.create! post_params

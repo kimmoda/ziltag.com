@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :ziltaggings, only: %i[show update destroy]
   resources :photos, only: %i[index show create]
-  resources :posts, only: %i[create update destroy]
+  resources :posts, only: %i[index create update destroy]
 
   post 'redactor/images'
 
