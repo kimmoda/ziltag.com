@@ -106,6 +106,9 @@ class PostsControllerTest < ActionController::TestCase
     post.reload
     assert_equal '哈囉', post.title
     assert_equal '<p>世界</p>', post.content
+    json = JSON.parse response.body
+    expected = {"id"=>339078012, "title"=>"哈囉", "content"=>"<p>世界</p>", "created_on"=>"2015年6月14日", "summary"=>"世界", "first_photo"=>{"id"=>339078012, "image_url"=>"http://localhost:3000/uploads/photos/image/339078012/tony.jpg", "thumb"=>"http://localhost:3000/uploads/photos/image/339078012/thumb_tony.jpg"}}
+    assert_equal expected, json
   end
 
   test 'should delete post' do

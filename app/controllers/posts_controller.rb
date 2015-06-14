@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   # PUT /posts/:id.json
   def update
     @post.update! post_params
-    head :ok
+    render :show
   end
 
   # DELETE /posts/:id.json
