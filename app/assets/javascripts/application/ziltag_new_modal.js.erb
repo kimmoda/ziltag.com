@@ -361,6 +361,10 @@ main(function(){
             $(post_list_item).find("h3.title").html(this_title);
             $(post_list_item).find("div.post_contents").html(this_content);
             
+            var post_list_item_left_side = $("#ziltag_new_modal div.list_block ul.list_ul li[data-id=" + post_id + "]");
+            $(post_list_item_left_side).find("h3.title").html(this_title);
+            $(post_list_item_left_side).find("p.summary").html(this_content);
+            
             $(that).closest(".modal").modal("hide");
           }
         }
