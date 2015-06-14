@@ -11,7 +11,13 @@ class PostsControllerTest < ActionController::TestCase
       "id"=>339078012,
       "title"=>"大兜的測試文章",
       "content"=>"<p>段落一</p><p>段落二</p><p>段落三</p>",
-      "summary"=>"段落一段落二段落三"
+      "created_on"=>"2015年6月14日",
+      "summary"=>"段落一段落二段落三",
+      "first_photo"=>{
+        "id"=>339078012,
+        "image_url"=>"http://localhost:3000/uploads/photos/image/339078012/tony.jpg",
+        "thumb"=>"http://localhost:3000/uploads/photos/image/339078012/thumb_tony.jpg"
+      }
     }
     assert_equal expected, json
   end
@@ -49,10 +55,19 @@ class PostsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     json.delete 'id'
     json['ziltagging'].delete 'id'
-    expected = {
-      'title' => '謝謝你',
-      'content' => '<p>九五二七</p>',
-      'ziltagging' => {'x'=>123, 'y'=>321, 'photo_id'=>339078012}
+    expected = {"title"=>"謝謝你",
+      "content"=>"<p>九五二七</p>",
+      "created_on"=>"2015年6月14日",
+      "summary"=>"九五二七",
+      "first_photo"=>{
+        "id"=>339078012,
+        "image_url"=>"http://localhost:3000/uploads/photos/image/339078012/tony.jpg",
+        "thumb"=>"http://localhost:3000/uploads/photos/image/339078012/thumb_tony.jpg"
+      },
+      "ziltagging"=>{
+        "x"=>123, "y"=>321,
+        "photo_id"=>339078012
+      }
     }
     assert_equal expected, json
   end
@@ -68,7 +83,12 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
     json = JSON.parse(response.body)
     json.delete 'id'
-    expected = {'title'=>'謝謝你', 'content'=>'<p>九五二七</p>'}
+    expected = {
+      "title"=>"謝謝你",
+      "content"=>"<p>九五二七</p>",
+      "created_on"=>"2015年6月14日",
+      "summary"=>"九五二七"
+    }
     assert_equal expected, json
   end
 

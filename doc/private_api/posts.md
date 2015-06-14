@@ -9,9 +9,15 @@
 ```json
 {
   "id": 1,
-  "title": "Est eos esse sit rem enim corporis sit.",
-  "content": "<p>Ut minima cum quibusdam vel. Inventore eligendi voluptatem consequatur qui. Est ea sit voluptates dolores tenetur assumenda. Ut veniam qui voluptatum.</p><img src=\"http://placehold.it/100x100\"><p>Porro harum provident eveniet omnis sed. Provident dolorem qui quo eos odit. Deserunt voluptates nobis autem et molestiae sit. Vel quos nihil quo est voluptatem distinctio consequatur.</p><img src=\"http://placehold.it/100x100\"><p>Sit ut fuga aut sunt autem voluptatibus ullam. Vitae sunt voluptatem libero suscipit. Cum amet maiores ad qui. Exercitationem eaque error inventore labore voluptas.</p><img src=\"http://placehold.it/100x100\">",
-  "summary": "Ut minima cum quibusdam vel. Inventore eligendi voluptatem consequatur qui. Est ea sit voluptates dolores tenetur assumenda. Ut veniam qui voluptatum.Porro harum provident eveniet omnis sed. Provident dolorem qui quo eos odit. Deserunt voluptates nobis autem et molestiae sit. Vel quos nihil quo es..."
+  "title": "標題",
+  "content": "<p>內容</p>",
+  "created_on": "2015年6月13日",
+  "summary": "內容",
+  "first_photo": {
+    "id": 1,
+    "image_url": "http://localhost:3000/uploads/photos/image/1/6.jpg",
+    "thumb": "http://localhost:3000/uploads/photos/image/1/thumb_6.jpg"
+  }
 }
 ```
 
@@ -28,17 +34,18 @@ page | 數字 | 顯示第 n 頁，可用於捲動載入
 回應
 
 ```json
+
 [
   {
-    "id": 167,
-    "title": "test",
-    "content": "<p>test</p>",
-    "summary": "test",
-    "created_on": "2015年6月14日",
+    "id": 1,
+    "title": "標題",
+    "content": "<p>內容</p>",
+    "created_on": "2015年6月13日",
+    "summary": "內容",
     "first_photo": {
-      "id": 152,
-      "image_url": "http://localhost:3000/uploads/photos/image/152/Screenshot_2015-03-08_03.30.22.png",
-      "thumb": "http://localhost:3000/uploads/photos/image/152/thumb_Screenshot_2015-03-08_03.30.22.png"
+      "id": 1,
+      "image_url": "http://localhost:3000/uploads/photos/image/1/6.jpg",
+      "thumb": "http://localhost:3000/uploads/photos/image/1/thumb_6.jpg"
     }
   }, ...
 ]
@@ -53,8 +60,8 @@ page | 數字 | 顯示第 n 頁，可用於捲動載入
 ```json
 {
   "post": {
-    "title": "謝謝你",
-    "content": "<p>九五二七</p>"
+    "title": "標題",
+    "content": "<p>內容</p>"
   },
   "ziltagging": {
     "x": 123,
@@ -68,9 +75,16 @@ page | 數字 | 顯示第 n 頁，可用於捲動載入
 
 ```json
 {
-  "id": 123456,
-  "title": "謝謝你",
-  "content": "<p>九五二七</p>",
+  "id": 1,
+  "title": "標題",
+  "content": "<p>內容</p>",
+  "created_on": "2015年6月13日",
+  "summary": "內容",
+  "first_photo": {
+    "id": 1,
+    "image_url": "http://localhost:3000/uploads/photos/image/1/6.jpg",
+    "thumb": "http://localhost:3000/uploads/photos/image/1/thumb_6.jpg"
+  },
   "ziltagging": {
     "id": 654321,
     "x": 123,
@@ -89,8 +103,8 @@ page | 數字 | 顯示第 n 頁，可用於捲動載入
 ```json
 {
   "post": {
-    "title": "謝謝你",
-    "content": "<p>九五二七</p>"
+    "title": "標題",
+    "content": "<p>內容</p>"
   }
 }
 ```
@@ -99,9 +113,16 @@ page | 數字 | 顯示第 n 頁，可用於捲動載入
 
 ```json
 {
-  "id": 123456,
-  "title": "謝謝你",
-  "content": "<p>九五二七</p>"
+  "id": 1,
+  "title": "標題",
+  "content": "<p>內容</p>",
+  "created_on": "2015年6月13日",
+  "summary": "內容",
+  "first_photo": {
+    "id": 1,
+    "image_url": "http://localhost:3000/uploads/photos/image/1/6.jpg",
+    "thumb": "http://localhost:3000/uploads/photos/image/1/thumb_6.jpg"
+  }
 }
 ```
 
