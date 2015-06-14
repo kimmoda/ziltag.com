@@ -450,21 +450,22 @@ main(function(){
         newZiltag.setPos($(this).closest("article.img_article"), e);
         
         obj_post_data.ziltag_id = $($dragging).attr("data-id");
-        
-        // 移動樂貼，傳送座標及id至後端
-        $.ajax({
-      		url: '/ziltaggings/' + $($dragging).attr("data-id") + '.json',
-      		type: 'PUT',
-      		data: obj_post_data,
-      		dataType: 'json',
-      		success: function(data){
-      		},
-      		statusCode:{
-      		  200: function() {
-            }
-      		}
-  
-      	});
+        if( $($dragging).attr("data-id") != undefined ){
+          // 移動樂貼，傳送座標及id至後端
+          $.ajax({
+        		url: '/ziltaggings/' + $($dragging).attr("data-id") + '.json',
+        		type: 'PUT',
+        		data: obj_post_data,
+        		dataType: 'json',
+        		success: function(data){
+        		},
+        		statusCode:{
+        		  200: function() {
+              }
+        		}
+    
+        	});
+        }
       	$dragging = null;
       }
       
