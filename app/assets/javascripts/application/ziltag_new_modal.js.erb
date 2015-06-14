@@ -417,17 +417,21 @@ main(function(){
         delete obj_post_data.ziltag_title;
         delete obj_post_data.ziltag_msg;
         delete obj_post_data.ziltag_tags;
-        
+        delete obj_post_data.ziltagging.photo_id;
         
         // 移動樂貼，傳送座標及id至後端
         $.ajax({
-      		url: '代入後端更新樂貼位置的 url',
-      		type: 'POST',
-      		data: JSON.stringify(obj_post_data),
+      		url: '/ziltaggings/' + $(that).data("id") + '.json',
+      		type: 'PUT',
+      		data: obj_post_data,
       		dataType: 'json',
       		success: function(data){
-      		  console.log(data);
+      		},
+      		statusCode:{
+      		  200: function() {
+            }
       		}
+
       	});
         
       });
