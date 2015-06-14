@@ -235,10 +235,20 @@
               article.img_article{
                 div.ziltag_wrapper{
                   position: relative;
+                  
                 }
                 a.ziltag{
                   position: absolute;
                   cursor: pointer;
+                  span.remove_ziltag{
+                    position:absolute;
+                    display: inline-block;
+                    right:-8px;
+                    top:-12px;
+                    color:black;
+                    font-size:18px;
+                    z-index: 999 !important;
+                  }
                 }
               }
               div.img_edit_zone_block{

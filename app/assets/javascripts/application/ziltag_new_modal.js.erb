@@ -282,6 +282,7 @@ main(function(){
       var this_tags = $(this).closest("form").find('input.ziltag_tags').val();
       
       var that = $(this);
+      
       // 傳送圖片內容至後端
       $.ajax({
     		url: '<%= ::Rails.application.routes.url_helpers.posts_path(format: 'json') %>',
@@ -289,7 +290,6 @@ main(function(){
     		data: obj_post_data,
     		dataType: 'json',
     		success: function(data){
-    		  console.log(data);
     		  
     		  var post_list_item_length = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]").length;
     		  if( post_list_item > 0 ){
@@ -316,7 +316,6 @@ main(function(){
             $("#ziltag_new_modal ul.post_list").prepend(html);
             
             // 放入文章：左側
-            console.log(data);
             var source   = $("#handlebar_left_list_block_one_item").html();
             var template = Handlebars.compile(source);
             var context = data;
@@ -384,6 +383,45 @@ main(function(){
       });
     });
     
+    // 滑鼠滑過樂貼
+    $(document).on("mouseover", "#ziltag_new_modal a.ziltag", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).find("span.remove_ziltag").removeClass("hidden");
+    });
+    // 滑鼠離開樂貼
+    $(document).on("mouseleave", "#ziltag_new_modal a.ziltag", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).find("span.remove_ziltag").addClass("hidden");
+    });
+    
+    // 刪除樂貼
+    $(document).on("click", "#ziltag_new_modal span.remove_ziltag", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      
+      var ziltag_id = $(this).closest("a.ziltag").data("id");
+      var post_id = $(this).closest("a.ziltag").data("post-id");      
+		  
+		  var that = $(this);
+		  $.ajax({
+    		url: '/ziltaggings/' + ziltag_id + '.json',
+    		type: 'DELETE',
+    		dataType: 'json',
+    		success: function(data){
+    		},
+    		statusCode: {
+    		  200: function(){
+    		    $(that).closest("a.ziltag").remove();
+      		  $("#ziltag_new_modal ul.post_list li[data-id=" + post_id + "]").remove();
+      		  $("#ziltag_new_modal div.list_block ul.list_ul li[data-id=" + post_id + "]").remove();
+    		  }
+    		}
+    	});
+		  
+    });
+    
     // 拖曳樂貼
     var $dragging = null;
     $(document).on("mousedown", "#ziltag_new_modal a.ziltag", function (e) {
@@ -412,10 +450,6 @@ main(function(){
         newZiltag.setPos($(this).closest("article.img_article"), e);
         
         obj_post_data.ziltag_id = $($dragging).attr("data-id");
-        delete obj_post_data.ziltag_title;
-        delete obj_post_data.ziltag_msg;
-        delete obj_post_data.ziltag_tags;
-        delete obj_post_data.ziltagging.photo_id;
         
         // 移動樂貼，傳送座標及id至後端
         $.ajax({
@@ -435,6 +469,7 @@ main(function(){
       }
       
     });
+    
     
     // 輯編樂貼
     $(document).on("click", "#ziltag_new_modal a.edit_ziltag_sticker", function(e){
@@ -489,8 +524,6 @@ main(function(){
     		  
     		  $(that).closest("li").remove();
     		  $("#ziltag_new_modal div.list_block ul.list_ul li[data-id=" + data.id + "]").remove();
-    		  
-    		  
     		  
     		}
     	});
