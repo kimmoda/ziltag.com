@@ -25,8 +25,8 @@ class PostsController < ApplicationController
 
   # DELETE /posts/:id.json
   def destroy
+    @ziltagging_ids = @post.ziltaggings.pluck(:id)
     @post.destroy
-    head :ok
   end
 
 private

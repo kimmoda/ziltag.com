@@ -94,6 +94,9 @@ class PostsControllerTest < ActionController::TestCase
     delete :destroy, id: post.id, format: :json
     assert_response :success
     refute Post.exists? id: post.id
+    json = JSON.parse response.body
+    expected = {"id"=>339078012, "ziltagging_ids"=>[339078012]}
+    assert_equal expected, json
   end
 
 end
