@@ -1,2 +1,1 @@
-json.extract! @post, :id, :title, :content
-json.summary summary @post.content
+json.partial! 'post', post: @post
