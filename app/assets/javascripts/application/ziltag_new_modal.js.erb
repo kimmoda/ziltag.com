@@ -307,13 +307,21 @@ main(function(){
             $("#ziltag_new_modal div.ziltag_wrapper").append(html);
             
             
-            // 放入文章
+            // 放入文章：下方
             var source   = $("#handlebar_ziltag_msg").html();
             var template = Handlebars.compile(source);
             var context = {ziltag_title: data.title, ziltag_msg: data.content, id: data.id, ziltag_id: data.ziltagging.id, ziltag_tags: this_tags};
             var html    = template(context);
             $("#ziltag_new_modal ul.post_list li").addClass("hidden");
             $("#ziltag_new_modal ul.post_list").prepend(html);
+            
+            // 放入文章：左側
+            console.log(data);
+            var source   = $("#handlebar_left_list_block_one_item").html();
+            var template = Handlebars.compile(source);
+            var context = data;
+            var html    = template(context);
+            $("#ziltag_new_modal div.list_block ul.list_ul").prepend(html);
           }
           
           $(that).closest(".modal").modal("hide");
