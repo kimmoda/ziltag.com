@@ -470,17 +470,27 @@ main(function(){
       e.preventDefault();
       e.stopPropagation();
       
-      $("#ziltag_new_modal a.ziltag[data-id=" + $(this).data("id") + "]").remove();
-      $(this).closest("li").remove();
       
+      var that = $(this);
       // 傳送圖片內容至後端
       $.ajax({
-    		url: '代入後端要刪除樂貼的 url',
-    		type: 'POST',
+    		url: '/posts/' + $(this).data("id") + '.json',
+    		type: 'DELETE',
     		data: "id=" + $(this).data("id"),
     		dataType: 'json',
     		success: function(data){
     		  console.log(data);
+    		  
+    		  $.each(data.ziltagging_ids, function(index, value){
+    		    $("#ziltag_new_modal a.ziltag[data-id=" + value + "]").remove();
+    		  });
+    		  
+    		  
+    		  $(that).closest("li").remove();
+    		  $("#ziltag_new_modal div.list_block ul.list_ul li[data-id=" + data.id + "]").remove();
+    		  
+    		  
+    		  
     		}
     	});
     });
