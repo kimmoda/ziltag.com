@@ -121,10 +121,23 @@ var newZiltag = {
 main(function(){
   if( $("[data-ziltag-new-modal]").length > 0 ){
     
-    
-    
+    // 跳出編輯的 modal
     $("[data-ziltag-new-modal]").on("click", function(e){
       e.preventDefault();
+      
+      $.ajax({
+    		url: '/posts.json',
+    		type: 'GET',
+    		dataType: 'json',
+    		success: function(data){
+    		  var source   = $("#handlebar_left_list_block").html();
+          var template = Handlebars.compile(source);
+          var context = {posts: data};
+          var html    = template(context);
+          $("#ziltag_new_modal div.list_block ul.list_ul").html(html);
+    		}
+    	});
+      
     });
     
     // search_filter_text
