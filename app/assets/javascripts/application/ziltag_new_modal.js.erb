@@ -385,35 +385,33 @@ main(function(){
     });
     
     // 拖曳樂貼
-    $(document).on("mousedown", "#ziltag_new_modal a.ziltag", function(e){
+    var $dragging = null;
+    $(document).on("mousedown", "#ziltag_new_modal a.ziltag", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var that = $(this);
-      var article_img_article = $(this).closest("article.img_article");
+      $dragging = $(e.target);
+    });
+    
+    $("#ziltag_new_modal div.ziltag_wrapper").on("mousemove", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if ($dragging) {
+        $dragging.offset({
+          top: e.pageY,
+          left: e.pageX
+        });
+      }
+    });
+    
+    $("#ziltag_new_modal div.ziltag_wrapper").on("mouseup", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       
-      var $dragging = null;
-      $("div.ziltag_wrapper").on("mousemove", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        if ($dragging) {
-          $dragging.offset({
-            top: e.pageY,
-            left: e.pageX
-          });
-        }
-      });
-      $("div.ziltag_wrapper").on("mousedown", $(this), function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $dragging = $(e.target);
-      });
-      $("div.ziltag_wrapper").on("mouseup", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $dragging = null;
-        newZiltag.setPos($(article_img_article), e);
+      if ($dragging) {
         
-        obj_post_data.ziltag_id = $(that).data("id");
+        newZiltag.setPos($(this).closest("article.img_article"), e);
+        
+        obj_post_data.ziltag_id = $($dragging).attr("data-id");
         delete obj_post_data.ziltag_title;
         delete obj_post_data.ziltag_msg;
         delete obj_post_data.ziltag_tags;
@@ -421,7 +419,7 @@ main(function(){
         
         // 移動樂貼，傳送座標及id至後端
         $.ajax({
-      		url: '/ziltaggings/' + $(that).data("id") + '.json',
+      		url: '/ziltaggings/' + $($dragging).attr("data-id") + '.json',
       		type: 'PUT',
       		data: obj_post_data,
       		dataType: 'json',
@@ -431,10 +429,11 @@ main(function(){
       		  200: function() {
             }
       		}
-
+  
       	});
-        
-      });
+      	$dragging = null;
+      }
+      
     });
     
     // 輯編樂貼
