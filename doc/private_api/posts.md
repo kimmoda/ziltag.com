@@ -34,6 +34,7 @@ page | 數字 | 顯示第 n 頁，可用於捲動載入
     "title": "test",
     "content": "<p>test</p>",
     "summary": "test",
+    "created_on": "2015年6月14日",
     "first_photo": {
       "id": 152,
       "image_url": "http://localhost:3000/uploads/photos/image/152/Screenshot_2015-03-08_03.30.22.png",

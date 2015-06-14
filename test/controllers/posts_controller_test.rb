@@ -26,6 +26,7 @@ class PostsControllerTest < ActionController::TestCase
       "title"=>"大兜的測試文章",
       "content"=>"<p>段落一</p><p>段落二</p><p>段落三</p>",
       "summary"=>"段落一段落二段落三",
+      "created_on"=>"2015年6月14日",
       "first_photo"=>{
         "id"=>339078012,
         "image_url"=>"http://localhost:3000/uploads/photos/image/339078012/tony.jpg",
