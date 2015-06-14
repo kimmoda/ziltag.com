@@ -231,7 +231,11 @@ main(function(){
     $(document).on("click", "article.img_article", function(e){
       newZiltag.setPos($(this), e);
       
+      $("#edit_ziltag_modal button.ziltag_save").removeClass("hidden");
+      $("#edit_ziltag_modal button.ziltag_update").addClass("hidden");
+      
       $("#edit_ziltag_modal input.ziltag_id").val('');
+      $("#edit_ziltag_modal input.post_id").val('');
       $("#edit_ziltag_modal input.ziltag_title").val('');
       $('.ziltag_content').redactor('code.set', '');
       $('.ziltag_tags').importTags('');
@@ -261,10 +265,6 @@ main(function(){
         obj_post_data[pair.name] = pair.value;
       });
       
-      // 標題
-      var this_title = $(this).closest("form").find("input.ziltag_title").val();
-      // 內文
-      var this_content = $(this).closest("form").find('textarea.ziltag_content').redactor('code.get');
       // 標籤
       var this_tags = $(this).closest("form").find('input.ziltag_tags').val();
       
@@ -278,18 +278,18 @@ main(function(){
     		success: function(data){
     		  console.log(data);
     		  
-    		  var post_list_item_length = $("#ziltag_new_modal ul.post_list li[data-id=" + data.ziltagging.id + "]").length;
+    		  var post_list_item_length = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]").length;
     		  if( post_list_item > 0 ){
-            var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + data.ziltagging.id + "]");
-            $(post_list_item).find("h3.title").html(this_title);
-            $(post_list_item).find("div.post_contents").html(this_content);
+            var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]");
+            $(post_list_item).find("h3.title").html(data.title);
+            $(post_list_item).find("div.post_contents").html(data.content);
             $(post_list_item).find("div.all_tags").html(this_tags);
           }else{
             
             // 貼上樂貼
             var source   = $("#handlebar_ziltag_sticker").html();
             var template = Handlebars.compile(source);
-            var context = {x: newZiltag.posX, y: newZiltag.posY, id: data.ziltagging.id};
+            var context = {x: newZiltag.posX, y: newZiltag.posY, id: data.ziltagging.id, post_id: data.id};
             var html    = template(context);
             $("#ziltag_new_modal div.ziltag_wrapper").append(html);
             
@@ -297,7 +297,7 @@ main(function(){
             // 放入文章
             var source   = $("#handlebar_ziltag_msg").html();
             var template = Handlebars.compile(source);
-            var context = {ziltag_title: this_title, ziltag_msg: this_content, id: data.ziltagging.id, ziltag_tags: this_tags};
+            var context = {ziltag_title: data.title, ziltag_msg: data.content, id: data.id, ziltag_id: data.ziltagging.id, ziltag_tags: this_tags};
             var html    = template(context);
             $("#ziltag_new_modal ul.post_list li").addClass("hidden");
             $("#ziltag_new_modal ul.post_list").prepend(html);
@@ -311,6 +311,41 @@ main(function(){
       
     });
     
+    // 文章更新
+    $("button.ziltag_update").on("click", function(e){
+      e.preventDefault();
+      
+      form_string_array = $(this).closest("form").serializeArray()
+      $.each(form_string_array, function(index, pair){
+        obj_post_data[pair.name] = pair.value;
+      });
+      
+      var post_id = $(this).closest("form").find("input.post_id").val();
+      var this_title = $(this).closest("form").find("input.ziltag_title").val();
+      var this_content = $('.ziltag_content').redactor("code.get");
+      
+      var that = $(this);
+      
+      $.ajax({
+    		url: '/posts/' + post_id + '.json',
+    		type: 'PUT',
+    		dataType: 'json',
+    		data: obj_post_data,
+    		success: function(data){
+    		},
+    		statusCode: {
+          200: function() {
+      		  
+      		  var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + post_id + "]");
+            $(post_list_item).find("h3.title").html(this_title);
+            $(post_list_item).find("div.post_contents").html(this_content);
+            
+            $(that).closest(".modal").modal("hide");
+          }
+        }
+    	});
+    });
+    
     // 點擊樂貼切換底部的文章列表
     $(document).on("click", "#ziltag_new_modal a.ziltag", function(e){
       e.preventDefault();
@@ -318,7 +353,7 @@ main(function(){
       
       var that = $(this);
       $("#ziltag_new_modal ul.post_list li").each(function(){
-        if( $(this).data("id") == $(that).data("id") ){
+        if( $(this).data("id") == $(that).data("post-id") ){
           $(this).removeClass("hidden");
         }else{
           $(this).addClass("hidden");
@@ -380,11 +415,29 @@ main(function(){
       e.preventDefault();
       e.stopPropagation();
       
-      $("#edit_ziltag_modal input.ziltag_id").val($(this).data("id"));
-      $("#edit_ziltag_modal input.ziltag_title").val($(this).closest("li").find("h3.title").text());
-      $('.ziltag_content').redactor('code.set', $(this).closest("li").find("div.post_contents").html());
-      $('.ziltag_tags').importTags($(this).closest("li").find("div.all_tags").html());
-      $("#edit_ziltag_modal").modal("show");
+      $.ajax({
+    		url: '/posts/' + $(this).data("id") + '.json',
+    		type: 'GET',
+    		dataType: 'json',
+    		success: function(data){
+    		  console.log(data);
+    		  
+    		  $("#edit_ziltag_modal input.post_id").val(data.id);
+    		  
+          $("#edit_ziltag_modal input.ziltag_title").val(data.title);
+          $('.ziltag_content').redactor('code.set', data.content);
+          
+          
+          $("#edit_ziltag_modal button.ziltag_save").addClass("hidden");
+          $("#edit_ziltag_modal button.ziltag_update").removeClass("hidden");
+          
+          // tag 暫無
+          //$('.ziltag_tags').importTags(data.tags);
+          
+          $("#edit_ziltag_modal").modal("show");
+    		}
+    	});
+      
     });
     
     // 刪除樂貼

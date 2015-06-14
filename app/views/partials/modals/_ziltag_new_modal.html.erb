@@ -109,6 +109,7 @@
     <div class="modal-content">
       <form>
         <input type="hidden" class="ziltag_id" name="ziltag_id" value="">
+        <input type="hidden" class="post_id" name="post_id" value="">
         <div class="modal-body">
           <div class="form-group">
             <input type="text" class="form-control ziltag_title" name="post[title]" placeholder="標題">
@@ -121,6 +122,7 @@
           </div>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn_save ziltag_update hidden">更新</button>
           <button type="button" class="btn_save ziltag_save">儲存</button>
           <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
         </div>
@@ -131,12 +133,12 @@
 
 <!-- handlerbar:handlebar_ziltag_sticker -->
 <script id="handlebar_ziltag_sticker" type="text/x-handlebars-template">
-  <a data-x="{{x}}" data-y="{{y}}" style="left:{{x}}px;top:{{y}}px" data-id="{{id}}" class="ziltag"></a>
+  <a data-x="{{x}}" data-y="{{y}}" style="left:{{x}}px;top:{{y}}px" data-id="{{id}}" data-post-id="{{post_id}}" class="ziltag"></a>
 </script>
 
 <!-- handlerbar:handlebar_ziltag_msg -->
 <script id="handlebar_ziltag_msg" type="text/x-handlebars-template">
-  <li data-id="{{id}}">
+  <li data-id="{{id}}" data-ziltag-id="{{ziltag_id}}">
     <div class="list_block_div">
       <div class="operation_link">
         <a href="#" data-id="{{id}}" class="edit_ziltag_sticker"><i class="fa fa-pencil"></i></a>
