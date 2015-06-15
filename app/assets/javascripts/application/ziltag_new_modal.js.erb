@@ -138,6 +138,7 @@ main(function(){
       $("#ziltag_new_modal article.user_choose_state").remove();
       $("#ziltag_new_modal #progress_bar").css("display", "none");
       $("#ziltag_new_modal div.ziltag_wrapper a.ziltag").remove();
+      $("#ziltag_new_modal input.search_filter").val("");
       
       
       $.ajax({
@@ -159,9 +160,10 @@ main(function(){
     $("button.btn_search_filter").on('click', function(e){
       e.preventDefault();
       var search_text = $(this).closest("div.new_and_filter").find("input.search_filter").val();
+      
       $(this).closest("div.left_side").find("ul.list_ul > li").each(function(){
         $(this).addClass("hidden");
-        $( "h3.post_title:contains('" + search_text + "')" ).closest("li").removeClass("hidden");
+        $( "h3.title:contains('" + search_text + "')" ).closest("li").removeClass("hidden");
       });
     });
     
