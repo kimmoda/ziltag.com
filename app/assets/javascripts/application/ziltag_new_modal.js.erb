@@ -13,7 +13,7 @@ var newZiltag = {
   dropFile:{},
   
   appendImage: function(theElement, url){
-    $(theElement).prepend("<article class='img_article'><img src='" + url + "' class='user_image img-responsive'></article>");
+    $(theElement).prepend("<article class='img_article user_choose_state'><img src='" + url + "' class='user_image img-responsive'></article>");
   },
   
   
@@ -124,6 +124,21 @@ main(function(){
     // 跳出編輯的 modal
     $("[data-ziltag-new-modal]").on("click", function(e){
       e.preventDefault();
+      
+      // reset
+      $("#ziltag_new_modal div.init_zone").removeClass("hidden");
+      $("#ziltag_new_modal div.drop_file_hint").removeClass("hidden");
+      $("#ziltag_new_modal div.edit_zone").addClass("hidden");
+      $("#ziltag_new_modal input.fetch_images").removeClass("hidden").val("");
+      $("#ziltag_new_modal span.not_image, #ziltag_new_modal span.is_image").addClass("hidden");
+      $("#ziltag_new_modal button.image_confirm").removeAttr("disabled");
+      $("img.uploaded_image").attr("src", "");
+      obj_post_data.ziltagging.photo_id = "";
+      $("#ziltag_new_modal ul.post_list").html("");
+      $("#ziltag_new_modal article.user_choose_state").remove();
+      $("#ziltag_new_modal #progress_bar").css("display", "none");
+      $("#ziltag_new_modal div.ziltag_wrapper a.ziltag").remove();
+      
       
       $.ajax({
     		url: '/posts.json',
