@@ -35,8 +35,9 @@ class PostsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     json.delete 'id'
     json['ziltagging'].delete 'id'
+    json['first_photo'].delete 'ziltaggings'
     json.delete 'created_on'
-    expected = {"title"=>"謝謝你", "content"=>"<p>九五二七</p>", "summary"=>"九五二七", "first_photo"=>{"id"=>339078012, "image_url"=>"http://localhost:3000/uploads/photos/image/339078012/tony.jpg", "thumb"=>"http://localhost:3000/uploads/photos/image/339078012/thumb_tony.jpg", "ziltaggings"=>[{"id"=>339078012, "x"=>20, "y"=>20, "post_id"=>339078012}, {"id"=>339078013, "x"=>123, "y"=>321, "post_id"=>339078014}]}, "ziltagging"=>{"x"=>123, "y"=>321, "photo_id"=>339078012}}
+    expected = {"title"=>"謝謝你", "content"=>"<p>九五二七</p>", "summary"=>"九五二七", "first_photo"=>{"id"=>339078012, "image_url"=>"http://localhost:3000/uploads/photos/image/339078012/tony.jpg", "thumb"=>"http://localhost:3000/uploads/photos/image/339078012/thumb_tony.jpg"}, "ziltagging"=>{"x"=>123, "y"=>321, "photo_id"=>339078012}}
     assert_equal expected, json
   end
 
