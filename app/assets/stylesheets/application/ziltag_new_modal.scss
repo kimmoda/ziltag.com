@@ -272,6 +272,10 @@
                     background-color: $main_gray_color;
                   }
                 }
+                a.btn_unpublish{
+                  @extend .btn_publish;
+                  background-color: $main_red_color;
+                }
               }
               div.post_list_block{
                 padding:{
