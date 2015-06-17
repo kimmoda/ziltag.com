@@ -24,6 +24,7 @@ namespace 'dev:fake' do
         post = photo.user.posts.create!(
           title: Faker::Lorem.sentence,
           content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join,
+          published: true
         )
         @posts << post
         photo.ziltaggings.create!(
