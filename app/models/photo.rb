@@ -1,6 +1,7 @@
 class Photo < ActiveRecord::Base
   # scopes
   scope :search_by_urls, ->(urls){ includes(:ziltaggings).where(source: urls) }
+  scope :has_ziltaggings, ->{ joins(:ziltaggings).group('photos.id', 'ziltaggings.photo_id').having('count(ziltaggings.id) > 0') }
 
   # constants
 
