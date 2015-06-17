@@ -44,6 +44,5 @@ var allJs = {
       }
       reader.readAsDataURL(selectedFile.files[0]);
     }
-  },
-  
+  }
 };

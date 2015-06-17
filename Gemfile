@@ -30,6 +30,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-handlebars'
   gem 'rails-assets-masonry'
   gem 'rails-assets-imagesloaded'
+  gem 'rails-assets-jquery-tags-input'
 end
 
 group :development do

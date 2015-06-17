@@ -3,7 +3,11 @@
 //= require bootstrap
 //= require turbolinks
 //= require handlebars
+//= require redactor
+//= require redactor/zh_tw.js
+//= require redactor/video.js
 //= require imagesloaded/imagesloaded.pkgd
 //= require masonry/dist/masonry.pkgd
+//= require jquery-tags-input/jquery.tagsinput
 //= require runner
 //= require_tree ./application

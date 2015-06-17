@@ -1,4 +1,7 @@
 zh-TW:
+  time:
+    formats:
+      date: "%Y年%b%d日"
   partials:
     registration_section:
       minimum_hint: '至少 %{length} 個字'

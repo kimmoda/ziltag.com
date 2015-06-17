@@ -1,0 +1,643 @@
+// 新增樂貼
+
+// 準備傳送資料的 Object
+var obj_post_data = {post: {}, ziltagging: {}};
+
+var newZiltag = {
+  
+  posX:0,
+  posY:0,
+  
+  postImageUrl: "<%= ::Rails.application.routes.url_helpers.photos_path(format: 'json') %>",
+  
+  dropFile:{},
+  
+  appendImage: function(theElement, url){
+    $(theElement).prepend("<article class='img_article user_choose_state'><img src='" + url + "' class='user_image img-responsive'></article>");
+  },
+  
+  
+  // 圖片預覽
+  readURLFromNewZiltagModal: function(selectedFile, dropElement, dropElementHint, type) {
+    if (selectedFile.files && selectedFile.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        
+        $(dropElement).find("img").remove();
+        newZiltag.appendImage(dropElement, e.target.result);
+        $(dropElementHint).addClass('hidden');
+        
+        $("span.not_image, span.is_image").addClass("hidden");
+        $("span.is_image").removeClass("hidden");
+        $("button.image_confirm").attr("data-choose-type", type);
+        $("input.fetch_images").val('');
+        
+      }
+      reader.readAsDataURL(selectedFile.files[0]);
+    }
+  },
+  
+  handleFileUpload: function(){
+    //var drop_file = newZiltag.dropFile;
+    
+    var fd = new FormData();
+    fd.append('selected_file', newZiltag.dropFile);
+ 
+    $.ajax({
+      url: newZiltag.postImageUrl,
+      type: "POST",
+      data: fd,
+      contentType: false,
+      cache: false,
+      processData:false,
+      xhr: function() {
+        var myXhr = $.ajaxSettings.xhr();
+        if(myXhr.upload){
+          myXhr.upload.addEventListener('progress', function(e){
+            if(e.lengthComputable){
+              var progress_percent = parseInt((e.loaded / e.total) * 100);
+              //console.log(progress_percent + " %");
+              $("#progress_bar").css("display", "block");
+              $('#progress_bar #dynamic_progress').css("width", progress_percent + "%");
+              $('#progress_bar #dynamic_progress').html( progress_percent + " %" );
+            }
+          }, false);
+        }
+        return myXhr;
+      },
+      success: function(data)   // A function to be called if request succeeds
+      {
+        $("div.init_zone, div.edit_zone").toggleClass("hidden");
+        $("img.uploaded_image").attr("src", $("img.user_image").attr("src"));
+        console.log(data);
+      }
+    });
+    
+  },
+  
+  
+  // 直接從檔案視窗拖曳至指定區域
+  dropFile: function(dropElement, dropElementHint){
+    var document_body = $('body')[0];
+    document_body.ondragover = function () {  return false; };
+    document_body.ondragend = function () {  return false; };
+    document_body.ondrop = function () {  return false; };
+    
+    dropElement.ondragover = function () {  return false; };
+    dropElement.ondragend = function () {  return false; };
+    
+    dropElement.ondrop = function (e) {
+      e.preventDefault();
+      newZiltag.readURLFromNewZiltagModal(e.dataTransfer, dropElement, dropElementHint, "drop_file");
+      
+      // 準備傳圖的檔案
+      var drop_file = e.dataTransfer.files[0];
+      newZiltag.dropFile = drop_file;
+      
+      return false;
+    };
+  },
+  
+  setPos: function(theElement, e){
+    var img_uploaded_image = $(theElement).find("img.uploaded_image")[0];
+    var image_ratio = img_uploaded_image.clientWidth / img_uploaded_image.naturalWidth;
+    
+    var posX = $(theElement).offset().left,
+        posY = $(theElement).offset().top;
+    
+    newZiltag.posX = e.pageX - posX;
+    newZiltag.posY = e.pageY - posY;
+
+    obj_post_data.ziltagging.x = parseInt(newZiltag.posX / image_ratio);
+    obj_post_data.ziltagging.y = parseInt(newZiltag.posY / image_ratio);
+  },
+  
+  reset: function(){
+      // reset
+      $("#ziltag_new_modal div.init_zone").removeClass("hidden");
+      $("#ziltag_new_modal div.drop_file_hint").removeClass("hidden");
+      $("#ziltag_new_modal div.edit_zone").addClass("hidden");
+      $("#ziltag_new_modal input.fetch_images").removeClass("hidden").val("");
+      $("#ziltag_new_modal span.not_image, #ziltag_new_modal span.is_image").addClass("hidden");
+      $("#ziltag_new_modal button.image_confirm").removeAttr("disabled");
+      $("img.uploaded_image").attr("src", "");
+      obj_post_data.ziltagging.photo_id = "";
+      $("#ziltag_new_modal ul.post_list").html("");
+      $("#ziltag_new_modal article.user_choose_state").remove();
+      $("#ziltag_new_modal #progress_bar").css("display", "none");
+      $("#ziltag_new_modal div.ziltag_wrapper a.ziltag").remove();
+      $("#ziltag_new_modal input.search_filter").val("");
+  }
+  
+};
+
+
+
+
+
+main(function(){
+  if( $("[data-ziltag-new-modal]").length > 0 ){
+    
+    // 跳出編輯的 modal
+    $("[data-ziltag-new-modal]").on("click", function(e){
+      e.preventDefault();
+      
+      newZiltag.reset();
+      
+      
+      $.ajax({
+    		url: '/posts.json',
+    		type: 'GET',
+    		dataType: 'json',
+    		success: function(data){
+    		  var source   = $("#handlebar_left_list_block").html();
+          var template = Handlebars.compile(source);
+          var context = {posts: data};
+          var html    = template(context);
+          $("#ziltag_new_modal div.list_block ul.list_ul").html(html);
+    		}
+    	});
+      
+    });
+    
+    // search_filter_text
+    $("button.btn_search_filter").on('click', function(e){
+      e.preventDefault();
+      var search_text = $(this).closest("div.new_and_filter").find("input.search_filter").val();
+      
+      $(this).closest("div.left_side").find("ul.list_ul > li").each(function(){
+        $(this).addClass("hidden");
+        $( "h3.title:contains('" + search_text + "')" ).closest("li").removeClass("hidden");
+      });
+    });
+    
+    
+    // 拖曳檔案
+    newZiltag.dropFile($('#drop_file')[0], $('div.drop_file_hint')[0]);
+    
+    // 選擇檔案視窗
+    $('#drop_file').on('click', function(){
+      $("#selected_file").click();
+    });
+    $("#selected_file").change(function(){
+      newZiltag.readURLFromNewZiltagModal(this, $('#drop_file')[0], $('div.drop_file_hint')[0], "select_file");
+    });
+    
+    // 將文字框全選
+    $("input.fetch_images").on('click', function(){
+      $(this).select();
+    });
+    // 所貼的連結是否為圖片
+    $("input.fetch_images").on("keyup", function(){
+      var that = $(this);
+      $("<img>", {
+        src: $(this).val(),
+        error: function() {
+          $("span.not_image, span.is_image").addClass("hidden");
+          $("span.not_image").removeClass("hidden");
+          
+          $('#drop_file').find("img").remove();
+          $('div.drop_file_hint').removeClass('hidden');
+        },
+        load: function(e) {
+          $("span.not_image, span.is_image").addClass("hidden");
+          $("span.is_image").removeClass("hidden");
+          
+          $('#drop_file').find("img").remove();
+          newZiltag.appendImage($('#drop_file')[0], $(that).val());
+          $('div.drop_file_hint').addClass('hidden');
+        }
+      });
+      
+      
+    });
+    
+    // 圖片選擇確定
+    $("button.image_confirm").on("click", function(){
+      $(this).attr("disabled", "disabled");
+      
+      if( $(this).attr("data-choose-type") == "select_file" ){
+        $("#uploadimage").submit();
+      }else{
+        newZiltag.handleFileUpload();
+      }
+      
+      
+    });
+    // 上傳圖片至server
+    $("#uploadimage").on('submit',function(e) {
+      e.preventDefault();
+      
+      $.ajax({
+        url: newZiltag.postImageUrl,
+        type: "POST",
+        data: new FormData(this),
+        contentType: false,
+        cache: false,
+        processData:false,
+        xhr: function() {
+          var myXhr = $.ajaxSettings.xhr();
+          if(myXhr.upload){
+            myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+          }
+          return myXhr;
+        },
+        success: function(data)   // A function to be called if request succeeds
+        {
+          $("div.init_zone, div.edit_zone").toggleClass("hidden");
+          $("img.uploaded_image").attr("src", $("img.user_image").attr("src"));
+          obj_post_data.ziltagging.photo_id = data.id;
+        }
+      });
+    });
+    // progress
+    function progressHandlingFunction(e){
+      if(e.lengthComputable){
+        var progress_percent = parseInt((e.loaded / e.total) * 100);
+        //console.log(progress_percent + " %");
+        $("#progress_bar").css("display", "block");
+        $('#progress_bar #dynamic_progress').css("width", progress_percent + "%");
+        $('#progress_bar #dynamic_progress').html( progress_percent + " %" );
+      }
+    }
+    
+    // 圖片點擊取得座標
+    $(document).on("click", "article.img_article", function(e){
+      newZiltag.setPos($(this), e);
+      
+      $("#edit_ziltag_modal button.ziltag_save").removeClass("hidden");
+      $("#edit_ziltag_modal button.ziltag_update").addClass("hidden");
+      
+      $("#edit_ziltag_modal input.ziltag_id").val('');
+      $("#edit_ziltag_modal input.post_id").val('');
+      $("#edit_ziltag_modal input.ziltag_title").val('');
+      $('.ziltag_content').redactor('code.set', '');
+      $('.ziltag_tags').importTags('');
+      $("#edit_ziltag_modal").modal("show");
+    });
+    
+    $(".ziltag_content").redactor({
+      buttons: ['image', 'link'],
+      imageUpload: '/redactor/images',
+      plugins: ['video'],
+      lang: 'zh_tw',
+      uploadImageFields:
+        {authenticity_token: document.querySelector('meta[name="csrf-token"]').content}
+    });
+    
+    $(".ziltag_tags").tagsInput({
+      'defaultText':'主題標籤',
+      'width': '100%',
+      'height': '50px'
+    });
+    
+    // 資料儲存
+    $("button.ziltag_save").on("click", function(e){
+      e.preventDefault();
+      form_string_array = $(this).closest("form").serializeArray()
+      $.each(form_string_array, function(index, pair){
+        obj_post_data[pair.name] = pair.value;
+      });
+      
+      // 標籤
+      var this_tags = $(this).closest("form").find('input.ziltag_tags').val();
+      
+      var that = $(this);
+      
+      // 傳送圖片內容至後端
+      $.ajax({
+    		url: '<%= ::Rails.application.routes.url_helpers.posts_path(format: 'json') %>',
+    		type: 'POST',
+    		data: obj_post_data,
+    		dataType: 'json',
+    		success: function(data){
+    		  
+    		  var post_list_item_length = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]").length;
+    		  if( post_list_item > 0 ){
+            var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]");
+            $(post_list_item).find("h3.title").html(data.title);
+            $(post_list_item).find("div.post_contents").html(data.content);
+            $(post_list_item).find("div.all_tags").html(this_tags);
+          }else{
+            
+            // 貼上樂貼
+            var source   = $("#handlebar_ziltag_sticker").html();
+            var template = Handlebars.compile(source);
+            var context = {x: newZiltag.posX, y: newZiltag.posY, id: data.ziltagging.id, post_id: data.id};
+            var html    = template(context);
+            $("#ziltag_new_modal div.ziltag_wrapper").append(html);
+            
+            
+            // 放入文章：下方
+            var source   = $("#handlebar_ziltag_msg").html();
+            var template = Handlebars.compile(source);
+            var context = {ziltag_title: data.title, ziltag_msg: data.content, id: data.id, ziltag_id: data.ziltagging.id, ziltag_tags: this_tags};
+            var html    = template(context);
+            $("#ziltag_new_modal ul.post_list li").addClass("hidden");
+            $("#ziltag_new_modal ul.post_list").prepend(html);
+            
+            // 放入文章：左側
+            var source   = $("#handlebar_left_list_block_one_item").html();
+            var template = Handlebars.compile(source);
+            var context = data;
+            var html    = template(context);
+            $("#ziltag_new_modal div.list_block ul.list_ul").prepend(html);
+          }
+          
+          $(that).closest(".modal").modal("hide");
+    		  
+    		  
+    		}
+    	});
+      
+    });
+    
+    // 文章更新
+    $("button.ziltag_update").on("click", function(e){
+      e.preventDefault();
+      
+      form_string_array = $(this).closest("form").serializeArray()
+      $.each(form_string_array, function(index, pair){
+        obj_post_data[pair.name] = pair.value;
+      });
+      
+      var post_id = $(this).closest("form").find("input.post_id").val();
+      
+      var that = $(this);
+      
+      $.ajax({
+    		url: '/posts/' + post_id + '.json',
+    		type: 'PUT',
+    		dataType: 'json',
+    		data: obj_post_data,
+    		success: function(data){
+    		  
+    		  var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]");
+          $(post_list_item).find("h3.title").html(data.title);
+          $(post_list_item).find("div.post_contents").html(data.content);
+          
+          var post_list_item_left_side = $("#ziltag_new_modal div.list_block ul.list_ul li[data-id=" + data.id + "]");
+          $(post_list_item_left_side).find("h3.title").html(data.title);
+          $(post_list_item_left_side).find("p.summary").html(data.summary);
+          $(post_list_item_left_side).find("span.date").html(data.created_on);
+          $(post_list_item_left_side).find("img.first_photo").attr("src", data.first_photo.thumb);
+          $(post_list_item_left_side).find("img.first_photo").attr("data-image-id", data.first_photo.id);
+          
+          $(that).closest(".modal").modal("hide");
+    		  
+    		}
+    	});
+    });
+    
+    // 點擊樂貼切換底部的文章列表
+    $(document).on("click", "#ziltag_new_modal a.ziltag", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      
+      var that = $(this);
+      $("#ziltag_new_modal ul.post_list li").each(function(){
+        if( $(this).data("id") == $(that).data("post-id") ){
+          $(this).removeClass("hidden");
+        }else{
+          $(this).addClass("hidden");
+        }
+      });
+    });
+    
+    // 滑鼠滑過樂貼
+    $(document).on("mouseover", "#ziltag_new_modal a.ziltag", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).find("span.remove_ziltag").removeClass("hidden");
+    });
+    // 滑鼠離開樂貼
+    $(document).on("mouseleave", "#ziltag_new_modal a.ziltag", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).find("span.remove_ziltag").addClass("hidden");
+    });
+    
+    // 刪除樂貼
+    $(document).on("click", "#ziltag_new_modal span.remove_ziltag", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      
+      var ziltag_id = $(this).closest("a.ziltag").data("id");
+      var post_id = $(this).closest("a.ziltag").data("post-id");      
+		  
+		  var that = $(this);
+		  $.ajax({
+    		url: '/ziltaggings/' + ziltag_id + '.json',
+    		type: 'DELETE',
+    		dataType: 'json',
+    		success: function(data){
+    		},
+    		statusCode: {
+    		  200: function(){
+    		    $(that).closest("a.ziltag").remove();
+    		  }
+    		}
+    	});
+		  
+    });
+    
+    // 拖曳樂貼
+    var $dragging = null;
+    $(document).on("mousedown", "#ziltag_new_modal a.ziltag", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $dragging = $(e.target);
+    });
+    
+    $("#ziltag_new_modal div.ziltag_wrapper").on("mousemove", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if ($dragging) {
+        $dragging.offset({
+          top: e.pageY,
+          left: e.pageX
+        });
+      }
+    });
+    
+    $("#ziltag_new_modal div.ziltag_wrapper").on("mouseup", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if ($dragging) {
+        
+        newZiltag.setPos($(this).closest("article.img_article"), e);
+        
+        obj_post_data.ziltag_id = $($dragging).attr("data-id");
+        if( $($dragging).attr("data-id") != undefined ){
+          // 移動樂貼，傳送座標及id至後端
+          $.ajax({
+        		url: '/ziltaggings/' + $($dragging).attr("data-id") + '.json',
+        		type: 'PUT',
+        		data: obj_post_data,
+        		dataType: 'json',
+        		success: function(data){
+        		},
+        		statusCode:{
+        		  200: function() {
+              }
+        		}
+    
+        	});
+        }
+      	$dragging = null;
+      }
+      
+    });
+    
+    
+    // 輯編樂貼
+    $(document).on("click", "#ziltag_new_modal a.edit_ziltag_sticker", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      
+      $.ajax({
+    		url: '/posts/' + $(this).data("id") + '.json',
+    		type: 'GET',
+    		dataType: 'json',
+    		success: function(data){
+    		  console.log(data);
+    		  
+    		  $("#edit_ziltag_modal input.post_id").val(data.id);
+    		  
+          $("#edit_ziltag_modal input.ziltag_title").val(data.title);
+          $('.ziltag_content').redactor('code.set', data.content);
+          
+          
+          $("#edit_ziltag_modal button.ziltag_save").addClass("hidden");
+          $("#edit_ziltag_modal button.ziltag_update").removeClass("hidden");
+          
+          // tag 暫無
+          //$('.ziltag_tags').importTags(data.tags);
+          
+          $("#edit_ziltag_modal").modal("show");
+    		}
+    	});
+      
+    });
+    
+    // 刪除樂貼
+    $(document).on("click", "#ziltag_new_modal a.delete_ziltag_sticker", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      
+      
+      var that = $(this);
+      // 傳送圖片內容至後端
+      $.ajax({
+    		url: '/posts/' + $(this).data("id") + '.json',
+    		type: 'DELETE',
+    		data: "id=" + $(this).data("id"),
+    		dataType: 'json',
+    		success: function(data){
+    		  console.log(data);
+    		  
+    		  $.each(data.ziltagging_ids, function(index, value){
+    		    $("#ziltag_new_modal a.ziltag[data-id=" + value + "]").remove();
+    		  });
+    		  
+    		  
+    		  $(that).closest("li").remove();
+    		  $("#ziltag_new_modal div.list_block ul.list_ul li[data-id=" + data.id + "]").remove();
+    		  
+    		}
+    	});
+    });
+    
+    // 左側列表點擊單篇文章
+    $(document).on("click", "a.the_post", function(e){
+        e.preventDefault();
+        
+        var that = $(this);
+        // 傳送圖片內容至後端
+        $.ajax({
+            url: '/posts/' + $(this).data("id") + '.json',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                
+                newZiltag.reset();
+                
+                obj_post_data.ziltagging.photo_id = data.first_photo.id;
+                
+                if( !$("div.init_zone").hasClass("hidden") ){
+                    $("div.init_zone").addClass("hidden");
+                }
+                if( $("div.edit_zone").hasClass("hidden") ){
+                    $("div.edit_zone").removeClass("hidden")
+                }
+                
+                var img_uploaded_image;
+                var image_ratio;
+                $("img.uploaded_image").one("load", function(){
+                    // 圖片比例
+                    img_uploaded_image = $("#ziltag_new_modal").find("img.uploaded_image")[0];
+                    image_ratio = img_uploaded_image.clientWidth / img_uploaded_image.naturalWidth;
+                    
+                    // 在圖片上放入樂貼
+                    $.each(data.first_photo.ziltaggings, function(index, ziltag){
+                        
+                        var ziltag_x = parseInt(ziltag.x * image_ratio);
+                        var ziltag_y = parseInt(ziltag.y * image_ratio);
+                        
+                        // 貼上樂貼
+                        var source   = $("#handlebar_ziltag_sticker").html();
+                        var template = Handlebars.compile(source);
+                        var context = {x: ziltag_x, y: ziltag_y, id: ziltag.id, post_id: ziltag.post_id};
+                        var html    = template(context);
+                        $("#ziltag_new_modal div.ziltag_wrapper").append(html);
+                    });
+                    
+                }).attr("src", data.first_photo.image_url);
+                
+                
+                // 標籤
+                var this_tags = "";
+                // 放入文章：下方
+                $.each(data.first_photo.ziltaggings, function(index, ziltag){
+                    var ziltag_id = ziltag.id;
+                    $.ajax({
+                        url: '/posts/' + ziltag.post_id + '.json',
+                        type: 'GET',
+                        data: "id=" + $(this).data("id"),
+                        dataType: 'json',
+                        success: function(post){
+                            
+                            var source   = $("#handlebar_ziltag_msg").html();
+                            var template = Handlebars.compile(source);
+                            var context = {ziltag_title: post.title, ziltag_msg: post.content, id: post.id, ziltag_id: ziltag_id, ziltag_tags: this_tags};
+                            var html    = template(context);
+                            $("#ziltag_new_modal ul.post_list").append(html);
+                            $("#ziltag_new_modal ul.post_list > li").each(function(index){
+                                if( index != 0  ){
+                                    $(this).addClass("hidden");
+                                }
+                            });
+                		}
+                	});
+                	
+                });
+                
+            }
+        });
+        
+        
+        
+    });
+  
+  }
+  
+  
+  
+});
+
+
+$(window).resize(function(){
+  
+});

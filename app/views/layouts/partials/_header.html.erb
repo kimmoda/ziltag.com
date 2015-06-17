@@ -21,7 +21,7 @@
             <ul class="list-inline pull-right nav_list is_login">
             
               <li>
-                <a href="#" class="only_link plus"><i class="fa fa-plus fa-2x"></i></a>
+                <a href="#" class="only_link plus" data-toggle="modal" data-target="#ziltag_new_modal" data-ziltag-new-modal><i class="fa fa-plus fa-2x"></i></a>
               </li>
               <li>
                 <div class="btn-group btn_custom_group">
@@ -94,3 +94,6 @@
 
 <%= render :partial => "/partials/modals/signupModal" %>
 <%= render :partial => "/partials/modals/loginModal" %>
+<% if user_signed_in? %>
+  <%= render :partial => "/partials/modals/ziltag_new_modal" %>
+<% end %>

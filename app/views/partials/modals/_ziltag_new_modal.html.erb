@@ -1,0 +1,174 @@
+<div class="modal fade" id="ziltag_new_modal" tabindex="-1" role="dialog" aria-labelledby="ziltagNewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <section class="all_contents">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="left_side">
+            <div class="new_and_filter">
+              <div class="col-xs-2 col-sm-2">
+                <a href="#" class="new_post"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+              </div>
+              <div class="col-xs-10 col-sm-10 right_field">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control search_filter">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn_search_filter" type="button"><i class="fa fa-search"></i></button>
+                  </span>
+                </div><!-- /input-group -->
+              </div>
+            </div><!-- /.new_and_filter -->
+            
+            <div class="list_block">
+              <ul class="list-unstyled list_ul">
+              </ul>
+            </div><!-- /.list_block -->
+            
+          </div><!-- /.left_side -->
+          
+          <div class="right_side">
+            <div class="init_zone">
+              <div class="zone_picture">
+                
+                <form id="uploadimage" class="hidden" action="" method="post" enctype="multipart/form-data">
+                  <input type="file" name="photo[image]" id="selected_file">
+                  <input type="hidden" name="photo[source]" id="selected_url">
+                </form>
+                <div class="drop_file" id="drop_file">
+                  <div class="drop_file_hint">
+                    <span class="icon_span"><i class="fa fa-plus"></i></span>
+                    <p>點擊加號或拖曳相片至此以上傳</p>
+                  </div>
+                </div><!-- /.drop_file -->
+              </div><!-- /.zone_picture -->
+              
+              
+              <div class="zone_picture_url">
+                <div class="zone_picture_url_block">
+                  <div id="progress_bar"><div id="dynamic_progress"></div></div>
+                  <span class="not_image hidden"><i class="fa fa-times"></i></span>
+                  <span class="is_image hidden"><i class="fa fa-check"></i> <button type="button" class="image_confirm">確定</button></span>
+                  <input type="text" class="form-control fetch_images" placeholder="貼上網頁或相片網址...">
+                </div><!-- /.zone_picture_url_block -->
+              </div><!-- /.zone_picture_url -->
+            </div><!-- /.init_zone -->
+              
+            <div class="edit_zone hidden">
+              <div class="uploaded_image_block">
+                <div class="img_edit_zone_block">
+                  <div class="img_edit_zone">
+                    <article class='img_article'>
+                      <div class="ziltag_wrapper">
+                        <img src="" class="uploaded_image img-responsive">
+                      </div>
+                    </article>
+                  </div><!-- /.img_edit_zone -->
+                </div><!-- /.img_edit_zone_block -->
+                <div class="publish_this">
+                  <a href="#" class="btn_publish">發佈</a>
+                </div><!-- /.publish_this -->
+                
+                <div class="post_list_block">
+                  <ul class="list-unstyled post_list">
+                  </ul>
+                </div><!-- /.post_list_block -->
+                
+              </div><!-- /.uploaded_image_block -->
+              
+            </div><!-- /.edit_zone -->
+            
+            
+          </div><!-- /.right_side -->
+        </section><!-- /.all_contents -->
+      </div><!-- /.modal-body -->
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="edit_ziltag_modal" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <input type="hidden" class="ziltag_id" name="ziltag_id" value="">
+        <input type="hidden" class="post_id" name="post_id" value="">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" class="form-control ziltag_title" name="post[title]" placeholder="標題">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control ziltag_content" name="post[content]"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" name="ziltag_tags" id="ziltag_tags" class="form-control ziltag_tags" placeholder="標籤">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn_save ziltag_update hidden">更新</button>
+          <button type="button" class="btn_save ziltag_save">儲存</button>
+          <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- handlerbar:handlebar_ziltag_sticker -->
+<script id="handlebar_ziltag_sticker" type="text/x-handlebars-template">
+  <a data-x="{{x}}" data-y="{{y}}" style="left:{{x}}px;top:{{y}}px" data-id="{{id}}" data-post-id="{{post_id}}" class="ziltag"><span href='#' class='remove_ziltag hidden'><i class='fa fa-times-circle'></i></span></a>
+</script>
+
+<!-- handlerbar:handlebar_ziltag_msg -->
+<script id="handlebar_ziltag_msg" type="text/x-handlebars-template">
+  <li data-id="{{id}}" data-ziltag-id="{{ziltag_id}}">
+    <div class="list_block_div">
+      <div class="operation_link">
+        <a href="#" data-id="{{id}}" data-ziltag-id="{{ziltag_id}}" class="edit_ziltag_sticker"><i class="fa fa-pencil"></i></a>
+        <a href="#" data-id="{{id}}" data-ziltag-id="{{ziltag_id}}" class="delete_ziltag_sticker"><i class="fa fa-trash-o"></i></a>
+      </div>
+      <h3 class="title">{{ziltag_title}}</h3>
+      <div class="post_contents">{{{ziltag_msg}}}</div>
+      <div class="hidden all_tags">{{ziltag_tags}}</div>
+    </div>
+  </li>
+</script>
+
+<!-- handlerbar:左側列表 -->
+<script id="handlebar_left_list_block" type="text/x-handlebars-template">
+  {{#each posts}}
+    <li class="item" data-id="{{id}}">
+      <a href="#" data-id="{{id}}" class="the_post">
+        <div class="post_title_block">
+          <span class="date">{{created_on}}</span>
+          <h3 class="title">{{title}}</h3>
+        </div><!-- /.post_title_block -->
+        <div class="post_context_block">
+          <div class="img_block">
+            <img src="{{first_photo.thumb}}" data-image-id="{{first_photo.id}}">
+          </div><!-- /.img_block -->
+          <p class="summary">{{summary}}</p>
+        </div><!-- /.post_context_block -->
+      </a>
+    </li>
+  {{/each}}
+</script>
+
+<!-- handlerbar:左側列表 -->
+<script id="handlebar_left_list_block_one_item" type="text/x-handlebars-template">
+  <li class="item" data-id="{{id}}">
+    <a href="#" data-id="{{id}}" class="the_post">
+      <div class="post_title_block">
+        <span class="date">{{created_on}}</span>
+        <h3 class="title">{{title}}</h3>
+      </div><!-- /.post_title_block -->
+      <div class="post_context_block">
+        <div class="img_block">
+          <img src="{{first_photo.thumb}}" data-image-id="{{first_photo.id}}" class="first_photo">
+        </div><!-- /.img_block -->
+        <p class="summary">{{summary}}</p>
+      </div><!-- /.post_context_block -->
+    </a>
+  </li>
+</script>
