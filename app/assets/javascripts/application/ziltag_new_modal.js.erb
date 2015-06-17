@@ -105,11 +105,28 @@ var newZiltag = {
     var posX = $(theElement).offset().left,
         posY = $(theElement).offset().top;
     
-    newZiltag.posX = parseInt(e.pageX - posX);
-    newZiltag.posY = parseInt(e.pageY - posY);
+    newZiltag.posX = e.pageX - posX;
+    newZiltag.posY = e.pageY - posY;
 
     obj_post_data.ziltagging.x = parseInt(newZiltag.posX / image_ratio);
     obj_post_data.ziltagging.y = parseInt(newZiltag.posY / image_ratio);
+  },
+  
+  reset: function(){
+      // reset
+      $("#ziltag_new_modal div.init_zone").removeClass("hidden");
+      $("#ziltag_new_modal div.drop_file_hint").removeClass("hidden");
+      $("#ziltag_new_modal div.edit_zone").addClass("hidden");
+      $("#ziltag_new_modal input.fetch_images").removeClass("hidden").val("");
+      $("#ziltag_new_modal span.not_image, #ziltag_new_modal span.is_image").addClass("hidden");
+      $("#ziltag_new_modal button.image_confirm").removeAttr("disabled");
+      $("img.uploaded_image").attr("src", "");
+      obj_post_data.ziltagging.photo_id = "";
+      $("#ziltag_new_modal ul.post_list").html("");
+      $("#ziltag_new_modal article.user_choose_state").remove();
+      $("#ziltag_new_modal #progress_bar").css("display", "none");
+      $("#ziltag_new_modal div.ziltag_wrapper a.ziltag").remove();
+      $("#ziltag_new_modal input.search_filter").val("");
   }
   
 };
@@ -125,20 +142,7 @@ main(function(){
     $("[data-ziltag-new-modal]").on("click", function(e){
       e.preventDefault();
       
-      // reset
-      $("#ziltag_new_modal div.init_zone").removeClass("hidden");
-      $("#ziltag_new_modal div.drop_file_hint").removeClass("hidden");
-      $("#ziltag_new_modal div.edit_zone").addClass("hidden");
-      $("#ziltag_new_modal input.fetch_images").removeClass("hidden").val("");
-      $("#ziltag_new_modal span.not_image, #ziltag_new_modal span.is_image").addClass("hidden");
-      $("#ziltag_new_modal button.image_confirm").removeAttr("disabled");
-      $("img.uploaded_image").attr("src", "");
-      obj_post_data.ziltagging.photo_id = "";
-      $("#ziltag_new_modal ul.post_list").html("");
-      $("#ziltag_new_modal article.user_choose_state").remove();
-      $("#ziltag_new_modal #progress_bar").css("display", "none");
-      $("#ziltag_new_modal div.ziltag_wrapper a.ziltag").remove();
-      $("#ziltag_new_modal input.search_filter").val("");
+      newZiltag.reset();
       
       
       $.ajax({
@@ -242,7 +246,7 @@ main(function(){
         {
           $("div.init_zone, div.edit_zone").toggleClass("hidden");
           $("img.uploaded_image").attr("src", $("img.user_image").attr("src"));
-          obj_post_data.ziltagging.photo_id = data.id
+          obj_post_data.ziltagging.photo_id = data.id;
         }
       });
     });
@@ -545,8 +549,88 @@ main(function(){
     	});
     });
     
-    
-    
+    // 左側列表點擊單篇文章
+    $(document).on("click", "a.the_post", function(e){
+        e.preventDefault();
+        
+        var that = $(this);
+        // 傳送圖片內容至後端
+        $.ajax({
+            url: '/posts/' + $(this).data("id") + '.json',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                
+                newZiltag.reset();
+                
+                obj_post_data.ziltagging.photo_id = data.first_photo.id;
+                
+                if( !$("div.init_zone").hasClass("hidden") ){
+                    $("div.init_zone").addClass("hidden");
+                }
+                if( $("div.edit_zone").hasClass("hidden") ){
+                    $("div.edit_zone").removeClass("hidden")
+                }
+                
+                var img_uploaded_image;
+                var image_ratio;
+                $("img.uploaded_image").one("load", function(){
+                    // 圖片比例
+                    img_uploaded_image = $("#ziltag_new_modal").find("img.uploaded_image")[0];
+                    image_ratio = img_uploaded_image.clientWidth / img_uploaded_image.naturalWidth;
+                    
+                    // 在圖片上放入樂貼
+                    $.each(data.first_photo.ziltaggings, function(index, ziltag){
+                        
+                        var ziltag_x = parseInt(ziltag.x * image_ratio);
+                        var ziltag_y = parseInt(ziltag.y * image_ratio);
+                        
+                        // 貼上樂貼
+                        var source   = $("#handlebar_ziltag_sticker").html();
+                        var template = Handlebars.compile(source);
+                        var context = {x: ziltag_x, y: ziltag_y, id: ziltag.id, post_id: ziltag.post_id};
+                        var html    = template(context);
+                        $("#ziltag_new_modal div.ziltag_wrapper").append(html);
+                    });
+                    
+                }).attr("src", data.first_photo.image_url);
+                
+                
+                // 標籤
+                var this_tags = "";
+                // 放入文章：下方
+                $.each(data.first_photo.ziltaggings, function(index, ziltag){
+                    var ziltag_id = ziltag.id;
+                    $.ajax({
+                        url: '/posts/' + ziltag.post_id + '.json',
+                        type: 'GET',
+                        data: "id=" + $(this).data("id"),
+                        dataType: 'json',
+                        success: function(post){
+                            
+                            var source   = $("#handlebar_ziltag_msg").html();
+                            var template = Handlebars.compile(source);
+                            var context = {ziltag_title: post.title, ziltag_msg: post.content, id: post.id, ziltag_id: ziltag_id, ziltag_tags: this_tags};
+                            var html    = template(context);
+                            $("#ziltag_new_modal ul.post_list").append(html);
+                            $("#ziltag_new_modal ul.post_list > li").each(function(index){
+                                if( index != 0  ){
+                                    $(this).addClass("hidden");
+                                }
+                            });
+                		}
+                	});
+                	
+                });
+                
+            }
+        });
+        
+        
+        
+    });
+  
   }
   
   
