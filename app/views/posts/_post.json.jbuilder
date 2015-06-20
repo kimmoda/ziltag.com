@@ -1,4 +1,4 @@
-json.extract! post, :id, :title, :content
+json.extract! post, :id, :title, :content, :published
 json.created_on l(post.created_at, format: :date)
 json.summary summary(post.content)
 if first_photo = post.photos.first
