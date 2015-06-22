@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout "sidebar"
   before_action :set_user
 
 private

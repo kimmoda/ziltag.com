@@ -1,0 +1,90 @@
+body.users.show{
+    section.section_post{
+        padding-bottom: 20px;
+        margin-top: 20px;
+    }
+    section.sec_user_profile{
+        background-color: $main_white_color;
+        box-shadow: 0 3px 3px gray;
+        div.user_banner{
+            height: 300px;
+            overflow-y: hidden;
+            img.user_banner_img{
+                width:100%;
+            }
+        }
+        div.user_basic_info{
+            padding:{
+                top:10px;
+                bottom:10px;
+            };
+            &:before, &:after{
+                content: "";
+                display: block;
+            }
+            &:after{
+                clear:both;
+            }
+            div.left_zone{
+                div.profile_img, div.following_and_follower{
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
+                }
+                div.profile_img{
+                    width:150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    border:5px solid $main_white_color;
+                    text-align: center;
+                    overflow: hidden;
+                    position: absolute;
+                    top:-75px;
+                    left:35px;
+                }
+                div.following_and_follower{
+                    padding-left: 180px;
+                    span.profile_username{
+                        color: $fifth_gray_color;
+                        font-size: 18px;
+                    }
+                    ul.following_info_ul{
+                        margin:0;
+                        > li{
+                            &:first-child{
+                                padding-left:0;
+                            }
+                            > a{
+                                text-decoration: none;
+                                font-size: 14px;
+                                color: $eleven_gray_color;
+                                span.num{
+                                    color: $one_blue_color;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+            div.right_zone{
+                text-align: right;
+                ul.other_funcs_ul{
+                    margin:0;
+                    > li{
+                        line-height: 45px;
+                        margin-right:30px;
+                        > a{
+                            text-decoration: none;
+                            color: $twelve_gray_color;
+                            font-size: 18px;
+                            &.active{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
