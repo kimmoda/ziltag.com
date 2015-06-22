@@ -61,10 +61,10 @@
                   </button>
                   <ul class="dropdown-menu" role="menu">
                     <li class="user_name">
-                      <a href="#">
+                      <%= link_to current_user do %>
                         <%= current_user.username %><br>
                         <span class="email"><%= current_user.email %></span>
-                      </a>
+                      <% end %>
                     </li>
                     <li><a href="#">設定</a></li>
                     <li><a href="#">幫助</a></li>
