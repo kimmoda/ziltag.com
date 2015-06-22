@@ -1,3 +1,8 @@
-<h1>Users#collecting</h1>
-<p>Find me in app/views/users/collecting.html.erb</p>
+<%= content_for :full_interface do %>
+    <%= render :partial => "users/partials/sec_user_profile" %>
+<% end %>
+
+<section class="section_post">
+  <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
+</section><!-- /.section_post -->
 <%= debug user_path @user %>
