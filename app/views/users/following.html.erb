@@ -1,3 +1,19 @@
-<h1>Users#following</h1>
-<p>Find me in app/views/users/following.html.erb</p>
+<%= content_for :full_interface do %>
+    <%= render :partial => "users/partials/sec_user_profile" %>
+<% end %>
+
+<section class="section_following">
+    <% 5.times do %>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <%= render :partial => "users/partials/sec_following_user" %>
+            </div><!-- /.col-* -->
+            <div class="col-sm-12 col-md-6">
+                <%= render :partial => "users/partials/sec_following_user" %>
+            </div><!-- /.col-* -->
+        </div><!-- /.row -->
+    <% end %>
+</section><!-- /.section_following -->
+<%= debug user_path @user %>
+
 <%= debug user_path @user %>

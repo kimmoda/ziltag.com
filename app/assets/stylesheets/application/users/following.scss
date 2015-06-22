@@ -1,0 +1,54 @@
+body.users.following{
+    section.section_following{
+        padding-bottom: 20px;
+        margin-top: 20px;
+        section.sec_following_user{
+            background-color: $main_white_color;
+            box-shadow: 0 3px 3px #ccc;
+            border-radius: 2px;
+            padding:20px;
+            margin-bottom: 30px;
+            &:before, &:after{
+                content: "";
+                display: block;
+            }
+            &:after{
+                clear:both;
+            }
+            div.left_zone{
+                display: inline-block;
+                vertical-align: top;
+                span.username{
+                    font-size: 20px;
+                    color: $fifth_gray_color;
+                }
+                ul.following_and_fans_ul{
+                    margin: 15px 0 0 0;
+                    > li{
+                        font-size: 14px;
+                        color: $fifth_gray_color;
+                        margin-bottom: 5px;
+                    }
+                }
+                div.follow_user_block{
+                    margin-top: 15px;
+                }
+            }
+            div.right_zone{
+                display: inline-block;
+                vertical-align: top;
+                float:right;
+                div.profile_img{
+                    text-align: right;
+                    position: relative;
+                    width:150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    border:5px solid $main_white_color;
+                    text-align: center;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
