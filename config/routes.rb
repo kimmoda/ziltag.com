@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   devise_for :users
+  resources :users, only: :show
   resources :ziltaggings, only: %i[show update destroy]
   resources :photos, only: %i[index show create]
   resources :posts, only: %i[index show create update destroy]

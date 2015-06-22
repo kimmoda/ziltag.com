@@ -66,4 +66,8 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
+
+  def to_param
+    username
+  end
 end
