@@ -28,7 +28,10 @@ var allJs = {
       });
     }
     
-    
+    $("[data-layout=full_interface]").css({
+        "max-width": ($("aside[data-layout=aside]").outerWidth() + col_right) + "px",
+        "padding-left": $("aside[data-layout=aside]").outerWidth() + "px"
+    });
   },
   
   // 選擇圖片預覽圖

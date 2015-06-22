@@ -1,6 +1,7 @@
 <%= content_for :content do %>
 <div class="container-fluid layout_fluid">    
   <%= render 'layouts/partials/sidebar' %>
+  <%= content_for?(:full_interface) ? yield(:full_interface) : "" %>
   <div class="container" data-layout="inner">
     <div class="row">
       <div class="col-xs-10 col-xs-offset-2 col_right" data-layout="col_right">

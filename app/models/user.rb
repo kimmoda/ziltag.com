@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   # associations
   has_many :posts
+  has_many :ziltaggings, through: :posts
   has_many :photos
   has_many :comments, primary_key: :email, foreign_key: :email
   has_many :_followers, class_name: Following, foreign_key: :leader_id
@@ -40,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def follow? leader
-    leaders.index(leader)
+    leaders.index(leader) != nil
   end
 
   def follow! leader
@@ -52,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def collect? record
-    collectings.index{|c| c.collectable == record }
+    collectings.index{|c| c.collectable == record } != nil
   end
 
   def collect! record
@@ -65,5 +66,9 @@ class User < ActiveRecord::Base
 
   def to_s
     email
+  end
+
+  def to_param
+    username
   end
 end
