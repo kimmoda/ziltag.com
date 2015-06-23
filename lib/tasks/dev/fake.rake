@@ -18,6 +18,11 @@ namespace 'dev:fake' do
       end
     end
 
+    fakeup '產生標籤' do
+      @tags = []
+      @tags << Tag.create!(name: Faker::Lorem.word)
+    end
+
     fakeup '產生樂貼' do
       @posts = []
       @photos.each do |photo|
@@ -26,6 +31,7 @@ namespace 'dev:fake' do
           content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join,
           published: true
         )
+        post.tags << @tags.sample(3)
         @posts << post
         photo.ziltaggings.create!(
           x: rand(200), y: rand(200), post: post
