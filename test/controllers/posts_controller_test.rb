@@ -6,16 +6,12 @@ class PostsControllerTest < ActionController::TestCase
     sign_in users(:tony)
     get :show, format: :json, id: post.id
     assert_response :success
-    json = JSON.parse response.body
-    json.delete 'created_on'
   end
 
   test 'should get one\'s posts' do
     sign_in users(:tony)
     get :index, format: :json
     assert_response :success
-    json = JSON.parse response.body
-    json.first.delete 'created_on'
   end
 
   test 'should create post and ziltagging' do
@@ -28,11 +24,6 @@ class PostsControllerTest < ActionController::TestCase
       },
       ziltagging: {x: 123, y: 321, photo_id: photos(:tony).id}
     assert_response :success
-    json = JSON.parse(response.body)
-    json.delete 'id'
-    json['ziltagging'].delete 'id'
-    json['first_photo'].delete 'ziltaggings'
-    json.delete 'created_on'
   end
 
   test 'should create single post' do
@@ -44,9 +35,6 @@ class PostsControllerTest < ActionController::TestCase
         content: '<p>九五二七</p>'
       }
     assert_response :success
-    json = JSON.parse(response.body)
-    json.delete 'id'
-    json.delete 'created_on'
   end
 
   test 'should update post' do
@@ -63,8 +51,6 @@ class PostsControllerTest < ActionController::TestCase
     post.reload
     assert_equal '哈囉', post.title
     assert_equal '<p>世界</p>', post.content
-    json = JSON.parse response.body
-    json.delete 'created_on'
   end
 
   test 'should delete post' do
@@ -73,9 +59,6 @@ class PostsControllerTest < ActionController::TestCase
     delete :destroy, id: post.id, format: :json
     assert_response :success
     refute Post.exists? id: post.id
-    json = JSON.parse response.body
-    expected = {"id"=>339078012, "ziltagging_ids"=>[339078012]}
-    assert_equal expected, json
   end
 
 end
