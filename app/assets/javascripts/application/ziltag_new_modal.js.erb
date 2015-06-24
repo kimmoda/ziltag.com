@@ -56,7 +56,7 @@ var newZiltag = {
           myXhr.upload.addEventListener('progress', function(e){
             if(e.lengthComputable){
               var progress_percent = parseInt((e.loaded / e.total) * 100);
-              //console.log(progress_percent + " %");
+              
               $("#progress_bar").css("display", "block");
               $('#progress_bar #dynamic_progress').css("width", progress_percent + "%");
               $('#progress_bar #dynamic_progress').html( progress_percent + " %" );
@@ -69,7 +69,6 @@ var newZiltag = {
       {
         $("div.init_zone, div.edit_zone").toggleClass("hidden");
         $("img.uploaded_image").attr("src", $("img.user_image").attr("src"));
-        console.log(data);
       }
     });
     
@@ -127,6 +126,25 @@ var newZiltag = {
       $("#ziltag_new_modal #progress_bar").css("display", "none");
       $("#ziltag_new_modal div.ziltag_wrapper a.ziltag").remove();
       $("#ziltag_new_modal input.search_filter").val("");
+      
+      $("#ziltag_new_modal div.publish_this a.btn_publish").addClass("hidden");
+  },
+  
+  // 發佈按鈕切換
+  published_check: function(published, post_id){
+    if(published){
+      $("#ziltag_new_modal div.publish_this a.btn_published").removeClass("hidden");
+      $("#ziltag_new_modal div.publish_this a.btn_unpublished").addClass("hidden");
+    }else{
+      $("#ziltag_new_modal div.publish_this a.btn_unpublished").removeClass("hidden");
+      $("#ziltag_new_modal div.publish_this a.btn_published").addClass("hidden");
+    }
+    $("#ziltag_new_modal div.publish_this a.btn_published, #ziltag_new_modal div.publish_this a.btn_unpublished").attr("data-post-id", post_id);
+  },
+  
+  // 隱藏發佈按鈕
+  published_hidden: function(){
+    $("#ziltag_new_modal div.publish_this a.btn_publish").addClass("hidden");
   }
   
 };
@@ -254,7 +272,6 @@ main(function(){
     function progressHandlingFunction(e){
       if(e.lengthComputable){
         var progress_percent = parseInt((e.loaded / e.total) * 100);
-        //console.log(progress_percent + " %");
         $("#progress_bar").css("display", "block");
         $('#progress_bar #dynamic_progress').css("width", progress_percent + "%");
         $('#progress_bar #dynamic_progress').html( progress_percent + " %" );
@@ -311,7 +328,6 @@ main(function(){
     		data: obj_post_data,
     		dataType: 'json',
     		success: function(data){
-    		  
     		  var post_list_item_length = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]").length;
     		  if( post_list_item > 0 ){
             var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]");
@@ -331,7 +347,7 @@ main(function(){
             // 放入文章：下方
             var source   = $("#handlebar_ziltag_msg").html();
             var template = Handlebars.compile(source);
-            var context = {ziltag_title: data.title, ziltag_msg: data.content, id: data.id, ziltag_id: data.ziltagging.id, ziltag_tags: this_tags};
+            var context = {ziltag_title: data.title, ziltag_msg: data.content, id: data.id, ziltag_id: data.ziltagging.id, ziltag_tags: this_tags, publish_status: data.published};
             var html    = template(context);
             $("#ziltag_new_modal ul.post_list li").addClass("hidden");
             $("#ziltag_new_modal ul.post_list").prepend(html);
@@ -343,6 +359,9 @@ main(function(){
             var html    = template(context);
             $("#ziltag_new_modal div.list_block ul.list_ul").prepend(html);
           }
+          
+          // 切換發佈按鈕
+          newZiltag.published_check(data.published, data.id);
           
           $(that).closest(".modal").modal("hide");
     		  
@@ -398,6 +417,14 @@ main(function(){
       $("#ziltag_new_modal ul.post_list li").each(function(){
         if( $(this).data("id") == $(that).data("post-id") ){
           $(this).removeClass("hidden");
+          
+          // 切換發佈按鈕
+          if( $(this).attr("data-publish") == "true" ){
+            newZiltag.published_check(true, $(this).attr("data-id"));
+          }else{
+            newZiltag.published_check(false, $(this).attr("data-id"));
+          }
+          
         }else{
           $(this).addClass("hidden");
         }
@@ -501,7 +528,6 @@ main(function(){
     		type: 'GET',
     		dataType: 'json',
     		success: function(data){
-    		  console.log(data);
     		  
     		  $("#edit_ziltag_modal input.post_id").val(data.id);
     		  
@@ -535,7 +561,6 @@ main(function(){
     		data: "id=" + $(this).data("id"),
     		dataType: 'json',
     		success: function(data){
-    		  console.log(data);
     		  
     		  $.each(data.ziltagging_ids, function(index, value){
     		    $("#ziltag_new_modal a.ziltag[data-id=" + value + "]").remove();
@@ -544,6 +569,7 @@ main(function(){
     		  
     		  $(that).closest("li").remove();
     		  $("#ziltag_new_modal div.list_block ul.list_ul li[data-id=" + data.id + "]").remove();
+    		  newZiltag.published_hidden();
     		  
     		}
     	});
@@ -560,7 +586,6 @@ main(function(){
             type: 'GET',
             dataType: 'json',
             success: function(data){
-                console.log(data);
                 
                 newZiltag.reset();
                 
@@ -608,13 +633,21 @@ main(function(){
                         data: "id=" + $(this).data("id"),
                         dataType: 'json',
                         success: function(post){
-                            
+                        
                             var source   = $("#handlebar_ziltag_msg").html();
                             var template = Handlebars.compile(source);
-                            var context = {ziltag_title: post.title, ziltag_msg: post.content, id: post.id, ziltag_id: ziltag_id, ziltag_tags: this_tags};
+                            var context = {ziltag_title: post.title, ziltag_msg: post.content, id: post.id, ziltag_id: ziltag_id, ziltag_tags: this_tags, publish_status: post.published};
                             var html    = template(context);
                             $("#ziltag_new_modal ul.post_list").append(html);
                             $("#ziltag_new_modal ul.post_list > li").each(function(index){
+                                if(index == 0){
+                                  // 切換發佈按鈕
+                                  if( $(this).attr("data-publish") == "true" ){
+                                    newZiltag.published_check(true, $(this).attr("data-id"));
+                                  }else{
+                                    newZiltag.published_check(false, $(this).attr("data-id"));
+                                  }
+                                }
                                 if( index != 0  ){
                                     $(this).addClass("hidden");
                                 }
@@ -630,7 +663,40 @@ main(function(){
         
         
     });
-  
+    
+    // 發佈
+    $("a.btn_publish").on("click", function(e){
+      e.preventDefault();
+      
+      var published = false;
+      if( $(this).data("post-id-published") ){
+        published = false;
+      }else{
+        published = true;
+      }
+      var send_obj = {
+        "post": {
+          "published": published
+        }
+      };
+      
+      $.ajax({
+    		url: '/posts/' + $(this).attr("data-post-id") + '.json',
+    		type: 'PUT',
+    		dataType: 'json',
+    		data: send_obj,
+    		success: function(data){
+    		  
+    		  var post_list_item = $("#ziltag_new_modal ul.post_list li[data-id=" + data.id + "]");
+    		  post_list_item.attr("data-publish", data.published);
+    		  
+    		  // 切換發佈按鈕
+          newZiltag.published_check(data.published, data.id);
+    		  
+    		}
+    	});
+    });
+
   }
   
   

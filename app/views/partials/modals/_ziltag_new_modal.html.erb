@@ -67,7 +67,8 @@
                   </div><!-- /.img_edit_zone -->
                 </div><!-- /.img_edit_zone_block -->
                 <div class="publish_this">
-                  <a href="#" class="btn_publish">發佈</a>
+                  <a href="#" class="btn_publish btn_unpublished hidden" data-post-id="" data-post-id-published="false">發佈</a>
+                  <a href="#" class="btn_publish btn_published hidden" data-post-id="" data-post-id-published="true">已發佈</a>
                 </div><!-- /.publish_this -->
                 
                 <div class="post_list_block">
@@ -122,7 +123,7 @@
 
 <!-- handlerbar:handlebar_ziltag_msg -->
 <script id="handlebar_ziltag_msg" type="text/x-handlebars-template">
-  <li data-id="{{id}}" data-ziltag-id="{{ziltag_id}}">
+  <li data-id="{{id}}" data-ziltag-id="{{ziltag_id}}" data-publish="{{publish_status}}">
     <div class="list_block_div">
       <div class="operation_link">
         <a href="#" data-id="{{id}}" data-ziltag-id="{{ziltag_id}}" class="edit_ziltag_sticker"><i class="fa fa-pencil"></i></a>
