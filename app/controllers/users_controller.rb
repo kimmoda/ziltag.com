@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout "sidebar"
   before_action :set_user
+  before_action :authenticate_user!, only: %i[edit update]
 
   def show
     @ziltaggings = @user.ziltaggings
