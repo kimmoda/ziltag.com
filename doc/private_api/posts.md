@@ -136,7 +136,8 @@ page | 數字 | 顯示第 n 頁，可用於捲動載入
 {
   "post": {
     "title": "哈囉",
-    "content": "<p>世界</p>"
+    "content": "<p>世界</p>",
+    "published": true
   }
 }
 ```

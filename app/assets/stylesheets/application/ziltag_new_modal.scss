@@ -262,7 +262,8 @@
               div.publish_this{
                 background-color: $eighth_gray_color;
                 text-align: right;
-                a.btn_publish{
+                min-height: 44px;
+                a.btn_unpublished{
                   @extend .btn;
                   @extend .btn-default;
                   background-color: $main_gray_color;
@@ -270,11 +271,16 @@
                   margin: 5px 5px 5px 0;
                   &:hover{
                     background-color: $main_gray_color;
+                    color: $main_white_color;
                   }
                 }
-                a.btn_unpublish{
-                  @extend .btn_publish;
+                a.btn_published{
+                  @extend .btn_unpublished;
                   background-color: $main_red_color;
+                  &:hover{
+                    background-color: $main_red_color;
+                    color: $main_white_color;
+                  }
                 }
               }
               div.post_list_block{
