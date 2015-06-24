@@ -2,11 +2,13 @@
 
 main(function(){
   
-  $('div.show_slick').slick({
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3
-  });
+  if( $("body").is(".users.collecting") ){
+    $('div.show_slick').slick({
+      infinite: false,
+      slidesToShow: 8,
+      slidesToScroll: 8
+    });
+  }
   
 });
 

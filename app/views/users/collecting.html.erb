@@ -51,15 +51,17 @@
         </div><!-- /.post_user_profile -->
       </div><!-- /.block_left -->
       
-      <div style="border:1px solid red;clear:both;">
+      <!-- start:輪播在此 -->
+      <div class="slide_show_slick">
         <div class="show_slick">
-          <div><img src="http://lorempixel.com/100/100/"></div>
-          <div><img src="http://lorempixel.com/100/100/"></div>
-          <div><img src="http://lorempixel.com/100/100/"></div>
-        </div>
-      </div>
-      
-      
+          <% 20.times do %>
+            <div>
+              <a href="#" data-x="" data-y="" data-image-url="" class="square_image"><img src="http://lorempixel.com/100/100/"></a>
+            </div>
+          <% end %>
+        </div><!-- /.show_slick -->
+      </div><!-- /.slide_show_slick -->
+      <!-- end:輪播在此 -->
       
     </article>
   <% end %>

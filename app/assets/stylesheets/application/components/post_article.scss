@@ -94,4 +94,27 @@ article.post_article{
     box-sizing: border-box;
     overflow: hidden;
   }
+  
+  div.slide_show_slick{
+    clear:both;
+    margin-bottom: 5px;
+    padding:{
+      left:30px;
+      right:30px;
+    };
+    div.show_slick{
+      margin-bottom: 0;
+      a.square_image{
+        width:100px;
+        height: 100px;
+        display: inline-block;
+        overflow: hidden;
+        text-align: center;
+      }
+      button.slick-prev, button.slick-next{
+        background-color: gray;
+        border-radius: 50%;
+      }
+    }
+  }
 }
