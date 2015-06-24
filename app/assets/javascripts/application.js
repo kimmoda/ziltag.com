@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require handlebars
 //= require redactor
 //= require redactor/zh_tw.js
