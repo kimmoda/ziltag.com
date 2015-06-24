@@ -3,5 +3,67 @@
 <% end %>
 
 <section class="section_post">
+  <% 2.times do %>
+    <article class="post_article">
+  
+      <div class="block_right text-center">
+        <article class="c_ziltag_sticker_article" data-ziltag-mode="default" data-remove-ziltag="true" data-ziltag-sticker-article="">
+          <div class="ziltag_thumb"><div class="ziltag_wrapper" style="right: 0px; bottom: 0px;"><img src="http://localhost:3000/uploads/photos/image/157/1357483586-1611130660_n.jpg" alt="1357483586 1611130660 n"><a class="active" data-x="32" data-y="141" data-ziltag-modal="" data-remote="true" href="/ziltaggings/225.json" style="left: 36.3733333333333px; top: 160.227272727273px;"></a></div></div>
+        </article><!-- /.c_ziltag_sticker_article_on_home -->
+      </div><!-- /.block_right -->
+      
+      <div class="block_left">
+        <time datetime="2015-06-17T11:08:57+08:00" class="datetime">發表於 2015年6月17日 11:08</time>
+        
+        <h2 class="post_title"><a class="" data-ziltag-modal="" data-remote="true" href="/ziltaggings/225.json">sdf</a></h2>
+        <div class="post_content_block">
+          <a href="/ziltaggings/225.json" class="post_content_link" data-remote="true" data-ziltag-modal="">
+            <div class="post_content">
+              fsdf
+            </div>
+          </a>
+        </div><!-- /.post_content_block -->
+        
+        <div class="post_user_profile">
+          <a href="#" class="profile_link"><img class="user_profile_img" src="http://localhost:3000/uploads/users/avatar/1/thumb_24.jpg" alt="Thumb 24"></a>
+          <div class="follow_user_block">
+            <a href="#" class="user_name">pedro_breitenberg</a><br>
+            <a class="follow" data-leader-id="1" data-remote="true" rel="nofollow" data-method="post" href="/follow?leader_id=1">關注用戶</a><a class="unfollow" data-leader-id="1" style="display:none" data-remote="true" rel="nofollow" data-method="delete" href="/unfollow?leader_id=1">取消追蹤</a>
+          </div><!-- /.follow_user_div -->
+          
+          <ul class="list-unstyled list-inline pull-right other_funcs">
+            <li class="share_item">
+              <a href="#"></a>
+              <div>
+                <img src="http://localhost:3000/assets/other_triangle-82eeec09d03edff1a2c1ae334ac772818588f345ac7107c5242cbedc1bd908c1.png" alt="Other triangle 82eeec09d03edff1a2c1ae334ac772818588f345ac7107c5242cbedc1bd908c1">
+                <ul>
+                  <li><a href="#" class="icon_share fb"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+                  <li><a href="#" class="icon_share twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+                  <li><a href="#" class="icon_share tumblr"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+                  <li><a href="#" class="icon_share googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a data-class="post_219" class="collect post_219" data-remote="true" rel="nofollow" data-method="post" href="/collect?id=219&amp;type=Post"><i class="fa fa-star"></i></a><a data-class="post_219" class="uncollect post_219" style="display:none" data-remote="true" rel="nofollow" data-method="delete" href="/uncollect?id=219&amp;type=Post"><i class="fa fa-star"></i></a>
+            </li>
+          </ul><!-- /.other_funcs -->
+        </div><!-- /.post_user_profile -->
+      </div><!-- /.block_left -->
+      
+      <div style="border:1px solid red;clear:both;">
+        <div class="show_slick">
+          <div><img src="http://lorempixel.com/100/100/"></div>
+          <div><img src="http://lorempixel.com/100/100/"></div>
+          <div><img src="http://lorempixel.com/100/100/"></div>
+        </div>
+      </div>
+      
+      
+      
+    </article>
+  <% end %>
+  
+  
   <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
 </section><!-- /.section_post -->

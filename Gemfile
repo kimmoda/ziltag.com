@@ -31,6 +31,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-masonry'
   gem 'rails-assets-imagesloaded'
   gem 'rails-assets-jquery-tags-input'
+  gem 'rails-assets-slick.js'
 end
 
 group :development do
