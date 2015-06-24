@@ -1,6 +1,6 @@
 <section class="sec_user_profile" data-layout="full_interface">
   <div class="user_banner">
-    <img src="http://lorempixel.com/1000/500/" class="img-responsive user_banner_img">
+    <%= image_tag @user.cover_url, class: 'img-responsive user_banner_img' %>
   </div><!-- /.user_banner -->
 
   <div class="user_basic_info">
