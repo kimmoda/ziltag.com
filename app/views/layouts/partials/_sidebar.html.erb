@@ -49,15 +49,13 @@
   <section class="aside_section">
     <h2 class="list_title">熱門用戶</h2>
     <ul class="list-unstyled aside_list">
-      <li>
-        <a href="#"><img src="http://placehold.it/24x24" class="profile_image"> Chris Anderson</a>
-      </li>
-      <li>
-        <a href="#"><img src="http://placehold.it/24x24" class="profile_image"> Amanda Burk</a>
-      </li>
-      <li>
-        <a href="#"><img src="http://placehold.it/24x24" class="profile_image"> Steven Chen</a>
-      </li>
+      <% User.hot_users.limit(3).each do |user|  %>
+        <li>
+          <%= link_to user do %>
+            <%= image_tag user.avatar.thumb.url, width: 24, class: 'profile_image' %> <%= user.username %>
+          <% end %>
+        </li>
+      <% end %>
     </ul><!-- /.aside_list -->
   </section>
   <footer class="aisde_footer">
