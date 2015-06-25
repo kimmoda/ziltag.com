@@ -8,6 +8,6 @@
 //= require imagesloaded/imagesloaded.pkgd
 //= require masonry/dist/masonry.pkgd
 //= require jquery-tags-input/jquery.tagsinput
-//= require slick.js.js
+//= require slick
 //= require runner
 //= require_tree ./application
