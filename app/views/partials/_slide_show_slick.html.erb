@@ -1,0 +1,13 @@
+<!-- start:輪播在此 -->
+<div class="slide_show_slick">
+  <div class="show_slick">
+    <% post.ziltaggings.each do |ziltagging| %>
+      <div>
+        <%= link_to '#', data: {image_url: ziltagging.photo.image_url, x: ziltagging.x, y: ziltagging.y, link: ""}, class: 'square_image' do %>
+          <%= image_tag ziltagging.photo.image.thumb.url %>
+        <% end %>
+      </div>
+    <% end %>
+  </div><!-- /.show_slick -->
+</div><!-- /.slide_show_slick -->
+<!-- end:輪播在此 -->
