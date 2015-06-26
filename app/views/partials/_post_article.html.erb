@@ -35,6 +35,6 @@
   </div><!-- /.block_left -->
 
 
-  <%= render :partial => "/partials/slide_show_slick" %>
+  <%= render "/partials/slide_show_slick", post: ziltagging.post if controller_name == 'users' && action_name == 'collecting' %>
 
 </article><!-- /.post_article -->

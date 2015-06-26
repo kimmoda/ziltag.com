@@ -3,7 +3,7 @@
   <div class="show_slick">
     <% post.ziltaggings.each do |ziltagging| %>
       <div>
-        <%= link_to '#', data: {image_url: ziltagging.photo.image_url, x: ziltagging.x, y: ziltagging.y, link: ""}, class: 'square_image' do %>
+        <%= link_to '#', data: {image_url: ziltagging.photo.image_url, x: ziltagging.x, y: ziltagging.y, link: ziltagging_path(ziltagging, format: :json)}, class: 'square_image' do %>
           <%= image_tag ziltagging.photo.image.thumb.url %>
         <% end %>
       </div>

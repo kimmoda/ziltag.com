@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def collecting
-    @posts = @user.collected_posts
+    @ziltaggings = @user.collected_posts.map{|post| post.ziltaggings.first }
   end
 
   def following
