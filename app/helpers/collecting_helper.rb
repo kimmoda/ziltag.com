@@ -23,6 +23,7 @@ module CollectingHelper
 
   def collecting_button record
     return unless user_signed_in?
+    return if record.try(:user) == current_user
     ret = ActiveSupport::SafeBuffer.new
     ret << collecting_link(record, :collect)
     ret << collecting_link(record, :uncollect)
