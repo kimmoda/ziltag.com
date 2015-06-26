@@ -12,7 +12,7 @@ article.post_article{
   &:after{
     clear: both;
   }
-  
+
   div.block_left{
     float:left;
     vertical-align: top;
@@ -61,7 +61,7 @@ article.post_article{
         right:0px;
       }
     }
-    
+
     div.post_user_profile{
       margin-top: 10px;
       a.profile_link{
@@ -93,5 +93,28 @@ article.post_article{
     height: 300px;
     box-sizing: border-box;
     overflow: hidden;
+  }
+
+  div.slide_show_slick{
+    clear:both;
+    margin-bottom: 5px;
+    padding:{
+      left:30px;
+      right:30px;
+    };
+    div.show_slick{
+      margin-bottom: 0;
+      a.square_image{
+        width:50px;
+        height: 50px;
+        display: inline-block;
+        overflow: hidden;
+        text-align: center;
+      }
+      button.slick-prev, button.slick-next{
+        background-color: gray;
+        border-radius: 50%;
+      }
+    }
   }
 }

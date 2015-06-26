@@ -5,10 +5,10 @@
       <%= ziltag_thumb ziltagging %>
     </article><!-- /.c_ziltag_sticker_article_on_home -->
   </div><!-- /.block_right -->
-  
+
   <div class="block_left">
     <%= time_info ziltagging.post.created_at %>
-    
+
     <h2 class="post_title"><%= link_to ziltagging.title, ziltagging_path(ziltagging, format: :json), class: '', remote: true, data: {ziltag_modal: ''} %></h2>
     <div class="post_content_block">
       <a href="<%= ziltagging_path(ziltagging, format: :json) %>" class="post_content_link" data-remote="true" data-ziltag-modal>
@@ -17,14 +17,14 @@
         </div>
       </a>
     </div><!-- /.post_content_block -->
-    
+
     <div class="post_user_profile">
       <a href="#" class="profile_link"><%= image_tag ziltagging.user.avatar.thumb, class: :user_profile_img %></a>
       <div class="follow_user_block">
         <a href="#" class="user_name"><%= ziltagging.user.username %></a><br>
         <%= following_button ziltagging.user %>
       </div><!-- /.follow_user_div -->
-      
+
       <ul class="list-unstyled list-inline pull-right other_funcs">
         <%= render 'partials/share_item' %>
         <li>
@@ -33,4 +33,8 @@
       </ul><!-- /.other_funcs -->
     </div><!-- /.post_user_profile -->
   </div><!-- /.block_left -->
+
+
+  <%= render "/partials/slide_show_slick", post: ziltagging.post if controller_name == 'users' && action_name == 'collecting' %>
+
 </article><!-- /.post_article -->

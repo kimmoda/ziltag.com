@@ -4,6 +4,7 @@ module FollowingHelper
   # <a class="unfollow" data-leader-id="ID">取消追蹤</a>
   def following_button leader
     return unless user_signed_in?
+    return if current_user == leader
     ret = ActiveSupport::SafeBuffer.new
     following_params = {leader_id: leader.id}
 
