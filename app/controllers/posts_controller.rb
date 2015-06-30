@@ -36,7 +36,7 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :published)
+    params.require(:post).permit(:title, :content, :published, :tag_list)
   end
 
   def ziltagging_params

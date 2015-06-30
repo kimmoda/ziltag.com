@@ -1,8 +1,8 @@
 <div class="modal fade" id="ziltag_new_modal" tabindex="-1" role="dialog" aria-labelledby="ziltagNewModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    
+
     <div class="modal-content">
-      
+
       <div class="modal-body">
         <section class="all_contents">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -20,18 +20,18 @@
                 </div><!-- /input-group -->
               </div>
             </div><!-- /.new_and_filter -->
-            
+
             <div class="list_block">
               <ul class="list-unstyled list_ul">
               </ul>
             </div><!-- /.list_block -->
-            
+
           </div><!-- /.left_side -->
-          
+
           <div class="right_side">
             <div class="init_zone">
               <div class="zone_picture">
-                
+
                 <form id="uploadimage" class="hidden" action="" method="post" enctype="multipart/form-data">
                   <input type="file" name="photo[image]" id="selected_file">
                   <input type="hidden" name="photo[source]" id="selected_url">
@@ -43,8 +43,8 @@
                   </div>
                 </div><!-- /.drop_file -->
               </div><!-- /.zone_picture -->
-              
-              
+
+
               <div class="zone_picture_url">
                 <div class="zone_picture_url_block">
                   <div id="progress_bar"><div id="dynamic_progress"></div></div>
@@ -54,7 +54,7 @@
                 </div><!-- /.zone_picture_url_block -->
               </div><!-- /.zone_picture_url -->
             </div><!-- /.init_zone -->
-              
+
             <div class="edit_zone hidden">
               <div class="uploaded_image_block">
                 <div class="img_edit_zone_block">
@@ -70,21 +70,21 @@
                   <a href="#" class="btn_publish btn_unpublished hidden" data-post-id="" data-post-id-published="false">發佈</a>
                   <a href="#" class="btn_publish btn_published hidden" data-post-id="" data-post-id-published="true">已發佈</a>
                 </div><!-- /.publish_this -->
-                
+
                 <div class="post_list_block">
                   <ul class="list-unstyled post_list">
                   </ul>
                 </div><!-- /.post_list_block -->
-                
+
               </div><!-- /.uploaded_image_block -->
-              
+
             </div><!-- /.edit_zone -->
-            
-            
+
+
           </div><!-- /.right_side -->
         </section><!-- /.all_contents -->
       </div><!-- /.modal-body -->
-      
+
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
@@ -103,7 +103,7 @@
             <textarea class="form-control ziltag_content" name="post[content]"></textarea>
           </div>
           <div class="form-group">
-            <input type="text" name="ziltag_tags" id="ziltag_tags" class="form-control ziltag_tags" placeholder="標籤">
+            <input type="text" name="post[tag_list]" id="tag_list" class="form-control tag_list" placeholder="標籤">
           </div>
         </div>
         <div class="modal-footer">
@@ -131,9 +131,20 @@
       </div>
       <h3 class="title">{{ziltag_title}}</h3>
       <div class="post_contents">{{{ziltag_msg}}}</div>
-      <div class="hidden all_tags">{{ziltag_tags}}</div>
+      <div class="all_tags">
+        {{#each all_tags}}
+          <span class="label label-info">{{tag}}</span>
+        {{/each}}
+      </div>
     </div>
   </li>
+</script>
+
+<!-- handlerbar:handlebar_ziltag_msg_tags：標籤 -->
+<script id="handlebar_ziltag_msg_tags" type="text/x-handlebars-template">
+  {{#each all_tags}}
+    <span class="label label-info">{{tag}}</span>
+  {{/each}}
 </script>
 
 <!-- handlerbar:左側列表 -->
