@@ -129,9 +129,10 @@
         font-size: 18px;
       }
       button.scroll_to_top{
-        position: absolute;
-        right:20px;
-        bottom:60px;
+        -webkit-transform: translate3d(0, 0, 0);
+        position: fixed;
+        right: 40px;
+        bottom: 0px;
         border:none;
         background: none;
         outline:none;
