@@ -32,6 +32,8 @@ var newZiltag = {
         $("button.image_confirm").attr("data-choose-type", type);
         $("input.fetch_images").val('');
 
+        // 直接上傳
+        $("button.image_confirm").click();
       }
       reader.readAsDataURL(selectedFile.files[0]);
     }
@@ -126,6 +128,7 @@ var newZiltag = {
       $("#ziltag_new_modal #progress_bar").css("display", "none");
       $("#ziltag_new_modal div.ziltag_wrapper a.ziltag").remove();
       $("#ziltag_new_modal input.search_filter").val("");
+      $("#ziltag_new_modal #selected_file").val('');
 
       $("#ziltag_new_modal div.publish_this a.btn_publish").addClass("hidden");
   },
