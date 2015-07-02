@@ -13,6 +13,10 @@
   <div class="well"><%= sanitize @admin_post.content %></div>
 </p>
 
+<p>
+  <strong><%= Admin::Post.human_attribute_name(:tag_list) %>:</strong>
+  <%= @admin_post.tag_list %>
+</p>
 
 <div class="row">
   <% @admin_post.photos.each do |photo| %>

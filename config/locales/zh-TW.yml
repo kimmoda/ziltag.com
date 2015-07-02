@@ -29,6 +29,7 @@ zh-TW:
     attributes:
       post:
         content: 內容
+        tag_list: 標籤
       photo:
         user: 上傳者
         image: 圖片
