@@ -3,8 +3,8 @@
 <head>
   <title>Ziltag</title>
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body data-controller="<%= controller_path %>" data-action="<%= action_name %>" class="<%= controller_name %> <%= action_name %> <%= controller.send(:_layout) %>">
