@@ -33,7 +33,7 @@ module Ziltag
 
     config.to_prepare do
       Devise::SessionsController.layout 'normal'.freeze
-      Devise::RegistrationsController.layout 'normal'.freeze
+      Devise::RegistrationsController.layout ->{ %w[edit update].include?(action_name) ? 'sidebar' : 'normal' }
       Devise::PasswordsController.layout 'normal'.freeze
     end
 
