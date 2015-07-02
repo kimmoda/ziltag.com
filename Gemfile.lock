@@ -251,6 +251,7 @@ GEM
     rails-assets-imagesloaded (3.1.8)
       rails-assets-eventEmitter (~> 4.0)
       rails-assets-eventie (>= 1.0.4, < 2)
+    rails-assets-introjs (1.0.0)
     rails-assets-jquery (1.11.3)
     rails-assets-jquery-tags-input (1.3.6)
       rails-assets-jquery (~> 1.0)
@@ -368,6 +369,7 @@ DEPENDENCIES
   rails-assets-font-awesome!
   rails-assets-handlebars!
   rails-assets-imagesloaded!
+  rails-assets-introjs!
   rails-assets-jquery-tags-input!
   rails-assets-masonry!
   rails-assets-select2 (~> 4.0.0.rc.2)!

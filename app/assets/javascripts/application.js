@@ -9,5 +9,6 @@
 //= require masonry/dist/masonry.pkgd
 //= require jquery-tags-input/jquery.tagsinput
 //= require slick
+//= require introjs
 //= require runner
 //= require_tree ./application
