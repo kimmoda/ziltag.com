@@ -239,6 +239,31 @@ main(function(){
           $('#drop_file').find("img").remove();
           newZiltag.appendImage($('#drop_file')[0], $(that).val());
           $('div.drop_file_hint').addClass('hidden');
+
+          // $(that).val()
+
+          var send_obj = {
+            "photo": {
+              "remote_image_url": "http://notes.carlos-studio.com/images/theme_button.png"
+            }
+          };
+
+          $.ajax({
+        		url: '/photos.json',
+        		type: 'POST',
+            data: send_obj,
+        		dataType: 'json',
+        		success: function(data){
+        		  console.log(data);
+        		}
+        	});
+
+
+          //$("div.init_zone, div.edit_zone").toggleClass("hidden");
+          //$("img.uploaded_image").attr("src", $(that).val());
+          //obj_post_data.ziltagging.photo_id = 99999999;//data.id
+
+
         }
       });
 
