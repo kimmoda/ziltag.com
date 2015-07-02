@@ -26,6 +26,7 @@ zh-TW:
       ziltagging: 樂貼
       photo: 圖片
       comment: 留言
+      tag: 標籤
     attributes:
       post:
         content: 內容
@@ -47,3 +48,5 @@ zh-TW:
       comment:
         root: 原 PO
         text: 內容
+      tag:
+        name: 名稱

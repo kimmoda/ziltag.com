@@ -1,0 +1,10 @@
+<p>
+  <strong><%= Admin::Tag.human_attribute_name(:name) %>:</strong>
+  <%= @admin_tag.name %>
+</p>
+
+
+<hr>
+
+<%= link_to t('scaffold.edit'), edit_admin_tag_path(@admin_tag), class: 'btn btn-default' %>
+<%= link_to t('scaffold.back'), admin_tags_path, class: 'btn btn-default' %>

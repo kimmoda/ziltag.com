@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :tags
+  end
   root 'pages#home'
 
   devise_for :users
