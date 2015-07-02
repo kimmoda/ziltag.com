@@ -48,7 +48,7 @@ class Admin::UsersController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_user
-      @admin_user = Admin::User.find(params[:id])
+      @admin_user = Admin::User.find_by(username: params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
