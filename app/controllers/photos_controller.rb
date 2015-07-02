@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
 
   # POST /photos.json
   def create
-    photo = current_user.photos.create! params.require(:photo).permit(:image, :source)
+    photo = current_user.photos.create! params.require(:photo).permit(:image, :remote_image_url, :source)
     render json: {id: photo.id}
   end
 

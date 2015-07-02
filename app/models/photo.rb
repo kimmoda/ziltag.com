@@ -15,8 +15,7 @@ class Photo < ActiveRecord::Base
   has_many :comments
 
   # validations
-  # TODO 應該有更好的做法
-  # validates :image, presence: true
+  validates :image, presence: true
 
   # callbacks
   after_save :set_source, if: ->{ source.blank? }
