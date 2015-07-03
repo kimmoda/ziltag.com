@@ -222,6 +222,8 @@ main(function(){
     });
     // 所貼的連結是否為圖片
     $("input.fetch_images").on("keyup", function(){
+      $(this).closest("div.zone_picture_url_block").append('<span class="temp_spiner" style="display:inline-block;position:absolute;right:25px;top:8px;"><i class="fa fa-refresh fa-spin"></i></span>');
+
       var that = $(this);
       $("<img>", {
         src: $(this).val(),
@@ -231,6 +233,7 @@ main(function(){
 
           $('#drop_file').find("img").remove();
           $('div.drop_file_hint').removeClass('hidden');
+          $(that).closest("div.zone_picture_url_block").find("span.temp_spiner").remove();
         },
         load: function(e) {
           $("span.not_image, span.is_image").addClass("hidden");
@@ -239,6 +242,26 @@ main(function(){
           $('#drop_file').find("img").remove();
           newZiltag.appendImage($('#drop_file')[0], $(that).val());
           $('div.drop_file_hint').addClass('hidden');
+
+          var send_obj = {
+            "photo": {
+              "remote_image_url": $(that).val()
+            }
+          };
+          // 傳送圖片網址
+          $.ajax({
+        		url: '/photos.json',
+        		type: 'POST',
+            data: send_obj,
+        		dataType: 'json',
+        		success: function(data){
+              $("div.init_zone, div.edit_zone").toggleClass("hidden");
+              $("img.uploaded_image").attr("src", $(that).val());
+              obj_post_data.ziltagging.photo_id = data.id;
+              $(that).closest("div.zone_picture_url_block").find("span.temp_spiner").remove();
+        		}
+        	});
+
         }
       });
 

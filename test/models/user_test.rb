@@ -67,4 +67,12 @@ class UserTest < ActiveSupport::TestCase
     @tony.uncollect!(posts(:david))
     refute @tony.collect?(posts(:david))
   end
+
+  test '#find_or_create_by_url!' do
+    photo_params = {remote_image_url: 'http://tonytonyjan.net/images/site/avatar.png'}
+    photo_1 = @tony.photos.find_or_create_by_url! photo_params
+    photo_2 = @tony.photos.find_or_create_by_url! photo_params
+    assert_equal photo_1, photo_2
+  end
+
 end
