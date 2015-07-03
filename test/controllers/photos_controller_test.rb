@@ -22,7 +22,14 @@ class PhotosControllerTest < ActionController::TestCase
       format: :json,
       photo: {remote_image_url: 'http://tonytonyjan.net/images/site/avatar.png'}
     assert_response :success
-    assert JSON.parse(response.body).key?('id')
+    id_1 = assert JSON.parse(response.body).key?('id')
+
+    post :create,
+      format: :json,
+      photo: {remote_image_url: 'http://tonytonyjan.net/images/site/avatar.png'}
+    assert_response :success
+    id_2 = assert JSON.parse(response.body).key?('id')
+    assert_equal id_1, id_2
   end
 
 end

@@ -15,7 +15,16 @@ class User < ActiveRecord::Base
   # associations
   has_many :posts
   has_many :ziltaggings, through: :posts
-  has_many :photos
+  has_many :photos do
+    def find_or_create_by_url! params
+      if remote_image_url = params[:remote_image_url].presence
+        uri = URI(remote_image_url)
+        uri.normalize!
+        photo = find_by source: uri.to_s
+      end
+      photo ||= create! params
+    end
+  end
   has_many :comments, primary_key: :email, foreign_key: :email
   has_many :_followers, class_name: Following, foreign_key: :leader_id
   has_many :_leaders, class_name: Following, foreign_key: :follower_id
