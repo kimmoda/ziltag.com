@@ -1,0 +1,93 @@
+body.registrations.edit, body.registrations.update{
+
+    section.sec_user_profile{
+        background-color: $main_white_color;
+        box-shadow: 0 3px 3px gray;
+        div.user_banner{
+            height: 300px;
+            overflow-y: hidden;
+            position: relative;
+            cursor: pointer;
+            img.user_banner_img{
+                width:100%;
+            }
+
+
+        }
+        div.user_basic_info{
+            cursor: pointer;
+            padding:{
+                top:10px;
+                bottom:10px;
+            };
+            &:before, &:after{
+                content: "";
+                display: block;
+            }
+            &:after{
+                clear:both;
+            }
+            div.left_zone{
+                div.profile_img{
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
+                }
+                div.profile_img{
+                    width:150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    border:5px solid $main_white_color;
+                    text-align: center;
+                    overflow: hidden;
+                    position: absolute;
+                    top:-75px;
+                    left:35px;
+                    a.img_profile_link{
+                      display: inline-block;
+                      position: relative;
+                      width:100%;
+                      height: 100%;
+                      background-color: $main_white_color;
+                      img.img_profile_tag{
+                        width:100%;
+                        position: relative;
+                        top:50%;
+
+                        -webkit-transform:translate(0, -50%);
+                        -moz-transform:translate(0, -50%);
+                        -ms-transform:translate(0, -50%);
+                        -o-transform:translate(0, -50%);
+                        transform:translate(0, -50%);
+                      }
+                    }
+                }
+
+
+            }
+
+        }
+
+        div.main_edit_context{
+          margin-top: 60px;
+          padding:{
+            left:15px;
+            right:15px;
+          };
+
+
+        }
+        div.other_links{
+          margin-top: 30px;
+          padding:{
+            left:15px;
+            right:15px;
+          };
+        }
+        input.update_profile{
+          background-color: $main_red_color;
+          border:1px solid $main_red_color;
+          color:$main_white_color;
+        }
+    }
+}
