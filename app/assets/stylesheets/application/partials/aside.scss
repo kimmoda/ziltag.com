@@ -12,7 +12,9 @@ aside.aside{
     padding-left:15px !important;
     position: absolute;
     top:0px;
-    
+  }
+  &.introjs-fixParent{
+    top:0;
   }
   ul.aside_list{
     padding:{
@@ -29,7 +31,7 @@ aside.aside{
       }
     }
   }
-  
+
   section.aside_section{
     padding-top: 10px;
     h2.list_title{
@@ -45,7 +47,7 @@ aside.aside{
   img.profile_image{
     border-radius: 50%;
   }
-  
+
   footer.aisde_footer{
     p.para{
       margin-bottom: 0px;

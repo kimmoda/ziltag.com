@@ -28,7 +28,7 @@ div.layout_fluid{
     left:0;
     height: 100%;
   }
-  
+
   div.col_left{
   }
   div.col_right{
@@ -40,4 +40,10 @@ div.layout_fluid{
       margin-top:20px;
     }
   }
+}
+span.introjs-helperNumberLayer{
+  line-height: .9;
+}
+div.introjs-tooltip.add_dynamic_aside_class{
+  left:0 !important;
 }
