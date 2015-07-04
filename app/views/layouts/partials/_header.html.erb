@@ -21,7 +21,7 @@
             <ul class="list-inline pull-right nav_list is_login">
             
               <li>
-                <a href="#" class="only_link plus" data-toggle="modal" data-target="#ziltag_new_modal" data-ziltag-new-modal><i class="fa fa-plus fa-2x"></i></a>
+                <a href="#" id="new_ziltag" class="only_link plus" data-toggle="modal" data-target="#ziltag_new_modal" data-ziltag-new-modal><i class="fa fa-plus fa-2x"></i></a>
               </li>
               <li>
                 <div class="btn-group btn_custom_group">
@@ -78,7 +78,7 @@
           <% else %>
             <ul class="list-inline pull-right nav_list is_login not_login">
               <li><%= link_to '登入', "#", :class => "nav_link", "data-toggle" => "modal", "data-target" => "#loginModal" %></li>
-              <li><%= link_to '註冊', "#", :class => "nav_link", "data-toggle" => "modal", "data-target" => "#signupModal" %></li>
+              <li><%= link_to '註冊', "#", id: 'sign_in', :class => "nav_link", "data-toggle" => "modal", "data-target" => "#signupModal" %></li>
               
               <li><%= link_to '忘記密碼', new_user_password_path %></li>
               <li><%= link_to '重寄驗證信', new_user_confirmation_path %></li>

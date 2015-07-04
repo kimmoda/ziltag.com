@@ -6,7 +6,7 @@
       <% end%>
     </li>
     <li>
-      <%= link_to fa('picture-o', '以圖找貼'), photos_path %>
+      <%= link_to fa('picture-o', '以圖找貼'), photos_path, id: 'photos_link' %>
     </li>
     <li>
       <%= link_to current_user do %>
@@ -22,7 +22,7 @@
       <a href="#"><i class="fa fa-eye"></i> 瀏覽記錄</a>
     </li>
   </ul><!-- /.aside_list -->
-  
+
   <section class="aside_section">
     <h2 class="list_title">熱門話題</h2>
     <ul class="list-unstyled aside_list">
