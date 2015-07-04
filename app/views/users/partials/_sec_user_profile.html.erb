@@ -1,13 +1,30 @@
 <section class="sec_user_profile" data-layout="full_interface">
   <div class="user_banner">
     <%= image_tag @user.cover_url, class: 'img-responsive user_banner_img' %>
+
+    <!-- .edit_profile_link 這個連結應該是會員自己時，才會出現 -->
+    <a href="/users/edit" class="edit_profile_link">
+      <span class="icon_font">
+        <i class="fa fa-camera fa-3x"></i>
+        <span class="edit_text">編輯</span>
+      </span>
+    </a>
+
   </div><!-- /.user_banner -->
 
   <div class="user_basic_info">
     <div class="col-xs-8 col-sm-8 col-md-6">
       <div class="left_zone">
         <div class="profile_img">
-        <a href="#"><%= image_tag @user.avatar_url %></a>
+          <a href="#"><%= image_tag @user.avatar_url %></a>
+
+          <!-- .edit_profile_link 這個連結應該是會員自己時，才會出現 -->
+          <a href="/users/edit" class="edit_profile_link">
+            <span class="icon_font">
+              <i class="fa fa-camera fa-3x"></i>
+            </span>
+          </a>
+
         </div><!-- /.profile_img -->
         <div class="following_and_follower">
           <span class="profile_username"><%= @user.username %></span>
