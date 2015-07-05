@@ -3,6 +3,7 @@ body.registrations.edit, body.registrations.update{
     section.sec_user_profile{
         background-color: $main_white_color;
         box-shadow: 0 3px 3px gray;
+        padding-bottom: 50px;
         div.user_banner{
             height: 300px;
             overflow-y: hidden;
@@ -74,15 +75,45 @@ body.registrations.edit, body.registrations.update{
             left:15px;
             right:15px;
           };
+          div.form-inputs{
+            label.control-label{
+              color: $main_gray_color;
+              padding:{
+                left:0;
+                right:0;
+              };
+              i{
+                position: relative;
+                margin-right: 3px;
+                display: inline-block;
+              }
+            }
+            div.form_control_input{
+              padding:{
+                left:10px;
+                right:0;
+              };
+              input.form-control{
+                box-shadow: none;
+                border-radius: 0;
+                border:{
+                  top:none;
+                  left:none;
+                  right:none;
+                };
 
+              }
+              p.help-block{
+                margin-bottom: 0;
+              }
+            }
+
+          }
 
         }
-        div.other_links{
-          margin-top: 30px;
-          padding:{
-            left:15px;
-            right:15px;
-          };
+
+        div.other_actions{
+          margin-top: 20px;
         }
         input.update_profile{
           background-color: $main_red_color;

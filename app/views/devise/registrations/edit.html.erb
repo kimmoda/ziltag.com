@@ -21,7 +21,17 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.input :email, required: true, autofocus: true %>
+
+            <%#= f.input :email, required: true, autofocus: true %>
+            <div class="form-group email required user_email">
+              <label class="email required col-sm-3 control-label" for="user_email">
+                <i class="fa fa-envelope"></i> <abbr title="required">*</abbr> 電子郵件
+              </label>
+              <div class="col-sm-9 form_control_input">
+                <input class="string email required form-control" autofocus="autofocus" type="email" value="candida_conn@example.net" name="user[email]" id="user_email">
+              </div>
+            </div>
+
             <%= f.input :avatar, as: :image_preview, input_html: { class: 'select_profile_file' }, wrapper_html: { class: 'hidden' } %>
             <%= f.input :cover, as: :image_preview, input_html: { class: 'select_banner_file' }, wrapper_html: { class: 'hidden' } %>
 
@@ -29,9 +39,39 @@
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
 
-            <%= f.input :password, autocomplete: "off", hint: '若你不想修改密碼，請留空', required: false %>
-            <%= f.input :password_confirmation, required: false %>
-            <%= f.input :current_password, hint: '我們需要你的密碼以更新你的資料', required: true %>
+            <%#= f.input :password, autocomplete: "off", hint: '若你不想修改密碼，請留空', required: false %>
+            <div class="form-group password optional user_password">
+              <label class="password optional col-sm-3 control-label" for="user_password">
+                <i class="fa fa-lock"></i> 密碼
+              </label>
+              <div class="col-sm-9 form_control_input">
+                <input class="password optional form-control" type="password" name="user[password]" id="user_password">
+                <p class="help-block">若你不想修改密碼，請留空</p>
+              </div>
+            </div>
+
+            <%#= f.input :password_confirmation, required: false %>
+            <div class="form-group password optional user_password_confirmation">
+              <label class="password optional col-sm-3 control-label" for="user_password_confirmation">
+                <i class="fa fa-lock"></i> 確認密碼
+              </label>
+              <div class="col-sm-9 form_control_input">
+                <input class="password optional form-control" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+              </div>
+            </div>
+
+            <%#= f.input :current_password, hint: '我們需要你的密碼以更新你的資料', required: true %>
+            <div class="form-group password required user_current_password">
+              <label class="password required col-sm-3 control-label" for="user_current_password">
+                <i class="fa fa-lock"></i> <abbr title="required">*</abbr> 原始密碼
+              </label>
+              <div class="col-sm-9 form_control_input">
+                <input class="password required form-control" type="password" name="user[current_password]" id="user_current_password">
+                <p class="help-block">我們需要你的密碼以更新你的資料</p>
+              </div>
+            </div>
+
+
           </div>
 
           <div class="form-actions">
@@ -39,20 +79,15 @@
             <%= f.button :submit, '更新', :class => "update_profile col-sm-offset-3" %>
             <%= link_to '返回', :back, :class => "btn btn-default" %>
           </div>
+
+          <div class="other_actions">
+
+            <p class="col-sm-offset-3">覺得不開心？ <%= link_to '取消我的帳號', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete %></p>
+          </div>
         </div><!-- /.col-* -->
       </div><!-- /.row.main_edit_context -->
 
     <% end %>
-
-    <div class="row other_links">
-      <div class="col-sm-6 col-sm-offset-2">
-        <p>覺得不開心？ <%= link_to '取消我的帳號', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete %></p>
-      </div>
-    </div><!-- /.other_links -->
-
-
-
-
 
   </section><!-- /.sec_user_profile -->
 
