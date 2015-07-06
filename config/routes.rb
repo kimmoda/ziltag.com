@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :tags
   end
+
   root 'pages#home'
+  controller :pages do
+    get :privacy_policy, :term_of_service
+  end
 
   devise_for :users
   resources :users, only: :show do

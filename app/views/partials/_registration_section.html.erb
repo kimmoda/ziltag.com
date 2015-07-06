@@ -43,7 +43,7 @@
       <%= f.button :submit, "註冊", :class => "btn-block btn_register" %>
     </div>
     
-    <p class="para_hint">點擊註冊即表示您同意我們的<a href="#">使用者條款</a>與<a href="#">隱私權政策</a>。</p>
+    <p class="para_hint">點擊註冊即表示您同意我們的<%= link_to '使用者條款', term_of_service_path %>與<%= link_to '隱私權政策', privacy_policy_path %>。</p>
   <% end %>
   
   <%#= render "devise/shared/links" %>
