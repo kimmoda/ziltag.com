@@ -1,5 +1,5 @@
 run_in 'pages', 'home', ->
   scroll_to_bottom (page) ->
-    $.get '/', page: page+=1, scroll: true, (data) ->
+    $.get '/', page: page, scroll: true, (data) ->
       section = document.getElementsByClassName('section_post')[0]
       section.insertAdjacentHTML 'beforeend', data
