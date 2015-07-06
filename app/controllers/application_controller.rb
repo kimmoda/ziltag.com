@@ -8,6 +8,7 @@ protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username << :email << :avatar << :avatar_cache
     devise_parameter_sanitizer.for(:sign_in) << :login
+    devise_parameter_sanitizer.for(:account_update).concat %i[email avatar avatar_cache remove_avatar cover cover_cache remove_cover]
   end
 
   if Rails.env.development?

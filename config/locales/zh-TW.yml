@@ -42,8 +42,12 @@ zh-TW:
         email: 電子郵件
         username: 帳號
         password: 密碼
+        password_confirmation: 確認密碼
+        current_password: 原始密碼
         avatar: 頭像
         remove_avatar: 刪除頭像
+        cover: 封面
+        remove_cover: 刪除封面
         remember_me: 勿忘我
       comment:
         root: 原 PO
