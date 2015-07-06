@@ -21,14 +21,12 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
-
-            <%#= f.input :email, required: true, autofocus: true %>
             <div class="form-group email required user_email">
               <label class="email required col-sm-3 control-label" for="user_email">
                 <i class="fa fa-envelope"></i> <abbr title="required">*</abbr> 電子郵件
               </label>
               <div class="col-sm-9 form_control_input">
-                <input class="string email required form-control" autofocus="autofocus" type="email" value="candida_conn@example.net" name="user[email]" id="user_email">
+                <%= f.email_field :email, id: 'user_email', autofocus: true, class: 'string email required form-control' %>
               </div>
             </div>
 
@@ -39,34 +37,31 @@
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
 
-            <%#= f.input :password, autocomplete: "off", hint: '若你不想修改密碼，請留空', required: false %>
             <div class="form-group password optional user_password">
               <label class="password optional col-sm-3 control-label" for="user_password">
                 <i class="fa fa-lock"></i> 密碼
               </label>
               <div class="col-sm-9 form_control_input">
-                <input class="password optional form-control" type="password" name="user[password]" id="user_password">
+                <%= f.password_field :password, id: 'user_password', class: 'password optional form-control' %>
                 <p class="help-block">若你不想修改密碼，請留空</p>
               </div>
             </div>
 
-            <%#= f.input :password_confirmation, required: false %>
             <div class="form-group password optional user_password_confirmation">
               <label class="password optional col-sm-3 control-label" for="user_password_confirmation">
                 <i class="fa fa-lock"></i> 確認密碼
               </label>
               <div class="col-sm-9 form_control_input">
-                <input class="password optional form-control" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+                <%= f.password_field :password_confirmation, id: 'user_password_confirmation', class: 'password optional form-control' %>
               </div>
             </div>
 
-            <%#= f.input :current_password, hint: '我們需要你的密碼以更新你的資料', required: true %>
             <div class="form-group password required user_current_password">
               <label class="password required col-sm-3 control-label" for="user_current_password">
                 <i class="fa fa-lock"></i> <abbr title="required">*</abbr> 原始密碼
               </label>
               <div class="col-sm-9 form_control_input">
-                <input class="password required form-control" type="password" name="user[current_password]" id="user_current_password">
+                <%= f.password_field :current_password, id: 'user_current_password', class: 'password required form-control' %>
                 <p class="help-block">我們需要你的密碼以更新你的資料</p>
               </div>
             </div>
