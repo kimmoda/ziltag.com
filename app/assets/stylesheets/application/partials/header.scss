@@ -12,7 +12,18 @@ header.header{
   @media screen and (max-width:767px){
     position: relative;
   }
-  
+  &.introjs-fixParent{
+    ul.nav_list{
+      > li{
+        > a{
+          &.only_link.plus{
+            position: relative;
+            top:12px;
+          }
+        }
+      }
+    }
+  }
   div.col_logo{
   }
   div.col_search{
@@ -42,7 +53,7 @@ header.header{
     background-color: $main_white_color;
     border:none;
   }
-  
+
   ul.nav_list{
     margin-bottom: 0;
     position: relative;
@@ -72,7 +83,7 @@ header.header{
         }
       }
       div.btn_custom_group{
-        
+
         button.btn_user_profile, button.btn_notificaion{
           border:none;
           background: none;
@@ -131,15 +142,15 @@ header.header{
                   }
                 }
               }
-              
+
             }
           }
         }
       }
-      
+
     }
   }
-  
+
   button.btn_search{
     background-color: $main_gray_color;
     color: $main_white_color;
