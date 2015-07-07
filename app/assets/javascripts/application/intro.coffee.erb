@@ -13,25 +13,31 @@ main ->
     signup_link = document.getElementById('intro_signup')
     signup_link.addEventListener 'click', -> intro.exit()
   if document.body.hasAttribute 'data-first-signed-in'
-    intro = introJs()
-    intro.setOptions
-      steps: [
-        {
-          intro: '<%= I18n.t('intro.one') %>'
-        },
-        {
-          element: document.querySelector('.post_article')
-          intro: '<%= I18n.t('intro.two') %>'
-        },
-        {
-          element: document.getElementById('new_ziltag')
-          intro: '<%= I18n.t('intro.three') %>'
-          position: 'bottom-right-aligned'
-        },
-        {
-          element: document.getElementById('photos_link')
-          intro: '<%= I18n.t('intro.four') %>'
-          tooltipClass: 'add_dynamic_aside_class'
-        }
-      ]
-    intro.start()
+    setTimeout ->
+      intro = introJs()
+      intro.setOptions
+        steps: [
+          {
+            intro: '<%= I18n.t('intro.one') %>'
+          },
+          {
+            element: document.querySelector('.post_article')
+            intro: '<%= I18n.t('intro.two') %>'
+          },
+          {
+            element: document.getElementById('new_ziltag')
+            intro: '<%= I18n.t('intro.three') %>'
+            position: 'bottom-right-aligned'
+          },
+          {
+            element: document.getElementById('photos_link')
+            intro: '<%= I18n.t('intro.four') %>'
+            tooltipClass: 'add_dynamic_aside_class'
+          },
+          {
+            intro: '<%= I18n.t('intro.five') %>'
+            position: 'left'
+          }
+        ]
+      intro.start()
+    , 1000
