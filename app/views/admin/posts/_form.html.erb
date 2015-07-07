@@ -5,6 +5,7 @@
     <%= f.association :user, as: :select2 %>
     <%= f.input :title %>
     <%= f.input :content, input_html: {data: {redactor: ''}} %>
+    <%= f.input :published %>
   </div>
 
   <%= f.simple_fields_for :ziltaggings do |ff| %>

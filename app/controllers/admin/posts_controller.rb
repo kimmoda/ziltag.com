@@ -61,6 +61,6 @@ class Admin::PostsController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def admin_post_params
-      params.require(:admin_post).permit(:user_id, :title, :content, ziltaggings_attributes: [:id, :x, :y, :photo_id])
+      params.require(:admin_post).permit(:user_id, :published, :title, :content, ziltaggings_attributes: [:id, :x, :y, :photo_id])
     end
 end

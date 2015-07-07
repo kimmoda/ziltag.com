@@ -14,6 +14,11 @@
 </p>
 
 <p>
+  <strong><%= Admin::Post.human_attribute_name(:published) %>:</strong>
+  <div class="well"><%= sanitize @admin_post.published %></div>
+</p>
+
+<p>
   <strong><%= Admin::Post.human_attribute_name(:tag_list) %>:</strong>
   <%= @admin_post.tag_list %>
 </p>

@@ -29,6 +29,7 @@ zh-TW:
       tag: 標籤
     attributes:
       post:
+        published: 已發佈
         content: 內容
         tag_list: 標籤
       photo:
