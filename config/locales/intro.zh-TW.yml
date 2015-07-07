@@ -3,7 +3,7 @@ zh-TW:
     welcome: >
       <h3>感謝您使用 Ziltag 樂貼趣 beta 版並協助改善我們的產品！</h3>
       <p>Ziltag 樂貼趣能夠讓您新增並瀏覽所有相片中出現的人事物，搶先體驗並歡迎提出任何意見。</p>
-      <p>請先<a href="/users/sign_up">註冊</a>。</p>
+      <p>請先<a id="intro_signup" data-toggle="modal" data-target="#signupModal" href="#">註冊</a>。</p>
     one: >
       <h3>註冊成功！歡迎您的加入！</h3>
       <p>為了讓您更快上手，我們準備了簡短的說明來向您介紹我們的平台。</p>

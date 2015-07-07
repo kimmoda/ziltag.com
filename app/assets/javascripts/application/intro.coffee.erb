@@ -10,6 +10,8 @@ main ->
         }
       ]
     intro.start()
+    signup_link = document.getElementById('intro_signup')
+    signup_link.addEventListener 'click', -> intro.exit()
   if document.body.hasAttribute 'data-first-signed-in'
     intro = introJs()
     intro.setOptions
