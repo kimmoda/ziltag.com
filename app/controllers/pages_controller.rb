@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     if params[:scroll]
       render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging
     else
+      @layout = 'sidebar'
       render layout: 'sidebar'
     end
   end
