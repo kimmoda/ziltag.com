@@ -75,4 +75,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal photo_1, photo_2
   end
 
+  test 'username validation' do
+    opt = {email: 'tony@gmail.com', password: 'password'}
+    assert User.new(opt.merge(username: 'tonyjan')).valid?
+    assert User.new(opt.merge(username: 'tony_jan')).valid?
+    refute User.new(opt.merge(username: 'tony-jan')).valid?
+    refute User.new(opt.merge(username: 'tony.jan')).valid?
+  end
+
 end

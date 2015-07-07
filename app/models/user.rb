@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   # validations
   validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: {case_sensitive: false}
+  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}
 
   # callbacks
 
