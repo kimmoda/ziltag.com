@@ -1,0 +1,4 @@
+zh-TW:
+  devise:
+    confirmations:
+      confirmed: "您的帳號已通過驗證，請輸入帳號密碼以登入系統，謝謝。"
