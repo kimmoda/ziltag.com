@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def feature_ziltag
-    if photo = Photo.find_by(id: Settings[:feature_photo_id])
+    if photo = Photo.find_by(id: (Rails.env.production? ? Settings[:feature_photo_id] : params[:feature_photo_id]))
       ziltag_wrapper photo, photo.ziltaggings
     end
   end
