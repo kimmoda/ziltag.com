@@ -12,4 +12,10 @@ module ApplicationHelper
     end
   end
 
+  def feature_ziltag
+    if photo = Photo.find_by(id: Settings[:feature_photo_id])
+      ziltag_wrapper photo, photo.ziltaggings
+    end
+  end
+
 end
