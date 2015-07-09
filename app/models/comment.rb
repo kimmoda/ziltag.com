@@ -13,6 +13,7 @@ class Comment < ActiveRecord::Base
   belongs_to :photo
   belongs_to :root, class_name: Comment, foreign_key: :comment_id
   has_many :children, ->{ order(:created_at) }, class_name: Comment
+  has_many :latest_children, ->{ order(:created_at).limit(10) }, class_name: Comment
 
   # validations
 

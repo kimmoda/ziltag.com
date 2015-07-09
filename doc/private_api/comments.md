@@ -38,3 +38,13 @@ page     | 否   | 頁數（每頁 10 筆）
 ```
 
 其中 user 可能是 object 或 null，依照是否能找到使用者而定，因為留言未必需要先註冊。
+
+# 取得所有子留言
+
+請求
+
+`GET /comments/{ID}.json`
+
+回應
+
+格式與 `/comments.json` 陣列中的項目相同。
