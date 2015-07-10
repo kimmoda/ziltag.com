@@ -15,7 +15,7 @@ module ZiltagHelper
     end
 
     content_tag :div, class: :ziltag_wrapper do
-      concat image_tag photo.image_url
+      concat image_tag photo.image_url, data: {photo_id: photo.id}
       Array(ziltaggings).each do |ziltagging|
         link_options = {
           class: (:active if Array(active).include? ziltagging),
