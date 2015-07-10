@@ -21,6 +21,7 @@ class Comment < ActiveRecord::Base
   validate :coordinates # either coordinates or comment_id should exists
 
   # callbacks
+  before_validation :set_email_from_user
 
   # other
   def to_s
@@ -39,6 +40,10 @@ private
     unless root.present? || (x.present? && y.present?)
       errors.add :bases, 'either coordinates or comment_id should exists.'
     end
+  end
+
+  def set_email_from_user
+    self.email = user.email if user.present?
   end
 
 end

@@ -13,4 +13,9 @@ class CommentTest < ActiveSupport::TestCase
     assert Comment.new(x: 123, y: 456, email: 'xxx@yyy.zzz', text: 'test', photo: photos(:tony)).valid?
     refute Comment.new(email: 'xxx@yyy.zzz', text: 'test', photo: photos(:tony)).valid?
   end
+
+  test 'set_email_from_user' do
+    comment = Comment.create! x: 123, y: 456, text: 'test', photo: photos(:tony), user: users(:tony)
+    assert_equal 'tonytonyjan@ziltag.com', comment.email
+  end
 end
