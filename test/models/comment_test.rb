@@ -14,8 +14,14 @@ class CommentTest < ActiveSupport::TestCase
     refute Comment.new(email: 'xxx@yyy.zzz', text: 'test', photo: photos(:tony)).valid?
   end
 
-  test 'set_email_from_user' do
+  test 'set email from user' do
     comment = Comment.create! x: 123, y: 456, text: 'test', photo: photos(:tony), user: users(:tony)
     assert_equal 'tonytonyjan@ziltag.com', comment.email
+  end
+
+  test 'set coordinates from root' do
+    comment = Comment.create! text: 'test', photo: photos(:tony), user: users(:tony), root: comments(:tony)
+    assert_equal comments(:tony).x, comment.x
+    assert_equal comments(:tony).y, comment.y
   end
 end

@@ -22,10 +22,15 @@ class Comment < ActiveRecord::Base
 
   # callbacks
   before_validation :set_email_from_user
+  before_validation :set_coordinates_from_root, if: :child?
 
   # other
   def to_s
     text
+  end
+
+  def child?
+    root.present?
   end
 
 private
@@ -44,6 +49,12 @@ private
 
   def set_email_from_user
     self.email = user.email if user.present?
+  end
+
+  def set_coordinates_from_root
+    if root.present?
+      self.x, self.y = root.x, root.y
+    end
   end
 
 end
