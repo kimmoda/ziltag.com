@@ -9,7 +9,9 @@
   z-index: 6;
 }
 #ziltag_modal, section.ziltag_single_page{
-  
+  img{
+    max-width:100%;
+  }
   article.post_ziltag_article{
     background-color: $main_white_color;
     border:1px solid #ddd;
@@ -55,7 +57,7 @@
         color: $fifth_gray_color;
         margin-top: 0;
       }
-      
+
       div.user_profile_info{
         border-bottom:1px solid $fourth_gray_color;
         padding:{
@@ -64,7 +66,7 @@
           top:20px;
           bottom:20px;
         };
-        
+
         div.profile_info_block{
           position: relative;
           div.profile_img_block{
@@ -92,14 +94,14 @@
                 margin-left: 10px;
               }
             }
-            
+
             time.datetime{
               font-size: 14px;
               color: $main_gray_color;
             }
-            
+
           }
-          
+
           div.operation_block{
             margin-top: 10px;
             ul.other_list{
@@ -119,10 +121,10 @@
               }
             }
           }
-          
+
         }
       }
-      
+
       div.context_block{
         margin-top: 20px;
         margin-bottom: 20px;
@@ -138,9 +140,9 @@
         outline:none;
       }
     }
-    
+
   }
-  
+
   div.popover{
     z-index: 8;
     min-width: 250px;
@@ -163,7 +165,7 @@
       > li{
         > a{
           font-size: 24px;
-          color:$main_gray_color; 
+          color:$main_gray_color;
         }
       }
     }

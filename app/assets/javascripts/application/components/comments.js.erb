@@ -1,0 +1,40 @@
+$(window).on('load page:load', function(){
+  if( $("article.c_ziltag_sticker_article div.ziltag_wrapper").length > 0 ){
+    
+    var post_comment = {
+      "comment": {
+        "text": "留言測試",
+        "comment_id": "",
+        "x": "",
+        "y": "",
+        "email": "",
+        "user_id": 123,
+        "photo_id": "",
+      }
+    };
+
+    var comment_zone = $("article.c_ziltag_sticker_article div.ziltag_wrapper");
+
+    $(comment_zone).on("click", function(e){
+
+      var comment_zone_img = $(this).find("img")[0];
+
+      var ratio = {};
+      ratio.x = $(comment_zone_img)[0].clientWidth / $(comment_zone_img)[0].naturalWidth;
+      ratio.y = $(comment_zone_img)[0].clientHeight / $(comment_zone_img)[0].naturalHeight;
+
+      var relX = e.pageX - $(this).parent().offset().left;
+      var relY = e.pageY - $(this).parent().offset().top;
+
+      // 未依比例的原來x,y座標
+      post_comment.comment.x = relX / ratio.x;
+      post_comment.comment.y = relY / ratio.y;
+      post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
+      post_comment.comment.user_id = //取user_id
+      console.log(post_comment);
+    });
+
+
+    $(comment_zone).css("border", "1px solid blue");
+  }
+});

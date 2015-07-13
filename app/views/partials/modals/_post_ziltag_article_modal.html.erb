@@ -1,14 +1,14 @@
 <div id="ziltag_modal" data-modal-status="close" data-modal-post-ziltag-article>
   <%= render 'partials/ziltag_article', type: :modal %>
 </div><!-- /#ziltag_modal -->
-  
+
 
 <!-- handlerbar:ziltag_wrapper -->
 <script id="handlebar_ziltag_wrapper" type="text/x-handlebars-template">
   <div class="ziltag_wrapper">
     <img src="{{image_url}}">
     <a data-x="{{x}}" data-y="{{y}}" data-ziltag-replace  data-remote href="{{link}}.json" class="active"></a>
-    
+
     {{#each other_ziltaggings}}
       <a data-x="{{x}}" data-y="{{y}}" data-ziltag-replace data-remote href="{{link}}.json"></a>
     {{/each}}
