@@ -13,6 +13,17 @@
 
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
 
+      <div class="parent_comment">
+
+        <div class="original_author">
+          <a href="#" class="author">
+            <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
+          </a>
+          <input type="text" class="leave_msg" placeholder="按 Enter 送出…">
+        </div><!-- /.original_author -->
+
+      </div><!-- /.parent_comment -->
+
       <% if type == :page %>
         <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging, interact: :replace %>
       <% end %>

@@ -1,0 +1,27 @@
+div.parent_comment{
+  div.original_author{
+    position: relative;
+
+    a.author{
+      display: inline-block;
+      position: absolute;
+      top:0;
+      left:0;
+      width:30px;
+      height: 30px;
+      text-align: center;
+      border:3px solid $main_white_color;
+      border-radius: 50%;
+      overflow: hidden;
+      vertical-align: top;
+    }
+    input.leave_msg{
+      margin-left:35px;
+      border-radius: 5px;
+      box-shadow: none !important;
+      vertical-align: top;
+      padding-left:5px;
+      border:1px solid #ccc;
+    }
+  }
+}
