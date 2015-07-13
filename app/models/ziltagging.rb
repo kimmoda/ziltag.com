@@ -8,6 +8,7 @@ class Ziltagging < ActiveRecord::Base
   delegate :image_url, to: :photo
 
   # associations
+  has_many :tags, through: :post
   belongs_to :post
   belongs_to :photo
 
