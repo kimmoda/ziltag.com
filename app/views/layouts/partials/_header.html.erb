@@ -60,7 +60,7 @@
                     <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
                   </button>
                   <ul class="dropdown-menu" role="menu">
-                    <li class="user_name">
+                    <li class="user_name" data-user-id="<%= current_user.id %>" data-user-email="<%= current_user.email %>">
                       <%= link_to current_user do %>
                         <%= current_user.username %><br>
                         <span class="email"><%= current_user.email %></span>
