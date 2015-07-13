@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :tags
-  end
-
   root 'pages#home'
   controller :pages do
     get :privacy_policy, :term_of_service
@@ -36,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do
     root action: :home
-    resources :users, :comments, :posts, :photos, :ziltaggings
+    resources :users, :comments, :posts, :photos, :ziltaggings, :tags
     get 'select2/:plural' => 'select2#query'
   end
 end
