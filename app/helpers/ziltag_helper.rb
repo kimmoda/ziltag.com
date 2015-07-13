@@ -14,7 +14,7 @@ module ZiltagHelper
     else raise "Unknown interact type: #{interact}"
     end
 
-    content_tag :div, class: :ziltag_wrapper do
+    content_tag :div, class: :ziltag_wrapper, "data-comments": "" do
       concat image_tag photo.image_url, data: {photo_id: photo.id}
       Array(ziltaggings).each do |ziltagging|
         link_options = {
