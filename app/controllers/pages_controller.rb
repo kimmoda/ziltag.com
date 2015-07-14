@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @query = params[:q]
-    @ziltaggings = Ziltagging.includes(:photo, post: :user).search(@query).where(posts: {published: true}).order('ziltaggings.id DESC').page(params[:page]).per(10)
+    @ziltaggings = Ziltagging.search(@query).page(params[:page]).per(10)
     if params[:scroll]
       render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging
     else

@@ -1,9 +1,12 @@
 class Ziltagging < ActiveRecord::Base
   # scopes
   def self.search query_string
-    return all unless query_string.present?
-    words = query_string.split(/\W+/).join('|')
-    joins(:tags).where("tags.name ~* ? OR posts.title ~* ?", words, words)
+    results = includes(:photo, :tags, post: :user).where(posts: {published: true}).order('ziltaggings.id DESC')
+    if query_string.present?
+      words = query_string.split(%r(\s,':\;!?")).join('|')
+      results = results.where("tags.name ~* ? OR posts.title ~* ?", words, words)
+    end
+    results
   end
 
   # constants
