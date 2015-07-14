@@ -1,6 +1,7 @@
 class Ziltagging < ActiveRecord::Base
   # scopes
   def self.search query_string
+    return all unless query_string.present?
     words = query_string.split(/\W+/).join('|')
     joins(:tags).where("tags.name ~* ? OR posts.title ~* ?", words, words)
   end
