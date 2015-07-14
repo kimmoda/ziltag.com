@@ -1,5 +1,10 @@
 class Ziltagging < ActiveRecord::Base
   # scopes
+  def self.search query_string
+    return all unless query_string.present?
+    words = query_string.split(/\W+/).join('|')
+    joins(:tags).where("tags.name ~* ? OR posts.title ~* ?", words, words)
+  end
 
   # constants
 
@@ -8,6 +13,7 @@ class Ziltagging < ActiveRecord::Base
   delegate :image_url, to: :photo
 
   # associations
+  has_many :tags, through: :post
   belongs_to :post
   belongs_to :photo
 

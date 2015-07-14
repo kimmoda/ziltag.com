@@ -26,24 +26,11 @@
   <section class="aside_section">
     <h2 class="list_title">熱門話題</h2>
     <ul class="list-unstyled aside_list">
-      <li>
-        <a href="#"># Disney</a>
-      </li>
-      <li>
-        <a href="#"># Frozen</a>
-      </li>
-      <li>
-        <a href="#"># NBA</a>
-      </li>
-      <li>
-        <a href="#"># Startup</a>
-      </li>
-      <li>
-        <a href="#"># Oscar</a>
-      </li>
-      <li>
-        <a href="#"># Oprah</a>
-      </li>
+      <% Tag.top_5.each do |tag| %>
+        <li>
+          <%= link_to "##{tag.name}", root_path(q: tag.name) %>
+        </li>
+      <% end %>
     </ul><!-- /.aside_list -->
   </section>
   <section class="aside_section">
