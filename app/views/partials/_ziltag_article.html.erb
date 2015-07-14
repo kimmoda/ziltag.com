@@ -25,7 +25,7 @@
       </div><!-- /.parent_comment -->
 
       <% if type == :page %>
-        <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging, interact: :replace %>
+        <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging, interact: :replace, comments: true %>
       <% end %>
 
       <div class="func_block">

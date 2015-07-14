@@ -5,7 +5,7 @@ module ZiltagHelper
     end
   end
 
-  def ziltag_wrapper photo, ziltaggings, active: nil, interact: :modal
+  def ziltag_wrapper photo, ziltaggings, active: nil, interact: :modal, comments: false
     case interact
     when :modal
       data_ziltag = {ziltag_modal: ''}
@@ -14,7 +14,9 @@ module ZiltagHelper
     else raise "Unknown interact type: #{interact}"
     end
 
-    content_tag :div, class: :ziltag_wrapper, "data-comments": "" do
+    data_comments = comments ? {comments: ''} : {}
+
+    content_tag :div, class: :ziltag_wrapper, data: data_comments do
       concat image_tag photo.image_url, data: {photo_id: photo.id}
       Array(ziltaggings).each do |ziltagging|
         link_options = {
