@@ -1,7 +1,8 @@
 class Ziltagging < ActiveRecord::Base
   # scopes
   def self.search query_string
-    joins(:tags).where("tags.name ~* ?", query_string.split(/\W+/).join('|'))
+    words = query_string.split(/\W+/).join('|')
+    joins(:tags).where("tags.name ~* ? OR posts.title ~* ?", words, words)
   end
 
   # constants
