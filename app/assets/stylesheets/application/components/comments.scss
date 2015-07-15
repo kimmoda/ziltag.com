@@ -1,9 +1,10 @@
 div.parent_comment{
   position: absolute;
-  top:100px;
-  left:100px;
-  z-index: 8;
+  z-index: 7;
   width:300px;
+  &.z_index_plus{
+    z-index:8;
+  }
   span.remove_comment{
     display: inline-block;
     position: absolute;
@@ -27,11 +28,12 @@ div.parent_comment{
       border-radius: 50%;
       overflow: hidden;
       vertical-align: top;
+      background-color: $main_white_color;
     }
 
   }
 
-  div.all_msg{
+  div.all_msg_block{
     margin-left:50px;
     box-shadow: 1px 2px 3px gray;
     background-color: $main_white_color;
@@ -52,13 +54,95 @@ div.parent_comment{
       border-color: transparent white transparent transparent;
       -webkit-transform:rotate(360deg);
     }
-    div.msg_block{
+    div.all_comments_msg{
+      ul.original_msg{
+        margin:0;
+        > li{
+          position: relative;
+          cursor: pointer;
+          line-height: 1;
+          span.original_text{
+            display: inline-block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width:100%;
+            vertical-align: middle;
+          }
+          span.hint_arrow{
+            position: absolute;
+            right:-5px;
+            top:0;
+            color: $main_gray_color;
+          }
+        }
+      }
+      ul.other_user_comments_list{
+        > li{
+          border-top:1px solid $third_gray_color;
+          padding-top:10px;
+          margin-top:10px;
+          div.user_comment_block{
+            position: relative;
+            min-height: 30px;
+            &:before, &:after{
+              content: "";
+              display: block;
+            }
+            &:after{
+              clear:both;
+            }
+            div.user_avatar{
+              position: absolute;
+              top:0;
+              left:0;
+              width:30px;
+              height:30px;
+              overflow: hidden;
+              vertical-align: top;
+              border-radius: 50%;
+            }
+            div.user_comment{
+              margin-left:40px;
+              vertical-align: top;
+              span.user_name{
+                display: inline-block;
+                width:100%;
+                vertical-align: top;
+                span.minutes{
+                  float:right;
+                  color: $main_gray_color;
+                }
+              }
+              span.user_text{
+                color: $fifth_gray_color;
+                display: inline-block;
+                margin-top: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+    div.leave_msg_block{
+      position: relative;
       &:before, &:after{
         content: "";
         display: block;
       }
       &:after{
         clear:both;
+      }
+      div.current_user{
+        display: none;
+        width:30px;
+        height:30px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        top:8px;
+        left:0;
+
       }
       input.leave_msg{
         width:100%;
@@ -75,6 +159,19 @@ div.parent_comment{
         background: none;
         border:none;
         outline:none;
+      }
+      &.other_comments{
+        border-top:1px solid $third_gray_color;
+        padding-top:10px;
+        margin-top:10px;
+        display: none;
+        div.current_user{
+          display: inline-block;
+        }
+        input.leave_msg{
+          width:80%;
+          margin-left:40px;
+        }
       }
     }
   }

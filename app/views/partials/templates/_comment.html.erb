@@ -1,0 +1,102 @@
+<!-- handlerbar:ziltag_wrapper -->
+<script id="handlebar_comment" type="text/x-handlebars-template">
+  <div class="parent_comment" style="left:{{pos_left}}px;top:{{pos_top}}px;" data-comment-user-id="{{user_id}}" data-comment-user-email="{{user_email}}" data-comment-id="{{comment_id}}">
+    <span class="remove_comment hidden"><i class="fa fa-times-circle"></i></span>
+    <div class="original_author">
+      <a href="{{user_name}}" class="author">
+        <img src="{{user_avatar}}" class="user_profile_img" alt="">
+      </a>
+    </div><!-- /.original_author -->
+
+    <div class="all_msg_block">
+      <div class="triangle"></div>
+      <div class="all_comments_msg">
+        <ul class="list-unstyled original_msg">
+          <li class="original_text">
+            <span class="original_text">{{first_msg}}</span>
+            <span class="hint_arrow"><i class="fa fa-caret-left"></i></span>
+            <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
+          </li>
+        </ul>
+
+
+
+      </div><!-- /.all_comments_msg -->
+
+      <div class="leave_msg_block other_comments">
+        <div class="current_user">
+          <% if user_signed_in? %>
+            <%= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
+          <% else %>
+            <img src="{{current_user_avatar}}" class="user_profile_img">
+          <% end %>
+        </div>
+        <input type="text" class="leave_msg" placeholder="按 Enter 送出…">
+        <button type="button" class="send_msg pull-right">發佈</button>
+      </div><!-- /.leave_msg_block -->
+
+    </div><!-- /.all_msg_block -->
+
+  </div><!-- /.parent_comment -->
+</script>
+
+
+<!--
+
+<div class="parent_comment" data-comment-user-id="1">
+  <span class="remove_comment"><i class="fa fa-times-circle"></i></span>
+  <div class="original_author">
+    <a href="#" class="author">
+      <%# if type == :page %>
+        <%#= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
+      <%# end %>
+    </a>
+  </div>
+
+  <div class="all_msg_block">
+    <div class="triangle"></div>
+    <div class="all_comments_msg">
+      <ul class="list-unstyled original_msg">
+        <li class="original_text">
+          <span class="original_text">這是測試這是測試這是測試這是測試</span>
+          <span class="hint_arrow"><i class="fa fa-caret-left"></i></span>
+          <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled other_user_comments_list">
+        <% 3.times do %>
+        <li>
+          <div class="user_comment_block">
+            <div class="user_avatar">
+              <%#= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
+            </div>
+            <div class="user_comment">
+              <span class="user_name">
+                username
+                <span class="minutes">13 m</span>
+              </span>
+              <span class="user_text">
+                這是留言這是留言這是留言這是留言這是留言這是留言這是留言
+              </span>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+
+    </div>
+
+    <div class="leave_msg_block other_comments">
+      <div class="current_user">
+        <%#= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
+      </div>
+      <input type="text" class="leave_msg" placeholder="按 Enter 送出…">
+      <button type="button" class="send_msg pull-right">發佈</button>
+    </div>
+
+  </div>
+
+</div>
+
+-->

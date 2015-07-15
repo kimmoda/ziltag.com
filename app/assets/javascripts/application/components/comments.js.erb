@@ -1,6 +1,70 @@
+// 留言功能
+
 $(window).on('load page:load', function(){
-  if( $("article.c_ziltag_sticker_article div.ziltag_wrapper").length > 0 ){
-    
+
+  if( $("[data-comments]").length > 0 ){
+
+    var comment_zone = $("[data-comments]");
+    var comment_zone_img = $(comment_zone).find("img")[0];
+    var photo_id = $(comment_zone_img).data("photo-id");
+    var ratio = {};
+    ratio.x = $(comment_zone_img)[0].clientWidth / $(comment_zone_img)[0].naturalWidth;
+    ratio.y = $(comment_zone_img)[0].clientHeight / $(comment_zone_img)[0].naturalHeight;
+
+    // 取得所有該 photo 的留言
+    $.ajax({
+      url: '/comments.json?photo_id=1', // photo_id
+      type: 'GET',
+      data: "",
+      dataType: 'json',
+      success: function(data){
+        $.each(data, function(index, obj){
+          /*if( index == 0 || index == 5 ){*/
+
+            if( obj.user == null ){
+              var user_id = "";
+              var user_email = "";
+              var user_name = "#";
+              var avatar_thumb_url = "/images/fallback/thumb_guest.png";
+
+            }else{
+              var user_id = obj.user.id;
+              var user_email = obj.user.email;
+              var user_name = "/users/" + obj.user.username;
+              var avatar_thumb_url = obj.user.avatar_thumb_url;
+            }
+
+            if( user.login_status ){ // 是否有登入
+              var current_user_avatar = "";
+            }else{
+              var current_user_avatar = "/images/fallback/thumb_guest.png";
+            }
+
+            var source   = $("#handlebar_comment").html();
+            var template = Handlebars.compile(source);
+            var context = {
+              comment_id: obj.id,
+              pos_left: (obj.x * ratio.x),
+              pos_top: (obj.y * ratio.y),
+              user_id: user_id,
+              user_email: user_email,
+              user_name: user_name,
+              user_avatar: avatar_thumb_url,
+              first_msg: obj.text,
+              current_user_avatar: current_user_avatar
+            };
+            var html    = template(context);
+
+            $("article.c_ziltag_sticker_article").prepend(html);
+          /*}*/
+
+
+        });
+
+      }
+    });
+
+    // 新增留言
     var post_comment = {
       "comment": {
         "text": "留言測試",
@@ -8,20 +72,18 @@ $(window).on('load page:load', function(){
         "x": "",
         "y": "",
         "email": "",
-        "user_id": 123,
+        "user_id": "",
         "photo_id": "",
       }
     };
 
-    var comment_zone = $("article.c_ziltag_sticker_article div.ziltag_wrapper");
+
 
     $(comment_zone).on("click", function(e){
 
       var comment_zone_img = $(this).find("img")[0];
 
-      var ratio = {};
-      ratio.x = $(comment_zone_img)[0].clientWidth / $(comment_zone_img)[0].naturalWidth;
-      ratio.y = $(comment_zone_img)[0].clientHeight / $(comment_zone_img)[0].naturalHeight;
+
 
       var relX = e.pageX - $(this).parent().offset().left;
       var relY = e.pageY - $(this).parent().offset().top;
@@ -30,10 +92,38 @@ $(window).on('load page:load', function(){
       post_comment.comment.x = relX / ratio.x;
       post_comment.comment.y = relY / ratio.y;
       post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
-      post_comment.comment.user_id = //取user_id
+      post_comment.comment.user_id = $("li[data-user-id]").data("user-id");
+
+    });
+
+    // 按下 enter 鍵，送出 "新增留言"
+    $(document).on("keyup", "input.leave_msg", function(e){
+      if (e.keyCode == 13) {
+        $(this).closest(".leave_msg_block").find("button.send_msg").click();
+      }
+    });
+    // 按下發佈按鈕
+    $(document).on("click", "button.send_msg", function(){
+      alert("t");
+      post_comment.comment.text = $(this).val();
       console.log(post_comment);
     });
 
+    // 移除此留言串
+    $(document).on("click", "span.remove_comment", function(){
+      $(this).closest(".parent_comment").remove();
+    });
+
+    // 最一開始的留言點擊時
+    $(document).on("click", "li.original_text", function(){
+      $(this).find("span.hint_arrow").toggleClass("hidden");
+      if( user.id == $(this).closest(".parent_comment").data("comment-user-id") ){
+        $(this).closest(".parent_comment").find("span.remove_comment").toggleClass("hidden");
+      }
+      $(".parent_comment").removeClass("z_index_plus");
+      $(this).closest(".parent_comment").addClass("z_index_plus");
+      $(this).closest(".parent_comment").find("div.leave_msg_block").slideToggle();
+    });
 
     $(comment_zone).css("border", "1px solid blue");
   }

@@ -13,25 +13,6 @@
 
     <article class="c_ziltag_sticker_article" data-ziltag-mode="responsive" data-remove-ziltag="true" data-ziltag-sticker-article>
 
-      <div class="parent_comment">
-        <span class="remove_comment"><i class="fa fa-times-circle"></i></span>
-        <div class="original_author">
-          <a href="#" class="author">
-            <% if type == :page %>
-              <%= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
-            <% end %>
-          </a>
-        </div><!-- /.original_author -->
-
-        <div class="all_msg">
-          <div class="triangle"></div>
-          <div class="msg_block">
-            <input type="text" class="leave_msg" placeholder="按 Enter 送出…">
-            <button type="button" class="send_msg pull-right">發佈</button>
-          </div><!-- /.msg_block -->
-        </div><!-- /.all_msg -->
-
-      </div><!-- /.parent_comment -->
 
       <% if type == :page %>
         <%= ziltag_wrapper @ziltagging.photo, @ziltagging.photo.ziltaggings, active: @ziltagging, interact: :replace, comments: true %>
