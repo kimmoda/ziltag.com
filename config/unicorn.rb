@@ -1,4 +1,4 @@
-APP_ROOT = '/var/www/ziltag'
+APP_ROOT = File.expand_path('../../..', __FILE__)
 worker_processes 4
 user 'deploy'
 working_directory "#{APP_ROOT}/current"
