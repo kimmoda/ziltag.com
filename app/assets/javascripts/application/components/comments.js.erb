@@ -4,6 +4,19 @@ $(window).on('load page:load', function(){
 
   if( $("[data-comments]").length > 0 ){
 
+    // 新增留言的 obj
+    var post_comment = {
+      "comment": {
+        "text": "",
+        "comment_id": "",
+        "x": "",
+        "y": "",
+        "email": "",
+        "user_id": "",
+        "photo_id": "",
+      }
+    };
+
     var comment_zone = $("[data-comments]");
     var comment_zone_img = $(comment_zone).find("img")[0];
     var photo_id = $(comment_zone_img).data("photo-id");
@@ -13,13 +26,13 @@ $(window).on('load page:load', function(){
 
     // 取得所有該 photo 的留言
     $.ajax({
-      url: '/comments.json?photo_id=1', // photo_id
+      url: '/comments.json?photo_id=' + photo_id,
       type: 'GET',
       data: "",
       dataType: 'json',
       success: function(data){
         $.each(data, function(index, obj){
-          /*if( index == 0 || index == 5 ){*/
+          console.log(obj);
 
             if( obj.user == null ){
               var user_id = "";
@@ -56,34 +69,18 @@ $(window).on('load page:load', function(){
             var html    = template(context);
 
             $("article.c_ziltag_sticker_article").prepend(html);
-          /*}*/
-
-
         });
 
       }
     });
 
-    // 新增留言
-    var post_comment = {
-      "comment": {
-        "text": "留言測試",
-        "comment_id": "",
-        "x": "",
-        "y": "",
-        "email": "",
-        "user_id": "",
-        "photo_id": "",
-      }
-    };
 
 
 
+    // 在圖片上點擊，新增留言
     $(comment_zone).on("click", function(e){
-
+      $(".parent_comment").removeClass("z_index_plus");
       var comment_zone_img = $(this).find("img")[0];
-
-
 
       var relX = e.pageX - $(this).parent().offset().left;
       var relY = e.pageY - $(this).parent().offset().top;
@@ -93,6 +90,16 @@ $(window).on('load page:load', function(){
       post_comment.comment.y = relY / ratio.y;
       post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
       post_comment.comment.user_id = $("li[data-user-id]").data("user-id");
+
+      var source   = $("#handlebar_comment_create").html();
+      var template = Handlebars.compile(source);
+      var context = {
+        pos_left: relX,
+        pos_top: relY
+      };
+      var html    = template(context);
+
+      $("article.c_ziltag_sticker_article").append(html);
 
     });
 
@@ -104,8 +111,47 @@ $(window).on('load page:load', function(){
     });
     // 按下發佈按鈕
     $(document).on("click", "button.send_msg", function(){
-      alert("t");
-      post_comment.comment.text = $(this).val();
+      var comment_text = $(this).closest("div.leave_msg_block").find("input.leave_msg").val();
+      post_comment.comment.text = comment_text;
+
+      //alert($(this).closest(".parent_comment").attr("data-first-message"));
+      if( $(this).closest(".parent_comment").attr("data-first-message") == "true" ){ // 新增最上層留言
+
+        var that = $(this);
+        console.log(post_comment);
+        // 取得所有該 photo 的留言
+        $.ajax({
+          url: '/comments.json', // photo_id
+          type: 'POST',
+          data: post_comment,
+          dataType: 'json',
+          success: function(data){
+            console.log(data);
+            $(that).closest(".parent_comment").attr("data-first-message", false);
+
+            $(that).closest(".parent_comment").find("div.all_comments_msg").removeClass("hidden");
+            $(that).closest(".parent_comment").find("span.original_text").html(data.text);
+            $(that).closest(".parent_comment").find("div.leave_msg_block").addClass("other_comments");
+          }
+        });
+
+
+      }else{
+        $(this).closest(".parent_comment").find("ul.other_user_comments_list").removeClass("hidden");
+
+        var source   = $("#handlebar_comment_children_create").html();
+        var template = Handlebars.compile(source);
+        var context = {
+          current_user_avatar: "", // /images/fallback/thumb_guest.png
+          user_name: '<%=' current_user.username '%>',
+          user_text: comment_text
+        };
+        var html    = template(context);
+
+        $(this).closest(".parent_comment").find("ul.other_user_comments_list").append(html);
+      }
+      $(this).closest("div.leave_msg_block").find("input.leave_msg").val("");
+
       console.log(post_comment);
     });
 
