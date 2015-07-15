@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   test "should get index" do
     get :index, photo_id: comments(:tony).id, format: :json
     assert_response :success
@@ -20,6 +22,21 @@ class CommentsControllerTest < ActionController::TestCase
       photo_id: photos(:tony).id
     }
     assert_response :success
+  end
+
+  test 'should create comment form signed in user' do
+    sign_in users(:tony)
+    post :create, format: :json, comment: {
+      comment_id: '',
+      email: '',
+      photo_id: photos(:tony).id,
+      text: 'sss',
+      x: 123,
+      y: 456,
+    }
+    assert_response :success
+    json = JSON.parse response.body
+    assert_equal json['user']['username'], 'tonytonyjan'
   end
 
   test 'should update comment' do
