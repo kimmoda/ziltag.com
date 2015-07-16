@@ -153,6 +153,11 @@ $(window).on('load page:load', function(){
             $(that).closest(".parent_comment").find("div.all_comments_msg").removeClass("hidden");
             $(that).closest(".parent_comment").find("span.original_text").html(data.text);
             $(that).closest(".parent_comment").find("div.leave_msg_block").addClass("other_comments");
+            $(that).closest(".parent_comment").find("span.remove_comment").addClass("hidden");
+
+            $(that).closest(".parent_comment").attr("data-comment-id", data.id);
+            $(that).closest(".parent_comment").attr("data-comment-user-id", data.user.id);
+
           }
         });
 
@@ -181,7 +186,26 @@ $(window).on('load page:load', function(){
 
     // 移除此留言串
     $(document).on("click", "span.remove_comment", function(){
-      $(this).closest(".parent_comment").remove();
+
+      if( $(this).closest(".parent_comment").attr("data-comment-id") != "" ){
+        var comment_id = $(this).closest(".parent_comment").attr("data-comment-id");
+        var that = $(this);
+        $.ajax({
+          url: '/comments/' + comment_id + '.json',
+          type: 'DELETE',
+          data: post_comment,
+          dataType: 'json',
+          success: function(data){
+          },
+          statusCode: {
+      		  200: function(){
+      		    $(that).closest(".parent_comment").remove();
+      		  }
+      		}
+        });
+      }else{
+        $(this).closest(".parent_comment").remove();
+      }
     });
 
     // 最一開始的留言點擊時
