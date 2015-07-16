@@ -12,14 +12,12 @@
       <div class="triangle"></div>
       <div class="all_comments_msg">
         <ul class="list-unstyled original_msg">
-          <li class="original_text">
+          <li class="original_text" data-status="close">
             <span class="original_text">{{first_msg}}</span>
             <span class="hint_arrow"><i class="fa fa-caret-left"></i></span>
             <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
           </li>
         </ul>
-
-
 
       </div><!-- /.all_comments_msg -->
 
@@ -31,6 +29,10 @@
             <img src="{{current_user_avatar}}" class="user_profile_img">
           <% end %>
         </div>
+        <% if user_signed_in? %>
+        <% else %>
+          <input type="text" class="leave_email" placeholder="輸入 email…">
+        <% end %>
         <input type="text" class="leave_msg" placeholder="按 Enter 送出…">
         <button type="button" class="send_msg pull-right">發佈</button>
       </div><!-- /.leave_msg_block -->
@@ -61,7 +63,7 @@
       <div class="triangle"></div>
       <div class="all_comments_msg hidden">
         <ul class="list-unstyled original_msg">
-          <li class="original_text">
+          <li class="original_text" data-status="close">
             <span class="original_text"></span>
             <span class="hint_arrow"><i class="fa fa-caret-left"></i></span>
             <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
@@ -76,9 +78,13 @@
           <% if user_signed_in? %>
             <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
           <% else %>
-            <img src="{{current_user_avatar}}" class="user_profile_img">
+            <img src="/images/fallback/thumb_guest.png" class="user_profile_img">
           <% end %>
         </div>
+        <% if user_signed_in? %>
+        <% else %>
+          <input type="text" class="leave_email" placeholder="輸入 email…">
+        <% end %>
         <input type="text" class="leave_msg" placeholder="按 Enter 送出…">
         <button type="button" class="send_msg pull-right">發佈</button>
       </div><!-- /.leave_msg_block -->

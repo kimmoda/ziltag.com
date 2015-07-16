@@ -89,7 +89,6 @@ $(window).on('load page:load', function(){
       post_comment.comment.x = relX / ratio.x;
       post_comment.comment.y = relY / ratio.y;
       post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
-      post_comment.comment.user_id = $("li[data-user-id]").data("user-id");
 
       var source   = $("#handlebar_comment_create").html();
       var template = Handlebars.compile(source);
@@ -111,15 +110,37 @@ $(window).on('load page:load', function(){
     });
     // 按下發佈按鈕
     $(document).on("click", "button.send_msg", function(){
+
       var comment_text = $(this).closest("div.leave_msg_block").find("input.leave_msg").val();
+
+      if( comment_text.trim() == "" ){
+        $(this).closest("div.leave_msg_block").find("input.leave_msg").css("border", "1px solid red");
+        return;
+      }else{
+        $(this).closest("div.leave_msg_block").find("input.leave_msg").css("border", "1px solid #ccc");
+      }
+
+      if( user.login_status ){
+        post_comment.comment.user_id = $("li[data-user-id]").data("user-id");
+      }else{
+        var comment_email = $(this).closest("div.leave_msg_block").find("input.leave_email").val();
+        if( comment_email.trim() == "" ){
+          $(this).closest("div.leave_msg_block").find("input.leave_email").css("border", "1px solid red");
+          return;
+        }else{
+          $(this).closest("div.leave_msg_block").find("input.leave_email").css("border", "1px solid #ccc");
+          post_comment.comment.email = comment_email;
+        }
+      }
+
       post_comment.comment.text = comment_text;
 
-      //alert($(this).closest(".parent_comment").attr("data-first-message"));
       if( $(this).closest(".parent_comment").attr("data-first-message") == "true" ){ // 新增最上層留言
 
         var that = $(this);
         console.log(post_comment);
-        // 取得所有該 photo 的留言
+
+        // 已登入：新增留言
         $.ajax({
           url: '/comments.json', // photo_id
           type: 'POST',
@@ -150,9 +171,12 @@ $(window).on('load page:load', function(){
 
         $(this).closest(".parent_comment").find("ul.other_user_comments_list").append(html);
       }
+
+      if( $(this).closest("div.leave_msg_block").find("input.leave_email").length > 0 ){
+        $(this).closest("div.leave_msg_block").find("input.leave_email").val("");
+      }
       $(this).closest("div.leave_msg_block").find("input.leave_msg").val("");
 
-      console.log(post_comment);
     });
 
     // 移除此留言串
@@ -162,6 +186,23 @@ $(window).on('load page:load', function(){
 
     // 最一開始的留言點擊時
     $(document).on("click", "li.original_text", function(){
+
+      if( $(this).attr("data-status") == "close" ){
+        $(this).attr("data-status", "open");
+        $(this).find("span.original_text").css({
+          "text-overflow": "inherit",
+          "overflow": "visible",
+          "white-space": "normal"
+        });
+      }else{
+        $(this).attr("data-status", "close");
+        $(this).find("span.original_text").css({
+          "text-overflow": "ellipsis",
+          "overflow": "hidden",
+          "white-space": "nowrap"
+        });
+      }
+
       $(this).find("span.hint_arrow").toggleClass("hidden");
       if( user.id == $(this).closest(".parent_comment").data("comment-user-id") ){
         $(this).closest(".parent_comment").find("span.remove_comment").toggleClass("hidden");

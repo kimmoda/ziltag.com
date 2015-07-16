@@ -147,7 +147,7 @@ div.parent_comment{
         left:0;
 
       }
-      input.leave_msg{
+      input.leave_msg, input.leave_email{
         width:100%;
         border-radius: 5px;
         box-shadow: none !important;
@@ -156,6 +156,9 @@ div.parent_comment{
         border:1px solid #ccc;
         outline: none;
         border-radius: 2px;
+      }
+      input.leave_email{
+        margin-bottom: 5px;
       }
       button.send_msg{
         color: $main_gray_color;
@@ -171,10 +174,11 @@ div.parent_comment{
         div.current_user{
           display: inline-block;
         }
-        input.leave_msg{
+        input.leave_msg, input.leave_email{
           width:80%;
           margin-left:40px;
         }
+
       }
     }
   }
