@@ -10,6 +10,7 @@
     z-index: 1;
     transition: opacity 0.5s;
     background-repeat: no-repeat;
+    box-shadow: 5px 5px 5px black;
   }
 
   >a.active,>a:hover{
