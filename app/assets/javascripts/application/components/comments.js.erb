@@ -206,10 +206,10 @@ $(window).on('load page:load', function(){
       if( $(this).closest(".parent_comment").attr("data-comment-id") != "" ){
         var comment_id = $(this).closest(".parent_comment").attr("data-comment-id");
         var that = $(this);
+        
         $.ajax({
           url: '/comments/' + comment_id + '.json',
           type: 'DELETE',
-          data: post_comment,
           dataType: 'json',
           success: function(data){
           },
