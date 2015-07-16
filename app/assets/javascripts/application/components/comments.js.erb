@@ -138,7 +138,6 @@ $(window).on('load page:load', function(){
       if( $(this).closest(".parent_comment").attr("data-first-message") == "true" ){ // 新增最上層留言
 
         var that = $(this);
-        console.log(post_comment);
 
         // 已登入、未登入：新增留言
         $.ajax({
@@ -162,21 +161,37 @@ $(window).on('load page:load', function(){
         });
 
 
-      }else{
+      }else{ // 新增子留言
+
+        post_comment.comment.comment_id = $(this).closest(".parent_comment").attr("data-comment-id");
+        post_comment.comment.photo_id = photo_id;
+
         $(this).closest(".parent_comment").find("ul.other_user_comments_list").removeClass("hidden");
+        var that = $(this);
+        $.ajax({
+          url: '/comments.json',
+          type: 'POST',
+          data: post_comment,
+          dataType: 'json',
+          success: function(data){
+            console.log(data);
+            var source   = $("#handlebar_comment_children_create").html();
+            var template = Handlebars.compile(source);
+            var context = {
+              user_id: data.user.id,
+              comment_id: data.id,
+              user_name: data.user.username,
+              user_text: data.text
+            };
+            var html = template(context);
 
-        var source   = $("#handlebar_comment_children_create").html();
-        var template = Handlebars.compile(source);
-        var context = {
-          current_user_avatar: "", // /images/fallback/thumb_guest.png
-          user_name: '<%=' current_user.username '%>',
-          user_text: comment_text
-        };
-        var html    = template(context);
+            $(that).closest(".parent_comment").find("ul.other_user_comments_list").append(html);
+          }
+        });
 
-        $(this).closest(".parent_comment").find("ul.other_user_comments_list").append(html);
       }
 
+      // 欄位清空
       if( $(this).closest("div.leave_msg_block").find("input.leave_email").length > 0 ){
         $(this).closest("div.leave_msg_block").find("input.leave_email").val("");
       }

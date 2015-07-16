@@ -18,7 +18,8 @@
             <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
           </li>
         </ul>
-
+        <ul class="list-unstyled other_user_comments_list hidden">
+        </ul>
       </div><!-- /.all_comments_msg -->
 
       <div class="leave_msg_block other_comments">
@@ -26,7 +27,7 @@
           <% if user_signed_in? %>
             <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
           <% else %>
-            <img src="{{current_user_avatar}}" class="user_profile_img">
+            <img src="/images/fallback/thumb_guest.png" class="user_profile_img">
           <% end %>
         </div>
         <% if user_signed_in? %>
@@ -96,7 +97,7 @@
 
 <!-- 子留言 -->
 <script id="handlebar_comment_children_create" type="text/x-handlebars-template">
-  <li>
+  <li data-comment-user-id="{{user_id}}" data-comment-id="{{comment_id}}">
     <div class="user_comment_block">
       <div class="user_avatar">
         <% if user_signed_in? %>
