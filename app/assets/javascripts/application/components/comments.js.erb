@@ -262,11 +262,74 @@ $(window).on('load page:load', function(){
       $(this).find("span.hint_arrow").toggleClass("hidden");
       if( user.id == $(this).closest(".parent_comment").data("comment-user-id") ){
         $(this).closest(".parent_comment").find("span.remove_comment").toggleClass("hidden");
+        $(this).closest(".parent_comment").find("span.drag_comment").toggleClass("hidden");
       }
       $(".parent_comment").removeClass("z_index_plus");
       $(this).closest(".parent_comment").addClass("z_index_plus");
       $(this).closest(".parent_comment").find("div.leave_msg_block").slideToggle();
       $(this).closest(".parent_comment").find("ul.other_user_comments_list").slideToggle();
+    });
+
+    // 拖曳留言
+    var $dragging = null;
+    $(document).on("mousedown", "div.parent_comment span.drag_comment", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      //$dragging = $(e.target);
+      $dragging = $(this).closest("div.parent_comment");
+    });
+
+    $("article.c_ziltag_sticker_article div.ziltag_wrapper").on("mousemove", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if ($dragging) {
+        $dragging.offset({
+          top: e.pageY,
+          left: e.pageX
+        });
+      }
+    });
+
+    $("article.c_ziltag_sticker_article").on("mouseup", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if ($dragging) {
+        var comment_zone_img = $("[data-comments]").find("img")[0];
+        var ratio = {};
+        ratio.x = $(comment_zone_img)[0].clientWidth / $(comment_zone_img)[0].naturalWidth;
+        ratio.y = $(comment_zone_img)[0].clientHeight / $(comment_zone_img)[0].naturalHeight;
+
+        var posX = $($dragging).offset().left - $(this).offset().left,
+            posY = $($dragging).offset().top - $(this).offset().top;
+
+
+        post_comment.comment.comment_id = $($dragging).attr("data-comment-id");
+        post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
+        post_comment.comment.text = $($dragging).find("span.original_text").text();
+        post_comment.comment.user_id = user.id;
+        post_comment.comment.x = posX / ratio.x;
+        post_comment.comment.y = posY / ratio.y;
+
+        $($dragging).attr("data-original-x", post_comment.comment.x);
+        $($dragging).attr("data-original-y", post_comment.comment.y);
+
+        console.log(post_comment);
+
+        // 移動樂貼，傳送座標及id至後端
+        $.ajax({
+      		url: '/comments/' + post_comment.comment.comment_id + '.json',
+      		type: 'PUT',
+      		data: post_comment,
+      		dataType: 'json',
+      		success: function(data){
+            console.log(data);
+      		}
+      	});
+
+      	$dragging = null;
+      }
+
     });
 
     $(comment_zone).css("border", "1px solid blue");
