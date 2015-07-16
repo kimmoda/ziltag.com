@@ -78,6 +78,7 @@ div.parent_comment{
         }
       }
       ul.other_user_comments_list{
+        display: none;
         > li{
           border-top:1px solid $third_gray_color;
           padding-top:10px;

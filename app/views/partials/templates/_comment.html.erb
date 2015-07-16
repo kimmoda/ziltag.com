@@ -18,7 +18,23 @@
             <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
           </li>
         </ul>
-        <ul class="list-unstyled other_user_comments_list hidden">
+        <ul class="list-unstyled other_user_comments_list">
+          {{#each children_comments}}
+            <li data-comment-user-id="{{user.id}}" data-comment-id="{{id}}">
+              <div class="user_comment_block">
+                <div class="user_avatar">
+                  <img src="{{user.avatar_thumb_url}}" class="user_profile_img">
+                </div>
+                <div class="user_comment">
+                  <span class="user_name_block">
+                    <span class="user_name">{{user.username}}</span>
+                    <span class="minutes">{{since}}</span>
+                  </span>
+                  <span class="user_text">{{text}}</span>
+                </div>
+              </div>
+            </li>
+          {{/each}}
         </ul>
       </div><!-- /.all_comments_msg -->
 
@@ -70,7 +86,7 @@
             <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
           </li>
         </ul>
-        <ul class="list-unstyled other_user_comments_list hidden">
+        <ul class="list-unstyled other_user_comments_list">
         </ul>
       </div><!-- /.all_comments_msg -->
 

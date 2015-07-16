@@ -64,7 +64,8 @@ $(window).on('load page:load', function(){
               user_name: user_name,
               user_avatar: avatar_thumb_url,
               first_msg: obj.text,
-              current_user_avatar: current_user_avatar
+              current_user_avatar: current_user_avatar,
+              children_comments: obj.children
             };
             var html    = template(context);
 
@@ -249,6 +250,7 @@ $(window).on('load page:load', function(){
       $(".parent_comment").removeClass("z_index_plus");
       $(this).closest(".parent_comment").addClass("z_index_plus");
       $(this).closest(".parent_comment").find("div.leave_msg_block").slideToggle();
+      $(this).closest(".parent_comment").find("ul.other_user_comments_list").slideToggle();
     });
 
     $(comment_zone).css("border", "1px solid blue");
