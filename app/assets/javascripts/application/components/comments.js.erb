@@ -140,7 +140,7 @@ $(window).on('load page:load', function(){
         var that = $(this);
         console.log(post_comment);
 
-        // 已登入：新增留言
+        // 已登入、未登入：新增留言
         $.ajax({
           url: '/comments.json', // photo_id
           type: 'POST',
