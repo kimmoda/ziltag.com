@@ -56,9 +56,12 @@ class CommentsControllerTest < ActionController::TestCase
 
   test 'should destroy comment' do
     comment_id = comments(:tony).id
+    nested_id = comments(:nested).id
+
     assert Comment.exists? comment_id
     delete :destroy, id: comment_id
     refute Comment.exists? comment_id
+    refute Comment.exists? nested_id
     assert_response :success
   end
 
