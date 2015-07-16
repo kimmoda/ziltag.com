@@ -56,6 +56,8 @@ $(window).on('load page:load', function(){
             var source   = $("#handlebar_comment").html();
             var template = Handlebars.compile(source);
             var context = {
+              x: obj.x,
+              y: obj.y,
               comment_id: obj.id,
               pos_left: (obj.x * ratio.x),
               pos_top: (obj.y * ratio.y),
@@ -269,4 +271,23 @@ $(window).on('load page:load', function(){
 
     $(comment_zone).css("border", "1px solid blue");
   }
+});
+
+$(window).resize(function(){
+    if( $("[data-comments]").length > 0 ){
+
+      var comment_zone_img = $("[data-comments]").find("img")[0];
+      var ratio = {};
+      ratio.x = $(comment_zone_img)[0].clientWidth / $(comment_zone_img)[0].naturalWidth;
+      ratio.y = $(comment_zone_img)[0].clientHeight / $(comment_zone_img)[0].naturalHeight;
+
+      // 重新計算各留言的位置
+      $("div.parent_comment").each(function(){
+        $(this).css({
+          "left": $(this).attr("data-original-x") * ratio.x,
+          "top": $(this).attr("data-original-y") * ratio.y
+        });
+      });
+
+    }
 });
