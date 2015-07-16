@@ -23,11 +23,21 @@
             <li data-comment-user-id="{{user.id}}" data-comment-id="{{id}}">
               <div class="user_comment_block">
                 <div class="user_avatar">
-                  <img src="{{user.avatar_thumb_url}}" class="user_profile_img">
+                  {{#if user}}
+                    <img src="{{user.avatar_thumb_url}}" class="user_profile_img">
+                  {{else}}
+                    <img src="/images/fallback/thumb_guest.png" class="user_profile_img">
+                  {{/if}}
+
                 </div>
                 <div class="user_comment">
                   <span class="user_name_block">
-                    <span class="user_name">{{user.username}}</span>
+                    {{#if user}}
+                      <span class="user_name">{{user.username}}</span>
+                    {{else}}
+                      <span class="user_name">{{email}}</span>
+                    {{/if}}
+
                     <span class="minutes">{{since}}</span>
                   </span>
                   <span class="user_text">{{text}}</span>
@@ -119,7 +129,7 @@
         <% if user_signed_in? %>
           <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
         <% else %>
-          <img src="{{current_user_avatar}}" class="user_profile_img">
+          <img src="/images/fallback/thumb_guest.png" class="user_profile_img">
         <% end %>
       </div>
       <div class="user_comment">

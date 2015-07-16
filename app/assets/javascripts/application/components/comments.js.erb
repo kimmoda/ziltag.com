@@ -169,6 +169,9 @@ $(window).on('load page:load', function(){
 
         $(this).closest(".parent_comment").find("ul.other_user_comments_list").removeClass("hidden");
         var that = $(this);
+
+        console.log(post_comment);
+
         $.ajax({
           url: '/comments.json',
           type: 'POST',
@@ -178,12 +181,23 @@ $(window).on('load page:load', function(){
             console.log(data);
             var source   = $("#handlebar_comment_children_create").html();
             var template = Handlebars.compile(source);
-            var context = {
-              user_id: data.user.id,
-              comment_id: data.id,
-              user_name: data.user.username,
-              user_text: data.text
-            };
+
+            if(data.user == null){
+              var context = {
+                comment_id: data.id,
+                user_name: data.email,
+                user_text: data.text
+              };
+            }else{
+              var context = {
+                user_id: data.user.id,
+                comment_id: data.id,
+                user_name: data.user.username,
+                user_text: data.text
+              };
+            }
+
+
             var html = template(context);
 
             $(that).closest(".parent_comment").find("ul.other_user_comments_list").append(html);
@@ -206,7 +220,7 @@ $(window).on('load page:load', function(){
       if( $(this).closest(".parent_comment").attr("data-comment-id") != "" ){
         var comment_id = $(this).closest(".parent_comment").attr("data-comment-id");
         var that = $(this);
-        
+
         $.ajax({
           url: '/comments/' + comment_id + '.json',
           type: 'DELETE',
