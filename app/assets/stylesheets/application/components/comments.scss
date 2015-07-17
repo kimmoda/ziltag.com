@@ -108,6 +108,15 @@ div.parent_comment{
             &:after{
               clear:both;
             }
+            div.user_operation{
+              position: absolute;
+              right:0;
+              top:0;
+              ul.dropdown-menu{
+                left:auto;
+                right:0 !important;
+              }
+            }
             div.user_avatar{
               position: absolute;
               top:0;

@@ -23,6 +23,21 @@
           {{#each children_comments}}
             <li data-comment-user-id="{{user.id}}" data-comment-id="{{id}}">
               <div class="user_comment_block">
+
+                {{#if ../login_status }}
+                  {{#ifCond ../user.id ../../login_user_id }}
+                    <div class="user_operation">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#" class="edit_children_comment">編輯{{../login_user_id}}</a></li>
+                        <li><a href="#" class="delete_children_comment">刪除</a></li>
+                      </ul>
+                    </div><!-- /.user_operation -->
+                  {{/ifCond}}
+                {{/if}}
+
                 <div class="user_avatar">
                   {{#if user}}
                     <img src="{{user.avatar_thumb_url}}" class="user_profile_img">
@@ -127,6 +142,19 @@
 <script id="handlebar_comment_children_create" type="text/x-handlebars-template">
   <li data-comment-user-id="{{user_id}}" data-comment-id="{{comment_id}}">
     <div class="user_comment_block">
+
+      {{#if login_status}}
+        <div class="user_operation">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="edit_children_comment">編輯{{../login_user_id}}</a></li>
+            <li><a href="#" class="delete_children_comment">刪除</a></li>
+          </ul>
+        </div><!-- /.user_operation -->
+      {{/if}}
+
       <div class="user_avatar">
         <% if user_signed_in? %>
           <%= image_tag current_user.avatar.thumb, class: :user_profile_img %>
@@ -144,63 +172,3 @@
     </div>
   </li>
 </script>
-
-<!--
-
-<div class="parent_comment" data-comment-user-id="1">
-  <span class="remove_comment"><i class="fa fa-times-circle"></i></span>
-  <div class="original_author">
-    <a href="#" class="author">
-      <%# if type == :page %>
-        <%#= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
-      <%# end %>
-    </a>
-  </div>
-
-  <div class="all_msg_block">
-    <div class="triangle"></div>
-    <div class="all_comments_msg">
-      <ul class="list-unstyled original_msg">
-        <li class="original_text">
-          <span class="original_text">這是測試這是測試這是測試這是測試</span>
-          <span class="hint_arrow"><i class="fa fa-caret-left"></i></span>
-          <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
-        </li>
-      </ul>
-
-      <ul class="list-unstyled other_user_comments_list">
-        <% 3.times do %>
-        <li>
-          <div class="user_comment_block">
-            <div class="user_avatar">
-              <%#= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
-            </div>
-            <div class="user_comment">
-              <span class="user_name">
-                username
-                <span class="minutes">13 m</span>
-              </span>
-              <span class="user_text">
-                這是留言這是留言這是留言這是留言這是留言這是留言這是留言
-              </span>
-            </div>
-          </div>
-        </li>
-        <% end %>
-      </ul>
-
-    </div>
-
-    <div class="leave_msg_block other_comments">
-      <div class="current_user">
-        <%#= image_tag @ziltagging.user.avatar.thumb, class: :user_profile_img %>
-      </div>
-      <input type="text" class="leave_msg" placeholder="按 Enter 送出…">
-      <button type="button" class="send_msg pull-right">發佈</button>
-    </div>
-
-  </div>
-
-</div>
-
--->

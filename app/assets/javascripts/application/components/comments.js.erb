@@ -67,6 +67,8 @@ $(window).on('load page:load', function(){
               user_avatar: avatar_thumb_url,
               first_msg: obj.text,
               current_user_avatar: current_user_avatar,
+              login_user_id: user.id,
+              login_status: user.login_status,
               children_comments: obj.children
             };
             var html    = template(context);
@@ -188,14 +190,16 @@ $(window).on('load page:load', function(){
               var context = {
                 comment_id: data.id,
                 user_name: data.email,
-                user_text: data.text
+                user_text: data.text,
+                login_status: user.login_status
               };
             }else{
               var context = {
                 user_id: data.user.id,
                 comment_id: data.id,
                 user_name: data.user.username,
-                user_text: data.text
+                user_text: data.text,
+                login_status: user.login_status
               };
             }
 
@@ -330,6 +334,34 @@ $(window).on('load page:load', function(){
       }
 
     });
+
+    allJs.handlebar_register_ifCond();
+
+    $(document).on("click", "a.edit_children_comment", function(e){
+      e.preventDefault();
+      alert("abc");
+    });
+    $(document).on("click", "a.delete_children_comment", function(e){
+      e.preventDefault();
+
+      var comment_id = $(this).closest("li[data-comment-id]").attr("data-comment-id")
+      var that = $(this);
+      $.ajax({
+        url: '/comments/' + comment_id + '.json',
+        type: 'DELETE',
+        dataType: 'json',
+        success: function(data){
+        },
+        statusCode: {
+          200: function(){
+            $(that).closest("li[data-comment-id]").slideUp("slow", function(){
+              $(this).remove();
+            });
+          }
+        }
+      });
+    });
+
 
     $(comment_zone).css("border", "1px solid blue");
   }
