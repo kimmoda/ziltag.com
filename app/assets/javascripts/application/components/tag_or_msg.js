@@ -11,11 +11,6 @@ main(function(){
         $(this).closest("article.post_ziltag_article").find("div.ziltag_wrapper").find("a").toggleClass("hidden");
         $(this).closest("article.post_ziltag_article").find("div.parent_comment").toggleClass("hidden");
 
-        if( $(this).hasClass("show_ziltag") ){
-
-        }
-        if( $(this).hasClass("show_comments") ){
-        }
       });
 
     });
