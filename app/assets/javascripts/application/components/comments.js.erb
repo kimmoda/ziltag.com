@@ -337,10 +337,41 @@ $(window).on('load page:load', function(){
 
     allJs.handlebar_register_ifCond();
 
+    // 編輯子留言
     $(document).on("click", "a.edit_children_comment", function(e){
       e.preventDefault();
-      alert("abc");
+      var children_comment = $(this).closest("li[data-comment-id]");
+      $(children_comment).find("span.user_text, input.edit_this_children_comment").toggleClass("hidden");
+      $(children_comment).find("input.edit_this_children_comment").focus();
     });
+    $(document).on("keyup", "input.edit_this_children_comment", function(e){
+      if (e.keyCode == 13) {
+        $(this).blur();
+      }
+    });
+    $(document).on("blur", "input.edit_this_children_comment", function(){
+      var children_comment = $(this).closest("li[data-comment-id]");
+      $(children_comment).find("span.user_text, input.edit_this_children_comment").toggleClass("hidden");
+      $(children_comment).find("span.user_text").html( $(this).val() );
+
+      var put_comment = {
+        "comment": {
+          "text": $(this).val()
+        }
+      };
+
+      $.ajax({
+        url: '/comments/' + $(children_comment).attr("data-comment-id") + '.json',
+        type: 'PUT',
+        data: put_comment,
+        dataType: 'json',
+        success: function(data){
+          console.log(data);
+        }
+      });
+    });
+
+    // 刪除子留言
     $(document).on("click", "a.delete_children_comment", function(e){
       e.preventDefault();
 
