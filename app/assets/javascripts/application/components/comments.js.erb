@@ -303,13 +303,12 @@ $(window).on('load page:load', function(){
         var posX = $($dragging).offset().left - $(this).offset().left,
             posY = $($dragging).offset().top - $(this).offset().top;
 
-
-        post_comment.comment.comment_id = $($dragging).attr("data-comment-id");
-        post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
-        post_comment.comment.text = $($dragging).find("span.original_text").text();
-        post_comment.comment.user_id = user.id;
-        post_comment.comment.x = posX / ratio.x;
-        post_comment.comment.y = posY / ratio.y;
+        var put_comment = {
+          "comment": {
+            "x": posX / ratio.x,
+            "y": posY / ratio.y
+          }
+        };
 
         $($dragging).attr("data-original-x", post_comment.comment.x);
         $($dragging).attr("data-original-y", post_comment.comment.y);
@@ -318,9 +317,9 @@ $(window).on('load page:load', function(){
 
         // 移動樂貼，傳送座標及id至後端
         $.ajax({
-      		url: '/comments/' + post_comment.comment.comment_id + '.json',
+      		url: '/comments/' + $($dragging).attr("data-comment-id") + '.json',
       		type: 'PUT',
-      		data: post_comment,
+      		data: put_comment,
       		dataType: 'json',
       		success: function(data){
             console.log(data);
