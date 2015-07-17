@@ -46,6 +46,16 @@ var ZiltagSticker = {
     $(ziltag_wrapper).find(".ziltag_wrapper").remove();
     $(ziltag_wrapper).prepend(html);
 
+    // 留言
+    if( $("[data-comments]").length > 0 ){
+      var component_zone_img = $("[data-comments]").find("img")[0];
+      $(component_zone_img).one("load", function() {
+        $("[data-comments]").children("img").attr("data-photo-id", data.post.id);
+        comment_init();
+      }).attr("src", data.image_url);
+    }
+
+
   }
 
 }

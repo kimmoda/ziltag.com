@@ -34,8 +34,10 @@
         }
       }
       div.switch_func{
-        display: block;
+        display: inline-block;
+        margin-right: 10px;
         margin-bottom: 10px;
+        vertical-align: middle;
         &:after{
           content: "";
           display: block;
@@ -50,6 +52,14 @@
             color:white;
             background-color: $main_gray_color;
           }
+        }
+      }
+      div.get_comments_block{
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 10px;
+        ul.old_or_new_list{
+          margin:0;
         }
       }
       h2.post_title{

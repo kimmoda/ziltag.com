@@ -1,7 +1,5 @@
 // 留言功能
-
-$(window).on('load page:load', function(){
-
+var comment_init = function(){
   if( $("[data-comments]").length > 0 ){
 
     // 新增留言的 obj
@@ -24,88 +22,94 @@ $(window).on('load page:load', function(){
     ratio.x = $(comment_zone_img)[0].clientWidth / $(comment_zone_img)[0].naturalWidth;
     ratio.y = $(comment_zone_img)[0].clientHeight / $(comment_zone_img)[0].naturalHeight;
 
-    // 取得所有該 photo 的留言
-    $.ajax({
-      url: '/comments.json?photo_id=' + photo_id,
-      type: 'GET',
-      data: "",
-      dataType: 'json',
-      success: function(data){
-        $.each(data, function(index, obj){
-          console.log(obj);
+    var get_all_comments = function(page){
+      // 取得所有該 photo 的留言
+      $.ajax({
+        url: '/comments.json?photo_id=' + photo_id + '&page=' + page,
+        type: 'GET',
+        data: "",
+        dataType: 'json',
+        success: function(data){
+          $.each(data, function(index, obj){
+            console.log(obj);
 
-            if( obj.user == null ){
-              var user_id = "";
-              var user_email = "";
-              var user_name = "#";
-              var avatar_thumb_url = "/images/fallback/thumb_guest.png";
+              if( obj.user == null ){
+                var user_id = "";
+                var user_email = "";
+                var user_name = "#";
+                var avatar_thumb_url = "/images/fallback/thumb_guest.png";
 
-            }else{
-              var user_id = obj.user.id;
-              var user_email = obj.user.email;
-              var user_name = "/users/" + obj.user.username;
-              var avatar_thumb_url = obj.user.avatar_thumb_url;
-            }
+              }else{
+                var user_id = obj.user.id;
+                var user_email = obj.user.email;
+                var user_name = "/users/" + obj.user.username;
+                var avatar_thumb_url = obj.user.avatar_thumb_url;
+              }
 
-            if( user.login_status ){ // 是否有登入
-              var current_user_avatar = "";
-            }else{
-              var current_user_avatar = "/images/fallback/thumb_guest.png";
-            }
+              if( user.login_status ){ // 是否有登入
+                var current_user_avatar = "";
+              }else{
+                var current_user_avatar = "/images/fallback/thumb_guest.png";
+              }
 
-            var source   = $("#handlebar_comment").html();
-            var template = Handlebars.compile(source);
-            var context = {
-              x: obj.x,
-              y: obj.y,
-              comment_id: obj.id,
-              pos_left: (obj.x * ratio.x),
-              pos_top: (obj.y * ratio.y),
-              user_id: user_id,
-              user_email: user_email,
-              user_name: user_name,
-              user_avatar: avatar_thumb_url,
-              first_msg: obj.text,
-              current_user_avatar: current_user_avatar,
-              login_user_id: user.id,
-              login_status: user.login_status,
-              children_comments: obj.children
-            };
-            var html    = template(context);
+              var source   = $("#handlebar_comment").html();
+              var template = Handlebars.compile(source);
+              var context = {
+                x: obj.x,
+                y: obj.y,
+                comment_id: obj.id,
+                pos_left: (obj.x * ratio.x),
+                pos_top: (obj.y * ratio.y),
+                user_id: user_id,
+                user_email: user_email,
+                user_name: user_name,
+                user_avatar: avatar_thumb_url,
+                first_msg: obj.text,
+                current_user_avatar: current_user_avatar,
+                login_user_id: user.id,
+                login_status: user.login_status,
+                children_comments: obj.children
+              };
+              var html    = template(context);
 
-            $("article.c_ziltag_sticker_article").prepend(html);
-        });
+              $("article.c_ziltag_sticker_article").prepend(html);
+          });
 
-      }
-    });
+        }
+      });
+    };
+    get_all_comments(1);
+
 
 
 
 
     // 在圖片上點擊，新增留言
     $(comment_zone).on("click", function(e){
-      $(".parent_comment").removeClass("z_index_plus");
-      var comment_zone_img = $(this).find("img")[0];
+      if( $(this).closest(".post_ziltag_article").find("button.show_comments").hasClass("active") ){
+        $(".parent_comment").removeClass("z_index_plus");
+        var comment_zone_img = $(this).find("img")[0];
 
-      var relX = e.pageX - $(this).parent().offset().left;
-      var relY = e.pageY - $(this).parent().offset().top;
+        var relX = e.pageX - $(this).parent().offset().left;
+        var relY = e.pageY - $(this).parent().offset().top;
 
-      // 未依比例的原來x,y座標
-      post_comment.comment.x = relX / ratio.x;
-      post_comment.comment.y = relY / ratio.y;
-      post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
+        // 未依比例的原來x,y座標
+        post_comment.comment.x = relX / ratio.x;
+        post_comment.comment.y = relY / ratio.y;
+        post_comment.comment.photo_id = $(comment_zone_img).data("photo-id");
 
-      var source   = $("#handlebar_comment_create").html();
-      var template = Handlebars.compile(source);
-      var context = {
-        pos_left: relX,
-        pos_top: relY
-      };
-      var html    = template(context);
+        var source   = $("#handlebar_comment_create").html();
+        var template = Handlebars.compile(source);
+        var context = {
+          pos_left: relX,
+          pos_top: relY
+        };
+        var html    = template(context);
 
-      $("article.c_ziltag_sticker_article").append(html);
-
+        $("article.c_ziltag_sticker_article").append(html);
+      }
     });
+
 
     // 按下 enter 鍵，送出 "新增留言"
     $(document).on("keyup", "input.leave_msg", function(e){
@@ -234,10 +238,10 @@ $(window).on('load page:load', function(){
           success: function(data){
           },
           statusCode: {
-      		  200: function(){
-      		    $(that).closest(".parent_comment").remove();
-      		  }
-      		}
+            200: function(){
+              $(that).closest(".parent_comment").remove();
+            }
+          }
         });
       }else{
         $(this).closest(".parent_comment").remove();
@@ -321,16 +325,16 @@ $(window).on('load page:load', function(){
 
         // 移動樂貼，傳送座標及id至後端
         $.ajax({
-      		url: '/comments/' + $($dragging).attr("data-comment-id") + '.json',
-      		type: 'PUT',
-      		data: put_comment,
-      		dataType: 'json',
-      		success: function(data){
+          url: '/comments/' + $($dragging).attr("data-comment-id") + '.json',
+          type: 'PUT',
+          data: put_comment,
+          dataType: 'json',
+          success: function(data){
             console.log(data);
-      		}
-      	});
+          }
+        });
 
-      	$dragging = null;
+        $dragging = null;
       }
 
     });
@@ -396,6 +400,10 @@ $(window).on('load page:load', function(){
 
     $(comment_zone).css("border", "1px solid blue");
   }
+};
+
+$(window).on('load page:load', function(){
+  comment_init();
 });
 
 $(window).resize(function(){
