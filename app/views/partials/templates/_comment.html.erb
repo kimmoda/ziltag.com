@@ -74,6 +74,7 @@
 <script id="handlebar_comment_create" type="text/x-handlebars-template">
   <div class="parent_comment" data-first-message="true" style="left:{{pos_left}}px;top:{{pos_top}}px;" data-comment-user-id="" data-comment-user-email="" data-comment-id="">
     <span class="remove_comment"><i class="fa fa-times-circle"></i></span>
+    <span class="drag_comment hidden"><i class="fa fa-arrows"></i></span>
     <div class="original_author">
       <% if user_signed_in? %>
         <a href="/users/<%= current_user.username %>" class="author">
