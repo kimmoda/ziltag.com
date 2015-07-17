@@ -31,17 +31,18 @@ var comment_init = function(){
         data: "",
         dataType: 'json',
         success: function(data){
-          $.each(data, function(index, obj){
+          //console.log(data);
+          $("div.parent_comment").remove();
+
+          $("article.post_ziltag_article a.new_comment").attr("data-page", page - 1);
+          if( data.more ){
+            $("article.post_ziltag_article a.old_comment").attr("data-page", page + 1);
+          }else{
+            $("article.post_ziltag_article a.old_comment").attr("data-page", "-1");
+          }
+
+          $.each(data.results, function(index, obj){
             console.log(obj);
-            /*
-            var page_new = page - 1;
-            var page_old = page + 1;
-            $("div.parent_comment").remove();
-
-            $("article.post_ziltag_article a.new_comment").attr("data-page", page_new);
-            $("article.post_ziltag_article a.old_comment").attr("data-page", page_old);
-            */
-
 
               if( obj.user == null ){
                 var user_id = "";
@@ -329,8 +330,6 @@ var comment_init = function(){
         $($dragging).attr("data-original-x", post_comment.comment.x);
         $($dragging).attr("data-original-y", post_comment.comment.y);
 
-        console.log(post_comment);
-
         // 移動樂貼，傳送座標及id至後端
         $.ajax({
           url: '/comments/' + $($dragging).attr("data-comment-id") + '.json',
@@ -410,7 +409,7 @@ var comment_init = function(){
       e.preventDefault();
 
       var page = parseInt($(this).attr("data-page"));
-      if( page != 0 ){
+      if( page > 0 ){
         get_all_comments(page, "");
       }
 
