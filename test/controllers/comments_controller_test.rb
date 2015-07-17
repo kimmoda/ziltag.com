@@ -6,6 +6,7 @@ class CommentsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index, photo_id: comments(:tony).id, format: :json
     assert_response :success
+    json = JSON.parse response.body
   end
 
   test "should get show" do
