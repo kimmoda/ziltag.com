@@ -31,7 +31,6 @@ var comment_init = function(){
         data: "",
         dataType: 'json',
         success: function(data){
-          //console.log(data);
           $("div.parent_comment").remove();
 
           $("article.post_ziltag_article a.new_comment").attr("data-page", page - 1);
@@ -42,7 +41,6 @@ var comment_init = function(){
           }
 
           $.each(data.results, function(index, obj){
-            console.log(obj);
 
               if( obj.user == null ){
                 var user_id = "";
@@ -164,13 +162,13 @@ var comment_init = function(){
           data: post_comment,
           dataType: 'json',
           success: function(data){
-            console.log(data);
             $(that).closest(".parent_comment").attr("data-first-message", false);
 
             $(that).closest(".parent_comment").find("div.all_comments_msg").removeClass("hidden");
             $(that).closest(".parent_comment").find("span.original_text").html(data.text);
             $(that).closest(".parent_comment").find("div.leave_msg_block").addClass("other_comments");
             $(that).closest(".parent_comment").find("span.remove_comment").addClass("hidden");
+            $(that).closest(".parent_comment").find("input.original_text_edit").attr("value", data.text);
 
             $(that).closest(".parent_comment").attr("data-comment-id", data.id);
             $(that).closest(".parent_comment").attr("data-comment-user-id", data.user.id);
@@ -187,7 +185,6 @@ var comment_init = function(){
         $(this).closest(".parent_comment").find("ul.other_user_comments_list").removeClass("hidden");
         var that = $(this);
 
-        console.log(post_comment);
 
         $.ajax({
           url: '/comments.json',
@@ -195,7 +192,6 @@ var comment_init = function(){
           data: post_comment,
           dataType: 'json',
           success: function(data){
-            console.log(data);
             var source   = $("#handlebar_comment_children_create").html();
             var template = Handlebars.compile(source);
 
@@ -258,33 +254,34 @@ var comment_init = function(){
     });
 
     // 最一開始的留言點擊時
-    $(document).on("click", "li.original_text", function(){
-
-      if( $(this).attr("data-status") == "close" ){
-        $(this).attr("data-status", "open");
-        $(this).find("span.original_text").css({
+    $(document).on("click", "span.original_text", function(){
+      var li_original_text = $(this).closest("li.original_text");
+      if( $(li_original_text).attr("data-status") == "close" ){
+        $(li_original_text).attr("data-status", "open");
+        $(li_original_text).find("span.original_text").css({
           "text-overflow": "inherit",
           "overflow": "visible",
           "white-space": "normal"
         });
       }else{
-        $(this).attr("data-status", "close");
-        $(this).find("span.original_text").css({
+        $(li_original_text).attr("data-status", "close");
+        $(li_original_text).find("span.original_text").css({
           "text-overflow": "ellipsis",
           "overflow": "hidden",
           "white-space": "nowrap"
         });
       }
 
-      $(this).find("span.hint_arrow").toggleClass("hidden");
-      if( user.id == $(this).closest(".parent_comment").data("comment-user-id") ){
-        $(this).closest(".parent_comment").find("span.remove_comment").toggleClass("hidden");
-        $(this).closest(".parent_comment").find("span.drag_comment").toggleClass("hidden");
+      $(li_original_text).find("span.hint_arrow").toggleClass("hidden");
+      if( user.id == $(li_original_text).closest(".parent_comment").data("comment-user-id") ){
+        $(li_original_text).closest(".parent_comment").find("span.remove_comment").toggleClass("hidden");
+        $(li_original_text).closest(".parent_comment").find("span.drag_comment").toggleClass("hidden");
+        $(li_original_text).closest(".parent_comment").find("div.original_text_edit_block").toggleClass("hidden");
       }
       $(".parent_comment").removeClass("z_index_plus");
-      $(this).closest(".parent_comment").addClass("z_index_plus");
-      $(this).closest(".parent_comment").find("div.leave_msg_block").slideToggle();
-      $(this).closest(".parent_comment").find("ul.other_user_comments_list").slideToggle();
+      $(li_original_text).closest(".parent_comment").addClass("z_index_plus");
+      $(li_original_text).closest(".parent_comment").find("div.leave_msg_block").slideToggle();
+      $(li_original_text).closest(".parent_comment").find("ul.other_user_comments_list").slideToggle();
     });
 
     // 拖曳留言
@@ -337,7 +334,6 @@ var comment_init = function(){
           data: put_comment,
           dataType: 'json',
           success: function(data){
-            console.log(data);
           }
         });
 
@@ -347,6 +343,51 @@ var comment_init = function(){
     });
 
     allJs.handlebar_register_ifCond();
+
+    // 編輯最上層留言
+    $(document).on("click", "a.original_text_action_edit", function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).toggleClass("hidden");
+      var parent_comment = $(this).closest("li.original_text");
+      $(parent_comment).off("click");
+      $(parent_comment).find("span.original_text, input.original_text_edit").toggleClass("hidden");
+      $(parent_comment).find("input.original_text_edit").focus();
+    });
+    $(document).on("keyup", "input.original_text_edit", function(e){
+      e.stopPropagation();
+      if (e.keyCode == 13) {
+        $(this).blur();
+      }
+    });
+    $(document).on("blur", "input.original_text_edit", function(e){
+      e.stopPropagation();
+      var original_text = $(this).val();
+      if( original_text.trim() == "" ){
+        $(this).css("border", "1px solid red");
+        return;
+      }
+
+      var original_text_element = $(this).closest("li.original_text");
+      $(original_text_element).find("span.original_text, input.original_text_edit, a.original_text_action_edit").toggleClass("hidden");
+      $(original_text_element).find("span.original_text").html( original_text.trim() );
+
+      var put_comment = {
+        "comment": {
+          "text": original_text.trim()
+        }
+      };
+
+      $.ajax({
+        url: '/comments/' + $(this).closest("div.parent_comment").attr("data-comment-id") + '.json',
+        type: 'PUT',
+        data: put_comment,
+        dataType: 'json',
+        success: function(data){
+        }
+      });
+
+    });
 
     // 編輯子留言
     $(document).on("click", "a.edit_children_comment", function(e){
@@ -377,7 +418,6 @@ var comment_init = function(){
         data: put_comment,
         dataType: 'json',
         success: function(data){
-          console.log(data);
         }
       });
     });
@@ -415,7 +455,6 @@ var comment_init = function(){
 
     });
 
-    $(comment_zone).css("border", "1px solid blue");
   }
 };
 

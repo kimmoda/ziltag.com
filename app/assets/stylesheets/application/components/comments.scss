@@ -74,7 +74,7 @@ div.parent_comment{
         margin:0;
         > li{
           position: relative;
-          cursor: pointer;
+
           line-height: 1;
           span.original_text{
             display: inline-block;
@@ -83,12 +83,24 @@ div.parent_comment{
             white-space: nowrap;
             width:100%;
             vertical-align: middle;
+            cursor: pointer;
           }
           span.hint_arrow{
             position: absolute;
             right:-5px;
             top:0;
             color: $main_gray_color;
+          }
+          div.original_text_edit_block{
+            a.original_text_action_edit{
+              font-size: 12px;
+              display: inline-block;
+            }
+            input.original_text_edit{
+              position: relative;
+              z-index: 9;
+              width:100%;
+            }
           }
         }
       }

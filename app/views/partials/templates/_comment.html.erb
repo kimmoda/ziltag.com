@@ -17,6 +17,12 @@
             <span class="original_text">{{first_msg}}</span>
             <span class="hint_arrow"><i class="fa fa-caret-left"></i></span>
             <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
+            {{#if login_status }}
+              <div class="original_text_edit_block hidden">
+                <a href="#" class="original_text_action_edit">編輯</a>
+                <input type="text" class="original_text_edit hidden" value="{{first_msg}}">
+              </div><!-- /.original_text_edit_block -->
+            {{/if}}
           </li>
         </ul>
         <ul class="list-unstyled other_user_comments_list">
@@ -116,6 +122,12 @@
             <span class="original_text"></span>
             <span class="hint_arrow"><i class="fa fa-caret-left"></i></span>
             <span class="hint_arrow hidden"><i class="fa fa-caret-down"></i></span>
+            <% if user_signed_in? %>
+              <div class="original_text_edit_block hidden">
+                <a href="#" class="original_text_action_edit">編輯</a>
+                <input type="text" class="original_text_edit hidden" value="{{first_msg}}">
+              </div><!-- /.original_text_edit_block -->
+            <% end %>
           </li>
         </ul>
         <ul class="list-unstyled other_user_comments_list">

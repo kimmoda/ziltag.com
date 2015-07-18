@@ -5,12 +5,25 @@ main(function(){
     $("[data-component=tag_or_msg]").find("button").each(function(){
 
       $(this).on("click", function(){
-        $(this).closest("[data-component=tag_or_msg]").find("button").toggleClass("active");
-        $(this).closest("article.post_ziltag_article").find("div.get_comments_block").toggleClass("hidden");
 
-        $(this).closest("article.post_ziltag_article").find("div.ziltag_wrapper").find("a").toggleClass("hidden");
-        $(this).closest("article.post_ziltag_article").find("div.parent_comment").toggleClass("hidden");
+        if( $(this).hasClass("show_ziltag") ){
+          $(this).closest("[data-component=tag_or_msg]").find("button.show_ziltag").addClass("active");
+          $(this).closest("[data-component=tag_or_msg]").find("button.show_comments").removeClass("active");
 
+          $(this).closest("article.post_ziltag_article").find("div.get_comments_block").addClass("hidden");
+
+          $(this).closest("article.post_ziltag_article").find("div.ziltag_wrapper").find("a").removeClass("hidden");
+          $(this).closest("article.post_ziltag_article").find("div.parent_comment").addClass("hidden");
+        }
+        if( $(this).hasClass("show_comments") ){
+          $(this).closest("[data-component=tag_or_msg]").find("button.show_ziltag").removeClass("active");
+          $(this).closest("[data-component=tag_or_msg]").find("button.show_comments").addClass("active");
+
+          $(this).closest("article.post_ziltag_article").find("div.get_comments_block").removeClass("hidden");
+
+          $(this).closest("article.post_ziltag_article").find("div.ziltag_wrapper").find("a").addClass("hidden");
+          $(this).closest("article.post_ziltag_article").find("div.parent_comment").removeClass("hidden");
+        }
       });
 
     });
