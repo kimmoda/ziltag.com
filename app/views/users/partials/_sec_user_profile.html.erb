@@ -27,7 +27,7 @@
 
         </div><!-- /.profile_img -->
         <div class="following_and_follower">
-          <span class="profile_username"><%= @user.username %></span>
+          <span class="profile_username"><%= @user.username %> <%= link_to '編輯', edit_user_registration_path if @user == current_user %></span>
           <ul class="list-unstyled list-inline following_info_ul">
             <li>
               <%= link_to following_user_path(@user) do %>
