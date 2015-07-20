@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
 
   # associations
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :ziltaggings, through: :posts
-  has_many :photos do
+  has_many :photos, dependent: :destroy do
     def find_or_create_by_url! params
       if remote_image_url = params[:remote_image_url].presence
         uri = URI(remote_image_url)
@@ -26,12 +26,12 @@ class User < ActiveRecord::Base
       photo ||= create! params
     end
   end
-  has_many :comments
-  has_many :_followers, class_name: Following, foreign_key: :leader_id
-  has_many :_leaders, class_name: Following, foreign_key: :follower_id
+  has_many :comments, dependent: :destroy
+  has_many :_followers, dependent: :destroy, class_name: Following, foreign_key: :leader_id
+  has_many :_leaders, dependent: :destroy, class_name: Following, foreign_key: :follower_id
   has_many :followers, class_name: User, through: :_followers
   has_many :leaders, class_name: User, through: :_leaders
-  has_many :collectings
+  has_many :collectings, dependent: :destroy
   has_many :collected_posts, through: :collectings, source: :collectable, source_type: Post
 
   # validations

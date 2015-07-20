@@ -10,9 +10,9 @@ class Photo < ActiveRecord::Base
 
   # associations
   belongs_to :user
-  has_many :ziltaggings
+  has_many :ziltaggings, dependent: :destroy
   has_many :posts, through: :ziltaggings
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   # validations
   validates :image, presence: true
