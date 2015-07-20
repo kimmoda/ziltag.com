@@ -13,8 +13,10 @@ class PostsController < ApplicationController
 
   # POST /posts.json
   def create
-    @post = current_user.posts.create! post_params
-    @ziltagging = @post.ziltaggings.create! ziltagging_params if params[:ziltagging].present?
+    ActiveRecord::Base.transaction do
+      @post = current_user.posts.create! post_params
+      @ziltagging = @post.ziltaggings.create! ziltagging_params if params[:ziltagging].present?
+    end
   end
 
   # PUT /posts/:id.json

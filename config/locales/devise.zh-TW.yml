@@ -1,4 +1,7 @@
 zh-TW:
   devise:
+    mailer:
+      confirmation_instructions:
+        subject: "歡迎來到樂貼趣，請協助驗證您的信箱。"
     confirmations:
       confirmed: "您的帳號已通過驗證，請輸入帳號密碼以登入系統，謝謝。"

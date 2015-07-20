@@ -43,7 +43,7 @@ var newZiltag = {
     //var drop_file = newZiltag.dropFile;
 
     var fd = new FormData();
-    fd.append('selected_file', newZiltag.dropFile);
+    fd.append('photo[image]', newZiltag.dropFile);
 
     $.ajax({
       url: newZiltag.postImageUrl,
