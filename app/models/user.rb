@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
       photo ||= create! params
     end
   end
-  has_many :comments, primary_key: :email, foreign_key: :email
+  has_many :comments
   has_many :_followers, class_name: Following, foreign_key: :leader_id
   has_many :_leaders, class_name: Following, foreign_key: :follower_id
   has_many :followers, class_name: User, through: :_followers

@@ -3,6 +3,7 @@ article.c_ziltag_sticker_article{
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  
   img.ziltag_sticker{
     width:34px;
     height: 29px;
@@ -13,7 +14,7 @@ article.c_ziltag_sticker_article{
     left:0;
     bottom:0;
     width:100%;
-    
+
     background:#4A4A4A \9; /* IE8 */
     filter:alpha(opacity=50) \9; /* IE8 */
     background-color: rgba(74, 74, 74, .5);

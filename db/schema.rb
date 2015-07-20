@@ -36,11 +36,13 @@ ActiveRecord::Schema.define(version: 20150714053926) do
     t.integer  "y",          null: false
     t.integer  "comment_id"
     t.integer  "photo_id",   null: false
+    t.integer  "user_id"
   end
 
   add_index "comments", ["comment_id"], name: "index_comments_on_comment_id", using: :btree
   add_index "comments", ["email"], name: "index_comments_on_email", using: :btree
   add_index "comments", ["photo_id"], name: "index_comments_on_photo_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "followings", force: :cascade do |t|
     t.integer  "follower_id", null: false
@@ -143,6 +145,7 @@ ActiveRecord::Schema.define(version: 20150714053926) do
   add_foreign_key "collectings", "users"
   add_foreign_key "comments", "comments"
   add_foreign_key "comments", "photos"
+  add_foreign_key "comments", "users"
   add_foreign_key "followings", "users", column: "follower_id"
   add_foreign_key "followings", "users", column: "leader_id"
   add_foreign_key "photos", "users"
