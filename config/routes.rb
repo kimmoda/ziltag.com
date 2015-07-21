@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get :privacy_policy, :term_of_service
   end
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: :registrations}
   resources :users, only: :show do
     get :collecting, :following, :leading, on: :member
   end

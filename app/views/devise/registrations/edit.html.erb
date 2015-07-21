@@ -55,18 +55,6 @@
                 <%= f.password_field :password_confirmation, id: 'user_password_confirmation', class: 'password optional form-control' %>
               </div>
             </div>
-
-            <div class="form-group password required user_current_password">
-              <label class="password required col-sm-3 control-label" for="user_current_password">
-                <i class="fa fa-lock"></i> <abbr title="required">*</abbr> 原始密碼
-              </label>
-              <div class="col-sm-9 form_control_input">
-                <%= f.password_field :current_password, id: 'user_current_password', class: 'password required form-control' %>
-                <p class="help-block">我們需要你的密碼以更新你的資料</p>
-              </div>
-            </div>
-
-
           </div>
 
           <div class="form-actions">
