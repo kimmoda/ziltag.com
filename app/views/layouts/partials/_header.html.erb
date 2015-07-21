@@ -37,7 +37,8 @@
                       <% end %>
                     </li>
                     <li><%= link_to '設定', edit_user_registration_path %></li>
-                    <li><a href="#">幫助</a></li>
+                    <li><a href="https://ziltag.uservoice.com/" target="_blank">使用說明</a></li>
+                    <li><%= link_to '使用條款', term_of_service_path %></li>
                     <li><%= link_to '隱私條款', privacy_policy_path %></li>
                     <li><%= link_to '登出', destroy_user_session_path, method: :delete %></li>
                   </ul>
