@@ -119,7 +119,7 @@ body.users.show, body.users.collecting, body.users.following, body.users.leading
                             color: $twelve_gray_color;
                             font-size: 18px;
                             &.active{
-                                text-decoration: underline;
+                                color: red;
                             }
                         }
                     }

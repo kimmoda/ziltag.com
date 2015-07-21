@@ -46,8 +46,8 @@
     <div class="col-xs-4 col-sm-4 col-md-6">
       <div class="right_zone">
         <ul class="list-unstyled list-inline other_funcs_ul">
-          <li><%= link_to '樂貼', @user, class: 'active' %></li>
-          <li><%= link_to '收藏', collecting_user_path(@user) %></li>
+          <li><%= link_to_with_active_class '樂貼', @user %></li>
+          <li><%= link_to_with_active_class '收藏', collecting_user_path(@user) %></li>
         </ul>
       </div><!-- /.right_zone -->
     </div>
