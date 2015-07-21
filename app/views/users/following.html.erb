@@ -4,13 +4,12 @@
 
 <section class="section_following">
   <% @users.each_slice(2) do |pair| %>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <%= render 'users/partials/sec_following_user', user: pair.first %>
-      </div><!-- /.col-* -->
-      <div class="col-sm-12 col-md-6">
-        <%= render 'users/partials/sec_following_user', user: pair.last %>
-      </div><!-- /.col-* -->
-    </div><!-- /.row -->
+  <div class="row">
+    <% pair.each do |user| %>
+    <div class="col-sm-12 col-md-6">
+      <%= render 'users/partials/sec_following_user', user: user %>
+    </div><!-- /.col-* -->
+    <% end %>
+  </div><!-- /.row -->
   <% end %>
 </section><!-- /.section_following -->
