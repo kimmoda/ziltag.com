@@ -279,7 +279,6 @@ var comment_init = function(){
 
     // 最一開始的留言點擊時
     $(document).on("click", "span.original_text", function(){
-      alert("s");
       var li_original_text = $(this).closest("li.original_text");
       if( $(li_original_text).attr("data-status") == "close" ){
         $(li_original_text).attr("data-status", "open");
