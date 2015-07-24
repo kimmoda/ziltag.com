@@ -1,4 +1,28 @@
 // 留言功能
+
+// 重新設定
+var comment_reset = function(){
+  $(document).off("click", "span.original_text");
+  $(document).off("click", "a.edit_children_comment");
+  $(document).off("click", "[data-comments]");
+  $(document).off("keyup", "input.leave_msg");
+  $(document).off("click", "button.send_msg");
+  $(document).off("click", "span.remove_comment");
+  $(document).off("click", "span.original_text");
+  $(document).off("mousedown", "div.parent_comment span.drag_comment");
+  $("article.c_ziltag_sticker_article div.ziltag_wrapper").off("mousemove");
+  $("article.c_ziltag_sticker_article").off("mouseup");
+  $(document).off("click", "a.original_text_action_edit");
+  $(document).off("keyup", "input.original_text_edit");
+  $(document).off("blur", "input.original_text_edit");
+  $(document).off("click", "a.edit_children_comment");
+  $(document).off("keyup", "input.edit_this_children_comment");
+  $(document).off("blur", "input.edit_this_children_comment");
+  $(document).off("click", "a.delete_children_comment");
+  $("article.post_ziltag_article a.old_comment, article.post_ziltag_article a.new_comment").off("click");
+};
+
+// 留言初始化
 var comment_init = function(){
   if( $("[data-comments]").length > 0 ){
 
@@ -255,6 +279,7 @@ var comment_init = function(){
 
     // 最一開始的留言點擊時
     $(document).on("click", "span.original_text", function(){
+      alert("s");
       var li_original_text = $(this).closest("li.original_text");
       if( $(li_original_text).attr("data-status") == "close" ){
         $(li_original_text).attr("data-status", "open");
