@@ -36,11 +36,11 @@
                         <span class="email"><%= current_user.email %></span>
                       <% end %>
                     </li>
-                    <li><%= link_to '設定', edit_user_registration_path %></li>
-                    <li><a href="https://ziltag.uservoice.com/" target="_blank">使用說明</a></li>
-                    <li><%= link_to '使用條款', term_of_service_path %></li>
-                    <li><%= link_to '隱私條款', privacy_policy_path %></li>
-                    <li><%= link_to '登出', destroy_user_session_path, method: :delete %></li>
+                    <li><%= link_to t('設定'), edit_user_registration_path %></li>
+                    <li><a href="https://ziltag.uservoice.com/" target="_blank"><%= t('使用說明') %></a></li>
+                    <li><%= link_to t('使用條款'), term_of_service_path %></li>
+                    <li><%= link_to t('隱私條款'), privacy_policy_path %></li>
+                    <li><%= link_to t('登出'), destroy_user_session_path, method: :delete %></li>
                   </ul>
                 </div>
               </li>
@@ -48,11 +48,11 @@
             </ul>
           <% else %>
             <ul class="list-inline pull-right nav_list is_login not_login">
-              <li><%= link_to '登入', "#", :class => "nav_link", "data-toggle" => "modal", "data-target" => "#loginModal" %></li>
-              <li><%= link_to '註冊', "#", id: 'sign_in', :class => "nav_link", "data-toggle" => "modal", "data-target" => "#signupModal" %></li>
+              <li><%= link_to t('登入'), "#", :class => "nav_link", "data-toggle" => "modal", "data-target" => "#loginModal" %></li>
+              <li><%= link_to t('註冊'), "#", id: 'sign_in', :class => "nav_link", "data-toggle" => "modal", "data-target" => "#signupModal" %></li>
               
-              <li><%= link_to '忘記密碼', new_user_password_path %></li>
-              <li><%= link_to '重寄驗證信', new_user_confirmation_path %></li>
+              <li><%= link_to t('忘記密碼'), new_user_password_path %></li>
+              <li><%= link_to t('重寄驗證信'), new_user_confirmation_path %></li>
             </ul>
           <% end %>
           

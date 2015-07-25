@@ -2,29 +2,29 @@
   <ul class="list-unstyled aside_list">
     <li>
       <%= link_to root_path do %>
-        <i class="fa fa-home"></i> 推薦內容
+        <i class="fa fa-home"></i> <%= t('推薦內容') %>
       <% end%>
     </li>
     <li>
-      <%= link_to fa('picture-o', '樂貼牆'), photos_path, id: 'photos_link' %>
+      <%= link_to fa('picture-o', t('樂貼牆')), photos_path, id: 'photos_link' %>
     </li>
     <li>
       <%= link_to current_user do %>
-        <i class="fa fa-folder"></i> 我的樂貼
+        <i class="fa fa-folder"></i> <%= t('我的樂貼') %>
       <% end if user_signed_in? %>
     </li>
     <li>
       <%= link_to collecting_user_path(current_user) do %>
-        <i class="fa fa-star"></i> 我的收藏
+        <i class="fa fa-star"></i> <%= t('我的收藏') %>
       <% end if user_signed_in? %>
     </li>
     <li>
-      <a href="#"><i class="fa fa-eye"></i> 瀏覽記錄</a>
+      <a href="#"><i class="fa fa-eye"></i> <%= t('瀏覽記錄') %></a>
     </li>
   </ul><!-- /.aside_list -->
 
   <section class="aside_section">
-    <h2 class="list_title">熱門話題</h2>
+    <h2 class="list_title"><%= t('熱門話題') %></h2>
     <ul class="list-unstyled aside_list">
       <% Tag.top_5.each do |tag| %>
         <li>
@@ -34,7 +34,7 @@
     </ul><!-- /.aside_list -->
   </section>
   <section class="aside_section">
-    <h2 class="list_title">熱門用戶</h2>
+    <h2 class="list_title"><%= t('熱門用戶') %></h2>
     <ul class="list-unstyled aside_list">
       <% User.hot_users.limit(3).each do |user|  %>
         <li>
@@ -49,13 +49,13 @@
     <p class="para">&copy; 2015 Ziltag</p>
     <ul class="list-unstyled list-inline footer_list">
       <li>
-        <a href="https://ziltag.uservoice.com/" target="_blank">使用說明</a>
+        <a href="https://ziltag.uservoice.com/" target="_blank"><%= t('使用說明') %></a>
       </li>
       <li>
-        <%= link_to '使用條款', term_of_service_path %>
+        <%= link_to t('使用條款'), term_of_service_path %>
       </li>
       <li>
-        <%= link_to '隱私', privacy_policy_path %>
+        <%= link_to t('隱私'), privacy_policy_path %>
       </li>
     </ul>
   </footer><!-- /.aisde_footer -->

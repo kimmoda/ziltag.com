@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-  controller :pages do
-    get :privacy_policy, :term_of_service
-  end
+  scope '(:locale)', locale: /en|jp/ do
+    root 'pages#home'
+    controller :pages do
+      get :privacy_policy, :term_of_service
+    end
 
-  devise_for :users, controllers: {registrations: :registrations}
-  resources :users, only: :show do
-    get :collecting, :following, :leading, on: :member
+    devise_for :users, controllers: {registrations: :registrations}
+    resources :users, only: :show do
+      get :collecting, :following, :leading, on: :member
+    end
+    resources :ziltaggings, only: %i[show update destroy]
+    resources :photos, only: %i[index show create]
+    resources :posts, only: %i[index show create update destroy]
+    resources :comments, only: %i[index show create update destroy]
   end
-  resources :ziltaggings, only: %i[show update destroy]
-  resources :photos, only: %i[index show create]
-  resources :posts, only: %i[index show create update destroy]
-  resources :comments, only: %i[index show create update destroy]
 
   post 'redactor/images'
 

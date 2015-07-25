@@ -1,4 +1,18 @@
 en:
-  partials:
-    registration_section:
-      minimum_hint: '%{length} characters minimum'
+  使用條款: TOS
+  使用說明: Usage
+  忘記密碼: Password
+  我的收藏: My Collection
+  我的樂貼: My Ziltag
+  推薦內容: Suggestion
+  樂貼牆: Tag Wall
+  瀏覽記錄: History
+  熱門用戶: Hot Users
+  熱門話題: Hot Topic
+  登入: Sign in
+  設定: Setting
+  註冊: Sign up
+  重寄驗證信: Email
+  隱私: Privacy Policy
+  隱私條款: Privacy Policy
+  登出: Sign out
