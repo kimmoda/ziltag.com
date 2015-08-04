@@ -1,5 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require application/bundle.js
+//= require bundle
 //= require runner
 //= require_tree ./application

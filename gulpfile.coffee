@@ -3,6 +3,8 @@ $ = require('gulp-load-plugins')()
 streamqueue = require('streamqueue')
 spawn = require('child_process').spawn
 
+gulp.task 'bundle', ['bundle.js', 'bundle.scss']
+
 ###**************###
 ### Script Tasks ###
 ###**************###
@@ -21,7 +23,7 @@ gulp.task 'bundle.js', ->
     'vendor/assets/components/material-design-lite/material.js'
   ]
   .pipe $.concat 'bundle.js'
-  .pipe gulp.dest 'app/assets/javascripts/application'
+  .pipe gulp.dest 'app/assets/javascripts'
 
 ###*************###
 ### Style tasks ###
@@ -40,7 +42,7 @@ gulp.task 'bundle.scss', ->
   ]
   .pipe $.replace /url\((['"]?)[^)]+\/([^)]+(?:eot|woff|woff2|ttf|svg)[^)]*)\1\)/g, 'asset-url(\'$2\')'
   .pipe $.concat('bundle.scss')
-  .pipe gulp.dest('app/assets/stylesheets/application')
+  .pipe gulp.dest('app/assets/stylesheets')
 
 ###*******###
 ### Fonts ###
