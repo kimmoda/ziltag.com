@@ -1,6 +1,4 @@
 var ZiltagSticker = {
-
-
   // 置換modal的內容
   replaceModalData: function(data, thisElement){
     window.history.pushState(null, null, data.link);
@@ -55,8 +53,5 @@ var ZiltagSticker = {
         comment_init();
       }).attr("src", data.image_url);
     }
-
-
   }
-
-}
+};

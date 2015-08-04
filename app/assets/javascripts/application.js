@@ -1,14 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require handlebars
-//= require redactor
-//= require redactor/zh_tw.js
-//= require redactor/video.js
-//= require imagesloaded/imagesloaded.pkgd
-//= require masonry/dist/masonry.pkgd
-//= require jquery-tags-input/jquery.tagsinput
-//= require slick
-//= require introjs
+//= require application/bundle.js
 //= require runner
 //= require_tree ./application
