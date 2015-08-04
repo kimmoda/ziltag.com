@@ -20,7 +20,6 @@ gulp.task 'bundle.js', ->
     'vendor/assets/components/jquery-tags-input/src/jquery.tagsinput.js'
     'vendor/assets/components/slick/dist/slick.js'
     'vendor/assets/components/introjs/intro.js'
-    'vendor/assets/components/material-design-lite/material.js'
   ]
   .pipe $.concat 'bundle.js'
   .pipe gulp.dest 'app/assets/javascripts'
@@ -38,7 +37,6 @@ gulp.task 'bundle.scss', ->
     'vendor/assets/components/slick/examples/css/style.css'
     'vendor/assets/stylesheets/slick-theme.scss'
     'vendor/assets/components/introjs/introjs.css'
-    'vendor/assets/components/material-design-lite/material.css'
   ]
   .pipe $.replace /url\((['"]?)[^)]+\/([^)]+(?:eot|woff|woff2|ttf|svg)[^)]*)\1\)/g, 'asset-url(\'$2\')'
   .pipe $.concat('bundle.scss')
