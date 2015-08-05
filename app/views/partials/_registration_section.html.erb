@@ -19,22 +19,22 @@
     
     <div class="form_inputs">
       <div class="each_input_div">
-        <%= f.input :username, required: true, label: false, :placeholder => "用戶名稱" %>
+        <%= f.input :username, required: true, label: false, :placeholder => t('用戶名稱') %>
         <i class="fa fa-user"></i>
       </div><!-- /.each_input_div -->
       
       <div class="each_input_div">
-        <%= f.input :email, required: true, label: false, autofocus: true, :placeholder => "Email 信箱" %>
+        <%= f.input :email, required: true, label: false, autofocus: true, :placeholder => t('Email 信箱') %>
         <i class="fa fa-envelope"></i>
       </div><!-- /.each_input_div -->
       
       <div class="each_input_div">
-        <%= f.input :password, required: true, label: false, hint: (t('.minimum_hint', length: @minimum_password_length) if @validatable), :placeholder => "密碼" %>
+        <%= f.input :password, required: true, label: false, hint: (t('.minimum_hint', length: @minimum_password_length) if @validatable), :placeholder => t('密碼（至少 8 字）') %>
         <i class="fa fa-lock"></i>
       </div><!-- /.each_input_div -->
       
       <div class="each_input_div">
-        <%= f.input :password_confirmation, required: true, label: false, :placeholder => "密碼確認" %>
+        <%= f.input :password_confirmation, required: true, label: false, :placeholder => t('密碼確認') %>
         <i class="fa fa-lock"></i>
       </div><!-- /.each_input_div -->
     </div><!-- /.form_inputs -->
