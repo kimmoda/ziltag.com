@@ -1,7 +1,7 @@
 define_component 'ziltag_wrapper', (wrapper) ->
   img = wrapper.getElementsByTagName('img')[0]
   tags = wrapper.getElementsByTagName('a')
-  img.addEventListener 'load', () ->
+  imagesLoaded img, ->
     ratio_x = img.clientWidth / img.naturalWidth
     ratio_y = img.clientHeight / img.naturalHeight
     for tag in tags
