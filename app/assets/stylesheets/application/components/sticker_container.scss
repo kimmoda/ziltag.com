@@ -1,0 +1,24 @@
+.sticker-container{
+  position: relative;
+
+  &__sticker{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 35px;
+    height: 30px;
+    z-index: 1;
+    box-shadow: 5px 5px 5px black;
+    &--default{
+      background-image: image-url('ziltag_sticker_others.png');
+      background-repeat: no-repeat;
+      opacity: 0.5;
+      transition: opacity 0.5s;
+      &--active, &:hover{
+        opacity: 1;
+        z-index: 2;
+        background-image: image-url('ziltag_sticker.png');
+      }
+    }
+  }
+}
