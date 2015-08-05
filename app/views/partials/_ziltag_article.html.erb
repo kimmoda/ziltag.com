@@ -50,7 +50,7 @@
         <div class="pull-right operation_block">
 
           <ul class="list-unstyled list-inline other_list">
-            <%= render 'partials/share_item' %>
+            <%= render 'partials/share_item', ziltagging: @ziltagging %>
             <li data-precious-block>
               <% if type == :page %>
                 <%= collecting_button @ziltagging.post %>

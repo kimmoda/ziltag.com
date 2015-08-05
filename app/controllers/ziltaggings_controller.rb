@@ -4,7 +4,24 @@ class ZiltaggingsController < ApplicationController
 
   def show
     @other_ziltaggings = @ziltagging.other_ziltaggings
-    set_seo
+    @seo = {
+      meta: {
+        description: @ziltagging.content
+      },
+      google: {
+        name: @ziltagging.title,
+        description: @ziltagging.content,
+        image: @ziltagging.image_url,
+        item_type: :Article
+      },
+      og: {
+        title: @ziltagging.title,
+        url: request.url,
+        type: :website,
+        description: @ziltagging.content,
+        image: @ziltagging.image_url
+      }
+    }
   end
 
   # TODO: 防止非作者篡改
@@ -29,27 +46,6 @@ private
 
   def ziltagging_params
     params.require(:ziltagging).permit(:x, :y)
-  end
-
-  def set_seo
-    @seo = {
-      meta: {
-        description: @ziltagging.content
-      },
-      google: {
-        name: @ziltagging.title,
-        description: @ziltagging.content,
-        image: @ziltagging.image_url,
-        item_type: :Article
-      },
-      og: {
-        title: @ziltagging.title,
-        url: request.url,
-        type: :website,
-        description: @ziltagging.content,
-        image: @ziltagging.image_url
-      }
-    }
   end
 
 end
