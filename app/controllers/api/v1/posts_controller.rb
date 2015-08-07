@@ -1,5 +1,4 @@
 class Api::V1::PostsController < ApiController
-  before_action :authenticate_user!, only: %i[create update destroy]
   before_action :set_post, only: :show
   before_action :set_user_post, only: %i[update destroy]
 
