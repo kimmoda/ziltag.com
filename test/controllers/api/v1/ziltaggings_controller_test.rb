@@ -12,6 +12,6 @@ class Api::V1::ZiltaggingsControllerTest < ActionController::TestCase
     get :show, id: ziltaggings(:tony).id, format: :json
     json = JSON.parse response.body
     expected = {"id"=>339078012, "post_id"=>339078012, "photo_id"=>339078012, "x"=>20, "y"=>20}
-    assert_equal nil, json.except('updated_at', 'created_at')
+    assert_equal expected, json.except('updated_at', 'created_at')
   end
 end
