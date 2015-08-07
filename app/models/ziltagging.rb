@@ -1,5 +1,7 @@
 class Ziltagging < ActiveRecord::Base
   # scopes
+  scope :by_source, ->(source){ source.present? ? joins(:photo).where('photos.source = ?', source) : all }
+
   def self.search query_string
     results = includes(:photo, :tags, post: :user).where(posts: {published: true}).order('ziltaggings.id DESC')
     if query_string.present?

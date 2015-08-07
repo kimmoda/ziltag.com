@@ -3,7 +3,8 @@ class Api::V1::ZiltaggingsController < ApiController
   before_action :set_user_ziltagging, only: %i[update destroy]
 
   def index
-    @ziltaggings = Ziltagging.all.order('id DESC').page(params[:page])
+    @ziltaggings = Ziltagging.order('id DESC').page(params[:page])
+    @ziltaggings = @ziltaggings.by_source(params[:source])
   end
 
   def create
