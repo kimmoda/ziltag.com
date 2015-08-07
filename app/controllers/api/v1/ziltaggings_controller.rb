@@ -3,7 +3,7 @@ class Api::V1::ZiltaggingsController < ApiController
   before_action :set_user_ziltagging, only: %i[update destroy]
 
   def index
-    @ziltaggings = ziltagging.all.order('id DESC').page(params[:page])
+    @ziltaggings = Ziltagging.all.order('id DESC').page(params[:page])
   end
 
   def create
@@ -31,7 +31,7 @@ class Api::V1::ZiltaggingsController < ApiController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ziltagging
-      @ziltagging = ziltagging.find(params[:id])
+      @ziltagging = Ziltagging.find(params[:id])
     end
 
     def set_user_ziltagging
