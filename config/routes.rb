@@ -27,6 +27,14 @@ Rails.application.routes.draw do
     delete :uncollect
   end
 
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :sessions, only: :create
+      resources :posts
+      resources :ziltaggings
+    end
+  end
+
   namespace :embedded do
     get :photos, format: true, constraints: {format: :json}
     get 'ziltagging/:id', action: :ziltagging, format: false, as: :ziltagging
