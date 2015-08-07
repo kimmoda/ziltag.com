@@ -5,7 +5,7 @@ class Api::V1::SessionsController < ApiController
     if @user && @user.valid_password?(params[:password])
       sign_in(@user)
     else
-      head 400
+      head 401
     end
   end
 end
