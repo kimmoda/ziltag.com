@@ -37,10 +37,5 @@ module Ziltag
       Devise::PasswordsController.layout 'normal'.freeze
     end
 
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Allow-Credentials' => 'true'
-    }
-
   end
 end
