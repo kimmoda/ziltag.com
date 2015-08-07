@@ -10,6 +10,6 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    '/images/fallback/' << [version_name, "cover_#{model.email.hash % 4 + 1}.jpg"].compact.join('_')
+    '/images/fallback/' << [version_name, "cover_#{model.email[0].ord % 4 + 1}.jpg"].compact.join('_')
   end
 end
