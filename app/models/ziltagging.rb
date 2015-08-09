@@ -23,7 +23,7 @@ class Ziltagging < ActiveRecord::Base
   belongs_to :photo
 
   # validations
-  validates :post, :photo, presence: true
+  validates :post, :photo, :x, :y, presence: true
 
   # callbacks
 

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :sessions, only: :create
       resources :posts, :ziltaggings, :photos
+      post :ziltag, controller: :ziltag
     end
   end
 
