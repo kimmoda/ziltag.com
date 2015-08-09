@@ -7,7 +7,7 @@ class Api::V1::PhotosController < ApiController
   end
 
   def create
-    @photo = current_user.photos.new(photo_params)
+    @photo = current_user.photos.find_or_create_by_url!(photo_params)
     if @photo.save
       render :show
     else
@@ -39,6 +39,6 @@ class Api::V1::PhotosController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def photo_params
-      params.require(:photo).permit(:user_id, :title, :content, :published)
+      params.require(:photo).permit(:image, :remote_image_url)
     end
 end
