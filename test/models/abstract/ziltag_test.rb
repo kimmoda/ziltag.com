@@ -1,11 +1,15 @@
 require 'test_helper'
 
 class Abstract::ZiltagTest < ActiveSupport::TestCase
+  def setup
+    @file = File.new(Rails.root.join('test', 'fixtures', 'images', '1.jpg'))
+  end
+
   test '#save!' do
     tony = users(:tony)
     ziltag = Abstract::Ziltag.new({
       photo: tony.photos.new({
-        remote_image_url: 'http://tonytonyjan.net/images/site/avatar.png'
+        image: @file
       }),
       post: tony.posts.new({
         title: 'Hello',
@@ -26,7 +30,7 @@ class Abstract::ZiltagTest < ActiveSupport::TestCase
     tony = users(:tony)
     ziltag = Abstract::Ziltag.new({
       photo: tony.photos.new({
-        remote_image_url: 'http://tonytonyjan.net/images/site/avatar.png'
+        image: @file
       }),
       post: tony.posts.new({
         title: 'Hello',

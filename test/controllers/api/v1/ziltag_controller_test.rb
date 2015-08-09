@@ -4,9 +4,7 @@ class Api::V1::ZiltagControllerTest < ActionController::TestCase
   test 'post ziltag' do
     sign_in(:user, users(:tony))
     post(:ziltag, {
-      photo: {
-        remote_image_url: 'http://tonytonyjan.net/images/site/avatar.png'
-      },
+      photo: {image: fixture_file_upload('/images/1.jpg', 'image/jpeg', :binary)},
       post: {
         title: 'Hello',
         content: 'World',
@@ -27,9 +25,7 @@ class Api::V1::ZiltagControllerTest < ActionController::TestCase
   test 'post ziltag with failed' do
     sign_in(:user, users(:tony))
     post(:ziltag, {
-      photo: {
-        remote_image_url: 'http://tonytonyjan.net/images/site/avatar.png'
-      },
+      photo: {image: fixture_file_upload('/images/1.jpg', 'image/jpeg', :binary)},
       post: {
         content: 'World',
         published: true
