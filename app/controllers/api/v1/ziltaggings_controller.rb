@@ -41,6 +41,6 @@ class Api::V1::ZiltaggingsController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def ziltagging_params
-      params.require(:ziltagging).permit(:user_id, :title, :content, :published)
+      params.require(:ziltagging).permit(:x, :y, :photo_id, :post_id)
     end
 end
