@@ -1,9 +1,12 @@
-a.collect{
-  color: $main_gray_color;
-  font-size: 24px;
-}
+.collecting-button{
+  &__collect{
+    color: $main_gray_color;
+    font-size: 24px;
+    cursor: pointer;
+  }
 
-a.uncollect{
-  @extend a.collect;
-  color: $main_red_color;
+  &__uncollect{
+    color: $main_red_color;
+    @extend .collecting-button__collect;
+  }
 }
