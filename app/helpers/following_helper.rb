@@ -1,7 +1,7 @@
 =begin
-<div class="following-block" data-leader-id="ID">
-  <button class="following-block__follow">關注用戶</button>
-  <button class="following-block__unfollow">取消追蹤</button>
+<div class="following-button" data-leader-id="ID">
+  <button class="following-button__follow">關注用戶</button>
+  <button class="following-button__unfollow">取消追蹤</button>
 </div>
 =end
 
@@ -12,9 +12,9 @@ module FollowingHelper
     ret = ActiveSupport::SafeBuffer.new
     following_params = {leader_id: leader.id}
 
-    content_tag :div, class: 'following-block', data: {leader_id: leader.id} do
-      concat content_tag :button, t('關注用戶'), class: 'following-block__follow', style: (:'display:none' if current_user.follow? leader)
-      concat content_tag :button, t('取消追蹤'), class: 'following-block__unfollow', style: (:'display:none' unless current_user.follow? leader)
+    content_tag :div, class: 'following-button', data: {leader_id: leader.id} do
+      concat content_tag :button, t('關注用戶'), class: 'following-button__follow', style: (:'display:none' if current_user.follow? leader)
+      concat content_tag :button, t('取消追蹤'), class: 'following-button__unfollow', style: (:'display:none' unless current_user.follow? leader)
     end
   end
 

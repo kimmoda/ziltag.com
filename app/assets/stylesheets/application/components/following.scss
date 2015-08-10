@@ -1,4 +1,4 @@
-.following-block{
+.following-button{
   &__follow{
     display: inline-block;
     border:1px solid $fourth_gray_color;
@@ -13,6 +13,6 @@
     &:hover{
       color: $main_white_color;
     }
-    @extend .following-block__follow;
+    @extend .following-button__follow;
   }
 }
