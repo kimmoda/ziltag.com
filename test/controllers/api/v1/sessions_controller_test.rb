@@ -10,4 +10,9 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal(expected, json)
   end
 
+  test '#destroy' do
+    sign_in users(:tony)
+    delete :destroy, format: :json
+  end
+
 end
