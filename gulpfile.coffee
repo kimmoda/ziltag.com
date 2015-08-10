@@ -20,6 +20,7 @@ gulp.task 'bundle.js', ->
     'vendor/assets/components/jquery-tags-input/src/jquery.tagsinput.js'
     'vendor/assets/components/slick/dist/slick.js'
     'vendor/assets/components/introjs/intro.js'
+    'vendor/assets/components/fetch/fetch.js'
   ]
   .pipe $.concat 'bundle.js'
   .pipe gulp.dest 'app/assets/javascripts'
