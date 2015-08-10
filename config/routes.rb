@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resource :sessions, only: %i[create destroy]
+      resource :sessions, :following, only: %i[create destroy]
       resources :posts, :ziltaggings, :photos
       post :ziltag, controller: :ziltag
     end
