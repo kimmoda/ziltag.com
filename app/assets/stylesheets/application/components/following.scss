@@ -1,17 +1,18 @@
-a.follow{
-  display: inline-block;
-  border:1px solid $fourth_gray_color;
-  background-color: $secondary_gray_color;
-  color: $main_gray_color;
-  @extend .btn;
-  @extend .btn-xs;
-}
-
-a.unfollow{
-  background-color: $main_red_color;
-  color: $main_white_color;
-  &:hover{
-    color: $main_white_color;
+.following-block{
+  &__follow{
+    display: inline-block;
+    border:1px solid $fourth_gray_color;
+    background-color: $secondary_gray_color;
+    color: $main_gray_color;
+    @extend .btn;
+    @extend .btn-xs;
   }
-  @extend a.follow;
+  &__unfollow{
+    background-color: $main_red_color;
+    color: $main_white_color;
+    &:hover{
+      color: $main_white_color;
+    }
+    @extend .following-block__follow;
+  }
 }

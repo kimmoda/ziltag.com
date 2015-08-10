@@ -1,21 +1,30 @@
-# 追蹤按鈕
-# <a class="follow" data-leader-id="ID">關注用戶</a>
-# <a class="unfollow" data-leader-id="ID">取消追蹤</a>
+get_block_elements_by_leader = (leader_id) ->
+  document.querySelectorAll("[data-leader-id=\"#{leader_id}\"]")
 
-toggle = (leader_id, action) ->
-  data_leader_id = "[data-leader-id=\"#{leader_id}\"]"
-  follows = document.querySelectorAll "a.follow#{data_leader_id}"
-  unfollows = document.querySelectorAll "a.unfollow#{data_leader_id}"
-  switch action
-    when 'follow'
-      follow.style.display = 'none' for follow in follows
-      unfollow.style.display = '' for unfollow in unfollows
-    when 'unfollow'
-      unfollow.style.display = 'none' for unfollow in unfollows
-      follow.style.display = '' for follow in follows
+define_component 'following-block', (block) ->
+  follow_btn = block.getElementsByClassName('following-block__follow')[0]
+  unfollow_btn = block.getElementsByClassName('following-block__unfollow')[0]
+  body = JSON.stringify leader_id: block.dataset.leaderId
+  headers = 'Content-Type': 'application/json'
 
-main () ->
-  $(document.body).on 'ajax:success', 'a.follow', () ->
-    toggle(this.dataset.leaderId, 'follow')
-  $(document.body).on 'ajax:success', 'a.unfollow', () ->
-    toggle(this.dataset.leaderId, 'unfollow')
+  follow_btn.addEventListener 'click', ->
+    fetch '/api/v1/following',
+      method: 'post'
+      credentials: 'same-origin'
+      headers: headers
+      body: body
+    .then (response) ->
+      for element in get_block_elements_by_leader(block.dataset.leaderId)
+        element.getElementsByClassName('following-block__follow')[0].style.display = 'none'
+        element.getElementsByClassName('following-block__unfollow')[0].style.display = ''
+
+  unfollow_btn.addEventListener 'click', ->
+    fetch '/api/v1/following',
+      method: 'delete'
+      credentials: 'same-origin'
+      headers: headers
+      body: body
+    .then (response) ->
+      for element in get_block_elements_by_leader(block.dataset.leaderId)
+        element.getElementsByClassName('following-block__follow')[0].style.display = ''
+        element.getElementsByClassName('following-block__unfollow')[0].style.display = 'none'

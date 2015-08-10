@@ -1,24 +1,21 @@
+=begin
+<div class="following-block" data-leader-id="ID">
+  <button class="following-block__follow">關注用戶</button>
+  <button class="following-block__unfollow">取消追蹤</button>
+</div>
+=end
+
 module FollowingHelper
-  # 產生成對的追蹤按鈕
-  # <a class="follow" data-leader-id="ID">關注用戶</a>
-  # <a class="unfollow" data-leader-id="ID">取消追蹤</a>
   def following_button leader
     return unless user_signed_in?
     return if current_user == leader
     ret = ActiveSupport::SafeBuffer.new
     following_params = {leader_id: leader.id}
 
-    ret << link_to('關注用戶', follow_path(following_params),
-      method: :post, remote: true, class: :follow,
-      data: {leader_id: leader.id},
-      style: (:'display:none' if current_user.follow? leader),
-    )
-
-    ret << link_to('取消追蹤', unfollow_path(following_params),
-      method: :delete, remote: true, class: :unfollow,
-      data: {leader_id: leader.id},
-      style: (:'display:none' unless current_user.follow? leader)
-    )
+    content_tag :div, class: 'following-block', data: {leader_id: leader.id} do
+      concat content_tag :button, t('關注用戶'), class: 'following-block__follow', style: (:'display:none' if current_user.follow? leader)
+      concat content_tag :button, t('取消追蹤'), class: 'following-block__unfollow', style: (:'display:none' unless current_user.follow? leader)
+    end
   end
 
 end
