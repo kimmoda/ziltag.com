@@ -12,6 +12,11 @@ main(function(){
         var reader = new FileReader();
         reader.onload = function (e) {
           $("img.img_profile_tag").attr('src', e.target.result);
+          fetch('/users', {
+            method: 'post',
+            credentials: 'same-origin',
+            body: new FormData(document.getElementById('profile_form'))
+          });
         }
         reader.readAsDataURL(selectedFile.files[0]);
       }
@@ -28,6 +33,11 @@ main(function(){
         var reader = new FileReader();
         reader.onload = function (e) {
           $("img.user_banner_img").attr('src', e.target.result);
+          fetch('/users', {
+            method: 'post',
+            credentials: 'same-origin',
+            body: new FormData(document.getElementById('profile_form'))
+          });
         }
         reader.readAsDataURL(selectedFile.files[0]);
       }
