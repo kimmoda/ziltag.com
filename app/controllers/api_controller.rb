@@ -12,7 +12,7 @@ private
   def set_headers
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Credentials'] = 'true'
-    headers['Access-Control-All-Headers'] = 'X-Requested-With'
+    headers['Access-Control-Allow-Headers'] = 'X-Requested-With'
   end
 
 end
