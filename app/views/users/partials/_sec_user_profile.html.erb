@@ -1,14 +1,18 @@
 <section class="sec_user_profile" data-layout="full_interface">
   <div class="user_banner">
-    <%= image_tag @user.cover_url, class: 'img-responsive user_banner_img' %>
+    <%= image_tag @user.cover_url, id: 'banner', class: 'img-responsive user_banner_img' %>
 
-    <!-- .edit_profile_link 這個連結應該是會員自己時，才會出現 -->
-    <a href="/users/edit" class="edit_profile_link">
+    <% if @user == current_user %>
+    <a href="#" id="cover_link" class="edit_profile_link">
       <span class="icon_font">
         <i class="fa fa-camera fa-3x"></i>
         <span class="edit_text">編輯</span>
       </span>
     </a>
+    <%= form_for current_user, url: user_registration_path, html: {id: :cover_form} do |f| %>
+      <%= f.file_field :cover, style: 'display:none' %>
+    <% end %>
+    <% end %>
 
   </div><!-- /.user_banner -->
 
@@ -16,14 +20,18 @@
     <div class="col-xs-8 col-sm-8 col-md-6">
       <div class="left_zone">
         <div class="profile_img">
-          <a href="#"><%= image_tag @user.avatar_url %></a>
+          <a href="#"><%= image_tag @user.avatar_url, id: 'avatar' %></a>
 
-          <!-- .edit_profile_link 這個連結應該是會員自己時，才會出現 -->
-          <a href="/users/edit" class="edit_profile_link">
+          <% if @user == current_user %>
+          <a href="#" id="avatar_link" class="edit_profile_link">
             <span class="icon_font">
               <i class="fa fa-camera fa-3x"></i>
             </span>
           </a>
+          <%= form_for current_user, url: user_registration_path, html: {id: :avatar_form} do |f| %>
+            <%= f.file_field :avatar, id: 'avatar_file', style: 'display:none' %>
+          <% end %>
+          <% end %>
 
         </div><!-- /.profile_img -->
         <div class="following_and_follower">
