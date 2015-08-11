@@ -10,7 +10,7 @@ class ApiController < ApplicationController
 private
 
   def set_headers
-    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Origin'] = 'localhost:3000'
     headers['Access-Control-Allow-Credentials'] = 'true'
     headers['Access-Control-Allow-Headers'] = 'X-Requested-With'
   end
