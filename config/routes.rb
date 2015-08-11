@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       post :ziltag, controller: :ziltag
     end
   end
+  match 'api/*path', via: :options, to: 'api#options'
 
   namespace :embedded do
     get :photos, format: true, constraints: {format: :json}

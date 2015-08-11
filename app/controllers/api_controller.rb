@@ -3,6 +3,10 @@ class ApiController < ApplicationController
   before_action :set_headers
   before_action :authenticate_user!, only: %i[create update destroy]
 
+  def options
+    head 200
+  end
+
 private
 
   def set_headers
