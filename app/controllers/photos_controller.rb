@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
 
   # POST /photos.json
   def create
-    photo = current_user.photos.find_or_create_by_url!(photo_params)
+    photo = Photo.find_or_create_by_url!(photo_params)
     render json: {id: photo.id}
   end
 

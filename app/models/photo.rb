@@ -3,6 +3,15 @@ class Photo < ActiveRecord::Base
   scope :search_by_urls, ->(urls){ includes(:ziltaggings).where(source: urls) }
   scope :has_ziltaggings, ->{ joins(:ziltaggings).group('photos.id', 'ziltaggings.photo_id').having('count(ziltaggings.id) > 0') }
 
+  def self.find_or_create_by_url! params
+    if remote_image_url = params[:remote_image_url].presence
+      uri = URI(remote_image_url)
+      uri.normalize!
+      photo = find_by source: uri.to_s
+    end
+    photo ||= create! params
+  end
+
   # constants
 
   # attributes

@@ -7,12 +7,10 @@ class Api::V1::PhotosController < ApiController
   end
 
   def create
-    @photo = current_user.photos.find_or_create_by_url!(photo_params)
-    if @photo.save
-      render :show
-    else
-      render json: @photo.errors, status: :unprocessable_entity
-    end
+    @photo = Photo.find_or_create_by_url!(photo_params)
+    render :show
+  rescue
+    head :unprocessable_entity
   end
 
   def update
