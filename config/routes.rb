@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resource :sessions, :following, :collecting, only: %i[create destroy]
       resources :posts, :ziltaggings, :photos
       post :ziltag, controller: :ziltag
-      post :redactor, controller: :photos, action: :create
+      post :redactor, controller: :redactor, action: :upload
     end
   end
   match 'api/*path', via: :options, to: 'api#options'
