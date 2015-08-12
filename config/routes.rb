@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :sessions, :following, :collecting, only: %i[create destroy]
       resources :posts, :ziltaggings, :photos
+      resources :users, only: %i[show update]
       post :ziltag, controller: :ziltag
       post :redactor, controller: :redactor, action: :upload
     end
