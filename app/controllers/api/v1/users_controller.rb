@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApiController
+  before_action :authenticate_user!, only: :show, if: :me?
   before_action :set_user
 
   def show
@@ -20,6 +21,10 @@ private
 
   def user_params
     params.require(:user).permit(:avatar, :cover)
+  end
+
+  def me?
+    params[:id] == 'me'
   end
 
 end
