@@ -4,7 +4,7 @@ class Api::V1::ZiltagController < ApiController
   # POST /api/v1/ziltag
   def ziltag
     @ziltag = Abstract::Ziltag.new({
-      photo: current_user.photos.new(photo_params),
+      photo: Photo.find_or_create_by_url!(photo_params),
       post: current_user.posts.new(post_params),
       ziltagging: Ziltagging.new(ziltagging_params)
     })
