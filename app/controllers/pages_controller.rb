@@ -8,7 +8,7 @@ class PagesController < ApplicationController
       @ziltaggings = Ziltagging.all
     end
 
-    @ziltaggings = @ziltaggings.page(params[:page]).per(10)
+    @ziltaggings = @ziltaggings.order('id DESC').page(params[:page]).per(10)
 
     if params[:scroll]
       render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging
