@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   # scopes
 
   # constants
@@ -31,6 +34,10 @@ class Post < ActiveRecord::Base
 
   def to_s
     title
+  end
+
+  def as_indexed_json(options={})
+    as_json include: {tags: {only: :name}}, only: [:title, :content]
   end
 
 end

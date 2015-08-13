@@ -19,6 +19,7 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'elasticsearch-model'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'

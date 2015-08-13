@@ -2,6 +2,8 @@ production:
   feature_photo_id: 123 # 用於註冊/登入頁
   host: ziltag.com
   asset_host: ziltag.com
+  elasticsearch:
+    host: 'elasticsearch.ziltag.com'
   action_mailer:
     smtp_settings:
       address: ADDRESS,

@@ -81,11 +81,25 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (0.12.1)
     docile (1.1.5)
+    elasticsearch (1.0.12)
+      elasticsearch-api (= 1.0.12)
+      elasticsearch-transport (= 1.0.12)
+    elasticsearch-api (1.0.12)
+      multi_json
+    elasticsearch-model (0.1.7)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-transport (1.0.12)
+      faraday
+      multi_json
     erubis (2.7.0)
     excon (0.45.3)
     execjs (2.5.2)
     faker (1.4.3)
       i18n (~> 0.5)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.31.0)
@@ -185,6 +199,7 @@ GEM
     formatador (0.2.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    hashie (3.4.2)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -209,6 +224,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.1)
+    multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -353,6 +369,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-i18n
+  elasticsearch-model
   faker
   fog
   jbuilder (~> 2.0)
@@ -381,3 +398,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6
