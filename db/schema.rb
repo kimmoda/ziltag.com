@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714053926) do
+ActiveRecord::Schema.define(version: 20150813091344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 20150714053926) do
 
   add_index "followings", ["follower_id", "leader_id"], name: "index_followings_on_follower_id_and_leader_id", unique: true, using: :btree
   add_index "followings", ["leader_id", "follower_id"], name: "index_followings_on_leader_id_and_follower_id", unique: true, using: :btree
+
+  create_table "libpuzzle_signatures", force: :cascade do |t|
+    t.integer "photo_id"
+    t.binary  "signature"
+  end
+
+  add_index "libpuzzle_signatures", ["photo_id"], name: "index_libpuzzle_signatures_on_photo_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.integer  "user_id"
