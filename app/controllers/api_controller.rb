@@ -15,4 +15,8 @@ private
     headers['Access-Control-Allow-Headers'] = 'X-Requested-With, Content-Type'
   end
 
+  def authenticate_user!
+    render json: {error: t('devise.failure.unauthenticated')}, status: 401 unless user_signed_in?
+  end
+
 end
