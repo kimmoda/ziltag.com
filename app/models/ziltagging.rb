@@ -1,15 +1,8 @@
 class Ziltagging < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   # scopes
   scope :by_source, ->(source){ source.present? ? joins(:photo).where('photos.source = ?', source) : all }
-
-  def self.search query_string
-    results = includes(:photo, :tags, post: :user).where(posts: {published: true}).order('ziltaggings.id DESC')
-    if query_string.present?
-      words = query_string.split(%r(\s,':\;!?")).join('|')
-      results = results.where("tags.name ~* ? OR posts.title ~* ?", words, words)
-    end
-    results
-  end
 
   # constants
 
@@ -30,6 +23,10 @@ class Ziltagging < ActiveRecord::Base
   # other
   def other_ziltaggings
     photo.ziltaggings.where.not(id: id)
+  end
+
+  def as_indexed_json(options={})
+    post.as_indexed_json
   end
 
 end
