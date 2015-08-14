@@ -5,6 +5,7 @@
 - ruby 2.2.2
 - graphicsmagick
 - postgresql
+- elasticsearch
 
 # 開發準備
 
@@ -12,6 +13,21 @@
 $ bundle
 $ bin/rake dev:setup
 $ rails s
+```
+
+# Elasticsearch 中文斷詞設定
+
+```
+curl -X POST 127.0.0.1:9200/_all/_close
+curl -XPUT '127.0.0.1:9200/_settings' -d '
+{
+  "analysis":{
+    "analyzer":{
+      "default":{"type":"cjk"}
+    }
+  }
+}'
+curl -X POST 127.0.0.1:9200/_all/_open
 ```
 
 # Git 流程
