@@ -1,3 +1,7 @@
 <section class="section_post">
-  <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
+  <% if @ziltaggings.present? %>
+    <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
+  <% else %>
+    <h1><%= t('很抱歉，找不到東西') %> :(</h1>
+  <% end %>
 </section>
