@@ -21,6 +21,7 @@ class Ziltagging < ActiveRecord::Base
 
   # validations
   validates :ziltaggable, :photo, :x, :y, presence: true
+  validates :ziltaggable_type, inclusion: {in: %w[Post]}
 
   # callbacks
 
