@@ -6,7 +6,7 @@ class Abstract::Ziltag
     ActiveRecord::Base.transaction do
       @photo.save!
       @post.save!
-      @ziltagging.assign_attributes photo: @photo, post: @post
+      @ziltagging.assign_attributes photo: @photo, ziltaggable: @post
       @ziltagging.save!
     end
   end
