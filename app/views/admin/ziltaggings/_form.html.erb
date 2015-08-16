@@ -2,7 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :post, as: :select2 %>
+    <%= f.input :ziltaggable_type, collection: %w[Post], include_blank: false %>
+    <%= f.input :ziltaggable_id %>
     <%= f.association :photo, as: :select2 %>
     <%= f.input :x %>
     <%= f.input :y %>

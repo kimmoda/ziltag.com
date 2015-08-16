@@ -1,6 +1,11 @@
 <p>
-  <strong><%= Admin::Ziltagging.human_attribute_name(:post) %>:</strong>
-  <%= link_to @admin_ziltagging.title, [:admin, @admin_ziltagging.post] %>
+  <strong><%= Admin::Ziltagging.human_attribute_name(:ziltaggable) %>:</strong>
+  <%= link_to @admin_ziltagging.ziltaggable, [:admin, @admin_ziltagging.ziltaggable] %>
+</p>
+
+<p>
+  <strong><%= Admin::Ziltagging.human_attribute_name(:ziltaggable_type) %>:</strong>
+  <%= @admin_ziltagging.ziltaggable_type %>
 </p>
 
 <p>

@@ -5,7 +5,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th><%= Admin::Ziltagging.human_attribute_name(:post) %></th>
+      <th><%= Admin::Ziltagging.human_attribute_name(:ziltaggable) %></th>
+      <th><%= Admin::Ziltagging.human_attribute_name(:ziltaggable_type) %></th>
       <th><%= Admin::Ziltagging.human_attribute_name(:photo) %></th>
       <th><%= Admin::Ziltagging.human_attribute_name(:x) %></th>
       <th><%= Admin::Ziltagging.human_attribute_name(:y) %></th>
@@ -16,7 +17,8 @@
   <tbody>
     <% @admin_ziltaggings.each do |admin_ziltagging| %>
       <tr>
-        <td><%= link_to admin_ziltagging.title, [:admin, admin_ziltagging.post] %></td>
+        <td><%= link_to admin_ziltagging.ziltaggable, [:admin, admin_ziltagging.ziltaggable] %></td>
+        <td><%= admin_ziltagging.ziltaggable_type %></td>
         <td><%= link_to admin_ziltagging.image_url, [:admin, admin_ziltagging.photo] rescue nil %></td>
         <td><%= admin_ziltagging.x %></td>
         <td><%= admin_ziltagging.y %></td>

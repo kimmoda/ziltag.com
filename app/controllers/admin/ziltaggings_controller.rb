@@ -3,7 +3,7 @@ class Admin::ZiltaggingsController < AdminController
 
   # GET /admin/ziltaggings
   def index
-    @admin_ziltaggings = Admin::Ziltagging.includes(:photo, :post).order('ziltaggings.id DESC').page(params[:page])
+    @admin_ziltaggings = Admin::Ziltagging.includes(:photo, :ziltaggable).order('ziltaggings.id DESC').page(params[:page])
     @admin_ziltaggings = @admin_ziltaggings.where(photos: {source: params[:image_url]}) if params[:image_url]
   end
 
@@ -54,6 +54,6 @@ class Admin::ZiltaggingsController < AdminController
 
     # Only allow a trusted parameter "white list" through.
     def admin_ziltagging_params
-      params.require(:admin_ziltagging).permit(:post_id, :photo_id, :x, :y)
+      params.require(:admin_ziltagging).permit(:ziltaggable_id, :ziltaggable_type, :photo_id, :x, :y)
     end
 end
