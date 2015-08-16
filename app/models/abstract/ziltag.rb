@@ -1,14 +1,22 @@
 class Abstract::Ziltag
   include ActiveModel::Model
-  attr_accessor :photo, :post, :ziltagging
+  attr_accessor :photo, :ziltagging, :ziltaggable
 
   def save!
     ActiveRecord::Base.transaction do
       @photo.save!
-      @post.save!
-      @ziltagging.assign_attributes photo: @photo, post: @post
+      @ziltaggable.save!
+      @ziltagging.assign_attributes photo: @photo, ziltaggable: @ziltaggable
       @ziltagging.save!
     end
+  end
+
+  def post
+    ziltaggable
+  end
+
+  def post= post
+    self.ziltaggable = post
   end
 
 end

@@ -26,7 +26,7 @@ class Abstract::ZiltagTest < ActiveSupport::TestCase
     assert_equal ziltag.ziltagging.photo_id, ziltag.photo.id
   end
 
-  test '#save! faield' do
+  test '#save! failed' do
     tony = users(:tony)
     ziltag = Abstract::Ziltag.new({
       photo: tony.photos.new({

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813091344) do
+ActiveRecord::Schema.define(version: 20150815130654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,16 +138,17 @@ ActiveRecord::Schema.define(version: 20150813091344) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "ziltaggings", force: :cascade do |t|
-    t.integer  "post_id",    null: false
-    t.integer  "x",          null: false
-    t.integer  "y",          null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "photo_id",   null: false
+    t.integer  "x",                null: false
+    t.integer  "y",                null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "photo_id",         null: false
+    t.integer  "ziltaggable_id",   null: false
+    t.string   "ziltaggable_type", null: false
   end
 
   add_index "ziltaggings", ["photo_id"], name: "index_ziltaggings_on_photo_id", using: :btree
-  add_index "ziltaggings", ["post_id"], name: "index_ziltaggings_on_post_id", using: :btree
+  add_index "ziltaggings", ["ziltaggable_type", "ziltaggable_id"], name: "index_ziltaggings_on_ziltaggable_type_and_ziltaggable_id", using: :btree
 
   add_foreign_key "collectings", "users"
   add_foreign_key "comments", "comments"
@@ -159,5 +160,4 @@ ActiveRecord::Schema.define(version: 20150813091344) do
   add_foreign_key "posts", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "ziltaggings", "photos"
-  add_foreign_key "ziltaggings", "posts"
 end

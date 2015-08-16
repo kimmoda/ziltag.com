@@ -35,7 +35,7 @@ class Api::V1::ZiltagControllerTest < ActionController::TestCase
     })
     assert_response :unprocessable_entity
     json = JSON.parse response.body
-    assert json['post']['title'].present?
+    assert json['ziltaggable']['title'].present?
   end
 
 end

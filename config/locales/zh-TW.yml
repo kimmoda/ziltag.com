@@ -80,3 +80,7 @@ zh-TW:
         text: 內容
       tag:
         name: 名稱
+      ziltagging:
+        ziltaggable: 貼紙
+        ziltaggable_type:  貼紙種類
+        photo: 圖片

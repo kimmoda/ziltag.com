@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
 
   # associations
   belongs_to :user
-  has_many :ziltaggings, inverse_of: :post, dependent: :destroy
+  has_many :ziltaggings, as: :ziltaggable, inverse_of: :post, dependent: :destroy
   has_many :photos, through: :ziltaggings
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
