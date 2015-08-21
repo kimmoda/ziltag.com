@@ -17,4 +17,8 @@ class PagesController < ApplicationController
       render layout: 'sidebar'
     end
   end
+
+  def landing
+    render layout: 'landing'
+  end
 end
