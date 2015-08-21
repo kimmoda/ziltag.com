@@ -14,5 +14,4 @@
 /config/application.yml
 /public/uploads
 /coverage
-/vendor/assets/components
 /node_modules

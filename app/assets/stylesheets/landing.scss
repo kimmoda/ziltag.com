@@ -1,0 +1,25 @@
+@import 'material-design-lite/src/material-design-lite';
+@import 'pages/landing';
+
+body{
+  background: black;
+}
+.mdl-layout{
+  background: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0.23) ), url(image-path('landing/bg.jpg')) center / cover;
+}
+.mdl-layout__header{
+  background: rgba(255,255,255,0.8);
+}
+.mdl-navigation{
+  .mdl-button{
+    margin-left: 20px;
+  }
+  .mdl-button.mdl-button--sign-up{
+    color: white;
+    background-color: rgba(53,53,53,0.45);
+  }
+  .mdl-button.mdl-button--login{
+    color: black;
+    background-color: white;
+  }
+}
