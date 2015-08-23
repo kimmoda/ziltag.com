@@ -1,1 +1,33 @@
-<h1 class="heading">Search and be amazed.</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ziltag</title>
+  <%= seo_meta_tags %>
+  <%= stylesheet_link_tag    'landing', media: 'all' %>
+  <%= javascript_include_tag 'landing' %>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title"><%= image_tag 'logo.png' %></span>
+        <div class="mdl-layout-spacer"></div>
+        <a href="#" class="nav-button nav-button--sign-up mdl-js-button">Sign up</a>
+        <a href="#" class="nav-button nav-button--login mdl-js-button">Login</a>
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+    </main>
+  </div>
+  <div id="fullpage">
+    <div class="section section--1">
+      <h1 class="heading">Search and be amazed.</h1>
+    </div>
+    <div class="section section--2"></div>
+    <div class="section section--3"></div>
+    <div class="section section--4"></div>
+  </div>
+</body>
+</html>

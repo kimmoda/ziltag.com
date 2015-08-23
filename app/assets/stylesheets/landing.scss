@@ -1,25 +1,53 @@
 @import 'material-design-lite/src/material-design-lite';
-@import 'pages/landing';
+@import 'fullpage.js/jquery.fullPage.scss';
 
-body{
-  background: black;
+@function section-background($image-url){
+  @return linear-gradient( rgba(0,0,0,0.5),rgba(0,0,0,0.5) ), url(image-path($image-url)) center / cover;
 }
-.mdl-layout{
-  background: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0.23) ), url(image-path('landing/bg.jpg')) center / cover;
+
+// layout
+#fp-nav ul li a span{
+  background: white;
 }
+
 .mdl-layout__header{
-  background: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.8);
 }
-.mdl-navigation{
-  .mdl-button{
-    margin-left: 20px;
-  }
-  .mdl-button.mdl-button--sign-up{
-    color: white;
+
+// block
+.heading{
+  color: white;
+}
+
+.nav-button{
+  @extend .mdl-button;
+  margin-left: 20px;
+
+  &--sign-up{
     background-color: rgba(53,53,53,0.45);
+    color: white;
   }
-  .mdl-button.mdl-button--login{
-    color: black;
-    background-color: white;
+
+  &--login{
+    background-color: rgba(255,255,255,0.68);
+  }
+}
+
+// slides
+.section{
+  &--1{
+    background: section-background('landing/bg-1.jpg');
+    .heading{
+      text-align: center;
+    }
+  }
+  &--2{
+    background: gray;
+  }
+  &--3{
+    background: section-background('landing/bg-3.jpg');
+  }
+  &--4{
+    background: gray;
   }
 }

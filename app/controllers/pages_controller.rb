@@ -19,6 +19,6 @@ class PagesController < ApplicationController
   end
 
   def landing
-    render layout: 'landing'
+    render layout: false
   end
 end
