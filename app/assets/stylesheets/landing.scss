@@ -2,7 +2,7 @@
 @import 'fullpage.js/jquery.fullPage.scss';
 
 @function section-background($image-url){
-  @return linear-gradient( rgba(0,0,0,0.5),rgba(0,0,0,0.5) ), url(image-path($image-url)) center / cover;
+  @return linear-gradient( rgba(0,0,0,0.23),rgba(0,0,0,0.23) ), url(image-path($image-url)) center / cover;
 }
 
 // layout
@@ -12,6 +12,9 @@
 
 .mdl-layout__header{
   background-color: rgba(255,255,255,0.8);
+  .landing-button{
+    margin-left: 20px;
+  }
 }
 
 // block
@@ -19,35 +22,61 @@
   color: white;
 }
 
-.nav-button{
+.landing-button{
   @extend .mdl-button;
-  margin-left: 20px;
+  border-radius: 5px;
+  text-transform: inherit;
 
-  &--sign-up{
+  &--dark{
     background-color: rgba(53,53,53,0.45);
     color: white;
+    &:hover{
+      background-color: rgba(0,0,0,0.8);
+    }
   }
 
-  &--login{
+  &--white{
     background-color: rgba(255,255,255,0.68);
   }
 }
 
+.search-input{
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.68;
+  font-size: 20px;
+  width: 33%;
+  border: none;
+}
+
 // slides
+
 .section{
-  &--1{
-    background: section-background('landing/bg-1.jpg');
-    .heading{
-      text-align: center;
-    }
+  text-align: center;
+}
+
+.section--1{
+  background: section-background('landing/bg-1.jpg');
+  .or{
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+    left: 35%;
+    position: absolute;
   }
-  &--2{
-    background: gray;
+  .landing-button{
+    margin-left: 12px;
   }
-  &--3{
-    background: section-background('landing/bg-3.jpg');
-  }
-  &--4{
-    background: gray;
-  }
+}
+
+.section--2{
+  background: gray;
+}
+
+.section--3{
+  background: section-background('landing/bg-3.jpg');
+}
+
+.section--4{
+  background: gray;
 }
