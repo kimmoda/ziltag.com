@@ -20,13 +20,18 @@
   </div>
   <div id="fullpage">
     <div class="section section--1">
-      <div class="player-container">
-        <div class="player">
-          <video poster="https://cdn.selz.com/plyr/1.0/poster.jpg" controls crossorigin>
-            <source src="https://cdn.selz.com/plyr/1.0/movie.mp4" type="video/mp4">
-            <source src="https://cdn.selz.com/plyr/1.0/movie.webm" type="video/webm">
-          </video>
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--3-col"></div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <h1 class="notice"><%= notice %></h1>
+          <div class="player">
+            <video poster="https://cdn.selz.com/plyr/1.0/poster.jpg" controls crossorigin>
+              <source src="https://cdn.selz.com/plyr/1.0/movie.mp4" type="video/mp4">
+              <source src="https://cdn.selz.com/plyr/1.0/movie.webm" type="video/webm">
+            </video>
+          </div>
         </div>
+        <div class="mdl-cell mdl-cell--3-col"></div>
       </div>
     </div>
     <div class="section section--2">
