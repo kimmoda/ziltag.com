@@ -14,24 +14,37 @@
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title"><%= image_tag 'logo.png' %></span>
         <div class="mdl-layout-spacer"></div>
-        <a href="#" class="landing-button landing-button--dark mdl-js-button">Sign up</a>
-        <a href="#" class="landing-button landing-button--white mdl-js-button">Login</a>
       </div>
     </header>
     <!-- <main class="mdl-layout__content"></main> -->
   </div>
   <div id="fullpage">
     <div class="section section--1">
-      <h1 class="heading">Search and be amazed.</h1>
-      <input type="text" class="search-input" placeholder="Search or drag a photo here...">
-      <div class="or">
-        OR <button class="landing-button landing-button--dark mdl-js-button">Upload</button>
+      <div class="player-container">
+        <div class="player">
+          <video poster="https://cdn.selz.com/plyr/1.0/poster.jpg" controls crossorigin>
+            <source src="https://cdn.selz.com/plyr/1.0/movie.mp4" type="video/mp4">
+            <source src="https://cdn.selz.com/plyr/1.0/movie.webm" type="video/webm">
+          </video>
+        </div>
       </div>
-      <div style="height:50%"></div>
     </div>
-    <div class="section section--2"></div>
-    <div class="section section--3"></div>
-    <div class="section section--4"></div>
+    <div class="section section--2">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col"></div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <h1>Subscribe</h1>
+          <%= form_for @subscriber do |f| %>
+            <div class="mdl-textfield mdl-js-textfield">
+              <%= f.email_field :email, class: 'mdl-textfield__input', id: 'email' %>
+              <label class="mdl-textfield__label" for="email">Your email...</label>
+            </div>
+            <input class="mdl-button mdl-js-button mdl-button--raised" type="submit" value="Subscribe">
+          <% end %>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col"></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

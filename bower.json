@@ -2,6 +2,7 @@
   "name": "ziltag",
   "dependencies": {
     "material-design-lite": "~1.0.2",
-    "fullpage.js": "~2.6.9"
+    "fullpage.js": "~2.6.9",
+    "plyr": "~1.3.5"
   }
 }
