@@ -20,9 +20,17 @@
 
 .section--1{
   background: section-background('landing/bg-1.jpg');
+  .right-cell{
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    color: white;
+  }
 }
 
 .section--2{
+  h1{
+    text-align: center;
+  }
   .mdl-textfield{
     width: 100%;
   }

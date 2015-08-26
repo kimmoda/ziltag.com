@@ -20,10 +20,15 @@
   </div>
   <div id="fullpage">
     <div class="section section--1">
+      <% if notice %>
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col"></div>
+        <div class="mdl-cell mdl-cell--12-col">
+          <h1 class="notice"><%= notice %>test</h1>
+        </div>
+      </div>
+      <% end %>
+      <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--6-col">
-          <h1 class="notice"><%= notice %></h1>
           <div class="player">
             <video poster="https://cdn.selz.com/plyr/1.0/poster.jpg" controls crossorigin autoplay>
               <source src="https://cdn.selz.com/plyr/1.0/movie.mp4" type="video/mp4">
@@ -31,14 +36,17 @@
             </video>
           </div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col"></div>
+        <div class="right-cell mdl-cell mdl-cell--6-col">
+          <h1>Ziltag <small>The Next Generation Plugin</small></h1>
+          <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</h3>
+        </div>
       </div>
     </div>
     <div class="section section--2">
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--4-col"></div>
-        <div class="mdl-cell mdl-cell--4-col">
-          <h1>Subscribe</h1>
+        <div class="mdl-cell mdl-cell--3-col"></div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <h1>STAY UPDATE WITH US</h1>
           <%= form_for @subscriber do |f| %>
             <div class="mdl-textfield mdl-js-textfield">
               <%= f.email_field :email, class: 'mdl-textfield__input', id: 'email', required: true %>
@@ -47,9 +55,9 @@
             <input class="mdl-button mdl-js-button mdl-button--raised" type="submit" value="Subscribe">
           <% end %>
         </div>
-        <div class="mdl-cell mdl-cell--4-col"></div>
+        <div class="mdl-cell mdl-cell--3-col"></div>
       </div>
-    </div>
+    </div>    
   </div>
 </body>
 </html>
