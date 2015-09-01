@@ -30,33 +30,24 @@ class StickerContainer
     new StickerHolder(@new_holder).move(x, y)
 
   _put_holder: (x, y) ->
-    @new_holder = document.createElement 'div'
-    circle = document.createElement 'div'
-
-    @new_holder.classList.add 'sticker-container__holder', 'js-sticker-holder', 'sticker-container__holder--hide', @CssClasses.NEW_HOLDER
-    @new_holder.dataset.x = x
-    @new_holder.dataset.y = y
-    @new_holder.addEventListener 'click', -> alert()
-    circle.classList.add 'sticker-container__circle'
-
-    @new_holder.appendChild circle
-    @element.appendChild @new_holder
-
-    componentHandler.upgradeElement @new_holder, 'StickerHolder'
-    @_put_dialog()
-
-  _put_dialog: ->
-    @new_dialog = document.createElement 'div'
-    frame = document.createElement 'div'
-    arrow = document.createElement 'div'
-
-    @new_dialog.classList.add 'sticker-container__dialog', 'dialog'
-    frame.classList.add 'dialog__frame'
-    arrow.classList.add 'dialog__arrow'
-
-    @new_dialog.appendChild frame
-    @new_dialog.appendChild arrow
-    @new_holder.appendChild @new_dialog
+    @element.insertAdjacentHTML 'beforeend', """
+    <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide new-holder" data-x="#{x}" data-y="#{y}">
+      <div class="sticker-container__circle"></div>
+      <div class="sticker-container__dialog dialog js-dialog">
+        <div class="dialog__frame">
+          <form action="/stickers" method="post">
+            <div class="mdl-textfield mdl-js-textfield">
+              <textarea class="mdl-textfield__input" type="text" id="content"></textarea>
+              <label class="mdl-textfield__label" for="content">What's in your mind?</label>
+            </div>
+          </form>
+        </div>
+        <div class="dialog__arrow"></div>
+      </div>
+    </div>
+    """
+    @new_holder = @element.lastChild
+    componentHandler.upgradeElements @new_holder
 
 componentHandler.register
   constructor: StickerContainer
