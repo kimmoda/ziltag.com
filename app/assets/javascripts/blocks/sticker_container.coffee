@@ -38,7 +38,7 @@ class StickerContainer
         <div class="dialog__frame">
           <form action="/stickers" method="post">
             <div class="mdl-textfield mdl-js-textfield">
-              <textarea name="sticker[content]" class="mdl-textfield__input" type="text" id="content" autofocus ></textarea>
+              <textarea name="sticker[content]" class="mdl-textfield__input" type="text" id="content" autofocus required></textarea>
               <label class="mdl-textfield__label" for="content">What's in your mind?</label>
             </div>
             <input type="hidden" name="sticker[x]" value="#{x}">
