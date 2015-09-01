@@ -27,6 +27,7 @@ class StickerContainer
       i.parentNode.removeChild i
 
   _move_holder: (x, y)->
+    @new_holder.querySelector('textarea').focus()
     new StickerHolder(@new_holder).move(x, y)
 
   _put_holder: (x, y) ->
@@ -37,9 +38,14 @@ class StickerContainer
         <div class="dialog__frame">
           <form action="/stickers" method="post">
             <div class="mdl-textfield mdl-js-textfield">
-              <textarea class="mdl-textfield__input" type="text" id="content"></textarea>
+              <textarea name="sticker[content]" class="mdl-textfield__input" type="text" id="content" autofocus ></textarea>
               <label class="mdl-textfield__label" for="content">What's in your mind?</label>
             </div>
+            <input type="hidden" name="sticker[x]" value="#{x}">
+            <input type="hidden" name="sticker[y]" value="#{y}">
+            <input type="hidden" name="sticker[photo_id]" value="1">
+            <input type="hidden" name="authenticity_token" value="#{document.querySelector('meta[name=csrf-token]').content}">
+            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent">
           </form>
         </div>
         <div class="dialog__arrow"></div>
@@ -48,6 +54,11 @@ class StickerContainer
     """
     @new_holder = @element.lastChild
     componentHandler.upgradeElements @new_holder
+
+    form = @new_holder.getElementsByTagName('form')[0]
+    form.addEventListener 'submit', ->
+      form.querySelector('input[name="sticker[x]"]').value = x
+      form.querySelector('input[name="sticker[y]"]').value = y
 
 componentHandler.register
   constructor: StickerContainer
