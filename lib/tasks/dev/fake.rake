@@ -18,11 +18,14 @@ namespace 'dev:fake' do
 
     fakeup '產生貼紙' do
       @photos.each do |photo|
-        3.times do
+        [
+          "#{Faker::Lorem.paragraph} https://twitter.com/tonytonyjan/status/594918506417655808",
+          "#{Faker::Lorem.paragraph} https://www.youtube.com/watch?v=MmMnYM9DoEc",
+          Faker::Lorem.paragraph
+        ].each do |content|
           photo.stickers.create!({
-            user: @users.sample,
-            x: rand(200), y: rand(200),
-            content: Faker::Lorem.paragraph
+            user: @users.sample, x: rand(200), y: rand(200),
+            content: content
           })
         end
       end

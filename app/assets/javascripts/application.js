@@ -4,4 +4,4 @@
 //= require eventEmitter/EventEmitter
 //= require eventie/eventie
 //= require imagesloaded/imagesloaded
-//= require blocks/sticker_holder
+//= require_directory ./blocks
