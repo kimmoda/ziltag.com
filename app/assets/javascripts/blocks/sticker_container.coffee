@@ -56,9 +56,9 @@ class StickerContainer
     componentHandler.upgradeElements @new_holder
 
     form = @new_holder.getElementsByTagName('form')[0]
-    form.addEventListener 'submit', ->
-      form.querySelector('input[name="sticker[x]"]').value = x
-      form.querySelector('input[name="sticker[y]"]').value = y
+    form.addEventListener 'submit', =>
+      form.querySelector('input[name="sticker[x]"]').value = @new_holder.dataset.x
+      form.querySelector('input[name="sticker[y]"]').value = @new_holder.dataset.y
 
 componentHandler.register
   constructor: StickerContainer
