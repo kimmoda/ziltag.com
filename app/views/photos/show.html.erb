@@ -49,10 +49,10 @@
     <hr>
     <%= sticker_preview @sticker %>
     <div class="layout-card mdl-card mdl-shadow--4dp">
-      <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><%= @sticker.content %></h2>
+      <div class="mdl-card__supporting-text">
+        <p><%= sanitize @sticker.content.gsub URI.regexp(['http', 'https']), '<a href="\0" target="_blank">\1://\4/...</a>' %></p>
+        <%= time_ago_in_words @sticker.created_at %>
       </div>
-      <div class="mdl-card__supporting-text"><%= time_ago_in_words @sticker.created_at %></div>
     </div>
     <% else %>
     <% end %>
