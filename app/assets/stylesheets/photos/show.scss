@@ -1,0 +1,22 @@
+.photos.show{
+  .layout-photo{
+    width: 100%;
+  }
+  .user-info{
+    &__avatar{
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+    &__text-section{
+      display: inline-block;
+    }
+    &__username{
+      font-weight: bold;
+      font-size: 16px;
+    }
+    &__icons{
+      float: right;
+    }
+  }
+}

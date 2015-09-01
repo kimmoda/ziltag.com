@@ -1,0 +1,66 @@
+// <div class="sticker-container">
+//   <img class="sticker-container__image">
+//   <div class="sticker-container__holder" data-x="10" data-y="100">
+//     <div class="sticker-container__circle"></div>
+//   </div>
+// </div>
+.sticker-container{
+  position: relative;
+
+  &__add-button{
+    @extend .mdl-button;
+    @extend .mdl-button--fab;
+    @extend .mdl-button--colored;
+    @extend .mdl-shadow--4dp;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: 8px solid white;
+  }
+
+  &__holder{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  &__circle{
+    @extend .mdl-shadow--4dp;
+    position: relative;
+    left: -7.5px;
+    top: -7.5px;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    border: 5px solid gray;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    transition: all 0.1s;
+    &:hover{
+      border-color: red;
+    }
+  }
+
+  &__sticker{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 35px;
+    height: 26px;
+    z-index: 1;
+    box-shadow: 5px 5px 5px black;
+
+    background-image: image-url('ziltag_sticker_others.png');
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+
+    &--active, &:hover{
+      opacity: 1;
+      z-index: 2;
+      background-image: image-url('ziltag_sticker.png');
+    }
+  }
+}

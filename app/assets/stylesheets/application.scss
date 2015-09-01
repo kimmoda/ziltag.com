@@ -1,4 +1,8 @@
-@import "bundle";
-@import "colors";
-@import "normal";
-@import "application/**/*";
+@import "material-design-lite/src/color-definitions";
+$layout-header-bg-color: rgba(255,255,255,0.8);
+$layout-header-text-color: black;
+@import 'material-design-lite/src/material-design-lite';
+@import 'blocks/sticker_container';
+@import 'blocks/dialog';
+@import 'pages/home';
+@import 'photos/show';

@@ -1,0 +1,34 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="sticker-container">
+      <button class="sticker-container__add-button mdl-js-button">
+        <i class="material-icons">add</i>
+      </button>
+      <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
+      <div class="sticker-container__holder" data-x="10" data-y="100">
+        <div class="sticker-container__circle"></div>
+      </div>
+      <div class="sticker-container__holder" data-x="100" data-y="10">
+        <div class="sticker-container__circle"></div>
+      </div>
+      <div class="sticker-container__holder" data-x="20" data-y="70">
+        <div class="sticker-container__circle"></div>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="user-info">
+      <img class="user-info__avatar" src="http://api.adorable.io/avatars/64/tonytonyjan.png" alt="tonytonyjan">
+      <div class="user-info__text-section">
+        <div class="user-info__text">Tag created by</div>
+        <div class="user-info__username">tonytonyjan</div>
+      </div>
+      <div class="user-info__icons">
+        <i class="material-icons">favorite</i>
+        <i class="material-icons">share</i>
+        <i class="material-icons">menu</i>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>

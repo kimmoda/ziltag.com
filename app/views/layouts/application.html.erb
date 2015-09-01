@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Ziltag</title>
-  <link rel="shortcut icon" type="image/png" href="/favicon.png">
-  <%= seo_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <%= csrf_meta_tags %>
 </head>
-<body data-controller="<%= controller_path %>" data-action="<%= action_name %>" class="<%= controller_name %> <%= action_name %> <%= @layout || controller.send(:_layout) %>" <%= 'data-first-visit' if first_visit? %> <%= 'data-first-signed-in' if first_signed_in? %>>
-  <%= render :partial => "/layouts/partials/header" %>
-  <%= content_for?(:content) ? yield(:content) : yield %>
-  <%= render :partial => "/partials/modals/post_ziltag_article_modal" %>
-  <%= render 'shared/uservoice' %>
-  <%= render :partial => "/partials/templates/handlebars" %>
-  <%= render :partial => "/partials/templates/comment" %>
+<body class="<%= "#{controller_path} #{action_name}" %>">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title"><%= link_to image_tag('logo.png'), pages_home_path %></span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Link one</a>
+          <a class="mdl-navigation__link" href="">Line two</a>
+        </nav>
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+      <%= yield %>
+    </main>
+  </div>
 </body>
 </html>

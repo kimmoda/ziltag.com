@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /en|jp/ do
     root 'pages#landing'
+    get 'pages/home'
     controller :pages do
       get :privacy_policy, :term_of_service
     end

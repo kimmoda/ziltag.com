@@ -1,0 +1,43 @@
+.pages.home{
+  .heading{
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+  }
+
+  form#new_photo{
+    text-align: center;
+  }
+
+  input#photo_remote_image_url{
+    width: 40%;
+    border-radius: 5px;
+    border-width: 0;
+    padding: 10px;
+    font-size: x-large;
+    outline: 0;
+    background-color: rgba(255,255,255,0.8);
+  }
+
+  input#photo_image{
+    display: none;
+  }
+
+  .or-upload{
+    margin-top: 20px;
+    &__or{
+      color: white;
+      font-size: x-large;
+    }
+
+    &__upload{
+      margin-left: 10px;
+      background-color: rgba(53,53,53,0.55);
+      color: white;
+    }
+  }
+
+  .mdl-layout{
+    background: linear-gradient( rgba(0,0,0,0.23),rgba(0,0,0,0.23) ), url(asset-path('landing/bg-1.jpg')) center / cover;
+  }
+}

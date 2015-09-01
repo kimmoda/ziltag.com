@@ -1,7 +1,10 @@
-<section class="section_post">
-  <% if @ziltaggings.present? %>
-    <%= render :partial => "/partials/post_article", collection: @ziltaggings, as: :ziltagging %>
-  <% else %>
-    <h1><%= t('很抱歉，找不到東西') %> :(</h1>
-  <% end %>
-</section>
+<h1 class="heading">Search can be amased.</h1>
+<%= form_for @photo do |f| %>
+  <%= f.url_field :remote_image_url, placeholder: 'Search by Image URL...' %>
+  <div class="or-upload">
+    <span class="or-upload__or">Or</span>
+    <button class="or-upload__upload mdl-button mdl-js-buutton">Upload</button>
+  </div>
+  <%= f.file_field :image %>
+  <%#= f.submit %>
+<% end %>

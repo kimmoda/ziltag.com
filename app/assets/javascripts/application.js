@@ -1,5 +1,9 @@
-//= require jquery
+//= require jquery/dist/jquery
 //= require jquery_ujs
-//= require bundle
-//= require runner
-//= require_tree ./application
+//= require material-design-lite/material
+//= require eventEmitter/EventEmitter
+//= require eventie/eventie
+//= require imagesloaded/imagesloaded
+//= require define_component
+//= require blocks/sticker_container
+//= require blocks/dialog
