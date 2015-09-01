@@ -5,23 +5,22 @@
         <i class="material-icons">add</i>
       </button>
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
-      <div class="sticker-container__holder" data-x="10" data-y="100">
-        <div class="sticker-container__circle"></div>
-      </div>
-      <div class="sticker-container__holder" data-x="100" data-y="10">
-        <div class="sticker-container__circle"></div>
-      </div>
-      <div class="sticker-container__holder" data-x="20" data-y="70">
-        <div class="sticker-container__circle"></div>
-      </div>
+      <% @photo.stickers.each do |sticker| %>
+        <div class="sticker-container__holder sticker-container__holder--hide" data-x="<%= sticker.x %>" data-y="<%= sticker.y %>">
+          <%= link_to photo_path(@photo, sticker_id: sticker.id) do %>
+          <div class="sticker-container__circle"></div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="mdl-cell mdl-cell--6-col">
+    <% if @sticker %>
     <div class="user-info">
-      <img class="user-info__avatar" src="http://api.adorable.io/avatars/64/tonytonyjan.png" alt="tonytonyjan">
+      <%= image_tag @sticker.user.avatar.thumb.url, class: 'user-info__avatar', alt: @sticker.user.username %>
       <div class="user-info__text-section">
         <div class="user-info__text">Tag created by</div>
-        <div class="user-info__username">tonytonyjan</div>
+        <div class="user-info__username"><%= @sticker.user.username %></div>
       </div>
       <div class="user-info__icons">
         <i class="material-icons">favorite</i>
@@ -30,5 +29,14 @@
       </div>
     </div>
     <hr>
+    <%= sticker_preview @sticker %>
+    <div class="layout-card mdl-card mdl-shadow--4dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text"><%= @sticker.content %></h2>
+      </div>
+      <div class="mdl-card__supporting-text"><%= time_ago_in_words @sticker.created_at %></div>
+    </div>
+    <% else %>
+    <% end %>
   </div>
 </div>

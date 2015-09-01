@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
 
   # associations
+  has_many :stickers, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :ziltaggings, through: :posts
   has_many :photos, dependent: :destroy

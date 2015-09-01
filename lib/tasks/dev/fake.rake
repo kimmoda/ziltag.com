@@ -13,104 +13,20 @@ namespace 'dev:fake' do
 
     fakeup '產生圖片' do
       @photos = []
-      @users.each do |user|
-        @photos << user.photos.create!(image: @images.sample)
-      end
+      20.times{ @photos << Photo.create!(image: @images.sample) }
     end
 
-    fakeup '產生標籤' do
-      @tags = []
-      @tags << Tag.create!(name: Faker::Lorem.word)
-    end
-
-    fakeup '產生樂貼' do
-      @posts = []
+    fakeup '產生貼紙' do
       @photos.each do |photo|
-        post = photo.user.posts.create!(
-          title: Faker::Lorem.sentence,
-          content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join,
-          published: true
-        )
-        post.tags << @tags.sample(3)
-        @posts << post
-        photo.ziltaggings.create!(
-          x: rand(200), y: rand(200), post: post
-        )
-      end
-    end
-
-    fakeup '產生加貼' do
-      @comments = []
-      @users.each do |user|
-        @photos.each do |photo|
-          @comments << user.comments.create!(
-            x: rand(200), y: rand(200), text: Faker::Lorem.sentence,
-            photo: photo
-          )
+        3.times do
+          photo.stickers.create!({
+            user: @users.sample,
+            x: rand(200), y: rand(200),
+            content: Faker::Lorem.paragraph
+          })
         end
       end
-
-      @comments.each do |comment|
-        @users.sample.comments.create!(
-          x: rand(200), y: rand(200), text: Faker::Lorem.sentence , root: comment,
-          photo: comment.photo
-        )
-      end
     end
-
-    fakeup '在第一個樂貼的圖上產生 10 個額外的樂貼' do
-      photo = Ziltagging.find(1).photo
-      10.times do
-        photo.ziltaggings.create!(
-          x: rand(200), y: rand(200),
-          post: @posts.sample
-        )
-      end
-    end
-
-    fakeup '產生 10 張長寬不一的樂貼' do
-      file_400x200 = File.open(Rails.root.join('test/fixtures/images/400x200.jpg'))
-      file_200x400 = File.open(Rails.root.join('test/fixtures/images/200x400.jpg'))
-      user = User.last
-      photo_400x200 = user.photos.create! image: file_400x200
-      photo_200x400 = user.photos.create! image: file_200x400
-
-      post = user.posts.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs(3).map!{|x| "<p>#{x}</p><img src=\"http://placehold.it/100x100\">"}.join)
-      Ziltagging.create! photo: photo_400x200, post: post, x: 10, y: 10
-      Ziltagging.create! photo: photo_400x200, post: post, x: 10, y: 190
-      Ziltagging.create! photo: photo_400x200, post: post, x: 390, y: 190
-      Ziltagging.create! photo: photo_400x200, post: post, x: 390, y: 10
-      Ziltagging.create! photo: photo_400x200, post: post, x: 100 + rand(300), y: rand(200)
-
-      Ziltagging.create! photo: photo_200x400, post: post, x: 10, y: 10
-      Ziltagging.create! photo: photo_200x400, post: post, x: 10, y: 390
-      Ziltagging.create! photo: photo_200x400, post: post, x: 190, y: 390
-      Ziltagging.create! photo: photo_200x400, post: post, x: 190, y: 10
-      Ziltagging.create! photo: photo_200x400, post: post, x: rand(200), y: 100 + rand(300)
-    end
-
-    fakeup '產生追蹤' do
-      User.find_each do |follower|
-        @users.sample(2).each{ |leader| Following.create! follower: follower, leader: leader }
-      end
-    end
-
-    fakeup '產生收藏' do
-      User.find_each do |user|
-        @posts.sample(2).each{ |post| Collecting.create! user: user, collectable: post }
-      end
-    end
-
-    fakeup '產生中文樂貼' do
-      post = @users.sample.posts.create!(
-        title: '測試',
-        content: "<p>#{'測試'*125}</p>",
-      )
-      post.ziltaggings.create!(
-        x: rand(100), y: rand(100), photo: @photos.sample
-      )
-    end
-
   end
 
   task hook_activerecord: :environment do

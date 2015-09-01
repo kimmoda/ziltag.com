@@ -19,6 +19,7 @@ class Photo < ActiveRecord::Base
 
   # associations
   belongs_to :user
+  has_many :stickers, dependent: :destroy
   has_many :ziltaggings, dependent: :destroy
   has_many :posts, through: :ziltaggings
   has_many :comments, dependent: :destroy
