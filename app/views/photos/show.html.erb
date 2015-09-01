@@ -23,9 +23,27 @@
         <div class="user-info__username"><%= @sticker.user.username %></div>
       </div>
       <div class="user-info__icons">
-        <i class="material-icons">favorite</i>
-        <i class="material-icons">share</i>
-        <i class="material-icons">menu</i>
+        <button class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">favorite</i>
+        </button>
+        <button id="share-menu" class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">share</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="share-menu">
+          <li class="mdl-menu__item">Some Action</li>
+          <li class="mdl-menu__item">Another Action</li>
+          <li disabled class="mdl-menu__item">Disabled Action</li>
+          <li class="mdl-menu__item">Yet Another Action</li>
+        </ul>
+        <button id="whatever-menu" class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="whatever-menu">
+          <li class="mdl-menu__item">Some Action</li>
+          <li class="mdl-menu__item">Another Action</li>
+          <li disabled class="mdl-menu__item">Disabled Action</li>
+          <li class="mdl-menu__item">Yet Another Action</li>
+        </ul>
       </div>
     </div>
     <hr>
