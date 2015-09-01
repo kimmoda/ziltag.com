@@ -4,6 +4,4 @@
 //= require eventEmitter/EventEmitter
 //= require eventie/eventie
 //= require imagesloaded/imagesloaded
-//= require define_component
-//= require blocks/sticker_container
-//= require blocks/dialog
+//= require blocks/sticker_holder

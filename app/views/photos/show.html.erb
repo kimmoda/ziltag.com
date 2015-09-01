@@ -6,9 +6,9 @@
       </button>
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
       <% @photo.stickers.each do |sticker| %>
-        <div class="sticker-container__holder sticker-container__holder--hide" data-x="<%= sticker.x %>" data-y="<%= sticker.y %>">
-          <%= link_to photo_path(@photo, sticker_id: sticker.id) do %>
-          <div class="sticker-container__circle"></div>
+        <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide" data-x="<%= sticker.x %>" data-y="<%= sticker.y %>">
+          <%= link_to photo_path(source: @photo.image_url, sticker_id: sticker.id) do %>
+          <div class="sticker-container__circle<%= ' active' if sticker == @sticker %>"></div>
           <% end %>
         </div>
       <% end %>

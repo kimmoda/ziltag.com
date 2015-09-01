@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   def show
-    @photo = Photo.find params[:id]
-    @sticker = Sticker.find_by id: params[:sticker_id]
+    @photo = Photo.find_by(source: params[:source])
+    @photo ||= Photo.create remote_image_url: params[:source]
+    @sticker = @photo.stickers.find_by id: params[:sticker_id]
   end
 
   def create

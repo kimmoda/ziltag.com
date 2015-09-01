@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       get :privacy_policy, :term_of_service, :home, :landing
     end
     devise_for :users, controllers: {registrations: :registrations}
-    resources :photos, only: %i[show create]
+    resource :photo, only: %i[show create]
     resources :subscribers, only: :create
   end
 

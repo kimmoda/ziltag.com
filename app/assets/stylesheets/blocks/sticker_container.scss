@@ -41,7 +41,7 @@
     -moz-transition: all 0.1s;
     -ms-transition: all 0.1s;
     transition: all 0.1s;
-    &:hover{
+    &:hover,&.active{
       border-color: red;
       cursor: pointer;
     }
