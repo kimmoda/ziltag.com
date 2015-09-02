@@ -4,7 +4,7 @@ class StickersController < ApplicationController
   def create
     @sticker = current_user.stickers.new(sticker_params)
     if @sticker.save
-      redirect_to photo_path(source: @sticker.photo.image_url, sticker_id: @sticker.id)
+      redirect_to photo_path(source: @sticker.photo.source, sticker_id: @sticker.id)
     else
       redirect_to request.referer
     end
