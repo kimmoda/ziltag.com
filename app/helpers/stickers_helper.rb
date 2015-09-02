@@ -8,4 +8,8 @@ module StickersHelper
       end
     end
   end
+
+  def sticker_content sticker
+    sanitize sticker.content.gsub URI.regexp(['http', 'https']), '<a href="\0" target="_blank">\1://\4/...</a>'
+  end
 end
