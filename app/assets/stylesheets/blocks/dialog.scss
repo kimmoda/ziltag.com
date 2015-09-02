@@ -23,4 +23,14 @@
     border-radius: 5px;
     padding: 10px;
   }
+
+  &__textarea{
+    resize: none;
+  }
+
+  &__dismiss{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
 }

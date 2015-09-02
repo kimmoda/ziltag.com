@@ -46,6 +46,9 @@ class StickerContainer
             <input type="hidden" name="authenticity_token" value="#{document.querySelector('meta[name=csrf-token]').content}">
             <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
           </form>
+          <button class="dialog__dismiss mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">clear</i>
+          </button>
         </div>
         <div class="dialog__arrow"></div>
       </div>
