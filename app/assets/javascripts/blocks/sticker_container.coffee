@@ -6,7 +6,7 @@ class StickerContainer
 
   _on_click: (e) =>
     [data_x, data_y] = @_coord(e)
-    if @new_holder then @_move_holder data_x, data_y
+    if @new_holder then @new_holder['StickerHolder'].move(data_x, data_y)
     else @_put_holder data_x, data_y
 
   _coord: (e) ->
@@ -26,9 +26,6 @@ class StickerContainer
     for i in @element.getElementsByClassName @CssClasses.NEW_HOLDER
       i.parentNode.removeChild i
 
-  _move_holder: (x, y)->
-    new StickerHolder(@new_holder).move(x, y)
-
   _put_holder: (x, y) ->
     @element.insertAdjacentHTML 'beforeend', """
     <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide new-holder" data-x="#{x}" data-y="#{y}">
@@ -46,7 +43,7 @@ class StickerContainer
             <input type="hidden" name="authenticity_token" value="#{document.querySelector('meta[name=csrf-token]').content}">
             <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
           </form>
-          <button class="dialog__dismiss mdl-button mdl-js-button mdl-button--icon">
+          <button class="js-sticker-container__dismiss dialog__dismiss mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">clear</i>
           </button>
         </div>
