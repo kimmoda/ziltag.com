@@ -6,11 +6,14 @@
       </button>
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image', data: {id: @photo.id} %>
       <% @photo.stickers.each do |sticker| %>
-        <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide" data-x="<%= sticker.x %>" data-y="<%= sticker.y %>">
+        <%= content_tag :div,
+          class: 'sticker-container__holder js-sticker-holder sticker-container__holder--hide',
+          data: {x: sticker.x, y: sticker.y} do
+        %>
           <%= link_to photo_path(source: @photo.source, sticker_id: sticker.id) do %>
-          <div class="sticker-container__circle<%= ' active' if sticker == @sticker %>"></div>
+          <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if sticker == @sticker}" %>
           <% end %>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -26,24 +29,12 @@
         <button class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">favorite</i>
         </button>
-        <button id="share-menu" class="mdl-button mdl-js-button mdl-button--icon">
+        <button class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">share</i>
         </button>
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="share-menu">
-          <li class="mdl-menu__item">Some Action</li>
-          <li class="mdl-menu__item">Another Action</li>
-          <li disabled class="mdl-menu__item">Disabled Action</li>
-          <li class="mdl-menu__item">Yet Another Action</li>
-        </ul>
-        <button id="whatever-menu" class="mdl-button mdl-js-button mdl-button--icon">
+        <button class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">more_vert</i>
         </button>
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="whatever-menu">
-          <li class="mdl-menu__item">Some Action</li>
-          <li class="mdl-menu__item">Another Action</li>
-          <li disabled class="mdl-menu__item">Disabled Action</li>
-          <li class="mdl-menu__item">Yet Another Action</li>
-        </ul>
       </div>
     </div>
     <hr>
