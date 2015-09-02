@@ -4,7 +4,7 @@
       <button class="sticker-container__add-button mdl-js-button">
         <i class="material-icons">add</i>
       </button>
-      <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
+      <%= image_tag @photo.image, class: 'layout-photo sticker-container__image', data: {id: @photo.id} %>
       <% @photo.stickers.each do |sticker| %>
         <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide" data-x="<%= sticker.x %>" data-y="<%= sticker.y %>">
           <%= link_to photo_path(source: @photo.image_url, sticker_id: sticker.id) do %>

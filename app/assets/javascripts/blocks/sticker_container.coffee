@@ -27,7 +27,6 @@ class StickerContainer
       i.parentNode.removeChild i
 
   _move_holder: (x, y)->
-    @new_holder.querySelector('textarea').focus()
     new StickerHolder(@new_holder).move(x, y)
 
   _put_holder: (x, y) ->
@@ -43,9 +42,9 @@ class StickerContainer
             </div>
             <input type="hidden" name="sticker[x]" value="#{x}">
             <input type="hidden" name="sticker[y]" value="#{y}">
-            <input type="hidden" name="sticker[photo_id]" value="1">
+            <input type="hidden" name="sticker[photo_id]" value="#{@image.dataset.id}">
             <input type="hidden" name="authenticity_token" value="#{document.querySelector('meta[name=csrf-token]').content}">
-            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent">
+            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
           </form>
         </div>
         <div class="dialog__arrow"></div>
@@ -54,6 +53,9 @@ class StickerContainer
     """
     @new_holder = @element.lastChild
     componentHandler.upgradeElements @new_holder
+    @new_holder.addEventListener 'transitionend', (e) =>
+      if e.target == @new_holder && e.propertyName == 'left'
+        @new_holder.querySelector('textarea').focus()
 
     form = @new_holder.getElementsByTagName('form')[0]
     form.addEventListener 'submit', =>
