@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     end
     devise_for :users, controllers: {registrations: :registrations}
     resource :photo, only: :show
-    resources :photos, :stickers, only: :create
+    resources :photos, only: :create
+    resources :stickers, only: %i[create update destroy]
     resources :subscribers, only: :create
   end
 

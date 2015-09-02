@@ -44,6 +44,11 @@
         <h4><%= sticker_content @sticker %></h4>
         <p><%= time_ago_in_words @sticker.created_at %></p>
       </div>
+      <div class="mdl-card__menu">
+        <%= link_to @sticker, method: :delete, data: {confirm: 'You are going to delete this message, are you sure?'}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect' do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      </div>
     </div>
     <% else %>
       <h1>Copy this link</h1>

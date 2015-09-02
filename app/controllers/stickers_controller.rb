@@ -10,6 +10,12 @@ class StickersController < ApplicationController
     end
   end
 
+  def destroy
+    @sticker = current_user.stickers.find params[:id]
+    @sticker.destroy
+    redirect_to photo_path(source: @sticker.photo.source)
+  end
+
 private
 
   def sticker_params
