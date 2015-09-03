@@ -8,11 +8,9 @@ class StickerContainer
   init: ->
     @image.addEventListener 'click', @_on_click
 
-    @new_holder.addEventListener 'transitionend', (e) =>
-      if e.target == @new_holder && e.propertyName == 'left'
-        @new_holder.querySelector('textarea').focus()
-
   _on_click: (e) =>
+    e.stopPropagation()
+    e.stopImmediatePropagation()
     [data_x, data_y] = @_coord(e)
     if @element.classList.contains 'sticker-container--edit-mode'
       if @current_holder
@@ -41,6 +39,13 @@ class StickerContainer
   update_field_value: (form, x, y) ->
     form.querySelector('input[name="sticker[x]"]').value = x
     form.querySelector('input[name="sticker[y]"]').value = y
+
+  restore_current_holder: =>
+    data_x = @current_holder.dataset.originX
+    data_y = @current_holder.dataset.originY
+    @current_holder['StickerHolder'].move(data_x, data_y)
+    form = document.querySelector '.js-edit-form'
+    @update_field_value form, data_x, data_y
 
 componentHandler.register
   constructor: StickerContainer

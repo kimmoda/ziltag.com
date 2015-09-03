@@ -7,3 +7,4 @@ document.addEventListener 'DOMContentLoaded', ->
     @sticker_container.classList.add 'sticker-container--edit-mode'
   @normal_mode_button?.addEventListener 'click', =>
     @sticker_container.classList.remove 'sticker-container--edit-mode'
+    @sticker_container['StickerContainer'].restore_current_holder()
