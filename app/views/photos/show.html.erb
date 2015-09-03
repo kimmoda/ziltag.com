@@ -91,6 +91,22 @@
       </div>
       <% end %>
     </div>
+    <% if user_signed_in? %>
+    <div class="comment-info mdl-shadow--2dp">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col"><%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %></div>
+        <div class="mdl-cell mdl-cell--10-col">
+          <%= form_for Comment.new(sticker: @sticker), html: {class: 'edit-area js-edit-area'} do |f| %>
+            <div class="edit-area__field mdl-textfield mdl-js-textfield">
+              <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true %>
+              <label class="mdl-textfield__label" for="sticker_content">Leave your comment...</label>
+            </div>
+            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Comment">
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <% @sticker.comments.each do |comment| %>
     <div class="comment-info mdl-shadow--2dp">
       <div class="mdl-grid">

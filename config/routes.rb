@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resource :photo, only: :show
     get ':photo_id' => 'photos#permalink', as: :permalink
     resources :photos, only: :create
-    resources :stickers, only: %i[create update destroy]
+    resources :stickers, :comments, only: %i[create update destroy]
     resources :subscribers, only: :create
   end
 
