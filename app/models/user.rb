@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     ret
   end
 
+  def own? record
+    record.respond_to?(:user) && record.user == self
+  end
+
   def follow? leader
     leaders.index(leader) != nil
   end

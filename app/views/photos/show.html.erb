@@ -19,7 +19,7 @@
         <div class="sticker-container__circle"></div>
         <div class="sticker-container__dialog dialog">
           <div class="dialog__frame">
-            <%= form_for Sticker.new(photo: @photo), class: 'edit-area js-edit-area' do |f| %>
+            <%= form_for Sticker.new(photo: @photo), html: {class: 'edit-area js-edit-area'} do |f| %>
               <div class="edit-area__field mdl-textfield mdl-js-textfield">
                 <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
                 <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
@@ -64,12 +64,29 @@
       <div class="mdl-card__supporting-text">
         <h4><%= sticker_content @sticker %></h4>
         <p><%= time_ago_in_words @sticker.created_at %></p>
+        <% if current_user.own? @sticker %>
+        <%= form_for @sticker, html: {class: 'edit-area js-edit-area'} do |f| %>
+          <div class="edit-area__field mdl-textfield mdl-js-textfield">
+            <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
+            <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
+          </div>
+          <%= f.hidden_field :x %>
+          <%= f.hidden_field :y %>
+          <%= f.hidden_field :photo_id %>
+          <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
+        <% end %>
+        <% end %>
       </div>
+      <% if current_user.own? @sticker %>
       <div class="mdl-card__menu">
-        <%= link_to @sticker, method: :delete, data: {confirm: 'You are going to delete this message, are you sure?'}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect' do %>
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" title="Edit">
+          <i class="material-icons">create</i>
+        </button>
+        <%= link_to @sticker, method: :delete, data: {confirm: 'You are going to delete this message, are you sure?'}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
           <i class="material-icons">delete</i>
         <% end %>
       </div>
+      <% end %>
     </div>
     <% else %>
       <h1>Copy this link</h1>
