@@ -12,12 +12,6 @@ module ApplicationHelper
     end
   end
 
-  def feature_ziltag
-    if photo = Photo.find_by(id: (Rails.env.production? ? Settings[:feature_photo_id] : params[:feature_photo_id]))
-      ziltag_wrapper photo, photo.ziltaggings
-    end
-  end
-
   def link_to_with_active_class name = nil, options = nil, html_options = nil, &block
     html_options ||= {}
     html_options.merge! class: 'active' if current_page?(options)
