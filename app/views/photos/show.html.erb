@@ -60,26 +60,31 @@
     </div>
     <hr>
     <%= sticker_preview @sticker %>
-    <div class="layout-card mdl-card mdl-shadow--2dp">
+    <div class="sticker-info js-sticker-info mdl-card mdl-shadow--2dp">
       <div class="mdl-card__supporting-text">
-        <h4><%= sticker_content @sticker %></h4>
-        <p><%= time_ago_in_words @sticker.created_at %></p>
+        <div class="sticker-info__status">
+          <h4><%= sticker_content @sticker %></h4>
+          <p><%= time_ago_in_words @sticker.created_at %></p>
+        </div>
         <% if current_user.own? @sticker %>
-        <%= form_for @sticker, html: {class: 'edit-area js-edit-area'} do |f| %>
-          <div class="edit-area__field mdl-textfield mdl-js-textfield">
-            <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
-            <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
-          </div>
-          <%= f.hidden_field :x %>
-          <%= f.hidden_field :y %>
-          <%= f.hidden_field :photo_id %>
-          <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
-        <% end %>
+        <div class="sticker-info__editor hide">
+          <%= form_for @sticker, html: {class: 'edit-area js-edit-area'} do |f| %>
+            <div class="edit-area__field mdl-textfield mdl-js-textfield">
+              <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
+              <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
+            </div>
+            <%= f.hidden_field :x %>
+            <%= f.hidden_field :y %>
+            <%= f.hidden_field :photo_id %>
+            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
+            <button class="mdl-button mdl-js-button sticker-info__dismiss-button" type="button">Cancel</button>
+          <% end %>
+        </div>
         <% end %>
       </div>
       <% if current_user.own? @sticker %>
       <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" title="Edit">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect sticker-info__editor-button" title="Edit">
           <i class="material-icons">create</i>
         </button>
         <%= link_to @sticker, method: :delete, data: {confirm: 'You are going to delete this message, are you sure?'}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
