@@ -40,22 +40,22 @@
   </div>
   <div class="mdl-cell mdl-cell--6-col">
     <% if @sticker %>
-    <div class="user-info">
-      <%= image_tag @sticker.user.avatar.thumb.url, class: 'user-info__avatar', alt: @sticker.user.username %>
-      <div class="user-info__text-section">
-        <div class="user-info__text">Tag created by</div>
-        <div class="user-info__username"><%= @sticker.user.username %></div>
-      </div>
-      <div class="user-info__icons">
-        <button class="mdl-button mdl-js-button mdl-button--icon">
-          <i class="material-icons">favorite</i>
-        </button>
-        <button class="mdl-button mdl-js-button mdl-button--icon">
-          <i class="material-icons">share</i>
-        </button>
-        <button class="mdl-button mdl-js-button mdl-button--icon">
-          <i class="material-icons">more_vert</i>
-        </button>
+    <div class="user-info js-user-info">
+      <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--1-col">
+          <%= image_tag @sticker.user.avatar.thumb.url, class: 'user-info__avatar', alt: @sticker.user.username %>
+        </div>
+        <div class="mdl-cell mdl-cell--10-col">
+          <div class="user-info__text-section">
+            <div>Tag created by</div>
+            <div class="user-info__username"><%= @sticker.user.username %></div>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--1-col">
+          <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= permalink_url(@photo.id, sticker_id: @sticker.id) %>">
+            <i class="material-icons">share</i>
+          </button>
+        </div>
       </div>
     </div>
     <hr>
@@ -109,7 +109,7 @@
     </div>
     <% end %>
     <% @sticker.comments.each do |comment| %>
-    <div class="comment-info mdl-shadow--2dp">
+    <div class="comment-info">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
           <%= image_tag comment.user.avatar.thumb.url, class: 'comment-info__avatar', title: comment.user.username %>
