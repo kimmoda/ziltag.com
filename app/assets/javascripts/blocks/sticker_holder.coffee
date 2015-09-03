@@ -1,7 +1,7 @@
 class @StickerHolder
   constructor: (@element) ->
     @image = @element.parentNode.querySelector '.sticker-container__image'
-    @dismiss = @element.querySelector '.js-sticker-container__dismiss'
+    @dismiss = @element.querySelector '.js-holder-dismiss'
     @init()
 
   init: ->
@@ -14,15 +14,22 @@ class @StickerHolder
     ratio_y = @image.clientHeight / @image.naturalHeight
     @element.style.left = @element.dataset.x * ratio_x + 'px'
     @element.style.top = @element.dataset.y * ratio_y + 'px'
-    @element.classList.remove 'sticker-container__holder--hide'
+    @show() unless @element.classList.contains 'new-holder'
+    @
 
   move: (x, y) ->
     @element.dataset.x = x
     @element.dataset.y = y
     @update_coord()
+    @
+
+  show: =>
+    @element.classList.remove 'sticker-container__holder--hide'
+    @
 
   hide: =>
     @element.classList.add 'sticker-container__holder--hide'
+    @
 
 componentHandler.register
   constructor: StickerHolder

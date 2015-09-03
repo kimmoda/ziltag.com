@@ -4,7 +4,7 @@
       <button class="sticker-container__add-button mdl-js-button">
         <i class="material-icons">add</i>
       </button>
-      <%= image_tag @photo.image, class: 'layout-photo sticker-container__image', data: {id: @photo.id} %>
+      <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
       <% @photo.stickers.each do |sticker| %>
         <%= content_tag :div,
           class: 'sticker-container__holder js-sticker-holder sticker-container__holder--hide',
@@ -15,6 +15,27 @@
           <% end %>
         <% end %>
       <% end %>
+      <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide new-holder" data-x="0" data-y="0">
+        <div class="sticker-container__circle"></div>
+        <div class="sticker-container__dialog dialog">
+          <div class="dialog__frame">
+            <%= form_for Sticker.new(photo: @photo), class: 'edit-area js-edit-area' do |f| %>
+              <div class="edit-area__field mdl-textfield mdl-js-textfield">
+                <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
+                <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
+              </div>
+              <%= f.hidden_field :x %>
+              <%= f.hidden_field :y %>
+              <%= f.hidden_field :photo_id %>
+              <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
+            <% end %>
+            <button class="dialog__dismiss js-holder-dismiss mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">clear</i>
+            </button>
+          </div>
+          <div class="dialog__arrow"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="mdl-cell mdl-cell--6-col">
