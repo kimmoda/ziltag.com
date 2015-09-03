@@ -30,7 +30,7 @@ private
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :photo_id)
+    params.require(:comment).permit(:content, :sticker_id)
   end
 
 end

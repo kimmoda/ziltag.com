@@ -101,6 +101,7 @@
               <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true %>
               <label class="mdl-textfield__label" for="sticker_content">Leave your comment...</label>
             </div>
+            <%= f.hidden_field :sticker_id %>
             <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Comment">
           <% end %>
         </div>
