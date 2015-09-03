@@ -30,11 +30,11 @@ class StickerContainer
     @element.insertAdjacentHTML 'beforeend', """
     <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide new-holder" data-x="#{x}" data-y="#{y}">
       <div class="sticker-container__circle"></div>
-      <div class="sticker-container__dialog dialog js-dialog">
+      <div class="sticker-container__dialog dialog">
         <div class="dialog__frame">
-          <form action="/stickers" method="post">
-            <div class="mdl-textfield mdl-js-textfield">
-              <textarea name="sticker[content]" class="dialog__textarea mdl-textfield__input" type="text" id="content" autofocus required></textarea>
+          <form action="/stickers" method="post" class="edit-area js-edit-area">
+            <div class="edit-area__field mdl-textfield mdl-js-textfield">
+              <textarea name="sticker[content]" class="edit-area__textarea mdl-textfield__input" type="text" id="content" autofocus required></textarea>
               <label class="mdl-textfield__label" for="content">What's in your mind?</label>
             </div>
             <input type="hidden" name="sticker[x]" value="#{x}">
