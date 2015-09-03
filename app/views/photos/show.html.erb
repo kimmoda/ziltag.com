@@ -70,7 +70,7 @@
         <div class="sticker-info__editor hide">
           <%= form_for @sticker, html: {class: 'edit-area js-edit-area js-edit-form'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
-              <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
+              <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input js-edit-textarea', required: true, autofocus: true %>
               <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
             </div>
             <%= f.hidden_field :x %>

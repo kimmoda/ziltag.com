@@ -20,7 +20,7 @@
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="profile-menu">
           <li class="mdl-menu__item">Account</li>
-          <li class="mdl-menu__item">Logout</li>
+          <li class="mdl-menu__item"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         </ul>
         <% else %>
         <nav class="mdl-navigation mdl-layout--large-screen-only">

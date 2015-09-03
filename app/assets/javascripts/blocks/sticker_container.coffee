@@ -17,6 +17,7 @@ class StickerContainer
     if @element.classList.contains 'sticker-container--edit-mode'
       if @current_holder
         @current_holder['StickerHolder'].move(data_x, data_y)
+        document.querySelector('.js-edit-textarea').focus()
         form = document.querySelector '.js-edit-form'
         @update_field_value form, data_x, data_y
     else
