@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
     if @photo.save
       redirect_to photo_path source: @photo.source
     else
-      redirect_to home_path
+      redirect_to root_path
     end
   end
 

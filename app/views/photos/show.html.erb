@@ -66,7 +66,7 @@
           <h4><%= sticker_content @sticker %></h4>
           <p><%= time_ago_in_words @sticker.created_at %></p>
         </div>
-        <% if current_user.own? @sticker %>
+        <% if current_user && current_user.own?(@sticker) %>
         <div class="sticker-info__editor hide">
           <%= form_for @sticker, html: {class: 'edit-area js-edit-area js-edit-form'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
@@ -82,7 +82,7 @@
         </div>
         <% end %>
       </div>
-      <% if current_user.own? @sticker %>
+      <% if current_user && current_user.own?(@sticker) %>
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect sticker-info__editor-button js-edit-mode-button" title="Edit">
           <i class="material-icons">create</i>
