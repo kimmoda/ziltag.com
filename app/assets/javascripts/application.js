@@ -5,3 +5,4 @@
 //= require eventie/eventie
 //= require imagesloaded/imagesloaded
 //= require_directory ./blocks
+//= require photos/show

@@ -7,6 +7,12 @@
 .sticker-container{
   position: relative;
 
+  &--edit-mode{
+    .sticker-container__holder:not(.sticker-container__holder--current){
+      display: none;
+    }
+  }
+
   &__add-button{
     @extend .mdl-button;
     @extend .mdl-button--fab;
@@ -22,6 +28,8 @@
     position: absolute;
     left: 0;
     top: 0;
+    width: 0;
+    height: 0;
     transition: top 0.1s ease-in-out, left 0.1s ease-in-out;
     &--hide{
       display: none;
