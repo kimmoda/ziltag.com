@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901153643) do
+ActiveRecord::Schema.define(version: 20150903210028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,18 +30,12 @@ ActiveRecord::Schema.define(version: 20150901153643) do
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "text",       null: false
-    t.string   "email",      null: false
-    t.integer  "x",          null: false
-    t.integer  "y",          null: false
-    t.integer  "comment_id"
-    t.integer  "photo_id",   null: false
-    t.integer  "user_id"
+    t.string   "content",    null: false
+    t.integer  "user_id",    null: false
+    t.integer  "sticker_id", null: false
   end
 
-  add_index "comments", ["comment_id"], name: "index_comments_on_comment_id", using: :btree
-  add_index "comments", ["email"], name: "index_comments_on_email", using: :btree
-  add_index "comments", ["photo_id"], name: "index_comments_on_photo_id", using: :btree
+  add_index "comments", ["sticker_id"], name: "index_comments_on_sticker_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "followings", force: :cascade do |t|
@@ -174,8 +168,7 @@ ActiveRecord::Schema.define(version: 20150901153643) do
   add_index "ziltaggings", ["ziltaggable_type", "ziltaggable_id"], name: "index_ziltaggings_on_ziltaggable_type_and_ziltaggable_id", using: :btree
 
   add_foreign_key "collectings", "users"
-  add_foreign_key "comments", "comments"
-  add_foreign_key "comments", "photos"
+  add_foreign_key "comments", "stickers"
   add_foreign_key "comments", "users"
   add_foreign_key "followings", "users", column: "follower_id"
   add_foreign_key "followings", "users", column: "leader_id"

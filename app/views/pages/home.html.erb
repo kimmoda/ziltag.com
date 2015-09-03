@@ -1,6 +1,6 @@
 <h1 class="heading">Search can be amased.</h1>
 <%= form_tag photo_path, method: :get do %>
-  <%= url_field_tag :source, nil, id: 'image_url', placeholder: 'Enter Image URL...', autofocus: true %>
+  <%= url_field_tag :source, nil, id: 'image_url', placeholder: 'Enter Image URL...', autofocus: true, autocomplete: 'off' %>
 <% end %>
 
 <%= form_for @photo do |f| %>
