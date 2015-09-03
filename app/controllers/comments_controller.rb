@@ -1,32 +1,26 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show update destroy]
-
-  # params[:photo_id] is required
-  def index
-    @comments = Comment.is_root.includes(:latest_children).where(photo_id: params.require(:photo_id)).page(params[:page]).per(10)
-  end
-
-  def show
-    @comment = Comment.find(params[:id])
-  end
+  before_action :authenticate_user!
+  before_action :set_comment, only: %i[update destroy]
 
   def create
-    if user_signed_in?
-      @comment = current_user.comments.create! comment_params
+    @comment = current_user.comments.new comment_params
+    if @comment.save
+      redirect_to photo_path(source: @comment.sticker.photo.source, sticker_id: @comment.sticker.id)
     else
-      @comment = Comment.create! comment_params
+      redirect_to request.referer
     end
-    render :show
   end
 
   def update
-    @comment.update! comment_params
-    render :show
+    if @comment.update comment_params
+    else
+      redirect_to request.referer
+    end
   end
 
   def destroy
     @comment.destroy
-    head :ok
+    redirect_to request.referer
   end
 
 private
@@ -36,7 +30,7 @@ private
   end
 
   def comment_params
-    params.require(:comment).permit(:text, :email, :x, :y, :comment_id, :photo_id)
+    params.require(:comment).permit(:content, :photo_id)
   end
 
 end
