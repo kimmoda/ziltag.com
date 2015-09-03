@@ -37,7 +37,7 @@ namespace 'dev:fake' do
         @stickers.each do |sticker|
           sticker.comments.create!({
             user: @users.sample,
-            content: Faker::Lorem.paragraph
+            content: Faker::Lorem.sentence
           })
         end
       end

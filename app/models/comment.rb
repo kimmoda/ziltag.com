@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   # scopes
+  default_scope ->{ order('id desc') }
 
   # constants
 

@@ -1,5 +1,6 @@
 class StickerInfo
   constructor: (@element) ->
+    window.foo = @element
     @editor_button = @element.querySelector '.sticker-info__editor-button'
     @dismiss_button = @element.querySelector '.sticker-info__dismiss-button'
     @editor_pane = @element.querySelector '.sticker-info__editor'
@@ -8,8 +9,8 @@ class StickerInfo
     @init()
 
   init: ->
-    @editor_button.addEventListener 'click', @_on_editor_click
-    @dismiss_button.addEventListener 'click', @_on_dismiss_click
+    @editor_button?.addEventListener 'click', @_on_editor_click
+    @dismiss_button?.addEventListener 'click', @_on_dismiss_click
 
   _on_editor_click: =>
     @editor_pane.classList.remove 'hide'

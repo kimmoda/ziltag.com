@@ -62,10 +62,8 @@
     <%= sticker_preview @sticker %>
     <div class="sticker-info js-sticker-info mdl-card mdl-shadow--2dp">
       <div class="mdl-card__supporting-text">
-        <div class="sticker-info__status">
-          <h4><%= sticker_content @sticker %></h4>
-          <p><%= time_ago_in_words @sticker.created_at %></p>
-        </div>
+        <p class="sticker-info__status"><%= sticker_content @sticker %></p>
+        <p><%= time_ago_in_words @sticker.created_at %></p>
         <% if current_user && current_user.own?(@sticker) %>
         <div class="sticker-info__editor hide">
           <%= form_for @sticker, html: {class: 'edit-area js-edit-area js-edit-form'} do |f| %>
@@ -93,6 +91,19 @@
       </div>
       <% end %>
     </div>
+    <% @sticker.comments.each do |comment| %>
+    <div class="comment-info mdl-shadow--2dp">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col">
+          <%= image_tag comment.user.avatar.thumb.url, class: 'comment-info__avatar', title: comment.user.username %>
+        </div>
+        <div class="mdl-cell mdl-cell--11-col">
+          <%= comment.content %>
+          <div class="comment-info__time"><%= time_ago_in_words comment.created_at %> by <%= comment.user.username %></div>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <% else %>
       <p>To write message, click the image.</p>
       Short link of this page: <%= permalink_url(@photo.id) %>
