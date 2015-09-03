@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
   belongs_to :sticker
 
   # validations
-  validates :photo, :content, presence: true
+  validates :sticker, :user, :content, presence: true
 
   # callbacks
 

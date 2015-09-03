@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
   # associations
   has_many :stickers, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :ziltaggings, through: :posts
   has_many :photos, dependent: :destroy

@@ -8,6 +8,7 @@ class Sticker < ActiveRecord::Base
   # associations
   belongs_to :photo
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   # validations
 
