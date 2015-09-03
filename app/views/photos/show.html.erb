@@ -40,22 +40,18 @@
   </div>
   <div class="mdl-cell mdl-cell--6-col">
     <% if @sticker %>
-    <div class="user-info js-user-info">
-      <div class="mdl-grid mdl-grid--no-spacing">
-        <div class="mdl-cell mdl-cell--1-col">
-          <%= image_tag @sticker.user.avatar.thumb.url, class: 'user-info__avatar', alt: @sticker.user.username %>
+    <div class="user-info js-user-info mdl-card">
+      <div class="mdl-card__supporting-text">
+        <%= image_tag @sticker.user.avatar.thumb.url, class: 'user-info__avatar', alt: @sticker.user.username %>
+        <div class="user-info__text-section">
+          <div>Tag created by</div>
+          <div class="user-info__username"><%= @sticker.user.username %></div>
         </div>
-        <div class="mdl-cell mdl-cell--10-col">
-          <div class="user-info__text-section">
-            <div>Tag created by</div>
-            <div class="user-info__username"><%= @sticker.user.username %></div>
-          </div>
-        </div>
-        <div class="mdl-cell mdl-cell--1-col">
-          <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= permalink_url(@photo.id, sticker_id: @sticker.id) %>">
-            <i class="material-icons">share</i>
-          </button>
-        </div>
+      </div>
+      <div class="mdl-card__menu">
+        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= permalink_url(@photo.id, sticker_id: @sticker.id) %>">
+          <i class="material-icons">share</i>
+        </button>
       </div>
     </div>
     <hr>
@@ -94,7 +90,9 @@
     <% if user_signed_in? %>
     <div class="comment-info mdl-shadow--2dp">
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--1-col"><%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %></div>
+        <div class="mdl-cell mdl-cell--1-col">
+          <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
+        </div>
         <div class="mdl-cell mdl-cell--10-col">
           <%= form_for Comment.new(sticker: @sticker), html: {class: 'edit-area js-edit-area'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
@@ -114,9 +112,16 @@
         <div class="mdl-cell mdl-cell--1-col">
           <%= image_tag comment.user.avatar.thumb.url, class: 'comment-info__avatar', title: comment.user.username %>
         </div>
-        <div class="mdl-cell mdl-cell--11-col">
+        <div class="mdl-cell mdl-cell--10-col">
           <%= comment.content %>
           <div class="comment-info__time"><%= time_ago_in_words comment.created_at %> by <%= comment.user.username %></div>
+        </div>
+        <div class="mdl-cell mdl-cell--1-col">
+          <% if current_user && current_user.own?(comment) %>
+          <button id="share-menu" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">create</i>
+          </button>
+          <% end %>
         </div>
       </div>
     </div>

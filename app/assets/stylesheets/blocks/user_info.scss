@@ -1,10 +1,12 @@
 .user-info{
   width: 100%;
+  min-height: 0;
   &__avatar{
-    width: 100%;
+    width: 64px;
     border-radius: 50%;
   }
   &__text-section{
+    display: inline-block;
     margin-left: 20px;
   }
   &__username{
