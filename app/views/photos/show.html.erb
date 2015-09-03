@@ -94,8 +94,8 @@
       <% end %>
     </div>
     <% else %>
-      <h1>Copy this link</h1>
-      <pre><code><%= @photo.image_url %></code></pre>
+      <p>To write message, click the image.</p>
+      Short link of this page: <%= permalink_url(@photo.id) %>
     <% end %>
   </div>
 </div>

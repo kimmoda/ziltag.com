@@ -5,11 +5,12 @@
     margin-top: 100px;
   }
 
-  form#new_photo{
+  form{
     text-align: center;
   }
 
-  input#photo_remote_image_url{
+  input#image_url{
+    text-align: center;
     width: 40%;
     border-radius: 5px;
     border-width: 0;

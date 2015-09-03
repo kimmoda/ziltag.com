@@ -1,10 +1,12 @@
 <h1 class="heading">Search can be amased.</h1>
+<%= form_tag photo_path, method: :get do %>
+  <%= url_field_tag :source, nil, id: 'image_url', placeholder: 'Enter an Image URL to begin...', autofocus: true %>
+<% end %>
+
 <%= form_for @photo do |f| %>
-  <%= f.url_field :remote_image_url, placeholder: 'Search by Image URL...', autofocus: true %>
   <div class="or-upload">
     <span class="or-upload__or">Or</span>
-    <button class="or-upload__upload mdl-button mdl-js-buutton">Upload</button>
+    <button class="or-upload__upload mdl-button mdl-js-buutton" type="button">Upload One</button>
   </div>
   <%= f.file_field :image %>
-  <%#= f.submit %>
 <% end %>
