@@ -1,12 +1,12 @@
-<h1 class="heading">Search can be amased.</h1>
+<h1 class="heading"><%= t(:'.heading') %></h1>
 <%= form_tag photo_path, method: :get do %>
-  <%= url_field_tag :source, nil, id: 'image_url', placeholder: 'Enter Image URL...', autofocus: true, autocomplete: 'off' %>
+  <%= url_field_tag :source, nil, id: 'image_url', placeholder: t(:'.enter_url'), autofocus: true, autocomplete: 'off' %>
 <% end %>
 
 <%= form_for @photo do |f| %>
   <div class="or-upload">
-    <span class="or-upload__or">Or</span>
-    <button class="or-upload__upload mdl-button mdl-js-buutton" type="button">Upload One</button>
+    <span class="or-upload__or"><%= t(:'.or') %></span>
+    <button class="or-upload__upload mdl-button mdl-js-buutton" type="button"><%= t(:'.upload_one') %></button>
   </div>
   <%= f.file_field :image %>
 <% end %>

@@ -22,12 +22,12 @@
             <%= form_for Sticker.new(photo: @photo), html: {class: 'edit-area js-edit-area'} do |f| %>
               <div class="edit-area__field mdl-textfield mdl-js-textfield">
                 <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
-                <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
+                <label class="mdl-textfield__label" for="sticker_content"><%= t(:'.whats_in_your_mind') %></label>
               </div>
               <%= f.hidden_field :x %>
               <%= f.hidden_field :y %>
               <%= f.hidden_field :photo_id %>
-              <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
+              <%= f.submit t(:'.save_message'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
             <% end %>
             <button class="dialog__dismiss js-holder-dismiss mdl-button mdl-js-button mdl-button--icon">
               <i class="material-icons">clear</i>
@@ -44,7 +44,7 @@
       <div class="mdl-card__supporting-text">
         <%= image_tag @sticker.user.avatar.thumb.url, class: 'user-info__avatar', alt: @sticker.user.username %>
         <div class="user-info__text-section">
-          <div>Tag created by</div>
+          <div><%= t(:'.tag_created_by') %></div>
           <div class="user-info__username"><%= @sticker.user.username %></div>
         </div>
       </div>
@@ -97,10 +97,10 @@
           <%= form_for Comment.new(sticker: @sticker), html: {class: 'edit-area js-edit-area'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
               <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true %>
-              <label class="mdl-textfield__label" for="sticker_content">Leave your comment...</label>
+              <label class="mdl-textfield__label" for="sticker_content"><%= t(:'.leave_your_comment') %></label>
             </div>
             <%= f.hidden_field :sticker_id %>
-            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Comment">
+            <%= f.submit t(:'.comment'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
           <% end %>
         </div>
       </div>

@@ -20,13 +20,13 @@
           <%= image_tag current_user.avatar.thumb.url %>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="profile-menu">
-          <li class="mdl-menu__item">Account</li>
-          <li class="mdl-menu__item"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <li class="mdl-menu__item"><%= t(:account) %></li>
+          <li class="mdl-menu__item"><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
         </ul>
         <% else %>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <%= link_to 'Login', new_user_session_path, class: 'mdl-navigation__link' %>
-          <%= link_to 'Sign up', new_user_registration_path, class: 'mdl-navigation__link' %>
+          <%= link_to t(:login), new_user_session_path, class: 'mdl-navigation__link' %>
+          <%= link_to t(:sign_up), new_user_registration_path, class: 'mdl-navigation__link' %>
         </nav>
         <% end %>
       </div>
