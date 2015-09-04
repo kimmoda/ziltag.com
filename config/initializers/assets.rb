@@ -13,8 +13,6 @@ Rails.application.config.assets.paths.concat [
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w[
   admin.css admin.js
-  embedded.css embedded.js
-  embedded/ziltagging.css embedded/ziltagging.js
   landing.css landing.js
 ]
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf|gif)\z/

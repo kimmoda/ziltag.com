@@ -38,16 +38,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 namespace :deploy do
   after :publishing, :restart
 
-  after 'assets:precompile', 'assets:embedded' do
-    on release_roles(fetch(:assets_roles)) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, 'assets:embedded'
-        end
-      end
-    end
-  end
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
