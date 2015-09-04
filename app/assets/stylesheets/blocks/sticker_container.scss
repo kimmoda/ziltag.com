@@ -11,6 +11,13 @@
     .sticker-container__holder:not(.sticker-container__holder--current){
       display: none;
     }
+    .sticker-container__image{
+      filter: brightness(50%);
+    }
+  }
+
+  &__image{
+    transition: -webkit-filter .1s linear, filter .1s linear;
   }
 
   &__add-button{
