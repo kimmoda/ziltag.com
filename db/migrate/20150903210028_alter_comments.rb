@@ -1,6 +1,9 @@
 class AlterComments < ActiveRecord::Migration
   def change
     reversible do |dir|
+      dir.up do
+        Comment.destroy_all
+      end
       dir.down do
         add_index :comments, :email
         add_foreign_key :comments, :comments
