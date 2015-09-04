@@ -1,16 +1,5 @@
 class Photo < ActiveRecord::Base
   # scopes
-  scope :search_by_urls, ->(urls){ includes(:ziltaggings).where(source: urls) }
-  scope :has_ziltaggings, ->{ joins(:ziltaggings).group('photos.id', 'ziltaggings.photo_id').having('count(ziltaggings.id) > 0') }
-
-  def self.find_or_create_by_url! params
-    if remote_image_url = params[:remote_image_url].presence
-      uri = URI(remote_image_url)
-      uri.normalize!
-      photo = find_by source: uri.to_s
-    end
-    photo ||= create! params
-  end
 
   # constants
 
@@ -20,14 +9,12 @@ class Photo < ActiveRecord::Base
   # associations
   belongs_to :user
   has_many :stickers, dependent: :destroy
-  has_many :ziltaggings, dependent: :destroy
-  has_many :posts, through: :ziltaggings
-  has_many :comments, dependent: :destroy
 
   # validations
   validates :image, presence: true
 
   # callbacks
+  after_initialize :generate_slug, if: -> { slug.blank? }
   after_save :set_source, if: ->{ source.blank? }
 
   # other
@@ -39,6 +26,13 @@ class Photo < ActiveRecord::Base
 
   def to_s
     image
+  end
+
+  def generate_slug
+    loop do
+      self.slug = SecureRandom.hex(3)
+      break unless Photo.exists? slug: slug
+    end
   end
 
 end

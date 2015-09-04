@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
   end
 
   def permalink
-    if @photo = Photo.find_by(id: params[:photo_id])
+    if @photo = Photo.find_by(slug: params[:slug])
       redirect_to photo_path source: @photo.source, sticker_id: params[:sticker_id]
     else
       redirect_to root_path, alert: 'Photo not found.'

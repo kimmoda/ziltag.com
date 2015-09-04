@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     devise_for :users, controllers: {registrations: :registrations}
 
     resource :photo, only: :show
-    get ':photo_id' => 'photos#permalink', as: :permalink
+    get ':slug' => 'photos#permalink', as: :permalink
     resources :photos, only: :create
     resources :stickers, :comments, only: %i[create update destroy]
     resources :subscribers, only: :create

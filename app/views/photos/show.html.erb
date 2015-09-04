@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="mdl-card__menu">
-        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= permalink_url(@photo.id, sticker_id: @sticker.id) %>">
+        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= permalink_url(@photo.slug, sticker_id: @sticker.id) %>">
           <i class="material-icons">share</i>
         </button>
       </div>
@@ -128,7 +128,7 @@
     <% end %>
     <% else %>
       <p>To write message, click the image.</p>
-      Short link of this page: <%= permalink_url(@photo.id) %>
+      Short link of this page: <%= permalink_url(@photo.slug) %>
     <% end %>
   </div>
 </div>
