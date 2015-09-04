@@ -3,6 +3,9 @@ en:
   sign_up: Sign up
   logout: Logout
   account: Account
+  about: About
+  term_of_service: Term of Service
+  privacy_policy: Privacy Policy
   pages:
     home:
       heading: Searching Can Be Amazing!

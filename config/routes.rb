@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /zh-TW|ja/ do
     root 'pages#home'
     controller :pages do
-      get :landing
+      get :landing, :term_of_service, :privacy_policy
     end
     devise_for :users, controllers: {registrations: :registrations}
 

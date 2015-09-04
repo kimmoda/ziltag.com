@@ -3,6 +3,9 @@ ja:
   sign_up: サインアップ
   logout: ログアウト
   account: アカウント
+  about: Ziltag について
+  term_of_service: 利用規約
+  privacy_policy: プライバシーポリシー
   pages:
     home:
       heading: 検索は素晴らしいです
