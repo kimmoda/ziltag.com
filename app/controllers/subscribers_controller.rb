@@ -3,6 +3,6 @@ class SubscribersController < ApplicationController
     Subscriber.create email: params[:subscriber][:email]
   rescue
   ensure
-    redirect_to root_path, notice: 'Thanks for your subscription!'
+    redirect_to landing_path, notice: 'Thanks for your subscription!'
   end
 end
