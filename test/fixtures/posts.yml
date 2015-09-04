@@ -1,8 +1,0 @@
-tony:
-  user: tony
-  title: 大兜的測試文章
-  content: <p>段落一</p><p>段落二</p><p>段落三</p>
-david:
-  user: david
-  title: 大衛的測試文章
-  content: <p>段落一</p><p>段落二</p><p>段落三</p>
