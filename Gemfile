@@ -26,13 +26,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-select2', '~> 4.0.0.rc.2'
   gem 'rails-assets-URIjs'
-  gem 'rails-assets-font-awesome'
   gem 'rails-assets-select2-bootstrap-theme'
-  gem 'rails-assets-handlebars'
-  gem 'rails-assets-masonry'
-  gem 'rails-assets-imagesloaded'
-  gem 'rails-assets-jquery-tags-input'
-  gem 'rails-assets-introjs'
 end
 
 group :development do
