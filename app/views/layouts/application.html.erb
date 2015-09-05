@@ -31,8 +31,9 @@
         <% end %>
       </div>
     </header>
+    <%= yield :before_main if content_for?(:before_main) %>
     <main class="mdl-layout__content">
-      <%= yield %>
+      <%= content_for?(:main) ? yield(:main) : yield %>
     </main>
     <footer class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">

@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /zh-TW|ja/ do
     root 'pages#home'
+
     controller :pages do
-      get :landing, :term_of_service, :privacy_policy
+      get :landing
     end
+
+    controller :single_page do
+      get :term_of_service, :privacy_policy
+    end
+
     devise_for :users, controllers: {registrations: :registrations}
 
     resource :photo, only: :show
