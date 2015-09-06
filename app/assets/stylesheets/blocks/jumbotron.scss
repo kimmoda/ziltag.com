@@ -1,0 +1,45 @@
+.jumbotron{
+  width: 600px;
+
+  &--center{
+    margin: 20px auto 0 auto;
+  }
+
+  &__title{
+    @extend .mdl-typography--display-4;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__subtitle{
+    @extend .mdl-typography--headline;
+    text-align: center;
+    margin: 10px 0;
+  }
+  &__summary{
+    @extend .mdl-typography--body-1;
+    text-align: center;
+  }
+  &__form{
+    margin: 40px auto;
+    width: 300px;
+    border: solid 1px #aaa;
+    border-radius: 10px;
+    padding: 10px;
+    .mdl-button{
+      width: 100%;
+    }
+  }
+  &__bottom{
+    @extend .mdl-typography--body-1;
+    text-align: center;
+  }
+  &__field{
+    .material-icons{
+      position: absolute;
+    }
+    .mdl-textfield__input,.mdl-textfield__label{
+      padding-left: 10%;
+      width: 90%;
+    }
+  }
+}
