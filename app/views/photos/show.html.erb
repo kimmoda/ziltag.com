@@ -81,7 +81,7 @@
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect sticker-info__editor-button js-edit-mode-button" title="Edit">
           <i class="material-icons">create</i>
         </button>
-        <%= link_to @sticker, method: :delete, data: {confirm: 'You are going to delete this message, are you sure?'}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
+        <%= link_to @sticker, method: :delete, data: {confirm: t(:are_your_sure)}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
           <i class="material-icons">delete</i>
         <% end %>
       </div>
@@ -132,9 +132,12 @@
         </div>
         <div class="mdl-cell mdl-cell--1-col">
           <% if current_user && current_user.own?(comment) %>
-          <button id="share-menu" class="comment-info__editor-button mdl-button mdl-js-button mdl-button--icon">
+          <button class="comment-info__editor-button mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">create</i>
           </button>
+          <%= link_to comment, class: 'mdl-button mdl-js-button mdl-button--icon', method: :delete, data: {confirm: t(:are_your_sure)} do %>
+            <i class="material-icons">delete</i>
+          <% end %>
           <% end %>
         </div>
       </div>
