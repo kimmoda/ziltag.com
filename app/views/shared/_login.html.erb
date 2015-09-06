@@ -1,0 +1,19 @@
+<div class="jumbotron jumbotron--center">
+  <div class="jumbotron__title">HELLO</div>
+  <div class="jumbotron__subtitle">Glad to see you back! Let us begin.</div>
+  <div class="jumbotron__summary">There are still tons of information lost in the photo needs your help! Login and connect more information for everyone.</div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'jumbotron__form'}) do |f| %>
+    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
+      <i class="material-icons">email</i>
+      <%= f.text_field :login, class: 'mdl-textfield__input' %>
+      <label class="mdl-textfield__label" for="user_login">Email</label>
+    </div>
+    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
+      <i class="material-icons">lock</i>
+      <%= f.password_field :password, class: 'mdl-textfield__input' %>
+      <label class="mdl-textfield__label" for="user_password">Password</label>
+    </div>
+    <%= f.submit 'Login', class: 'mdl-button mdl-js-button mdl-color--red-300 mdl-color-text--white' %>
+  <% end %>
+  <div class="jumbotron__bottom">Don’t have an account? <%= link_to 'Sign Up', controller_name == 'photos' ? url_for(params.merge({sign_up: true})) : new_registration_path(resource_name) %></div>
+</div>

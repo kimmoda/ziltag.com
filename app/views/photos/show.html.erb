@@ -145,7 +145,11 @@
         <p>To write message, click the image.</p>
         Short link of this page: <%= permalink_url(@photo.slug) %>
       <% else %>
+        <% if params[:sign_up] %>
         <%= render 'shared/sign_up' %>
+        <% else %>
+        <%= render 'shared/login' %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

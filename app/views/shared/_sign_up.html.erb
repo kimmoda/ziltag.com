@@ -25,5 +25,5 @@
     </div>
     <%= f.submit 'Sign up', class: 'mdl-button mdl-js-button mdl-color--indigo-500 mdl-color-text--white' %>
   <% end %>
-  <div class="jumbotron__bottom">Already have an account? <%= link_to 'Login', new_session_path(resource_name) %></div>
+  <div class="jumbotron__bottom">Already have an account? <%= link_to 'Login', controller_name == 'photos' ? url_for(params.except(:sign_up)) : new_session_path(resource_name) %></div>
 </div>
