@@ -88,7 +88,7 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
-    <div class="comment-info mdl-shadow--2dp">
+    <div class="comment-info js-comment-info mdl-shadow--2dp">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
           <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
@@ -107,18 +107,32 @@
     </div>
     <% end %>
     <% @sticker.comments.each do |comment| %>
-    <div class="comment-info">
+    <div class="comment-info js-comment-info">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
           <%= image_tag comment.user.avatar.thumb.url, class: 'comment-info__avatar', title: comment.user.username %>
         </div>
         <div class="mdl-cell mdl-cell--10-col">
-          <%= comment.content %>
-          <div class="comment-info__time"><%= time_ago_in_words comment.created_at %> by <%= comment.user.username %></div>
+          <div class="comment-info__status">
+            <%= comment.content %>
+            <div class="comment-info__time"><%= time_ago_in_words comment.created_at %> by <%= comment.user.username %></div>
+          </div>
+          <% if current_user && current_user.own?(comment) %>
+          <div class="comment-info__editor hide">
+            <%= form_for comment, html: {class: 'edit-area js-edit-area'} do |f| %>
+              <div class="edit-area__field mdl-textfield mdl-js-textfield">
+                <%= f.text_area :content, id: "comment_content_#{comment.id}", class: 'edit-area__textarea mdl-textfield__input', required: true %>
+                <label class="mdl-textfield__label" for="<%= "comment_content_#{comment.id}" %>"><%= t(:'.leave_your_comment') %></label>
+              </div>
+              <%= f.submit t(:'.comment'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
+              <button class="mdl-button mdl-js-button comment-info__dismiss-button sticker-container__normal-mode-button js-normal-mode-button" type="button">Cancel</button>
+            <% end %>
+            <% end %>
+          </div>
         </div>
         <div class="mdl-cell mdl-cell--1-col">
           <% if current_user && current_user.own?(comment) %>
-          <button id="share-menu" class="mdl-button mdl-js-button mdl-button--icon">
+          <button id="share-menu" class="comment-info__editor-button mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">create</i>
           </button>
           <% end %>

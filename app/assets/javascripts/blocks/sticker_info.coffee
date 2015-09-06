@@ -1,6 +1,5 @@
 class StickerInfo
   constructor: (@element) ->
-    window.foo = @element
     @editor_button = @element.querySelector '.sticker-info__editor-button'
     @dismiss_button = @element.querySelector '.sticker-info__dismiss-button'
     @editor_pane = @element.querySelector '.sticker-info__editor'

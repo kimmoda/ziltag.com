@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update comment_params
+      redirect_to photo_path(source: @comment.sticker.photo.source, sticker_id: @comment.sticker.id)
     else
       redirect_to request.referer
     end
