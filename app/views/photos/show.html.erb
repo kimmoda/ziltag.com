@@ -141,8 +141,12 @@
     </div>
     <% end %>
     <% else %>
-      <p>To write message, click the image.</p>
-      Short link of this page: <%= permalink_url(@photo.slug) %>
+      <% if user_signed_in? %>
+        <p>To write message, click the image.</p>
+        Short link of this page: <%= permalink_url(@photo.slug) %>
+      <% else %>
+        <%= render 'shared/sign_up' %>
+      <% end %>
     <% end %>
   </div>
 </div>

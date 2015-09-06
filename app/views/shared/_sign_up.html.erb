@@ -1,0 +1,29 @@
+<div class="jumbotron jumbotron--center">
+  <div class="jumbotron__title">WELCOME</div>
+  <div class="jumbotron__subtitle">Great to have you here. Please join us.</div>
+  <div class="jumbotron__summary">You can enjoy tons of different possibilities with us. Fill the missing info for anything within a photo, write a post, or simply leave a comment…everything.</div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'jumbotron__form'}) do |f| %>
+    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
+      <i class="material-icons">account_circle</i>
+      <%= f.text_field :username, class: 'mdl-textfield__input' %>
+      <label class="mdl-textfield__label" for="user_username">Username</label>
+    </div>
+    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
+      <i class="material-icons">email</i>
+      <%= f.email_field :email, class: 'mdl-textfield__input' %>
+      <label class="mdl-textfield__label" for="user_email">Email</label>
+    </div>
+    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
+      <i class="material-icons">lock</i>
+      <%= f.password_field :password, class: 'mdl-textfield__input' %>
+      <label class="mdl-textfield__label" for="user_password">Password</label>
+    </div>
+    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
+      <i class="material-icons">lock</i>
+      <%= f.password_field :password_confirmation, class: 'mdl-textfield__input' %>
+      <label class="mdl-textfield__label" for="user_password_confirmation">Password Confirmation</label>
+    </div>
+    <%= f.submit 'Sign up', class: 'mdl-button mdl-js-button mdl-color--indigo-500 mdl-color-text--white' %>
+  <% end %>
+  <div class="jumbotron__bottom">Already have an account? <%= link_to 'Login', new_session_path(resource_name) %></div>
+</div>
