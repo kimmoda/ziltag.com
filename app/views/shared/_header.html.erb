@@ -1,0 +1,20 @@
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+    <span class="mdl-layout-title"><%= link_to image_tag('logo.png'), root_path %></span>
+    <div class="mdl-layout-spacer"></div>
+    <% if user_signed_in? %>
+    <button id="profile-menu" class="mdl-button mdl-js-button mdl-button--fab">
+      <%= image_tag current_user.avatar.thumb.url %>
+    </button>
+    <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="profile-menu">
+      <li class="mdl-menu__item"><%= t(:account) %></li>
+      <li class="mdl-menu__item"><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
+    </ul>
+    <% else %>
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <%= link_to t(:login), new_user_session_path, class: 'mdl-navigation__link' %>
+      <%= link_to t(:sign_up), new_user_registration_path, class: 'mdl-navigation__link' %>
+    </nav>
+    <% end %>
+  </div>
+</header>
