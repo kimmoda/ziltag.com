@@ -1,0 +1,17 @@
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">Ziltag Inc.</div>
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="#"><%= t(:about) %></a></li>
+      <li><%= link_to t(:term_of_service), term_of_service_path %></li>
+      <li><%= link_to t(:privacy_policy), privacy_policy_path %></li>
+    </ul>
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <ul class="mdl-mini-footer__link-list">
+      <li><%= link_to 'English', url_for(params.merge({locale: nil})) %></li>
+      <li><%= link_to '日本語', url_for(params.merge({locale: :ja})) %></li>
+      <li><%= link_to '中文', url_for(params.merge({locale: :'zh-TW'})) %></li>
+    </ul>
+  </div>
+</footer>
