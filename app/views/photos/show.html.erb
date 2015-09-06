@@ -127,8 +127,8 @@
               <%= f.submit t(:'.comment'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
               <button class="mdl-button mdl-js-button comment-info__dismiss-button sticker-container__normal-mode-button js-normal-mode-button" type="button">Cancel</button>
             <% end %>
-            <% end %>
           </div>
+          <% end %>
         </div>
         <div class="mdl-cell mdl-cell--1-col">
           <% if current_user && current_user.own?(comment) %>
