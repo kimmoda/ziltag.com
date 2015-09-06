@@ -20,17 +20,6 @@
     transition: -webkit-filter .1s linear, filter .1s linear;
   }
 
-  &__add-button{
-    @extend .mdl-button;
-    @extend .mdl-button--fab;
-    @extend .mdl-button--colored;
-    @extend .mdl-shadow--4dp;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    border: 8px solid white;
-  }
-
   &__holder{
     position: absolute;
     left: 0;
