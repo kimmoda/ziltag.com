@@ -142,8 +142,11 @@
     <% end %>
     <% else %>
       <% if user_signed_in? %>
-        <p>To write message, click the image.</p>
-        Short link of this page: <%= permalink_url(@photo.slug) %>
+        <div class="jumbotron jumbotron--center">
+          <div class="jumbotron__title">BRAVO</div>
+          <div class="jumbotron__subtitle">Ready to add a new tag? Let us help.</div>
+          <div class="jumbotron__summary">You can add all kinds of information to help unveil every piece of secret within a photo. Help the lost information to find its source.</div>
+        </div>
       <% else %>
         <% if params[:sign_up] %>
         <%= render 'shared/sign_up' %>
