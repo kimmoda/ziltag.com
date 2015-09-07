@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
     @photo ||= Photo.create remote_image_url: params[:source]
     if @photo.persisted?
       @sticker = @photo.stickers.includes(comments: :user).find_by id: params[:sticker_id]
+      session[:previous_photo_path] = request.fullpath
     else
       redirect_to root_path
     end
