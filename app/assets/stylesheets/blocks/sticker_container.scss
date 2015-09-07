@@ -30,6 +30,11 @@
     &--hide{
       display: none;
     }
+    &:hover:not(.sticker-container__holder--current){
+      .sticker-container__preview-dialog{
+        display: inherit;
+      }
+    }
   }
 
   &__circle{
@@ -57,5 +62,18 @@
     top: 0px;
     left: 15px;
     z-index: 10;
+  }
+  &__preview-dialog{
+    @extend .sticker-container__dialog;
+    display: none;
+    .dialog__arrow{
+      border-right-color: rgba(255,255,255,0.8);
+    }
+    .dialog__frame{
+      min-height: inherit;
+      min-width: inherit;
+      white-space: nowrap;
+      background: rgba(255,255,255,0.8);
+    }
   }
 }

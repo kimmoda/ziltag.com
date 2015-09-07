@@ -8,8 +8,12 @@
           data: {x: sticker.x, y: sticker.y, origin_x: sticker.x, origin_y: sticker.y} do
         %>
           <%= link_to photo_path(source: @photo.source, sticker_id: sticker.id) do %>
-          <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if sticker == @sticker}" %>
+            <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if sticker == @sticker}" %>
           <% end %>
+          <div class="sticker-container__preview-dialog dialog">
+            <div class="dialog__frame"><%= truncate sticker.content %></div>
+            <div class="dialog__arrow"></div>
+          </div>
         <% end %>
       <% end %>
       <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide new-holder" data-x="0" data-y="0">
