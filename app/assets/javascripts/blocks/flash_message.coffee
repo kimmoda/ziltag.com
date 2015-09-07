@@ -5,7 +5,7 @@ class FlashMessage
   init: ->
     setTimeout =>
       @element.classList.add 'animated', 'fadeOutDown'
-    , 3000
+    , 5000
 
 componentHandler.register
   constructor: FlashMessage
