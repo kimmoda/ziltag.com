@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     resources :photos, only: :create
     resources :stickers, :comments, only: %i[create update destroy]
     resources :subscribers, only: :create
+
+    namespace :api, format: false, defaults: {format: 'json'} do
+      namespace :v1 do
+        resources :stickers, only: :index
+      end
+    end
   end
 
   namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do

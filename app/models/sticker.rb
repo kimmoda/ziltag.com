@@ -1,9 +1,12 @@
 class Sticker < ActiveRecord::Base
   # scopes
+  scope :by_image_source, ->(urls){ joins(:photo).where(photos: {source: urls}) }
 
   # constants
 
   # attributes
+  delegate :source, to: :photo
+  delegate :username, to: :user
 
   # associations
   belongs_to :photo
