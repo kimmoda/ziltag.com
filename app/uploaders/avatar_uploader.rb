@@ -6,6 +6,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    '/images/fallback/' << [version_name, 'guest.png'].compact.join('_')
+    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(model.email.downcase)}"
   end
 end

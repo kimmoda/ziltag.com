@@ -4,10 +4,9 @@
     <div class="mdl-layout-spacer"></div>
     <% if user_signed_in? %>
     <button id="profile-menu" class="mdl-button mdl-js-button mdl-button--fab">
-      <%= image_tag current_user.avatar.thumb.url %>
+      <%= image_tag current_user.avatar.thumb.url, width: '100%' %>
     </button>
     <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="profile-menu">
-      <li class="mdl-menu__item"><%= t(:account) %></li>
       <li class="mdl-menu__item"><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
     </ul>
     <% else %>
