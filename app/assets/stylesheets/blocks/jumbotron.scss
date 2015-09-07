@@ -49,4 +49,16 @@
       width: 90%;
     }
   }
+  &__item{
+    position: relative;
+    height: 100px;
+  }
+  &__item-number{
+    position: absolute;
+  }
+  &__item-text{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 80px;
+  }
 }
