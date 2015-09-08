@@ -2,8 +2,8 @@ class StickerInfo
   constructor: (@element) ->
     @editor_button = @element.querySelector '.sticker-info__editor-button'
     @dismiss_button = @element.querySelector '.sticker-info__dismiss-button'
-    @editor_pane = @element.querySelector '.sticker-info__editor'
-    @status_pane = @element.querySelector '.sticker-info__status'
+    @editor_pane = @element.querySelector '.sticker-info__editor-pane'
+    @status_pane = @element.querySelector '.sticker-info__status-pane'
     @textarea = @element.querySelector 'textarea'
     @init()
 
