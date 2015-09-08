@@ -4,11 +4,15 @@ class EditArea
     @init()
 
   init: ->
-    @textarea.addEventListener 'keyup', @update_textare_height
+    @textarea.addEventListener 'keyup', @_update_textare_height
+    @textarea.addEventListener 'keydown', @_check_submit
 
-  update_textare_height: =>
+  _update_textare_height: =>
     @textarea.style.height = 0
     @textarea.style.height = (10 + @textarea.scrollHeight) + 'px'
+
+  _check_submit: (e) =>
+    @element.submit() if (e.ctrlKey || e.metaKey) && e.keyCode == 13
 
 componentHandler.register
   constructor: EditArea
