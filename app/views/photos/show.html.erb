@@ -56,8 +56,10 @@
       </div>
     </div>
     <hr>
-    <%= sticker_preview @sticker %>
     <div class="sticker-info js-sticker-info mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__media mdl-color--white">
+        <%= sticker_preview @sticker %>
+      </div>
       <div class="mdl-card__supporting-text">
         <p class="sticker-info__status"><%= sticker_content @sticker %></p>
         <p><%= time_ago_in_words @sticker.created_at %></p>
