@@ -8,6 +8,7 @@
   <%= javascript_include_tag 'application' %>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <%= csrf_meta_tags %>
+  <%= content_for :head if content_for? :head %>
 </head>
 <body class="<%= "#{controller_path} #{action_name}" %>">
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

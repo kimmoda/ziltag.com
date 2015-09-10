@@ -1,3 +1,15 @@
+<% if @sticker %>
+<% content_for :head do %>
+<meta property="og:title" content="Ziltag" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Ziltag" />
+<%= tag :meta, property: 'article:author', content: @sticker.username %>
+<%= tag :meta, property: 'og:url', content: permalink_url(@photo.slug, sticker_id: @sticker.id) %>
+<%= tag :meta, property: 'og:description', content: @sticker.content %>
+<%= tag :meta, property: 'og:image', content: @photo.image_url %>
+<% end %>
+<% end %>
+
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--6-col">
     <div class="sticker-container js-sticker-container">
