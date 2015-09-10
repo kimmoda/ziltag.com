@@ -4,7 +4,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Ziltag" />
 <%= tag :meta, property: 'article:author', content: @sticker.username %>
-<%= tag :meta, property: 'og:url', content: permalink_url(@photo.slug, sticker_id: @sticker.id) %>
+<%= tag :meta, property: 'og:url', content: photo_url(source: @photo.source, sticker_id: @sticker.id) %>
 <%= tag :meta, property: 'og:description', content: @sticker.content %>
 <%= tag :meta, property: 'og:image', content: @photo.image_url %>
 <% end %>
