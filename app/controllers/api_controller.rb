@@ -1,22 +1,10 @@
 class ApiController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :set_headers
-  before_action :authenticate_user!, only: %i[create update destroy]
-
-  def options
-    head 200
-  end
 
 private
 
   def set_headers
-    headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || 'http://localhost:3000'
-    headers['Access-Control-Allow-Credentials'] = 'true'
-    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, Content-Type'
-  end
-
-  def authenticate_user!
-    render json: {error: t('devise.failure.unauthenticated')}, status: 401 unless user_signed_in?
+    headers['Access-Control-Allow-Origin'] = '*'
   end
 
 end
