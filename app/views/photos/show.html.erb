@@ -14,16 +14,16 @@
   <div class="mdl-cell mdl-cell--6-col">
     <div class="sticker-container js-sticker-container">
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
-      <% @photo.ziltags.each do |sticker| %>
+      <% @photo.ziltags.each do |ziltag| %>
         <%= content_tag :div,
-          class: "sticker-container__holder js-sticker-holder sticker-container__holder--hide#{' sticker-container__holder--current' if sticker == @ziltag}",
-          data: {x: sticker.x, y: sticker.y, origin_x: sticker.x, origin_y: sticker.y} do
+          class: "sticker-container__holder js-sticker-holder sticker-container__holder--hide#{' sticker-container__holder--current' if ziltag == @ziltag}",
+          data: {x: ziltag.x, y: ziltag.y, origin_x: ziltag.x, origin_y: ziltag.y} do
         %>
-          <%= link_to photo_path(@photo, sticker) do %>
-            <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if sticker == @ziltag}" %>
+          <%= link_to photo_path(@photo, ziltag) do %>
+            <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if ziltag == @ziltag}" %>
           <% end %>
           <div class="sticker-container__preview-dialog dialog">
-            <div class="dialog__frame"><%= truncate sticker.content %></div>
+            <div class="dialog__frame"><%= truncate ziltag.content %></div>
             <div class="dialog__arrow"></div>
           </div>
         <% end %>
@@ -69,10 +69,10 @@
     </div>
     <hr>
     <div class="sticker-info js-sticker-info mdl-card mdl-shadow--2dp">
-      <div class="mdl-card__media mdl-color--white"><%= sticker_preview @ziltag %></div>
+      <div class="mdl-card__media mdl-color--white"><%= ziltag_preview @ziltag %></div>
       <div class="mdl-card__supporting-text">
         <div class="sticker-info__status-pane">
-          <p class="sticker-info__status"><%= sticker_content @ziltag %></p>
+          <p class="sticker-info__status"><%= ziltag_content @ziltag %></p>
           <p><%= time_ago_in_words @ziltag.created_at %></p>
         </div>
         <% if current_user && current_user.own?(@ziltag) %>
