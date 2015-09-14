@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="mdl-card__menu">
-        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= photo_url(@photo, ziltag_id: @ziltag.id) %>">
+        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= photo_url(@photo, @ziltag) %>">
           <i class="material-icons">share</i>
         </button>
       </div>
