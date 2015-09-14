@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
     if @photo.persisted?
       @sticker = @photo.stickers.includes(comments: :user).find_by id: params[:sticker_id]
       session[:previous_photo_path] = request.fullpath
+      headers.delete 'X-Frame-Options'
     else
       redirect_to root_path
     end
