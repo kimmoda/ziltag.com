@@ -17,14 +17,14 @@ namespace 'dev:fake' do
     end
 
     fakeup '產生貼紙' do
-      @stickers = []
+      @ziltags = []
       @photos.each do |photo|
         [
           "#{Faker::Lorem.paragraph} https://twitter.com/tonytonyjan/status/594918506417655808",
           "#{Faker::Lorem.paragraph} https://www.youtube.com/watch?v=MmMnYM9DoEc",
           Faker::Lorem.paragraph
         ].each do |content|
-          @stickers << photo.stickers.create!({
+          @ziltags << photo.ziltags.create!({
             user: @users.sample, x: rand(200), y: rand(200),
             content: content
           })
@@ -34,8 +34,8 @@ namespace 'dev:fake' do
 
     fakeup '產生留言' do
       3.times do
-        @stickers.each do |sticker|
-          sticker.comments.create!({
+        @ziltags.each do |ziltag|
+          ziltag.comments.create!({
             user: @users.sample,
             content: Faker::Lorem.sentence
           })
