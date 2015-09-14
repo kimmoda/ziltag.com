@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   def show
-    @photo = Photo.includes(:ziltags).find_by(slug: params[:slug])
+    @photo = Photo.includes(:ziltags).find_by!(slug: params[:slug])
     @ziltag = @photo.ziltags.includes(comments: :user).find_by slug: params[:ziltag_slug]
     session[:previous_photo_path] = request.fullpath
     headers.delete 'X-Frame-Options'
