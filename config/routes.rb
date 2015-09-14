@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     resource :photo, only: :show
     get ':slug' => 'photos#permalink', as: :permalink
     resources :photos, only: :create
-    resources :stickers, :comments, only: %i[create update destroy]
+    resources :ziltags, :comments, only: %i[create update destroy]
     resources :subscribers, only: :create
 
     namespace :api, format: false, defaults: {format: 'json'} do
       namespace :v1 do
-        resources :stickers, only: :index
+        resources :ziltags, only: :index
       end
     end
   end

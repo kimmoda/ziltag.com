@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find_by(source: params[:source])
     @photo ||= Photo.create remote_image_url: params[:source]
     if @photo.persisted?
-      @sticker = @photo.stickers.includes(comments: :user).find_by id: params[:sticker_id]
+      @ziltag = @photo.ziltags.includes(comments: :user).find_by id: params[:ziltag_id]
       session[:previous_photo_path] = request.fullpath
       headers.delete 'X-Frame-Options'
     else
@@ -22,7 +22,7 @@ class PhotosController < ApplicationController
 
   def permalink
     if @photo = Photo.find_by(slug: params[:slug])
-      redirect_to photo_path source: @photo.source, sticker_id: params[:sticker_id]
+      redirect_to photo_path source: @photo.source, ziltag_id: params[:ziltag_id]
     else
       redirect_to root_path, alert: 'Photo not found.'
     end

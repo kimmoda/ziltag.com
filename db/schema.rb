@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904191432) do
+ActiveRecord::Schema.define(version: 20150914133736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 20150904191432) do
     t.datetime "updated_at", null: false
     t.string   "content",    null: false
     t.integer  "user_id",    null: false
-    t.integer  "sticker_id", null: false
+    t.integer  "ziltag_id",  null: false
   end
 
-  add_index "comments", ["sticker_id"], name: "index_comments_on_sticker_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  add_index "comments", ["ziltag_id"], name: "index_comments_on_ziltag_id", using: :btree
 
   create_table "followings", force: :cascade do |t|
     t.integer  "follower_id", null: false
@@ -81,19 +81,6 @@ ActiveRecord::Schema.define(version: 20150904191432) do
 
   add_index "posts", ["title"], name: "index_posts_on_title", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
-
-  create_table "stickers", force: :cascade do |t|
-    t.integer  "photo_id"
-    t.integer  "user_id"
-    t.integer  "x",          null: false
-    t.integer  "y",          null: false
-    t.text     "content",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "stickers", ["photo_id"], name: "index_stickers_on_photo_id", using: :btree
-  add_index "stickers", ["user_id"], name: "index_stickers_on_user_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -169,15 +156,28 @@ ActiveRecord::Schema.define(version: 20150904191432) do
   add_index "ziltaggings", ["photo_id"], name: "index_ziltaggings_on_photo_id", using: :btree
   add_index "ziltaggings", ["ziltaggable_type", "ziltaggable_id"], name: "index_ziltaggings_on_ziltaggable_type_and_ziltaggable_id", using: :btree
 
+  create_table "ziltags", force: :cascade do |t|
+    t.integer  "photo_id"
+    t.integer  "user_id"
+    t.integer  "x",          null: false
+    t.integer  "y",          null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ziltags", ["photo_id"], name: "index_ziltags_on_photo_id", using: :btree
+  add_index "ziltags", ["user_id"], name: "index_ziltags_on_user_id", using: :btree
+
   add_foreign_key "collectings", "users"
-  add_foreign_key "comments", "stickers"
   add_foreign_key "comments", "users"
+  add_foreign_key "comments", "ziltags"
   add_foreign_key "followings", "users", column: "follower_id"
   add_foreign_key "followings", "users", column: "leader_id"
   add_foreign_key "photos", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "stickers", "photos"
-  add_foreign_key "stickers", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "ziltaggings", "photos"
+  add_foreign_key "ziltags", "photos"
+  add_foreign_key "ziltags", "users"
 end

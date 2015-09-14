@@ -8,10 +8,10 @@ class Comment < ActiveRecord::Base
 
   # associations
   belongs_to :user
-  belongs_to :sticker
+  belongs_to :ziltag
 
   # validations
-  validates :sticker, :user, :content, presence: true
+  validates :ziltag, :user, :content, presence: true
 
   # callbacks
 

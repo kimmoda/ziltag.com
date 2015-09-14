@@ -37,8 +37,8 @@ class StickerContainer
     [data_x, data_y]
 
   update_field_value: (form, x, y) ->
-    form.querySelector('input[name="sticker[x]"]').value = x
-    form.querySelector('input[name="sticker[y]"]').value = y
+    form.querySelector('input[name="ziltag[x]"]').value = x
+    form.querySelector('input[name="ziltag[y]"]').value = y
 
   restore_current_holder: =>
     data_x = @current_holder.dataset.originX

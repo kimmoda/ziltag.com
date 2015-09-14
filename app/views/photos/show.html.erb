@@ -1,11 +1,11 @@
-<% if @sticker %>
+<% if @ziltag %>
 <% content_for :head do %>
 <meta property="og:title" content="Ziltag" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Ziltag" />
-<%= tag :meta, property: 'article:author', content: @sticker.username %>
-<%= tag :meta, property: 'og:url', content: photo_url(source: @photo.source, sticker_id: @sticker.id) %>
-<%= tag :meta, property: 'og:description', content: @sticker.content %>
+<%= tag :meta, property: 'article:author', content: @ziltag.username %>
+<%= tag :meta, property: 'og:url', content: photo_url(source: @photo.source, ziltag_id: @ziltag.id) %>
+<%= tag :meta, property: 'og:description', content: @ziltag.content %>
 <%= tag :meta, property: 'og:image', content: @photo.image_url %>
 <% end %>
 <% end %>
@@ -14,13 +14,13 @@
   <div class="mdl-cell mdl-cell--6-col">
     <div class="sticker-container js-sticker-container">
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
-      <% @photo.stickers.each do |sticker| %>
+      <% @photo.ziltags.each do |sticker| %>
         <%= content_tag :div,
-          class: "sticker-container__holder js-sticker-holder sticker-container__holder--hide#{' sticker-container__holder--current' if sticker == @sticker}",
+          class: "sticker-container__holder js-sticker-holder sticker-container__holder--hide#{' sticker-container__holder--current' if sticker == @ziltag}",
           data: {x: sticker.x, y: sticker.y, origin_x: sticker.x, origin_y: sticker.y} do
         %>
-          <%= link_to photo_path(source: @photo.source, sticker_id: sticker.id) do %>
-            <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if sticker == @sticker}" %>
+          <%= link_to photo_path(source: @photo.source, ziltag_id: sticker.id) do %>
+            <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if sticker == @ziltag}" %>
           <% end %>
           <div class="sticker-container__preview-dialog dialog">
             <div class="dialog__frame"><%= truncate sticker.content %></div>
@@ -32,7 +32,7 @@
         <div class="sticker-container__circle"></div>
         <div class="sticker-container__dialog dialog">
           <div class="dialog__frame">
-            <%= form_for Sticker.new(photo: @photo), html: {class: 'edit-area js-edit-area'} do |f| %>
+            <%= form_for Ziltag.new(photo: @photo), html: {class: 'edit-area js-edit-area'} do |f| %>
               <div class="edit-area__field mdl-textfield mdl-js-textfield">
                 <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true, autofocus: true %>
                 <label class="mdl-textfield__label" for="sticker_content"><%= t(:'.whats_in_your_mind') %></label>
@@ -52,32 +52,32 @@
     </div>
   </div>
   <div class="mdl-cell mdl-cell--6-col">
-    <% if @sticker %>
+    <% if @ziltag %>
     <div class="user-info js-user-info mdl-card">
       <div class="mdl-card__supporting-text">
-        <%= image_tag @sticker.user.avatar.thumb.url, class: 'user-info__avatar', alt: @sticker.user.username %>
+        <%= image_tag @ziltag.user.avatar.thumb.url, class: 'user-info__avatar', alt: @ziltag.user.username %>
         <div class="user-info__text-section">
           <div><%= t(:'.tag_created_by') %></div>
-          <div class="user-info__username"><%= @sticker.user.username %></div>
+          <div class="user-info__username"><%= @ziltag.user.username %></div>
         </div>
       </div>
       <div class="mdl-card__menu">
-        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= permalink_url(@photo.slug, sticker_id: @sticker.id) %>">
+        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= permalink_url(@photo.slug, ziltag_id: @ziltag.id) %>">
           <i class="material-icons">share</i>
         </button>
       </div>
     </div>
     <hr>
     <div class="sticker-info js-sticker-info mdl-card mdl-shadow--2dp">
-      <div class="mdl-card__media mdl-color--white"><%= sticker_preview @sticker %></div>
+      <div class="mdl-card__media mdl-color--white"><%= sticker_preview @ziltag %></div>
       <div class="mdl-card__supporting-text">
         <div class="sticker-info__status-pane">
-          <p class="sticker-info__status"><%= sticker_content @sticker %></p>
-          <p><%= time_ago_in_words @sticker.created_at %></p>
+          <p class="sticker-info__status"><%= sticker_content @ziltag %></p>
+          <p><%= time_ago_in_words @ziltag.created_at %></p>
         </div>
-        <% if current_user && current_user.own?(@sticker) %>
+        <% if current_user && current_user.own?(@ziltag) %>
         <div class="sticker-info__editor-pane hide">
-          <%= form_for @sticker, html: {class: 'edit-area js-edit-area js-edit-form'} do |f| %>
+          <%= form_for @ziltag, html: {class: 'edit-area js-edit-area js-edit-form'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
               <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input js-edit-textarea', required: true, autofocus: true %>
               <label class="mdl-textfield__label" for="sticker_content">What's in your mind?</label>
@@ -91,12 +91,12 @@
         </div>
         <% end %>
       </div>
-      <% if current_user && current_user.own?(@sticker) %>
+      <% if current_user && current_user.own?(@ziltag) %>
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect sticker-info__editor-button js-edit-mode-button" title="Edit">
           <i class="material-icons">create</i>
         </button>
-        <%= link_to @sticker, method: :delete, data: {confirm: t(:are_your_sure)}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
+        <%= link_to @ziltag, method: :delete, data: {confirm: t(:are_your_sure)}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
           <i class="material-icons">delete</i>
         <% end %>
       </div>
@@ -109,19 +109,19 @@
           <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
         </div>
         <div class="mdl-cell mdl-cell--10-col">
-          <%= form_for Comment.new(sticker: @sticker), html: {class: 'edit-area js-edit-area'} do |f| %>
+          <%= form_for Comment.new(ziltag: @ziltag), html: {class: 'edit-area js-edit-area'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
               <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true %>
-              <label class="mdl-textfield__label" for="sticker_content"><%= t(:'.leave_your_comment') %></label>
+              <label class="mdl-textfield__label" for="ziltag_content"><%= t(:'.leave_your_comment') %></label>
             </div>
-            <%= f.hidden_field :sticker_id %>
+            <%= f.hidden_field :ziltag_id %>
             <%= f.submit t(:'.comment'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
           <% end %>
         </div>
       </div>
     </div>
     <% end %>
-    <% @sticker.comments.each do |comment| %>
+    <% @ziltag.comments.each do |comment| %>
     <div class="comment-info js-comment-info">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">

@@ -1,4 +1,4 @@
-class Sticker < ActiveRecord::Base
+class Ziltag < ActiveRecord::Base
   # scopes
   scope :by_image_source, ->(urls){ joins(:photo).where(photos: {source: urls}) }
 
