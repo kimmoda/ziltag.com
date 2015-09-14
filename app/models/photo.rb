@@ -1,4 +1,5 @@
 class Photo < ActiveRecord::Base
+  include Slugable
   # scopes
 
   # constants
@@ -14,7 +15,6 @@ class Photo < ActiveRecord::Base
   validates :image, presence: true
 
   # callbacks
-  after_initialize :generate_slug, if: -> { slug.blank? }
   after_save :set_source, if: ->{ source.blank? }
 
   # other
@@ -26,13 +26,6 @@ class Photo < ActiveRecord::Base
 
   def to_s
     image
-  end
-
-  def generate_slug
-    loop do
-      self.slug = SecureRandom.hex(3)
-      break unless Photo.exists? slug: slug
-    end
   end
 
 end

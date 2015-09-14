@@ -4,7 +4,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Ziltag" />
 <%= tag :meta, property: 'article:author', content: @ziltag.username %>
-<%= tag :meta, property: 'og:url', content: photo_url(source: @photo.source, ziltag_id: @ziltag.id) %>
+<%= tag :meta, property: 'og:url', content: photo_url(src: @photo.source, ziltag_id: @ziltag.id) %>
 <%= tag :meta, property: 'og:description', content: @ziltag.content %>
 <%= tag :meta, property: 'og:image', content: @photo.image_url %>
 <% end %>
@@ -19,7 +19,7 @@
           class: "sticker-container__holder js-sticker-holder sticker-container__holder--hide#{' sticker-container__holder--current' if sticker == @ziltag}",
           data: {x: sticker.x, y: sticker.y, origin_x: sticker.x, origin_y: sticker.y} do
         %>
-          <%= link_to photo_path(source: @photo.source, ziltag_id: sticker.id) do %>
+          <%= link_to photo_path(src: @photo.source, ziltag_id: sticker.id) do %>
             <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if sticker == @ziltag}" %>
           <% end %>
           <div class="sticker-container__preview-dialog dialog">

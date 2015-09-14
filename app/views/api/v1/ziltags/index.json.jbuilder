@@ -1,6 +1,6 @@
 json.array!(@ziltags) do |ziltag|
-  json.extract! ziltag, :id, :x, :y
-  json.src ziltag.source
+  json.uuid ziltag.slug
+  json.extract! ziltag, :x, :y
   json.usr ziltag.username
   json.preview truncate ziltag.content
 end
