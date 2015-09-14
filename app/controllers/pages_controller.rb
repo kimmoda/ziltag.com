@@ -1,6 +1,12 @@
 class PagesController < ApplicationController
   def home
-    @photo = Photo.new
+    if params[:src]
+      @photo = Photo.find_by(source: params[:src])
+      @photo ||= Photo.create remote_image_url: params[:src]
+      redirect_to @photo if @photo.persisted?
+    else
+      @photo = Photo.new
+    end
   end
 
   def landing

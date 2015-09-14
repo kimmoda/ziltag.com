@@ -12,8 +12,7 @@ Rails.application.routes.draw do
 
     devise_for :users, controllers: {registrations: :registrations}
 
-    resource :photo, only: :show
-    get ':slug' => 'photos#permalink', as: :permalink
+    get ':slug/(:ziltag_slug)' => 'photos#show', as: :photo
     resources :photos, only: :create
     resources :ziltags, :comments, only: %i[create update destroy]
     resources :subscribers, only: :create

@@ -5,7 +5,7 @@ class ZiltagsController < ApplicationController
   def create
     @ziltag = current_user.ziltags.new(ziltag_params)
     if @ziltag.save
-      redirect_to photo_path(src: @ziltag.photo.source, ziltag_id: @ziltag.id)
+      redirect_to photo_path(@ziltag.photo, @ziltag)
     else
       redirect_to request.referer
     end
@@ -13,14 +13,13 @@ class ZiltagsController < ApplicationController
 
   def update
     if @ziltag.update ziltag_params
-      redirect_to photo_path(src: @ziltag.photo.source, ziltag_id: @ziltag.id)
+      redirect_to photo_path(@ziltag.photo, @ziltag)
     else
       redirect_to require.referer
     end
   end
 
   def destroy
-    @ziltag
     @ziltag.destroy
     redirect_to photo_path(src: @ziltag.photo.source)
   end
@@ -32,7 +31,7 @@ private
   end
 
   def set_ziltag
-    @ziltag = current_user.ziltags.find params[:id]
+    @ziltag = current_user.ziltags.find_by! slug: params[:id]
   end
 
 end

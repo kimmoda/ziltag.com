@@ -24,6 +24,10 @@ class Photo < ActiveRecord::Base
     update_column :source, uri.to_s
   end
 
+  def to_param
+    slug
+  end
+
   def to_s
     image
   end

@@ -19,5 +19,7 @@ class Ziltag < ActiveRecord::Base
   # callbacks
 
   # other
-
+  def to_param
+    slug
+  end
 end

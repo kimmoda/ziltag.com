@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new comment_params
     if @comment.save
-      redirect_to photo_path(src: @comment.ziltag.photo.source, ziltag_id: @comment.ziltag.id)
+      redirect_to photo_path(@comment.ziltag.photo, @comment.ziltag)
     else
       redirect_to request.referer
     end
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update comment_params
-      redirect_to photo_path(src: @comment.ziltag.photo.source, ziltag_id: @comment.ziltag.id)
+      redirect_to photo_path(@comment.ziltag.photo, @comment.ziltag)
     else
       redirect_to request.referer
     end

@@ -1,7 +1,7 @@
 <h1 class="heading"><%= t(:'.heading') %></h1>
-<%= form_tag photo_path, method: :get do %>
-  <%= url_field_tag :source, nil, id: 'image_url', placeholder: t(:'.enter_url'), autofocus: true, autocomplete: 'off' %>
-<% end %>
+<form action="/">
+  <%= url_field_tag :src, nil, id: 'image_url', placeholder: t(:'.enter_url'), autofocus: true, autocomplete: 'off' %>
+</form>
 
 <%= form_for @photo do |f| %>
   <div class="or-upload">
