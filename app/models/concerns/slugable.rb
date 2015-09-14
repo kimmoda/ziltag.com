@@ -2,7 +2,7 @@ module Slugable
   extend ActiveSupport::Concern
 
   included do
-    after_initialize :generate_slug, if: -> { slug.blank? }
+    before_create :generate_slug, if: -> { slug.blank? }
   end
 
   def generate_slug
