@@ -5,18 +5,4 @@
   .sticker-info,.comment-info{
     margin-bottom: 10px;
   }
-
-  @media screen and (min-width: 840px) {
-    main{
-      height: 100%;
-      overflow: hidden;
-      .mdl-grid{
-        height: 100%;
-        .mdl-cell--6-col{
-          overflow: scroll;
-          padding-bottom: 64px;
-        }
-      }
-    }
-  }
 }
