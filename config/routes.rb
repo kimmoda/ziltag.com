@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     devise_for :users, controllers: {registrations: :registrations}
 
-    get ':slug/(:ziltag_slug)' => 'photos#show', as: :photo, constraints: {slug: /\w{6}/, ziltag_slug: /\w{6}/}
+    get 'ziltags/:slug/(:ziltag_slug)' => 'photos#show', as: :photo, constraints: {slug: /\w{6}/, ziltag_slug: /\w{6}/}
     resources :photos, only: :create
     resources :ziltags, :comments, only: %i[create update destroy]
     resources :subscribers, only: :create
