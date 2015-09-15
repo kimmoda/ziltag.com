@@ -1,8 +1,0 @@
-# 用於在圖片上點擊座標後重導至新增樂貼頁
-# <img src="blablabla" data-new-post="/admin/posts/new">
-$(document).on 'ready page:load', () ->
-  $('img[data-new-post]').click (e) ->
-    window.location.href = URI('<%= Rails.application.routes.url_helpers.new_admin_post_path %>').search
-      photo_id: this.dataset.photoId
-      x: e.offsetX
-      y: e.offsetY

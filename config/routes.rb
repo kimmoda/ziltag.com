@@ -19,10 +19,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  namespace :admin, path: (Rails.env.production? ? Settings.admin.path : :admin) do
-    root action: :home
-    resources :users, :comments, :posts, :photos, :ziltaggings, :tags
-    get 'select2/:plural' => 'select2#query'
-  end
 end
