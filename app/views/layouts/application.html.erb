@@ -11,7 +11,7 @@
   <%= content_for :head if content_for? :head %>
 </head>
 <body class="<%= "#{controller_path} #{action_name}" %>">
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--white">
     <%= render 'shared/header' %>
     <% if alert %><div class="flash-message js-flash-message mdl-color--red-100 mdl-typography--headline"><%= alert %></div><% end %>
     <% if notice %><div class="flash-message js-flash-message mdl-color--blue-100 mdl-typography--headline"><%= notice %></div><% end %>
@@ -19,6 +19,7 @@
     <main class="mdl-layout__content">
       <%= content_for?(:main) ? yield(:main) : yield %>
     </main>
+    <%= render 'shared/footer' if controller_path == 'single_page' || action_name == 'home' %>
   </div>
 </body>
 </html>

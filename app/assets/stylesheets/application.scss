@@ -1,11 +1,10 @@
 @import "material-design-lite/src/color-definitions";
-$color-accent: $palette-red-A200;
-$layout-header-bg-color: rgba(255,255,255,0.8);
-$layout-header-text-color: black;
 $color-accent: $palette-red-A700;
+$layout-header-bg-color: white;
+$layout-header-text-color: black;
 @import 'material-design-lite/src/material-design-lite';
 @import 'animate.css/animate';
+@import 'plyr/src/sass/plyr';
 @import 'blocks/*';
 @import 'single_page';
-@import 'pages/home';
 @import 'photos/show';

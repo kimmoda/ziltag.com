@@ -1,12 +1,13 @@
-<h1 class="heading"><%= t(:'.heading') %></h1>
-<form action="/">
-  <%= url_field_tag :src, nil, id: 'image_url', placeholder: t(:'.enter_url'), autofocus: true, autocomplete: 'off' %>
-</form>
-
-<%= form_for @photo do |f| %>
-  <div class="or-upload">
-    <span class="or-upload__or"><%= t(:'.or') %></span>
-    <button class="or-upload__upload mdl-button mdl-js-buutton" type="button"><%= t(:'.upload_one') %></button>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="player">
+      <video poster="https://cdn.selz.com/plyr/1.0/poster.jpg" controls crossorigin>
+        <source src="https://cdn.selz.com/plyr/1.0/movie.mp4" type="video/mp4">
+        <source src="https://cdn.selz.com/plyr/1.0/movie.webm" type="video/webm">
+      </video>
+    </div>
   </div>
-  <%= f.file_field :image %>
-<% end %>
+  <div class="mdl-cell mdl-cell--6-col">
+    <%= render 'shared/login' %>
+  </div>
+</div>
