@@ -30,10 +30,8 @@ class StickerContainer
     image_rect = @image.getBoundingClientRect()
     offset_x = image_rect.left - body_rect.left
     offset_y = image_rect.top - body_rect.top
-    ratio_x = @image.naturalWidth / @image.clientWidth
-    ratio_y = @image.naturalHeight / @image.clientHeight
-    data_x = (e.pageX - offset_x)*ratio_x
-    data_y = (e.pageY - offset_y)*ratio_y
+    data_x = (e.pageX - offset_x) / @image.clientWidth
+    data_y = (e.pageY - offset_y) / @image.clientHeight
     [data_x, data_y]
 
   update_field_value: (form, x, y) ->

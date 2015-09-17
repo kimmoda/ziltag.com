@@ -10,10 +10,8 @@ class @StickerHolder
       @dismiss.addEventListener 'click', @hide
 
   update_coord: =>
-    ratio_x = @image.clientWidth / @image.naturalWidth
-    ratio_y = @image.clientHeight / @image.naturalHeight
-    @element.style.left = @element.dataset.x * ratio_x + 'px'
-    @element.style.top = @element.dataset.y * ratio_y + 'px'
+    @element.style.left = @element.dataset.x*100 + '%'
+    @element.style.top = @element.dataset.y*100 + '%'
     @show() unless @element.classList.contains 'new-holder'
     @
 

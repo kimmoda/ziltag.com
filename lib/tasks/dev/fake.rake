@@ -25,7 +25,7 @@ namespace 'dev:fake' do
           Faker::Lorem.paragraph
         ].each do |content|
           @ziltags << photo.ziltags.create!({
-            user: @users.sample, x: rand(200), y: rand(200),
+            user: @users.sample, x: rand, y: rand,
             content: content
           })
         end
