@@ -47,13 +47,12 @@
     background-color: white;
     border-radius: 50%;
     border: 5px solid gray;
-    -webkit-transition: all 0.1s;
-    -moz-transition: all 0.1s;
-    -ms-transition: all 0.1s;
     transition: all 0.1s;
+    opacity: 0.8;
     &:hover,&.active{
       border-color: red;
       cursor: pointer;
+      opacity: 1;
     }
   }
 

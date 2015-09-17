@@ -16,7 +16,7 @@
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
       <% @photo.ziltags.each do |ziltag| %>
         <%= content_tag :div,
-          class: "sticker-container__holder js-sticker-holder sticker-container__holder--hide#{' sticker-container__holder--current' if ziltag == @ziltag}",
+          class: "sticker-container__holder sticker-container__holder--hide#{' sticker-container__holder--current' if ziltag == @ziltag}",
           data: {x: ziltag.x, y: ziltag.y, origin_x: ziltag.x, origin_y: ziltag.y} do
         %>
           <%= link_to photo_path(@photo, ziltag) do %>
@@ -28,7 +28,7 @@
           </div>
         <% end %>
       <% end %>
-      <div class="sticker-container__holder js-sticker-holder sticker-container__holder--hide new-holder" data-x="0" data-y="0">
+      <div class="sticker-container__holder sticker-container__holder--hide new-holder" data-x="0" data-y="0">
         <div class="sticker-container__circle"></div>
         <div class="sticker-container__dialog dialog">
           <div class="dialog__frame">
@@ -42,7 +42,7 @@
               <%= f.hidden_field :photo_id %>
               <%= f.submit t(:'.save_message'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
             <% end %>
-            <button class="dialog__dismiss js-holder-dismiss mdl-button mdl-js-button mdl-button--icon">
+            <button class="sticker-container__dismiss dialog__dismiss mdl-button mdl-js-button mdl-button--icon">
               <i class="material-icons">clear</i>
             </button>
           </div>
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="mdl-card__menu">
-        <button id="share-menu" class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= photo_url(@photo, @ziltag) %>">
+        <button class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= photo_url(@photo, @ziltag) %>">
           <i class="material-icons">share</i>
         </button>
       </div>
