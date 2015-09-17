@@ -55,7 +55,7 @@ class StickerContainer
   restore_current_holder: =>
     data_x = @current_holder.dataset.originX
     data_y = @current_holder.dataset.originY
-    @current_holder['StickerHolder'].move(data_x, data_y)
+    @move_holder @current_holder, data_x, data_y
     form = document.querySelector '.js-edit-form'
     @update_field_value form, data_x, data_y
 
