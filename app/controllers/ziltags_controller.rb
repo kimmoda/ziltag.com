@@ -21,7 +21,7 @@ class ZiltagsController < ApplicationController
 
   def destroy
     @ziltag.destroy
-    redirect_to photo_path(src: @ziltag.photo.source)
+    redirect_to photo_path(@ziltag.photo)
   end
 
 private
