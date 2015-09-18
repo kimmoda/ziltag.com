@@ -53,3 +53,6 @@ The ziltag reader shall load the specific ziltag with its detail and messages to
 
 ### Small Circle of Ziltag
 To attract user's attention, the ziltag on the image is represented as a small circle, the circle should increase and decrease the radius like a lively bubble. The circle shall discolor when user hovers around it.
+
+## Share to Social Networks
+Social networks like Facebook are support the thumbnail, to attract user's attention, the thumbnail of ziltag's link should contain the small circle. If the user shares the link of image which doesn't specify the ziltag, all small circles are spotted on the thumbnail.
