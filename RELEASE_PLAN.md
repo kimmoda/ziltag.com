@@ -30,3 +30,6 @@ If the content provider doesn't finished the full process, we send a reminder, e
 We allow the end user leaves message on the board, but we defer the message and reminder the end user that the email is required to publish the message. A password setting email will be send to the end user to support message management. The published time is the time after the end user's registration.
 
 On the other hand, we don't allow the end user adds tag to the image without registration because the tagging is an advanced operation in Ziltag. We don't need everyone tagging the image.
+
+### Upgrade from End User to Content Provider
+Since end user may want our plugin when they have the trial at other content provider's site, we should show an "apply to content provider" tip in our landing page to the visitor who logged as end user.
