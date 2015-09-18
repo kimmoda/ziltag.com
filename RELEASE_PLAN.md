@@ -45,3 +45,8 @@ User who isn't logged in can read every messages without blocked, and can leave 
 ### Message can't be Edited
 To simplify things, users can't edit their messages, they should just delete them. But the detail of ziltag can be edited since it's more important than message. Users might have typos, we should let them correct details of ziltags.
 
+## Ziltag Plugin
+Ziltag plugin should keep the image looks normal, to reduce the disturbance, Ziltag's logo and the ziltags' small circles only show to user when user hovers the image.
+
+### Open the Ziltag Reader
+The ziltag reader shall load the specific ziltag with its detail and messages to the user when user clicks the ziltag's small circle. On the other hand, if the user clicks on the logo, the message board of the image shall be loaded.
