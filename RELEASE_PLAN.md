@@ -33,3 +33,15 @@ On the other hand, we don't allow the end user adds tag to the image without reg
 
 ### Upgrade from End User to Content Provider
 Since end user may want our plugin when they have the trial at other content provider's site, we should show an "apply to content provider" tip in our landing page to the visitor who logged as end user.
+
+## Ziltag Reader
+Ziltag reader is a light box of image, the content provider can write some details about the image in the normal mode which no ziltag involved.
+
+The logged user can add ziltag to the image when the ziltag mode is on, user can write details which are the same type as in the normal mode.
+
+## Easier Messaging
+User who isn't logged in can read every messages without blocked, and can leave messages to the discuss board, but the messages shall be pending until the user has registered or logged in.
+
+## Message can't be Edited
+To simplify things, users can't edit their messages, they should just delete them. But the detail of ziltag can be edited since it's more important than message. Users might have typos, we should let them correct details of ziltags.
+
