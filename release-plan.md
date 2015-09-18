@@ -20,7 +20,7 @@ The design of landing page is still not confirmed.
 The registration process is divided into two kind of users, one of the content providers, another of the end users. The registration process should be minimized as short as possible.
 
 ### Registration of Content Provider
-The content provider visits our landing page, watching our elaborate introduction video, reading a motivational introduction and call to registration by a field for email and a submit button. To make the content provider more convinced, above process will plus a galley before the call to action phase when we get early adapters.
+The content provider visits our landing page, watching our elaborate introduction video, reading a motivational introduction and call to registration by a field for email and a submit button. To make the content provider more convinced, above process will plus a galley before the call to action phase when we get early adopters.
 
 The content provider is redirected to the script installation manual when the email has submitted. In this phase, content provider's web domain should be filled in the a form then we give a script to the content provider which has set the id like the Google Analytics. To let the content provider login to our administration site, password is required, we should ask the password in this phase. Since some content providers might not follow our process, we provide the support form in the bottom.
 
