@@ -17,14 +17,13 @@ class StickerContainer
       @move_holder holder, holder.dataset.x, holder.dataset.y
 
   move_holder: (holder, x, y) ->
-    holder.style.left = x*100 + '%'
-    holder.style.top = y*100 + '%'
+    holder.style.left = x * 100 + '%'
+    holder.style.top = y * 100 + '%'
     holder.style.display = 'inherit' unless holder.classList.contains 'new-holder'
 
   _image_clicked: (e) =>
-    e.stopPropagation()
-    e.stopImmediatePropagation()
-    [data_x, data_y] = @_coord(e)
+    data_x = e.offsetX / @image.clientWidth
+    data_y = e.offsetY / @image.clientHeight
     if @element.classList.contains 'sticker-container--edit-mode'
       if @current_holder
         @move_holder(@current_holder, data_x, data_y)
@@ -38,15 +37,6 @@ class StickerContainer
         @new_holder.addEventListener 'transitionend', => @new_holder.querySelector('textarea').focus()
         form = @new_holder.querySelector 'form'
         @update_field_value form, data_x, data_y
-
-  _coord: (e) ->
-    body_rect = document.body.getBoundingClientRect()
-    image_rect = @image.getBoundingClientRect()
-    offset_x = image_rect.left - body_rect.left
-    offset_y = image_rect.top - body_rect.top
-    data_x = (e.pageX - offset_x) / @image.clientWidth
-    data_y = (e.pageY - offset_y) / @image.clientHeight
-    [data_x, data_y]
 
   update_field_value: (form, x, y) ->
     form.querySelector('input[name="ziltag[x]"]').value = x
