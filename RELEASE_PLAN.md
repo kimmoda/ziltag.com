@@ -37,7 +37,7 @@ Since end user may want our plugin when they have the trial at other content pro
 ## Ziltag Reader
 Ziltag reader is a light box of image, the content provider can write some details about the image in the normal mode which no ziltag involved.
 
-The logged user can add ziltag to the image when the ziltag mode is on, user can write details which are the same type as in the normal mode.
+There is a Ziltag's logo on the image's upper rightmost which is a switch of the ziltag mode, the logged user can add ziltag to the image when the ziltag mode is on, user can write details which are the same type as in the normal mode. The default of the ziltag mode is off.
 
 ### Easier Messaging
 User who isn't logged in can read every messages without blocked, and can leave messages to the discuss board, but the messages shall be pending until the user has registered or logged in.
@@ -46,7 +46,10 @@ User who isn't logged in can read every messages without blocked, and can leave 
 To simplify things, users can't edit their messages, they should just delete them. But the detail of ziltag can be edited since it's more important than message. Users might have typos, we should let them correct details of ziltags.
 
 ## Ziltag Plugin
-Ziltag plugin should keep the image looks normal, to reduce the disturbance, Ziltag's logo and the ziltags' small circles only show to user when user hovers the image.
+Ziltag plugin should keep the image looks normal, to reduce the disturbance, Ziltag's logo and the ziltags' small circles only show to user when user hovers around the image.
 
 ### Open the Ziltag Reader
 The ziltag reader shall load the specific ziltag with its detail and messages to the user when user clicks the ziltag's small circle. On the other hand, if the user clicks on the logo, the message board of the image shall be loaded.
+
+### Small Circle of Ziltag
+To attract user's attention, the ziltag on the image is represented as a small circle, the circle should increase and decrease the radius like a lively bubble. The circle shall discolor when user hovers around it.
