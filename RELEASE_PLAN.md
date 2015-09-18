@@ -22,12 +22,12 @@ The registration process is divided into two kind of users, one of the content p
 ### Registration of Content Provider
 The content provider visits our landing page, watching our elaborate introduction video, reading a motivational introduction and call to registration by a field for email and a submit button. To make the content provider more convinced, above process will plus a galley before the call to action phase when we get early adopters.
 
-The content provider is redirected to the script installation manual when the email has submitted. In this phase, content provider's web domain should be filled in the a form then we give a script to the content provider which has set the id like the Google Analytics. To let the content provider login to our administration site, password is required, we should ask the password in this phase. Since some content providers might not follow our process, we provide the support form in the bottom.
+The content provider is redirected to the script installation manual when the email has submitted. In this phase, content provider's web domain and the username should be filled in the a form then we give a script to the content provider which has set the id like the Google Analytics. To let the content provider login to our administration site, password is required, we should ask the password in this phase. Since some content providers might not follow our process, we provide the support form in the bottom.
 
 If the content provider doesn't finished the full process, we send a reminder, encouraging email to them.
 
 ### Registration of End User
-We allow the end user leaves message on the board, but we defer the message and reminder the end user that the email is required to publish the message. A password setting email will be send to the end user to support message management. The published time is the time after the end user's registration.
+We allow the end user leaves message on the board, but we defer the message and reminder the end user that the username and email are required to publish the message. A password setting email will be send to the end user to support message management. The published time is the time after the end user's registration.
 
 On the other hand, we don't allow the end user adds tag to the image without registration because the tagging is an advanced operation in Ziltag. We don't need everyone tagging the image.
 
