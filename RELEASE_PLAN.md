@@ -52,7 +52,7 @@ Ziltag plugin should keep the image looks normal, to reduce the disturbance, Zil
 The ziltag reader shall load the specific ziltag with its detail and messages to the user when user clicks the ziltag's small circle. On the other hand, if the user clicks on the logo, the message board of the image shall be loaded.
 
 ### Small Circle of Ziltag
-To attract user's attention, the ziltag on the image is represented as a small circle, the circle should increase and decrease the radius like a lively bubble. The circle shall discolor when user hovers around it.
+To attract user's attention, the ziltag on the image is represented as a small circle, the circle should enlarge and shrink like a lively bubble. The circle shall discolor when user hovers around it.
 
 ## Share to Social Networks
 Social networks like Facebook are support the thumbnail, to attract user's attention, the thumbnail of ziltag's link should contain the small circle. If the user shares the link of image which doesn't specify the ziltag, all small circles are spotted on the thumbnail.
