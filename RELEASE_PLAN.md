@@ -56,3 +56,6 @@ To attract user's attention, the ziltag on the image is represented as a small c
 
 ## Share to Social Networks
 Social networks like Facebook are support the thumbnail, to attract user's attention, the thumbnail of ziltag's link should contain the small circle. If the user shares the link of image which doesn't specify the ziltag, all small circles are spotted on the thumbnail.
+
+## Notification
+User involved in the Ziltag session, i.e. content provider, end user who adds the tag or leaves message should get a notification when the other user leaves the message in the session.
