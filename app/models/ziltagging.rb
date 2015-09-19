@@ -1,7 +1,4 @@
 class Ziltagging < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-
   # scopes
   scope :by_source, ->(source){ source.present? ? joins(:photo).where('photos.source = ?', source) : all }
 

@@ -10,24 +10,13 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'settingslogic'
-
 gem 'unicorn'
 gem 'devise'
 gem 'devise-i18n'
-gem 'simple_form'
-gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
-gem 'elasticsearch-model'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap'
-  gem 'rails-assets-select2', '~> 4.0.0.rc.2'
-  gem 'rails-assets-URIjs'
-  gem 'rails-assets-select2-bootstrap-theme'
-end
 
 group :development do
   gem 'capistrano'
