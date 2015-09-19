@@ -6,7 +6,7 @@
 <%= tag :meta, property: 'article:author', content: @ziltag.username %>
 <%= tag :meta, property: 'og:url', content: photo_url(@photo, @ziltag) %>
 <%= tag :meta, property: 'og:description', content: @ziltag.content %>
-<%= tag :meta, property: 'og:image', content: @photo.image_url %>
+<%= tag :meta, property: 'og:image', content: preview_image_ziltag_url(@ziltag) %>
 <% end %>
 <% end %>
 

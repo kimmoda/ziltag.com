@@ -39,12 +39,12 @@ class ZiltagImageComposer
 
     image.combine_options do |b|
       b.geometry "#{@crop_width}x#{@crop_height}^"
-      b.stroke 'white'
+      b.stroke 'red'
       b.strokewidth 2
-      b.fill 'rgba(255,0,0,30)'
+      b.fill 'rgba(255,255,255,30)'
       b.draw "circle #{ziltag_x},#{ziltag_y} #{ziltag_x},#{ziltag_y+10}"
       b.crop "#{@crop_width}x#{@crop_height}#{'%+d' % crop_x}#{'%+d' % crop_y}"
     end
-    image.path
+    image
   end
 end
