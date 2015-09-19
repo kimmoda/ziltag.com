@@ -49,7 +49,7 @@ To simplify things, users can't edit their comments, they should just delete the
 Social networks like Facebook are support the thumbnail, to attract user's attention, the thumbnail of ziltag's link should contain the small circle. If the user shares the link of image which doesn't specify the ziltag, all small circles are spotted on the thumbnail.
 
 ### Notification
-User involved in the Ziltag session, i.e. content provider, end user who adds the tag or leaves comment should get a notification when the other user leaves the comment in the session.
+User involved in the Ziltag session, i.e. content provider, end user who adds the tag or leaves comment should get an email notification when the other user leaves the comment in the session.
 
 ## Ziltag Plugin
 Ziltag plugin should keep the image looks normal, to reduce the disturbance, Ziltag's logo and the ziltags' small circles only show to user when user hovers around the image.
