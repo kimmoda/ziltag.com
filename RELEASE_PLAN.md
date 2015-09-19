@@ -27,7 +27,7 @@ The content provider is redirected to the script installation manual when the em
 If the content provider doesn't finished the full process, we send a reminder, encouraging email to them.
 
 ### Registration of End User
-We allow the end user leaves message on the board, but we defer the message and reminder the end user that the username and email are required to publish the message. A password setting email will be send to the end user to support message management. The published time is the time after the end user's registration.
+We allow the end user leaves comment on the board, but we defer the comment and reminder the end user that the username and email are required to publish the comment. A password setting email will be send to the end user to support comment management. The published time is the time after the end user's registration.
 
 On the other hand, we don't allow the end user adds tag to the image without registration because the tagging is an advanced operation in Ziltag. We don't need everyone tagging the image.
 
@@ -39,23 +39,23 @@ Ziltag reader is a light box of image, the content provider can write some detai
 
 There is a Ziltag's logo on the image's upper rightmost which is a switch of the ziltag mode, the logged user can add ziltag to the image when the ziltag mode is on, user can write details which are the same type as in the normal mode. The default of the ziltag mode is off.
 
-### Easier Messaging
-User who isn't logged in can read every messages without blocked, and can leave messages to the discuss board, but the messages shall be pending until the user has registered or logged in.
+### Easier Commenting
+User who isn't logged in can read every comments without blocked, and can leave comments to the comment board, but the comments shall be pending until the user has registered or logged in.
 
-### Message can't be Edited
-To simplify things, users can't edit their messages, they should just delete them. But the detail of ziltag can be edited since it's more important than message. Users might have typos, we should let them correct details of ziltags.
+### Comment can't be Edited
+To simplify things, users can't edit their comments, they should just delete them. But the detail of ziltag can be edited since it's more important than comment. Users might have typos, we should let them correct details of ziltags.
 
 ### Share to Social Networks
 Social networks like Facebook are support the thumbnail, to attract user's attention, the thumbnail of ziltag's link should contain the small circle. If the user shares the link of image which doesn't specify the ziltag, all small circles are spotted on the thumbnail.
 
 ### Notification
-User involved in the Ziltag session, i.e. content provider, end user who adds the tag or leaves message should get a notification when the other user leaves the message in the session.
+User involved in the Ziltag session, i.e. content provider, end user who adds the tag or leaves comment should get a notification when the other user leaves the comment in the session.
 
 ## Ziltag Plugin
 Ziltag plugin should keep the image looks normal, to reduce the disturbance, Ziltag's logo and the ziltags' small circles only show to user when user hovers around the image.
 
 ### Open the Ziltag Reader
-The ziltag reader shall load the specific ziltag with its detail and messages to the user when user clicks the ziltag's small circle. On the other hand, if the user clicks on the logo, the message board of the image shall be loaded.
+The ziltag reader shall load the specific ziltag with its detail and comments to the user when user clicks the ziltag's small circle. On the other hand, if the user clicks on the logo, the comment board of the image shall be loaded.
 
 ### Small Circle of Ziltag
 To attract user's attention, the ziltag on the image is represented as a small circle, the circle should enlarge and shrink like a lively bubble. The circle shall discolor when user hovers around it.
