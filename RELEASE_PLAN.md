@@ -45,6 +45,12 @@ User who isn't logged in can read every messages without blocked, and can leave 
 ### Message can't be Edited
 To simplify things, users can't edit their messages, they should just delete them. But the detail of ziltag can be edited since it's more important than message. Users might have typos, we should let them correct details of ziltags.
 
+### Share to Social Networks
+Social networks like Facebook are support the thumbnail, to attract user's attention, the thumbnail of ziltag's link should contain the small circle. If the user shares the link of image which doesn't specify the ziltag, all small circles are spotted on the thumbnail.
+
+### Notification
+User involved in the Ziltag session, i.e. content provider, end user who adds the tag or leaves message should get a notification when the other user leaves the message in the session.
+
 ## Ziltag Plugin
 Ziltag plugin should keep the image looks normal, to reduce the disturbance, Ziltag's logo and the ziltags' small circles only show to user when user hovers around the image.
 
@@ -53,9 +59,3 @@ The ziltag reader shall load the specific ziltag with its detail and messages to
 
 ### Small Circle of Ziltag
 To attract user's attention, the ziltag on the image is represented as a small circle, the circle should enlarge and shrink like a lively bubble. The circle shall discolor when user hovers around it.
-
-## Share to Social Networks
-Social networks like Facebook are support the thumbnail, to attract user's attention, the thumbnail of ziltag's link should contain the small circle. If the user shares the link of image which doesn't specify the ziltag, all small circles are spotted on the thumbnail.
-
-## Notification
-User involved in the Ziltag session, i.e. content provider, end user who adds the tag or leaves message should get a notification when the other user leaves the message in the session.
