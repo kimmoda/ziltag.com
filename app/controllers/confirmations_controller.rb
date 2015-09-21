@@ -10,7 +10,8 @@ class ConfirmationsController < Devise::ConfirmationsController
     if resource.update permitted_params
       resource_class.confirm_by_token(params[resource_name][:confirmation_token])
       set_flash_message :notice, :confirmed
-      sign_in_and_redirect(resource_name, resource)
+      sign_in(resource_name, resource)
+      render :welcome
     else
       render :show
     end
