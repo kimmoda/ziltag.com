@@ -40,7 +40,7 @@ Ziltag reader is a light box of image, the content provider can write some detai
 There is a Ziltag's logo on the image's upper rightmost which is a switch of the ziltag mode, the logged user can add ziltag to the image when the ziltag mode is on, user can write details which are the same type as in the normal mode. The default of the ziltag mode is off.
 
 ### Easier Commenting
-User who isn't logged in can read every comments without blocked, and can leave comments to the comment board, but the comments shall be pending until the user has registered or logged in.
+User hasn't logged in can read every comments without blocked, and can leave comments to the comment board, but the comments shall be pending until the user has registered or logged in.
 
 ### Comment can't be Edited
 To simplify things, users can't edit their comments, they should just delete them. But the detail of ziltag can be edited since it's more important than comment. Users might have typos, we should let them correct details of ziltags.
