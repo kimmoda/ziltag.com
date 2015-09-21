@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   # validations
   validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}
+  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
 
   # callbacks
 
@@ -56,5 +56,13 @@ class User < ActiveRecord::Base
 
   def password_required?
     confirmed? ? super : false
+  end
+
+  def general_user?
+    type.blank?
+  end
+
+  def content_provider?
+    type == 'ContentProvider'
   end
 end
