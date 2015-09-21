@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get :term_of_service, :privacy_policy
     end
 
-    devise_for :users, controllers: {registrations: :registrations}
+    devise_for :users
 
     get 'ziltags/:slug/(:ziltag_slug)' => 'photos#show', as: :photo, constraints: {slug: /\w{6}/, ziltag_slug: /\w{6}/}
     resources :photos, only: :create
