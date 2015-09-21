@@ -14,16 +14,6 @@
       <%= f.email_field :email, class: 'mdl-textfield__input' %>
       <label class="mdl-textfield__label" for="user_email">Email</label>
     </div>
-    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
-      <i class="material-icons">lock</i>
-      <%= f.password_field :password, class: 'mdl-textfield__input' %>
-      <label class="mdl-textfield__label" for="user_password">Password</label>
-    </div>
-    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
-      <i class="material-icons">lock</i>
-      <%= f.password_field :password_confirmation, class: 'mdl-textfield__input' %>
-      <label class="mdl-textfield__label" for="user_password_confirmation">Password Confirmation</label>
-    </div>
     <%= f.submit 'Sign up', class: 'mdl-button mdl-js-button mdl-color--indigo-500 mdl-color-text--white' %>
   <% end %>
   <div class="jumbotron__form-summary">Signing up means you’re ok with Ziltag’s <%= link_to t(:'term_of_service'), term_of_service_path%> and <%= link_to t(:'privacy_policy'), privacy_policy_path %>.</div>
