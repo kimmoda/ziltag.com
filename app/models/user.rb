@@ -77,4 +77,8 @@ class User < ActiveRecord::Base
   def to_param
     username
   end
+
+  def password_required?
+    confirmed? ? super : false
+  end
 end
