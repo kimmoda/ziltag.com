@@ -4,6 +4,7 @@
   <div class="jumbotron__summary">You can enjoy tons of different possibilities with us. Fill the missing info for anything within a photo, write a post, or simply leave a comment…everything.</div>
   <div class="jumbotron__spacing"></div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'jumbotron__form'}) do |f| %>
+    <%= f.hidden_field :type, value: 'ContentProvider' if current_page?(controller: 'pages', action: 'home') %>
     <div class="jumbotron__field mdl-textfield mdl-js-textfield">
       <i class="material-icons">account_circle</i>
       <%= f.text_field :username, class: 'mdl-textfield__input' %>

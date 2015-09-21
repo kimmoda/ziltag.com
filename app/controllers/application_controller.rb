@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username << :email
+    devise_parameter_sanitizer.for(:sign_up) << :username << :email << :type
     devise_parameter_sanitizer.for(:sign_in) << :login
     devise_parameter_sanitizer.for(:account_update).concat %i[email avatar avatar_cache remove_avatar cover cover_cache remove_cover]
   end
@@ -61,7 +61,11 @@ protected
 private
 
   def after_sign_in_path_for(resource_or_scope)
-    session[:previous_photo_path] || root_path
+    if current_user.is_a? ContentProvider
+      install_path
+    else
+      session[:previous_photo_path] || root_path
+    end
   end
 
   def after_sign_out_path_for(resource_or_scope)

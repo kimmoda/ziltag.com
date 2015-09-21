@@ -46,30 +46,6 @@ class User < ActiveRecord::Base
     record.respond_to?(:user) && record.user == self
   end
 
-  def follow? leader
-    leaders.index(leader) != nil
-  end
-
-  def follow! leader
-    leaders << leader unless follow?(leader)
-  end
-
-  def unfollow! leader
-    leaders.delete(leader) if follow?(leader)
-  end
-
-  def collect? record
-    collectings.index{|c| c.collectable == record } != nil
-  end
-
-  def collect! record
-    collectings.create!(collectable: record) unless collectings.exists? collectable: record
-  end
-
-  def uncollect! record
-    collectings.destroy collectings.find_by(collectable: record) if collectings.exists? collectable: record
-  end
-
   def to_s
     email
   end
