@@ -1,0 +1,7 @@
+<%= console %>
+<%= form_for resource, as: resource_name, url: confirm_path do |f| %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.hidden_field :confirmation_token, value: params[:confirmation_token] %>
+  <%= f.submit %>
+<% end %>

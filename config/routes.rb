@@ -6,7 +6,10 @@ Rails.application.routes.draw do
       get :term_of_service, :privacy_policy, :install
     end
 
-    devise_for :users
+    devise_for :users, controllers: {confirmations: 'confirmations'}
+    devise_scope :user do
+      patch 'confirm' => 'confirmations#confirm'
+    end
 
     get 'ziltags/:slug/(:ziltag_slug)' => 'photos#show', as: :photo, constraints: {slug: /\w{6}/, ziltag_slug: /\w{6}/}
     resources :photos, only: :create
