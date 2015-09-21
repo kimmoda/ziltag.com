@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root 'pages#home'
 
     controller :single_page do
-      get :term_of_service, :privacy_policy
+      get :term_of_service, :privacy_policy, :install
     end
 
     devise_for :users
