@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     controller :single_page do
       get :term_of_service, :privacy_policy, :install
+      patch 'me', action: 'update_current_user'
     end
 
     devise_for :users, controllers: {confirmations: 'confirmations'}

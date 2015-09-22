@@ -1,6 +1,16 @@
 <h1>How to Install Ziltag</h1>
 <hr>
 
+<%= form_for @user, as: :user, url: me_path do |f| %>
+  <% unless @user.errors.empty? %>
+    <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+    <% end %>
+  <% end %>
+  <%= f.text_field :username %>
+  <%= f.submit 'update' %>
+<% end %>
+
 <textarea rows="12" cols="100" onclick="this.focus();this.select()" readonly="readonly"><script>
   /* --- CONFIGURATION --- */
   var ziltag_img_selector = 'img';

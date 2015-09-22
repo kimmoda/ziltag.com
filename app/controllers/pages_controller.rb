@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       redirect_to @photo if @photo.persisted?
     else
       @photo = Photo.new
+      @user = ContentProvider.new
     end
   end
 
