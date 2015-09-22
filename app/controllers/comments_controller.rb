@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new comment_params
     if @comment.save
+      flash.notice = 'Your comment will be pending until you finish account confirmation.' unless current_user.confirmed?
       redirect_to photo_path(@comment.ziltag.photo, @comment.ziltag)
     else
       redirect_to request.referer
