@@ -7,7 +7,7 @@ class Ziltag < ActiveRecord::Base
 
   # attributes
   delegate :source, to: :photo
-  delegate :username, to: :user
+  delegate :username, :confirmed?, to: :user
 
   # associations
   belongs_to :photo

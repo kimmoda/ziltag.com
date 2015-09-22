@@ -14,20 +14,10 @@ class User < ActiveRecord::Base
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :posts, dependent: :destroy
-  has_many :ziltaggings, through: :posts
-  has_many :photos, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :_followers, dependent: :destroy, class_name: Following, foreign_key: :leader_id
-  has_many :_leaders, dependent: :destroy, class_name: Following, foreign_key: :follower_id
-  has_many :followers, class_name: User, through: :_followers
-  has_many :leaders, class_name: User, through: :_leaders
-  has_many :collectings, dependent: :destroy
-  has_many :collected_posts, through: :collectings, source: :collectable, source_type: Post
 
   # validations
   validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}
+  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
 
   # callbacks
 
@@ -46,35 +36,23 @@ class User < ActiveRecord::Base
     record.respond_to?(:user) && record.user == self
   end
 
-  def follow? leader
-    leaders.index(leader) != nil
-  end
-
-  def follow! leader
-    leaders << leader unless follow?(leader)
-  end
-
-  def unfollow! leader
-    leaders.delete(leader) if follow?(leader)
-  end
-
-  def collect? record
-    collectings.index{|c| c.collectable == record } != nil
-  end
-
-  def collect! record
-    collectings.create!(collectable: record) unless collectings.exists? collectable: record
-  end
-
-  def uncollect! record
-    collectings.destroy collectings.find_by(collectable: record) if collectings.exists? collectable: record
-  end
-
   def to_s
     email
   end
 
   def to_param
     username
+  end
+
+  def password_required?
+    confirmed? ? super : false
+  end
+
+  def general_user?
+    type.blank?
+  end
+
+  def content_provider?
+    type == 'ContentProvider'
   end
 end

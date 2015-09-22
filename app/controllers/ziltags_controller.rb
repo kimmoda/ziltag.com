@@ -6,6 +6,7 @@ class ZiltagsController < ApplicationController
   def create
     @ziltag = current_user.ziltags.new(ziltag_params)
     if @ziltag.save
+      flash.notice = 'The zitlag will be pending until you finish account confirmation.' unless current_user.confirmed?
       redirect_to photo_path(@ziltag.photo, @ziltag)
     else
       redirect_to request.referer

@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
   # constants
 
   # attributes
+  delegate :username, :confirmed?, to: :user
 
   # associations
   belongs_to :user
