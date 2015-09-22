@@ -5,6 +5,13 @@
   <div class="jumbotron__spacing"></div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'jumbotron__form'}) do |f| %>
     <%= f.hidden_field :type %>
+    <% if current_page? controller: 'photos', action: 'show' %>
+    <div class="jumbotron__field mdl-textfield mdl-js-textfield">
+      <i class="material-icons">email</i>
+      <%= f.text_field :username, class: 'mdl-textfield__input' %>
+      <label class="mdl-textfield__label" for="user_username">username</label>
+    </div>
+    <% end %>
     <div class="jumbotron__field mdl-textfield mdl-js-textfield">
       <i class="material-icons">email</i>
       <%= f.email_field :email, class: 'mdl-textfield__input' %>
