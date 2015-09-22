@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
 
     get 'ziltags/:slug/(:ziltag_slug)' => 'photos#show', as: :photo, constraints: {slug: /\w{6}/, ziltag_slug: /\w{6}/}
-    resources :photos, only: :create
     resources :ziltags, only: %i[create update destroy] do
       get :preview_image, on: :member
     end

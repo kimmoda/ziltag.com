@@ -7,15 +7,6 @@ class PhotosController < ApplicationController
     headers.delete 'X-Frame-Options'
   end
 
-  def create
-    @photo = Photo.new(photo_params)
-    if @photo.save
-      redirect_to @photo
-    else
-      redirect_to root_path
-    end
-  end
-
 private
 
   def photo_params
