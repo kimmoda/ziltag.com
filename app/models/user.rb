@@ -14,16 +14,6 @@ class User < ActiveRecord::Base
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :posts, dependent: :destroy
-  has_many :ziltaggings, through: :posts
-  has_many :photos, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :_followers, dependent: :destroy, class_name: Following, foreign_key: :leader_id
-  has_many :_leaders, dependent: :destroy, class_name: Following, foreign_key: :follower_id
-  has_many :followers, class_name: User, through: :_followers
-  has_many :leaders, class_name: User, through: :_leaders
-  has_many :collectings, dependent: :destroy
-  has_many :collected_posts, through: :collectings, source: :collectable, source_type: Post
 
   # validations
   validates :email, presence: true, uniqueness: true
