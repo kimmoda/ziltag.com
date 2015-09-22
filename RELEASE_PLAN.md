@@ -37,7 +37,7 @@ Since end user may want our plugin when they have the trial at other content pro
 ## Ziltag Reader
 Ziltag reader is a light box of image, the content provider can write some details about the image in the normal mode which no ziltag involved.
 
-There is a Ziltag's logo on the image's upper rightmost which is a switch of the ziltag mode, the logged user can add ziltag to the image when the ziltag mode is on, user can write details which are the same type as in the normal mode. The default of the ziltag mode is off.
+There is a Ziltag's logo on the image's upper rightmost which is a switch of the ziltag mode, the logged user can add ziltag to the image when the ziltag mode is on, ~~user can write details which are the same type as in the normal mode~~ ziltag reader shows index of ziltags of the image if there is no ziltag specified. The default of the ziltag mode is off.
 
 ### Easier Commenting
 User hasn't logged in can read every comments without blocked, and can leave comments to the comment board, but the comments shall be pending until the user has registered or logged in.
