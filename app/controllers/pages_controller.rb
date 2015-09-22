@@ -10,8 +10,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def landing
-    @subscriber = Subscriber.new
-    render layout: false
+  def foo
+    render text: 'foo' 
   end
 end
