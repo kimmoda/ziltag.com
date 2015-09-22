@@ -14,7 +14,7 @@
   <div class="mdl-cell mdl-cell--6-col">
     <div class="sticker-container js-sticker-container">
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
-      <% @photo.ziltags.each do |ziltag| %>
+      <% @photo.ziltags.select{|ziltag| ziltag.confirmed? || (user_signed_in? && current_user.own?(ziltag)) }.each do |ziltag| %>
         <%= content_tag :div,
           class: "sticker-container__holder sticker-container__holder--hide#{' sticker-container__holder--current' if ziltag == @ziltag}",
           data: {x: ziltag.x, y: ziltag.y, origin_x: ziltag.x, origin_y: ziltag.y} do
@@ -121,7 +121,7 @@
       </div>
     </div>
     <% end %>
-    <% @ziltag.comments.each do |comment| %>
+    <% @ziltag.comments.select{|comment| comment.confirmed? || (user_signed_in? && current_user.own?(comment)) }.each do |comment| %>
     <div class="comment-info js-comment-info mdl-color--white">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
