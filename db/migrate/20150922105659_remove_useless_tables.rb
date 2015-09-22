@@ -7,8 +7,5 @@ class RemoveUselessTables < ActiveRecord::Migration
     drop_table :ziltaggings
     drop_table :collectings
     drop_table :followings
-    drop_table :students
-    drop_table :stickers
-    drop_table :libpuzzle_signatures
   end
 end
