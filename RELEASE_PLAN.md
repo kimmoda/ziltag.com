@@ -55,7 +55,7 @@ User involved in the Ziltag session, i.e. content provider, end user who adds th
 Ziltag plugin should keep the image looks normal, to reduce the disturbance, Ziltag's logo and the ziltags' small circles only show to user when user hovers around the image.
 
 ### Open the Ziltag Reader
-The ziltag reader shall load the specific ziltag with its detail and comments to the user when user clicks the ziltag's small circle. On the other hand, if the user clicks on the logo, the comment board of the image shall be loaded.
+The ziltag reader shall load the specific ziltag with its detail and comments to the user when user clicks the ziltag's small circle. On the other hand, if the user clicks on the logo, ziltag reader loads the index of ziltags of the image and switch to ziltag mode.
 
 ### Small Circle of Ziltag
 To attract user's attention, the ziltag on the image is represented as a small circle, the circle should enlarge and shrink like a lively bubble. The circle shall discolor when user hovers around it.
