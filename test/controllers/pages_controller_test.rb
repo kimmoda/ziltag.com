@@ -1,12 +1,14 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
-  test 'should get home' do
+  def test_get_home
     get :home
     assert_response :success
+  end
 
-    sign_in users(:tony)
-    get :home
-    assert_response :success
+  class SignInContext < self
+    def setup
+      sign_in users(:tony)
+    end
   end
 end

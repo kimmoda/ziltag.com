@@ -1,0 +1,8 @@
+one:
+  slug: oneone
+  image: one.jpg
+  source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/one.jpg" %>
+two:
+  slug: twotwo
+  image: two.jpg
+  source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/two.jpg" %>
