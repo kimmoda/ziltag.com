@@ -120,6 +120,20 @@
         </div>
       </div>
     </div>
+    <% else %>
+    <div class="mdl-shadow--2dp">
+      <%= form_for @user, url: user_registration_path do |f| %>
+        <div class="mdl-textfield mdl-js-textfield">
+          <%= f.text_field :username, class: 'mdl-textfield__input' %>
+          <label class="mdl-textfield__label" for="user_username"><%= t(:username) %></label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield">
+          <%= f.email_field :email, class: 'mdl-textfield__input' %>
+          <label class="mdl-textfield__label" for="user_email"><%= t(:email) %></label>
+        </div>
+        <%= f.submit t(:login), class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %>
+      <% end %>
+    </div>
     <% end %>
     <% @ziltag.comments.select{|comment| comment.confirmed? || (user_signed_in? && current_user.own?(comment)) }.each do |comment| %>
     <div class="comment-info js-comment-info mdl-color--white">
