@@ -30,4 +30,19 @@
     top: 5px;
     right: 5px;
   }
+  &--left{
+    .dialog{
+      &__arrow{
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid white;
+        left: -10px;
+        border-right: none;
+      }
+      &__frame{
+        left: auto;
+        right: 10px;
+      }
+    }
+  }
 }
