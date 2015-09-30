@@ -11,7 +11,7 @@
   <%= content_for :head if content_for? :head %>
 </head>
 <body class="<%= "#{controller_path} #{action_name}" %>">
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-50">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--white">
     <%= render 'shared/header' %>
     <% if alert %><div class="flash-message js-flash-message mdl-color--red-100 mdl-typography--headline"><%= alert %></div><% end %>
     <% if notice %><div class="flash-message js-flash-message mdl-color--blue-100 mdl-typography--headline"><%= notice %></div><% end %>
