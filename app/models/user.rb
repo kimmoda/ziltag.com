@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   # validations
-  validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
 
   # callbacks
