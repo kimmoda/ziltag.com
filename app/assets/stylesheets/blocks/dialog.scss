@@ -1,3 +1,4 @@
+// http://codepen.io/tonytonyjan/pen/MaJpJw
 // <div class="dialog">
 //   <div class="dialog__arrow"></div>
 //   <div class="dialog__frame"></div>
@@ -29,6 +30,14 @@
     position: absolute;
     top: 5px;
     right: 5px;
+  }
+  &--top{
+    .dialog{
+      &__frame{
+        top: auto;
+        bottom: -20px;
+      }
+    }
   }
   &--left{
     .dialog{
