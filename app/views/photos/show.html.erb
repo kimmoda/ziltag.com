@@ -173,15 +173,7 @@
     </div>
     <% end %>
     <% else %>
-      <% if user_signed_in? %>
-        <%= render 'summary' %>
-      <% else %>
-        <% if params[:sign_up] %>
-        <%= render 'shared/sign_up' %>
-        <% else %>
-        <%= render 'shared/login' %>
-        <% end %>
-      <% end %>
+      <%= render 'summary' %>
     <% end %>
   </div>
 </div>
