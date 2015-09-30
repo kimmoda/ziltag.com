@@ -1,0 +1,11 @@
+<% if @photo.ziltags.empty? %>
+  <h1>Oops! There is no ziltag on this photo. Try to add some!</h1>
+<% else %>
+  <h1>Summary</h1>
+  <hr>
+  <ul>
+    <% @photo.ziltags.each do |ziltag| %>
+      <li><%= ziltag.content %> by <%= ziltag.username %></li>
+    <% end %>
+  </ul>
+<% end %>
