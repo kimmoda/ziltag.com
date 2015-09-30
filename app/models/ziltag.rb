@@ -1,7 +1,6 @@
 class Ziltag < ActiveRecord::Base
   include Slugable
   # scopes
-  scope :by_image_source, ->(urls){ joins(:photo).where(photos: {source: urls}) }
 
   # constants
 
