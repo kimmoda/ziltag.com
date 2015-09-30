@@ -22,7 +22,7 @@
           <%= link_to photo_path(@photo, ziltag) do %>
             <%= content_tag :div, nil, class: "sticker-container__circle#{' active' if ziltag == @ziltag}" %>
           <% end %>
-          <div class="sticker-container__preview-dialog dialog">
+          <div class="sticker-container__dialog sticker-container__dialog--preview dialog dialog--preview <%= ' dialog--left sticker-container__dialog--left' if ziltag.x > 0.5 %>">
             <div class="dialog__frame"><%= truncate ziltag.content %></div>
             <div class="dialog__arrow"></div>
           </div>

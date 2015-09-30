@@ -3,6 +3,10 @@
 //   <div class="dialog__arrow"></div>
 //   <div class="dialog__frame"></div>
 // </div>
+
+$default-background-color: white;
+$preview-background-color: rgba(255,255,255,0.8);
+
 .dialog{
   &__arrow{
     position: absolute;
@@ -11,12 +15,11 @@
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 10px solid white;
+    border-right: 10px solid $default-background-color;
   }
 
   &__frame{
-    @extend .mdl-shadow--4dp;
-    background: white;
+    background: $default-background-color;
     min-width: 300px;
     min-height: 100px;
     position: absolute;
@@ -44,13 +47,27 @@
       &__arrow{
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent;
-        border-left: 10px solid white;
+        border-left: 10px solid $default-background-color;
         left: -10px;
         border-right: none;
       }
       &__frame{
         left: auto;
         right: 10px;
+      }
+    }
+  }
+  &--preview{
+    .dialog{
+      &__arrow{
+        border-right-color: $preview-background-color;
+        border-left-color: $preview-background-color;
+      }
+      &__frame{
+        min-height: inherit;
+        min-width: inherit;
+        white-space: nowrap;
+        background: $preview-background-color;
       }
     }
   }
