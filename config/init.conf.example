@@ -1,6 +1,0 @@
-#!/bin/sh
-export ZILTAG_DATABASE_PASSWORD=
-export SECRET_KEY_BASE=
-export RAILS_ENV=production
-export ADMIN_NAME=ziltag
-export ADMIN_PASSWORD=ziltag
