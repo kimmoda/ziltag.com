@@ -7,9 +7,4 @@ class PhotosController < ApplicationController
     headers.delete 'X-Frame-Options'
   end
 
-private
-
-  def photo_params
-    params.require(:photo).permit(:image)
-  end
 end

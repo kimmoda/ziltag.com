@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
   def home
     if params[:src]
-      @photo = Photo.find_by(source: params[:src])
-      @photo ||= Photo.create remote_image_url: params[:src]
+      @photo = Photo.find_or_create_by_source_and_href! params[:src]
       redirect_to @photo if @photo.persisted?
     else
       @photo = Photo.new
