@@ -21,4 +21,10 @@ class Comment < ActiveRecord::Base
     content
   end
 
+  def notify_users
+    users = ziltag.comments.includes(:user).map(&:user).reject!{|u| u == user } << ziltag.user
+    users.uniq!
+    users.each{ |user| NotificationMailer.new_comment_notification(user, self).deliver_later }
+  end
+
 end

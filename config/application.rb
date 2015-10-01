@@ -31,5 +31,8 @@ module ZiltagApp
       g.test_framework = false
       g.skip_routes = true
     end
+
+    config.active_job.queue_adapter = :queue_classic
+
   end
 end
