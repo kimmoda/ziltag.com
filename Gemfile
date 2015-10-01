@@ -17,6 +17,7 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'queue_classic'
 
 group :development do
   gem 'capistrano'
