@@ -1,5 +1,9 @@
 class Photo < ActiveRecord::Base
   include Slugable
+  def self.find_or_create_by_source_and_href! source, href = nil
+    Photo.find_by(source: source, href: href) || Photo.create!(remote_image_url: source, href: href)
+  end
+
   # scopes
 
   # constants
