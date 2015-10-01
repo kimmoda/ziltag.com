@@ -49,5 +49,9 @@ namespace :deploy do
     on roles(:app) do
       execute :sudo, '/etc/init.d/unicorn', 'upgrade'
     end
+
+    on roles(:worker) do
+      execute :sudo, '/etc/init.d/worker', 'restart'
+    end
   end
 end
