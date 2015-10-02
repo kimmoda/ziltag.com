@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /zh-TW|ja/ do
     root 'pages#home'
 
+    controller :pages do
+      get :username, :install
+      patch :username, action: 'update_username'
+    end
+
     controller :single_page do
-      get :term_of_service, :privacy_policy, :install
+      get :term_of_service, :privacy_policy
       patch 'me', action: 'update_current_user'
     end
 

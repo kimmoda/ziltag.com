@@ -8,8 +8,4 @@ class PagesController < ApplicationController
       @user = ContentProvider.new
     end
   end
-
-  def foo
-    render text: 'foo' 
-  end
 end

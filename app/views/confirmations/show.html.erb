@@ -1,6 +1,17 @@
-<%= form_for resource, as: resource_name, url: confirm_path do |f| %>
-  <%= f.password_field :password %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.hidden_field :confirmation_token, value: params[:confirmation_token] %>
-  <%= f.submit 'confirm' %>
-<% end %>
+<div class="layout-fullscreen">
+  <div class="starry-sky starry-sky--pink">
+    <div class="starry-sky__star starry-sky__star--small"></div>
+    <div class="starry-sky__star starry-sky__star--medium"></div>
+    <div class="starry-sky__star starry-sky__star--big"></div>
+    <div class="starry-sky__container">
+      <h1 class="mdl-color-text--white">Welcome back.</h1>
+      <h5 class="mdl-color-text--white">Now we know that you are not a robot. Please setup your password to continue.</h5>
+      <%= form_for resource, as: resource_name, url: confirm_path do |f| %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation %>
+        <%= f.hidden_field :confirmation_token, value: params[:confirmation_token] %>
+        <%= f.submit 'confirm' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -19,7 +19,6 @@
     <main class="mdl-layout__content">
       <%= content_for?(:main) ? yield(:main) : yield %>
     </main>
-    <%= render 'shared/footer' unless controller_name == 'photos' && action_name == 'show' %>
   </div>
 </body>
 </html>
