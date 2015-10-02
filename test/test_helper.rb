@@ -1,8 +1,5 @@
-require 'codeclimate-test-reporter'
 require 'webmock/minitest'
 require 'stub_requests'
-
-CodeClimate::TestReporter.start
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
