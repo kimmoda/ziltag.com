@@ -1,4 +1,6 @@
 require 'codeclimate-test-reporter'
+require 'webmock/minitest'
+
 CodeClimate::TestReporter.start
 
 ENV['RAILS_ENV'] ||= 'test'
