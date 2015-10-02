@@ -7,8 +7,10 @@
       <h1 class="mdl-color-text--white">Thank you for joining us.</h1>
       <h5 class="mdl-color-text--white">Now please give yourself a name so we can recognize you.</h5>
       <%= form_for current_user, url: username_path do |f| %>
-        <%= f.text_field :username %>
-        <%= f.submit %>
+        <div class="text-field" style="position:relative;top:100px;">
+          <%= f.text_field :username, class: 'text-field__input capsule', placeholder: 'set up your username...' %>
+          <%= f.submit 'NEXT', class: 'text-field__button capsule capsule--blue' %>
+        </div>
       <% end %>
     </div>
   </div>

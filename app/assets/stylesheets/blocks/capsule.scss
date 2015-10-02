@@ -1,0 +1,26 @@
+// http://codepen.io/tonytonyjan/pen/yYMXME
+.capsule{
+  display: inline-block;
+  border: none;
+  border-radius: 40px;
+  height: 55px;
+  padding: 0 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 55px;
+  text-decoration: none;
+  outline-width: 0;
+  &--blue{
+    background: #00BCD4;
+    color: white;
+  }
+  &--red{
+    background: #FF8A80;
+    color: white;
+  }
+  &--yellow{
+    background: #F6D53F;
+    color: white;
+  }
+}
