@@ -1,5 +1,16 @@
 <div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--6-col">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--5-col">
+    <h1>HEADING HERE</h1>
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim ligula, finibus et consectetur id, scelerisque non felis.</h4>
+    <ul class="feature-list">
+      <li class="feature-list__item"><div class="feature-list__image"></div>Introduction #1</li>
+      <li class="feature-list__item"><div class="feature-list__image"></div>Introduction #2</li>
+      <li class="feature-list__item"><div class="feature-list__image"></div>Introduction #3</li>
+      <li class="feature-list__item"><div class="feature-list__image"></div>Introduction #4</li>
+    </ul>
+  </div>
+  <div class="mdl-cell mdl-cell--5-col">
     <div class="player">
       <video poster="https://cdn.selz.com/plyr/1.0/poster.jpg" controls crossorigin>
         <source src="https://cdn.selz.com/plyr/1.0/movie.mp4" type="video/mp4">
@@ -7,14 +18,5 @@
       </video>
     </div>
   </div>
-  <div class="mdl-cell mdl-cell--6-col">
-    <%= form_for @user, as: :user, url: user_registration_path do |f| %>
-      <div class="mdl-textfield mdl-js-textfield">
-        <%= f.email_field :email, class: 'mdl-textfield__input' %>
-        <label class="mdl-textfield__label" for="content_provider_email">Email...</label>
-      </div>
-      <%= f.hidden_field :type %>
-      <%= f.submit 'sign up', class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %>
-    <% end %>
-  </div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
 </div>
