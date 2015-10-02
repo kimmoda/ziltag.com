@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001190936) do
+ActiveRecord::Schema.define(version: 20151002104738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,8 @@ ActiveRecord::Schema.define(version: 20151001190936) do
     t.string   "slug",       null: false
   end
 
-  add_index "photos", ["href"], name: "index_photos_on_href", using: :btree
   add_index "photos", ["slug"], name: "index_photos_on_slug", using: :btree
-  add_index "photos", ["source"], name: "index_photos_on_source", unique: true, using: :btree
+  add_index "photos", ["source", "href"], name: "index_photos_on_source_and_href", unique: true, using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "queue_classic_jobs", id: :bigserial, force: :cascade do |t|
@@ -47,8 +46,8 @@ ActiveRecord::Schema.define(version: 20151001190936) do
     t.text     "method",                         null: false
     t.json     "args",                           null: false
     t.datetime "locked_at"
-    t.datetime "created_at",   default: "now()"
     t.integer  "locked_by"
+    t.datetime "created_at",   default: "now()"
     t.datetime "scheduled_at", default: "now()"
   end
 
