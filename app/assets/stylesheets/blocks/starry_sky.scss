@@ -1,0 +1,77 @@
+// http://codepen.io/tonytonyjan/pen/bVqgoo?editors=110
+// <div class="starry-sky">
+//   <div class="starry-sky__star starry-sky__star--small"></div>
+//   <div class="starry-sky__star starry-sky__star--medium"></div>
+//   <div class="starry-sky__star starry-sky__star--big"></div>
+// </div>
+@function multiple-box-shadow($n, $colors){
+  $stars: ();
+  @for $i from 1 through $n{
+    $stars: append($stars, random(2000)+px random(2000)+px nth($colors, random(length($colors))), comma);
+  }
+  @return $stars;
+}
+
+@mixin stars($colors) {
+  &--small{
+    box-shadow: multiple-box-shadow(1000, $colors);
+  }
+  &--medium{
+    box-shadow: multiple-box-shadow(500, $colors);
+  }
+  &--big{
+    box-shadow: multiple-box-shadow(150, $colors);
+  }
+}
+
+.starry-sky{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #003F75;
+  overflow: hidden;
+
+  &__star{
+    $colors: (#2BADC3, #99B2C8, #99436E, #0070AE);
+    @include stars($colors);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    
+    &--small{
+      width: 2px;
+      height: 2px;
+    }
+
+    &--medium{
+      width: 4px;
+      height: 4px;
+    }
+
+    &--big{
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  &--yellow{
+    background: #F6D53F;
+    .starry-sky{
+      $colors: (#FAE586, #FF8FA6, #90A830, #FFFFFF);
+      &__star{
+        @include stars($colors);
+      }
+    }
+  }
+
+  &--pink{
+    background: #FF8A80;
+    .starry-sky{
+      $colors: (#FAE586, #F6DCDA, #BBFAAF, #FFFFFF);
+      &__star{
+        @include stars($colors);  
+      }
+    }
+  }
+}
