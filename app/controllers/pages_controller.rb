@@ -8,4 +8,13 @@ class PagesController < ApplicationController
       @user = ContentProvider.new
     end
   end
+
+  def update_username
+    if current_user.update params.require(:content_provider).permit(:username)
+      redirect_to install_path, notice: 'updated'
+    else
+      flash.now[:alert] = 'Please check your input value.'
+      render :username
+    end
+  end
 end

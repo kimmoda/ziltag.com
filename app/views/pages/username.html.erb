@@ -6,7 +6,7 @@
     <div class="starry-sky__container">
       <h1 class="mdl-color-text--white">Thank you for joining us.</h1>
       <h5 class="mdl-color-text--white">Now please give yourself a name so we can recognize you.</h5>
-      <%= form_for User.first, url: username_path do |f| %>
+      <%= form_for current_user, url: username_path do |f| %>
         <%= f.text_field :username %>
         <%= f.submit %>
       <% end %>

@@ -62,7 +62,11 @@ private
 
   def after_sign_in_path_for(resource_or_scope)
     if current_user.is_a? ContentProvider
-      install_path
+      if current_user.confirmed?
+        install_path
+      else
+        username_path
+      end
     else
       session[:previous_photo_path] || root_path
     end
