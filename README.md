@@ -11,7 +11,13 @@
 ```
 $ bundle
 $ bin/rake dev:setup
-$ bundle exec unicorn -c config/unicorn.rb
+$ rails s # or `bundle exec unicorn -c config/unicorn.rb`
+```
+
+# Worker
+
+```
+$ env QUEUES="mailers,default" QC_MEASURE=true bundle exec rake qc:work
 ```
 
 # Elasticsearch 中文斷詞設定
