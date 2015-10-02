@@ -1,3 +1,4 @@
+# https://github.com/bblimke/webmock
 module StubRequests
   def stub_request_for_image
     stub_request(:get, 'webmock.me/jpeg')
