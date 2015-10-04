@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :boxes, dependent: :destroy
 
   # validations
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
