@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       patch 'me', action: 'update_current_user'
     end
 
-    devise_for :users, controllers: {confirmations: 'confirmations'}
+    devise_for :users, controllers: {confirmations: 'confirmations', registrations: 'registrations'}
     devise_scope :user do
       patch 'confirm' => 'confirmations#confirm'
     end
