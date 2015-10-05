@@ -1,18 +1,40 @@
 require 'test_helper'
 
 class PhotoTest < ActiveSupport::TestCase
-  def test_find_or_create_by_source_and_href!
+  def test_find_or_create_by_source_and_href_and_token!
     stub_request_for_image
-    photo = Photo.find_or_create_by_source_and_href! 'http://webmock.me/jpeg', 'http://webmock.me'
+    photo = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me', 'tonytonyjan'
     assert photo.persisted?
+    assert_equal boxes(:tony), photo.box
   end
 
-  def test_duplicated_source
+  def test_without_token
     stub_request_for_image
-    p1 = Photo.find_or_create_by_source_and_href! 'http://webmock.me/jpeg', 'http://webmock.me'
-    p2 = Photo.find_or_create_by_source_and_href! 'http://webmock.me/jpeg', 'http://webmock.me'
-    p3 = Photo.find_or_create_by_source_and_href! 'http://webmock.me/jpeg'
-    assert_equal p1, p2
-    refute_equal p1, p3
+    photo = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me'
+    assert photo.persisted?
+    assert_equal nil, photo.box
   end
+
+  def test_without_href_and_token
+    stub_request_for_image
+    photo = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg'
+    assert photo.persisted?
+    assert_equal nil, photo.box
+  end
+
+  def test_with_wrong_token
+    stub_request_for_image
+    photo = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me', 'tonytonyjanggyy'
+    assert photo.persisted?
+    assert_equal nil, photo.box
+  end
+
+  # def test_duplicated_source
+  #   stub_request_for_image
+  #   p1 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me'
+  #   p2 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me'
+  #   p3 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg'
+  #   assert_equal p1, p2
+  #   refute_equal p1, p3
+  # end
 end

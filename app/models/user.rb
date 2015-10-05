@@ -14,11 +14,13 @@ class User < ActiveRecord::Base
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :boxes, dependent: :destroy
 
   # validations
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
 
   # callbacks
+  after_create :create_box!, if: :content_provider?
 
   # other
   def self.find_for_database_authentication(warden_conditions)
@@ -58,5 +60,15 @@ class User < ActiveRecord::Base
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end if Rails.env.production?
+
+  def box
+    boxes.first || create_box!
+  end
+
+private
+
+  def create_box!
+    boxes.create!
+  end
 
 end

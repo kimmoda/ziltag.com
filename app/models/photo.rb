@@ -1,7 +1,12 @@
 class Photo < ActiveRecord::Base
   include Slugable
-  def self.find_or_create_by_source_and_href! source, href = nil
-    Photo.find_by(source: source, href: href) || Photo.create!(remote_image_url: source, href: href)
+
+  def self.find_or_create_by_source_and_href_and_token! source, href = nil, token = nil
+    if box = Box.find_by(token: token)
+      find_by(source: source, href: href, box: box) || create!(remote_image_url: source, href: href, box: box)
+    else
+      find_by(source: source, href: href) || create!(remote_image_url: source, href: href)
+    end
   end
 
   # scopes
@@ -13,6 +18,7 @@ class Photo < ActiveRecord::Base
 
   # associations
   belongs_to :user
+  belongs_to :box
   has_many :ziltags, dependent: :destroy
 
   # validations

@@ -1,6 +1,7 @@
 class Ziltag < ActiveRecord::Base
   include Slugable
   # scopes
+  scope :confirmed, ->{ joins(:user).where('users.confirmed_at IS NOT NULL') }
 
   # constants
 

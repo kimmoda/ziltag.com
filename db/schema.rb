@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002104738) do
+ActiveRecord::Schema.define(version: 20151004215502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boxes", force: :cascade do |t|
+    t.string   "token",      null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "boxes", ["token"], name: "index_boxes_on_token", unique: true, using: :btree
+  add_index "boxes", ["user_id"], name: "index_boxes_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -35,8 +45,10 @@ ActiveRecord::Schema.define(version: 20151002104738) do
     t.string   "source"
     t.string   "href"
     t.string   "slug",       null: false
+    t.integer  "box_id"
   end
 
+  add_index "photos", ["box_id"], name: "index_photos_on_box_id", using: :btree
   add_index "photos", ["slug"], name: "index_photos_on_slug", using: :btree
   add_index "photos", ["source", "href"], name: "index_photos_on_source_and_href", unique: true, using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
@@ -97,8 +109,10 @@ ActiveRecord::Schema.define(version: 20151002104738) do
   add_index "ziltags", ["slug"], name: "index_ziltags_on_slug", using: :btree
   add_index "ziltags", ["user_id"], name: "index_ziltags_on_user_id", using: :btree
 
+  add_foreign_key "boxes", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "ziltags"
+  add_foreign_key "photos", "boxes"
   add_foreign_key "photos", "users"
   add_foreign_key "ziltags", "photos"
   add_foreign_key "ziltags", "users"
