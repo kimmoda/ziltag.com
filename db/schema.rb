@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004211150) do
+ActiveRecord::Schema.define(version: 20151004215502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(version: 20151004211150) do
     t.string   "source"
     t.string   "href"
     t.string   "slug",       null: false
+    t.integer  "box_id"
   end
 
+  add_index "photos", ["box_id"], name: "index_photos_on_box_id", using: :btree
   add_index "photos", ["slug"], name: "index_photos_on_slug", using: :btree
   add_index "photos", ["source", "href"], name: "index_photos_on_source_and_href", unique: true, using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
@@ -110,6 +112,7 @@ ActiveRecord::Schema.define(version: 20151004211150) do
   add_foreign_key "boxes", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "ziltags"
+  add_foreign_key "photos", "boxes"
   add_foreign_key "photos", "users"
   add_foreign_key "ziltags", "photos"
   add_foreign_key "ziltags", "users"

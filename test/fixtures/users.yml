@@ -3,10 +3,10 @@ tony:
   email: tonytonyjan@ziltag.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   type: ContentProvider
-  confirmation_sent_at: <%= Time.now.to_s(:db) %>
+  confirmed_at: <%= Time.now.to_s(:db) %>
 
 david:
   username: david
   email: david@ziltag.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  confirmation_sent_at: <%= Time.now.to_s(:db) %>
+  confirmed_at: <%= Time.now.to_s(:db) %>

@@ -10,6 +10,7 @@ class UserTest < ActiveSupport::TestCase
 
   def test_will_generate_box_automatically
     user = users(:tony)
+    user.boxes.destroy_all
     assert user.boxes.empty?
     assert user.box.persisted?
     assert user.boxes.present?

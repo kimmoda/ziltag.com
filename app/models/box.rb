@@ -7,6 +7,7 @@ class Box < ActiveRecord::Base
 
   # associations
   belongs_to :user
+  has_many :photos, dependent: :destroy
 
   # validations
   validates :user, :token, presence: true

@@ -7,6 +7,15 @@ class Api::V1::ZiltagsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_existed_photo
+    stub_request_for_image
+    photo = photos(:one)
+    get :index, format: :json, src: photo.source, href: photo.href
+    assert_response :success
+    assert_equal photo.slug, JSON.parse(response.body)['map']
+    assert_equal [{'id' => 'abcdef','x' => '0.5','y' => '0.5','usr' => 'tonytonyjan','preview' => 'Hello'}], JSON.parse(response.body)['ziltags']
+  end
+
   def test_get_index_without_href
     stub_request_for_image
     get :index, format: :json, src: 'http://webmock.me/jpeg'
