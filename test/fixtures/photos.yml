@@ -1,8 +1,10 @@
 one:
   slug: oneone
   image: one.jpg
-  source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/one.jpg" %>
+  source: http://webmock.me/jpeg
+  href: http://localhost:3000
 two:
   slug: twotwo
   image: two.jpg
   source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/two.jpg" %>
+  href: http://localhost:3000

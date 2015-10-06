@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004215502) do
+ActiveRecord::Schema.define(version: 20151006075302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20151004215502) do
 
   add_index "photos", ["box_id"], name: "index_photos_on_box_id", using: :btree
   add_index "photos", ["slug"], name: "index_photos_on_slug", using: :btree
-  add_index "photos", ["source", "href"], name: "index_photos_on_source_and_href", unique: true, using: :btree
+  add_index "photos", ["source", "href", "box_id"], name: "index_photos_on_source_and_href_and_box_id", unique: true, using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "queue_classic_jobs", id: :bigserial, force: :cascade do |t|
