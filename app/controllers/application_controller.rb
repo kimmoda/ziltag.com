@@ -76,4 +76,8 @@ private
     session[:previous_photo_path] || root_path
   end
 
+  def enable_iframe
+    headers.delete 'X-Frame-Options'
+  end
+
 end
