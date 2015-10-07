@@ -104,7 +104,7 @@
     </div>
     <% if user_signed_in? %>
     <div class="comment-info js-comment-info mdl-shadow--2dp mdl-color--white">
-      <div class="mdl-grid">
+      <div class="comment-board mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
           <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
         </div>
