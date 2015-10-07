@@ -60,6 +60,7 @@ $preview-background-color: rgba(255,255,255,0.8);
       &__arrow{
         border-right-color: $preview-background-color;
         border-left-color: $preview-background-color;
+        top: -10px;
       }
       &__frame{
         min-height: inherit;
