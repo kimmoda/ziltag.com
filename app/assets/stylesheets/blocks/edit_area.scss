@@ -6,4 +6,8 @@
   &__textarea{
     resize: none;
   }
+
+  input[type="submit"] {
+    float: right;
+  }
 }
