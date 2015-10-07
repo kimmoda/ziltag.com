@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_locale, :set_seo
+  before_action :set_locale
   before_action :set_login, :set_flash if Rails.env.development?
   after_action :enable_iframe # TODO: It's not safe
 
@@ -15,27 +15,6 @@ protected
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-  end
-
-  def set_seo
-    @seo = {
-      meta: {
-        description: t('site.description')
-      },
-      google: {
-        name: t('site.name'),
-        description: t('site.description'),
-        image: 'logo.png',
-        item_type: :Article
-      },
-      og: {
-        title: t('site.name'),
-        url: request.url,
-        type: :website,
-        description: t('site.description'),
-        image: 'logo.png'
-      }
-    }
   end
 
   def default_url_options options = {}
