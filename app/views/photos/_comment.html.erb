@@ -5,9 +5,10 @@
     </div>
     <div class="mdl-cell mdl-cell--10-col">
       <div class="comment-info__status">
-        <%= comment.content %>
-        <div class="comment-info__time"><%= time_ago_in_words comment.created_at %> by <%= comment.user.username %></div>
+        <span class="comment-info__status__user"><%= comment.user.username %></span>
+        <span class="comment-info__status__time"><%= time_ago_in_words comment.created_at %></span>
       </div>
+      <div class="comment-info__content"><%= comment.content %></div>
       <% if current_user && current_user.own?(comment) %>
       <div class="comment-info__editor hide">
         <%= form_for comment, html: {class: 'edit-area js-edit-area'} do |f| %>

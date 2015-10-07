@@ -85,7 +85,7 @@
             <%= f.hidden_field :x %>
             <%= f.hidden_field :y %>
             <%= f.hidden_field :photo_id %>
-            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="Save Message">
+            <input type="submit" class="mdl-button mdl-js-button mdl-button--accent" value="POST">
             <button class="mdl-button mdl-js-button sticker-info__dismiss-button sticker-container__normal-mode-button js-normal-mode-button" type="button">Cancel</button>
           <% end %>
         </div>
@@ -104,7 +104,7 @@
     </div>
     <% if user_signed_in? %>
     <div class="comment-info js-comment-info mdl-shadow--2dp mdl-color--white">
-      <div class="mdl-grid">
+      <div class="comment-board mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
           <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
         </div>

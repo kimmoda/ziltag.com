@@ -1,16 +1,26 @@
 .user-info{
   width: 100%;
   min-height: 0;
+  color: rgba(0, 0, 0, .87);
   &__avatar{
     width: 64px;
     border-radius: 50%;
   }
   &__text-section{
+    position: relative;
+    top: 6px;
+    left: 10px;
     display: inline-block;
-    margin-left: 20px;
+    font-size: 12px;
   }
   &__username{
+    position: relative;
+    top: 8px;
     font-weight: bold;
     font-size: 16px;
+  }
+  &__share-link {
+    position: relative;
+    top: 38px;
   }
 }
