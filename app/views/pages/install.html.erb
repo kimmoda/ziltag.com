@@ -6,7 +6,7 @@
     <div class="starry-sky__container">
       <h1 class="mdl-color-text--white">Your script is ready!</h1>
       <h5 class="mdl-color-text--white">Place the following code before your site's closing <code>&lt;/body&gt;</code> tag to install the plugin.</h5>
-      <textarea rows="2" cols="80" onclick="this.focus();this.select()" readonly="readonly" style="border:none;resize:none;"><script src="dist/ziltag-plugin.js" data-ziltag="<%= current_user.box.token %>"></script>
+      <textarea rows="2" cols="80" onclick="this.focus();this.select()" readonly="readonly" style="border:none;resize:none;"><script src="//<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= current_user.box.token %>"></script>
 <noscript>You have to enable JavaScript to use Ziltag.</noscript></textarea>
       <div style="margin-top:50px;margin-bottom:100px;"><button class="capsule capsule--red">COPY</button></div>
       <div class="mdl-color-text--white">For further assistant, please contact us or visit our help center.</div>
