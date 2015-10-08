@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
+  include Confirmable
   # scopes
-  default_scope ->{ order('id desc') }
+  default_scope ->{ order('comments.id desc') }
 
   # constants
 

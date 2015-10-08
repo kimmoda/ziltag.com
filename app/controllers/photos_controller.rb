@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
   def show
-    @photo = Photo.includes(ziltags: [:user, {comments: :user}]).find_by!(slug: params[:slug])
-    @ziltag = @photo.ziltags.find{|ziltag| ziltag.slug == params[:ziltag_slug] }
+    @photo = Photo.find_by!(slug: params[:slug])
+    @ziltags = @photo.ziltags.confirmed(current_user)
+    @ziltag = @photo.ziltags.find_by(slug: params[:ziltag_slug])
+    @comments = @ziltag.comments.includes(:user).confirmed(current_user)
     @user = User.new unless user_signed_in?
     session[:previous_photo_path] = request.fullpath
   end
