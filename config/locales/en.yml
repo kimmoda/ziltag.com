@@ -19,6 +19,7 @@ en:
       leave_your_comment: Leave your comment...
       whats_in_your_mind: What's in your mind?
       tag_created_by: Tag created by
+      report: Report
   notification_mailer:
     new_comment_notification:
       subject: Comment Notification
