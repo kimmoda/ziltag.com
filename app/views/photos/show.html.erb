@@ -61,10 +61,18 @@
           <div class="user-info__username"><%= @ziltag.user.username %></div>
         </div>
       </div>
-      <div class="mdl-card__menu">
+      <div class="user-info__nav mdl-card__menu">
         <button class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= photo_url(@photo, @ziltag) %>">
           <i class="material-icons">share</i>
         </button>
+        <button id="user-info__more-menu"
+          class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="user-info__more-menu">
+          <li class="mdl-menu__item">Edit</li>
+          <li class="mdl-menu__item">Delete</li>
+        </ul>
       </div>
     </div>
     <hr>
