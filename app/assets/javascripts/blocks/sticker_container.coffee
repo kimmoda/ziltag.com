@@ -34,13 +34,13 @@ class StickerContainer
       if @new_holder
         @move_holder(@new_holder, data_x, data_y)
         @new_holder.style.display = 'inherit'
-        @new_holder.addEventListener 'transitionend', => @new_holder.querySelector('textarea').focus()
+        @new_holder.addEventListener 'transitionend', => @new_holder.querySelector('textarea')?.focus()
         form = @new_holder.querySelector 'form'
         @update_field_value form, data_x, data_y
 
   update_field_value: (form, x, y) ->
-    form.querySelector('input[name="ziltag[x]"]').value = x
-    form.querySelector('input[name="ziltag[y]"]').value = y
+    form?.querySelector('input[name="ziltag[x]"]').value = x
+    form?.querySelector('input[name="ziltag[y]"]').value = y
 
   restore_current_holder: =>
     data_x = @current_holder.dataset.originX
