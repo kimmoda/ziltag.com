@@ -189,7 +189,9 @@
       <% end %>
     </div>
     <% end %>
-    <%= render partial: 'comment', collection: @comments %>
+    <div style="background: white">
+      <%= render partial: 'comment', collection: @comments %>
+    </div>
     <% else %>
       <%= render 'summary' %>
     <% end %>
