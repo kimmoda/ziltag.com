@@ -122,7 +122,7 @@
       </div>
     </div>
     <hr>
-    <div class="sticker-info js-sticker-info mdl-card mdl-shadow--2dp">
+    <div class="sticker-info js-sticker-info mdl-card">
       <div class="mdl-card__media mdl-color--white"><%= ziltag_preview @ziltag %></div>
       <div class="mdl-card__supporting-text">
         <div class="sticker-info__status-pane">
@@ -157,7 +157,7 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
-    <div class="comment-info js-comment-info mdl-shadow--2dp mdl-color--white">
+    <div class="comment-info js-comment-info mdl-color--white">
       <div class="comment-board mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
           <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
