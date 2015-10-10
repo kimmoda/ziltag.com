@@ -21,7 +21,12 @@ class StickerContainer
     holder.style.top = y * 100 + '%'
     holder.style.display = 'inherit' unless holder.classList.contains 'new-holder'
 
+  _is_valid_point: (x, y) =>
+    radius = 10
+    x > radius && x < @image.naturalWidth && y > radius && y < @image.naturalHeight
+
   _image_clicked: (e) =>
+    return unless @_is_valid_point(e.offsetX, e.offsetY)
     data_x = e.offsetX / @image.clientWidth
     data_y = e.offsetY / @image.clientHeight
     if @element.classList.contains 'sticker-container--edit-mode'
