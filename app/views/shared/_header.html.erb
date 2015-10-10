@@ -1,13 +1,8 @@
-<header class="mdl-layout__header">
-  <div class="mdl-layout__header-row">
+<header style="box-shadow: none; border-bottom: 1px solid rgba(0, 0, 0, 0.12)" class="mdl-layout__header">
+  <div style="padding: 0 30px" class="mdl-layout__header-row">
     <span class="mdl-layout-title"><%= link_to image_tag('logo.png'), root_path %></span>
     <div class="mdl-layout-spacer"></div>
     <div class="mdl-layout-spacer"></div>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="#">HOME</a>
-      <a class="mdl-navigation__link" href="#">PLAY</a>
-      <a class="mdl-navigation__link" href="#">CONTACT</a>
-    </nav>
     <% if user_signed_in? %>
     <button id="profile-menu" class="mdl-button mdl-js-button mdl-button--icon">
       <%= image_tag current_user.avatar.thumb.url, width: '100%' %>

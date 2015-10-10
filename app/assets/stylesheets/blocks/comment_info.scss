@@ -1,5 +1,5 @@
 .comment-info {
-  width: 100%;
+  width: 99%;
   min-height: inherit;
 
   &__avatar {
@@ -27,6 +27,15 @@
     color: rgba(0, 0, 0, .87);
   }
 
+  &__editor-button, &__delete {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(36, 154, 255);
+    text-decoration: none;
+    cursor: pointer;
+  }
 
   .hide {
     display: none;

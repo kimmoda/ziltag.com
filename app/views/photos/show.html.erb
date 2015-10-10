@@ -10,8 +10,10 @@
 <% end %>
 <% end %>
 
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--6-col">
+<%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900', media: 'all', 'data-turbolinks-track' => true %>
+
+<div style="background: rgb(250, 250, 250); padding-top: 0" class="mdl-grid">
+  <div style="margin-top: 0; padding: 0 14px" class="mdl-cell mdl-cell--6-col">
     <div class="sticker-container js-sticker-container">
       <%= image_tag @photo.image, class: 'layout-photo sticker-container__image' %>
       <% @ziltags.each do |ziltag| %>
@@ -41,7 +43,7 @@
               <%= f.hidden_field :x %>
               <%= f.hidden_field :y %>
               <%= f.hidden_field :photo_id %>
-              <%= f.submit t(:'.post'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
+              <%= f.submit t(:post), class: 'mdl-button mdl-js-button mdl-button--accent' %>
             <% end %>
             <% elsif user_signed_in? %>
               <div style="width:400px;">
@@ -93,10 +95,10 @@
       </div>
     </div>
   </div>
-  <div class="mdl-cell mdl-cell--6-col">
+  <div style="margin-top: 0" class="mdl-cell mdl-cell--6-col">
     <% if @ziltag %>
     <div class="user-info js-user-info mdl-card">
-      <div class="mdl-card__supporting-text">
+      <div style="padding-left: 0" class="mdl-card__supporting-text">
         <%= image_tag @ziltag.user.avatar.thumb.url, class: 'user-info__avatar', alt: @ziltag.user.username %>
         <div class="user-info__text-section">
           <div><%= t(:'.tag_created_by') %></div>
@@ -122,7 +124,7 @@
       </div>
     </div>
     <hr>
-    <div class="sticker-info js-sticker-info mdl-card mdl-shadow--2dp">
+    <div class="sticker-info js-sticker-info mdl-card">
       <div class="mdl-card__media mdl-color--white"><%= ziltag_preview @ziltag %></div>
       <div class="mdl-card__supporting-text">
         <div class="sticker-info__status-pane">
@@ -146,30 +148,31 @@
         <% end %>
       </div>
       <% if current_user && current_user.own?(@ziltag) %>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect sticker-info__editor-button js-edit-mode-button" title="Edit">
-          <i class="material-icons">create</i>
-        </button>
-        <%= link_to @ziltag, method: :delete, data: {confirm: t(:are_your_sure)}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
-          <i class="material-icons">delete</i>
-        <% end %>
-      </div>
+        <div style="position: relative; left: 8px; top: -20px" class="mdl-cell mdl-cell--4-col">
+          <span class="sticker-info__editor-button js-edit-mode-button" title="Edit">
+            Edit
+          </span>
+          <%= link_to @ziltag, method: :delete, data: {confirm: t(:are_your_sure)}, class: 'sticker-info__delete', title: 'Delete' do %>
+            Delete
+          <% end %>
+        </div>
       <% end %>
     </div>
     <% if user_signed_in? %>
-    <div class="comment-info js-comment-info mdl-shadow--2dp mdl-color--white">
+    <div style="padding: 20px 0"><%= t(:'.comments') %></div>
+    <div class="comment-info js-comment-info mdl-color--white">
       <div class="comment-board mdl-grid">
-        <div class="mdl-cell mdl-cell--1-col">
+        <div style="margin-left: 16px" class="mdl-cell mdl-cell--1-col">
           <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
         </div>
         <div class="mdl-cell mdl-cell--10-col">
           <%= form_for Comment.new(ziltag: @ziltag), html: {class: 'edit-area js-edit-area'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
               <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true %>
-              <label class="mdl-textfield__label" for="ziltag_content"><%= t(:'.leave_your_comment') %></label>
+              <label class="mdl-textfield__label" for="ziltag_content"><%= t(:'.your_comment_here') %></label>
             </div>
             <%= f.hidden_field :ziltag_id %>
-            <%= f.submit t(:comment), class: 'mdl-button mdl-js-button mdl-button--accent' %>
+            <%= f.submit t(:post), class: 'mdl-button mdl-js-button mdl-button--accent' %>
           <% end %>
         </div>
       </div>
@@ -189,7 +192,9 @@
       <% end %>
     </div>
     <% end %>
-    <%= render partial: 'comment', collection: @comments %>
+    <div style="background: white; width: 99%">
+      <%= render partial: 'comment', collection: @comments %>
+    </div>
     <% else %>
       <%= render 'summary' %>
     <% end %>
