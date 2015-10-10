@@ -104,9 +104,14 @@
         </div>
       </div>
       <div class="user-info__nav mdl-card__menu">
-        <button class="user-info__share-link mdl-button mdl-js-button mdl-button--icon" data-link="<%= photo_url(@photo, @ziltag) %>">
+        <button id="share-menu" class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">share</i>
         </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="share-menu">
+          <li class="mdl-menu__item"><a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= u photo_url(@photo, @ziltag) %>">Facebook</a></li>
+          <li class="mdl-menu__item"><a target="_blank" href="https://twitter.com/intent/tweet?url=<%= u photo_url(@photo, @ziltag) %>&text=<%= u truncate(@ziltag.content, length: 100) %>">Tweet</a></li>
+          <li class="mdl-menu__item"><a target="_blank" href="https://plus.google.com/share?url=<%= u photo_url(@photo, @ziltag) %>">G+</a></li>
+        </ul>
         <button id="user-info__more-menu"
           class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">more_vert</i>
