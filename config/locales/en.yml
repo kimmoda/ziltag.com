@@ -6,7 +6,6 @@ en:
   term_of_service: Term of Service
   privacy_policy: Privacy Policy
   are_your_sure: Are you sure?
-  comment: Comment
   pages:
     home:
       heading: Searching Can Be Amazing!
@@ -15,9 +14,9 @@ en:
       upload_one: Upload One
   photos:
     show:
-      comment: COMMENT
+      comments: Comments
       post: POST
-      leave_your_comment: Leave your comment...
+      your_comment_here: Your comment here...
       whats_in_your_mind: What's in your mind?
       tag_created_by: Tag created by
       report: Report

@@ -157,6 +157,7 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
+    <div style="padding: 20px 0"><%= t(:'.comments') %></div>
     <div class="comment-info js-comment-info mdl-color--white">
       <div class="comment-board mdl-grid">
         <div class="mdl-cell mdl-cell--1-col">
@@ -166,10 +167,10 @@
           <%= form_for Comment.new(ziltag: @ziltag), html: {class: 'edit-area js-edit-area'} do |f| %>
             <div class="edit-area__field mdl-textfield mdl-js-textfield">
               <%= f.text_area :content, class: 'edit-area__textarea mdl-textfield__input', required: true %>
-              <label class="mdl-textfield__label" for="ziltag_content"><%= t(:'.leave_your_comment') %></label>
+              <label class="mdl-textfield__label" for="ziltag_content"><%= t(:'.your_comment_here') %></label>
             </div>
             <%= f.hidden_field :ziltag_id %>
-            <%= f.submit t(:comment), class: 'mdl-button mdl-js-button mdl-button--accent' %>
+            <%= f.submit t(:'.post'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
           <% end %>
         </div>
       </div>
