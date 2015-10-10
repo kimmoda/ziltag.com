@@ -98,7 +98,7 @@
   <div style="margin-top: 0" class="mdl-cell mdl-cell--6-col">
     <% if @ziltag %>
     <div class="user-info js-user-info mdl-card">
-      <div class="mdl-card__supporting-text">
+      <div style="padding-left: 0" class="mdl-card__supporting-text">
         <%= image_tag @ziltag.user.avatar.thumb.url, class: 'user-info__avatar', alt: @ziltag.user.username %>
         <div class="user-info__text-section">
           <div><%= t(:'.tag_created_by') %></div>
@@ -162,7 +162,7 @@
     <div style="padding: 20px 0"><%= t(:'.comments') %></div>
     <div class="comment-info js-comment-info mdl-color--white">
       <div class="comment-board mdl-grid">
-        <div class="mdl-cell mdl-cell--1-col">
+        <div style="margin-left: 16px" class="mdl-cell mdl-cell--1-col">
           <%= image_tag current_user.avatar.thumb.url, class: 'comment-info__avatar', title: current_user.username %>
         </div>
         <div class="mdl-cell mdl-cell--10-col">
@@ -192,7 +192,7 @@
       <% end %>
     </div>
     <% end %>
-    <div style="background: white">
+    <div style="background: white; width: 99%">
       <%= render partial: 'comment', collection: @comments %>
     </div>
     <% else %>
