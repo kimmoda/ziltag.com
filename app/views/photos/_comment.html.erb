@@ -16,7 +16,7 @@
             <%= f.text_area :content, id: "comment_content_#{comment.id}", class: 'edit-area__textarea mdl-textfield__input', required: true %>
             <label class="mdl-textfield__label" for="<%= "comment_content_#{comment.id}" %>"><%= t(:'.leave_your_comment') %></label>
           </div>
-          <%= f.submit t(:comment), class: 'mdl-button mdl-js-button mdl-button--accent' %>
+          <%= f.submit t(:post), class: 'mdl-button mdl-js-button mdl-button--accent' %>
           <button class="mdl-button mdl-js-button comment-info__dismiss-button sticker-container__normal-mode-button js-normal-mode-button" type="button">Cancel</button>
         <% end %>
       </div>

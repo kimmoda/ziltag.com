@@ -41,7 +41,7 @@
               <%= f.hidden_field :x %>
               <%= f.hidden_field :y %>
               <%= f.hidden_field :photo_id %>
-              <%= f.submit t(:'.post'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
+              <%= f.submit t(:post), class: 'mdl-button mdl-js-button mdl-button--accent' %>
             <% end %>
             <% elsif user_signed_in? %>
               <div style="width:400px;">
@@ -170,7 +170,7 @@
               <label class="mdl-textfield__label" for="ziltag_content"><%= t(:'.your_comment_here') %></label>
             </div>
             <%= f.hidden_field :ziltag_id %>
-            <%= f.submit t(:'.post'), class: 'mdl-button mdl-js-button mdl-button--accent' %>
+            <%= f.submit t(:post), class: 'mdl-button mdl-js-button mdl-button--accent' %>
           <% end %>
         </div>
       </div>
