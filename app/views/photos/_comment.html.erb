@@ -22,13 +22,13 @@
       </div>
       <% end %>
     </div>
-    <div class="mdl-cell mdl-cell--1-col">
+    <div style="position: relative; left: 63px; top: -12px" class="mdl-cell mdl-cell--2-col">
       <% if current_user && current_user.own?(comment) %>
-      <button class="comment-info__editor-button mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">create</i>
-      </button>
-      <%= link_to comment, class: 'mdl-button mdl-js-button mdl-button--icon', method: :delete, data: {confirm: t(:are_your_sure)} do %>
-        <i class="material-icons">delete</i>
+      <span class="comment-info__editor-button">
+        Edit
+      </span>
+      <%= link_to comment, class: 'comment-info__delete', method: :delete, data: {confirm: t(:are_your_sure)} do %>
+        Delete
       <% end %>
       <% end %>
     </div>
