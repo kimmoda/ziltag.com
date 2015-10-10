@@ -148,14 +148,14 @@
         <% end %>
       </div>
       <% if current_user && current_user.own?(@ziltag) %>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect sticker-info__editor-button js-edit-mode-button" title="Edit">
-          <i class="material-icons">create</i>
-        </button>
-        <%= link_to @ziltag, method: :delete, data: {confirm: t(:are_your_sure)}, class: 'mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect', title: 'Delete' do %>
-          <i class="material-icons">delete</i>
-        <% end %>
-      </div>
+        <div style="position: relative; left: 8px; top: -26px" class="mdl-cell mdl-cell--4-col">
+          <span class="sticker-info__editor-button js-edit-mode-button" title="Edit">
+            Edit
+          </span>
+          <%= link_to @ziltag, method: :delete, data: {confirm: t(:are_your_sure)}, class: 'sticker-info__delete', title: 'Delete' do %>
+            Delete
+          <% end %>
+        </div>
       <% end %>
     </div>
     <% if user_signed_in? %>

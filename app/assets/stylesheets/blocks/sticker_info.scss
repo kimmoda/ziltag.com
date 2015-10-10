@@ -12,6 +12,16 @@
     margin: 0 auto;
   }
 
+  &__editor-button, &__delete {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(36, 154, 255);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   .hide{
     display: none;
   }
