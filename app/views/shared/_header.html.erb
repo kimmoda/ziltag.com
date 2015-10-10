@@ -9,7 +9,7 @@
       <a class="mdl-navigation__link" href="#">CONTACT</a>
     </nav>
     <% if user_signed_in? %>
-    <button id="profile-menu" class="mdl-button mdl-js-button mdl-button--fab">
+    <button id="profile-menu" class="mdl-button mdl-js-button mdl-button--icon">
       <%= image_tag current_user.avatar.thumb.url, width: '100%' %>
     </button>
     <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="profile-menu">
