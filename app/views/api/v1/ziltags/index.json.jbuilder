@@ -4,6 +4,6 @@ json.ziltags do
     json.id ziltag.slug
     json.extract! ziltag, :x, :y
     json.usr ziltag.username
-    json.preview truncate ziltag.content
+    json.preview truncate raw ziltag.content
   end
 end
