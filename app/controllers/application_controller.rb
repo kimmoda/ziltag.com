@@ -53,7 +53,7 @@ private
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    session[:previous_photo_path] || root_path
+    request.referer || root_path
   end
 
   def enable_iframe
