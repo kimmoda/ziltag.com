@@ -7,7 +7,15 @@
 
 .sticker-container{
   position: relative;
-
+  &__note{
+    color: white;
+    background: rgba(0,0,0,0.54);
+    position: absolute;
+    padding: 4px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0);
+  }
   &--edit-mode{
     .sticker-container__holder:not(.sticker-container__holder--current){
       display: none;
