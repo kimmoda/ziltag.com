@@ -4,4 +4,4 @@
 
 <p><%= @comment.username %>: <q><%= @comment.content %></q></p>
 
-<p><%= link_to 'Visit the thread!', photo_path(slug: @comment.ziltag.photo.slug, ziltag_slug: @comment.ziltag.slug) %></p>
+<p><%= link_to 'Visit the thread!', photo_url(slug: @comment.ziltag.photo.slug, ziltag_slug: @comment.ziltag.slug) %></p>
