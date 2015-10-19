@@ -1,0 +1,29 @@
+#! /bin/sh
+
+APP=/home/ubuntu/ziltag.com
+PIDFILE=$APP/tmp/pids/puma.pid
+USER=ubuntu
+
+sig(){
+  local signal=${1:-TERM}
+  start-stop-daemon --stop --oknodo --pidfile $PIDFILE --signal $signal
+}
+
+case $1 in
+  start )
+    start-stop-daemon --start --oknodo \
+      --pidfile $APP/tmp/pids/puma.pid \
+      --chuid $USER \
+      --chdir $APP \
+      --startas bin/bundle -- exec puma
+    ;;
+  stop )
+    sig TERM
+    ;;
+  restart )
+    sig USR2
+    ;;
+  phased-restart )
+    sig USR1
+    ;;
+esac
