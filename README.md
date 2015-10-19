@@ -6,6 +6,18 @@
 - graphicsmagick
 - postgresql
 
+## Ubuntu
+
+- libreadline-dev
+- libssl-dev
+- libgdbm-dev
+- nodejs
+- libpq-dev
+- clang
+- binutils
+- make
+- graphicsmagick
+
 # 開發準備
 
 ```
