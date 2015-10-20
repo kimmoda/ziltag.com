@@ -1,32 +1,32 @@
 #! /bin/sh
 
+APP=/home/ubuntu/ziltag.com
+PIDFILE=$APP/tmp/pids/qc.pid
+USER=ubuntu
+
 export QUEUES="mailers,default"
 export RAILS_ENV=production
-USER=deploy
-APP_PATH=/var/www/ziltag/current
-PIDFILE=/var/www/ziltag/shared/tmp/pids/worker.pid
-DAEMON=/usr/local/bin/bundle
-DAEMON_ARGS="exec rake qc:work"
 
-start() {
-  start-stop-daemon -bm -c $USER -d $APP_PATH --start --quiet --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_ARGS
+start(){
+  start-stop-daemon --start --oknodo --background --make-pidfile \
+    --pidfile $PIDFILE \
+    --chuid $USER \
+    --chdir $APP \
+    --startas bin/bundle -- exec rake qc:work
 }
 
-stop() {
-  start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE
-  rm -rf $PIDFILE
+stop(){
+  start-stop-daemon --stop --oknodo --retry 5 --pidfile $PIDFILE
 }
 
-
-case "$1" in
-  start)
+case $1 in
+  start )
     start
     ;;
-  stop)
+  stop )
     stop
     ;;
-  restart)
+  restart )
     stop && start
     ;;
-  *)
 esac
