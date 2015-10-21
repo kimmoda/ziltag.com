@@ -1,8 +1,8 @@
 #! /bin/sh
 
-APP=/home/ubuntu/ziltag.com
+APP=/home/deploy/ziltag/current
 PIDFILE=$APP/tmp/pids/qc.pid
-USER=ubuntu
+USER=deploy
 
 export QUEUES="mailers,default"
 export RAILS_ENV=production

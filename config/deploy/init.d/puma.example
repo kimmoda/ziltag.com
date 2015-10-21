@@ -1,8 +1,8 @@
 #! /bin/sh
 
-APP=/home/ubuntu/ziltag.com
+APP=/home/deploy/ziltag/current
 PIDFILE=$APP/tmp/pids/puma.pid
-USER=ubuntu
+USER=deploy
 
 sig(){
   local signal=${1:-TERM}

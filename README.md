@@ -23,7 +23,7 @@
 ```
 $ bundle
 $ bin/rake dev:setup
-$ rails s # or `bundle exec unicorn -c config/unicorn.rb`
+$ rails s
 ```
 
 # Worker
