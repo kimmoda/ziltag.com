@@ -1,5 +1,5 @@
-#! /bin/sh
-
+#!/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 APP=/home/deploy/ziltag/current
 PIDFILE=$APP/tmp/pids/qc.pid
 USER=deploy
@@ -12,7 +12,7 @@ start(){
     --pidfile $PIDFILE \
     --chuid $USER \
     --chdir $APP \
-    --startas bin/bundle -- exec rake qc:work
+    --startas bin/rake -- qc:work
 }
 
 stop(){
