@@ -18,10 +18,7 @@ Rails.application.routes.draw do
     end
 
     get 'ziltags/:slug/(:ziltag_slug)' => 'photos#show', as: :photo, constraints: {slug: /\w{6}/, ziltag_slug: /\w{6}/}
-    resources :ziltags, only: %i[create update destroy] do
-      get :preview_image, on: :member
-    end
-    resources :comments, only: %i[create update destroy]
+    resources :comments, :ziltags, only: %i[create update destroy]
     resources :subscribers, only: :create
 
     namespace :api, format: false, defaults: {format: 'json'} do
