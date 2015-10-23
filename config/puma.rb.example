@@ -1,0 +1,10 @@
+ENV['BUNDLE_GEMFILE'] = '/home/deploy/ziltag/current/Gemfile'
+threads 0, 32
+tag 'ziltag'
+environment 'production'
+directory '/home/deploy/ziltag/current'
+bind 'unix://tmp/sockets/puma.sock'
+pidfile 'tmp/pids/puma.pid'
+state_path 'tmp/pids/puma.state'
+stdout_redirect 'log/puma.log', 'log/puma.error.log'
+daemonize
