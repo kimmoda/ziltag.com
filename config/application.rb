@@ -33,6 +33,7 @@ module ZiltagApp
     end
 
     config.active_job.queue_adapter = :queue_classic
+    config.active_record.schema_format = :sql
 
   end
 end
