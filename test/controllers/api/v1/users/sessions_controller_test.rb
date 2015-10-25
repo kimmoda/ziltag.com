@@ -12,7 +12,7 @@ class Api::V1::Users::SessionsControllerTest < ActionController::TestCase
   end
 
   def test_sign_out
-    delete :destroy, format: :json
+    get :destroy, format: :json
     assert_response 204
   end
 end

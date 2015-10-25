@@ -26,8 +26,8 @@ Rails.application.routes.draw do
         resources :comments, only: %i[show create update destroy]
         devise_scope :user do
           controller 'users/sessions' do
-            post 'users/sign_in', action: 'create'
-            delete 'users/sign_out', action: 'destroy'
+            post 'sign_in', action: 'create'
+            get 'sign_out', action: 'destroy'
           end
           controller 'users/registrations' do
             post 'users', action: 'create'
