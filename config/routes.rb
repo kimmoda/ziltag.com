@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     namespace :api, format: false, defaults: {format: 'json'} do
       namespace :v1 do
         resources :ziltags, only: %i[index show create update destroy]
+        resources :comments, only: %i[show create update destroy]
         devise_scope :user do
           controller 'users/sessions' do
             post 'users/sign_in', action: 'create'
