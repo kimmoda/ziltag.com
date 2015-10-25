@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     namespace :api, format: false, defaults: {format: 'json'} do
       namespace :v1 do
         resources :ziltags, only: :index
+        devise_scope :user do
+          post 'users/sign_in' => 'users/sessions#create'
+          delete 'users/sign_out' => 'users/sessions#destroy'
+        end
       end
     end
   end
