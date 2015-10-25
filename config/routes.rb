@@ -24,8 +24,13 @@ Rails.application.routes.draw do
       namespace :v1 do
         resources :ziltags, only: :index
         devise_scope :user do
-          post 'users/sign_in' => 'users/sessions#create'
-          delete 'users/sign_out' => 'users/sessions#destroy'
+          controller 'users/sessions' do
+            post 'users/sign_in', action: 'create'
+            delete 'users/sign_out', action: 'destroy'
+          end
+          controller 'users/registrations' do
+            post 'users', action: 'create'
+          end
         end
       end
     end
