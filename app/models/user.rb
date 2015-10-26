@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   # attributes
   attr_accessor :login
   mount_uploader :avatar, AvatarUploader
-  mount_uploader :cover, CoverUploader
 
   # associations
   has_many :ziltags, dependent: :destroy
