@@ -18,7 +18,7 @@ class RemoteUploadJobTest < ActiveJob::TestCase
     refute photo.persisted?
   end
 
-  def test_destroy_if_not_image
+  def test_destroy_photo_if_not_image
     stub_request_for_html
     source = 'http://webmock.me'
     photo = Photo.create!(source: source)
