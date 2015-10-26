@@ -2,11 +2,13 @@ class Photo < ActiveRecord::Base
   include Slugable
 
   def self.find_or_create_by_source_and_href_and_token! source, href = nil, token = nil
-    if box = Box.find_by(token: token)
-      find_by(source: source, href: href, box: box) || create!(remote_image_url: source, href: href, box: box)
+    photo = if box = Box.find_by(token: token)
+      find_by(source: source, href: href, box: box) || create!(source: source, href: href, box: box)
     else
-      find_by(source: source, href: href) || create!(remote_image_url: source, href: href)
+      find_by(source: source, href: href) || create!(source: source, href: href)
     end
+    RemoteUploadJob.perform_later photo, 'image', source
+    photo
   end
 
   # scopes
@@ -22,17 +24,10 @@ class Photo < ActiveRecord::Base
   has_many :ziltags, dependent: :destroy
 
   # validations
-  validates :image, presence: true
 
   # callbacks
-  after_save :set_source, if: ->{ source.blank? }
 
   # other
-  def set_source
-    uri = URI(remote_image_url.presence || image_url)
-    uri.normalize!
-    update_column :source, uri.to_s
-  end
 
   def to_param
     slug

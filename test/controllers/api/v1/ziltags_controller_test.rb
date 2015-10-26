@@ -22,18 +22,6 @@ class Api::V1::ZiltagsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  def test_get_index_with_404
-    stub_request_for_404
-    get :index, format: :json, src: 'http://webmock.me/notfound'
-    assert_response :bad_request
-  end
-
-  def test_get_index_with_non_image
-    stub_request_for_html
-    get :index, format: :json, src: 'http://webmock.me'
-    assert_response :bad_request
-  end
-
   def test_show
     get :show, format: :json, id: ziltags(:tony).slug
     json = JSON.parse response.body

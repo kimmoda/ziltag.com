@@ -212,7 +212,7 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 CREATE TABLE photos (
     id integer NOT NULL,
     user_id integer,
-    image character varying NOT NULL,
+    image character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     source character varying,
@@ -729,4 +729,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151023045800');
 INSERT INTO schema_migrations (version) VALUES ('20151023055633');
 
 INSERT INTO schema_migrations (version) VALUES ('20151026044959');
+
+INSERT INTO schema_migrations (version) VALUES ('20151026085656');
 
