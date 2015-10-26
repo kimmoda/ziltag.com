@@ -24,4 +24,16 @@ class ZiltagImageJobTest < ActiveJob::TestCase
     assert_enqueued_jobs 2
   end
 
+  def test_enqueue_after_zilag_saged
+    photos(:one).image?
+    stub_request_for_image
+    source = 'http://webmock.me/jpeg'
+    photo = Photo.create!(source: source)
+    PhotoJob.perform_now photo, source
+    assert_enqueued_jobs 0
+    photo.ziltags.create! user: users(:tony), x: 0.5, y: 0.5, content: 'hello'
+    assert_enqueued_jobs 1
+    photo.ziltags.create! user: users(:tony), x: 0.5, y: 0.5, content: 'hello'
+    assert_enqueued_jobs 2
+  end
 end
