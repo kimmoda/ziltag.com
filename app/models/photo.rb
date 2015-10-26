@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
     else
       find_by(source: source, href: href) || create!(source: source, href: href)
     end
-    RemoteUploadJob.perform_later photo, 'image', source
+    PhotoJob.perform_later photo, source
     photo
   end
 

@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class RemoteUploadJobTest < ActiveJob::TestCase
+class PhotoJobTest < ActiveJob::TestCase
   def test_perform
     stub_request_for_image
     source = 'http://webmock.me/jpeg'
     photo = Photo.create!(source: source)
-    RemoteUploadJob.perform_now photo, 'image', source
+    PhotoJob.perform_now photo, source
     assert photo.image?
   end
 
@@ -14,7 +14,7 @@ class RemoteUploadJobTest < ActiveJob::TestCase
     source = 'http://webmock.me/notfound'
     photo = Photo.create!(source: source)
     assert photo.persisted?
-    RemoteUploadJob.perform_now photo, 'image', source
+    PhotoJob.perform_now photo, source
     refute photo.persisted?
   end
 
@@ -23,7 +23,8 @@ class RemoteUploadJobTest < ActiveJob::TestCase
     source = 'http://webmock.me'
     photo = Photo.create!(source: source)
     assert photo.persisted?
-    RemoteUploadJob.perform_now photo, 'image', source
+    PhotoJob.perform_now photo, source
     refute photo.persisted?
   end
+
 end

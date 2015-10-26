@@ -1,7 +1,7 @@
 class RegenerateShareImage < ActiveRecord::Migration
   def change
     Ziltag.find_each do |ziltag|
-      ziltag.generate_share_image!
+      ziltag.update remote_share_image_url: ziltag.photo.image_url
     end
   end
 end

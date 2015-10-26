@@ -42,12 +42,13 @@ class ShareImageUploader < CarrierWave::Uploader::Base
         b.draw "circle #{ziltag_x},#{ziltag_y} #{ziltag_x},#{ziltag_y+10}"
         b.crop "#{CROP_WIDTH}x#{CROP_HEIGHT}#{'%+d' % crop_x}#{'%+d' % crop_y}"
       end
+      image.format 'jpg'
       image
     end
   end
 
   def filename
-    "share.#{model.photo.image.file.extension}"
+    'share.jpg'
   end
 
   def store_dir
