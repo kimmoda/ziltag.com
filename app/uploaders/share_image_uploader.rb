@@ -48,7 +48,7 @@ class ShareImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    'share.jpg'
+    'share.jpg' if original_filename
   end
 
   def store_dir
