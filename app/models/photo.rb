@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
 
   def self.find_or_create_by_source_and_href_and_token! source, href = nil, token = nil
     box = Box.find_by(token: token)
-    photo = box.photos.find_by(source: source, href: href) || create!(source: source, href: href, box: box)
+    photo = Photo.find_by(source: source, href: href, box: box) || create!(source: source, href: href, box: box)
     PhotoJob.perform_later photo, source
     photo
   end
@@ -21,7 +21,7 @@ class Photo < ActiveRecord::Base
   has_many :ziltags, dependent: :destroy
 
   # validations
-  validates :href, format: /\A#{URI::regexp}\z/
+  validates :href, format: /\A#{URI::regexp}\z/, allow_nil: true
 
   # callbacks
 
@@ -37,8 +37,10 @@ class Photo < ActiveRecord::Base
 
   def href= value
     super
-    uri = URI(href)
-    self.host, self.path = uri.host, uri.path
+    if href =~ /\A#{URI::regexp}\z/
+      uri = URI(href)
+      self.host, self.path = uri.host, uri.path
+    end
   end
 
 end

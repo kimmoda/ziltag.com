@@ -13,7 +13,7 @@ class PhotoTest < ActiveSupport::TestCase
     p1 = photos(:one)
     p2 = Photo.find_or_create_by_source_and_href_and_token! p1.source, p1.href
     assert_equal p1, p2
-    p3 = Photo.find_or_create_by_source_and_href_and_token! p1.source, 'tonytonyjan'
+    p3 = Photo.find_or_create_by_source_and_href_and_token! p1.source, 'http://tonytonyjan.net/abc'
     refute_equal p1, p3
   end
 
@@ -38,12 +38,12 @@ class PhotoTest < ActiveSupport::TestCase
     assert_equal nil, photo.box
   end
 
-  # def test_duplicated_source
-  #   stub_request_for_image
-  #   p1 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me'
-  #   p2 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me'
-  #   p3 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg'
-  #   assert_equal p1, p2
-  #   refute_equal p1, p3
-  # end
+  def test_duplicated_source
+    stub_request_for_image
+    p1 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me'
+    p2 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg', 'http://webmock.me'
+    p3 = Photo.find_or_create_by_source_and_href_and_token! 'http://webmock.me/jpeg'
+    assert_equal p1, p2
+    refute_equal p1, p3
+  end
 end
