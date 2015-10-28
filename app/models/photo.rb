@@ -41,6 +41,8 @@ class Photo < ActiveRecord::Base
     if href =~ /\A#{URI::regexp}\z/
       uri = URI(href)
       self.host, self.path = uri.host, uri.path
+    else
+      logger.warn "invalid URI format: #{value}"
     end
   end
 
