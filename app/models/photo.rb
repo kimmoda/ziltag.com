@@ -1,10 +1,16 @@
 class Photo < ActiveRecord::Base
   include Slugable
 
-  def self.find_or_create_by_source_and_href_and_token! source, href = nil, token = nil
-    box = Box.find_by(token: token)
-    host = href ? URI(href).host : nil
-    photo = Photo.find_by(source: source, host: host, box: box) || create!(source: source, href: href, box: box)
+  def self.find_or_create_by_source_and_href_and_token! source, href, token
+    box = Box.find_by!(token: token)
+    host = URI(href).host
+    photos = box.photos.where(source: source)
+    if host.split('.')[1] == 'blogspot'
+      photo = photos.find_by('host LIKE ?', "#{host.first}%")
+    else
+      photo = photos.find_by(host: host)
+    end
+    photo ||= box.photos.create!(source: source, href: href)
     PhotoJob.perform_later photo, source
     photo
   end
@@ -15,6 +21,7 @@ class Photo < ActiveRecord::Base
 
   # attributes
   mount_uploader :image, ImageUploader
+  delegate :token, to: :box
 
   # associations
   belongs_to :user
