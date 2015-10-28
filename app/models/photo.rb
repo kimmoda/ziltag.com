@@ -2,11 +2,8 @@ class Photo < ActiveRecord::Base
   include Slugable
 
   def self.find_or_create_by_source_and_href_and_token! source, href = nil, token = nil
-    photo = if box = Box.find_by(token: token)
-      find_by(source: source, href: href, box: box) || create!(source: source, href: href, box: box)
-    else
-      find_by(source: source, href: href) || create!(source: source, href: href)
-    end
+    box = Box.find_by(token: token)
+    photo = find_by(source: source, href: href, box: box) || create!(source: source, href: href, box: box)
     PhotoJob.perform_later photo, source
     photo
   end
