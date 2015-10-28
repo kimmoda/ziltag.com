@@ -3,7 +3,8 @@ class Photo < ActiveRecord::Base
 
   def self.find_or_create_by_source_and_href_and_token! source, href = nil, token = nil
     box = Box.find_by(token: token)
-    photo = Photo.find_by(source: source, href: href, box: box) || create!(source: source, href: href, box: box)
+    host = href ? URI(href).host : nil
+    photo = Photo.find_by(source: source, host: host, box: box) || create!(source: source, href: href, box: box)
     PhotoJob.perform_later photo, source
     photo
   end
