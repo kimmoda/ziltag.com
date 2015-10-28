@@ -1,4 +1,10 @@
 .edit-area{
+  .mdl-textfield.is-invalid .mdl-textfield__input{
+    border-color: inherit;
+  }
+  .mdl-textfield.is-invalid .mdl-textfield__label:after,.mdl-textfield__label:after{
+    background-color: black;
+  }
   &__field{
     width: 100%;
     margin: -22px 0 -20px;

@@ -8,12 +8,6 @@ $default-background-color: white;
 $preview-background-color: rgba(255,255,255,0.8);
 
 .dialog{
-  .mdl-textfield.is-invalid .mdl-textfield__input{
-    border-color: inherit;
-  }
-  .mdl-textfield.is-invalid .mdl-textfield__label:after,.mdl-textfield__label:after{
-    background-color: black;
-  }
   &__arrow{
     position: absolute;
     top: -10px;
