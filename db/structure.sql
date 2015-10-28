@@ -218,7 +218,9 @@ CREATE TABLE photos (
     source character varying,
     href character varying,
     slug character varying NOT NULL,
-    box_id integer
+    box_id integer,
+    host character varying,
+    path character varying
 );
 
 
@@ -493,6 +495,20 @@ CREATE INDEX index_photos_on_box_id ON photos USING btree (box_id);
 
 
 --
+-- Name: index_photos_on_host; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_photos_on_host ON photos USING btree (host);
+
+
+--
+-- Name: index_photos_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_photos_on_path ON photos USING btree (path);
+
+
+--
 -- Name: index_photos_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -731,4 +747,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151023055633');
 INSERT INTO schema_migrations (version) VALUES ('20151026044959');
 
 INSERT INTO schema_migrations (version) VALUES ('20151026085656');
+
+INSERT INTO schema_migrations (version) VALUES ('20151028083550');
 

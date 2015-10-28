@@ -13,7 +13,7 @@ namespace 'dev:fake' do
 
     fakeup '產生圖片' do
       @photos = []
-      20.times{ @photos << Photo.create!(image: @images.sample) }
+      20.times{ @photos << Photo.create!(image: @images.sample, href: Faker::Internet.url) }
     end
 
     fakeup '產生貼紙' do
