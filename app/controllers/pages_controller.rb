@@ -2,13 +2,8 @@ class PagesController < ApplicationController
   before_action :must_sign_in!, :must_be_content_provider!, only: %i[username update_username install]
 
   def home
-    if params[:src]
-      @photo = Photo.find_or_create_by_source_and_href_and_token! params[:src]
-      redirect_to @photo if @photo.persisted?
-    else
-      @photo = Photo.new
-      @user = ContentProvider.new
-    end
+    @photo = Photo.new
+    @user = ContentProvider.new
   end
 
   def username
