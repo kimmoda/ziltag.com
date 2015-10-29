@@ -4,9 +4,10 @@ class Photo < ActiveRecord::Base
   def self.find_or_create_by_source_and_href_and_token! source, href, token
     box = Box.find_by!(token: token)
     host = URI(href).host
+    subdomains = host.split('.')
     photos = box.photos.where(source: source)
-    if host.split('.')[1] == 'blogspot'
-      photo = photos.find_by('host LIKE ?', "#{host.first}%")
+    if subdomains[1] == 'blogspot'
+      photo = photos.find_by('host LIKE ?', "#{subdomains.first}.blogspot%")
     else
       photo = photos.find_by(host: host)
     end
