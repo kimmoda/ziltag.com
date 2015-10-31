@@ -23,7 +23,7 @@ class StickerContainer
 
   _is_valid_point: (x, y) =>
     radius = 10
-    x > radius && x < @image.naturalWidth && y > radius && y < @image.naturalHeight
+    x > radius && x < @image.clientWidth && y > radius && y < @image.clientHeight
 
   _image_clicked: (e) =>
     return unless @_is_valid_point(e.offsetX, e.offsetY)
