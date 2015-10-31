@@ -1,4 +1,5 @@
 class Api::V1::ZiltagsController < ApiController
+  include ActionController::Live
   before_action :authenticate_user!, only: %i[create update destroy]
   before_action :set_ziltag, only: %i[update destroy]
 
@@ -32,6 +33,25 @@ class Api::V1::ZiltagsController < ApiController
   def destroy
     @ziltag.destroy
     head :no_content
+  end
+
+  def stream
+    @ziltag = Ziltag.find_by!(slug: params[:id])
+    response.headers['Content-Type'] = 'text/event-stream'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    sse = SSE.new(response.stream)
+    sse.write(render_to_string(:show))
+    Ziltag.connection.execute "LISTEN slug_#{@ziltag.slug}"
+    loop do
+      Ziltag.connection.raw_connection.wait_for_notify do |event, pid, payload|
+        underscore, id = payload.split('_')
+        record = underscore.classify.constantize.find(id)
+        sse.write(render_to_string(partial: underscore, object: record), event: underscore)
+      end
+    end
+  ensure
+    Ziltag.connection.execute "UNLISTEN slug_#{@ziltag.slug}"
+    sse.close
   end
 
 private

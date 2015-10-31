@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
   validates :ziltag, :user, :content, presence: true
 
   # callbacks
+  after_save :notify_stream
 
   # other
   def to_s
@@ -27,6 +28,12 @@ class Comment < ActiveRecord::Base
     users.reject!{|u| u == user }
     users.uniq!
     users.each{ |user| NotificationMailer.new_comment_notification(user, self).deliver_later }
+  end
+
+private
+
+  def notify_stream
+    Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, 'comment_#{id}'" if changed?
   end
 
 end
