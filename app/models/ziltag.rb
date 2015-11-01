@@ -34,7 +34,7 @@ private
 
   def notify_stream
     photo.ziltags.where.not(id: self).each do |ziltag|
-      Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, 'ziltag_#{id}'" if changed?
+      Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, 'ziltag_#{id}'" if x_changed? || y_changed? || content_changed?
     end
   end
 
