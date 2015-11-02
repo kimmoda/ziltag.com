@@ -11,7 +11,7 @@ class PhotoJob < ActiveJob::Base
 
   after_perform do |job|
     photo, url = job.arguments
-    photo.ziltags.each do |ziltag|
+    photo.ziltags(true).each do |ziltag|
       ziltag.generate_share_image_later unless ziltag.share_image?
     end
   end
