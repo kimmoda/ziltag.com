@@ -16,7 +16,8 @@ class Comment < ActiveRecord::Base
   validates :ziltag, :user, :content, presence: true
 
   # callbacks
-  after_save :notify_stream
+  after_create :notify_create
+  after_update :notify_update, if: :content_changed?
 
   # other
   def to_s
@@ -32,8 +33,16 @@ class Comment < ActiveRecord::Base
 
 private
 
-  def notify_stream
-    Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, 'comment_#{id}'" if content_changed?
+  def notify_stream action
+    Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, '#{action}_comment_#{id}'" if content_changed?
+  end
+
+  def notify_create
+    notify_stream 'create'
+  end
+
+  def notify_update
+    notify_stream 'update'
   end
 
 end

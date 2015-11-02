@@ -19,7 +19,8 @@ class Ziltag < ActiveRecord::Base
 
   # callbacks
   after_save :generate_share_image_later, if: ->{ photo.image? && (!share_image? || x_changed? || y_changed?) }
-  after_save :notify_stream, if: ->{ x_changed? || y_changed? || content_changed? }
+  after_create :notify_create
+  after_update :notify_update, if: ->{ x_changed? || y_changed? || content_changed? }
 
   # other
   def to_param
@@ -32,10 +33,18 @@ class Ziltag < ActiveRecord::Base
 
 private
 
-  def notify_stream
-    photo.ziltags.where.not(id: self).each do |ziltag|
-      Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, 'ziltag_#{id}'"
+  def notify_stream action
+    photo.ziltags.each do |ziltag|
+      Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, '#{action}_ziltag_#{id}'"
     end
+  end
+
+  def notify_create
+    notify_stream 'create'
+  end
+
+  def notify_update
+    notify_stream 'update'
   end
 
 end
