@@ -1,7 +1,9 @@
 require 'eventmachine'
+require 'logger'
 
 DB_CONN = ActiveRecord::Base.connection_pool.checkout.raw_connection
 DB_SOCKET = DB_CONN.socket_io
+LOGGER = Logger.new(STDOUT)
 
 %w[create update delete].product(%w[ziltag comment]).each do |action, resource|
   DB_CONN.exec "LISTEN #{action}_#{resource}"
@@ -22,7 +24,7 @@ class PushServer < EM::Connection
   end
 
   def post_init
-    puts "#{self} connected"
+    LOGGER.info "#{self} connected"
   end
 
   def notify_readable
@@ -93,7 +95,7 @@ class PushServer < EM::Connection
       @@slug_map_clients[@slug].delete(self)
       @@slug_map_clients.delete @slug if @@slug_map_clients[@slug].empty?
     end
-    puts "#{self} disconnected"
+    LOGGER.info "#{self} disconnected"
   end
 end
 
