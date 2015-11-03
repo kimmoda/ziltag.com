@@ -44,7 +44,7 @@ loop do
     case socket
     when SERVER_SOCKET
       client_socket, client_addrinfo = SERVER_SOCKET.accept
-      puts "ONLINE: #{client_socket}"
+      puts "connect: #{client_socket}"
       SOCKETS << client_socket
     when DB_SOCKET
       DB_CONN.consume_input
@@ -77,12 +77,13 @@ loop do
       msg = socket.recv(2048)
       if msg.empty?
         SOCKETS.delete(socket)
-        puts "OFFLINE: #{socket}"
+        puts "disconnect: #{socket}"
       elsif msg !~ %r{GET /api/v1/ziltags/(\w{6})/stream HTTP/1.1} || !Ziltag.exists?(slug: $1)
         socket.send "HTTP/1.1 404 Not Found
 Server: Ziltag Push Server\n\n", 0
         socket.close
         SOCKETS.delete(socket)
+        puts "disconnect: #{socket}"
       else
         SLUG_MAP_SOCKETS[$1] ||= []
         SLUG_MAP_SOCKETS[$1] << socket
