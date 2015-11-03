@@ -78,10 +78,10 @@ class PushServer < EM::Connection
           @@slug_map_clients[@slug] ||= []
           @@slug_map_clients[@slug] << self
           send_data "HTTP/1.1 200 OK
-  Server: Ziltag Push Server
-  Content-Type: text/event-stream
-  Connection: keep-alive
-  Access-Control-Allow-Origin: *\n\n"
+Server: Ziltag Push Server
+Content-Type: text/event-stream
+Connection: keep-alive
+Access-Control-Allow-Origin: *\n\n"
         end
       end
     else
