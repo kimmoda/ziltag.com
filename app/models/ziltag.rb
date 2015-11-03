@@ -34,9 +34,7 @@ class Ziltag < ActiveRecord::Base
 private
 
   def notify_stream action
-    photo.ziltags.each do |ziltag|
-      Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, '#{action}_ziltag_#{id}'"
-    end
+    Ziltag.connection.execute "NOTIFY #{action}_ziltag, '#{id}'"
   end
 
   def notify_create
