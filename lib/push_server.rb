@@ -3,7 +3,8 @@ require 'logger'
 
 DB_CONN = ActiveRecord::Base.connection_pool.checkout.raw_connection
 DB_SOCKET = DB_CONN.socket_io
-LOGGER = Logger.new(STDOUT)
+LOGGER = Logger.new(ENV['LOG_PATH'] || STDOUT)
+ERROR_LOGGER = Logger.new(ENV['ERROR_LOG_PATH'] || STDERR)
 
 %w[create update delete].product(%w[ziltag comment]).each do |action, resource|
   DB_CONN.exec "LISTEN #{action}_#{resource}"
