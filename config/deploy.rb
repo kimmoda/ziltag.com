@@ -19,5 +19,8 @@ namespace :deploy do
     on roles(:worker) do
       execute :sudo, '/etc/init.d/qc', 'restart'
     end
+    on roles(:push) do
+      execute :sudo, '/etc/init.d/sse', 'restart'
+    end
   end
 end
