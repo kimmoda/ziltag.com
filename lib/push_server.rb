@@ -97,8 +97,10 @@ class PushServer < EM::Connection
   end
 end
 
+argv = ARGV.presence || %w[0.0.0.0 3310]
+
 EventMachine.run do
   conn = EventMachine.watch DB_SOCKET, PushServer
   conn.notify_readable = true
-  EventMachine.start_server '0.0.0.0', 3310, PushServer
+  EventMachine.start_server *argv, PushServer
 end
