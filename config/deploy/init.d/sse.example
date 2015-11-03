@@ -1,0 +1,39 @@
+#!/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+APP=/home/deploy/ziltag/current
+PIDFILE=$APP/tmp/pids/sse.pid
+SOCKFILE=$APP/tmp/sockets/sse.sock
+USER=deploy
+WORKERS=1
+
+export RAILS_ENV=production
+export LOG_PATH=$APP/log/sse.log
+export ERROR_LOG_PATH=$APP/log/sse.error.log
+
+start(){
+  for i in $(seq $WORKERS); do
+    start-stop-daemon --start --oknodo --background --make-pidfile \
+      --pidfile $PIDFILE$i \
+      --chuid $USER \
+      --chdir $APP \
+      --startas bin/rails -- r lib/push_server.rb $SOCKFILE
+  done
+}
+
+stop(){
+  for i in $(seq $WORKERS); do
+    start-stop-daemon --stop --oknodo --retry 5 --pidfile $PIDFILE$i
+  done
+}
+
+case $1 in
+  start )
+    start
+    ;;
+  stop )
+    stop
+    ;;
+  restart )
+    stop && start
+    ;;
+esac
