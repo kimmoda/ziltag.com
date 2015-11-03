@@ -1,6 +1,6 @@
 require 'eventmachine'
 
-DB_CONN = PG.connect dbname: 'ziltag_development'
+DB_CONN = ActiveRecord::Base.connection_pool.checkout.raw_connection
 DB_SOCKET = DB_CONN.socket_io
 
 %w[create update delete].product(%w[ziltag comment]).each do |action, resource|
@@ -31,43 +31,58 @@ class PushServer < EM::Connection
     while notification = DB_CONN.notifies
       event, pid, payload = notification[:relname], notification[:be_pid], notification[:extra]
       action, underscore = event.split('_')
-      record = underscore.classify.constantize.find(payload)
-      buf << "event: #{event}\ndata: "
-      case record
-      when Ziltag
-        slug = record.photo.ziltags.pluck(:slug)
-        buf << {
-          slug: record.slug, x: record.x, y: record.y, content: record.content,
-          username: record.username, avatar: record.user.avatar.thumb.url,
-          confirmed: record.confirmed?
-        }.to_json
-      when Comment
-        slug = record.ziltag.slug
-        buf << {
-          id: record.id, content: record.content,
-          username: record.username, avatar: record.user.avatar.thumb.url,
-          confirmed: record.confirmed?
-        }.to_json
+      klass = underscore.classify.constantize
+      DB_CONN.async_exec(klass.where(id: payload).limit(1).to_sql) do |result|
+        record = klass.new klass.column_names.zip(result.values.first).to_h
+        buf << "event: #{event}\ndata: "
+        case record
+        when Ziltag
+          DB_CONN.async_exec(Ziltag.select(:slug).where(photo_id: record.photo_id).to_sql) do |result|
+            slug = result.values.flatten
+            buf << {
+              slug: record.slug, x: record.x, y: record.y, content: record.content,
+              username: record.username, avatar: record.user.avatar.thumb.url,
+              confirmed: record.confirmed?
+            }.to_json
+            buf << "\n\n"
+            broadcast buf, slug
+          end
+        when Comment
+          DB_CONN.async_exec(Ziltag.select(:slug).where(id: record.ziltag_id).limit(1).to_sql) do |result|
+            slug = result.values.first.first
+            buf << {
+              id: record.id, content: record.content,
+              username: record.username, avatar: record.user.avatar.thumb.url,
+              confirmed: record.confirmed?
+            }.to_json
+            buf << "\n\n"
+            broadcast buf, slug
+          end
+        end
       end
-      buf << "\n\n"
     end
-    broadcast buf, slug
   end
 
   def receive_data data
-    if data =~ %r{GET /api/v1/ziltags/(\w{6})/stream HTTP/1.1} && Ziltag.exists?(slug: $1)
-      @slug = $1
-      @@clients << self
-      @@slug_map_clients[@slug] ||= []
-      @@slug_map_clients[@slug] << self
-      send_data "HTTP/1.1 200 OK
-Server: Ziltag Push Server
-Content-Type: text/event-stream
-Connection: keep-alive
-Access-Control-Allow-Origin: *\n\n"
+    if data =~ %r{GET /api/v1/ziltags/(\w{6})/stream HTTP/1.1}
+      DB_CONN.async_exec(Ziltag.where(slug: $1).limit(1).to_sql) do |result|
+        if result.values.empty?
+          send_data "HTTP/1.1 404 Not Found\nServer: Ziltag Push Server\n\n"
+          close_connection_after_writing
+        else
+          @slug = $1
+          @@clients << self
+          @@slug_map_clients[@slug] ||= []
+          @@slug_map_clients[@slug] << self
+          send_data "HTTP/1.1 200 OK
+  Server: Ziltag Push Server
+  Content-Type: text/event-stream
+  Connection: keep-alive
+  Access-Control-Allow-Origin: *\n\n"
+        end
+      end
     else
-      send_data "HTTP/1.1 404 Not Found
-Server: Ziltag Push Server\n\n"
+      send_data "HTTP/1.1 404 Not Found\nServer: Ziltag Push Server\n\n"
       close_connection_after_writing
     end
   end
