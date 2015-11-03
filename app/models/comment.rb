@@ -34,7 +34,7 @@ class Comment < ActiveRecord::Base
 private
 
   def notify_stream action
-    Ziltag.connection.execute "NOTIFY slug_#{ziltag.slug}, '#{action}_comment_#{id}'" if content_changed?
+    Ziltag.connection.execute "NOTIFY #{action}_comment, '#{id}'" if content_changed?
   end
 
   def notify_create
