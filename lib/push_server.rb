@@ -106,4 +106,5 @@ EventMachine.run do
   conn = EventMachine.watch DB_SOCKET, PushServer
   conn.notify_readable = true
   EventMachine.start_server *argv, PushServer
+  File.chmod(0777, argv.first) if argv.length == 1
 end
