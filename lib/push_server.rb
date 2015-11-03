@@ -1,13 +1,18 @@
 require 'socket'
+require 'uri'
 
-ARGV[0] ||= '0.0.0.0'
-ARGV[1] ||= 3310
-
+BIND_URI = URI(ARGV.shift || 'tcp://localhost:3310')
+SERVER_SOCKET = case BIND_URI.scheme
+                when 'tcp'
+                  TCPServer.new BIND_URI.host, BIND_URI.port
+                when 'unix'
+                  UNIXServer.new BIND_URI.path
+                end
 DB_CONN = PG.connect dbname: 'ziltag_development'
 DB_SOCKET = DB_CONN.socket_io
-SERVER_SOCKET = TCPServer.new *ARGV
 SOCKETS = [SERVER_SOCKET, DB_SOCKET]
 SLUG_MAP_SOCKETS = {}
+
 
 %w[create update delete].product(%w[ziltag comment]).each do |action, resource|
   DB_CONN.exec "LISTEN #{action}_#{resource}"
