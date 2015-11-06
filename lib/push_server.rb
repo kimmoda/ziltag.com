@@ -102,6 +102,7 @@ end
 
 argv = ARGV.presence || %w[0.0.0.0 3310]
 
+EM.epoll
 EventMachine.run do
   conn = EventMachine.watch DB_SOCKET, PushServer
   conn.notify_readable = true
