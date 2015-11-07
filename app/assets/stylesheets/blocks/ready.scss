@@ -1,0 +1,28 @@
+.ready{
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  &__box{
+    background-color: white;
+    width: 500px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.12);
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    h4 img{
+      margin-right: 10px;
+    }
+  }
+  &__textarea{
+    @extend .ready__box;
+    padding: 54px 10px;
+    resize: none;
+    margin-right: 10px;
+  }
+  &__copy{
+    position: relative;
+    bottom: 60px;
+  }
+}

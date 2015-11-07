@@ -1,15 +1,51 @@
-<div class="layout-fullscreen">
-  <div class="starry-sky starry-sky--yellow">
-    <div class="starry-sky__star starry-sky__star--small"></div>
-    <div class="starry-sky__star starry-sky__star--medium"></div>
-    <div class="starry-sky__star starry-sky__star--big"></div>
-    <div class="starry-sky__container">
-      <h1 class="mdl-color-text--white">Your script is ready!</h1>
-      <h5 class="mdl-color-text--white">Place the following code before your site's closing <code>&lt;/body&gt;</code> tag to install the plugin.</h5>
-      <textarea rows="2" cols="80" onclick="this.focus();this.select()" readonly="readonly" style="border:none;resize:none;"><script src="//<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= current_user.box.token %>"></script>
+<div class="ready">
+  <h2>Thank you. Your script is now ready!</h2>
+  <h5>Copy the script and get everything started!</h5>
+  <textarea id="script" class="ready__textarea" rows="2" onclick="this.focus();this.select()" readonly="readonly"><script src="//<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= current_user.box.token %>"></script>
 <noscript>You have to enable JavaScript to use Ziltag.</noscript></textarea>
-      <div style="margin-top:50px;margin-bottom:100px;"><button class="capsule capsule--red">COPY</button></div>
-      <div class="mdl-color-text--white">For further assistant, please contact us or visit our help center.</div>
-    </div>
+  <button class="ready__copy capsule capsule--blue" onclick="document.getElementById('script').focus();document.getElementById('script').select()">COPY</button>
+  <div class="ready__box">
+    <h4><%= image_tag 'brands/tumblr.png', width: 40 %> Installation Guide for Tumblr</h4>
+    <hr>
+    <ul>
+      <li>Click user icon on the top-right corner and select Edit appearance.</li>
+      <li>Click Edit Theme button under Website Theme tab.</li>
+      <li>Click Edit HTML.</li>
+      <li>Scroll the editor all the way down and paste the script before xxxx</li>
+      <li>Click Update Preview, then Save. Now You are all set.</li>
+    </ul>
+  </div>
+  <div class="ready__box">
+    <h4><%= image_tag 'brands/wordpress.png', width: 40 %> Installation Guide for Wordpress</h4>
+    <hr>
+    <ul>
+      <li>Click user icon on the top-right corner and select Edit appearance.</li>
+      <li>Click Edit Theme button under Website Theme tab.</li>
+      <li>Click Edit HTML.</li>
+      <li>Scroll the editor all the way down and paste the script before xxxx</li>
+      <li>Click Update Preview, then Save. Now You are all set.</li>
+    </ul>
+  </div>
+  <div class="ready__box">
+    <h4><%= image_tag 'brands/blogger.png', width: 40 %> Installation Guide for Blogger</h4>
+    <hr>
+    <ul>
+      <li>Click user icon on the top-right corner and select Edit appearance.</li>
+      <li>Click Edit Theme button under Website Theme tab.</li>
+      <li>Click Edit HTML.</li>
+      <li>Scroll the editor all the way down and paste the script before xxxx</li>
+      <li>Click Update Preview, then Save. Now You are all set.</li>
+    </ul>
+  </div>
+  <div class="ready__box">
+    <h4><%= image_tag 'logo.png', width: 40 %> Installation Guide</h4>
+    <hr>
+    <ul>
+      <li>Click user icon on the top-right corner and select Edit appearance.</li>
+      <li>Click Edit Theme button under Website Theme tab.</li>
+      <li>Click Edit HTML.</li>
+      <li>Scroll the editor all the way down and paste the script before xxxx</li>
+      <li>Click Update Preview, then Save. Now You are all set.</li>
+    </ul>
   </div>
 </div>
