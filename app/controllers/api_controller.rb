@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   before_action :set_headers
+  skip_after_action :enable_iframe
 
 private
 
