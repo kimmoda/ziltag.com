@@ -7,7 +7,7 @@
         <div class="join__right">
           <%= form_for @user, as: :user, url: user_registration_path do |f| %>
             <div class="text-field">
-              <%= f.text_field :email, class: 'text-field__input capsule', placeholder: 'Enter your email...' %>
+              <%= f.text_field :email, required: true, class: 'text-field__input capsule', placeholder: 'Enter your email...' %>
               <%= f.hidden_field :type %>
               <%= f.submit 'Join for Free!', class: 'text-field__button capsule capsule--blue' %>
             </div>
