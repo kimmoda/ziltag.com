@@ -1,4 +1,7 @@
 body.pages.home{
+  main{
+    height: 100%;
+  }
   .layout__install{
     @extend .mdl-typography--font-light;
     line-height: 32px;
@@ -10,6 +13,22 @@ body.pages.home{
     .layout__brand{
       width: 32px;
       margin: 0 5px;
+    }
+  }
+  .layout__slide{
+    overflow: hidden;
+    height: 100%;
+    &--grey{
+      background-color: #F0F0F0;
+    }
+  }
+  .layout__copyright{
+    @extend .mdl-typography--font-regular;
+    font-size: 10px;
+  }
+  .layout__play-images{
+    img{
+      width: 100%;
     }
   }
 }
