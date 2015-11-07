@@ -1,0 +1,15 @@
+body.pages.home{
+  .layout__install{
+    @extend .mdl-typography--font-light;
+    line-height: 32px;
+    font-size: 23px;
+  }
+  .layout__bands{
+    @extend .mdl-typography--font-bold;
+    margin-top: 100px;
+    .layout__brand{
+      width: 32px;
+      margin: 0 5px;
+    }
+  }
+}

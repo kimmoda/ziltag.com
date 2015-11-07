@@ -1,18 +1,14 @@
 .feature-list{
-  $size: 40px;
   list-style-type: none;
   padding-left: 0;
-  &__image{
-    position: absolute;
-    width: $size;
-    height: $size;
-    background-image: url('http://fakeimg.pl/100x100');
-    background-repeat: no-repeat;
-    border-radius: 50%;
-  }
   &__item{
-    text-indent: $size + 10px;
-    line-height: $size;
+    line-height: 40px;
     margin-bottom: 10px;
+    font-size: 16px;
+    i{
+      vertical-align: middle;
+      margin-right: 20px;
+      font-size: 32px;
+    }
   }
 }
