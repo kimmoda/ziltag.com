@@ -39,14 +39,14 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.3)
-    autoprefixer-rails (6.0.3)
+    autoprefixer-rails (6.1.0.1)
       execjs
       json
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (6.0.2)
+    byebug (8.0.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -116,7 +116,7 @@ GEM
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       nokogiri
-    fog-aliyun (0.0.10)
+    fog-aliyun (0.1.0)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       ipaddress (~> 0.8)
@@ -178,7 +178,7 @@ GEM
     fog-serverlove (0.1.2)
       fog-core
       fog-json
-    fog-softlayer (1.0.0)
+    fog-softlayer (1.0.2)
       fog-core
       fog-json
     fog-storm_on_demand (0.1.1)
@@ -202,7 +202,7 @@ GEM
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    hashdiff (0.2.2)
+    hashdiff (0.2.3)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -221,7 +221,7 @@ GEM
     mime-types (2.6.2)
     mini_magick (4.3.6)
     mini_portile (0.6.2)
-    minitest (5.8.1)
+    minitest (5.8.2)
     multi_json (1.11.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -230,7 +230,7 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.18.3)
-    puma (2.14.0)
+    puma (2.15.3)
     queue_classic (3.1.0)
       pg (>= 0.17, < 0.19)
     rack (1.6.4)
@@ -271,7 +271,7 @@ GEM
       railties (>= 4.2.0, < 5)
     safe_yaml (1.0.4)
     sass (3.4.19)
-    sassc (1.7.1)
+    sassc (1.8.1)
       bundler
       ffi (~> 1.9.6)
       sass (>= 3.3.0)
@@ -311,7 +311,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    webmock (1.22.1)
+    webmock (1.22.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
