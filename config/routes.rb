@@ -31,6 +31,7 @@ Rails.application.routes.draw do
           end
           controller 'users/registrations' do
             post 'users', action: 'create'
+            put 'users', action: 'update'
           end
         end
       end

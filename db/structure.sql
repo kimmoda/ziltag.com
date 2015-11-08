@@ -295,7 +295,8 @@ CREATE TABLE users (
     updated_at timestamp without time zone,
     avatar character varying,
     username character varying,
-    type character varying
+    type character varying,
+    notification boolean DEFAULT true NOT NULL
 );
 
 
@@ -749,4 +750,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151026044959');
 INSERT INTO schema_migrations (version) VALUES ('20151026085656');
 
 INSERT INTO schema_migrations (version) VALUES ('20151028083550');
+
+INSERT INTO schema_migrations (version) VALUES ('20151108171329');
 

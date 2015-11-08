@@ -1,5 +1,25 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.password_field :password %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
-<% end %>
+<div class="profile js-profile">
+  <div class="profile__avatar">
+    <%= image_tag current_user.avatar_url %>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'avatar-form', method: :put}) do |f| %>
+    <%= f.file_field :avatar, class: 'profile__avatar-input' %>
+  <% end %>
+  <div class="profile__fields-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="mdl-textfield mdl-js-textfield">
+        <%= f.password_field :password, class: 'mdl-textfield__input' %>
+        <label class="mdl-textfield__label" for="user_password">Password</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield">
+        <%= f.password_field :password_confirmation, class: 'mdl-textfield__input' %>
+        <label class="mdl-textfield__label" for="user_password_confirmation">Password Confirmation</label>
+      </div>
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="user_notification">
+        <%= f.check_box :notification, class: 'mdl-checkbox__input' %>
+        <span class="mdl-checkbox__label">Get Notification</span>
+      </label>
+      <%= f.submit 'Save', class: 'profile__submit capsule capsule--blue' %>
+    <% end %>
+  </div>
+</div>
