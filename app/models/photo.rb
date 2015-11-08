@@ -1,19 +1,9 @@
 class Photo < ActiveRecord::Base
-  BLOGSPOT_DOMAINS = %w[ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' << c}.freeze
-
   include Slugable
 
   def self.find_or_create_by_source_and_href_and_token! source, href, token
     box = Box.find_by!(token: token)
-    host = URI(href).host
-    subdomains = host.split('.')
-    photos = box.photos.where(source: source)
-    if host.end_with?(*BLOGSPOT_DOMAINS)
-      photo = photos.find_by('host LIKE ANY (array[?])', BLOGSPOT_DOMAINS.map{|c| "#{subdomains.first}.#{c}" })
-    else
-      photo = photos.find_by(host: host)
-    end
-    photo ||= box.photos.create!(source: source, href: href)
+    photo = box.photos.find_or_create_by_source_and_uri! source, href
     PhotoJob.perform_later photo, source
     photo
   end
