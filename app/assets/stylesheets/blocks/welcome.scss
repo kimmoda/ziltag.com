@@ -1,0 +1,39 @@
+.welcome{
+  width: 815px;
+  margin: 10px auto;
+  &__caption{
+    @extend .mdl-typography--font-regular;
+    font-size: 20px;
+    color: rgba(0,0,0,.54);
+    margin-bottom: 40px;
+  }
+  &__site{
+    border-radius: 30px;
+    background-color: white;
+    width: 600px;
+    margin-bottom: 15px;
+  }
+  &__site-image{
+    border-radius: 20px;
+    margin: 10px;
+  }
+  &__site-text-box{
+    display: inline-block;
+    width: 450px;
+    padding: 15px;
+    vertical-align: middle;
+  }
+  &__site-title{
+    @extend .mdl-typography--font-medium;
+    font-size: 18px;
+  }
+  &__site-link{
+    @extend .mdl-typography--font-light;
+    font-size: 12px;
+    color: rgba(0,0,0,.87);
+  }
+  &__site-summary{
+    @extend .mdl-typography--font-regular;
+    font-size: 12px;
+  }
+}
