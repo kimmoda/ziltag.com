@@ -2,7 +2,7 @@ class PhotoJob < ActiveJob::Base
   queue_as :default
 
   def perform(photo, url)
-    photo.update! "remote_image_url" => url
+    photo.update! remote_image_url: url
   rescue ActiveRecord::RecordInvalid
     logger.info $!
     photo.destroy
