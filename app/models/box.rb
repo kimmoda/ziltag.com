@@ -39,12 +39,15 @@ class Box < ActiveRecord::Base
   end
 
   def service
-    return nil if host.blank?
-    if host.end_with? 'tumblr.com' then 'tumblr'
-    elsif host.end_with? 'wordpress.com' then 'wordpress'
-    elsif host.end_with? 'logdown.com' then 'logdown'
-    elsif host.end_with? 'pixnet.net' then 'pixnet'
-    elsif host.end_with? *BLOGSPOT_DOMAINS then 'blogger'
+    return nil if url.blank?
+    uri = URI(url)
+    if uri.host.end_with? 'tumblr.com' then 'tumblr'
+    elsif uri.host.end_with? 'wordpress.com' then 'wordpress'
+    elsif uri.host.end_with? 'logdown.com' then 'logdown'
+    elsif uri.host.end_with? 'pixnet.net' then 'pixnet'
+    elsif uri.host.end_with? *BLOGSPOT_DOMAINS then 'blogger'
+    elsif uri.host == 'blog.xuite.net' then 'xuite'
+    else nil
     end
   end
 
