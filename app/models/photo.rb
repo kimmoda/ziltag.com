@@ -3,6 +3,7 @@ class Photo < ActiveRecord::Base
 
   def self.find_or_create_by_source_and_href_and_token! source, href, token
     box = Box.find_by!(token: token)
+    raise "#{href} is not permitted by given token" unless box.match_href?(href)
     photo = box.photos.find_or_create_by_source_and_uri! source, href
     PhotoJob.perform_later photo, source
     photo

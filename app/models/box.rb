@@ -52,4 +52,13 @@ class Box < ActiveRecord::Base
     end
   end
 
+  def match_href? href
+    case service
+    when 'blogger'
+      URI(href).host.split('.').first == URI(url).host.split('.').first
+    else
+      URI(href).host == URI(url).host
+    end
+  end
+
 end

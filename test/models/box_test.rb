@@ -12,4 +12,13 @@ class BoxTest < ActiveSupport::TestCase
     assert_equal nil, Box.new(url: 'http://tonytonyjan.net').service
     assert_equal nil, Box.new(url: '').service
   end
+
+  def test_match_href
+    box_1 = Box.new(url: 'http://weihang.blogspot.tw')
+    box_2 = Box.new(url: 'http://weihang.tumblr.com')
+    assert box_1.match_href? 'http://weihang.blogspot.tw/foo/bar'
+    assert box_1.match_href? 'http://weihang.blogspot.jp/foo/bar'
+    refute box_1.match_href? 'http://jian.blogspot.jp/foo/bar'
+    assert box_2.match_href? 'http://weihang.tumblr.com/foo/bar'
+  end
 end

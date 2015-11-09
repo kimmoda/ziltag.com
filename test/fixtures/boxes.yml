@@ -1,3 +1,14 @@
 tony:
   token: tonytonyjan
   user: tony
+  url: http://webmock.me
+
+blogger:
+  token: tonytonyjan_blogger
+  user: tony
+  url: http://tony.blogspot.com
+
+localhost:
+  token: tonytonyjan_localhost
+  user: tony
+  url: http://localhost:3000
