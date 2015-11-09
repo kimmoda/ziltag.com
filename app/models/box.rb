@@ -26,6 +26,7 @@ class Box < ActiveRecord::Base
   # validations
   validates :user, :token, presence: true
   validates :token, uniqueness: true
+  validates :url, format: {with: URI.regexp}, allow_blank: true
 
   # callbacks
   before_validation :assign_token, if: -> { token.blank? }

@@ -29,7 +29,7 @@
       <i class="platform-section__field-icon material-icons">home</i>
       <div class="mdl-textfield mdl-js-textfield platform-section__field">
         <%= hidden_field_tag 'platform', 'general' %>
-        <%= text_field_tag 'host', nil, id: 'general_domain', class: 'mdl-textfield__input' %>
+        <%= url_field_tag 'url', nil, id: 'general_domain', class: 'mdl-textfield__input' %>
         <label class="mdl-textfield__label" for="general_domain">Your domain here</label>
       </div>
       <%= submit_tag 'Done', class: 'platform-section__submit' %>
