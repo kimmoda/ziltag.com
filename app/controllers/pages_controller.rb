@@ -19,6 +19,16 @@ class PagesController < ApplicationController
     end
   end
 
+  def platform
+  end
+
+  def update_platform
+  end
+
+  def install
+    @box = current_user.box
+  end
+
 private
 
   def must_sign_in!

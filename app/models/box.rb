@@ -1,5 +1,5 @@
 class Box < ActiveRecord::Base
-  BLOGSPOT_DOMAINS = %w[ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' << c}.freeze
+  BLOGSPOT_DOMAINS = %w[com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' << c}.freeze
 
   # scopes
 
@@ -35,6 +35,16 @@ class Box < ActiveRecord::Base
     loop do
       self.token = SecureRandom.hex(3)
       break unless self.class.exists? token: token
+    end
+  end
+
+  def service
+    return nil if host.blank?
+    if host.end_with? 'tumblr.com' then 'tumblr'
+    elsif host.end_with? 'wordpress.com' then 'wordpress'
+    elsif host.end_with? 'logdown.com' then 'logdown'
+    elsif host.end_with? 'pixnet.net' then 'pixnet'
+    elsif host.end_with? *BLOGSPOT_DOMAINS then 'blogger'
     end
   end
 

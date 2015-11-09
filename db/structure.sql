@@ -149,7 +149,8 @@ CREATE TABLE boxes (
     token character varying NOT NULL,
     user_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    url character varying
 );
 
 
@@ -468,6 +469,13 @@ CREATE UNIQUE INDEX index_boxes_on_token ON boxes USING btree (token);
 
 
 --
+-- Name: index_boxes_on_url; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_boxes_on_url ON boxes USING btree (url);
+
+
+--
 -- Name: index_boxes_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -752,4 +760,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151026085656');
 INSERT INTO schema_migrations (version) VALUES ('20151028083550');
 
 INSERT INTO schema_migrations (version) VALUES ('20151108171329');
+
+INSERT INTO schema_migrations (version) VALUES ('20151109052017');
 
