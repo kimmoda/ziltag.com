@@ -1,0 +1,68 @@
+<div class="platform-section js-platform-section">
+  <h2>Cool. Now we’re almost done!</h2>
+  <p>To offer you the customized script, we need to learn more about your website.</p>  
+  <div class="platform-section__box platform-section__box--left">
+    <div class="platform-section__title">Step 1. Choose your platform.</div>
+    <div data-form="general" class="platform-section__platform platform-section__platform--selected">
+      <%= image_tag 'brands/general.png', width: 40, class: 'platform-section__brand-img' %>
+      <div class="platform-section__brand-name">General</div>
+    </div>
+    <div data-form="tumblr" class="platform-section__platform">
+      <%= image_tag 'brands/tumblr.png', width: 40, class: 'platform-section__brand-img' %>
+      <div class="platform-section__brand-name">Tumblr</div>
+    </div>
+    <div data-form="wordpress" class="platform-section__platform">
+      <%= image_tag 'brands/wordpress.png', width: 40, class: 'platform-section__brand-img' %>
+      <div class="platform-section__brand-name">Wordpress</div>
+    </div>
+    <div data-form="blogger" class="platform-section__platform">
+      <%= image_tag 'brands/blogger.png', width: 40, class: 'platform-section__brand-img' %>
+      <div class="platform-section__brand-name">Blogger</div>
+    </div>
+  </div>
+  <div class="platform-section__box platform-section__box--right">
+    <div class="platform-section__title">
+      Step 2. Fill the information. <%= image_tag 'brands/general.png', width: 40, class: 'platform-section__current-brand-img' %>
+    </div>
+
+    <%= form_tag platform_path, id: 'general_form' do %>
+      <i class="platform-section__field-icon material-icons">home</i>
+      <div class="mdl-textfield mdl-js-textfield platform-section__field">
+        <%= hidden_field_tag 'platform', 'general' %>
+        <%= text_field_tag 'host', nil, id: 'general_domain', class: 'mdl-textfield__input' %>
+        <label class="mdl-textfield__label" for="general_domain">Your domain here</label>
+      </div>
+      <%= submit_tag 'Done', class: 'platform-section__submit' %>
+    <% end %>
+
+    <%= form_tag platform_path, id: 'tumblr_form', class: 'hide' do %>
+      <i class="platform-section__field-icon material-icons">home</i>
+      <div class="mdl-textfield mdl-js-textfield platform-section__field">
+        <%= hidden_field_tag 'platform', 'tumblr' %>
+        <%= text_field_tag 'host', nil, id: 'tumblr_blog_id', class: 'mdl-textfield__input' %>
+        <label class="mdl-textfield__label" for="tumblr_blog_id">Your blog ID here</label>
+      </div>
+      <%= submit_tag 'Done', class: 'platform-section__submit' %>
+    <% end %>
+
+    <%= form_tag platform_path, id: 'wordpress_form', class: 'hide' do %>
+      <i class="platform-section__field-icon material-icons">home</i>
+      <div class="mdl-textfield mdl-js-textfield platform-section__field">
+        <%= hidden_field_tag 'platform', 'wordpress' %>
+        <%= text_field_tag 'host', nil, id: 'wordpress_blog_id', class: 'mdl-textfield__input' %>
+        <label class="mdl-textfield__label" for="wordpress_blog_id">Your blog ID here</label>
+      </div>
+      <%= submit_tag 'Done', class: 'platform-section__submit' %>
+    <% end %>
+
+    <%= form_tag platform_path, id: 'blogger_form', class: 'hide' do %>
+      <i class="platform-section__field-icon material-icons">home</i>
+      <div class="mdl-textfield mdl-js-textfield platform-section__field">
+        <%= hidden_field_tag 'platform', 'blogger' %>
+        <%= text_field_tag 'host', nil, id: 'blogger_blog_id', class: 'mdl-textfield__input' %>
+        <label class="mdl-textfield__label" for="blogger_blog_id">Your blog ID here</label>
+      </div>
+      <%= submit_tag 'Done', class: 'platform-section__submit' %>
+    <% end %>
+  </div>
+</div>

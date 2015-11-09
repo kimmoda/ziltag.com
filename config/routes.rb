@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     root 'pages#home'
 
     controller :pages do
-      get :username, :install
+      get :username, :platform, :install
       patch :username, action: 'update_username'
+      post :platform, action: 'update_platform'
     end
 
     controller :single_page do
