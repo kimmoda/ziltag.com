@@ -39,7 +39,7 @@
       <i class="platform-section__field-icon material-icons">home</i>
       <div class="mdl-textfield mdl-js-textfield platform-section__field">
         <%= hidden_field_tag 'platform', 'tumblr' %>
-        <%= text_field_tag 'host', nil, id: 'tumblr_blog_id', class: 'mdl-textfield__input' %>
+        <%= text_field_tag 'blog_id', nil, id: 'tumblr_blog_id', class: 'mdl-textfield__input' %>
         <label class="mdl-textfield__label" for="tumblr_blog_id">Your blog ID here</label>
       </div>
       <%= submit_tag 'Done', class: 'platform-section__submit' %>
@@ -49,7 +49,7 @@
       <i class="platform-section__field-icon material-icons">home</i>
       <div class="mdl-textfield mdl-js-textfield platform-section__field">
         <%= hidden_field_tag 'platform', 'wordpress' %>
-        <%= text_field_tag 'host', nil, id: 'wordpress_blog_id', class: 'mdl-textfield__input' %>
+        <%= text_field_tag 'blog_id', nil, id: 'wordpress_blog_id', class: 'mdl-textfield__input' %>
         <label class="mdl-textfield__label" for="wordpress_blog_id">Your blog ID here</label>
       </div>
       <%= submit_tag 'Done', class: 'platform-section__submit' %>
@@ -59,7 +59,7 @@
       <i class="platform-section__field-icon material-icons">home</i>
       <div class="mdl-textfield mdl-js-textfield platform-section__field">
         <%= hidden_field_tag 'platform', 'blogger' %>
-        <%= text_field_tag 'host', nil, id: 'blogger_blog_id', class: 'mdl-textfield__input' %>
+        <%= text_field_tag 'blog_id', nil, id: 'blogger_blog_id', class: 'mdl-textfield__input' %>
         <label class="mdl-textfield__label" for="blogger_blog_id">Your blog ID here</label>
       </div>
       <%= submit_tag 'Done', class: 'platform-section__submit' %>

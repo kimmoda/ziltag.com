@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     if current_user.box.update url: ServiceURLConverter.convert(params)
       redirect_to install_path
     else
-      render :platform, alert: 'Invalid input.'
+      render :platform
     end
   end
 
