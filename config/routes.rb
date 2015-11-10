@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         resources :ziltags, only: %i[index show create update destroy]
         resources :comments, only: %i[show create update destroy]
         devise_scope :user do
+          get 'me' => 'users#me'
           controller 'users/sessions' do
             post 'sign_in', action: 'create'
             get 'sign_out', action: 'destroy'
