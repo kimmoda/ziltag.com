@@ -1,8 +1,17 @@
 .platform-section{
-  width: 800px;
+  width: 900px;
   margin: 0 auto;
   >h2,>p{
     text-align: center;
+  }
+  &__hint{
+    @extend .mdl-color-text--grey-500;
+    font-size: 10px;
+    position: absolute;
+    .material-icons{
+      font-size: 10px;
+      vertical-align: middle;
+    }
   }
   &__current-brand-img{
     margin-left: 30px;
@@ -39,10 +48,10 @@
     background-color: white;
     margin: 10px 40px;
     &--left{
-      width: 242px;
+      width: 250px;
     }
     &--right{
-      width: 350px;
+      width: 480px;
       padding-left: 20px;
       padding-right: 20px;
       padding-bottom: 20px;
@@ -60,7 +69,7 @@
   &__submit{
     @extend .capsule,.capsule--blue;
     margin-top: 40px;
-    margin-left: 180px;
+    margin-left: 300px;
   }
   .hide{
     display: none;
