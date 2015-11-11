@@ -11,10 +11,6 @@
       <%= image_tag 'brands/tumblr.png', width: 40, class: 'platform-section__brand-img' %>
       <div class="platform-section__brand-name">Tumblr</div>
     </div>
-    <div data-form="wordpress" class="platform-section__platform">
-      <%= image_tag 'brands/wordpress.png', width: 40, class: 'platform-section__brand-img' %>
-      <div class="platform-section__brand-name">Wordpress</div>
-    </div>
     <div data-form="blogger" class="platform-section__platform">
       <%= image_tag 'brands/blogger.png', width: 40, class: 'platform-section__brand-img' %>
       <div class="platform-section__brand-name">Blogger</div>
@@ -45,20 +41,6 @@
         <div class="platform-section__hint">
           ex. http://{YOUR BLOG ID}.tumblr.com<br>
           <i class="material-icons">warning</i> If you're using custom domain, please choose "General".
-        </div>
-      </div>
-      <%= submit_tag 'Done', class: 'platform-section__submit' %>
-    <% end %>
-
-    <%= form_tag platform_path, id: 'wordpress_form', class: 'hide' do %>
-      <i class="platform-section__field-icon material-icons">home</i>
-      <div class="mdl-textfield mdl-js-textfield platform-section__field">
-        <%= hidden_field_tag 'platform', 'wordpress' %>
-        <%= text_field_tag 'blog_id', nil, id: 'wordpress_blog_id', class: 'mdl-textfield__input' %>
-        <label class="mdl-textfield__label" for="wordpress_blog_id">Your blog ID here</label>
-        <div class="platform-section__hint">
-          ex. http://{YOUR BLOG ID}.wordpress.com<br>
-          <i class="material-icons">warning</i> This referes to <a href="https://wordpress.com/" target="_blank">wordpress.com</a>. If you host wordpress yourself or use a custom domain, please choose "General".
         </div>
       </div>
       <%= submit_tag 'Done', class: 'platform-section__submit' %>
