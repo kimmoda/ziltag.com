@@ -19,6 +19,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'queue_classic'
 gem 'eventmachine'
+gem 'administrate', github: 'thoughtbot/administrate'
 
 group :development do
   gem 'capistrano'

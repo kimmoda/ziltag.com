@@ -1,5 +1,4 @@
 production:
-  feature_photo_id: 123 # 用於註冊/登入頁
   host: ziltag.com
   asset_host: ziltag.com
   action_mailer:
@@ -17,7 +16,5 @@ production:
       region: ap-northeast-1
     fog_directory: FOG_DIRECTORY
   admin:
-    path: PATH
-    http_basic_authentication:
-      name: NAME
-      password: PASSWORD
+    name: NAME
+    password: PASSWORD

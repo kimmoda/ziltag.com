@@ -34,7 +34,7 @@ class Photo < ActiveRecord::Base
   end
 
   def to_s
-    image
+    read_attribute(:image)
   end
 
   def href= value

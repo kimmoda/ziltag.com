@@ -32,6 +32,10 @@ class Box < ActiveRecord::Base
   before_validation :assign_token, if: -> { token.blank? }
 
   # other
+  def to_s
+    token
+  end
+
   def assign_token
     loop do
       self.token = SecureRandom.hex(3)

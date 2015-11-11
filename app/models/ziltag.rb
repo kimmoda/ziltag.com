@@ -31,6 +31,10 @@ class Ziltag < ActiveRecord::Base
     ZiltagImageJob.perform_later self
   end
 
+  def to_s
+    content.truncate(20)
+  end
+
 private
 
   def notify_stream action

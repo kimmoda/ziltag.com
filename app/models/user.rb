@@ -37,11 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def to_s
-    email
-  end
-
-  def to_param
-    username
+    "#{username} <#{email}>"
   end
 
   def password_required?
