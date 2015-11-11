@@ -12,7 +12,7 @@
               <%= f.submit 'Join for Free!', class: 'text-field__button capsule capsule--blue' %>
             </div>
           <% end %>
-          <div class="join__bottom">By joining us to become a content provider, you agree to our term of use and provacy policy.</div>
+          <div class="join__bottom">By joining us to become a content provider, you agree to our <%= link_to 'term of use', term_of_service_path %> and <%= link_to 'provacy policy', privacy_policy_path %>.</div>
         </div>
       </div>
     </div>
