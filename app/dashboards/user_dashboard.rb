@@ -22,7 +22,7 @@ class UserDashboard < Administrate::BaseDashboard
     current_sign_in_ip: InetField,
     last_sign_in_ip: InetField,
     unconfirmed_email: Field::String,
-    confirmation_sent_at: Field::DateTime,
+    # confirmation_sent_at: Field::DateTime,
     # reset_password_sent_at: Field::DateTime,
     confirmed_at: Field::DateTime,
     last_sign_in_at: Field::DateTime,
