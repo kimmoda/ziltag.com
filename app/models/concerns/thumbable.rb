@@ -13,10 +13,10 @@ module Thumbable
   def resize_to_fill_space(width, height, gravity = 'Center')
     manipulate! do |image|
       MiniMagick::Tool::Convert.new do |convert|
+        convert << image.path # input
         convert.thumbnail "#{width}x#{height}^"
         convert.gravity gravity
         convert.extent "#{width}x#{height}"
-        convert << image.path # input
         convert << image.path # output
       end
       image
