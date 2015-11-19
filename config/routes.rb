@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get 'ziltags/:slug/(:ziltag_slug)' => 'photos#show', as: :photo, constraints: {slug: /\w{6}/, ziltag_slug: /\w{6}/}
     resources :comments, :ziltags, only: %i[create update destroy]
 
+    match '/api/:version/*path' => 'api#options', via: 'options'
     namespace :api, format: false, defaults: {format: 'json'} do
       namespace :v1 do
         resources :ziltags, only: %i[index show create update destroy]

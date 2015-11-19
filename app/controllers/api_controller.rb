@@ -3,6 +3,13 @@ class ApiController < ApplicationController
   before_action :set_headers
   skip_after_action :enable_iframe
 
+  def options
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+    headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
+    headers['Access-Control-Max-Age'] = "1728000"
+    head 200
+  end
+
 private
 
   def set_headers
