@@ -1,13 +1,14 @@
 // http://codepen.io/tonytonyjan/pen/yYMXME
 input[type="submit"].capsule,button.capsule{
   cursor: pointer;
+  font-size: 14px;
 }
 .capsule{
   display: inline-block;
   border: none;
   border-radius: 40px;
   height: 55px;
-  padding: 0 40px;
+  padding: 0 20px;
   font-size: 16px;
   box-sizing: border-box;
   text-align: center;
