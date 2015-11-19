@@ -15,9 +15,9 @@ class Box < ActiveRecord::Base
       host = uri.host
       subdomains = host.split('.')
       photo = if host.end_with?(*BLOGSPOT_DOMAINS)
-        find_by('host LIKE ANY (array[?])', BLOGSPOT_DOMAINS.map{|c| "#{subdomains.first}.#{c}" })
+        where('host LIKE ANY (array[?])', BLOGSPOT_DOMAINS.map{|c| "#{subdomains.first}.#{c}" }).find_by(source: source)
       else
-        find_by(host: host)
+        find_by(host: host, source: source)
       end
       photo || create!(source: source, href: href)
     end
