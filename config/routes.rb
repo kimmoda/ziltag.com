@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     match '/api/:version/*path' => 'api#options', via: 'options'
     namespace :api, format: false, defaults: {format: 'json'} do
       namespace :v1 do
-        get 'ziltag_map/:id' => 'photos#show'
+        get 'ziltag_maps/:id' => 'photos#show'
         resources :ziltags, only: %i[index show create update destroy]
         resources :comments, only: %i[show create update destroy]
         devise_scope :user do
