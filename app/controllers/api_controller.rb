@@ -13,7 +13,7 @@ class ApiController < ApplicationController
 private
 
   def set_headers
-    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
   end
 
 end
