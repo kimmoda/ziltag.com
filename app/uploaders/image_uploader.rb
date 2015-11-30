@@ -11,4 +11,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     model.source
   end
 
+  version :default do
+    process resize_to_fit: [510, 340]
+  end
+
 end
