@@ -1,5 +1,5 @@
 json.map @photo.slug
-json.src @photo.source
+json.src @photo.image_url
 json.href @photo.href
 json.ziltags do
   json.array!(@photo.ziltags.confirmed.includes(:user)) do |ziltag|
