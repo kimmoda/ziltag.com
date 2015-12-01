@@ -5,6 +5,8 @@ one:
   href: http://localhost:3000
   host: localhost
   box: localhost
+  width: 200
+  height: 200
 two:
   slug: twotwo
   image: two.jpg
@@ -12,3 +14,5 @@ two:
   href: http://localhost:3000
   host: localhost
   box: localhost
+  width: 200
+  height: 200

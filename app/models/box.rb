@@ -10,7 +10,7 @@ class Box < ActiveRecord::Base
   # associations
   belongs_to :user
   has_many :photos, dependent: :destroy do
-    def find_or_create_by_source_and_uri! source, href
+    def find_or_create_by_source_and_uri! source, href, **create_options
       uri = URI(href)
       host = uri.host
       subdomains = host.split('.')
@@ -19,7 +19,7 @@ class Box < ActiveRecord::Base
       else
         find_by(host: host, source: source)
       end
-      photo || create!(source: source, href: href)
+      photo || create!(source: source, href: href, **create_options)
     end
   end
 

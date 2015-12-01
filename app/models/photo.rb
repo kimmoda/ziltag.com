@@ -1,10 +1,10 @@
 class Photo < ActiveRecord::Base
   include Slugable
 
-  def self.find_or_create_by_source_and_href_and_token! source, href, token
+  def self.find_or_create_by_source_and_href_and_token! source, href, token, **create_options
     box = Box.find_by!(token: token)
     raise "#{href} is not permitted by given token" unless box.match_href?(href)
-    photo = box.photos.find_or_create_by_source_and_uri! source, href
+    photo = box.photos.find_or_create_by_source_and_uri! source, href, **create_options
     PhotoJob.perform_later photo, source unless photo.image?
     photo
   end
@@ -24,6 +24,7 @@ class Photo < ActiveRecord::Base
 
   # validations
   validates :href, format: /\A#{URI::regexp}\z/, allow_nil: true
+  validates :width, :height, presence: true
 
   # callbacks
 
