@@ -13,7 +13,11 @@ namespace 'dev:fake' do
 
     fakeup '產生圖片' do
       @photos = []
-      20.times{ @photos << Photo.create!(image: @images.sample, href: Faker::Internet.url) }
+      20.times do
+        image = @images.sample
+        width, height = ::MiniMagick::Image.open(image.path)[:dimensions]
+        @photos << Photo.create!(image: image, href: Faker::Internet.url, width: width, height: height)
+      end
     end
 
     fakeup '產生貼紙' do
