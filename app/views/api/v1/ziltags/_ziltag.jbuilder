@@ -1,3 +1,7 @@
-json.extract! ziltag, :id, :slug, :x, :y, :username
-json.confirmed ziltag.confirmed?
-json.content truncate(ziltag.content)
+json.id ziltag.slug
+json.x ziltag.x.to_f
+json.y ziltag.y.to_f
+json.usr do
+end
+json.preview truncate(ziltag.content)
+json.content ziltag.content 

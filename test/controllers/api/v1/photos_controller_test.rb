@@ -5,6 +5,6 @@ class Api::V1::PhotosControllerTest < ActionController::TestCase
     get :show, format: :json, id: photos(:one).slug
     assert_response :ok
     json = JSON.parse response.body
-    assert_equal 'oneone', json['map']
+    assert_equal 'oneone', json['id']
   end
 end

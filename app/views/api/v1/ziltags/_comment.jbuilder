@@ -1,3 +1,2 @@
-json.extract! comment, :id, :content, :username
-json.confirmed comment.confirmed?
-json.avatar comment.user.avatar.thumb.url
+json.extract! comment, :id, :content
+json.usr comment.user, partial: 'api/v1/ziltags/user', as: :user
