@@ -1,7 +1,7 @@
 class AddGeoToPhotos < ActiveRecord::Migration
   def change
-    add_column :photos, :width, :integer
-    add_column :photos, :height, :integer
+    add_column :photos, :width, :integer, default: 0
+    add_column :photos, :height, :integer, default: 0
     Photo.find_each do |photo|
       begin
         photo.image.cache_stored_file!
