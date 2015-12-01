@@ -221,7 +221,9 @@ CREATE TABLE photos (
     slug character varying NOT NULL,
     box_id integer,
     host character varying,
-    path character varying
+    path character varying,
+    width integer NOT NULL,
+    height integer NOT NULL
 );
 
 
@@ -764,4 +766,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151108171329');
 INSERT INTO schema_migrations (version) VALUES ('20151109052017');
 
 INSERT INTO schema_migrations (version) VALUES ('20151130194955');
+
+INSERT INTO schema_migrations (version) VALUES ('20151201074814');
 
