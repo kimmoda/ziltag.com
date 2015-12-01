@@ -8,7 +8,7 @@ end
 json.photo do
   json.extract! @ziltag.photo, :id, :slug, :href, :host, :path
   json.image @ziltag.photo.image.url
-  json.ziltags @ziltag.photo.ziltags.includes(:user).confirmed(current_user).where.not(id: @ziltag), partial: 'ziltag', as: 'ziltag'
+  json.siblings @ziltag.photo.ziltags.includes(:user).confirmed(current_user).where.not(id: @ziltag), partial: 'ziltag', as: 'ziltag'
 end
 
 json.comments @ziltag.comments.includes(:user).confirmed(current_user), partial: 'comment', as: :comment

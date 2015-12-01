@@ -3,6 +3,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Thumbable
 
+  process :store_dimensions
+
   def store_dir
     "uploads/#{model.class.table_name}/#{mounted_as}/#{model.id}"
   end
@@ -15,4 +17,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [510, 340]
   end
 
+  private
+
+  def store_dimensions
+    if file && model
+      model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
+    end
+  end
 end
