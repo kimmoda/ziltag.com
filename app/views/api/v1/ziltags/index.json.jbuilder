@@ -1,5 +1,6 @@
 json.id @photo.slug
 json.src @photo.image.default.url
+json.host @photo.host
 json.extract! @photo, :href, :width, :height
 json.ziltags do
   json.array!(@photo.ziltags.confirmed.includes(:user)) do |ziltag|
