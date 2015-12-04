@@ -23,6 +23,12 @@ protected
 
   def set_login
     if params.has_key? :sign_in
+      user = User.first
+      if params[:confirmed] == 'false'
+        user.update confirmed_at: nil, confirmation_sent_at: Time.now
+      elsif !user.confirmed?
+        user.update confirmed_at: Time.now
+      end
       sign_in(:user, User.first)
     elsif params.has_key? :sign_out
       sign_out(:user)
