@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApiController
     if @user = current_user
       render :show
     else
-      head 401
+      render json: {}
     end
   end
 end
