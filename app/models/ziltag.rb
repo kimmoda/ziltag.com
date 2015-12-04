@@ -35,6 +35,14 @@ class Ziltag < ActiveRecord::Base
     content.truncate(20)
   end
 
+  def map_id
+    photo.slug
+  end
+
+  def map_id= value
+    self.photo = Photo.find_by(slug: value)
+  end
+
 private
 
   def notify_stream action
