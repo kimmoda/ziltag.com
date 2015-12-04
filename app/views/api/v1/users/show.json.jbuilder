@@ -1,5 +1,5 @@
-json.extract! @user, :id, :email, :username, :confirmed?
-json.avatar do
-  json.url @user.avatar.url
-  json.thumb @user.avatar.thumb.url
+json.usr do
+  json.name @user.username
+  json.avatar @user.avatar.thumb.url
+  json.confirmed @user.confirmed?
 end
