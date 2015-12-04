@@ -33,7 +33,7 @@ class Api::V1::ZiltagsControllerTest < ActionController::TestCase
 
   def test_create
     sign_in users(:tony)
-    post :create, format: :json, ziltag: {x: 0.5, y: 0.5, content: 'hello', photo_id: photos(:one).id}
+    post :create, format: :json, ziltag: {x: 0.5, y: 0.5, content: 'hello', map_id: photos(:one).slug}
     json = JSON.parse response.body
     assert_equal 'hello', json['content']
     assert_equal users(:tony).username, json['usr']['name']
