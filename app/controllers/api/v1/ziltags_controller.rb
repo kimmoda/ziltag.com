@@ -15,7 +15,12 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def create
-    @ziltag = current_user.ziltags.new(ziltag_params)
+    @photo = Photo.find_by slug: ziltag_params[:map_id]
+    @ziltag_params = ziltag_params
+    @ziltag_params[:photo_id] = @photo.id
+    @ziltag_params.delete(:map_id)
+    @ziltag = current_user.ziltags.new(@ziltag_params)
+
     if @ziltag.save
       render :show
     else
@@ -39,7 +44,7 @@ class Api::V1::ZiltagsController < ApiController
 private
 
   def ziltag_params
-    params.require(:ziltag).permit(:x, :y, :photo_id, :content)
+    params.require(:ziltag).permit(:x, :y, :map_id, :content)
   end
 
   def set_ziltag
