@@ -10,6 +10,7 @@ class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
 private
 
   def set_headers
-    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Credentials'] = 'true'
+    headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
   end
 end

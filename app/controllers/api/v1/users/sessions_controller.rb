@@ -6,6 +6,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
 private
 
   def set_headers
-    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Credentials'] = 'true'
+    headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
   end
 end
