@@ -6,6 +6,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
   def create
     @user = User.find_for_database_authentication(login: params[:user][:login])
     if @user && @user.valid_password?(params[:user][:password])
+      sign_in(@user)
       render
     else
       render json: {error: 'invalid login name or password'}
