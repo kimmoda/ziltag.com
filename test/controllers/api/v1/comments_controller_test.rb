@@ -9,10 +9,9 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   def test_create
     sign_in users(:tony)
-    post :create, format: :json, comment: {content: 'hello', ziltag_id: ziltags(:tony).id}
+    post :create, format: :json, comment: {content: 'hello', ziltag_id: ziltags(:tony).slug}
     json = JSON.parse response.body
     assert_equal 'hello', json['content']
-    assert_equal ziltags(:tony).id, json['ziltag']['id']
   end
 
   def test_update
