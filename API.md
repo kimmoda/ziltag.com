@@ -198,7 +198,7 @@ response:
 {
   "content": "content",
   "id": 190,
-  "created_at": "date time",
+  "created_at": "2015-12-09 19:35:23 +0800",
   "usr": {
     "avatar": "image url",
     "name": "username"
@@ -214,7 +214,7 @@ response:
 {
   "content": "content",
   "id": 190,
-  "created_at": "date time",
+  "created_at": "2015-12-09 19:35:23 +0800",
   "usr": {
     "avatar": "image url",
     "name": "username"
@@ -241,7 +241,7 @@ response:
 {
   "content": "content",
   "id": 190,
-  "created_at": "date time",
+  "created_at": "2015-12-09 19:35:23 +0800",
   "usr": {
     "avatar": "image url",
     "name": "username"
