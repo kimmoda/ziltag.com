@@ -6,8 +6,6 @@ class Api::V1::ZiltagsController < ApiController
     @photo = Photo.find_or_create_by_source_and_href_and_token! params[:src], params[:href], params[:token], width: params[:width], height: params[:height]
   rescue ActiveRecord::RecordInvalid
     render json: {errors: $!.record.errors.messages}
-  rescue
-    render json: {errors: $!.to_s}
   end
 
   def show

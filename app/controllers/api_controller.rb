@@ -4,6 +4,8 @@ class ApiController < ApplicationController
   skip_after_action :enable_iframe
 
   rescue_from Exception do |exception|
+    Rails.logger.debug exception.to_s
+    Rails.logger.debug exception.backtrace.join($/)
     render json: {errors: Array(exception.to_s)}, status: 200
   end
 
