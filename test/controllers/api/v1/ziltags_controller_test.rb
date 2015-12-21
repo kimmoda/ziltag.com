@@ -6,7 +6,7 @@ class Api::V1::ZiltagsControllerTest < ActionController::TestCase
     get :index, format: :json, src: 'http://webmock.me/jpeg', href: 'http://webmock.me', token: boxes(:tony).token, width: 200, height: 200
     assert_response :success
     get :index, format: :json, src: 'http://webmock.me/jpeg', href: 'http://webmock.me', token: boxes(:blogger).token, width: 200, height: 200
-    assert_response 400
+    assert_response 200
   end
 
   def test_without_widht_and_height
