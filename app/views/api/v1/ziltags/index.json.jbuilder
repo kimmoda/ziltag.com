@@ -8,6 +8,6 @@ json.ziltags do
     json.x ziltag.x.to_f
     json.y ziltag.y.to_f
     json.usr ziltag.user, partial: 'api/v1/ziltags/user', as: :user
-    json.preview truncate raw ziltag.content
+    json.content ziltag.content
   end
 end
