@@ -147,7 +147,7 @@ response:
 }
 ```
 
-## PUT /api/v1/ziltags/ZILTAG_ID
+## PATCH /api/v1/ziltags/ZILTAG_ID
 
 request:
 
@@ -156,8 +156,7 @@ request:
   "ziltag": {
     "x": 0.1,
     "y": 0.1,
-    "content": "content",
-    "map_id": "xxxxxx"
+    "content": "content"
   }
 }
 ```
@@ -222,15 +221,14 @@ response:
 }
 ```
 
-## PUT /api/v1/comments/COMMENT_ID
+## PATCH /api/v1/comments/COMMENT_ID
 
 request:
 
 ```json
 {
   "comment": {
-    "content": "content",
-    "ziltag_id": "xxxxxx"
+    "content": "content"
   }
 }
 ```
