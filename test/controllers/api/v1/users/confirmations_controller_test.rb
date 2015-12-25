@@ -17,4 +17,12 @@ class Api::V1::Users::ConfirmationsControllerTest < ActionController::TestCase
     json = JSON.parse response.body
     assert_response :success
   end
+
+  def test_resend_confirmation_without_email_parameter
+    sign_in(users(:tony))
+    post :resend, format: :json
+    json = JSON.parse response.body
+    assert_equal({}, json)
+    assert_response :success
+  end
 end

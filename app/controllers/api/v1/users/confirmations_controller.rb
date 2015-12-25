@@ -4,7 +4,12 @@ class Api::V1::Users::ConfirmationsController < Devise::ConfirmationsController
   respond_to :json
 
   def resend
-    user = User.send_confirmation_instructions email: params[:email]
+    user = if user_signed_in?
+      current_user.send_confirmation_instructions
+      current_user
+    else
+      User.send_confirmation_instructions(email: params[:email])
+    end
     if successfully_sent?(user)
       render json: {}
     else
