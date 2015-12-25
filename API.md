@@ -272,6 +272,8 @@ request:
 {"email": "user@test.com"}
 ```
 
+email parameter is not needed if it's sent by an unconfirmed signed in user.
+
 success:
 
 ```json
