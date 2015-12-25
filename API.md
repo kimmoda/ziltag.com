@@ -258,7 +258,8 @@ response:
   "usr": {
     "avatar": "http://localhost:3000/uploads/users/avatar/1/thumb_18.jpg",
     "confirmed": true,
-    "name": "jeremy"
+    "name": "jeremy",
+    "email": "email@test.com"
   }
 }
 ```
