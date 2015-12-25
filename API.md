@@ -264,7 +264,7 @@ response:
 }
 ```
 
-# POST /resend_confirmation
+# POST /api/v1/resend_confirmation
 
 request:
 
