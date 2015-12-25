@@ -45,6 +45,9 @@ Rails.application.routes.draw do
             post 'users', action: 'create'
             put 'users', action: 'update'
           end
+          controller 'users/confirmations' do
+            post 'resend_confirmation', action: 'resend'
+          end
         end
       end
     end

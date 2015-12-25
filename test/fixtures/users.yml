@@ -10,3 +10,8 @@ david:
   email: david@ziltag.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: <%= Time.now.to_s(:db) %>
+
+unconfirmed:
+  username: unconfirmed
+  email: unconfirmed@ziltag.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

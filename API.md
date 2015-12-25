@@ -262,3 +262,23 @@ response:
   }
 }
 ```
+
+# POST /resend_confirmation
+
+request:
+
+```json
+{"email": "user@test.com"}
+```
+
+success:
+
+```json
+{}
+```
+
+failure:
+
+```json
+{"errors": [...]}
+```
