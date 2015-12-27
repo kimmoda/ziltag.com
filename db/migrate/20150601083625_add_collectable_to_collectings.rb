@@ -6,7 +6,7 @@ class AddCollectableToCollectings < ActiveRecord::Migration
       Collecting.find_each do |collecting|
         dir.up{ collecting.update_columns collectable_id: collecting.post_id, collectable_type: :Post }
         dir.down{collecting.update_column :post_id, collecting.collectable_id}
-      end
+      end if Object.const_defined? :Collecting
       dir.up{ change_column_null :collectings, :collectable_id, false }
       dir.up{ change_column_null :collectings, :collectable_type, false }
       dir.down{

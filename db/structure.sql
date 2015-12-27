@@ -222,8 +222,8 @@ CREATE TABLE photos (
     box_id integer,
     host character varying,
     path character varying,
-    width integer NOT NULL,
-    height integer NOT NULL
+    width integer DEFAULT 0 NOT NULL,
+    height integer DEFAULT 0 NOT NULL
 );
 
 
@@ -612,27 +612,27 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: fk_rails_0fbc766cb2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY ziltags
-    ADD CONSTRAINT fk_rails_0fbc766cb2 FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: fk_rails_38162daf4e; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY ziltags
-    ADD CONSTRAINT fk_rails_38162daf4e FOREIGN KEY (photo_id) REFERENCES photos(id);
-
-
---
--- Name: fk_rails_668a24d95a; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_1759f3f15c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments
-    ADD CONSTRAINT fk_rails_668a24d95a FOREIGN KEY (ziltag_id) REFERENCES ziltags(id);
+    ADD CONSTRAINT fk_rails_1759f3f15c FOREIGN KEY (ziltag_id) REFERENCES ziltags(id);
+
+
+--
+-- Name: fk_rails_473b2d255f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ziltags
+    ADD CONSTRAINT fk_rails_473b2d255f FOREIGN KEY (photo_id) REFERENCES photos(id);
+
+
+--
+-- Name: fk_rails_4dec353e18; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ziltags
+    ADD CONSTRAINT fk_rails_4dec353e18 FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --

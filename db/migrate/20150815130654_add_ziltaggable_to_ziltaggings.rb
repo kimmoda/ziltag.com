@@ -6,7 +6,7 @@ class AddZiltaggableToZiltaggings < ActiveRecord::Migration
       Ziltagging.find_each do |ziltagging|
         dir.up{ ziltagging.update_columns ziltaggable_id: ziltagging.read_attribute_before_type_cast(:post_id), ziltaggable_type: :Post }
         dir.down{ ziltagging.update_columns post_id:  ziltagging.ziltaggable_id }
-      end
+      end if Object.const_defined? :Ziltagging
       dir.up do
         change_column_null :ziltaggings, :ziltaggable_id, false
         change_column_null :ziltaggings, :ziltaggable_type, false

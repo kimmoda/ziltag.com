@@ -1,6 +1,6 @@
 class ImportToElasticsearch < ActiveRecord::Migration
   def change
-    Ziltagging.includes(post: :tags).import
-    Post.includes(:tags).import
+    Ziltagging.includes(post: :tags).import if Object.const_defined? :Ziltagging
+    Post.includes(:tags).import if Object.const_defined? :Post
   end
 end
