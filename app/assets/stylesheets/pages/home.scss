@@ -1,7 +1,4 @@
 body.pages.home{
-  main{
-    height: 100%;
-  }
   .layout__install{
     @extend .mdl-typography--font-light;
     line-height: 32px;
@@ -17,7 +14,6 @@ body.pages.home{
   }
   .layout__slide{
     overflow: hidden;
-    height: 100%;
     &--grey{
       background-color: #F0F0F0;
     }
