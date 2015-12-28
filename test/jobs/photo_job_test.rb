@@ -15,7 +15,7 @@ class PhotoJobTest < ActiveJob::TestCase
     photo = Photo.create!(source: source, width: 210, height: 200)
     assert_equal 210, photo.width
     PhotoJob.perform_now photo, source
-    assert_equal 200, photo.width
+    assert_equal 340, photo.width
   end
 
   def test_destroy_photo_if_404
