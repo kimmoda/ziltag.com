@@ -3,8 +3,6 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Thumbable
 
-  process :store_dimensions
-
   def store_dir
     "uploads/#{model.class.table_name}/#{mounted_as}/#{model.id}"
   end
@@ -15,6 +13,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :default do
     process resize_to_fit: [510, 340]
+    process :store_dimensions
   end
 
   private
