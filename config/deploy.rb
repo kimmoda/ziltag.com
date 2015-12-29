@@ -9,16 +9,6 @@ set :linked_files, fetch(:linked_files, []).push('config/application.yml', 'conf
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 set :assets_roles, [:web, :app]
 
-task 'bundler:config' do
-  on fetch(:bundle_servers) do
-    within release_path do
-      execute :bundle, :config, '--local', 'build.sassc', '--with-cxx=clang++'
-    end
-  end
-end
-
-before 'bundler:install', 'bundler:config'
-
 namespace :deploy do
   after :publishing, :restart
 
