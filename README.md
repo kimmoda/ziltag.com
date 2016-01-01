@@ -23,8 +23,10 @@
 ```
 $ bundle
 $ bin/rake dev:setup
-$ rails s
+$ rails s -b 0.0.0.0
 ```
+
+**請跟 `frontend-ziltag.com` 同步開啟 server 做開發**
 
 # Worker
 
