@@ -13,4 +13,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
       ActionController::Base.helpers.image_path('fallback/' + [version_name, 'guest.png'].compact.join('_'))
     end
   end
+
+  version :default do
+    process resize_to_fill: [180, 180]
+  end
 end

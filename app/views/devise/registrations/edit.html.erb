@@ -1,6 +1,6 @@
 <div class="profile js-profile">
   <div class="profile__avatar">
-    <%= image_tag current_user.avatar_url %>
+    <%= image_tag current_user.avatar.default.url %>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'avatar-form', method: :put}) do |f| %>
     <%= f.file_field :avatar, class: 'profile__avatar-input' %>
