@@ -1,0 +1,62 @@
+body.pages.home
+  .mdl-layout
+    background-image: url(landing_background.jpg)
+    background-size: cover
+  .layout
+    &__landing
+      transform-origin: top left
+      position: fixed
+    &__player
+      position: fixed
+    &__footer
+      position: fixed
+      right: 60px
+      bottom: 10px
+  .footer
+    background-color: rgba(0, 0, 0, .20)
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 216px
+    color: white
+    font-family: roboto-regular
+    &__list
+      list-style-type: none
+      padding: 0
+      margin: 0
+    &__item
+      font-size: 14px
+      line-height: 31px
+      display: inline
+      margin: 0 6px
+      a
+        color: inherit
+        text-decoration: none
+    &__copyright
+      font-size: 10px
+  .landing
+    width: 506px
+    font-family: roboto-regular
+    &__title
+      font-size: 43px
+      font-family: roboto-bold
+      color: rgba(0, 0, 0, .54)
+      line-height: 50px
+    &__subtitle
+      font-size: 20px
+      color: rgba(0, 0, 0, .54)
+      line-height: 31px
+    &__field
+      margin-top: 30px
+    &__underline
+      font-size: 12px
+      color: rgba(0, 0, 0, .54)
+      line-height: 14px
+      margin-top: 10px
+      a
+        color: inherit
+    &__error
+      color: #EE2E24
+      font-size: 18px
+      line-height: 21px
+      margin-top: 10px
