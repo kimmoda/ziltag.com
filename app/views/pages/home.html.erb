@@ -1,53 +1,26 @@
-<div class="layout__slide">
-  <div class="mdl-grid mdl-color--grey-100">
-    <div class="mdl-cell mdl-cell--1-col"></div>
-    <div class="mdl-cell mdl-cell--10-col">
-      <div class="join">
-        <h4 class="join__left">Become a Ziltag partner.</h4>
-        <div class="join__right">
-          <%= form_for @user, as: :user, url: user_registration_path do |f| %>
-            <div class="text-field">
-              <%= f.text_field :email, required: true, class: 'text-field__input capsule', placeholder: 'Enter your email...' %>
-              <%= f.hidden_field :type %>
-              <%= f.submit 'Join for Free!', class: 'text-field__button capsule capsule--blue' %>
-            </div>
-          <% end %>
-          <div class="join__bottom">By joining us to become a content provider, you agree to our <%= link_to 'term of use', term_of_service_path %> and <%= link_to 'provacy policy', privacy_policy_path %>.</div>
-        </div>
-      </div>
+<div class="layout__landing landing">
+  <div class="landing__title">Your website needs more.</div>
+  <div class="landing__subtitle">Meet Ziltag, the ultimate plugin for your images.</div>
+  <%= form_for @user, as: :user, url: user_registration_path do |f| %>
+    <div class="landing__field field">
+      <%= f.text_field :email, required: true, class: 'field__input', placeholder: 'Enter your email' %>
+      <div class="field__line"></div>
+      <button type="submit" class="field__button">Send</button>
     </div>
-    <div class="mdl-cell mdl-cell--1-col"></div>
-  </div>
+    <%= f.hidden_field :type %>
+  <% end %>
+  <div class="landing__underline">By joining us to become a Ziltag Partner, you agree to our <a href="">term</a> of use and <a href="">privacy policy.</a></div>
+  <!-- <div class="landing__error">Invalid email format</div> -->
+</div>
 
-  <h4 style="text-align: center">Your lonely images deserve a second chance.</h4>
+<iframe class="layout__player" width="590" height="325" src="https://www.youtube.com/embed/ic2-Ascvte4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--1-col"></div>
-    <div class="mdl-cell mdl-cell--5-col">
-      <div class="layout__install">Install our plugin to your website/ blog and empower images a new level of freedom.</div>
-      <ul class="feature-list">
-        <li class="feature-list__item"><i class="mdi mdi-pencil"></i> Tag and write about anything appears in images.</li>
-        <li class="feature-list__item"><i class="mdi mdi-comment-processing-outline"></i> Ask questions or comments directly on anything in images.</li>
-        <li class="feature-list__item"><i class="mdi mdi-bell-outline"></i> Get notified with discussion you have participated.</li>
-        <li class="feature-list__item"><i class="mdi mdi-desktop-mac"></i> Simple installation. Work for your favorite websites.</li>
-      </ul>
-      <div class="layout__bands">Work perfectly with
-        <% %w[tumblr blogger].each do |brand| %>
-        <%= image_tag "brands/#{brand}.png", class: 'layout__brand' %>
-        <% end %>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--5-col">
-      <div class="player">
-        <div data-video-id="ic2-Ascvte4" data-type="youtube"></div>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--1-col"></div>
-  </div>
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--1-col"></div>
-    <div class="mdl-cell mdl-cell--11-col">
-      <div class="layout__copyright">© Ziltag Inc., 2015. All Rights Reserved.</div>
-    </div>
-  </div>
+<div class="layout__footer footer">
+  <ul class="footer__list">
+    <li class="footer__item"><a target="_blank" href="http://blog.ziltag.com/tagged/about">About</a></li>
+    <li class="footer__item"><a target="_blank" href="http://blog.ziltag.com/">Blog</a></li>
+    <li class="footer__item"><a target="_blank" href="#">Terms</a></li>
+    <li class="footer__item"><a target="_blank" href="http://blog.ziltag.com/tagged/policy">Privacy</a></li>
+  </ul>
+  <div class="footer__copyright">© Ziltag Inc., 2016. All Rights Reserved.</div>
 </div>
