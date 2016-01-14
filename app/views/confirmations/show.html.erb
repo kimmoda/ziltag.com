@@ -14,7 +14,7 @@
         <div class="text-field" style="margin-bottom:30px;">
           <%= f.password_field :password_confirmation, class: 'text-field__input capsule', placeholder: 'Confirmation Password' %>
         </div>
-        <%= f.hidden_field :confirmation_token, value: params[:confirmation_token] %>
+        <%= f.hidden_field :confirmation_token, value: @confirmation_token %>
         <div><%= f.submit 'CONFIRM', class: 'capsule capsule--yellow' %></div>
       <% end %>
     </div>

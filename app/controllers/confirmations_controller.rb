@@ -1,7 +1,8 @@
 class ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
-    self.resource = resource_class.find_first_by_auth_conditions(confirmation_token: params[:confirmation_token])
+    @confirmation_token = params[:confirmation_token]
+    self.resource = resource_class.find_first_by_auth_conditions(confirmation_token: @confirmation_token)
   end
 
   # PUT /confirm
@@ -13,6 +14,8 @@ class ConfirmationsController < Devise::ConfirmationsController
       sign_in(resource_name, resource)
       render :welcome
     else
+      p self.resource.errors
+      @confirmation_token = params[resource_name][:confirmation_token]
       render :show
     end
   end
