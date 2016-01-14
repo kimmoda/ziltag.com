@@ -1,5 +1,5 @@
 document.addEventListener 'DOMContentLoaded', ->
-  if document.querySelector('body.home.pages')
+  if document.querySelector('body.pages.home') || document.querySelector('body.pages.register')
     BG_ORIGIN_WIDTH = 1366
     BG_ORIGIN_HEIGHT = 768
     layout = document.querySelector('.mdl-layout')

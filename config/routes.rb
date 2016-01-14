@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :username, :platform, :install
       patch :username, action: 'update_username'
       post :platform, action: 'update_platform'
+      post :register
     end
 
     controller :single_page do
