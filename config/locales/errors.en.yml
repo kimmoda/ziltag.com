@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    errors:
+      format: "%{message}"
+      models:
+        user:
+          attributes:
+            email:
+              invalid: Invalid email format
+              taken: This email has been taken
