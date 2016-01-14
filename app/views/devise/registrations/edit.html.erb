@@ -1,5 +1,11 @@
-<div class="layout__profile profile">
-  <div class="profile__avatar" style="background-image:url(http://fakeimg.pl/300/)"></div>
+<div class="layout__profile profile js-profile">
+  <div class="profile__wrapper">
+    <div class="profile__avatar" style="background-image:url(http://fakeimg.pl/300/)"></div>
+    <div class="profile__edit">
+      <i class="material-icons profile__edit-icon">photo_camera</i>
+      <div class="profile__edit-text">Edit</div>
+    </div>
+  </div>
   <div class="profile__field">
     <label for="" class="profile__label">Username</label>
     <div class="profile__value">tonytonyjan</div>
@@ -31,6 +37,6 @@
   <div class="profile__divider"></div>
   <div class="profile__actions">
     <a class="profile__left" href="#"><i class="material-icons">arrow_back</i> back</a>
-    <a class="profile__right" href="#">Finish</a>
+    <button type="submit" class="profile__right">Confirm</button>
   </div>
 </div>
