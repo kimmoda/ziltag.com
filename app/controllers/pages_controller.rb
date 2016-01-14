@@ -9,6 +9,16 @@ class PagesController < ApplicationController
     @user = ContentProvider.new
   end
 
+  def register
+    @user = User.new params.require(:user).permit(:email, :type)
+    if @user.save
+      sign_in(@user)
+      redirect_to username_path
+    else
+      render :home
+    end
+  end
+
   def username
     redirect_to install_path if current_user.username.present?
   end

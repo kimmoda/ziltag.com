@@ -34,6 +34,9 @@ module ZiltagApp
 
     config.active_job.queue_adapter = :queue_classic
     config.active_record.schema_format = :sql
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      html_tag
+    end
 
   end
 end

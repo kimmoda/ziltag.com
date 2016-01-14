@@ -1,7 +1,7 @@
 <div class="layout__landing landing">
   <div class="landing__title">Your website needs more.</div>
   <div class="landing__subtitle">Meet Ziltag, the ultimate plugin for your images.</div>
-  <%= form_for @user, as: :user, url: user_registration_path do |f| %>
+  <%= form_for @user, as: :user, url: register_path do |f| %>
     <div class="landing__field field">
       <%= f.text_field :email, required: true, class: 'field__input', placeholder: 'Enter your email' %>
       <div class="field__line"></div>
@@ -10,7 +10,7 @@
     <%= f.hidden_field :type %>
   <% end %>
   <div class="landing__underline">By joining us to become a Ziltag Partner, you agree to our <a href="">term</a> of use and <a href="">privacy policy.</a></div>
-  <!-- <div class="landing__error">Invalid email format</div> -->
+  <% if @user.errors.include?(:email) %><div class="landing__error"><%= @user.errors.full_messages_for(:email).first %></div><% end %>
 </div>
 
 <iframe class="layout__player" width="590" height="325" src="https://www.youtube.com/embed/ic2-Ascvte4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
