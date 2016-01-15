@@ -33,7 +33,7 @@
   <% end %>
   <div class="profile__divider"></div>
   <div class="profile__actions">
-    <%= link_to :back, class: 'profile__left' do %><i class="material-icons">arrow_back</i> back<% end %>
+    <%= link_to session[:back_url], class: 'profile__left' do %><i class="material-icons">arrow_back</i> back<% end %>
     <button type="submit" class="profile__right">Confirm</button>
   </div>
 <% end %>
