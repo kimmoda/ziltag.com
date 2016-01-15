@@ -8,23 +8,35 @@
     </div>
   </div>
   <div class="profile__field">
-    <label for="" class="profile__label">Username</label>
+    <label class="profile__label">Username</label>
     <div class="profile__value"><%= f.object.username %></div>
   </div>
   <div class="profile__field">
-    <label for="" class="profile__label">Email</label>
+    <label class="profile__label">Email</label>
     <div class="profile__value"><%= f.object.email %></div>
   </div>
   <div class="profile__field">
-    <%= f.label :password, 'New password', class: 'profile__label' %>
-    <%= f.password_field :password, class: 'profile__input', placeholder: '••••••••' %>
+    <label class="profile__label">Password</label>
+    <div class="profile__value">**********</div>
+    <div class="profile__link">change</div>
   </div>
-  <div class="profile__field">
-    <%= f.label :password_confirmation, 'Confirm', class: 'profile__label' %>
-    <%= f.password_field :password_confirmation, class: 'profile__input', placeholder: '••••••••' %>
+  <div class="hide">
+    <div class="profile__field">
+      <%= f.label :password, 'New password', class: 'profile__label' %>
+      <%= f.password_field :password, class: 'profile__input', placeholder: '••••••••' %>
+    </div>
+    <div class="profile__field">
+      <%= f.label :password_confirmation, 'Confirm', class: 'profile__label' %>
+      <%= f.password_field :password_confirmation, class: 'profile__input', placeholder: '••••••••' %>
+    </div>
   </div>
   <% if f.object.content_provider? %>
   <div class="profile__field">
+    <label class="profile__label">Partner’s domain</label>
+    <div class="profile__value"><%= f.object.url %></div>
+    <div class="profile__link">change</div>
+  </div>
+  <div class="profile__field hide">
     <%= f.label :url, 'Partner’s domain', class: 'profile__label' %>
     <%= f.url_field :url, class: 'profile__input' %>
   </div>
