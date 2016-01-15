@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :boxes, dependent: :destroy
+  has_many :boxes, dependent: :destroy, after_remove: :nullify_box
 
   # validations
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
 
   # callbacks
-  after_initialize :init
+  after_find :set_box_url
   after_create :create_box!, if: :content_provider?
   after_update :save_box_url
 
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
 
 private
 
-  def init
+  def set_box_url
     @url = box.url
   end
 
@@ -75,6 +75,10 @@ private
   def save_box_url
     box.url = @url
     box.save if box.url_changed?
+  end
+
+  def nullify_box box
+    @box = nil if box == @box
   end
 
 end
