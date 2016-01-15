@@ -7,19 +7,21 @@ class User < ActiveRecord::Base
   # constants
 
   # attributes
-  attr_accessor :login
+  attr_accessor :login, :url
   mount_uploader :avatar, AvatarUploader
 
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :boxes, dependent: :destroy
+  has_many :boxes, dependent: :destroy, after_remove: :nullify_box
 
   # validations
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
 
   # callbacks
+  after_find :set_box_url
   after_create :create_box!, if: :content_provider?
+  after_update :save_box_url
 
   # other
   def self.find_for_database_authentication(warden_conditions)
@@ -57,13 +59,26 @@ class User < ActiveRecord::Base
   end if Rails.env.production?
 
   def box
-    boxes.first || create_box!
+    @box ||= boxes.first || create_box!
   end
 
 private
 
+  def set_box_url
+    @url = box.url
+  end
+
   def create_box!
     boxes.create!
+  end
+
+  def save_box_url
+    box.url = @url
+    box.save if box.url_changed?
+  end
+
+  def nullify_box box
+    @box = nil if box == @box
   end
 
 end
