@@ -17,4 +17,3 @@
 /node_modules
 /.byebug_history
 /doc
-/config/puma.rb
