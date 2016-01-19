@@ -26,6 +26,12 @@ $ bin/rake dev:setup
 $ bundle exec puma
 ```
 
+# 啟動 SSE
+
+```
+$ rails r lib/sse.rb
+```
+
 **請跟 `frontend-ziltag.com` 同步開啟 server 做開發**
 
 # Worker

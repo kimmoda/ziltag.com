@@ -7,6 +7,8 @@ USER=deploy
 WORKERS=1
 
 export RAILS_ENV=production
+export SSL_KEY=SSL_KEY
+export SSL_CERT=SSL_CERT
 export LOG_PATH=$APP/log/sse.log
 export ERROR_LOG_PATH=$APP/log/sse.error.log
 
@@ -16,7 +18,7 @@ start(){
       --pidfile $PIDFILE$i \
       --chuid $USER \
       --chdir $APP \
-      --startas bin/rails -- r lib/push_server.rb $SOCKFILE
+      --startas bin/rails -- r lib/sse.rb $SOCKFILE
   done
 }
 
