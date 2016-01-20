@@ -20,7 +20,8 @@ class Ziltag < ActiveRecord::Base
   # callbacks
   after_save :generate_share_image_later, if: ->{ photo.image? && (!share_image? || x_changed? || y_changed?) }
   after_create :notify_create
-  after_update :notify_update, if: ->{ x_changed? || y_changed? || content_changed? }
+  after_update :notify_update, if: ->{ content_changed? }
+  after_destroy :notify_destroy
 
   # other
   def to_param
@@ -45,16 +46,33 @@ class Ziltag < ActiveRecord::Base
 
 private
 
-  def notify_stream action
-    Ziltag.connection.execute "NOTIFY #{action}_ziltag, '#{id}'"
+  def notify_stream action, payload
+    Ziltag.connection.execute "NOTIFY #{action}_ziltag, '#{payload.to_json.gsub("'", "''")}'"
   end
 
   def notify_create
-    notify_stream 'create'
+    notify_stream :create, sse_json
   end
 
   def notify_update
-    notify_stream 'update'
+    notify_stream :update, sse_json
+  end
+
+  def sse_json
+    {
+      slug: photo.ziltags.pluck(:slug),
+      content: content,
+      id: slug,
+      map_id: photo.slug,
+      usr: {
+        avatar: user.avatar.thumb.url,
+        name: user.username
+      }
+    }
+  end
+
+  def notify_destroy
+    notify_stream 'delete', {slug: photo.ziltags.pluck(:slug), id: slug}
   end
 
 end
