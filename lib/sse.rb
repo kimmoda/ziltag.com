@@ -33,6 +33,7 @@ class PushServer < EM::Connection
       map_id = data.delete('_map_id') if resource == 'ziltag'
       broadcast(slug, event, data)
       broadcast_map(map_id, event, data)
+      LOGGER.debug "Event: #{event}, data: #{data}"
     end
   end
 
