@@ -89,7 +89,7 @@ Access-Control-Allow-Origin: *\r\n\r\n"
     end
     if @@map_clients[@map_id]
       @@map_clients[@map_id].delete(self)
-      @@map_clients.delete @map_id if @@clients[@map_id].empty?
+      @@map_clients.delete @map_id if @@map_clients[@map_id].empty?
     end
     LOGGER.info "#{self} disconnected"
   end
