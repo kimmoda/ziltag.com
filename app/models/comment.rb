@@ -48,7 +48,7 @@ private
 
   def sse_json
     {
-      slug: ziltag.slug,
+      _slug: ziltag.slug,
       id: id,
       content: content,
       created_at: created_at,
