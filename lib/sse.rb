@@ -44,22 +44,15 @@ class PushServer < EM::Connection
   def receive_data data
     @buffer << data
     if @buffer.length > 43
-      if @buffer =~ %r{^GET /api/v1/ziltags/(\w{6})/stream HTTP/1.1}
-        DB_CONN.async_exec(Ziltag.where(slug: $1).limit(1).to_sql) do |result|
-          if result.values.empty?
-            send_data "HTTP/1.1 404 Not Found\nServer: Ziltag Push Server\n\n"
-            close_connection_after_writing
-          else
-            @slug = $1
-            @@clients[@slug] ||= []
-            @@clients[@slug] << self
-            send_data "HTTP/1.1 200 OK
+      if @buffer =~ %r{^GET /api/v1/ziltags/(\w{6})/stream HTTP/1.1} && Ziltag.exists?(slug: $1)
+        @slug = $1
+        @@clients[@slug] ||= []
+        @@clients[@slug] << self
+        send_data "HTTP/1.1 200 OK
 Server: Ziltag Push Server
 Content-Type: text/event-stream
 Connection: Keep-Alive
 Access-Control-Allow-Origin: *\n\n"
-          end
-        end
       else
         send_data "HTTP/1.1 404 Not Found\nServer: Ziltag Push Server\n\n"
         close_connection_after_writing
