@@ -64,7 +64,6 @@ private
       _map_id: photo.slug,
       content: content,
       id: slug,
-      map_id: photo.slug,
       x: x.to_f, y: y.to_f,
       usr: {
         avatar: user.avatar.thumb.url,
