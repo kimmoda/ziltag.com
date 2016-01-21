@@ -60,7 +60,8 @@ private
 
   def sse_json
     {
-      slug: photo.ziltags.pluck(:slug),
+      _slug: photo.ziltags.pluck(:slug),
+      _map_id: photo.slug,
       content: content,
       id: slug,
       map_id: photo.slug,
@@ -72,7 +73,7 @@ private
   end
 
   def notify_destroy
-    notify_stream 'delete', {slug: photo.ziltags.pluck(:slug), id: slug}
+    notify_stream 'delete', {_slug: photo.ziltags.pluck(:slug), _map_id: photo.slug, id: slug}
   end
 
 end

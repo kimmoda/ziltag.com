@@ -13,16 +13,9 @@ class PushServer < EM::Connection
   ERROR_LOGGER = Logger.new(ENV['ERROR_LOG_PATH'] || STDERR)
 
   @@clients = {}
+  @@map_clients = {}
 
   attr_reader :slug
-
-  def broadcast slugs, event, data
-    Array(slugs).each do |slug|
-      Array(@@clients[slug]).each do |client|
-        client.send_data "event: #{event}\ndata: #{data.to_json}\n\n"
-      end
-    end
-  end
 
   def post_init
     start_tls(private_key_file: SSL_KEY, cert_chain_file: SSL_CERT, verify_peer: false)
@@ -34,25 +27,46 @@ class PushServer < EM::Connection
     DB_CONN.consume_input
     while notification = DB_CONN.notifies
       event, pid, payload = notification[:relname], notification[:be_pid], notification[:extra]
-      action, underscore = event.split('_')
+      action, resource = event.split('_')
       data = JSON.parse(payload)
-      slug = data.delete('slug')
+      slug = data.delete('_slug')
       broadcast(slug, event, data)
+      if resource == 'ziltag'
+        map_id = data.delete('_map_id')
+        broadcast_map(map_id, event, data)
+      end
+    end
+  end
+
+  def broadcast slugs, event, data
+    Array(slugs).each do |slug|
+      Array(@@clients[slug]).each do |client|
+        client.send_data "event: #{event}\ndata: #{data.to_json}\n\n"
+      end
+    end
+  end
+
+  def broadcast_map map_id, event, data
+    Array(@@map_clients[map_id]).each do |client|
+      client.send_data "event: #{event}\ndata: #{data.to_json}\n\n"
     end
   end
 
   def receive_data data
     @buffer << data
-    if @buffer.length > 43
-      if @buffer =~ %r{^GET /api/v1/ziltags/(\w{6})/stream HTTP/1.1} && Ziltag.exists?(slug: $1)
+    if @buffer.length > 42
+      case @buffer
+      when %r{^GET /api/v1/ziltags/(\w{6})/stream HTTP/1.1}
+        Ziltag.exists?(slug: $1)
         @slug = $1
         @@clients[@slug] ||= []
         @@clients[@slug] << self
-        send_data "HTTP/1.1 200 OK
-Server: Ziltag Push Server
-Content-Type: text/event-stream
-Connection: Keep-Alive
-Access-Control-Allow-Origin: *\n\n"
+        send_header
+      when %r{^GET /api/v1/ziltag_maps/(\w{6})/stream HTTP/1.1}
+        @map_id = $1
+        @@map_clients[@map_id] ||= []
+        @@map_clients[@map_id] << self
+        send_header
       else
         send_data "HTTP/1.1 404 Not Found\nServer: Ziltag Push Server\n\n"
         close_connection_after_writing
@@ -60,10 +74,22 @@ Access-Control-Allow-Origin: *\n\n"
     end
   end
 
+  def send_header
+    send_data "HTTP/1.1 200 OK
+Server: Ziltag Push Server
+Content-Type: text/event-stream
+Connection: Keep-Alive
+Access-Control-Allow-Origin: *\r\n\r\n"
+  end
+
   def unbind
     if @@clients[@slug]
       @@clients[@slug].delete(self)
       @@clients.delete @slug if @@clients[@slug].empty?
+    end
+    if @@map_clients[@map_id]
+      @@map_clients[@map_id].delete(self)
+      @@map_clients.delete @map_id if @@clients[@map_id].empty?
     end
     LOGGER.info "#{self} disconnected"
   end
