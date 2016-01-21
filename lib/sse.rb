@@ -30,11 +30,11 @@ class PushServer < EM::Connection
       action, resource = event.split('_')
       data = JSON.parse(payload)
       slug = data.delete('_slug')
-      broadcast(slug, event, data)
       if resource == 'ziltag'
         map_id = data.delete('_map_id')
-        broadcast_map(map_id, event, data)
       end
+      broadcast(slug, event, data)
+      broadcast_map(map_id, event, data)
     end
   end
 
