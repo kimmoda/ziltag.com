@@ -60,7 +60,7 @@ private
   end
 
   def notify_destroy
-    notify_stream 'delete', {_slug: ziltag.slug, slug: ziltag.slug, id: id}
+    notify_stream 'delete', {_slug: ziltag.slug, id: id}
   end
 
 end
