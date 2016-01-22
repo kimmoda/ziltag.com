@@ -32,6 +32,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'spring'
+  gem 'foreman'
 end
 
 group :test do
