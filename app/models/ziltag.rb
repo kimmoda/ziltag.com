@@ -73,7 +73,8 @@ private
   end
 
   def notify_destroy
-    notify_stream 'delete', {_slug: photo.ziltags.pluck(:slug), _map_id: photo.slug, id: slug}
+    slugs = photo.ziltags.pluck(:slug) << slug
+    notify_stream 'delete', {_slug: slugs, _map_id: photo.slug, id: slug}
   end
 
 end
