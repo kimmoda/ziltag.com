@@ -1,8 +1,9 @@
+<div class="cover"></div>
 <div class="layout__landing landing">
   <div class="landing__title">Your website needs more.</div>
   <div class="landing__subtitle">Meet Ziltag, the ultimate plugin for your images.</div>
   <%= form_for @user, as: :user, url: register_path do |f| %>
-    <div class="landing__field field">
+    <div class="landing__field field field--solid">
       <%= f.text_field :email, required: true, class: 'field__input', placeholder: 'Enter your email' %>
       <div class="field__line"></div>
       <button type="submit" class="field__button">Send</button>

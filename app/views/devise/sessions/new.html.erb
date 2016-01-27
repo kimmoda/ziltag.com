@@ -1,1 +1,20 @@
-<%= render 'shared/login' %>
+<div class="cover cover--blur"></div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'action'}) do |f| %>
+  <%= link_to :back, class: 'action__close' do %><i class="action__close material-icons">close</i><% end %>
+  <div class="action__content">
+    <div class="action__text-field text-field">
+      <i class="text-field__icon material-icons">email</i>
+      <%= f.text_field :login, class: 'text-field__input', placeholder: 'Email' %>
+    </div>
+    <div class="action__text-field text-field">
+      <i class="text-field__icon material-icons">lock</i>
+      <%= f.password_field :password, class: 'text-field__input', placeholder: 'Password' %>
+    </div>
+    <div class="action__bar">
+      <a class="action__left" href="#">Forget Password?</a>
+      <%= f.submit 'Sign in', class: 'action__right' %>
+    </div>
+    <% if alert %><div class="action__error">The email and password you entered don't match.</div><% end %>
+    <%= console %>
+  </div>
+<% end %>

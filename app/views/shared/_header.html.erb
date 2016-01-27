@@ -11,6 +11,10 @@
       <li class="mdl-menu__item"><%= link_to t(:settings), edit_user_registration_path %></li>
       <li class="mdl-menu__item"><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
     </ul>
+    <% else %>
+      <nav class="mdl-navigation">
+        <%= link_to 'Sign in', new_user_session_path, class: 'mdl-navigation__link' %>
+      </nav>
     <% end %>
   </div>
 </header>
