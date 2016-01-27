@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def test_shoud_have_one_box_after_creation
     cp = ContentProvider.create! email: 'test@ziltag.com', password: 'password'
-    user = User.create! email: 'test2@ziltag.com', username: 'test2', password: 'password'
+    user = User.create! email: 'test2@ziltag.com', username: 'testtest2', password: 'password'
     assert cp.boxes.present?
     assert user.boxes.empty?
   end

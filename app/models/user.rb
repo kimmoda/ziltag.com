@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :boxes, dependent: :destroy, after_remove: :nullify_box
 
   # validations
-  validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}
+  validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}, allow_nil: true
   validates :username, presence: true, if: :general_user?
 
   # callbacks
