@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   has_many :boxes, dependent: :destroy, after_remove: :nullify_box
 
   # validations
-  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, if: :general_user?
+  validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}
+  validates :username, presence: true, if: :general_user?
 
   # callbacks
   after_find :set_box_url

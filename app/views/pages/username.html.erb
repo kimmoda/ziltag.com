@@ -1,17 +1,16 @@
-<div class="layout-fullscreen">
-  <div class="starry-sky">
-    <div class="starry-sky__star starry-sky__star--small"></div>
-    <div class="starry-sky__star starry-sky__star--medium"></div>
-    <div class="starry-sky__star starry-sky__star--big"></div>
-    <div class="starry-sky__container">
-      <h1 class="mdl-color-text--white">Thank you for joining us.</h1>
-      <h5 class="mdl-color-text--white">Now please give yourself a name so we can recognize you.</h5>
-      <%= form_for current_user, url: username_path do |f| %>
-        <div class="text-field" style="position:relative;top:100px;">
-          <%= f.text_field :username, class: 'text-field__input capsule', placeholder: 'set up your username...' %>
-          <%= f.submit 'NEXT', class: 'text-field__button capsule capsule--blue' %>
-        </div>
-      <% end %>
+<div class="cover cover--blur"></div>
+<%= form_for current_user, url: username_path, html: {class: 'action'} do |f| %>
+  <div class="action__title">Thank you for joining us.</div>
+  <div class="action__subtitle">Please setup your username to continue.</div>
+  <div class="action__content">
+    <div class="action__text-field text-field">
+      <i class="text-field__icon material-icons">person</i>
+      <%= f.text_field :username, class: 'text-field__input', placeholder: 'Username', autocomplete: 'off' %>
     </div>
+    <div class="action__bar">
+      <%= link_to root_path, class: 'action__left' do %><i class="material-icons">arrow_back</i> back<% end %>
+      <%= f.submit 'Next', class: 'action__right' %>
+    </div>
+    <% if current_user.errors.include?(:username) %><div class="action__error"><%= current_user.errors[:username].first %></div><% end %>
   </div>
-</div>
+<% end %>

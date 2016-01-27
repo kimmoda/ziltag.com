@@ -7,4 +7,9 @@ en:
           attributes:
             email:
               invalid: Invalid email format
-              taken: This email has been taken
+              taken: This email has been taken.
+            username:
+              taken: This username has been taken.
+              invalid: "Only these characters are allowed: letters, numbers, and underscore."
+              too_long: Use between 6 and 30 characters.
+              too_short: Use between 6 and 30 characters.
