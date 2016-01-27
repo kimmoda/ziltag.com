@@ -8,13 +8,13 @@ class ConfirmationsController < Devise::ConfirmationsController
   # PUT /confirm
   def confirm
     self.resource = resource_class.find_first_by_auth_conditions(confirmation_token: params[resource_name][:confirmation_token])
+    self.resource.define_singleton_method(:password_required?){ true }
     if resource.update permitted_params
       resource_class.confirm_by_token(params[resource_name][:confirmation_token])
       set_flash_message :notice, :confirmed
       sign_in(resource_name, resource)
       render :welcome
     else
-      p self.resource.errors
       @confirmation_token = params[resource_name][:confirmation_token]
       render :show
     end

@@ -1,22 +1,20 @@
-<div class="layout-fullscreen">
-  <div class="starry-sky starry-sky--pink">
-    <div class="starry-sky__star starry-sky__star--small"></div>
-    <div class="starry-sky__star starry-sky__star--medium"></div>
-    <div class="starry-sky__star starry-sky__star--big"></div>
-    <div class="starry-sky__container">
-      <h1 class="mdl-color-text--white">Welcome back.</h1>
-      <h5 class="mdl-color-text--white" style="margin-bottom:100px;">Now we know that you are not a robot. Please setup your password to continue.</h5>
-      <%= form_for resource, as: resource_name, url: confirm_path do |f| %>
-        <div class="text-field" style="margin-bottom:30px;">
-          <%= f.password_field :password, class: 'text-field__input capsule', placeholder: 'Password' %>
-        </div>
-
-        <div class="text-field" style="margin-bottom:30px;">
-          <%= f.password_field :password_confirmation, class: 'text-field__input capsule', placeholder: 'Confirmation Password' %>
-        </div>
-        <%= f.hidden_field :confirmation_token, value: @confirmation_token %>
-        <div><%= f.submit 'CONFIRM', class: 'capsule capsule--yellow' %></div>
-      <% end %>
+<div class="cover cover--blur"></div>
+<%= form_for resource, as: resource_name, url: confirm_path, html: {class: 'action'} do |f| %>
+  <%= f.hidden_field :confirmation_token, value: @confirmation_token %>
+  <div class="action__title">We’re glad to have you back.</div>
+  <div class="action__subtitle">Please setup the password to verify your account.</div>
+  <div class="action__content">
+    <div class="action__text-field text-field">
+      <i class="text-field__icon material-icons">lock</i>
+      <%= f.password_field :password, class: 'text-field__input', placeholder: 'Password' %>
     </div>
+    <div class="action__text-field text-field">
+      <i class="text-field__icon material-icons">lock</i>
+      <%= f.password_field :password_confirmation, class: 'text-field__input', placeholder: 'Password Confirmation' %>
+    </div>
+    <div class="action__bar">
+      <%= f.submit 'Confirm', class: 'action__right' %>
+    </div>
+    <% unless resource.errors.blank? %><div class="action__error"><%= resource.errors.messages.values.flatten.first %></div><% end %>
   </div>
-</div>
+<% end %>
