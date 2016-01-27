@@ -3,6 +3,7 @@
     <span class="mdl-layout-title"><%= link_to image_tag('logo.png'), root_path %></span>
     <div class="mdl-layout-spacer"></div>
     <div class="mdl-layout-spacer"></div>
+    <% if action_name != 'username' %>
     <% if user_signed_in? %>
     <button id="profile-menu" class="mdl-button mdl-js-button mdl-button--icon">
       <%= image_tag current_user.avatar.thumb.url, width: '100%' %>
@@ -11,10 +12,11 @@
       <li class="mdl-menu__item"><%= link_to t(:settings), edit_user_registration_path %></li>
       <li class="mdl-menu__item"><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
     </ul>
-    <% else %>
-      <nav class="mdl-navigation">
-        <%= link_to 'Sign in', new_user_session_path, class: 'mdl-navigation__link' %>
-      </nav>
+  <% else %>
+    <nav class="mdl-navigation">
+      <%= link_to 'Sign in', new_user_session_path, class: 'mdl-navigation__link' %>
+    </nav>
+    <% end %>
     <% end %>
   </div>
 </header>
