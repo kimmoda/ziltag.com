@@ -1,8 +1,13 @@
-<div class="ready">
-  <h2>Thank you. Your script is now ready!</h2>
-  <h5>Copy the script and get everything started!</h5>
-  <textarea id="script" class="ready__textarea" rows="2" onclick="this.focus();this.select()" readonly="readonly"><script src="//<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= @box.token %>"></script>
-<noscript>You have to enable JavaScript to use Ziltag.</noscript></textarea>
-  <button class="ready__copy capsule capsule--blue" onclick="document.getElementById('script').focus();document.getElementById('script').select()">COPY</button>
+<div class="cover cover--blur"></div>
+<div class="action">
+  <div class="action__title">Thank you. Your plugin is ready!</div>
+  <div class="action__subtitle">Copy the script below and install Ziltag Plugin to your website.</div>
+  <div class="action__content">
+    <textarea rows="1" onclick="this.focus();this.select()" readonly="readonly" class="script-textarea"><script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= @box.token %>"></textarea>
+    <div class="action__bar">
+      <%= link_to platform_path, class: 'action__left' do %><i class="material-icons">arrow_back</i> back<% end %>
+      <div class="action__right">Copy</div>
+    </div>
+  </div>
   <%= render(@box.service || 'general') %>
 </div>
