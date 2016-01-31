@@ -3,6 +3,10 @@ en:
     errors:
       format: "%{message}"
       models:
+        box:
+          attributes:
+            url:
+              invalid: Invalid URL format
         user:
           attributes:
             email:

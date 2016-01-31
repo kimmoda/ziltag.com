@@ -33,9 +33,17 @@ class PagesController < ApplicationController
   end
 
   def update_platform
-    if current_user.box.update url: ServiceURLConverter.convert(params)
-      redirect_to install_path
+    box = current_user.box
+
+    if params[:platform] == 'general' || params[:blog_id].present?
+      if box.update url: ServiceURLConverter.convert(params)
+        redirect_to install_path
+      else box.errors[:url].first
+        @error = box.errors[:url].first
+        render :platform
+      end
     else
+      @error = 'Blog ID can not be blank'
       render :platform
     end
   end

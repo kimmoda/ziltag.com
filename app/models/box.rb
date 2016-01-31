@@ -26,7 +26,7 @@ class Box < ActiveRecord::Base
   # validations
   validates :user, :token, presence: true
   validates :token, uniqueness: true
-  validates :url, format: {with: URI.regexp}, allow_blank: true
+  validates :url, format: {with: URI.regexp(%w[http https])}, if: ->{ user.content_provider? }
 
   # callbacks
   before_validation :assign_token, if: -> { token.blank? }
@@ -46,11 +46,11 @@ class Box < ActiveRecord::Base
   def service
     return nil if url.blank?
     uri = URI(url)
-    if uri.host.end_with? 'tumblr.com' then 'tumblr'
-    elsif uri.host.end_with? 'wordpress.com' then 'wordpress'
-    elsif uri.host.end_with? 'logdown.com' then 'logdown'
-    elsif uri.host.end_with? 'pixnet.net' then 'pixnet'
-    elsif uri.host.end_with? *BLOGSPOT_DOMAINS then 'blogger'
+    if uri.host.try(:end_with?, 'tumblr.com') then 'tumblr'
+    elsif uri.host.try(:end_with?, 'wordpress.com') then 'wordpress'
+    elsif uri.host.try(:end_with?, 'logdown.com') then 'logdown'
+    elsif uri.host.try(:end_with?, 'pixnet.net') then 'pixnet'
+    elsif uri.host.try(:end_with?, *BLOGSPOT_DOMAINS) then 'blogger'
     elsif uri.host == 'blog.xuite.net' then 'xuite'
     else nil
     end
