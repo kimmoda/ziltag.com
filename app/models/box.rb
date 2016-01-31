@@ -26,7 +26,7 @@ class Box < ActiveRecord::Base
   # validations
   validates :user, :token, presence: true
   validates :token, uniqueness: true
-  validates :url, format: {with: URI.regexp(%w[http https])}, if: ->{ user.content_provider? }
+  validates :url, format: {with: URI.regexp(%w[http https])}, allow_nil: true
 
   # callbacks
   before_validation :assign_token, if: -> { token.blank? }
