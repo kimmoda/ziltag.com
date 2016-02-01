@@ -15,4 +15,4 @@ Rails.application.config.assets.precompile += %w[
   admin.css admin.js
   landing.css landing.js
 ]
-Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf|gif)\z/
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf|gif|swf)\z/

@@ -6,8 +6,13 @@
     <textarea rows="1" onclick="this.focus();this.select()" readonly="readonly" class="script-textarea"><script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= @box.token %>"></textarea>
     <div class="action__bar">
       <%= link_to platform_path, class: 'action__left' do %><i class="material-icons">arrow_back</i> back<% end %>
-      <div class="action__right">Copy</div>
+      <div id="copy-button" class="action__right" data-clipboard-text='<script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= @box.token %>">'>Copy</div>
     </div>
   </div>
   <%= render(@box.service || 'general') %>
 </div>
+
+<script>
+  ZeroClipboard.config( { swfPath: "<%= asset_path 'zeroclipboard/dist/ZeroClipboard.swf'%>" } );
+  new ZeroClipboard(document.getElementById('copy-button'))
+</script>
