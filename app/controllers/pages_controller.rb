@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def home
     @photo = Photo.new
     @user = ContentProvider.new
+    track 'visit-home'
   end
 
   def register
@@ -14,22 +15,31 @@ class PagesController < ApplicationController
     if @user.save
       sign_in(@user)
       redirect_to username_path
+      track 'input-email'
     else
       render :home
+      track 'input-email', 'failure'
     end
   end
 
   def username
+    track 'visit-username'
     redirect_to install_path if current_user.username.present?
   end
 
   def update_username
     if current_user.update params.require(:content_provider).permit(:username)
       redirect_to platform_path
+      track 'input-username'
     else
       flash.now[:alert] = 'Please check your input value.'
       render :username
+      track 'input-username', 'failure'
     end
+  end
+
+  def platform
+    track 'visit-site-info'
   end
 
   def update_platform

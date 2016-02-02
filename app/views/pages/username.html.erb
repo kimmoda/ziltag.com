@@ -8,7 +8,7 @@
       <%= f.text_field :username, class: 'text-field__input', placeholder: 'Username', autocomplete: 'off' %>
     </div>
     <div class="action__bar">
-      <%= link_to root_path, class: 'action__left' do %><i class="material-icons">arrow_back</i> back<% end %>
+      <%= link_to root_path, class: 'action__left', data: {event: 'click_back'} do %><i class="material-icons">arrow_back</i> back<% end %>
       <%= f.submit 'Next', class: 'action__right' %>
     </div>
     <% if current_user.errors.include?(:username) %><div class="action__error"><%= current_user.errors[:username].first %></div><% end %>

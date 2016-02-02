@@ -42,6 +42,10 @@ protected
     end
   end
 
+  def track event, status = 'success'
+    Track.create event: event, status: status, token: (session[:tracking_token] ||= SecureRandom.hex)
+  end
+
 private
 
   def after_sign_in_path_for(resource_or_scope)

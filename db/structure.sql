@@ -2,12 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.0
+-- Dumped by pg_dump version 9.5.0
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
@@ -30,7 +34,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: queue_classic_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: queue_classic_jobs; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE queue_classic_jobs (
@@ -141,7 +145,7 @@ end $$;
 
 
 --
--- Name: boxes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: boxes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE boxes (
@@ -174,7 +178,7 @@ ALTER SEQUENCE boxes_id_seq OWNED BY boxes.id;
 
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: comments; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE comments (
@@ -207,7 +211,7 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
--- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: photos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE photos (
@@ -266,7 +270,7 @@ ALTER SEQUENCE queue_classic_jobs_id_seq OWNED BY queue_classic_jobs.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schema_migrations (
@@ -275,7 +279,40 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: tracks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tracks (
+    id integer NOT NULL,
+    event character varying NOT NULL,
+    token character varying NOT NULL,
+    status character varying DEFAULT 'success'::character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tracks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tracks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tracks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tracks_id_seq OWNED BY tracks.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE users (
@@ -323,7 +360,7 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: ziltags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: ziltags; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE ziltags (
@@ -391,6 +428,13 @@ ALTER TABLE ONLY queue_classic_jobs ALTER COLUMN id SET DEFAULT nextval('queue_c
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -402,7 +446,7 @@ ALTER TABLE ONLY ziltags ALTER COLUMN id SET DEFAULT nextval('ziltags_id_seq'::r
 
 
 --
--- Name: boxes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: boxes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY boxes
@@ -410,7 +454,7 @@ ALTER TABLE ONLY boxes
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments
@@ -418,7 +462,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY photos
@@ -426,7 +470,7 @@ ALTER TABLE ONLY photos
 
 
 --
--- Name: queue_classic_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: queue_classic_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY queue_classic_jobs
@@ -434,7 +478,15 @@ ALTER TABLE ONLY queue_classic_jobs
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tracks
+    ADD CONSTRAINT tracks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users
@@ -442,7 +494,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: ziltags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: ziltags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ziltags
@@ -450,147 +502,154 @@ ALTER TABLE ONLY ziltags
 
 
 --
--- Name: idx_qc_on_name_only_unlocked; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: idx_qc_on_name_only_unlocked; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_qc_on_name_only_unlocked ON queue_classic_jobs USING btree (q_name, id) WHERE (locked_at IS NULL);
 
 
 --
--- Name: idx_qc_on_scheduled_at_only_unlocked; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: idx_qc_on_scheduled_at_only_unlocked; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_qc_on_scheduled_at_only_unlocked ON queue_classic_jobs USING btree (scheduled_at, id) WHERE (locked_at IS NULL);
 
 
 --
--- Name: index_boxes_on_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_boxes_on_token; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_boxes_on_token ON boxes USING btree (token);
 
 
 --
--- Name: index_boxes_on_url; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_boxes_on_url; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_boxes_on_url ON boxes USING btree (url);
 
 
 --
--- Name: index_boxes_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_boxes_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_boxes_on_user_id ON boxes USING btree (user_id);
 
 
 --
--- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
--- Name: index_comments_on_ziltag_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_ziltag_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_comments_on_ziltag_id ON comments USING btree (ziltag_id);
 
 
 --
--- Name: index_photos_on_box_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_photos_on_box_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_photos_on_box_id ON photos USING btree (box_id);
 
 
 --
--- Name: index_photos_on_host; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_photos_on_host; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_photos_on_host ON photos USING btree (host);
 
 
 --
--- Name: index_photos_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_photos_on_path; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_photos_on_path ON photos USING btree (path);
 
 
 --
--- Name: index_photos_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_photos_on_slug; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_photos_on_slug ON photos USING btree (slug);
 
 
 --
--- Name: index_photos_on_source_and_href_and_box_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_photos_on_source_and_href_and_box_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_photos_on_source_and_href_and_box_id ON photos USING btree (source, href, box_id);
 
 
 --
--- Name: index_photos_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_photos_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_photos_on_user_id ON photos USING btree (user_id);
 
 
 --
--- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_tracks_on_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tracks_on_token ON tracks USING btree (token);
+
+
+--
+-- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 
 --
--- Name: index_ziltags_on_photo_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_ziltags_on_photo_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_ziltags_on_photo_id ON ziltags USING btree (photo_id);
 
 
 --
--- Name: index_ziltags_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_ziltags_on_slug; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_ziltags_on_slug ON ziltags USING btree (slug);
 
 
 --
--- Name: index_ziltags_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_ziltags_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_ziltags_on_user_id ON ziltags USING btree (user_id);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
@@ -663,7 +722,7 @@ ALTER TABLE ONLY photos
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (version) VALUES ('20150407064303');
 
@@ -768,4 +827,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151109052017');
 INSERT INTO schema_migrations (version) VALUES ('20151130194955');
 
 INSERT INTO schema_migrations (version) VALUES ('20151201074814');
+
+INSERT INTO schema_migrations (version) VALUES ('20160202075115');
 
