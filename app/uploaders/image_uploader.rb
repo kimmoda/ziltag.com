@@ -12,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :default do
-    process resize_to_limit: [600, nil]
+    process resize_to_limit: [1200, nil]
     process :store_dimensions
   end
 
