@@ -3,6 +3,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   def show
     @confirmation_token = params[:confirmation_token]
     self.resource = resource_class.find_first_by_auth_conditions(confirmation_token: @confirmation_token)
+    track 'visit-confirmation'
   end
 
   # PUT /confirm
@@ -14,9 +15,11 @@ class ConfirmationsController < Devise::ConfirmationsController
       set_flash_message :notice, :confirmed
       sign_in(resource_name, resource)
       render :welcome
+      track 'input-password'
     else
       @confirmation_token = params[resource_name][:confirmation_token]
       render :show
+      track 'input-password', 'failure'
     end
   end
 
