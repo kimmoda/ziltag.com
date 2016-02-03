@@ -16,6 +16,7 @@ class DashboardManifest
     :ziltags,
     :comments,
     :photos,
+    :tracks
   ]
 
   # `ROOT_DASHBOARD`
