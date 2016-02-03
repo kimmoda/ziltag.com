@@ -6,9 +6,9 @@
     <div class="platform js-platform">
       <div class="platform__step">Step 1. Select your platform.</div>
       <ul class="platform__list">
-        <li class="platform__item platform__item--selected platform__item--general" data-selector="#general" data-type="general">General</li>
-        <li class="platform__item platform__item--tumblr" data-selector="#tumblr" data-type="tumblr">Tumblr</li>
-        <li class="platform__item platform__item--blogger" data-selector="#blogger" data-type="blogger">Blogger</li>
+        <li class="platform__item platform__item--selected platform__item--general" data-selector="#general" data-type="general" data-event="select-platform-general">General</li>
+        <li class="platform__item platform__item--tumblr" data-selector="#tumblr" data-type="tumblr" data-event="select-platform-tumblr">Tumblr</li>
+        <li class="platform__item platform__item--blogger" data-selector="#blogger" data-type="blogger" data-event="select-platform-blogger">Blogger</li>
       </ul>
       <div class="platform__step">Step 2. Fill the information.</div>
       <%= hidden_field_tag 'platform', 'general', form: 'form', class: 'platform__type-field' %>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="action__bar">
-      <%= link_to root_path, class: 'action__left' do %><i class="material-icons">arrow_back</i> back<% end %>
+      <%= link_to root_path, class: 'action__left', data: {event: 'click_back'} do %><i class="material-icons">arrow_back</i> back<% end %>
       <%= form_tag platform_path, id: 'form' do %>
         <input type="submit" class="action__right" value="Finish">
       <% end %>

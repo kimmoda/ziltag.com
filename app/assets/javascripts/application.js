@@ -9,3 +9,4 @@
 //= require photos/show
 //= require pages/home
 //= require zeroclipboard/dist/ZeroClipboard
+//= require tracker

@@ -22,3 +22,30 @@ document.addEventListener 'DOMContentLoaded', ->
     landing.style.left = (50 * x_ratio) + 'px'
     landing.style.top = (190 * y_ratio) + 'px'
     landing.style.transform = "scale(#{x_ratio}, #{y_ratio})"
+
+    on_player = false
+
+    window.addEventListener 'blur', ->
+      if on_player
+        Tracker.record 'video-0'
+        setTimeout (->
+          Tracker.record 'video-1'
+        ), 28000
+
+        setTimeout (->
+          Tracker.record 'video-2'
+        ), 53000
+
+        setTimeout (->
+          Tracker.record 'video-3'
+        ), 78000
+
+        setTimeout (->
+          Tracker.record 'video-4'
+        ), 105000
+
+    player.addEventListener 'mouseover', ->
+       on_player = true
+
+    player.addEventListener 'mouseout', ->
+        on_player = false
