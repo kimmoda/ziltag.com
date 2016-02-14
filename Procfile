@@ -1,4 +1,4 @@
 web: bundle exec puma
 sse: bin/rails r lib/sse.rb
 worker: bin/rake qc:work
-webpack: webpack --watch
+webpack: npm run dev

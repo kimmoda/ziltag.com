@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "dev": "WEBPACK_ENV=dev webpack --watch",
+    "build": "WEBPACK_ENV=production webpack"
+  },
   "devDependencies": {
     "babel-loader": "^6.2.2",
     "babel-preset-es2015": "^6.5.0",
