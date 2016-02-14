@@ -1,17 +1,16 @@
-@import "material-design-lite/src/color-definitions";
+@import "~material-design-lite/src/color-definitions";
 $color-accent: $palette-grey-900;
 $layout-header-bg-color: white;
 $layout-header-text-color: black;
-@import 'material-design-lite/src/material-design-lite';
-@import 'mdi/scss/materialdesignicons';
-@import 'animate.css/animate';
-@import 'plyr/src/sass/plyr';
-@import 'layout';
-@import 'blocks/*';
-@import 'single_page';
-@import 'photos/show';
-@import 'pages/home';
-@import 'registrations/edit';
+@import '~material-design-lite/src/material-design-lite';
+$mdi-font-path: '~mdi/fonts';
+@import '~mdi/scss/materialdesignicons';
+@import './layout';
+@import './blocks';
+@import './single_page';
+@import './photos/show';
+@import './pages/home';
+@import './registrations/edit';
 
 .mdl-menu[for="profile-menu"]{
   .mdl-menu__item{

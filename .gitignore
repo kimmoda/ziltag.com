@@ -18,3 +18,5 @@
 /.byebug_history
 /doc
 *.sublime-*
+/public/assets
+/stats.json

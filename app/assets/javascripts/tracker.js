@@ -1,4 +1,4 @@
-Tracker = {
+var Tracker = {
   record: function(event_name) {
     fetch('/api/v1/track', {
       method: 'post',
@@ -15,10 +15,12 @@ Tracker = {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  buttons = document.querySelectorAll('[data-event]')
+  var buttons = document.querySelectorAll('[data-event]')
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
       Tracker.record(this.dataset.event)
     })
   }
 })
+
+module.exports = Tracker
