@@ -21,6 +21,7 @@ gem 'webpack_stats'
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
+  gem 'capistrano-npm'
   gem 'rack-mini-profiler'
   gem 'web-console', '~> 2.0'
   gem 'faker'
