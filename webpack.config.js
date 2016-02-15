@@ -5,7 +5,7 @@ if (__PRODUCTION__) {
   var ExtractTextPlugin = require('extract-text-webpack-plugin')
 }
 
-var filename = __PRODUCTION__ ? 'application-[hash].js' : 'application.js'
+var filename = __PRODUCTION__ ? 'app-[hash].js' : 'app.js'
 var styleLoader = __PRODUCTION__ ? ExtractTextPlugin.extract('style', 'css!postcss!sass') : 'style!css!postcss!sass'
 var fileLoader = __PRODUCTION__ ? 'file?name=[name]-[hash].[ext]' : 'file?name=[name].[ext]'
 var plugins = [
@@ -18,13 +18,13 @@ var plugins = [
 
 if (__PRODUCTION__) {
   plugins.push(
-    new ExtractTextPlugin('application-[hash].css'),
+    new ExtractTextPlugin('app-[hash].css'),
     new UglifyJsPlugin()
   )
 }
 
 module.exports = {
-  entry: './app/assets/javascripts/application.js',
+  entry: './app/assets/javascripts/app.js',
   output: {
     path: __dirname + '/public/assets',
     filename: filename,

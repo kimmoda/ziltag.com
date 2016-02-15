@@ -15,8 +15,6 @@ gem 'fog'
 gem 'queue_classic'
 gem 'eventmachine'
 gem 'administrate'
-gem 'sprockets-rails', '~> 2.3.3'
-gem 'webpack_stats'
 
 group :development do
   gem 'capistrano'

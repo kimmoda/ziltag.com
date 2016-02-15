@@ -1,4 +1,4 @@
-import '../stylesheets/application.scss'
+import '../stylesheets/app.scss'
 import '../images/sticker.png'
 import '../images/logo.png'
 import '../images/fallback/guest.png'
