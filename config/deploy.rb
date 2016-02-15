@@ -13,7 +13,7 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         with webpack_env: :production do
-          execute release_path.join('node_modules/.bin/webpack')
+          execute :npm, 'run build'
         end
       end
     end
