@@ -52,7 +52,7 @@ class ShareImageUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "uploads/#{model.class.table_name}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.table_name}/#{mounted_as}/#{model.slug}"
   end
 
   def default_url
