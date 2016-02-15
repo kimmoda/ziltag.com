@@ -1,12 +1,18 @@
-//= require jquery/dist/jquery
-//= require jquery_ujs
-//= require material-design-lite/material
-//= require eventEmitter/EventEmitter
-//= require eventie/eventie
-//= require imagesloaded/imagesloaded
-//= require plyr/src/js/plyr
-//= require_directory ./blocks
-//= require photos/show
-//= require pages/home
-//= require zeroclipboard/dist/ZeroClipboard
-//= require tracker
+import '../stylesheets/application.scss'
+import '../images/sticker.png'
+import '../images/logo.png'
+import '../images/fallback/guest.png'
+import '../images/fallback/default_guest.png'
+import '../images/fallback/thumb_guest.png'
+import '../images/reply.png'
+
+import 'jquery'
+import 'material-design-lite'
+var req = require.context("./blocks", true, /^.*$/igm)
+req.keys().forEach(function(key){
+    req(key)
+})
+import './photos/show.coffee'
+import './pages/home.coffee'
+import './pages/install'
+import './tracker'

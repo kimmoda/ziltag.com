@@ -1,3 +1,4 @@
+`var Tracker = require('../tracker.js')`
 document.addEventListener 'DOMContentLoaded', ->
   if document.querySelector('body.pages.home') || document.querySelector('body.pages.register')
     BG_ORIGIN_WIDTH = 1366

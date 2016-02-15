@@ -10,7 +10,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
       fallback = URI.encode ActionController::Base.helpers.image_path('fallback/' + [version_name, 'guest.png'].compact.join('_'))
       "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(model.email.downcase)}?d=#{URI.encode fallback}"
     else
-      ActionController::Base.helpers.image_path('fallback/' + [version_name, 'guest.png'].compact.join('_'))
+      ActionController::Base.helpers.image_path([version_name, 'guest.png'].compact.join('_'))
     end
   end
 

@@ -11,11 +11,3 @@
   </div>
   <%= render(@box.service || 'general') %>
 </div>
-
-<script>
-  ZeroClipboard.config( { swfPath: "<%= asset_path 'zeroclipboard/dist/ZeroClipboard.swf'%>" } );
-  client = new ZeroClipboard(document.getElementById('copy-button'))
-  client.on('aftercopy', function(event) {
-    Tracker.record('click-copy')
-  })
-</script>
