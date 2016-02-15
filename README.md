@@ -18,18 +18,12 @@
 - make
 - graphicsmagick
 
-# 開發準備
+# 開發
 
 ```
 $ bundle
 $ bin/rake dev:setup
-$ bundle exec puma
-```
-
-# 啟動 SSE
-
-```
-$ rails r lib/sse.rb
+$ foreman start
 ```
 
 **請跟 `frontend-ziltag.com` 同步開啟 server 做開發**
@@ -40,31 +34,12 @@ $ rails r lib/sse.rb
 $ env QUEUES="mailers,default" QC_MEASURE=true bundle exec rake qc:work
 ```
 
-# Elasticsearch 中文斷詞設定
-
-```
-curl -X POST 127.0.0.1:9200/_all/_close
-curl -XPUT '127.0.0.1:9200/_settings' -d '
-{
-  "analysis":{
-    "analyzer":{
-      "default":{"type":"cjk"}
-    }
-  }
-}'
-curl -X POST 127.0.0.1:9200/_all/_open
-```
-
 # Git 流程
 
 - 一律在 `dev` 分支上開發
 - 一律使用 `git pull --rebase`。
 - 1 個 issue 1 個 branch，命名方式為 `issues/#ID`。
 - branch 開發好後送 pull request，只有 PM 可以 merge
-
-# Email 預覽
-
-http://localhost:3000/rails/mailers/
 
 # 登入登出
 
@@ -73,14 +48,6 @@ http://localhost:3000/rails/mailers/
 ```
 http://localhost:3000?sign_in
 http://localhost:3000?sign_out
-```
-
-# 顯示 flash 訊息
-
-可在網址加上 `flash`，例：
-
-```
-http://localhost:3000?flash
 ```
 
 # Commit Message Hook
