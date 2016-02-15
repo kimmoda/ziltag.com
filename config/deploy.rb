@@ -9,11 +9,8 @@ set :linked_files, fetch(:linked_files, []).push('config/application.yml', 'conf
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'node_modules')
 
 namespace :deploy do
-  after :updated, :webpack
-  after :publishing, :restart
-
-  after :webpack do
-    on roles(:web) do
+  after :updated, :webpack do
+    on roles(:app) do
       within release_path do
         with webpack_env: :production do
           execute release_path.join('node_modules/.bin/webpack')
@@ -22,7 +19,7 @@ namespace :deploy do
     end
   end
 
-  task :restart do
+  after :publishing, :restart do
     on roles(:app) do
       execute :sudo, '/etc/init.d/puma', 'phased-restart'
     end
