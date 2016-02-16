@@ -29,4 +29,14 @@ module WebpackStats
       end
     end
   end
+
+  module Helper
+    def compute_asset_path source, options = {}
+      WebpackStats.assets[source] || super
+    end
+  end
+end
+
+ActiveSupport.on_load(:action_view) do
+  prepend WebpackStats::Helper
 end
