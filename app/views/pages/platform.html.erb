@@ -15,7 +15,7 @@
 
       <div class="text-field">
         <i class="text-field__icon material-icons">home</i>
-        <%= url_field_tag 'url', nil, id: 'general', class: 'platform__input text-field__input', placeholder: 'Your domain name', autocomplete: 'off', form: 'form', required: true %>
+        <%= text_field_tag 'url', nil, id: 'general', class: 'platform__input text-field__input', placeholder: 'Your domain name', autocomplete: 'off', form: 'form', required: true %>
         <%= text_field_tag 'blog_id', nil, id: 'tumblr', class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
         <%= text_field_tag 'blog_id', nil, id: 'blogger', class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
       </div>
