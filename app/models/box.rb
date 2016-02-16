@@ -1,5 +1,15 @@
+# frozen_string_literal: true
 class Box < ActiveRecord::Base
-  BLOGSPOT_DOMAINS = %w[com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' << c}.freeze
+  BLOGSPOT_DOMAINS = %w[com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' + c}.freeze
+  PLATFORMS = {
+    'tumblr.com' => 'tumblr',
+    'wordpress.com' => 'wordpress',
+    'logdown.com' => 'logdown',
+    'pixnet.net' => 'pixnet',
+    'blog.xuite.net' => 'xuite',
+    BLOGSPOT_DOMAINS => 'blogger',
+  }
+  DOMAIN_REGEX = /\A[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}\z/i
 
   # scopes
 
@@ -26,7 +36,7 @@ class Box < ActiveRecord::Base
   # validations
   validates :user, :token, presence: true
   validates :token, uniqueness: true
-  validates :url, format: {with: URI.regexp(%w[http https])}, allow_nil: true
+  validate :url_must_be_valid
 
   # callbacks
   before_validation :assign_token, if: -> { token.blank? }
@@ -46,14 +56,10 @@ class Box < ActiveRecord::Base
   def service
     return nil if url.blank?
     uri = URI(url)
-    if uri.host.try(:end_with?, 'tumblr.com') then 'tumblr'
-    elsif uri.host.try(:end_with?, 'wordpress.com') then 'wordpress'
-    elsif uri.host.try(:end_with?, 'logdown.com') then 'logdown'
-    elsif uri.host.try(:end_with?, 'pixnet.net') then 'pixnet'
-    elsif uri.host.try(:end_with?, *BLOGSPOT_DOMAINS) then 'blogger'
-    elsif uri.host == 'blog.xuite.net' then 'xuite'
-    else nil
+    PLATFORMS.each do |tail, name|
+      return name if uri.host&.end_with?(*tail) || url.end_with?(*tail)
     end
+    nil
   end
 
   def match_href? href
@@ -62,6 +68,16 @@ class Box < ActiveRecord::Base
       URI(href).host.split('.').first == URI(url).host.split('.').first
     else
       URI(href).host == URI(url).host
+    end
+  end
+
+  private
+
+  def url_must_be_valid
+    case url
+    when URI.regexp(%w[http https]), DOMAIN_REGEX, nil
+    else
+      errors.add(:url, I18n.t('activerecord.errors.models.box.attributes.url.invalid'))
     end
   end
 
