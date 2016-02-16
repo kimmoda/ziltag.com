@@ -5,10 +5,7 @@ $layout-header-text-color: black;
 @import '~material-design-lite/src/material-design-lite';
 $mdi-font-path: '~mdi/fonts';
 @import '~mdi/scss/materialdesignicons';
-@import './layout';
 @import './blocks';
-@import './single_page';
-@import './photos/show';
 @import './pages/home';
 @import './registrations/edit';
 
