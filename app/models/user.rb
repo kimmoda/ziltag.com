@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   # validations
   validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}, allow_nil: true
   validates :username, presence: true, if: :general_user?
+  validates :password, confirmation: true
+  validate :url_must_be_valid
 
   # callbacks
   after_find :set_box_url
@@ -64,7 +66,7 @@ class User < ActiveRecord::Base
     @box ||= boxes.first || create_box!
   end
 
-private
+  private
 
   def set_box_url
     @url = box.url
@@ -81,6 +83,14 @@ private
 
   def nullify_box box
     @box = nil if box == @box
+  end
+
+  def url_must_be_valid
+    case url
+    when URI.regexp(%w[http https]), Box::DOMAIN_REGEX, nil
+    else
+      errors.add(:url, I18n.t('activerecord.errors.models.box.attributes.url.invalid'))
+    end
   end
 
 end

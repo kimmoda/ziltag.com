@@ -38,8 +38,9 @@
   </div>
   <div class="profile__field hide">
     <%= f.label :url, 'Partner’s domain', class: 'profile__label' %>
-    <%= f.url_field :url, class: 'profile__input' %>
+    <%= f.text_field :url, class: 'profile__input' %>
   </div>
+  <div class="profile__error"><%= f.object.errors&.[](:password).first || f.object.errors&.[](:url).first %></div>
   <div class="profile__sublabel">Plugin script</div>
   <textarea rows="1" onclick="this.focus();this.select()" readonly="readonly" class="profile__script"><script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= f.object.box.token %>"></textarea>
   <% end %>
