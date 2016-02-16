@@ -21,7 +21,8 @@
 # 開發
 
 ```
-$ bundle
+$ bundle install
+$ npm install
 $ bin/rake dev:setup
 $ foreman start
 ```
