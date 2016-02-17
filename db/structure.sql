@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 9.5.0
--- Dumped by pg_dump version 9.5.0
+-- Dumped by pg_dump version 9.5.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -288,7 +288,8 @@ CREATE TABLE tracks (
     token character varying NOT NULL,
     status character varying DEFAULT 'success'::character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    user_agent character varying
 );
 
 
@@ -829,4 +830,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151130194955');
 INSERT INTO schema_migrations (version) VALUES ('20151201074814');
 
 INSERT INTO schema_migrations (version) VALUES ('20160202075115');
+
+INSERT INTO schema_migrations (version) VALUES ('20160217160535');
 
