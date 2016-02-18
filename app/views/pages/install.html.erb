@@ -3,7 +3,7 @@
   <div class="action__title">Thank you. Your plugin is ready!</div>
   <div class="action__subtitle">Copy the script below and install Ziltag Plugin to your website.</div>
   <div class="action__content">
-    <textarea rows="1" onclick="this.focus();this.select()" readonly="readonly" class="script-textarea js-script-textarea"><script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= @box.token %>"></textarea>
+    <textarea rows="1" onclick="this.focus();this.select()" readonly="readonly" class="script-textarea js-script-textarea"><script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= @box.token %>"></script></textarea>
     <div class="action__bar">
       <%= link_to platform_path, class: 'action__left', data: {event: 'click-back'} do %><i class="material-icons">arrow_back</i> back<% end %>
       <div id="copy-button" class="action__right" data-clipboard-text='<script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= @box.token %>">'>Copy</div>
