@@ -1,5 +1,7 @@
 require 'service_url_converter'
 class PagesController < ApplicationController
+  before_action :redirect_to_profile!, if: :user_signed_in?, except: :install
+
   def home
     @guest = Guest.new
     session[:guest] ||= {}
@@ -67,5 +69,11 @@ class PagesController < ApplicationController
   def install
     @box = current_user.box
     track 'visit-installation'
+  end
+
+  private
+
+  def redirect_to_profile!
+    redirect_to edit_user_registration_path
   end
 end
