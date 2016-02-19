@@ -1,5 +1,5 @@
 import '../stylesheets/app.scss'
-import '../images/sticker.png'
+import '../images/favicon.png'
 import '../images/logo.png'
 import '../images/fallback/guest.png'
 import '../images/fallback/default_guest.png'
