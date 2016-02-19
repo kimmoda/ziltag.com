@@ -25,6 +25,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.asset_host = ENV['ASSET_HOST'] || 'localhost:2001'
-  config.action_mailer.default_url_options = {host: 'localhost', port: 2001}
+  config.asset_host = 'https://localhost:2001'
+  config.action_mailer.default_url_options = {host: 'https://localhost', port: 2001}
 end
