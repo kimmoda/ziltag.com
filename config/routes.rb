@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
     controller :pages do
       get :username, :platform, :install
-      patch :username, action: 'update_username'
+      post :username, action: 'update_username'
       post :platform, action: 'update_platform'
       post :register
     end

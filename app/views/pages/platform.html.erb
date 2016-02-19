@@ -16,12 +16,12 @@
       <div class="text-field">
         <i class="text-field__icon material-icons">home</i>
         <%= text_field_tag 'url', nil, id: 'general', class: 'platform__input text-field__input', placeholder: 'Your domain name', autocomplete: 'off', form: 'form', required: true %>
-        <%= text_field_tag 'blog_id', nil, id: 'tumblr', class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
-        <%= text_field_tag 'blog_id', nil, id: 'blogger', class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
+        <%= text_field_tag 'blog_id', nil, id: 'tumblr', required: true, class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
+        <%= text_field_tag 'blog_id', nil, id: 'blogger', required: true, class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
       </div>
     </div>
     <div class="action__bar">
-      <%= link_to root_path, class: 'action__left', data: {event: 'click-back'} do %><i class="material-icons">arrow_back</i> back<% end %>
+      <%= link_to username_path, class: 'action__left', data: {event: 'click-back'} do %><i class="material-icons">arrow_back</i> back<% end %>
       <%= form_tag platform_path, id: 'form' do %>
         <input type="submit" class="action__right" value="Finish">
       <% end %>

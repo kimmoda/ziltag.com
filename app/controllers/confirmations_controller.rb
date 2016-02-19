@@ -12,7 +12,6 @@ class ConfirmationsController < Devise::ConfirmationsController
     self.resource.define_singleton_method(:password_required?){ true }
     if resource.update permitted_params
       resource_class.confirm_by_token(params[resource_name][:confirmation_token])
-      set_flash_message :notice, :confirmed
       sign_in(resource_name, resource)
       render :welcome
       track 'input-password'
