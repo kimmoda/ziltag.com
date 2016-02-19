@@ -1,64 +1,64 @@
 require 'service_url_converter'
 class PagesController < ApplicationController
-  before_action :must_sign_in!, :must_be_content_provider!, only: %i[username update_username platform update_platform install]
-  before_action :must_have_username!, only: %i[platform update_platform install]
-  before_action :must_have_platform!, only: %i[install]
-
   def home
-    @photo = Photo.new
-    @user = ContentProvider.new
+    @guest = Guest.new
     track 'visit-home'
   end
 
   def register
-    @user = User.new params.require(:user).permit(:email, :type)
-    if @user.save
-      sign_in(@user)
+    @guest = Guest.new(email: params.require(:guest)[:email])
+    if @guest.valid_email?
+      session[:guest][:email] = params[:guest][:email]
       redirect_to username_path
       track 'input-email'
     else
+      @error = @guest.user.errors[:email].first
       render :home
       track 'input-email', 'failure'
     end
   end
 
   def username
+    @guest = Guest.new
     track 'visit-username'
-    redirect_to install_path if current_user.username.present?
   end
 
   def update_username
-    if current_user.update params.require(:content_provider).permit(:username)
+    @guest = Guest.new(username: params.require(:guest)[:username])
+    if @guest.valid_username?
+      session[:guest][:username] = params[:guest][:username]
       redirect_to platform_path
       track 'input-username'
     else
-      flash.now[:alert] = 'Please check your input value.'
+      @error = @guest.user.errors[:username].first
       render :username
       track 'input-username', 'failure'
     end
   end
 
   def platform
+    @guest = Guest.new
     track 'visit-site-info'
   end
 
   def update_platform
-    box = current_user.box
-
-    if params[:platform] == 'general' || params[:blog_id].present?
-      if box.update url: ServiceURLConverter.convert(params)
-        redirect_to install_path
-        track 'input-site-info'
-      else box.errors[:url].first
-        @error = box.errors[:url].first
-        render :platform
-        track 'input-site-info', 'failure'
-      end
+    url = ServiceURLConverter.convert(params)
+    @guest = Guest.new(url: url)
+    if @guest.valid_url?
+      session[:guest][:url] = url
+      sign_in(Guest.new(session[:guest].symbolize_keys).create_user!)
+      session.delete :guest
+      redirect_to install_path
+      track 'input-site-info'
     else
-      @error = 'Blog ID can not be blank'
+      @error = @guest.box.errors[:url].first
       render :platform
       track 'input-site-info', 'failure'
     end
+  rescue ServiceURLConverter::BlankBlogID
+    @error = 'Blog ID can not be blank'
+    render :platform
+    track 'input-site-info', 'failure'
   end
 
   def install
