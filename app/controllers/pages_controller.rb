@@ -2,6 +2,7 @@ require 'service_url_converter'
 class PagesController < ApplicationController
   def home
     @guest = Guest.new
+    session[:guest] ||= {}
     track 'visit-home'
   end
 
@@ -42,46 +43,29 @@ class PagesController < ApplicationController
   end
 
   def update_platform
-    url = ServiceURLConverter.convert(params)
-    @guest = Guest.new(url: url)
-    if @guest.valid_url?
-      session[:guest][:url] = url
-      sign_in(Guest.new(session[:guest].symbolize_keys).create_user!)
-      session.delete :guest
-      redirect_to install_path
-      track 'input-site-info'
+    if params[:platform] == 'general' || params[:blog_id].present?
+      url = ServiceURLConverter.convert(params)
+      @guest = Guest.new(url: url)
+      if @guest.valid_url?
+        session[:guest][:url] = url
+        sign_in(Guest.new(session[:guest].symbolize_keys).create_user!)
+        session.delete :guest
+        redirect_to install_path
+        track 'input-site-info'
+      else
+        @error = @guest.box.errors[:url].first
+        render :platform
+        track 'input-site-info', 'failure'
+      end
     else
-      @error = @guest.box.errors[:url].first
+      @error = 'Blog ID can not be blank'
       render :platform
       track 'input-site-info', 'failure'
     end
-  rescue ServiceURLConverter::BlankBlogID
-    @error = 'Blog ID can not be blank'
-    render :platform
-    track 'input-site-info', 'failure'
   end
 
   def install
     @box = current_user.box
     track 'visit-installation'
   end
-
-private
-
-  def must_sign_in!
-    redirect_to root_path, alert: 'You are not signed in.' unless user_signed_in?
-  end
-
-  def must_be_content_provider!
-    redirect_to root_path, alert: 'You are not a content provider.' unless current_user.is_a? ContentProvider
-  end
-
-  def must_have_username!
-    redirect_to username_path if current_user.username.blank?
-  end
-
-  def must_have_platform!
-    redirect_to platform_path if current_user.box.url.blank?
-  end
-
 end
