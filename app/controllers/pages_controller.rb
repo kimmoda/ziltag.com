@@ -1,6 +1,6 @@
 require 'service_url_converter'
 class PagesController < ApplicationController
-  before_action :redirect_to_profile!, if: :user_signed_in?, except: :install
+  before_action :redirect_to_profile!, if: :user_signed_in?, except: %i[install home]
 
   def home
     @guest = Guest.new
