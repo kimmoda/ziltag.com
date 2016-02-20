@@ -37,6 +37,8 @@ module WebpackStats
   end
 end
 
-ActiveSupport.on_load(:action_view) do
-  prepend WebpackStats::Helper
+ActiveSupport.on_load(:after_initialize) do
+  ActiveSupport.on_load(:action_view) do
+    include WebpackStats::Helper
+  end
 end
