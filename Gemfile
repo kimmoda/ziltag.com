@@ -15,6 +15,7 @@ gem 'fog'
 gem 'queue_classic'
 gem 'eventmachine'
 gem 'administrate'
+gem 'webpack_stats'
 
 group :development do
   gem 'capistrano'
