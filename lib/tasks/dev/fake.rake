@@ -4,7 +4,7 @@ namespace 'dev:fake' do
     fakeup '產生會員資料' do
       @users = []
       10.times do |i|
-        user = User.new(email: Faker::Internet.safe_email, username: Faker::Internet.user_name(nil, ['_']), password: 'password', avatar: @images.sample)
+        user = User.new(email: Faker::Internet.safe_email, username: Faker::Internet.user_name(8, ['_']), password: 'password', avatar: @images.sample)
         user.skip_confirmation!
         user.save!
         @users << user
