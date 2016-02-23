@@ -1,4 +1,4 @@
-require "administrate/fields/base"
+require 'administrate/field/string'
 
 class InetField < Administrate::Field::String
   def self.searchable?
