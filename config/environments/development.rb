@@ -14,7 +14,13 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {host: 'https://localhost', port: 2001}
+
+  # There is a free hinet SMTP server, it's convenient for testing stylesheets
+  # in web mails like GMail, Yahoo, etc.
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {address: 'msa.hinet.net'}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -26,5 +32,4 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.asset_host = 'https://localhost:2001'
-  config.action_mailer.default_url_options = {host: 'https://localhost', port: 2001}
 end
