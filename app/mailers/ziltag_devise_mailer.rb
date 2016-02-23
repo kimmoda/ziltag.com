@@ -16,16 +16,6 @@ class ZiltagDeviseMailer < Devise::Mailer
 
   private
 
-  def render_inline_css template
-    premailer = Premailer.new(render_to_string(template),
-      with_html_string: true,
-      remove_classes: true,
-      css_string: File.read(Rails.root.join('app/assets/stylesheets/mailer.css')),
-      remove_scripts: false
-    )
-    render html: premailer.to_inline_css.html_safe
-  end
-
   def confirmation_template user
     case user
     when ContentProvider then :confirmation_instructions_for_partner
