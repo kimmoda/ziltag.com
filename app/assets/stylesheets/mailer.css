@@ -1,0 +1,90 @@
+.mail {
+  font-family: Roboto, Tahoma, Geneva, sans-serif;
+  margin: 0 auto;
+  width: 670px;
+  background: white;
+  min-height: 300px;
+  font-size: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 2px solid rgba(0, 0, 0, 0.54);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.54);
+}
+.mail a {
+  text-decoration: none;
+}
+.mail__header {
+  height: 66px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.mail__logo {
+  display: inline-block;
+  background-image: url('/assets/logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 98px;
+  height: 31px;
+  margin-top: 16px;
+  margin-left: 30px;
+  vertical-align: bottom;
+}
+.mail__title {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 150px;
+}
+.mail__content {
+  padding: 30px 120px;
+}
+.mail__footer {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 0 50px;
+  padding-top: 10px;
+  height: 50px;
+}
+.mail__footer-left {
+  float: left;
+}
+.mail__footer-right {
+  float: right;
+}
+.mail__button {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.26);
+  padding: 10px 0;
+}
+.mail__confirm {
+  margin-top: 30px;
+}
+.mail__table {
+  margin: 10px auto;
+}
+.mail__table th {
+  font-weight: 500;
+  font-size: 14px;
+  width: 80px;
+}
+.mail__table td {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.mail__table tr {
+  height: 40px;
+}
+.mail__script {
+  width: 100%;
+  resize: none;
+  outline: none;
+  padding: 10px 5px;
+  color: rgba(0, 0, 0, .54);
+  font-size: 12px;
+  overflow: hidden;
+}

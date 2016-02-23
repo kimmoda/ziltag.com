@@ -16,6 +16,7 @@ gem 'queue_classic'
 gem 'eventmachine'
 gem 'administrate'
 gem 'webpack_stats'
+gem 'premailer'
 
 group :development do
   gem 'capistrano'
