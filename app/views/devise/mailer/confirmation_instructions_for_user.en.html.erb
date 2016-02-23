@@ -1,0 +1,19 @@
+<p>Dear <b><%= @username %></b>,</p>
+<p>Thank you for joining Ziltag. Here is your registration details.</p>
+<table class="mail__table">
+  <tbody align="left">
+    <tr>
+      <th>Username</th>
+      <td><%= @username %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mail__confirm">
+  <p>In order to get started, please confirm your email address.</p>
+  <%= link_to 'Confirm Email', confirmation_url(@resource, confirmation_token: @token), class: 'mail__button' %>
+</div>

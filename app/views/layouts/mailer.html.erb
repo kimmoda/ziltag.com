@@ -1,5 +1,21 @@
 <html>
   <body>
-    <%= yield %>
+    <div class="mail">
+      <div class="mail__header">
+        <div class="mail__logo"></div>
+        <div class="mail__title"><%= message.subject %></div>
+      </div>
+      <div class="mail__content">
+        <%= yield %>
+      </div>
+      <div class="mail__footer">
+        <% if content_for? :footer %>
+          <%= content_for :footer %>
+        <% else %>
+          <div class="mail__footer-left">© Ziltag Inc., 2016. All Rights Reserved.</div>
+          <div class="mail__footer-right">Bring Ziltag to your website! Join <%= link_to 'Ziltag Partner', root_url %>.</div>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>
