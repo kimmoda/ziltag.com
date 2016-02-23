@@ -1,10 +1,10 @@
-<p>Dear <b><%= @username %></b>,</p>
+<p>Dear <b><%= @resource.username %></b>,</p>
 <p>Thank you for joining Ziltag Partner. Here is your registration details.</p>
 <table class="mail__table">
   <tbody align="left">
     <tr>
       <th>Username</th>
-      <td><%= @username %></td>
+      <td><%= @resource.username %></td>
     </tr>
     <tr>
       <th>Email</th>
@@ -22,7 +22,3 @@
   <p>In order to get started, please confirm your email address.</p>
   <%= link_to 'Confirm Email', confirmation_url(@resource, confirmation_token: @token), class: 'mail__button' %>
 </div>
-
-<% content_for :footer do %>
-  <div class="mail__footer-left">© Ziltag Inc., 2016. All Rights Reserved.</div>
-<% end %>
