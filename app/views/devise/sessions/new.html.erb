@@ -1,6 +1,6 @@
 <div class="cover cover--blur"></div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'action'}) do |f| %>
-  <%= link_to :back, class: 'action__close' do %><i class="action__close material-icons">close</i><% end %>
+  <%= link_to root_path, class: 'action__close' do %><i class="action__close material-icons">close</i><% end %>
   <div class="action__content">
     <div class="action__text-field text-field">
       <i class="text-field__icon material-icons">email</i>
@@ -14,6 +14,6 @@
       <%= link_to 'Fotget Password?', new_user_password_path, class: 'action__left' %>
       <%= f.submit 'Sign in', class: 'action__right' %>
     </div>
-    <% if alert %><div class="action__error">The email and password you entered don't match.</div><% end %>
+    <% if request.env['warden.options']&.[](:message) == :not_found_in_database %><div class="action__error">The email and password you entered don't match.</div><% end %>
   </div>
 <% end %>
