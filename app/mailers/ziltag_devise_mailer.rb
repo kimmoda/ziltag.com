@@ -14,6 +14,16 @@ class ZiltagDeviseMailer < Devise::Mailer
     end
   end
 
+  def reset_password_instructions(record, token, opts = {})
+    @token = token
+    initialize_from_record record
+    mail headers_for(__method__, opts) do |format|
+      format.html do
+        render_inline_css __method__
+      end
+    end
+  end
+
   private
 
   def confirmation_template user
