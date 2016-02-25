@@ -12,7 +12,7 @@ module ActionMailerExt
   private
 
   def css_string
-    load_css_string! if !Rails.env.production?
+    load_css_string! if !Rails.env.production? || !ActionMailerExt.class_variable_defined?(:@@css_string)
     @@css_string
   end
 
