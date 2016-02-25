@@ -11,7 +11,7 @@
       <%= f.password_field :password, class: 'text-field__input', placeholder: 'Password' %>
     </div>
     <div class="action__bar">
-      <a class="action__left" href="#">Forget Password?</a>
+      <%= link_to 'Fotget Password?', new_user_password_path, class: 'action__left' %>
       <%= f.submit 'Sign in', class: 'action__right' %>
     </div>
     <% if alert %><div class="action__error">The email and password you entered don't match.</div><% end %>
