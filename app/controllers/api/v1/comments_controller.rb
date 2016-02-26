@@ -9,7 +9,7 @@ class Api::V1::CommentsController < ApiController
   def create
     @comment = current_user.comments.new comment_params
     if @comment.save
-      NotifyUsers.new(@comment).call
+      NotifyOfComment.new(@comment).call
       render :show
     else
       render json: {errors: @comment.errors.full_messages}
