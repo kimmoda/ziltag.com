@@ -9,9 +9,15 @@ class ConfirmationsController < Devise::ConfirmationsController
   # PUT /confirm
   def confirm
     self.resource = resource_class.find_first_by_auth_conditions(confirmation_token: params[resource_name][:confirmation_token])
-    self.resource.define_singleton_method(:password_required?){ true }
+    resource.define_singleton_method(:password_required?){ true }
     if resource.update permitted_params
-      resource_class.confirm_by_token(params[resource_name][:confirmation_token])
+      unless resource.confirmed?
+        resource_class.confirm_by_token(params[resource_name][:confirmation_token])
+        resource.reload
+        resource.comments.each do |comment|
+          NotifyUsers.new(comment).call
+        end
+      end
       sign_in(resource_name, resource)
       render :welcome
       track 'input-password'
