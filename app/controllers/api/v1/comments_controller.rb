@@ -9,6 +9,7 @@ class Api::V1::CommentsController < ApiController
   def create
     @comment = current_user.comments.new comment_params
     if @comment.save
+      Subscribe.new(current_user, @comment.ziltag)
       NotifyOfComment.new(@comment).call
       render :show
     else
