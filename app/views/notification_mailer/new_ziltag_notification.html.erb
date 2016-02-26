@@ -1,0 +1,18 @@
+<p>Dear <b><%= @user.username %></b>,</p>
+<p>There is a new ziltag on your website!</p>
+<%= image_tag @ziltag.share_image, class: 'mail__share-image' %>
+<div class="mail__comment">
+  <%= image_tag @ziltag.user.avatar.thumb.url, class: 'mail__comment-avatar' %>
+  <div class="mail__comment-container">
+    <div class="mail__comment-username"><%= @ziltag.user.username %></div>
+    <div class="mail__comment-time"><%= time_ago_in_words @ziltag.created_at %></div>
+    <div class="mail__comment-content"><%= @ziltag.content %></div>
+  </div>
+  <%= link_to url_for("/ziltags/#{@ziltag.slug}"), class: 'mail__reply' do %>
+    <%= image_tag 'reply.png' %>Reply
+  <% end %>
+</div>
+
+<% content_for :bottom do %>
+  <%= link_to 'Unsubscribe', unsubscribe_url(token: @unsubscribe_token), class: 'mail__unsubscribe' %>
+<% end %>
