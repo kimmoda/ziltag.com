@@ -117,3 +117,9 @@
 .mail__reply img {
   vertical-align: middle;
 }
+.mail__unsubscribe {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  display: block;
+  text-align: right;
+}
