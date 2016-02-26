@@ -11,4 +11,5 @@
   <%= link_to url_for("/ziltags/#{@comment.ziltag.slug}"), class: 'mail__reply' do %>
     <%= image_tag 'reply.png' %>Reply
   <% end %>
+  <p><%= link_to 'Unsubscribe', unsubscribe_url(token: @unsubscribe_token) %></p>
 </div>
