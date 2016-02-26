@@ -13,7 +13,6 @@ class UserDashboard < Administrate::BaseDashboard
     email: Field::Email,
     avatar: Field::Image,
     type: Field::String,
-    notification: Field::Boolean,
     ziltags: Field::HasMany,
     comments: Field::HasMany,
     boxes: Field::HasMany,
@@ -62,7 +61,6 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :avatar,
     :username,
-    :type,
-    :notification,
+    :type
   ]
 end
