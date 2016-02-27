@@ -53,11 +53,14 @@ class Box < ActiveRecord::Base
     end
   end
 
+  def host_name
+    URI(url).host || url
+  end
+
   def service
     return nil if url.blank?
-    uri = URI(url)
     PLATFORMS.each do |tail, name|
-      return name if uri.host&.end_with?(*tail) || url.end_with?(*tail)
+      return name if host_name.end_with?(*tail)
     end
     nil
   end
@@ -65,9 +68,9 @@ class Box < ActiveRecord::Base
   def match_href? href
     case service
     when 'blogger'
-      URI(href).host.split('.').first == URI(url).host.split('.').first
+      URI(href).host.split('.').first == host_name.split('.').first
     else
-      URI(href).host == URI(url).host
+      URI(href).host == host_name
     end
   end
 
