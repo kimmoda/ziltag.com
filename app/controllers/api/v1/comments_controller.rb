@@ -9,7 +9,8 @@ class Api::V1::CommentsController < ApiController
   def create
     @comment = current_user.comments.new comment_params
     if @comment.save
-      @comment.notify_users if current_user.confirmed?
+      Subscribe.new(current_user, @comment.ziltag)
+      NotifyOfComment.new(@comment).call
       render :show
     else
       render json: {errors: @comment.errors.full_messages}

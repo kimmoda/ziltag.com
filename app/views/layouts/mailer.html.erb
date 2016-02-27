@@ -11,6 +11,7 @@
         <div class="mail__footer-left">© Ziltag Inc., 2016. All Rights Reserved.</div>
         <% if @partner_link %><div class="mail__footer-right">Bring Ziltag to your website! Join <%= link_to 'Ziltag Partner', root_url %>.</div><% end %>
       </div>
+      <%= content_for :bottom if content_for? :bottom %>
     </div>
   </body>
 </html>

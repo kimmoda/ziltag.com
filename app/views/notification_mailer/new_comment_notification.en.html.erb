@@ -9,6 +9,7 @@
     <div class="mail__comment-content"><%= @comment.content %></div>
   </div>
   <%= link_to url_for("/ziltags/#{@comment.ziltag.slug}"), class: 'mail__reply' do %>
-    <%= image_tag 'reply.png' %>Reply
+    <%= image_tag 'reply.png' %>Reply Comment
   <% end %>
+  <div class="mail__unfollow">Don't want to receive notification from this thread? <%= link_to 'Unfollow', unsubscribe_url(token: @unsubscribe_token) %></div>
 </div>

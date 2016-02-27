@@ -336,8 +336,7 @@ CREATE TABLE users (
     updated_at timestamp without time zone,
     avatar character varying,
     username character varying,
-    type character varying,
-    notification boolean DEFAULT true NOT NULL
+    type character varying
 );
 
 
@@ -374,7 +373,8 @@ CREATE TABLE ziltags (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     slug character varying NOT NULL,
-    share_image character varying
+    share_image character varying,
+    unsubscribers integer[] DEFAULT '{}'::integer[]
 );
 
 
@@ -643,6 +643,13 @@ CREATE INDEX index_ziltags_on_slug ON ziltags USING btree (slug);
 
 
 --
+-- Name: index_ziltags_on_unsubscribers; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_ziltags_on_unsubscribers ON ziltags USING btree (unsubscribers);
+
+
+--
 -- Name: index_ziltags_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -832,4 +839,8 @@ INSERT INTO schema_migrations (version) VALUES ('20151201074814');
 INSERT INTO schema_migrations (version) VALUES ('20160202075115');
 
 INSERT INTO schema_migrations (version) VALUES ('20160217160535');
+
+INSERT INTO schema_migrations (version) VALUES ('20160226055302');
+
+INSERT INTO schema_migrations (version) VALUES ('20160226063409');
 

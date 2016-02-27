@@ -11,6 +11,8 @@ class Comment < ActiveRecord::Base
   # associations
   belongs_to :user
   belongs_to :ziltag
+  has_many :siblings, ->(comment){ where.not(id: comment.id) }, through: :ziltag, source: :comments
+  has_many :sibling_commenters, ->(comment){ where.not('users.id': comment.user_id) }, through: :siblings, source: :user
 
   # validations
   validates :ziltag, :user, :content, presence: true
@@ -23,13 +25,6 @@ class Comment < ActiveRecord::Base
   # other
   def to_s
     content
-  end
-
-  def notify_users
-    users = ziltag.comments.includes(:user).map(&:user) << ziltag.user
-    users.reject!{|u| u == user || !u.notification }
-    users.uniq!
-    users.each{ |user| NotificationMailer.new_comment_notification(user, self).deliver_later }
   end
 
 private

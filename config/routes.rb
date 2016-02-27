@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /zh-TW|ja/ do
     root 'pages#home'
+    get :unsubscribe, controller: :subscribtion
 
     controller :pages do
       get :username, :platform, :install
