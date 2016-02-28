@@ -1,0 +1,31 @@
+<div class="cover cover--blur"></div>
+<div class="action">
+  <div class="action__title">Thank you for being a Ziltag partner!</div>
+  <div class="action__subtitle">To customize your plugin, we need to learn more about your website.</div>
+  <div class="action__content">
+    <div class="platform js-platform">
+      <div class="platform__step">Step 1. Select your platform.</div>
+      <ul class="platform__list">
+        <li class="platform__item platform__item--selected platform__item--general" data-selector="#general" data-type="general">General</li>
+        <li class="platform__item platform__item--tumblr" data-selector="#tumblr" data-type="tumblr">Tumblr</li>
+        <li class="platform__item platform__item--blogger" data-selector="#blogger" data-type="blogger">Blogger</li>
+      </ul>
+      <div class="platform__step">Step 2. Fill the information.</div>
+      <%= hidden_field_tag 'platform', 'general', form: 'form', class: 'platform__type-field' %>
+
+      <div class="text-field">
+        <i class="text-field__icon material-icons">home</i>
+        <%= text_field_tag 'url', nil, id: 'general', class: 'platform__input text-field__input', placeholder: 'Your domain name', autocomplete: 'off', form: 'form', required: true %>
+        <%= text_field_tag 'blog_id', nil, id: 'tumblr', required: true, class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
+        <%= text_field_tag 'blog_id', nil, id: 'blogger', required: true, class: 'platform__input text-field__input hide', disabled: true, placeholder: 'Blog ID', autocomplete: 'off', form: 'form' %>
+      </div>
+    </div>
+    <div class="action__bar">
+      <%= link_to :back, class: 'action__left' do %><i class="material-icons">arrow_back</i> back<% end %>
+      <%= form_tag upgrade_path, id: 'form' do %>
+        <input type="submit" class="action__right" value="Finish">
+      <% end %>
+    </div>
+    <% if @error %><div class="action__error"><%= @error %></div><% end %>
+  </div>
+</div>
