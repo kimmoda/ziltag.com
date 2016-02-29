@@ -16,7 +16,6 @@
 .mail__header {
   height: 66px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  background-image: url('/assets/logo.png');
   background-repeat: no-repeat;
   background-position: 30px center;
   font-size: 20px;
