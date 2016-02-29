@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
   end
 
   def send_devise_notification(notification, *args)
-    devise_mailer.send(notification, self, *args).deliver_later
-  end if Rails.env.production?
+    devise_mailer.send(notification, self, *args).deliver_later(wait: 5.seconds)
+  end
 
   def box
     @box ||= boxes.first || create_box!

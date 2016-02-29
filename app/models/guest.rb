@@ -4,8 +4,8 @@ class Guest
 
   def initialize(email: nil, username: nil, url: nil)
     @email, @username, @url = email, username, url
-    @user = ContentProvider.new(email: email, username: username)
-    @box = @user.boxes.new(url: url)
+    @user = ContentProvider.new(email: email, username: username, url: url)
+    @box = Box.new(url: url)
   end
 
   def valid_email?
@@ -21,7 +21,10 @@ class Guest
   end
 
   def create_user!
-    @user.save!
+    User.transaction do
+      @user.save!
+      @user.box.update!(url: @box.url)
+    end
     @user
   end
 end
