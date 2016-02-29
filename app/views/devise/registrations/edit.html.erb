@@ -42,7 +42,7 @@
   </div>
   <div class="profile__error"><%= f.object.errors&.[](:password).first || f.object.errors&.[](:url).first %></div>
   <div class="profile__sublabel">Plugin script</div>
-  <textarea rows="2" onclick="this.focus();this.select()" readonly="readonly" class="profile__script"><script src="https://<%= request.host_with_port + '/plugin.js' %>" data-ziltag="<%= f.object.box.token %>"></script></textarea>
+  <textarea rows="2" onclick="this.focus();this.select()" readonly="readonly" class="profile__script"><%= copy_script_tag f.object.box.token %></textarea>
   <% end %>
   <div class="profile__divider"></div>
   <div class="profile__actions">
