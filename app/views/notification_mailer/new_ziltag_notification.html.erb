@@ -8,11 +8,8 @@
     <div class="mail__comment-time"><%= time_ago_in_words @ziltag.created_at %></div>
     <div class="mail__comment-content"><%= @ziltag.content %></div>
   </div>
-  <%= link_to url_for("/ziltags/#{@ziltag.slug}"), class: 'mail__reply' do %>
+  <%= link_to File.join(Rails.configuration.action_mailer.asset_host, "/ziltags/#{@ziltag.slug}"), class: 'mail__reply' do %>
     <%= image_tag 'reply.png' %>Reply
   <% end %>
+  <div class="mail__unfollow">Don't want to receive notification from this thread? <%= link_to 'Unfollow', unsubscribe_url(token: @unsubscribe_token) %></div>
 </div>
-
-<% content_for :bottom do %>
-  <%= link_to 'Unsubscribe', unsubscribe_url(token: @unsubscribe_token), class: 'mail__unsubscribe' %>
-<% end %>
