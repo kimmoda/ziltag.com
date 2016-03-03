@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       post :upgrade
     end
 
-    devise_for :users, controllers: {confirmations: 'confirmations', registrations: 'registrations'}
+    devise_for :users, controllers: {confirmations: 'confirmations', registrations: 'registrations', passwords: 'passwords'}
     devise_scope :user do
       patch 'confirm' => 'confirmations#confirm'
     end
