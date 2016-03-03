@@ -11,7 +11,7 @@
       <%= f.password_field :password, class: 'text-field__input', placeholder: 'Password' %>
     </div>
     <div class="action__bar">
-      <%= link_to 'Fotget Password?', new_user_password_path, class: 'action__left' %>
+      <%= link_to 'Forgot Password?', new_user_password_path, class: 'action__left' %>
       <%= f.submit 'Sign in', class: 'action__right' %>
     </div>
     <% if request.env['warden.options']&.[](:message) == :not_found_in_database %><div class="action__error">The email and password you entered don't match.</div><% end %>
