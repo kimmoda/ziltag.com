@@ -13,7 +13,7 @@ class Api::V1::Users::ConfirmationsController < Devise::ConfirmationsController
     if successfully_sent?(user)
       render json: {}
     else
-      render json: {errors: user.errors.full_messages}
+      render json: {error: user.errors.full_messages.first}
     end
   end
 
