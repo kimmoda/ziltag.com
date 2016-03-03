@@ -1,7 +1,11 @@
 <div class="cover cover--blur"></div>
 <div class="action">
   <div class="action__title">Thank you. Your plugin is ready!</div>
-  <div class="action__subtitle">Copy the script below and install Ziltag Plugin to your website.</div>
+  <% if current_user.confirmed? %>
+    <div class="action__subtitle">Copy the script below and install Ziltag Plugin to your website.</div>
+  <% else %>
+    <div class="action__subtitle">A verification email has been sent. Please check you inbox.</div>
+  <% end %>
   <div class="action__content">
     <textarea rows="1" onclick="this.focus();this.select()" readonly="readonly" class="script-textarea js-script-textarea"><%= copy_script_tag @box.token %></textarea>
     <div class="action__bar">
