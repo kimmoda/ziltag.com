@@ -5,7 +5,7 @@ if (__PRODUCTION__) {
   var ExtractTextPlugin = require('extract-text-webpack-plugin')
 }
 
-var filename = __PRODUCTION__ ? 'app-[hash].js' : 'app.js'
+var filename = __PRODUCTION__ ? '[name]-[hash].js' : '[name].js'
 var styleLoader = __PRODUCTION__ ? ExtractTextPlugin.extract('style', 'css!postcss!sass') : 'style!css!postcss!sass'
 var fileLoader = __PRODUCTION__ ? 'file?name=[name]-[hash].[ext]' : 'file?name=[name].[ext]'
 var plugins = [
@@ -24,7 +24,10 @@ if (__PRODUCTION__) {
 }
 
 module.exports = {
-  entry: './app/assets/javascripts/app.js',
+  entry: {
+    app: './app/assets/javascripts/app.js',
+    mobile: './app/assets/javascripts/mobile.js'
+  },
   output: {
     path: __dirname + '/public/assets',
     filename: filename,
@@ -33,7 +36,7 @@ module.exports = {
   plugins: plugins,
   module: {
     loaders: [{
-      test: /\.scss$/,
+      test: /\.s?css$/,
       loader: styleLoader
     }, {
       test: /\.(jpg|png|gif|ttf|eot|svg|woff2?|swf)(\?.+)?$/,

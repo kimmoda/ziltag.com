@@ -1,0 +1,43 @@
+.ziltag-mobile-intro {
+  text-align: center;
+  font-family: Roboto;
+  background-color: white;
+  width: 100%;
+  &__wrapper {
+    width: 280px;
+    margin: 0 auto;
+  }
+  &__icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    &--cupcake {
+      background-image: url('./cupcake.svg');
+    }
+    &--gallery {
+      background-image: url('./gallery.svg');
+    }
+    &--clock {
+      background-image: url('./clock.svg');
+    }
+    &--conversation {
+      background-image: url('./conversation.svg');
+    }
+    &--thumbsup {
+      background-image: url('./thumbsup.svg');
+    }
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 45px;
+    letter-spacing: 0.89px;
+    text-align: center;
+  }
+  &__content {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

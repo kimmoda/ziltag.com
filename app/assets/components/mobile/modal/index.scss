@@ -1,0 +1,49 @@
+.ziltag-mobile-modal {
+  &__header {
+    position: fixed;
+    height: 64px;
+    width: 100vw;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    &--logo {
+      background-color: white;
+      background-image: url('../../../images/logo.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  &__header-dismiss{
+    position: absolute;
+    background-image: url('./dismiss.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 23px;
+    height: 100%;
+    background-color: inherit;
+    left: 20px;
+  }
+  &__header-text{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 64px;
+    text-align: center;
+    letter-spacing: 1.7px;
+    color: rgba(0, 0, 0, .54);
+  }
+  &__block {
+    min-height: 200px;
+    height: 60vh;
+    width: 100vw;
+    top: 50vh;
+    margin-top: -25vh;
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    overflow-y: scroll;
+    iframe {
+      border: none;
+    }
+  }
+}

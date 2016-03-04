@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  MOBILE_USER_AGENTS_REGEXP =  /palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|audiovox|motorola|samsung|telit|upg1|windows ce|ucweb|astel|plucker|x320|x240|j2me|sgh|portable|sprint|docomo|kddi|softbank|android|mmp|pdxgw|netfront|xiino|vodafone|portalmmm|sagem|mot-|sie-|ipod|webos|amoi|novarra|cdm|alcatel|pocket|ipad|iphone|mobileexplorer|mobile|zune/i
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
@@ -6,6 +7,10 @@ class ApplicationController < ActionController::Base
   after_action :enable_iframe # TODO: It's not safe
 
 protected
+
+  def mobile?
+    request.user_agent =~ MOBILE_USER_AGENTS_REGEXP
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username << :email << :type

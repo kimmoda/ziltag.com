@@ -1,0 +1,24 @@
+.ziltag-mobile-button {
+  box-sizing: border-box;
+  min-width: 136px;
+  padding: 0 15px;
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
+  color: #D50000;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 7px;
+  letter-spacing: 1px;
+  text-align: center;
+  border: none;
+  display: block;
+  &:focus {
+    outline: none;
+  }
+  &--dark {
+    background: none;
+    border: solid 1px white;
+    color: white;
+  }
+}
