@@ -1,4 +1,5 @@
 const __PRODUCTION__ = process.env.WEBPACK_ENV == 'production'
+var webpack = require('webpack')
 
 if (__PRODUCTION__) {
   var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
@@ -13,7 +14,10 @@ var plugins = [
     this.plugin('done', function(stats) {
       require('fs').writeFileSync(__dirname + '/stats.json', JSON.stringify(stats.toJson()))
     })
-  }
+  },
+  new webpack.ProvidePlugin({
+    'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+  })
 ]
 
 if (__PRODUCTION__) {
