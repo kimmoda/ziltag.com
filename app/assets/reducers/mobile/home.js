@@ -1,4 +1,4 @@
-function modal(state='JOIN', action) {
+function modal(state, action) {
   switch (action.type) {
     case 'WATCH_VIDEO':
       return 'VIDEO'
