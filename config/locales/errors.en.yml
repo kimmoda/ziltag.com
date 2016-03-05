@@ -12,6 +12,7 @@ en:
             email:
               invalid: Invalid email format
               taken: This email has been taken.
+              blank: Email can't be blank.
             username:
               taken: This username has been taken.
               invalid: "Only these characters are allowed: letters, numbers, and underscore."

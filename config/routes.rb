@@ -1,24 +1,27 @@
 Rails.application.routes.draw do
-  scope '(:locale)', locale: /zh-TW|ja/ do
+  root 'pages#home'
+  get :unsubscribe, controller: :subscribtion
+
+  controller :pages do
+    get :username, :platform, :install
+    post :username, action: 'update_username'
+    post :platform, action: 'update_platform'
+    post :register
+  end
+
+  controller :upgrade do
+    get :upgrade, action: :show
+    post :upgrade
+  end
+
+  devise_for :users, controllers: {confirmations: 'confirmations', registrations: 'registrations', passwords: 'passwords'}
+  devise_scope :user do
+    patch 'confirm' => 'confirmations#confirm'
+  end
+
+  namespace 'mobile', path: 'm' do
     root 'pages#home'
-    get :unsubscribe, controller: :subscribtion
-
-    controller :pages do
-      get :username, :platform, :install
-      post :username, action: 'update_username'
-      post :platform, action: 'update_platform'
-      post :register
-    end
-
-    controller :upgrade do
-      get :upgrade, action: :show
-      post :upgrade
-    end
-
-    devise_for :users, controllers: {confirmations: 'confirmations', registrations: 'registrations', passwords: 'passwords'}
-    devise_scope :user do
-      patch 'confirm' => 'confirmations#confirm'
-    end
+    post 'register' => 'pages#register'
   end
 
   match '/api/:version/*path' => 'api#options', via: 'options'

@@ -1,5 +1,6 @@
 require 'service_url_converter'
 class PagesController < ApplicationController
+  before_action :to_mobile, if: :mobile?
   before_action :authenticate_user!, only: :install
   before_action :redirect_to_profile!, if: :user_signed_in?, except: %i[install home]
 
@@ -76,5 +77,9 @@ class PagesController < ApplicationController
 
   def redirect_to_profile!
     redirect_to edit_user_registration_path
+  end
+
+  def to_mobile
+    redirect_to mobile_root_path
   end
 end
