@@ -91,7 +91,7 @@ export default class Home extends React.Component {
               <div className="ziltag-mobile-home__color-quote">“Our favorite part of Ziltag is that it helps us to present recipe, video, and product information in just one photo.”</div>
               <div className="ziltag-mobile-home__color-name">—Vivian Chou, Co Founder</div>
               <div className="ziltag-mobile-home__color-button">
-                <Button name="VISIT WEB" theme="dark" />
+                <a className="ziltag-mobile-button ziltag-mobile-button--dark" href ="http://flamboinc.tumblr.com/">VISIT WEB</a>
               </div>
             </ColorBoard>
           </div>
