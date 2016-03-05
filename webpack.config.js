@@ -18,7 +18,7 @@ var plugins = [
 
 if (__PRODUCTION__) {
   plugins.push(
-    new ExtractTextPlugin('app-[hash].css'),
+    new ExtractTextPlugin('[name]-[hash].css'),
     new UglifyJsPlugin()
   )
 }
