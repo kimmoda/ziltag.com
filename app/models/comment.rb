@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
 
   # validations
   validates :ziltag, :user, :content, presence: true
+  validates :content, length: { maximum: 5000 }
 
   # callbacks
   after_create :notify_create

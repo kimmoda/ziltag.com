@@ -16,6 +16,7 @@ class Ziltag < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   # validations
+  validates :content, length: { maximum: 5000 }
 
   # callbacks
   after_save :generate_share_image_later, if: ->{ photo.image? && (!share_image? || x_changed? || y_changed?) }
