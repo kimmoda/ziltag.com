@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.0
+-- Dumped from database version 9.5.1
 -- Dumped by pg_dump version 9.5.1
 
 SET statement_timeout = 0;
@@ -289,7 +289,8 @@ CREATE TABLE tracks (
     status character varying DEFAULT 'success'::character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    user_agent character varying
+    user_agent character varying,
+    referer character varying
 );
 
 
@@ -843,4 +844,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160217160535');
 INSERT INTO schema_migrations (version) VALUES ('20160226055302');
 
 INSERT INTO schema_migrations (version) VALUES ('20160226063409');
+
+INSERT INTO schema_migrations (version) VALUES ('20160311073414');
 

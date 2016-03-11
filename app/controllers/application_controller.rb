@@ -41,7 +41,13 @@ protected
   end
 
   def track event, status = 'success'
-    Track.create event: event, status: status, token: (session[:tracking_token] ||= SecureRandom.hex), user_agent: request.headers['User-Agent']
+    Track.create({
+      event: event,
+      status: status,
+      token: (session[:tracking_token] ||= SecureRandom.hex),
+      user_agent: request.headers['User-Agent'],
+      referer: request.headers['Referer']
+    })
   end
 
 private
