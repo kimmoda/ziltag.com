@@ -5,6 +5,7 @@ import '../images/fallback/guest.png'
 import '../images/fallback/default_guest.png'
 import '../images/fallback/thumb_guest.png'
 import '../images/reply.png'
+import '../images/social_media_logo.png'
 
 import 'expose?jQuery!jquery'
 import 'jquery-ujs'
