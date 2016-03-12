@@ -13,10 +13,12 @@ namespace 'dev:fake' do
 
     fakeup '產生圖片' do
       @photos = []
+      @boxes = Box.all
       20.times do
         image = @images.sample
         width, height = ::MiniMagick::Image.open(image.path)[:dimensions]
-        @photos << Photo.create!(image: image, href: Faker::Internet.url, width: width, height: height)
+        url = Faker::Internet.url
+        @photos << Photo.create!(image: image, href: url, width: width, height: height, box: Box.create(user: @users.sample, url: URI(url).host))
       end
     end
 
