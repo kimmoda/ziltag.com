@@ -8,7 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def default_url
     if Rails.env.production?
       fallback = URI.encode ActionController::Base.helpers.image_path([version_name, 'guest.png'].compact.join('_'))
-      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(model.email.downcase)}?d=#{URI.encode fallback}"
+      "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(model.email.downcase)}?d=#{URI.encode fallback}"
     else
       ActionController::Base.helpers.image_path([version_name, 'guest.png'].compact.join('_'))
     end
