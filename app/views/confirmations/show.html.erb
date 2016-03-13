@@ -1,5 +1,5 @@
 <div class="cover cover--blur"></div>
-<%= form_for resource, as: resource_name, url: confirm_path, html: {class: 'action'} do |f| %>
+<%= form_for resource, as: resource_name, url: confirm_path, html: {class: 'action', autocomplete: 'off'} do |f| %>
   <%= f.hidden_field :confirmation_token, value: @confirmation_token %>
   <div class="action__title">We’re glad to have you back.</div>
   <div class="action__subtitle">Please setup the password.</div>
