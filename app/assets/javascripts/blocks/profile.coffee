@@ -14,9 +14,13 @@ class Profile
         reader.onload = (e) => @avatar.style.backgroundImage = "url(#{e.target.result})"
         reader.readAsDataURL @avatar_input.files[0]
     for link in @links
-      link.addEventListener 'click', (event) ->
-        @.parentElement.classList.toggle 'hide'
-        @.parentElement.nextElementSibling.classList.toggle 'hide'
+      link.addEventListener 'click', (event) =>
+        event.currentTarget.parentElement.classList.add 'hide'
+        event.currentTarget.parentElement.nextElementSibling.classList.remove 'hide'
+        for _link in @links
+          if _link != event.currentTarget
+            _link.parentElement.classList.remove 'hide'
+            _link.parentElement.nextElementSibling.classList.add 'hide'
 
 componentHandler.register
   constructor: Profile
