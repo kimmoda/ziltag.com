@@ -16,3 +16,12 @@ two:
   box: localhost
   width: 200
   height: 200
+tumblr:
+  slug: tumblr
+  image: tumblr.jpg
+  source: http://38.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_540.gif
+  href: http://localhost:3000
+  host: localhost
+  box: localhost
+  width: 200
+  height: 200

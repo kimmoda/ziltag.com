@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'tumblr_identifier'
 class Box < ActiveRecord::Base
   BLOGSPOT_DOMAINS = %w[com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' + c}.freeze
   PLATFORMS = {
@@ -26,8 +27,10 @@ class Box < ActiveRecord::Base
       subdomains = host.split('.')
       photo = if host.end_with?(*BLOGSPOT_DOMAINS)
         where('host LIKE ANY (array[?])', BLOGSPOT_DOMAINS.map{|c| "#{subdomains.first}.#{c}" }).find_by(source: source)
+      elsif tumblr_src_id = TumblrIdentifier.identify(source)
+        where('source LIKE ?', "%#{tumblr_src_id}%").find_by(host: host) # TODO: performance can be improved by indexing source path
       else
-        find_by(host: host, source: source)
+        find_by(host: host, )
       end
       photo || create!(source: source, href: href, **create_options)
     end

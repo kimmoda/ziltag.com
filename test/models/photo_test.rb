@@ -13,6 +13,15 @@ class PhotoTest < ActiveSupport::TestCase
     assert photo.persisted?
     assert_equal boxes(:tony), photo.box
   end
+  ARGV.concat ['-n', 'test_find_tumblr']
+  def test_find_tumblr
+    p1 = Photo.find_or_create_by_source_and_href_and_token! 'http://38.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_400.gif', 'http://localhost:3000', 'tonytonyjan_localhost', width: 200, height: 200
+    p2 = Photo.find_or_create_by_source_and_href_and_token! 'http://44.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_300.jpg', 'http://localhost:3000', 'tonytonyjan_localhost', width: 200, height: 200
+    p3 = Photo.find_or_create_by_source_and_href_and_token! 'http://12.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_100.gif', 'http://localhost:3000', 'tonytonyjan_localhost', width: 200, height: 200
+    assert_equal p1, photos(:tumblr)
+    assert_equal p2, photos(:tumblr)
+    assert_equal p3, photos(:tumblr)
+  end
 
   def test_same_domain
     stub_request_for_image
