@@ -9,11 +9,13 @@ $mdi-font-path: '~mdi/fonts';
 @import './blocks';
 @import './pages/home';
 @import './registrations/edit';
-
-.mdl-menu[for="profile-menu"]{
-  .mdl-menu__item{
-    a{
-      text-decoration: none
+input:invalid {
+  box-shadow: none;
+}
+.mdl-menu[for="profile-menu"] {
+  .mdl-menu__item {
+    a {
+      text-decoration: none;
     }
   }
 }
