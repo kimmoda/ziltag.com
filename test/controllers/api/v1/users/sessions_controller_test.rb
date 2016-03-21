@@ -6,7 +6,7 @@ class Api::V1::Users::SessionsControllerTest < ActionController::TestCase
   end
 
   def test_sign_in
-    post :create, format: :json, user: {login: users(:tony).email, password: 'password'}
+    post :create, format: :json, user: {sign_in: users(:tony).email, password: 'password'}
     json = JSON.parse response.body
     assert_equal users(:tony).email, json['email']
   end
