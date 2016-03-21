@@ -30,7 +30,7 @@ class Box < ActiveRecord::Base
       elsif tumblr_src_id = TumblrIdentifier.identify(source)
         where('source LIKE ?', "%#{tumblr_src_id}%").find_by(host: host) # TODO: performance can be improved by indexing source path
       else
-        find_by(host: host, )
+        find_by(host: host, source: source)
       end
       photo || create!(source: source, href: href, **create_options)
     end
