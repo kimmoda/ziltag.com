@@ -57,7 +57,10 @@ class Box < ActiveRecord::Base
   end
 
   def host_name
+    raise "The url setting of token #{token} is nil" if url.nil?
     URI(url).host || url
+  rescue URI::InvalidURIError
+    raise "The url setting of token #{token} is invalid: #{url.inspect}"
   end
 
   def service
