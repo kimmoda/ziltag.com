@@ -10,7 +10,7 @@
     </button>
     <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="profile-menu">
       <%= link_to t(:settings), edit_user_registration_path, class: 'mdl-menu__item' %>
-      <%= link_to t(:logout), destroy_user_session_path, method: :delete, class: 'mdl-menu__item' %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'mdl-menu__item' %>
     </ul>
   <% else %>
     <nav class="mdl-navigation">
