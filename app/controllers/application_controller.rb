@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
-  before_action :set_login, if: ->{ request.host =~ /^(?:staging2?\.ziltag\.com|localhost)$/ || Rails.env.development? }
+  before_action :set_login, if: ->{ request.host =~ /^(?:staging\.ziltag\.com|localhost)$/ || Rails.env.development? }
   after_action :enable_iframe # TODO: It's not safe
 
 protected
