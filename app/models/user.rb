@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # constants
 
   # attributes
-  attr_accessor :login, :url
+  attr_accessor :sign_in, :url
   mount_uploader :avatar, AvatarUploader
 
   # associations
@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
   # other
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
-      where(conditions.to_hash).where(["lower(username) = lower(:value) OR lower(email) = :value", { :value => login.downcase }]).first
+    if sign_in = conditions.delete(:sign_in)
+      where(conditions.to_hash).where(["lower(username) = lower(:value) OR lower(email) = :value", { :value => sign_in.downcase }]).first
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_hash).first
     end

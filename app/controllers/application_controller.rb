@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
-  before_action :set_login, if: ->{ request.host =~ /^(?:staging\.ziltag\.com|localhost)$/ || Rails.env.development? }
+  before_action :set_sign_in, if: ->{ request.host =~ /^(?:staging\.ziltag\.com|localhost)$/ || Rails.env.development? }
   after_action :enable_iframe # TODO: It's not safe
 
 protected
@@ -14,7 +14,7 @@ protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username << :email << :type
-    devise_parameter_sanitizer.for(:sign_in) << :login
+    devise_parameter_sanitizer.for(:sign_in) << :sign_in
     devise_parameter_sanitizer.for(:account_update).concat %i[email avatar avatar_cache remove_avatar url]
   end
 
@@ -26,7 +26,7 @@ protected
      {locale: I18n.locale == I18n.default_locale ? nil : I18n.locale}
   end
 
-  def set_login
+  def set_sign_in
     if params.has_key? :sign_in
       user = User.find_by(username: params[:id]) || User.first
       if params[:confirmed] == 'false'
