@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
 
   # scopes
 
+  def self.find_for_database_authentication(sign_in: nil, username: nil, email: nil, **conditions)
+    if sign_in
+      where(conditions).where(["lower(username) = lower(:value) OR lower(email) = :value", { :value => sign_in.downcase }]).first
+    elsif username || email
+      where(conditions).first
+    end
+  end
+
   # constants
 
   # attributes
@@ -28,14 +36,6 @@ class User < ActiveRecord::Base
   after_update :save_box_url
 
   # other
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    if sign_in = conditions.delete(:sign_in)
-      where(conditions.to_hash).where(["lower(username) = lower(:value) OR lower(email) = :value", { :value => sign_in.downcase }]).first
-    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
-      where(conditions.to_hash).first
-    end
-  end
 
   def own? record
     record.respond_to?(:user) && record.user == self
