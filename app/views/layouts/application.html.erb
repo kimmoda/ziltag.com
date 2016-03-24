@@ -13,13 +13,13 @@
 </head>
 <body class="<%= "#{controller_path} #{action_name}" %>">
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--white">
-    <%= render 'shared/header' %>
+    <%= render 'header' %>
     <%= yield :before_main if content_for?(:before_main) %>
     <main class="mdl-layout__content">
       <%= content_for?(:main) ? yield(:main) : yield %>
     </main>
   </div>
-  <%= render 'shared/uservoice' %>
+  <%= render 'uservoice' %>
   <%= javascript_include_tag 'app' %>
 </body>
 </html>
