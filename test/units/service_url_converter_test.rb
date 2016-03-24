@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'service_url_converter'
 
-class ServiceURLConverterTest < MiniTest::Unit::TestCase
+class ServiceURLConverterTest < Minitest::Test
   def test_convert
     assert_equal 'http://tonytonyjan.net', ServiceURLConverter.convert({platform: 'general', url: 'http://tonytonyjan.net'})
     assert_equal 'http://tonytonyjan.tumblr.com', ServiceURLConverter.convert({platform: 'tumblr', blog_id: 'tonytonyjan'})

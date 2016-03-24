@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'tumblr_identifier'
 
-class TumblrIdentifierTest < MiniTest::Unit::TestCase
+class TumblrIdentifierTest < Minitest::Test
   def test_identify
     assert_equal nil, TumblrIdentifier.identify('http://tonytonyjan.net')
     assert_equal '/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq', TumblrIdentifier.identify('http://38.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_540.gif')

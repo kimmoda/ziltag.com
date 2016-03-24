@@ -21,7 +21,7 @@ class EmptyCase
   include UseCase
 end
 
-class UseCaseTest < MiniTest::Unit::TestCase
+class UseCaseTest < Minitest::Test
   def test_not_implemented_error
     assert_raises NotImplementedError do
       EmptyCase.call
