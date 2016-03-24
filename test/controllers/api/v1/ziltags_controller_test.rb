@@ -13,7 +13,7 @@ class Api::V1::ZiltagsControllerTest < ActionController::TestCase
     stub_request_for_image
     get :index, format: :json, src: 'http://webmock.me/jpeg', href: 'http://webmock.me', token: boxes(:tony).token
     json = JSON.parse response.body
-    assert_equal({"errors"=>{"width"=>["can't be blank"], "height"=>["can't be blank"]}}, json)
+    assert json['error']
   end
 
   def test_existed_photo

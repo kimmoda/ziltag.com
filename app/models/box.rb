@@ -20,21 +20,7 @@ class Box < ActiveRecord::Base
 
   # associations
   belongs_to :user
-  has_many :photos, dependent: :destroy do
-    def find_or_create_by_source_and_uri! source, href, **create_options
-      uri = URI(href)
-      host = uri.host
-      subdomains = host.split('.')
-      photo = if host.end_with?(*BLOGSPOT_DOMAINS)
-        where('host LIKE ANY (array[?])', BLOGSPOT_DOMAINS.map{|c| "#{subdomains.first}.#{c}" }).find_by(source: source)
-      elsif tumblr_src_id = TumblrIdentifier.identify(source)
-        where('source LIKE ?', "%#{tumblr_src_id}%").find_by(host: host) # TODO: performance can be improved by indexing source path
-      else
-        find_by(host: host, source: source)
-      end
-      photo || create!(source: source, href: href, **create_options)
-    end
-  end
+  has_many :photos, dependent: :destroy
 
   # validations
   validates :user, :token, presence: true

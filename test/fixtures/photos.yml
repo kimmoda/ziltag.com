@@ -25,3 +25,12 @@ tumblr:
   box: localhost
   width: 200
   height: 200
+blogger:
+  slug: blogger
+  image: blogger.jpg
+  source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/blogger.jpg" %>
+  href: http://webmock.me/jpeg
+  host: tony.blogspot.com
+  box: blogger
+  width: 200
+  height: 200

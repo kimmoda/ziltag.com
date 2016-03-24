@@ -1,15 +1,35 @@
+# frozen_string_literal: true
+require 'tumblr_identifier'
 class Photo < ActiveRecord::Base
+  BLOGSPOT_DOMAINS = %w[com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' + c}.freeze
+
   include Slugable
 
-  def self.find_or_create_by_source_and_href_and_token! source, href, token, **create_options
-    box = Box.find_by!(token: token)
-    raise "#{href} is not permitted by given token" unless box.match_href?(href)
-    photo = box.photos.find_or_create_by_source_and_uri! source, href, **create_options
-    PhotoJob.perform_later photo, source unless photo.image?
-    photo
+  # scopes
+
+  def self.find_by_token_src_and_href(token:, source:, href:)
+    uri = URI(href)
+    host = uri.host
+    scope = Photo.joins(:box).where(boxes: {token: token})
+    scope = if host.end_with?(*BLOGSPOT_DOMAINS)
+      blog_id = host.split('.').first
+      scope.in_blogspot(blog_id)
+    elsif tumblr_image_id = TumblrIdentifier.identify(source)
+      scope.in_tumblr(tumblr_image_id)
+    else
+      scope.where(host: host, source: source)
+    end
+    scope.take
   end
 
-  # scopes
+  def self.in_blogspot(blog_id)
+    where('host LIKE ANY (array[?])', BLOGSPOT_DOMAINS.map{|c| "#{blog_id}.#{c}" })
+  end
+
+  # TODO: performance can be improved by indexing source path
+  def self.in_tumblr(tumblr_image_id)
+    where('source LIKE ?', "%#{tumblr_image_id}%")
+  end
 
   # constants
 
