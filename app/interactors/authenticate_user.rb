@@ -1,5 +1,5 @@
 class AuthenticateUser
-  include UseCase
+  include Interactor
 
   def initialize username_or_email, password
     @username_or_email, @password = username_or_email, password

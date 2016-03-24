@@ -1,5 +1,5 @@
 class FindOrCreateMap
-  include UseCase
+  include Interactor
 
   def initialize(token, source, href, width, height)
     @token, @source, @href, @width, @height = token, source, href, width, height

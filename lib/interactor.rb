@@ -1,5 +1,5 @@
 #    class AddToCart
-#      include UseCase
+#      include Interactor
 #      def call cart, product
 #        # errors[:base] << 'something wrong'
 #        # results[:attr] = "value"
@@ -12,7 +12,7 @@
 #    else
 #      puts add_to_cart.errors
 #    end
-module UseCase
+module Interactor
   def self.included(mod)
     mod.extend ClassMethods
   end

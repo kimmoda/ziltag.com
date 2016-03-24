@@ -1,8 +1,8 @@
 require 'test_helper'
-require 'use_case'
+require 'interactor'
 
 class Greeting
-  include UseCase
+  include Interactor
 
   def initialize(name)
     @name = name
@@ -18,10 +18,10 @@ class Greeting
 end
 
 class EmptyCase
-  include UseCase
+  include Interactor
 end
 
-class UseCaseTest < Minitest::Test
+class InteractorTest < Minitest::Test
   def test_not_implemented_error
     assert_raises NotImplementedError do
       EmptyCase.call
