@@ -15,7 +15,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {host: 'https://localhost', port: 2001}
+  config.action_mailer.default_url_options = {host: 'http://ziltag.dev', port: 2001}
 
   # There is a free hinet SMTP server, it's convenient for testing stylesheets
   # in web mails like GMail, Yahoo, etc.
@@ -31,5 +31,5 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.asset_host = 'https://localhost:2001'
+  config.asset_host = 'http://ziltag.dev'
 end
