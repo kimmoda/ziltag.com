@@ -15,7 +15,7 @@ class ConfirmationsController < Devise::ConfirmationsController
         resource_class.confirm_by_token(params[resource_name][:confirmation_token])
         resource.reload
         resource.comments.each do |comment|
-          NotifyOfComment.new(comment).call
+          NotifyOfComment.call(comment)
         end
       end
       sign_in(resource_name, resource)

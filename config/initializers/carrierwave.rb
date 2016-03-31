@@ -5,6 +5,6 @@ CarrierWave.configure do |config|
       config.send("#{key}=", value.respond_to?(:symbolize_keys) ? value.symbolize_keys : value)
     end
   else
-    config.asset_host = 'https://localhost:2001'
+    config.asset_host = 'http://ziltag.dev'
   end
 end

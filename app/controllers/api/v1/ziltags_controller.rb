@@ -20,7 +20,7 @@ class Api::V1::ZiltagsController < ApiController
     @ziltag = current_user.ziltags.new(ziltag_params)
 
     if @ziltag.save
-      NotifyOfZiltag.new(@ziltag).call
+      NotifyOfZiltag.call(@ziltag)
       render :show
     else
       render json: {errors: @ziltag.errors.full_messages}
