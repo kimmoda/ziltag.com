@@ -37,3 +37,7 @@ group :test do
   gem 'webmock'
 end
 
+group :sse do
+  gem 'thin'
+  gem 'sinatra'
+end
