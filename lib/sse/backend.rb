@@ -7,7 +7,7 @@ module SSE
 
     def initialize host, port, options
       super(host, port)
-      @ssl = ENV['SSL_KEY'] && ENV['SSL_CERT']
+      @ssl = true
       @ssl_options = {private_key_file: SSL_KEY, cert_chain_file: SSL_CERT, verify_peer: false}
     end
   end
