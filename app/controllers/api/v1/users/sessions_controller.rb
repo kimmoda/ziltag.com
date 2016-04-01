@@ -6,11 +6,11 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
   def create
     authenticate_user = AuthenticateUser.call(params[:user][:sign_in], params[:user][:password])
     if authenticate_user.success?
-      @user = authenticate_user.results[:user]
+      @user = authenticate_user[:user]
       sign_in(@user)
       render
     else
-      render json: {error: authenticate_user.errors[:base]}
+      render json: {error: authenticate_user[:error]}
     end
   end
 

@@ -11,12 +11,12 @@ class CreateComment
       if @comment.save
         Subscribe.call(@user, @comment.ziltag)
         NotifyOfComment.call(@comment)
-        results[:comment] = @comment
+        context[:comment] = @comment
       else
-        errors[:comment_errors] = @comment.errors.full_messages
+        raise ActiveRecord::Rollback
       end
-      raise ActiveRecord::Rollback unless success?
     end
+    fail! @comment.errors.full_messages.first unless @comment.valid?
   end
 
 end

@@ -7,7 +7,7 @@ class Subscribe
 
   def call
     subscribe
-    errors[:ziltag_errors] = @ziltag.errors.full_messages unless @ziltag.save
+    fail! @ziltag.errors.full_messages.first unless @ziltag.save
   end
 
   def subscribe

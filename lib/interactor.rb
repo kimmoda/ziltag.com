@@ -1,8 +1,8 @@
 #    class AddToCart
 #      include Interactor
 #      def call cart, product
-#        # errors[:base] << 'something wrong'
-#        # results[:attr] = "value"
+#        # context[:foo] = 'bar'
+#        # fail! 'something wrong'
 #      end
 #    end
 #
@@ -10,7 +10,7 @@
 #    if add_to_cart.success?
 #      add_to_cart[:attr] # "value"
 #    else
-#      puts add_to_cart.errors
+#      puts add_to_cart[:error]
 #    end
 module Interactor
   def self.included(mod)
@@ -19,7 +19,9 @@ module Interactor
 
   module ClassMethods
     def call *args
-      new(*args).tap(&:call)
+      obj = new(*args)
+      catch(:fail){ obj.call }
+      obj
     end
   end
 
@@ -27,15 +29,20 @@ module Interactor
     raise NotImplementedError
   end
 
-  def results
-    @results ||= {}
+  def [] key
+    context[key]
   end
 
-  def errors
-    @errors ||= {}
+  def context
+    @context ||= {}
   end
 
   def success?
-    errors.empty?
+    !context[:error]
+  end
+
+  def fail! message
+    context[:error] = message
+    throw :fail
   end
 end

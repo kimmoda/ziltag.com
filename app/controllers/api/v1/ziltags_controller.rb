@@ -5,10 +5,10 @@ class Api::V1::ZiltagsController < ApiController
   def index
     find_or_create_map = FindOrCreateMap.call(params[:token], params[:src], params[:href], params[:width], params[:height])
     if find_or_create_map.success?
-      @photo = find_or_create_map.results[:photo]
+      @photo = find_or_create_map[:photo]
       PhotoJob.perform_later @photo, params[:src] unless @photo.image?
     else
-      render json: {error: find_or_create_map.errors.values.first}
+      render json: {error: find_or_create_map[:error]}
     end
   end
 
