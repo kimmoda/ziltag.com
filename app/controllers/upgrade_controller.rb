@@ -11,6 +11,7 @@ class UpgradeController < ApplicationController
       @guest = Guest.new(url: url)
       if @guest.valid_url?
         current_user.update_attribute :type, 'ContentProvider'
+        current_user.box.update url: url
         redirect_to install_path
       else
         @error = @guest.box.errors[:url].first
