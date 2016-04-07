@@ -1,4 +1,7 @@
 en:
+  activerecord:
+    models:
+      content_provider: Content Provider
   login: Login
   sign_up: Sign up
   logout: Logout
