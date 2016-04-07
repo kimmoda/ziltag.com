@@ -3,6 +3,12 @@ class ApiController < ApplicationController
   before_action :set_headers
   skip_after_action :enable_iframe
 
+  rescue_from Exception do |exception|
+    Rails.logger.error exception.to_s
+    Rails.logger.error exception.backtrace.join($/)
+    render json: {error: exception.to_s}, status: 200
+  end
+
   def options
     headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
     headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
