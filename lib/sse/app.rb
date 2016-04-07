@@ -3,7 +3,6 @@ require 'sinatra/base'
 
 module SSE
   class App < Sinatra::Base
-    IE_PADDING = ":#{' '*2048}\nretry: 2000\n"
     set :logging, true
     set :ziltag_clients, {}
     set :map_clients, {}
@@ -40,10 +39,10 @@ module SSE
     get %r{\A/api/v1/ziltags/(\w{6})/stream} do
       slug = params['captures'].first
       stream(:keep_open) do |out|
+        EventMachine.add_timer(15) { out.close }
         settings.ziltag_clients[slug] ||= []
         settings.ziltag_clients[slug] << out
         logger.info "client #{object_id} is connecting ziltag #{slug}."
-        out << IE_PADDING
         out.callback do
           settings.ziltag_clients[slug].delete out
           settings.ziltag_clients.delete slug if settings.ziltag_clients[slug].empty?
@@ -55,10 +54,10 @@ module SSE
     get %r{\A/api/v1/ziltag_maps/(\w{6})/stream} do
       slug = params['captures'].first
       stream(:keep_open) do |out|
+        EventMachine.add_timer(15) { out.close }
         settings.map_clients[slug] ||= []
         settings.map_clients[slug] << out
         logger.info "client #{object_id} is connecting map #{slug}."
-        out << IE_PADDING
         out.callback do
           settings.map_clients[slug].delete out
           settings.map_clients.delete slug if settings.ziltag_clients[slug].empty?
