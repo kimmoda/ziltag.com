@@ -7,7 +7,7 @@ ZiltagType = GraphQL::ObjectType.define do
   end
   field :content, !types.String,  'The content of this zitlag'
   field :usr, !UserType, 'The owner of this ziltag', property: :user
-  field :comments, types[CommentType], 'All comments of this ziltag'
+  field :comments, types[!CommentType], 'All comments of this ziltag'
   field :x, !types.Float
   field :y, !types.Float
   field :preview, !types.String, 'Truncated content' do
