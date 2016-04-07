@@ -7,7 +7,7 @@ class AuthenticateUser
 
   def call
     user = User.find_for_database_authentication(sign_in: @username_or_email)
-    if user.valid_password?(@password)
+    if user && user.valid_password?(@password)
       context[:user] = user
     else
       fail! 'invalid sign in name or password'
