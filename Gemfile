@@ -17,6 +17,8 @@ gem 'eventmachine'
 gem 'administrate'
 gem 'webpack_stats'
 gem 'premailer'
+gem 'graphql'
+gem 'graphiql-rails'
 
 group :development do
   gem 'capistrano'
