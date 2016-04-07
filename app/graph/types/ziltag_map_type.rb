@@ -6,6 +6,8 @@ ZiltagMapType = GraphQL::ObjectType.define do
   field :host, !types.String
   field :href, !types.String
   field :id, !types.String, property: :slug
-  field :src, types.String, property: :source
+  field :src, !types.String do
+    resolve ->(obj, args, ctx){ obj&.image&.default&.url }
+  end
   field :ziltags, types[!ZiltagType]
 end

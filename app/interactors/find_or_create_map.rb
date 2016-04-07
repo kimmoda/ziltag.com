@@ -18,5 +18,6 @@ class FindOrCreateMap
     elsif photo = Photo.create(source: @source, href: @href, width: @width, height: @height, box: @box)
       photo.valid? ? context[:photo] = photo : fail!(photo.errors.full_messages.first)
     end
+    PhotoJob.perform_later photo, photo.source unless photo.image?
   end
 end
