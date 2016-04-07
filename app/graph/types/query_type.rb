@@ -15,4 +15,11 @@ QueryType = GraphQL::ObjectType.define do
       Comment.find_by!(id: arguments['id'])
     }
   end
+
+  field :ziltag_map, ZiltagMapType, 'Find a ziltag map by ID' do
+    argument :id, !types.ID
+    resolve -> (object, arguments, context) {
+      Photo.find_by!(slug: arguments['id'])
+    }
+  end
 end
