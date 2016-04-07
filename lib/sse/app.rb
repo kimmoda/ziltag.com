@@ -39,6 +39,7 @@ module SSE
     get %r{\A/api/v1/ziltags/(\w{6})/stream} do
       slug = params['captures'].first
       stream(:keep_open) do |out|
+        EventMachine.add_timer(15) { out.close }
         settings.ziltag_clients[slug] ||= []
         settings.ziltag_clients[slug] << out
         logger.info "client #{object_id} is connecting ziltag #{slug}."
@@ -53,6 +54,7 @@ module SSE
     get %r{\A/api/v1/ziltag_maps/(\w{6})/stream} do
       slug = params['captures'].first
       stream(:keep_open) do |out|
+        EventMachine.add_timer(15) { out.close }
         settings.map_clients[slug] ||= []
         settings.map_clients[slug] << out
         logger.info "client #{object_id} is connecting map #{slug}."
