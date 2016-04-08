@@ -1,8 +1,8 @@
 class AuthorizationMiddleware
   def call(parent_type, parent_object, field_definition, field_args, query_context, next_middleware)
-    current_user = query_context[:current_user]
     case parent_type
     when MutationType
+      current_user = query_context[:current_user]
       raise 'user is not signed in' if current_user.nil?
       case field_definition.name
       when 'createZiltag'
