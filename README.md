@@ -29,6 +29,10 @@ $ foreman start
 
 **請跟 `frontend-ziltag.com` 同步開啟 server 做開發**
 
+# GraphQL IDE
+
+http://ziltag.dev/graphiql
+
 # Worker
 
 ```
