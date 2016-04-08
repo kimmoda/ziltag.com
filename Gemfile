@@ -19,6 +19,7 @@ gem 'webpack_stats'
 gem 'premailer'
 gem 'graphql'
 gem 'graphiql-rails'
+gem 'grape'
 
 group :development do
   gem 'capistrano'

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/api/v2/graphql'
   end
 
+  mount ZiltagAPI => '/'
   get 'api/v2/graphql', to: 'api/v2/graphql#execute'
   post 'api/v2/graphql', to: 'api/v2/graphql#execute'
 

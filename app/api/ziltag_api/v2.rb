@@ -1,0 +1,37 @@
+class ZiltagAPI
+  class V2 < Grape::API
+    version 'v2', using: :path
+    prefix :api
+
+    helpers do
+      def warden
+        env['warden']
+      end
+    end
+
+    desc 'Sign user in'
+    params do
+      requires :user, type: Hash do
+        requires :sign_in, type: String, desc: 'email or username'
+        requires :password, type: String
+      end
+    end
+    post :sign_in do
+      authenticate_user = AuthenticateUser.call(params[:user][:sign_in], params[:user][:password])
+      if authenticate_user.success?
+        user = authenticate_user[:user]
+        warden.set_user(user, scope: :user)
+        ZiltagSchema.execute '{me{name,email,avatar,confirmed}}', context: {current_user: warden.user}
+      else
+        {errors: [message: authenticate_user[:error]]}
+      end
+    end
+
+    desc 'Sign user out'
+    get :sign_out do
+      warden.logout
+      {}
+    end
+
+  end
+end
