@@ -6,7 +6,7 @@ class AuthorizationMiddleware
       raise 'user is not signed in' if current_user.nil?
       case field_definition.name
       when 'createZiltag'
-      when 'updateZiltag'
+      when 'updateZiltag', 'deleteZiltag'
         ziltag = Ziltag.find_by! slug: field_args[:id]
         raise "Ziltag '#{ziltag.slug}' is not writable for the user '#{current_user.username}'" if ziltag.user_id != current_user.id
       end
