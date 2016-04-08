@@ -21,4 +21,13 @@ MutationType = GraphQL::ObjectType.define do
       create_ziltag.success? ? create_ziltag[:ziltag] : raise(create_ziltag[:error])
     end
   end
+
+  field :updateZiltag, ZiltagType do
+    argument :id, !types.ID, 'Ziltag ID'
+    argument :content, !types.String
+    resolve -> (_obj, args, _ctx) do
+      ziltag = Ziltag.find_by!(slug: args[:id])
+      ziltag.update(content: args[:content]) ? ziltag : raise(ziltag.errors.full_messages.first)
+    end
+  end
 end

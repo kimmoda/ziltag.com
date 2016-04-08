@@ -48,6 +48,6 @@ module ZiltagApp
       html_tag
     end
 
-    config.autoload_paths << Rails.root.join('app', 'graph', 'types')
+    config.autoload_paths << Rails.root.join('app', 'graph', 'types') << Rails.root.join('app', 'graph', 'middlewares')
   end
 end
