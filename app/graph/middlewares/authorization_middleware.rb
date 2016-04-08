@@ -9,6 +9,9 @@ class AuthorizationMiddleware
       when 'updateZiltag', 'deleteZiltag'
         ziltag = Ziltag.find_by! slug: field_args[:id]
         raise "Ziltag '#{ziltag.slug}' is not writable for the user '#{current_user.username}'" if ziltag.user_id != current_user.id
+      when 'updateComment', 'deleteComment'
+        comment = Comment.find field_args[:id]
+        raise "Comment ##{comment.id} is not writable for the user '#{current_user.username}'" if comment.user_id != current_user.id
       end
     end
     next_middleware.call

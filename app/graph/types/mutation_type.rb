@@ -5,7 +5,7 @@ MutationType = GraphQL::ObjectType.define do
   field :createUser, UserType do
     argument :username, !types.String
     argument :email, !types.String
-    resolve -> (_obj, args, ctx) do
+    resolve -> (_obj, args, _ctx) do
       user_sign_up = UserSignUp.call(args[:username], args[:email])
       user_sign_up.success? ? user_sign_up[:user] : raise(user_sign_up[:error])
     end
@@ -37,6 +37,34 @@ MutationType = GraphQL::ObjectType.define do
       ziltag = Ziltag.find_by! slug: args[:id]
       ziltag.destroy
       ziltag
+    end
+  end
+
+  field :createComment, CommentType do
+    argument :ziltag_id, !types.ID
+    argument :content, !types.String
+    resolve -> (_obj, args, ctx) do
+      ziltag = Ziltag.find_by! slug: args[:ziltag_id]
+      create_comment = CreateComment.call(ctx[:current_user], content: args[:content], ziltag: ziltag)
+      create_comment.success? ? create_comment[:comment] : raise(create_comment[:error])
+    end
+  end
+
+  field :updateComment, CommentType do
+    argument :id, !types.ID
+    argument :content, !types.String
+    resolve -> (_obj, args, _ctx) do
+      comment = Comment.find(args[:id])
+      comment.update(content: args[:content]) ? comment : raise(comment.errors.full_messages.first)
+    end
+  end
+
+  field :deleteComment, CommentType do
+    argument :id, !types.ID
+    resolve -> (_obj, args, _ctx) do
+      comment = Comment.find(args[:id])
+      comment.destroy
+      comment
     end
   end
 end
