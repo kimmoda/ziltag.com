@@ -44,8 +44,8 @@ module SSE
         settings.ziltag_clients[slug] << out
         logger.info "client #{object_id} is connecting ziltag #{slug}."
         out.callback do
-          settings.ziltag_clients[slug].delete out
-          settings.ziltag_clients.delete slug if settings.ziltag_clients[slug].empty?
+          settings.ziltag_clients[slug]&.delete out
+          settings.ziltag_clients.delete slug if settings.ziltag_clients[slug]&.empty?
           logger.info "client #{object_id} closed."
         end
       end
@@ -59,8 +59,8 @@ module SSE
         settings.map_clients[slug] << out
         logger.info "client #{object_id} is connecting map #{slug}."
         out.callback do
-          settings.map_clients[slug].delete out
-          settings.map_clients.delete slug if settings.ziltag_clients[slug].empty?
+          settings.map_clients[slug]&.delete out
+          settings.map_clients.delete slug if settings.ziltag_clients[slug]&.empty?
           logger.info "client #{object_id} closed."
         end
       end
