@@ -12,7 +12,7 @@ EM.run do
     app: app,
     server: 'thin',
     signals: false,
-    Host: '0.0.0.0',
+    Host: '127.0.0.1',
     Port: 3310,
     backend: SSE::Backend
   )
