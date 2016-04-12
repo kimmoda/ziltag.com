@@ -19,9 +19,9 @@ class PhotoTest < ActiveSupport::TestCase
     p1 = Photo.find_by_token_src_and_href source: 'http://38.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_400.gif', href: 'http://localhost:3000', token: 'tonytonyjan_localhost'
     p2 = Photo.find_by_token_src_and_href source: 'http://44.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_300.jpg', href: 'http://localhost:3000', token: 'tonytonyjan_localhost'
     p3 = Photo.find_by_token_src_and_href source: 'http://12.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_100.gif', href: 'http://localhost:3000', token: 'tonytonyjan_localhost'
-    assert_equal p1, photos(:tumblr)
-    assert_equal p2, photos(:tumblr)
-    assert_equal p3, photos(:tumblr)
+    assert_equal photos(:tumblr), p1
+    assert_equal photos(:tumblr), p2
+    assert_equal photos(:tumblr), p3
   end
 
   def test_same_domain

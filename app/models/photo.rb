@@ -13,7 +13,7 @@ class Photo < ActiveRecord::Base
     scope = Photo.joins(:box).where(boxes: {token: token})
     scope = if host.end_with?(*BLOGSPOT_DOMAINS)
       blog_id = host.split('.').first
-      scope.in_blogspot(blog_id)
+      scope.where(source: source).in_blogspot(blog_id)
     elsif tumblr_image_id = TumblrIdentifier.identify(source)
       scope.in_tumblr(tumblr_image_id)
     else

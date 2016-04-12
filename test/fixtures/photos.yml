@@ -28,8 +28,8 @@ tumblr:
 blogger:
   slug: blogger
   image: blogger.jpg
-  source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/blogger.jpg" %>
-  href: http://webmock.me/jpeg
+  source: http://webmock.me/jpeg
+  href: http://tony.blogspot.tw/ccc
   host: tony.blogspot.com
   box: blogger
   width: 200
