@@ -1,0 +1,30 @@
+.ziltag-footer {
+  height: 73px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__links {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 164px;
+    justify-content: space-between;
+  }
+  &__link {
+    list-style: none;
+    font-size: 12px;
+    line-height: 31px;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, .54);
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+  &__copyright {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    color: rgba(0, 0, 0, .54);
+  }
+}
