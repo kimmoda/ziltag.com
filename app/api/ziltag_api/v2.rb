@@ -37,5 +37,26 @@ class ZiltagAPI
       {}
     end
 
+    desc 'Verify Accoutn'
+    params do
+      requires :token, type: String
+      requires :password, type: String
+      requires :password_confirmation, type: String
+    end
+    post :verify do
+      verify_user = VerifyUser.call params[:token], params[:password], params[:password_confirmation]
+      if verify_user.success?
+        warden.set_user(verify_user[:user], scope: :user)
+        {
+          avatar: user.avatar.thumb.url,
+          confirmed: user.confirmed?,
+          email: user.email,
+          name: user.username
+        }
+      else
+        {errors: [message: authenticate_user[:error]]}
+      end
+    end
+
   end
 end
