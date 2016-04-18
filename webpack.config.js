@@ -34,7 +34,7 @@ module.exports = {
   entry: {
     app: './app/assets/javascripts/app.js',
     mobile: './app/assets/javascripts/mobile.js',
-    dashboard: './app/assets/javascripts/dashboard'
+    dashboard: ['babel-polyfill', './app/assets/javascripts/dashboard']
   },
   output: {
     path: __dirname + '/public/assets',
@@ -57,7 +57,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ['react', 'es2015', 'stage-2']
+        presets: ['react', 'es2015', 'stage-0', 'stage-2']
       }
     }]
   },

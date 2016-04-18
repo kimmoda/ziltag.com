@@ -6,16 +6,24 @@ import Account from './components/pages/Account'
 import Verify from './components/pages/Verify'
 import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
+import saga from './sagas'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createStore, combineReducers} from 'redux'
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import {Provider} from 'react-redux'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
+import createSagaMiddleware from 'redux-saga'
 
 
-let store = createStore(combineReducers(reducers), __PRODUCTION__ ? f => f : DevTools.instrument())
+let store = createStore(
+  combineReducers(reducers),
+  compose(
+    applyMiddleware(createSagaMiddleware(saga)),
+    __PRODUCTION__ ? f => f : DevTools.instrument()
+  )
+)
 let history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
