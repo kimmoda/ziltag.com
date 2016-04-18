@@ -23,10 +23,11 @@ MessageBoard.PropTypes = {
   subtitle: PropTypes.string.isRequired
 }
 
-export const CheerBoard = () => <MessageBoard
+export const CheerBoard = (props) => <MessageBoard
   icon={ <img src={cheersImagePath} width="66" /> }
   title="Thank you for verifying your account"
-  subtitle="Please setup the password for your account." />
+  subtitle="Please setup the password for your account."
+  {...props} />
 
 export const MailBoard = () => <MessageBoard
   icon={ <img src={mailImagePath} width="90" /> }

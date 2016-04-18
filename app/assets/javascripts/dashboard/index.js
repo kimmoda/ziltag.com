@@ -4,6 +4,7 @@ import Tags from './components/pages/Tags'
 import Comments from './components/pages/Comments'
 import Account from './components/pages/Account'
 import Verify from './components/pages/Verify'
+import Verified from './components/pages/Verified'
 import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
 import saga from './sagas'
@@ -35,6 +36,7 @@ ReactDOM.render(
         <Route path="comments" component={Comments} />
         <Route path="account" component={Account} />
         <Route path="verify" component={Verify} />
+        <Route path="verified" component={Verified} />
       </Route>
     </Router>
   </Provider>,
