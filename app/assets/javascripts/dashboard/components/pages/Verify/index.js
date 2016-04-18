@@ -19,10 +19,10 @@ class Verify extends React.Component {
         <form className="ziltag-verify__form" onSubmit={handleSubmit}>
           <div className="ziltag-verify__fields">
             <div className="ziltag-verify__field">
-              <Field placeholder="Password" {...password} />
+              <Field type="password" placeholder="Password" {...password} />
             </div>
             <div className="ziltag-verify__field">
-              <Field placeholder="Confirm password" {...password_confirmation} />
+              <Field type="password" placeholder="Confirm password" {...password_confirmation} />
             </div>
           </div>
           <input type="hidden" {...confirmation_token} />
