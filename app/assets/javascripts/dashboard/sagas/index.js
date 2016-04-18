@@ -9,7 +9,10 @@ function* verify(action) {
   const { password, password_confirmation, confirmation_token } = action
   const data = yield call(API.verify, password, password_confirmation, confirmation_token)
   if(data.errors) yield put(actions.requestVerifyFailed(data.errors))
-  else yield put({type: actionTypes.REQUEST_VERIFY_SUCCEEDED})
+  else {
+    yield put(push('/dashboard/verified'))
+    yield put({type: actionTypes.REQUEST_VERIFY_SUCCEEDED})
+  }
 }
 
 function* watchVerify() {

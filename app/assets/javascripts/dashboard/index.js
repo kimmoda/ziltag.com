@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom'
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import {Provider} from 'react-redux'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
-import {syncHistoryWithStore} from 'react-router-redux'
+import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 
 
@@ -22,6 +22,7 @@ let store = createStore(
   combineReducers(reducers),
   compose(
     applyMiddleware(createSagaMiddleware(saga)),
+    applyMiddleware(routerMiddleware(browserHistory)),
     __PRODUCTION__ ? f => f : DevTools.instrument()
   )
 )

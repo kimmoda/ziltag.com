@@ -7,6 +7,8 @@ import './index.scss'
 import React from 'react'
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+
 
 class Verify extends React.Component {
   render () {
@@ -14,7 +16,7 @@ class Verify extends React.Component {
     return(
       <div className="ziltag-verify">
         <CheerBoard />
-        <form className="ziltag-verify__form" onSubmit={handleSubmit} >
+        <form className="ziltag-verify__form" onSubmit={handleSubmit}>
           <div className="ziltag-verify__fields">
             <div className="ziltag-verify__field">
               <Field placeholder="Password" {...password} />

@@ -10,6 +10,9 @@ export function requestVerify(params) {
   }
 }
 
+// export function requestVerifySucceed(errors) {
+// }
+
 export function requestVerifyFailed(errors) {
   return {
     type: actionTypes.REQUEST_VERIFY_FAILED,

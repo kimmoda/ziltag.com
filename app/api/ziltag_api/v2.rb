@@ -39,13 +39,14 @@ class ZiltagAPI
 
     desc 'Verify Accoutn'
     params do
-      requires :token, type: String
-      requires :password, type: String
-      requires :password_confirmation, type: String
+      requires :confirmation_token, type: String, allow_blank: false
+      requires :password, type: String, allow_blank: false
+      requires :password_confirmation, type: String, allow_blank: false
     end
     post :verify do
-      verify_user = VerifyUser.call params[:token], params[:password], params[:password_confirmation]
+      verify_user = VerifyUser.call params[:confirmation_token], params[:password], params[:password_confirmation]
       if verify_user.success?
+        user = verify_user[:user]
         warden.set_user(verify_user[:user], scope: :user)
         {
           avatar: user.avatar.thumb.url,
@@ -54,7 +55,7 @@ class ZiltagAPI
           name: user.username
         }
       else
-        {errors: [message: authenticate_user[:error]]}
+        {errors: [message: verify_user[:error]]}
       end
     end
 
