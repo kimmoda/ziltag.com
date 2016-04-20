@@ -5,6 +5,12 @@ import { takeEvery } from 'redux-saga'
 import { call, put, fork } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 
+function* fetchProfile() {
+  const result = yield call(API.graphql, '{me{avatar,confirmed,email,name}}')
+  if(result.data) yield put({type: actionTypes.RECEIVE_ME, me: result.data.me})
+  else if (result.errors) console.error(result.errors)
+}
+
 function* verify(action) {
   const { password, password_confirmation, confirmation_token } = action
   const data = yield call(API.verify, password, password_confirmation, confirmation_token)
@@ -21,6 +27,7 @@ function* watchVerify() {
 
 export default function* root() {
   yield [
+    fork(fetchProfile),
     fork(watchVerify)
   ]
 }
