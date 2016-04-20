@@ -7,4 +7,12 @@ UserType = GraphQL::ObjectType.define do
   end
   field :confirmed, !types.Boolean, 'This user is verified or not', property: :confirmed?
   field :email, !types.String, "User's email"
+  field :ziltags, ->{ types[!ZiltagType] } do
+    argument :page, types.Int, default_value: 1
+    resolve ->(obj, args, _ctx){ obj.ziltags.page(args[:page]) }
+  end
+  field :comments, ->{ types[!CommentType] } do
+    argument :page, types.Int, default_value: 1
+    resolve ->(obj, args, _ctx){ obj.comments.page(args[:page]) }
+  end
 end
