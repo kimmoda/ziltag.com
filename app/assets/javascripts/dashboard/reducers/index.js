@@ -12,3 +12,12 @@ export const form = formReducer.plugin({
     }
   }
 })
+
+export function me(state={}, action){
+  switch (action.type) {
+    case actionTypes.RECEIVE_ME:
+      return action.me
+    default:
+      return state
+  }
+}

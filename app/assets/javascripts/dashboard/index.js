@@ -8,6 +8,7 @@ import Verified from './components/pages/Verified'
 import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
 import saga from './sagas'
+import initialState from './initialState'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -20,6 +21,7 @@ import createSagaMiddleware from 'redux-saga'
 
 let store = createStore(
   combineReducers(reducers),
+  initialState,
   compose(
     applyMiddleware(createSagaMiddleware(saga)),
     applyMiddleware(routerMiddleware(browserHistory)),
