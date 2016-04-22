@@ -57,6 +57,10 @@ class Box < ActiveRecord::Base
     nil
   end
 
+  def platform
+    service || 'general'
+  end
+
   def match_href? href
     case service
     when 'blogger'

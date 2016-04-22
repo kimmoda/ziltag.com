@@ -6,7 +6,7 @@ import { call, put, fork } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 
 function* fetchProfile() {
-  const result = yield call(API.graphql, '{me{avatar,confirmed,email,name}}')
+  const result = yield call(API.graphql, '{me{avatar,confirmed,email,name,website{token,url,platform}}}')
   if(result.data) yield put({type: actionTypes.RECEIVE_ME, me: result.data.me})
   else if (result.errors) console.error(result.errors)
 }

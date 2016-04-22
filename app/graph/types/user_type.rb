@@ -15,4 +15,10 @@ UserType = GraphQL::ObjectType.define do
     argument :page, types.Int, default_value: 1
     resolve ->(obj, args, _ctx){ obj.comments.page(args[:page]) }
   end
+  field :website, ->{ WebsiteType } do
+    resolve ->(obj, _args, _ctx){ obj.boxes.first }
+  end
+  field :websites, ->{ types[!WebsiteType] } do
+    resolve ->(obj, _args, _ctx){ obj.boxes }
+  end
 end
