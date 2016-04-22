@@ -29,7 +29,8 @@ export const CheerBoard = (props) => <MessageBoard
   subtitle="Please setup the password for your account."
   {...props} />
 
-export const MailBoard = () => <MessageBoard
+export const MailBoard = (props) => <MessageBoard
   icon={ <img src={mailImagePath} width="90" /> }
   title="Congratulation! Your plugin is ready."
-  subtitle="We’ve sent you an email for verification. Please check your inbox." />
+  subtitle="We’ve sent you an email for verification. Please check your inbox."
+  {...props} />

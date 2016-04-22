@@ -13,7 +13,7 @@ export const form = formReducer.plugin({
   }
 })
 
-export function me(state={}, action){
+export function me(state=null, action){
   switch (action.type) {
     case actionTypes.RECEIVE_ME:
       return action.me

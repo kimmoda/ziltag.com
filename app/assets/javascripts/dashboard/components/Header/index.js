@@ -35,10 +35,10 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state, ownProps){
-  return {
+  return state.me ? {
     avatarTitle: state.me.name,
     avatarURL: state.me.avatar
-  }
+  } : {}
 }
 
 Header = connect(mapStateToProps)(Header)
