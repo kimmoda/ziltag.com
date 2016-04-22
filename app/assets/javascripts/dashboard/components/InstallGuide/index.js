@@ -24,7 +24,7 @@ const guides = {
 
 export default class InstallGuide extends React.Component {
   static propTypes = {
-    platform: React.PropTypes.oneOf(['general', 'tumblr', 'blogger']),
+    platform: React.PropTypes.oneOf(['general', 'tumblr', 'blogger']).isRequired,
   }
 
   static defaultProps = {

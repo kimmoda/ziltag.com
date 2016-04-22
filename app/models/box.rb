@@ -70,6 +70,10 @@ class Box < ActiveRecord::Base
     end
   end
 
+  def url_with_http
+    url.start_with?('http') ? url : "http://#{url}"
+  end
+
   private
 
   def url_must_be_valid
