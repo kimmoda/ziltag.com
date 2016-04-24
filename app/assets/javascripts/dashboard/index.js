@@ -19,16 +19,20 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 
+let sagaMiddleware = createSagaMiddleware()
 
 let store = createStore(
   combineReducers(reducers),
   initialState,
   compose(
-    applyMiddleware(createSagaMiddleware(saga)),
+    applyMiddleware(sagaMiddleware),
     applyMiddleware(routerMiddleware(browserHistory)),
     __PRODUCTION__ ? f => f : DevTools.instrument()
   )
 )
+
+sagaMiddleware.run(saga)
+
 let history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
