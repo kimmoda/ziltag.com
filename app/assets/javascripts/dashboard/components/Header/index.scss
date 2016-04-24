@@ -1,0 +1,32 @@
+.ziltag-header {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  &__logo {
+    width: 111px;
+    height: 35px;
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translate(0, -50%);
+    background: url('./logo.png') no-repeat;
+    background-size: contain;
+  }
+  &__icon-menu {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-position: center;
+    background-size: contain;
+  }
+  &__link {
+    text-decoration: none;
+  }
+}

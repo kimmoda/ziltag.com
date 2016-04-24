@@ -57,6 +57,10 @@ class Box < ActiveRecord::Base
     nil
   end
 
+  def platform
+    service || 'general'
+  end
+
   def match_href? href
     case service
     when 'blogger'
@@ -64,6 +68,10 @@ class Box < ActiveRecord::Base
     else
       URI(href).host == host_name
     end
+  end
+
+  def url_with_http
+    url.start_with?('http') ? url : "http://#{url}"
   end
 
   private

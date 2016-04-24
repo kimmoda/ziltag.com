@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ziltag - Dashboard</title>
+  <%= stylesheet_link_tag 'dashboard', media: 'all' if Rails.env.production? %>
+</head>
+<body>
+  <div id="dashboard"></div>
+  <%= javascript_include_tag 'dashboard' %>
+</body>
+</html>

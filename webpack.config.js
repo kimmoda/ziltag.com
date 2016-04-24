@@ -17,6 +17,9 @@ var plugins = [
   },
   new webpack.ProvidePlugin({
     'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+  }),
+  new webpack.DefinePlugin({
+    __PRODUCTION__: __PRODUCTION__
   })
 ]
 
@@ -30,7 +33,8 @@ if (__PRODUCTION__) {
 module.exports = {
   entry: {
     app: './app/assets/javascripts/app.js',
-    mobile: './app/assets/javascripts/mobile.js'
+    mobile: './app/assets/javascripts/mobile.js',
+    dashboard: ['babel-polyfill', './app/assets/javascripts/dashboard']
   },
   output: {
     path: __dirname + '/public/assets',
@@ -53,7 +57,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ['react', 'es2015', 'stage-2']
+        presets: ['react', 'es2015', 'stage-0', 'stage-2']
       }
     }]
   },
