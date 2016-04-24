@@ -7,7 +7,7 @@ if (__PRODUCTION__) {
 }
 
 var filename = __PRODUCTION__ ? '[name]-[hash].js' : '[name].js'
-var styleLoader = __PRODUCTION__ ? ExtractTextPlugin.extract('style', 'css!postcss!sass') : 'style!css!postcss!sass'
+var styleLoader = __PRODUCTION__ ? ExtractTextPlugin.extract('style', 'css?minimize!postcss!sass') : 'style!css!postcss!sass'
 var fileLoader = __PRODUCTION__ ? 'file?name=[name]-[hash].[ext]' : 'file?name=[name].[ext]'
 var plugins = [
   function() {
