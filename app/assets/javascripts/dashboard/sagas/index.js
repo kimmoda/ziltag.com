@@ -25,9 +25,22 @@ function* watchVerify() {
   yield* takeEvery(actionTypes.REQUEST_VERIFY, verify)
 }
 
+function* sign_out(action){
+  try {
+    yield call(API.sign_out)
+    window.location.replace('/users/sign_in')
+  } catch (e) {
+  }
+}
+
+function* watchSignOut() {
+  yield* takeEvery(actionTypes.REQUEST_SIGN_OUT, sign_out)
+}
+
 export default function* root() {
   yield [
     fork(fetchProfile),
-    fork(watchVerify)
+    fork(watchVerify),
+    fork(watchSignOut)
   ]
 }

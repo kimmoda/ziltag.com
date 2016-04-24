@@ -12,15 +12,19 @@
     background: url('./logo.png') no-repeat;
     background-size: contain;
   }
-  &__avatar {
+  &__icon-menu {
     position: absolute;
     right: 48px;
     top: 50%;
     transform: translate(0, -50%);
-    height: 40px;
+  }
+  &__avatar {
     width: 40px;
-    background-repeat: no-repeat;
-    background-size: contain;
+    height: 40px;
+    transform: translate(-50%, -50%);
     border-radius: 50%;
+  }
+  &__link {
+    text-decoration: none;
   }
 }
