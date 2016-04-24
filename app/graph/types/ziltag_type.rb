@@ -13,4 +13,5 @@ ZiltagType = GraphQL::ObjectType.define do
   field :preview, !types.String, 'Truncated content' do
     resolve ->(obj, args, ctx){ obj.content.truncate(30) }
   end
+  field :created_at, !types.String, 'example: 2016-03-12 18:14:28 +0800'
 end
