@@ -11,7 +11,7 @@ class Install extends React.Component {
     return (
       <div className="ziltag-install">
         <div className="ziltag-install__container">
-          <MailBoard />
+          <MailBoard subtitle={this.props.confirmed ? "Copy the script below and install Ziltag Plugin to your website." : "We’ve sent you an email for verification. Please check your inbox."}/>
           {this.props.token && this.props.website ? <ScriptCopy token={this.props.token} website={this.props.website}/> : null}
           <div className="ziltag-install__guide">
             <InstallGuide platform={this.props.platform} />
@@ -23,11 +23,18 @@ class Install extends React.Component {
 }
 
 function mapStateToProps(state) {
-  if(state.me && state.me.website){
-    let {token, url: website, platform} = state.me.website
-    return { token, website, platform }
-  }
-  else return {}
-}
+    if (state.me && state.me.website) {
+        let {
+            website: {
+                token,
+                url: website,
+                platform
+            },
+            confirmed
+        } = state.me
+        return {token, website, platform, confirmed}
+    } else
+        return {}
+    }
 
 export default connect(mapStateToProps)(Install)
