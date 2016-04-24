@@ -19,7 +19,8 @@ var plugins = [
     'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
   }),
   new webpack.DefinePlugin({
-    __PRODUCTION__: __PRODUCTION__
+    __PRODUCTION__: __PRODUCTION__,
+    'process.env': {NODE_ENV: __PRODUCTION__ ? "'production'" : "'development'"}
   })
 ]
 
