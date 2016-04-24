@@ -23,6 +23,8 @@
     height: 40px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
+    background-position: center;
+    background-size: contain;
   }
   &__link {
     text-decoration: none;
