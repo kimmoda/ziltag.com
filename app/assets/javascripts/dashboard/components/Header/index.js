@@ -18,7 +18,7 @@ class Header extends React.Component {
     const {avatarURL, avatarTitle} = this.props
     return(
       <div className="ziltag-header">
-        <Link to="/dashboard">
+        <Link to="/">
           <div className="ziltag-header__logo">
           </div>
         </Link>
@@ -34,7 +34,7 @@ class Header extends React.Component {
             anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
             >
-            <Link className="ziltag-header__link" to="/dashboard"><MenuItem primaryText="Dashboard" /></Link>
+            <Link className="ziltag-header__link" to="/"><MenuItem primaryText="Dashboard" /></Link>
             <MenuItem primaryText="Sign out" onClick={this.props.onClickSignOut} />
           </IconMenu>
         </div>

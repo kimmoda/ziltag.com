@@ -12,9 +12,9 @@ export default class Sidebar extends React.Component {
         <SearchField />
         <div className="ziltag-sidebar__menu">
           <Menu>
-            <MenuItem to="/dashboard/tags">Tags</MenuItem>
-            <MenuItem to="/dashboard/comments">Comments</MenuItem>
-            <MenuItem to="/dashboard/account">Account</MenuItem>
+            <MenuItem to="/tags">Tags</MenuItem>
+            <MenuItem to="/comments">Comments</MenuItem>
+            <MenuItem to="/account">Account</MenuItem>
           </Menu>
         </div>
         <div className="ziltag-sidebar__footer">
