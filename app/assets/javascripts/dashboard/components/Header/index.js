@@ -1,21 +1,19 @@
+import IconMenu from './IconMenu'
 import * as actionTypes from '../../actions/types'
 import './index.scss'
 
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import IconMenu from 'material-ui/IconMenu'
-import MenuItem from 'material-ui/MenuItem'
-import IconButton from 'material-ui/IconButton/IconButton'
 
 class Header extends React.Component {
   static propTypes = {
     avatarURL: PropTypes.string,
-    avatarTitle: PropTypes.string
   }
 
   render () {
-    const {avatarURL, avatarTitle} = this.props
+    const {avatarURL, onClickSignOut} = this.props
+    const inconMenuProps = {avatarURL, onClickSignOut}
     return(
       <div className="ziltag-header">
         <Link to="/">
@@ -23,20 +21,7 @@ class Header extends React.Component {
           </div>
         </Link>
         <div className="ziltag-header__icon-menu">
-          <IconMenu
-            iconButtonElement={
-              <IconButton
-                iconClassName="ziltag-header__avatar"
-                style={{width: 40, height: 40, padding: 30}}
-                iconStyle={{backgroundImage: `url("${avatarURL}")`}}/>
-              // TODO https://github.com/callemall/material-ui/issues/2913
-            }
-            anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
-            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-            >
-            <Link className="ziltag-header__link" to="/"><MenuItem primaryText="Dashboard" /></Link>
-            <MenuItem primaryText="Sign out" onClick={this.props.onClickSignOut} />
-          </IconMenu>
+          { avatarURL ? <IconMenu {...inconMenuProps} /> : null }
         </div>
       </div>
     )
@@ -44,10 +29,7 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state, ownProps){
-  return state.me ? {
-    avatarTitle: state.me.name,
-    avatarURL: state.me.avatar
-  } : {}
+  return state.me ? {avatarURL: state.me.avatar} : {}
 }
 
 function mapDispatchToProps(dispatch){
