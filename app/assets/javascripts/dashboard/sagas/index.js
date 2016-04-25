@@ -2,8 +2,12 @@ import * as actionTypes from '../actions/types'
 import * as actions from '../actions'
 import * as API from '../apis'
 import { takeEvery } from 'redux-saga'
-import { call, put, fork } from 'redux-saga/effects'
+import { take, call, put, fork, cancel } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
+
+function delay(ms){
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 function* fetchProfile() {
   const result = yield call(API.graphql, '{me{avatar,confirmed,email,name,website{token,url,platform}}}')
@@ -16,7 +20,7 @@ function* verify(action) {
   const data = yield call(API.verify, password, password_confirmation, confirmation_token)
   if(data.errors) yield put(actions.requestVerifyFailed(data.errors))
   else {
-    yield put(push('/dashboard/verified'))
+    yield put(push('/verified'))
     yield put({type: actionTypes.REQUEST_VERIFY_SUCCEEDED})
   }
 }
@@ -37,10 +41,27 @@ function* watchSignOut() {
   yield* takeEvery(actionTypes.REQUEST_SIGN_OUT, sign_out)
 }
 
+function* redirectToRoot() {
+  yield call(delay, 5000)
+  yield put(push('/'))
+}
+
+function* watchRouterLocationChange() {
+  let lastTask
+  while(true) {
+    const action = yield take('@@router/LOCATION_CHANGE')
+    if(action.payload.pathname == '/verified'){
+      if(lastTask) yield cancel(lastTask)
+      lastTask = yield fork(redirectToRoot)
+    }
+  }
+}
+
 export default function* root() {
   yield [
     fork(fetchProfile),
     fork(watchVerify),
-    fork(watchSignOut)
+    fork(watchSignOut),
+    fork(watchRouterLocationChange)
   ]
 }
