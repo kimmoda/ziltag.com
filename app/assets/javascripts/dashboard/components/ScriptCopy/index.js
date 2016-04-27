@@ -25,6 +25,15 @@ export default class ScriptCopy extends React.Component {
       fontSize: 16,
       fontWeight: 'normal'
     }
+    const websiteButtonStyle = {
+      width: 186,
+      fontFamily: "'Roboto', sans-serif",
+      fontSize: 16,
+      fontWeight: 'normal',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
     return (
       <div className="ziltag-script-copy">
         <div
@@ -32,18 +41,18 @@ export default class ScriptCopy extends React.Component {
           {script}
         </div>
         <FlatButton
-          className="ziltag-script-copy__copy"
           ref="copy"
           data-clipboard-text={script}
           label="COPY"
           style={copyButtonStyle}
           />
-        <a
-          className="ziltag-script-copy__website"
+        <FlatButton
           href={this.props.website}
-          target="_blank">
-          GO TO WEBSITE
-        </a>
+          linkButton
+          target="_blank"
+          label="GO TO WEBSITE"
+          style={websiteButtonStyle}
+          />
       </div>
     )
   }
