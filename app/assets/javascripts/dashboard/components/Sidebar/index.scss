@@ -15,4 +15,18 @@
     bottom: 0;
     width: 100%;
   }
+  &__link {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .87);
+    letter-spacing: 1px;
+    padding-left: 34px;
+    line-height: 54px;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    &--active {
+      color: #EE2E24;
+    }
+  }
 }
