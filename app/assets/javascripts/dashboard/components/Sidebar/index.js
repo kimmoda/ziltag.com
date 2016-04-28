@@ -2,13 +2,24 @@ import SearchField from '../SearchField'
 import Footer from '../Footer'
 import './index.scss'
 
-import React from 'react'
+import React, {PropTypes} from 'react'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 
-export default class Sidebar extends React.Component {
+class Sidebar extends React.Component {
+
+  static propTypes = {
+    showRecommendedTags: PropTypes.bool.isRequired
+  }
+
+  static defaultProps = {
+    showRecommendedTags: false
+  }
+
   render () {
+    const { showRecommendedTags } = this.props
     return(
       <div className="ziltag-sidebar">
         <SearchField />
@@ -35,6 +46,17 @@ export default class Sidebar extends React.Component {
                 className="ziltag-sidebar__link"
                 activeClassName="ziltag-sidebar__link--active">Account</Link>
             </MenuItem>
+            {
+              showRecommendedTags ?
+              <MenuItem>
+                <Link
+                  to="/recommended_tags"
+                  className="ziltag-sidebar__link"
+                  activeClassName="ziltag-sidebar__link--active">RecommendedTags</Link>
+              </MenuItem>
+              :
+              null
+            }
           </Menu>
         </div>
         <div className="ziltag-sidebar__footer">
@@ -44,3 +66,10 @@ export default class Sidebar extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { showRecommendedTags: state.me ? state.me.confirmed : false }
+}
+
+export default connect(mapStateToProps, null, null, {pure: false})(Sidebar)
+// # https://github.com/reactjs/react-redux/blob/v4.0.0/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
