@@ -7,6 +7,10 @@ class Photo < ActiveRecord::Base
 
   # scopes
 
+  def self.having_tags_more_than(number)
+    joins(ziltags: :user).where.not(users: {confirmed_at: nil}).group('photos.id').having("count(photos.id) >= #{number}")
+  end
+
   def self.find_by_token_src_and_href(token:, source:, href:)
     uri = URI(href)
     host = uri.host

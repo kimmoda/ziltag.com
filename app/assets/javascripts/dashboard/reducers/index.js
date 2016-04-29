@@ -21,3 +21,12 @@ export function me(state=null, action){
       return state
   }
 }
+
+export function recommendedZiltagMaps(state=[], action){
+  switch (action.type) {
+    case actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS:
+      return action.ziltag_maps
+    default:
+      return state
+  }
+}

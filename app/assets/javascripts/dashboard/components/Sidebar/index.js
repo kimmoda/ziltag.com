@@ -20,6 +20,23 @@ class Sidebar extends React.Component {
 
   render () {
     const { showRecommendedTags } = this.props
+    const links = [
+      { to: '/tags', name: 'Tags', },
+      { to: '/comments', name: 'Comments', },
+      { to: '/account', name: 'Account', },
+    ]
+    if(showRecommendedTags) links.push({to: 'recommended_tags', name: 'Recommended Tags'})
+    const menuItems = links.map((obj) => {
+      return (
+        <MenuItem key={obj.name}>
+          <Link
+            to={obj.to}
+            className="ziltag-sidebar__link"
+            activeClassName="ziltag-sidebar__link--active">{obj.name}</Link>
+        </MenuItem>
+      )
+    })
+
     return(
       <div className="ziltag-sidebar">
         <SearchField />
@@ -28,35 +45,7 @@ class Sidebar extends React.Component {
             autoWidth={false}
             style={{display: 'table', width: '100%'}}
             listStyle={{paddingTop: 0}}>
-            <MenuItem>
-              <Link
-                to="/tags"
-                className="ziltag-sidebar__link"
-                activeClassName="ziltag-sidebar__link--active">Tags</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link
-                to="/comments"
-                className="ziltag-sidebar__link"
-                activeClassName="ziltag-sidebar__link--active">Comments</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link
-                to="/account"
-                className="ziltag-sidebar__link"
-                activeClassName="ziltag-sidebar__link--active">Account</Link>
-            </MenuItem>
-            {
-              showRecommendedTags ?
-              <MenuItem>
-                <Link
-                  to="/recommended_tags"
-                  className="ziltag-sidebar__link"
-                  activeClassName="ziltag-sidebar__link--active">RecommendedTags</Link>
-              </MenuItem>
-              :
-              null
-            }
+            {menuItems}
           </Menu>
         </div>
         <div className="ziltag-sidebar__footer">
