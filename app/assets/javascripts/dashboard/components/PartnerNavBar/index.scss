@@ -1,0 +1,39 @@
+.ziltag-partner-nav-bar {
+  &__domain {
+    flex-basis: 229px;
+    padding-left: 51px;
+    height: 20px;
+    background-image: url('./home.png'), url('./arrow.png');
+    background-repeat: no-repeat, no-repeat;
+    background-position: 13px center, 261px center;
+    background-size: 20px, 12px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    letter-spacing: .9px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, .87);
+  }
+  &__stats {
+    margin-left: 21px;
+    padding-left: 37px;
+    flex-basis: 350px;
+    height: 20px;
+    background-image: url('./pie_chart.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__stats-item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    letter-spacing: .9px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, .87);
+  }
+  &__link {
+    color: #008BF3;
+  }
+}
