@@ -7,6 +7,10 @@ class Photo < ActiveRecord::Base
 
   # scopes
 
+  def self.without_tags
+    joins('LEFT JOIN ziltags ON ziltags.photo_id = photos.id').where('ziltags.photo_id is NULL')
+  end
+
   # this can be improved by adding a column for couting cache
   def self.having_tags_more_than(number=1)
     joins(ziltags: :user).where.not(users: {confirmed_at: nil}).group('photos.id').having('count(photos.id) > ?', number)
