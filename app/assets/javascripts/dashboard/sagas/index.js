@@ -10,7 +10,7 @@ function delay(ms){
 }
 
 function* fetchProfile() {
-  const result = yield call(API.graphql, '{me{avatar,confirmed,email,name,website{token,url,platform}}}')
+  const result = yield call(API.graphql, '{me{avatar,confirmed,email,name,website{token,url,platform},websites{id,url,maps_without_tags{id,src}}}}')
   if(result.data) yield put({type: actionTypes.RECEIVE_ME, me: result.data.me})
   else if (result.errors) console.error(result.errors)
 }
