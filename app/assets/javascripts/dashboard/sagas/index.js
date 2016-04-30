@@ -16,7 +16,7 @@ function* fetchProfile() {
 }
 
 function* fetchRecommendedZiltagMaps() {
-  const result = yield call(API.graphql, '{recommended_ziltag_maps{id,src,ziltags{id,x,y}}}')
+  const result = yield call(API.graphql, '{recommended_ziltag_maps{id,src,host,href,website{url,user{avatar,name}},ziltags{id,x,y}}}')
   if(result.data) yield put({type: actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS, ziltag_maps: result.data.recommended_ziltag_maps})
 }
 

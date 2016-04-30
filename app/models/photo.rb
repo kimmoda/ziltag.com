@@ -7,8 +7,13 @@ class Photo < ActiveRecord::Base
 
   # scopes
 
-  def self.having_tags_more_than(number)
-    joins(ziltags: :user).where.not(users: {confirmed_at: nil}).group('photos.id').having("count(photos.id) >= #{number}")
+  # this can be improved by adding a column for couting cache
+  def self.having_tags_more_than(number=1)
+    joins(ziltags: :user).where.not(users: {confirmed_at: nil}).group('photos.id').having('count(photos.id) > ?', number)
+  end
+
+  def self.recommended
+    joins(:ziltags).where(id: having_tags_more_than.select(:id)).order('ziltags.created_at DESC')
   end
 
   def self.find_by_token_src_and_href(token:, source:, href:)
@@ -39,10 +44,9 @@ class Photo < ActiveRecord::Base
 
   # attributes
   mount_uploader :image, ImageUploader
-  delegate :token, to: :box
+  delegate :token, :user, to: :box
 
   # associations
-  belongs_to :user
   belongs_to :box
   has_many :ziltags, dependent: :destroy
 
