@@ -41,3 +41,16 @@ export function modal(state={isActive: false}, action) {
       return state
   }
 }
+
+export function siteMenu(state={open: false, target: null, selected: 0}, action) {
+  switch (action.type) {
+    case actionTypes.SELECT_SITE_MENU_ITEM:
+      return {...state, selected: action.selected}
+    case actionTypes.OPEN_SITE_MENU:
+      return {...state, open: true, target: action.target}
+    case actionTypes.CLOSE_SITE_MENU:
+      return {...state, open: false}
+    default:
+      return state
+  }
+}
