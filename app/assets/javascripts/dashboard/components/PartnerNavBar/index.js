@@ -50,7 +50,7 @@ class PartnerNavBar extends React.Component {
             animation={PopoverAnimationVertical}
           >
             <Menu autoWidth={false} width={280} value={selected} onItemTouchTap={onItemTouchTap} onChange={onMenuChange}>
-              { websites.map((website, idx) => <MenuItem key={website.id} value={idx} primaryText={website.url} />).filter((website, idx) => idx != selected) }
+              { websites.map((website, idx) => <MenuItem key={website.id} value={idx}><div style={{paddingLeft: 51}}>{website.url}</div></MenuItem>).filter((website, idx) => idx != selected) }
             </Menu>
           </Popover>
           <div className="ziltag-partner-nav-bar__stats">
