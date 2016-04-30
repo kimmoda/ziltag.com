@@ -21,3 +21,23 @@ export function me(state=null, action){
       return state
   }
 }
+
+export function recommendedZiltagMaps(state=[], action){
+  switch (action.type) {
+    case actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS:
+      return action.ziltag_maps
+    default:
+      return state
+  }
+}
+
+export function modal(state={isActive: false}, action) {
+  switch (action.type) {
+    case actionTypes.OPEN_MODAL:
+      return {isActive: true, src: action.src}
+    case actionTypes.CLOSE_MODAL:
+      return {isActive: false}
+    default:
+      return state
+  }
+}

@@ -6,6 +6,7 @@ import Account from './components/pages/Account'
 import Verify from './components/pages/Verify'
 import Verified from './components/pages/Verified'
 import Install from './components/pages/Install'
+import RecommendedTags from './components/pages/RecommendedTags'
 import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
 import saga from './sagas'
@@ -56,6 +57,7 @@ ReactDOM.render(
           <Route path="verify" component={Verify} />
           <Route path="verified" component={Verified} />
           <Route path="install" component={Install} />
+          <Route path="recommended_tags" component={RecommendedTags} />
         </Route>
       </Router>
     </MuiThemeProvider>

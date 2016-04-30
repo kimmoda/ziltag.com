@@ -1,0 +1,16 @@
+.ziltag-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.5);
+  &__body {
+    position: fixed;
+    left: 5vw;
+    top: 10vh;
+    width: 90vw;
+    height: 80vh;
+    background-color: white;
+  }
+}
