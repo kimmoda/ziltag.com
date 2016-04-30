@@ -37,6 +37,14 @@ class PartnerNavBar extends React.Component {
     } = this.props
     let domainClass = 'ziltag-partner-nav-bar__domain'
     if(isOpen) domainClass += ' ziltag-partner-nav-bar__domain--active'
+
+    const menuItemStyle = {
+      fontFamily: "'Roboto', sans-serif",
+      fontSize: 14,
+      letterSpacing: .9,
+      color: 'rgba(0, 0, 0, .87)',
+      paddingLeft: 35
+    }
     return (
       <div className="ziltag-partner-nav-bar">
         <PageBar>
@@ -50,7 +58,7 @@ class PartnerNavBar extends React.Component {
             animation={PopoverAnimationVertical}
           >
             <Menu autoWidth={false} width={280} value={selected} onItemTouchTap={onItemTouchTap} onChange={onMenuChange}>
-              { websites.map((website, idx) => <MenuItem key={website.id} value={idx}><div style={{paddingLeft: 51}}>{website.url}</div></MenuItem>).filter((website, idx) => idx != selected) }
+              { websites.map((website, idx) => <MenuItem key={website.id} value={idx}><div style={{...menuItemStyle}}>{website.url}</div></MenuItem>).filter((website, idx) => idx != selected) }
             </Menu>
           </Popover>
           <div className="ziltag-partner-nav-bar__stats">
