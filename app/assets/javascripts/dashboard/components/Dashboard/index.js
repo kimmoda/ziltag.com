@@ -1,5 +1,6 @@
 import Header from '../Header'
 import Sidebar from '../Sidebar'
+import IframeModal from '../IframeModal'
 import DevTools from '../../containers/DevTools'
 import './index.scss'
 import 'normalize.css/normalize.css'
@@ -19,6 +20,7 @@ export default class Dashboard extends React.Component {
         <div className="ziltag-dashboard__content">
           {this.props.children}
         </div>
+        <IframeModal/>
         {__PRODUCTION__ ? null : <DevTools/>}
       </div>
     )

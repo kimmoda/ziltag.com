@@ -30,3 +30,14 @@ export function recommendedZiltagMaps(state=[], action){
       return state
   }
 }
+
+export function modal(state={isActive: false}, action) {
+  switch (action.type) {
+    case actionTypes.OPEN_MODAL:
+      return {isActive: true, src: action.src}
+    case actionTypes.CLOSE_MODAL:
+      return {isActive: false}
+    default:
+      return state
+  }
+}

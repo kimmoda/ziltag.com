@@ -1,30 +1,33 @@
+import * as actions from '../../actions'
 import './index.scss'
-import React, { PropTypes } from 'react'
 
-export default class ZiltagMapTile extends React.Component {
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+
+class ZiltagMapTile extends React.Component {
   static propTypes = {
     ziltags: PropTypes.arrayOf(PropTypes.object).isRequired,
     avatarURL: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     siteDomain: PropTypes.string.isRequired,
-    siteURL: PropTypes.string.isRequired
-  }
-
-  static defaultProps = {
-    ziltags: [],
-    imageURL: 'https://fakeimg.pl/200x200/',
-    avatarURL: 'https://fakeimg.pl/150/',
-    username: 'tonytonyjan',
-    siteDomain: 'tonytonyjan.net',
+    siteURL: PropTypes.string.isRequired,
+    onClickZiltag: PropTypes.func
   }
 
   render () {
-    const {ziltags, imageURL, avatarURL, username, siteDomain} = this.props
+    const {ziltags, imageURL, avatarURL, username, siteDomain, onClickZiltag} = this.props
 
     const ziltagElements = ziltags.map((ziltag) => {
       let left = `${ziltag.x * 100}%`
       let top = `${ziltag.y * 100}%`
-      return <div key={ziltag.id} className="ziltag-ziltag-map-tile__tag" style={{left, top}}></div>
+      return (
+        <div
+          key={ziltag.id}
+          className="ziltag-ziltag-map-tile__tag"
+          style={{left, top}}
+          onClick={() => onClickZiltag(ziltag.id)}>
+        </div>
+      )
     })
 
     return (
@@ -44,3 +47,11 @@ export default class ZiltagMapTile extends React.Component {
     )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onClickZiltag: (ziltagID) => dispatch(actions.openIframeModal(`/ziltags/${ziltagID}`))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ZiltagMapTile)
