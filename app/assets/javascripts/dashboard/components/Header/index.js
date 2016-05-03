@@ -1,5 +1,5 @@
 import IconMenu from './IconMenu'
-import * as actionTypes from '../../actions/types'
+import * as actions from '../../actions'
 import './index.scss'
 
 import React, { PropTypes } from 'react'
@@ -34,7 +34,7 @@ function mapStateToProps(state, ownProps){
 
 function mapDispatchToProps(dispatch){
   return {
-    onClickSignOut: () => dispatch({type: actionTypes.REQUEST_SIGN_OUT})
+    onClickSignOut: () => dispatch(actions.signOut())
   }
 }
 
