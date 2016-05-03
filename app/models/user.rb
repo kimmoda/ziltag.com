@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :boxes, dependent: :destroy, after_remove: :nullify_box
-  has_many :photos, dependent: :destroy
+  has_many :photos, through: :boxes, dependent: :destroy
 
   # validations
   validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}, allow_nil: true

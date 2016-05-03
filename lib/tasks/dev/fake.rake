@@ -20,6 +20,13 @@ namespace 'dev:fake' do
         url = Faker::Internet.url
         @photos << Photo.create!(image: image, href: url, width: width, height: height, box: Box.create(user: @users.sample, url: URI(url).host))
       end
+      80.times do
+        image = @images.sample
+        width, height = ::MiniMagick::Image.open(image.path)[:dimensions]
+        url = Faker::Internet.url
+        box = @users.first.boxes.first
+        Photo.create!(image: image, href: url, width: width, height: height, box: box)
+      end
     end
 
     fakeup '產生貼紙' do

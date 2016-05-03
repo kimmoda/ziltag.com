@@ -20,7 +20,9 @@ var plugins = [
   }),
   new webpack.DefinePlugin({
     __PRODUCTION__: __PRODUCTION__,
-    'process.env': {NODE_ENV: __PRODUCTION__ ? "'production'" : "'development'"}
+    'process.env': {
+      NODE_ENV: __PRODUCTION__ ? "'production'" : "'development'"
+    }
   })
 ]
 

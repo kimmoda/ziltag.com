@@ -12,7 +12,7 @@ class MyTags extends React.Component {
     const imageElements = ziltagMaps.map((ziltagMap)=>{
       return(
         <div key={ziltagMap.id} className="ziltag-my-tags__image" onClick={()=>{onClickZiltagMap(ziltagMap.id)}}>
-          <img width="100%" src={ziltagMap.src} />
+          <img width="100%" src={ziltagMap.src} style={{verticalAlign: 'middle'}}/>
         </div>
       )
     })
