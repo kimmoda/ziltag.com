@@ -57,7 +57,7 @@ class Sidebar extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { showRecommendedTags: state.me ? state.me.confirmed : false }
+  return { showRecommendedTags: state.me ? state.me.isPartner : false }
 }
 
 export default connect(mapStateToProps, null, null, {pure: false})(Sidebar)

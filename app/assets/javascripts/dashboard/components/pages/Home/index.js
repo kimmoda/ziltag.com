@@ -6,18 +6,17 @@ import { connect } from 'react-redux'
 
 class Home extends React.Component {
   static propTypes = {
-    isUserVerified: PropTypes.bool
+    isPartner: PropTypes.bool
   }
 
   render () {
-    const {isUserVerified} = this.props
-    if(isUserVerified == null) return null
-    return isUserVerified ? <MyTags/> : <RecommendedTags/>
+    const {isPartner} = this.props
+    return isPartner ? <MyTags/> : <RecommendedTags/>
   }
 }
 
 function mapStateToProps(state) {
-  return {isUserVerified: state.me ? state.me.confirmed : null}
+  return {isPartner: state.me ? state.me.isPartner : false}
 }
 
 export default connect(mapStateToProps)(Home)
