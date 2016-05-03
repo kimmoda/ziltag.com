@@ -1,0 +1,62 @@
+.ziltag-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  &__continaer {
+    height: 20px;
+    display: flex;
+    position: relative;
+  }
+  &__circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .54);
+    margin-left: -12px;
+    animation: motion 3s cubic-bezier(0.77, 0, 0.175, 1) infinite, opacity 3s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  }
+  &__logo {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: -12px;
+    animation: motion 3s cubic-bezier(0.77, 0, 0.175, 1) infinite, opacityInverse 3s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+    background: url('./icon.png') center center/cover;
+  }
+  &__text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, .54);
+    letter-spacing: 3px;
+    margin-top: 10px;
+  }
+}
+
+@keyframes motion{
+  0%   { transform: translateX(0)     scale(1); }
+  25%  { transform: translateX(-50px) scale(0.3); }
+  50%  { transform: translateX(0)     scale(1); transform: translateX(0)     scale(1); }
+  75%  { transform: translateX(50px)  scale(0.3); }
+  100% { transform: translateX(0)     scale(1); transform: translateX(0)     scale(1); }
+}
+
+@keyframes opacity{
+  0%   { opacity: 0; }
+  25%  { opacity: 1; }
+  50%  { opacity: 0; }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes opacityInverse{
+  0%   { opacity: 1; }
+  25%  { opacity: 0; }
+  50%  { opacity: 1; }
+  75%  { opacity: 0; }
+  100% { opacity: 1; }
+}
