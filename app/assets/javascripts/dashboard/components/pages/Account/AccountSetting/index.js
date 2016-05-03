@@ -1,10 +1,18 @@
+import * as actions from '../../../../actions'
 import './index.scss'
 import React, { PropTypes } from 'react'
 import {connect} from 'react-redux'
+import FlatButton from 'material-ui/FlatButton'
 
 class AccountSetting extends React.Component {
   render () {
-    const {avatar} = this.props
+    const {avatar, onClickSignOut} = this.props
+    const buttonStyle = {
+      marginRight: 17,
+      fontSize: 14,
+      fontWeight: 500,
+      color: 'rgba(0, 0, 0, .87)',
+    }
     return (
       <div className="ziltag-account-setting">
         <div className="ziltag-account-setting__avatar" style={{backgroundImage: `url('${avatar}')`}}></div>
@@ -24,7 +32,7 @@ class AccountSetting extends React.Component {
             </div>
           </div>
         </div>
-        <div className="ziltag-account-setting__sign-out">SIGN OUT</div>
+        <FlatButton style={buttonStyle} onClick={onClickSignOut} label="SIGN OUT"/>
       </div>
     )
   }
@@ -36,4 +44,12 @@ function mapStateToProps(state) {
   } : {}
 }
 
-export default connect(mapStateToProps)(AccountSetting)
+function mapDispatchToProps(dispatch) {
+  return {
+    onClickSignOut: () => {
+      dispatch(actions.signOut())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountSetting)

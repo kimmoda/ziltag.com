@@ -23,3 +23,7 @@ export function openIframeModal(src) {
     src
   }
 }
+
+export function signOut() {
+  return { type: actionTypes.REQUEST_SIGN_OUT }
+}
