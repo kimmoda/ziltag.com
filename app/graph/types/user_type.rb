@@ -2,6 +2,7 @@ UserType = GraphQL::ObjectType.define do
   name 'User'
   description 'A user entry'
   field :name, !types.String, 'The username of this user', property: :username
+  field :isPartner, !types.Boolean, property: :content_provider?
   field :avatar, !types.String, 'The avatar URL of this user' do
     resolve ->(obj, args, ctx){ obj.avatar.thumb.url }
   end

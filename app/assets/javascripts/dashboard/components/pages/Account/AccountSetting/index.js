@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton'
 
 class AccountSetting extends React.Component {
   render () {
-    const {avatar, onClickSignOut} = this.props
+    const {avatar, username, role, email, onClickSignOut} = this.props
     const buttonStyle = {
       marginRight: 17,
       fontSize: 14,
@@ -17,12 +17,12 @@ class AccountSetting extends React.Component {
       <div className="ziltag-account-setting">
         <div className="ziltag-account-setting__avatar" style={{backgroundImage: `url('${avatar}')`}}></div>
         <div className="ziltag-account-setting__info">
-          <div className="ziltag-account-setting__username">tonytonyjan</div>
-          <div className="ziltag-account-setting__role">Ziltag Partner</div>
+          <div className="ziltag-account-setting__username">{username}</div>
+          <div className="ziltag-account-setting__role">{role}</div>
           <div className="ziltag-account-setting__fields">
             <div className="ziltag-account-setting__field">
               <div className="ziltag-account-setting__label">Email</div>
-              <div className="ziltag-account-setting__value">tonytonyjan@gmail.com</div>
+              <div className="ziltag-account-setting__value">{email}</div>
             </div>
             <div className="ziltag-account-setting__field">
               <div className="ziltag-account-setting__label">Password</div>
@@ -40,7 +40,10 @@ class AccountSetting extends React.Component {
 
 function mapStateToProps(state) {
   return state.me ? {
-    avatar: state.me.avatar
+    avatar: state.me.avatar,
+    role: state.me.isPartner ? 'Ziltag Partner' : 'General User',
+    username: state.me.name,
+    email: state.me.email,
   } : {}
 }
 
