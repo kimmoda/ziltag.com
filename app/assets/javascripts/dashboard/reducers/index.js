@@ -54,3 +54,14 @@ export function siteMenu(state={open: false, target: null, selected: 0}, action)
       return state
   }
 }
+
+export function dialog(state=null, action){
+  switch (action.type) {
+    case actionTypes.OPEN_DIALOG:
+      return action.name
+    case actionTypes.CLOSE_DIALOG:
+      return null
+    default:
+      return state
+  }
+}

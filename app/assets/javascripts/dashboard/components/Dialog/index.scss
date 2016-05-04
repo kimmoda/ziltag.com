@@ -1,0 +1,22 @@
+.ziltag-dialog {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .82);
+  &__body {
+    width: 621px;
+    min-height: 327px;
+    margin: 139px auto;
+    background-color: white;
+    position: relative;
+  }
+  &__dismiss {
+    background: url('./close.png') center/contain;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+    position: absolute;
+    top: 18px;
+    right: 17px;
+  }
+}

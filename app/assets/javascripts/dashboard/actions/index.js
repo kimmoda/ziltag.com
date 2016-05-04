@@ -27,3 +27,11 @@ export function openIframeModal(src) {
 export function signOut() {
   return { type: actionTypes.REQUEST_SIGN_OUT }
 }
+
+export function openDialog(name) {
+  return {type: actionTypes.OPEN_DIALOG, name}
+}
+
+export function closeDialog() {
+  return {type: actionTypes.CLOSE_DIALOG}
+}

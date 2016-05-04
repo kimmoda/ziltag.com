@@ -1,6 +1,7 @@
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 import IframeModal from '../IframeModal'
+import Dialog from '../../containers/Dialog'
 import DevTools from '../../containers/DevTools'
 import './index.scss'
 import 'normalize.css/normalize.css'
@@ -21,6 +22,7 @@ export default class Dashboard extends React.Component {
           {this.props.children}
         </div>
         <IframeModal/>
+        <Dialog/>
         {__PRODUCTION__ ? null : <DevTools/>}
       </div>
     )
