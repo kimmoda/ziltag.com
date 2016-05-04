@@ -9,6 +9,11 @@
     margin: 139px auto;
     background-color: white;
     position: relative;
+    @media screen and (max-width: 600px) {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
   &__dismiss {
     background: url('./close.png') center/contain;
