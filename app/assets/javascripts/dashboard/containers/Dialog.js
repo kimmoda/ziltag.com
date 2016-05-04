@@ -3,8 +3,13 @@ import * as actions from '../actions'
 import {connect} from 'react-redux'
 
 function mapStateToProps(state) {
-  return {
-    open: !!state.dialog
+  if (state.dialog)
+    return {
+      open: true,
+      name: state.dialog
+    }
+  else return {
+    open: false
   }
 }
 
