@@ -7,8 +7,6 @@ import './index.scss'
 import React from 'react'
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
-
 
 class Verify extends React.Component {
   render () {

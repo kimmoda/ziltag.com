@@ -1,0 +1,17 @@
+.ziltag-text-field {
+  width: 100%;
+  min-width: 380px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .108);
+  padding-bottom: 11px;
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  color: rgba(0, 0, 0, .435);
+  letter-spacing: 1.75px;
+  line-height: 20px;
+  &:focus {
+    outline: 0;
+  }
+}

@@ -1,0 +1,12 @@
+.ziltag-form-password {
+  width: 380px;
+  &__field {
+    margin-top: 34px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__button {
+    margin-top: 38px;
+  }
+}
