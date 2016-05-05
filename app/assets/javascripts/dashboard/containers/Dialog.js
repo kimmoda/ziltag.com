@@ -1,4 +1,5 @@
 import Dialog from '../components/Dialog'
+import PasswordChanged from '../components/PasswordChanged'
 import PasswordForm from './forms/Password'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
@@ -8,6 +9,8 @@ function nameToForm(name){
   switch (name) {
     case 'password':
       return <PasswordForm />
+    case 'password_changed':
+      return <PasswordChanged />
     default:
       return null
   }
