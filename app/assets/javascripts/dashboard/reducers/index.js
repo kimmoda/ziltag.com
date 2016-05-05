@@ -10,6 +10,14 @@ export const form = formReducer.plugin({
       default:
         return state
     }
+  },
+  password: (state, action) => {
+    switch (action.type) {
+      case actionTypes.RECEIVE_CHANGE_PASSWORD_FAILURE:
+        return {...state, _error: action.errors[0].message}
+      default:
+        return state
+    }
   }
 })
 

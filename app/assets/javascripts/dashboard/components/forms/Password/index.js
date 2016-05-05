@@ -5,7 +5,7 @@ import Button from '../../Button'
 
 export default class Password extends React.Component {
   render () {
-    const {fields: {oldPassword, newPassword, confirmPassword}, handleSubmit} = this.props
+    const {fields: {oldPassword, newPassword, confirmPassword}, handleSubmit, error} = this.props
     return (
       <form className="ziltag-form-password" onSubmit={handleSubmit}>
         <div className="ziltag-form-password__fields">
@@ -16,6 +16,7 @@ export default class Password extends React.Component {
         <div className="ziltag-form-password__button">
           <Button backgroundColor="#008BF3">OK</Button>
         </div>
+        <div className="ziltag-form-password__error">{error}</div>
       </form>
     )
   }

@@ -65,7 +65,7 @@ function* watchRouterLocationChange() {
 function* requestChangePassword(action) {
   const {oldPassword, newPassword, confirmPassword} = action
   const data = yield call(API.graphql, `mutation{updateUser(old_password:"${oldPassword.replace(/"/g, '\\"')}",new_password:"${newPassword.replace(/"/g, '\\"')}",confirm_password:"${confirmPassword.replace(/"/g, '\\"')}"){name}}`)
-  if(data.errors); // TODO
+  if(data.errors) yield put(actions.receivePasswordFailure(data.errors))
   else {
     yield put(actions.openDialog('password_changed'))
   }

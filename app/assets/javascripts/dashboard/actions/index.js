@@ -45,3 +45,10 @@ export function requestChangePassword(params) {
     confirmPassword
   }
 }
+
+export function receivePasswordFailure(errors) {
+  return {
+    type: actionTypes.RECEIVE_CHANGE_PASSWORD_FAILURE,
+    errors
+  }
+}
