@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton'
 
 class AccountSetting extends React.Component {
   render () {
-    const {avatar, username, role, email, onClickSignOut} = this.props
+    const {avatar, username, role, email, onClickSignOut, onClickPassword} = this.props
     const buttonStyle = {
       marginRight: 17,
       fontSize: 14,
@@ -27,7 +27,7 @@ class AccountSetting extends React.Component {
             <div className="ziltag-account-setting__field">
               <div className="ziltag-account-setting__label">Password</div>
               <div className="ziltag-account-setting__value">
-                ******** <a className="ziltag-account-setting__link" href="#">change</a>
+                ******** <a className="ziltag-account-setting__link" href="#" onClick={onClickPassword}>change</a>
               </div>
             </div>
           </div>
@@ -51,6 +51,10 @@ function mapDispatchToProps(dispatch) {
   return {
     onClickSignOut: () => {
       dispatch(actions.signOut())
+    },
+    onClickPassword: (e) => {
+      e.preventDefault()
+      dispatch(actions.openDialog('password'))
     }
   }
 }
