@@ -27,7 +27,6 @@ class User < ActiveRecord::Base
   # validations
   validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}, allow_nil: true
   validates :username, presence: true, if: :general_user?
-  validates :password, confirmation: true
   validate :url_must_be_valid
 
   # callbacks

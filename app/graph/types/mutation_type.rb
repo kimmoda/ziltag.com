@@ -11,6 +11,25 @@ MutationType = GraphQL::ObjectType.define do
     end
   end
 
+  field :updateUser, UserType do
+    argument :old_password, !types.String
+    argument :new_password, !types.String
+    argument :confirm_password, !types.String
+    resolve -> (_obj, args, ctx) do
+      ctx[:current_user].update_with_password(
+        current_password: args[:old_password],
+        password: args[:new_password],
+        password_confirmation: args[:confirm_password]
+      )
+      if ctx[:current_user].errors.empty?
+        ctx[:warden].set_user(ctx[:current_user], scope: :user)
+        ctx[:current_user]
+      else
+        raise ctx[:current_user].errors.messages.values.first.first
+      end
+    end
+  end
+
   field :createZiltag, ZiltagType do
     argument :x, !types.Float
     argument :y, !types.Float
