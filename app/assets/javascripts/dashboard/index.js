@@ -16,7 +16,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import {Provider} from 'react-redux'
-import {Router, Route, IndexRoute, useRouterHistory} from 'react-router'
+import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import { createHistory } from 'history'
 import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
@@ -26,12 +26,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 injectTapEventPlugin()
 
-let sagaMiddleware = createSagaMiddleware()
-let browserHistory = useRouterHistory(createHistory)({
-  basename: '/dashboard'
-})
+const sagaMiddleware = createSagaMiddleware()
 
-let store = createStore(
+const store = createStore(
   combineReducers(reducers),
   initialState,
   compose(
@@ -43,13 +40,13 @@ let store = createStore(
 
 sagaMiddleware.run(saga)
 
-let history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Router history={history}>
-        <Route path="/" component={Dashboard}>
+        <Route path="/dashboard" component={Dashboard}>
           <IndexRoute component={Home} />
           <Route path="tags" component={Tags} />
           <Route path="comments" component={Comments} />

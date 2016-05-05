@@ -21,11 +21,11 @@ class Sidebar extends React.Component {
   render () {
     const { showRecommendedTags } = this.props
     const links = [
-      { to: '/tags', name: 'Tags', },
-      { to: '/comments', name: 'Comments', },
-      { to: '/account', name: 'Account', },
+      { to: '/dashboard/tags', name: 'Tags', },
+      { to: '/dashboard/comments', name: 'Comments', },
+      { to: '/dashboard/account', name: 'Account', },
     ]
-    if(showRecommendedTags) links.push({to: 'recommended_tags', name: 'Recommended'})
+    if(showRecommendedTags) links.push({to: '/dashboard/recommended_tags', name: 'Recommended'})
     const menuItems = links.map((obj) => {
       return (
         <MenuItem key={obj.name}>

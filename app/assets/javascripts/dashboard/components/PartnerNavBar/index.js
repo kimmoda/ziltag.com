@@ -63,13 +63,13 @@ class PartnerNavBar extends React.Component {
           </Popover>
           <div className="ziltag-partner-nav-bar__stats">
             <div className="ziltag-partner-nav-bar__stats-item">
-                My tags: <Link className="ziltag-partner-nav-bar__link" to="/tags">25</Link>
+                My tags: <Link className="ziltag-partner-nav-bar__link" to="/dashboard/tags">25</Link>
             </div>
             <div className="ziltag-partner-nav-bar__stats-item">
-              Reader’s tags: <Link className="ziltag-partner-nav-bar__link" to="/tags">3</Link>
+              Reader’s tags: <Link className="ziltag-partner-nav-bar__link" to="/dashboard/tags">3</Link>
             </div>
             <div className="ziltag-partner-nav-bar__stats-item">
-              Comments: <Link className="ziltag-partner-nav-bar__link" to="/comments">10</Link>
+              Comments: <Link className="ziltag-partner-nav-bar__link" to="/dashboard/comments">10</Link>
             </div>
           </div>
         </PageBar>
