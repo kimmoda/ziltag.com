@@ -35,3 +35,13 @@ export function openDialog(name) {
 export function closeDialog() {
   return {type: actionTypes.CLOSE_DIALOG}
 }
+
+export function requestChangePassword(params) {
+  const {oldPassword, newPassword, confirmPassword} = params
+  return {
+    type: actionTypes.REQUEST_CHANGE_PASSWORD,
+    oldPassword,
+    newPassword,
+    confirmPassword
+  }
+}

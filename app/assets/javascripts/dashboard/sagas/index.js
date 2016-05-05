@@ -62,12 +62,26 @@ function* watchRouterLocationChange() {
   }
 }
 
+function* requestChangePassword(action) {
+  const {oldPassword, newPassword, confirmPassword} = action
+  const data = yield call(API.graphql, `mutation{updateUser(old_password:"${oldPassword.replace(/"/g, '\\"')}",new_password:"${newPassword.replace(/"/g, '\\"')}",confirm_password:"${confirmPassword.replace(/"/g, '\\"')}"){name}}`)
+  if(data.errors); // TODO
+  else {
+    yield put(actions.openDialog('password_changed'))
+  }
+}
+
+function* watchRequestChangePassword() {
+  yield* takeEvery(actionTypes.REQUEST_CHANGE_PASSWORD, requestChangePassword)
+}
+
 export default function* root() {
   yield [
     fork(fetchProfile),
     fork(fetchRecommendedZiltagMaps),
     fork(watchVerify),
     fork(watchSignOut),
-    fork(watchRouterLocationChange)
+    fork(watchRouterLocationChange),
+    fork(watchRequestChangePassword)
   ]
 }
