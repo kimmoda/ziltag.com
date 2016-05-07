@@ -5,10 +5,15 @@ import {connect} from 'react-redux'
 
 class DomainSetting extends React.Component {
   render () {
-    const {websites} = this.props
+    const {websites, username} = this.props
     const domainInfoElements = websites.map(website => (
       <SectionBody key={website.id}>
-        <DomainInfo domain={website.url} />
+        <DomainInfo
+          domain={website.url}
+          token={website.token}
+          myTags={website.ziltags.filter(ziltag => ziltag.usr.name == username).length}
+          readersTags={website.ziltags.filter(ziltag => ziltag.usr.name != username).length}
+          comments={website.comments.length}/>
       </SectionBody>
     ))
     return (
@@ -21,7 +26,8 @@ class DomainSetting extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    websites: state.me ? state.me.websites : []
+    websites: state.me ? state.me.websites : [],
+    username: state.me ? state.me.name : null
   }
 }
 

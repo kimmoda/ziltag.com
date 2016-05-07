@@ -21,6 +21,8 @@ class Box < ActiveRecord::Base
   # associations
   belongs_to :user
   has_many :photos, dependent: :destroy
+  has_many :ziltags, through: :photos
+  has_many :comments, through: :ziltags
 
   # validations
   validates :user, :token, presence: true

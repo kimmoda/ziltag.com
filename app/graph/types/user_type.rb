@@ -20,6 +20,6 @@ UserType = GraphQL::ObjectType.define do
     resolve ->(obj, _args, _ctx){ obj.boxes.first }
   end
   field :websites, ->{ types[!WebsiteType] } do
-    resolve ->(obj, _args, _ctx){ obj.boxes }
+    resolve ->(obj, _args, _ctx){ obj.boxes.includes(ziltags: :user, comments: :user) }
   end
 end

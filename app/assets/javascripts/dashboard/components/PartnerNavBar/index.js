@@ -1,9 +1,9 @@
 import PageBar from '../PageBar'
+import WebsiteStats from '../WebsiteStats'
 import * as actionTypes from '../../actions/types'
 import './index.scss'
 
 import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
 import {Popover, PopoverAnimationVertical} from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
@@ -30,6 +30,9 @@ class PartnerNavBar extends React.Component {
       selected,
       websites,
       menuTarget,
+      myTags,
+      readersTags,
+      comments,
       onClickMenu,
       onRequestClose,
       onItemTouchTap,
@@ -61,16 +64,8 @@ class PartnerNavBar extends React.Component {
               { websites.map((website, idx) => <MenuItem key={website.id} value={idx}><div style={{...menuItemStyle}}>{website.url}</div></MenuItem>).filter((website, idx) => idx != selected) }
             </Menu>
           </Popover>
-          <div className="ziltag-partner-nav-bar__stats">
-            <div className="ziltag-partner-nav-bar__stats-item">
-                My tags: <Link className="ziltag-partner-nav-bar__link" to="/dashboard/tags">25</Link>
-            </div>
-            <div className="ziltag-partner-nav-bar__stats-item">
-              Reader’s tags: <Link className="ziltag-partner-nav-bar__link" to="/dashboard/tags">3</Link>
-            </div>
-            <div className="ziltag-partner-nav-bar__stats-item">
-              Comments: <Link className="ziltag-partner-nav-bar__link" to="/dashboard/comments">10</Link>
-            </div>
+          <div style={{marginLeft: 21}}>
+            <WebsiteStats myTags={myTags} readersTags={readersTags} comments={comments} />
           </div>
         </PageBar>
       </div>
@@ -83,7 +78,10 @@ function mapStateToProps(state) {
     isOpen: state.siteMenu.open,
     menuTarget: state.siteMenu.target,
     websites: state.me ? state.me.websites : [],
-    selected: state.siteMenu.selected
+    selected: state.siteMenu.selected,
+    myTags: state.me ? state.me.websites[state.siteMenu.selected].ziltags.filter(ziltag => ziltag.usr.name == state.me.name).length : null,
+    readersTags: state.me ? state.me.websites[state.siteMenu.selected].ziltags.filter(ziltag => ziltag.usr.name != state.me.name).length : null,
+    comments: state.me ? state.me.websites[state.siteMenu.selected].comments.length : null
   }
 }
 
