@@ -1,0 +1,47 @@
+.ziltag-domain-info {
+  display: flex;
+  align-items: center;
+  &__data {
+    flex-grow: 1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .87);
+  }
+  &__home {
+    background: url('./home.png') left center / contain no-repeat;
+    padding-left: 38px;
+    min-height: 20px;
+    letter-spacing: 1px;
+  }
+  &__chart {
+    margin-top: 16px;
+    background: url('./chart.png') left center / contain no-repeat;
+    padding-left: 38px;
+    min-height: 20px;
+    letter-spacing: 1px;
+  }
+  &__code {
+    margin-top: 16px;
+    background: url('./code.png') left center / contain no-repeat;
+    padding-left: 38px;
+    min-height: 20px;
+  }
+  &__actions {
+    margin-right: 18px;
+  }
+  &__edit {
+    background: url('./pen.png') center/contain no-repeat;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  &__delete {
+    background: url('./delete.png') center/contain no-repeat;
+    width: 24px;
+    height: 24px;
+    margin-left: 40px;
+    display: inline-block;
+    cursor: pointer;
+  }
+}

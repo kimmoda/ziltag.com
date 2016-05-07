@@ -1,0 +1,35 @@
+.ziltag-setting-section{
+  width: 100%;
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, .12);
+  &__bar {
+    height: 39px;
+    position: relative;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+  }
+  &__title {
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  &__right {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.ziltag-setting-section-body {
+  padding: 18px 28px;
+  box-sizing: border-box;
+  &:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, .12);
+  }
+}

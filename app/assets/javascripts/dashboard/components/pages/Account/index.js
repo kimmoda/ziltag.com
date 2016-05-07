@@ -1,4 +1,5 @@
 import AccountSetting from './AccountSetting'
+import DomainSetting from './DomainSetting'
 import './index.scss'
 import React from 'react'
 import {connect} from 'react-redux'
@@ -9,7 +10,12 @@ class Account extends React.Component {
     if(loading) return null
     return (
       <div className="ziltag-account">
-        <AccountSetting />
+        <div className="ziltag-account__section">
+          <AccountSetting />
+        </div>
+        <div className="ziltag-account__section">
+          <DomainSetting />
+        </div>
       </div>
     )
   }
