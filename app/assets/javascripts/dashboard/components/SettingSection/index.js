@@ -10,7 +10,7 @@ export class SettingSection extends React.Component {
           <div className="ziltag-setting-section__title">{title}</div>
           <div className="ziltag-setting-section__right">{right}</div>
         </div>
-        {children}
+        <div>{children}</div>
       </div>
     )
   }
