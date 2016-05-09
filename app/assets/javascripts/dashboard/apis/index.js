@@ -1,10 +1,4 @@
 import * as schema from '../schema'
-import Lokka from 'lokka'
-import Transport from 'lokka-transport-http'
-
-export const graphql = new Lokka({
-  transport: new Transport('/api/v2/graphql')
-})
 
 function api(input, options) {
   const body = JSON.stringify(options.params)
@@ -20,6 +14,10 @@ function api(input, options) {
   }).then(response => response.json())
 }
 
+export function graphql(query, variables = null) {
+  return api('/api/v2/graphql', {params: {query, variables}})
+}
+
 export function verify(password, password_confirmation, confirmation_token) {
   return api('/api/v2/verify', {params: {password, password_confirmation, confirmation_token}})
 }
@@ -29,9 +27,21 @@ export function sign_out() {
 }
 
 export function fetchMe() {
-  return graphql.query('{me{id,avatar,isPartner,confirmed,email,name,website{id,token,url,platform},websites{id,token,url,ziltags{id,usr{id,name}},comments{id,usr{id,name}},maps_without_tags{id,src}}}}')
+  return graphql('{me{id,avatar,isPartner,confirmed,email,name,website{id,token,url,platform},websites{id,token,url,ziltags{id,usr{id,name}},comments{id,usr{id,name}},maps_without_tags{id,src}}}}')
 }
 
 export function fetchRecommendedZiltagMaps(){
-  return graphql.query('{recommended_ziltag_maps{id,src,host,href,website{id,url,user{id,avatar,name}},ziltags{id,x,y}}}')
+  return graphql('{recommended_ziltag_maps{id,src,host,href,website{id,url,user{id,avatar,name}},ziltags{id,x,y}}}')
+}
+
+export function changePassword(oldPassword, newPassword, confirmPassword){
+  return graphql(`
+    mutation updateUser($oldPassword: String!, $newPassword: String!, $confirmPassword: String!){
+      updateUser(
+        old_password: $oldPassword,
+        new_password: $newPassword,
+        confirm_password: $confirmPassword
+      ){name}
+    }
+  `, {oldPassword, newPassword, confirmPassword})
 }

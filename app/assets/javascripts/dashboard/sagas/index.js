@@ -12,13 +12,13 @@ function delay(ms){
 }
 
 function* fetchMe() {
-  const result = yield call(API.fetchMe)
-  yield put({type: actionTypes.RECEIVE_ME, response: normalize(result.me, user)})
+  const response = yield call(API.fetchMe)
+  yield put({type: actionTypes.RECEIVE_ME, response: normalize(response.data.me, user)})
 }
 
 function* fetchRecommendedZiltagMaps() {
-  const result = yield call(API.fetchRecommendedZiltagMaps)
-  yield put({type: actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS, response: normalize(result.recommended_ziltag_maps, arrayOf(ziltagMap))})
+  const response = yield call(API.fetchRecommendedZiltagMaps)
+  yield put({type: actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS, response: normalize(response.data.recommended_ziltag_maps, arrayOf(ziltagMap))})
 }
 
 function* verify(action) {
@@ -65,7 +65,7 @@ function* watchRouterLocationChange() {
 
 function* requestChangePassword(action) {
   const {oldPassword, newPassword, confirmPassword} = action
-  const data = yield call(API.graphql, `mutation{updateUser(old_password:"${oldPassword.replace(/"/g, '\\"')}",new_password:"${newPassword.replace(/"/g, '\\"')}",confirm_password:"${confirmPassword.replace(/"/g, '\\"')}"){name}}`)
+  const data = yield call(API.changePassword, oldPassword, newPassword, confirmPassword)
   if(data.errors) yield put(actions.receivePasswordFailure(data.errors))
   else {
     yield put(actions.openDialog('password_changed'))
@@ -80,9 +80,9 @@ export default function* root() {
   yield [
     fork(fetchMe),
     fork(fetchRecommendedZiltagMaps),
-    // fork(watchVerify),
-    // fork(watchSignOut),
-    // fork(watchRouterLocationChange),
-    // fork(watchRequestChangePassword)
+    fork(watchVerify),
+    fork(watchSignOut),
+    fork(watchRouterLocationChange),
+    fork(watchRequestChangePassword)
   ]
 }
