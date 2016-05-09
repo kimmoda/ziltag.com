@@ -39,12 +39,13 @@ class AccountSetting extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state.me ? {
-    avatar: state.me.avatar,
-    role: state.me.isPartner ? 'Ziltag Partner' : 'General User',
-    username: state.me.name,
-    email: state.me.email,
-  } : {}
+  const me = state.entities.users[state.me]
+  return {
+    avatar: me.avatar,
+    role: me.isPartner ? 'Ziltag Partner' : 'General User',
+    username: me.name,
+    email: me.email,
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -53,7 +54,6 @@ function mapDispatchToProps(dispatch) {
       dispatch(actions.signOut())
     },
     onClickPassword: (e) => {
-      e.preventDefault()
       dispatch(actions.openDialog('password'))
     }
   }
