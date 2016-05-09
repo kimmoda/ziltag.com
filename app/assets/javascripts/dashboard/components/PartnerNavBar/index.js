@@ -4,21 +4,13 @@ import * as actionTypes from '../../actions/types'
 import './index.scss'
 
 import React, { PropTypes } from 'react'
+import {findDOMNode} from 'react-dom'
 import {Popover, PopoverAnimationVertical} from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 import { connect } from 'react-redux'
 
 class PartnerNavBar extends React.Component {
-  static propTypes = {
-    isOpen: PropTypes.bool,
-    selected: PropTypes.number,
-    websites: PropTypes.array,
-    onClickMenu: PropTypes.func,
-    onRequestClose: PropTypes.func,
-    onMenuChange: PropTypes.func,
-    onItemTouchTap: PropTypes.func,
-  }
 
   static defaultProps = {
     isOpen: true,
@@ -28,6 +20,7 @@ class PartnerNavBar extends React.Component {
     const {
       isOpen,
       selected,
+      website,
       websites,
       menuTarget,
       myTags,
@@ -51,7 +44,7 @@ class PartnerNavBar extends React.Component {
     return (
       <div className="ziltag-partner-nav-bar">
         <PageBar>
-          <div ref="domain" className={domainClass} onClick={onClickMenu}>{websites[selected].url}</div>
+          <div className={domainClass} onClick={onClickMenu}>{website.url}</div>
           <Popover
             open={isOpen}
             anchorEl={menuTarget}
@@ -61,7 +54,7 @@ class PartnerNavBar extends React.Component {
             animation={PopoverAnimationVertical}
           >
             <Menu autoWidth={false} width={280} value={selected} onItemTouchTap={onItemTouchTap} onChange={onMenuChange}>
-              { websites.map((website, idx) => <MenuItem key={website.id} value={idx}><div style={{...menuItemStyle}}>{website.url}</div></MenuItem>).filter((website, idx) => idx != selected) }
+              {websites.map((website) => <MenuItem key={website.id} value={website.id}><div style={{...menuItemStyle}}>{website.url}</div></MenuItem>)}
             </Menu>
           </Popover>
           <div style={{marginLeft: 21}}>
@@ -74,14 +67,19 @@ class PartnerNavBar extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const me = state.entities.users[state.me]
+  if(!me) return {}
+  const website = state.entities.websites[state.siteMenu.selected]
+  const myTags = website.ziltags.map(id => state.entities.ziltags[id])
   return {
     isOpen: state.siteMenu.open,
+    selected: website.id,
+    website,
+    websites: me.websites.filter(id => id != state.siteMenu.selected).map(id => state.entities.websites[id]),
     menuTarget: state.siteMenu.target,
-    websites: state.me ? state.me.websites : [],
-    selected: state.siteMenu.selected,
-    myTags: state.me ? state.me.websites[state.siteMenu.selected].ziltags.filter(ziltag => ziltag.usr.name == state.me.name).length : null,
-    readersTags: state.me ? state.me.websites[state.siteMenu.selected].ziltags.filter(ziltag => ziltag.usr.name != state.me.name).length : null,
-    comments: state.me ? state.me.websites[state.siteMenu.selected].comments.length : null
+    myTags: website.ziltags.filter(id => state.entities.ziltags[id].usr.id == state.me).length,
+    readersTags: website.ziltags.filter(id => state.entities.ziltags[id].usr.id != state.me).length,
+    comments: website.comments.length
   }
 }
 

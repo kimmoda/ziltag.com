@@ -19,8 +19,8 @@ class RecommendedTags extends React.Component {
           <Tile
             ziltags={ziltagMap.ziltags}
             imageURL={ziltagMap.src}
-            avatarURL={ziltagMap.website.user.avatar}
-            username={ziltagMap.website.user.name}
+            avatarURL={ziltagMap.avatar}
+            username={ziltagMap.username}
             siteDomain={ziltagMap.host}
             siteURL={ziltagMap.href}
           />
@@ -43,9 +43,16 @@ class RecommendedTags extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    ziltagMaps: state.recommendedZiltagMaps
-  }
+  const ziltagMaps = state.recommendedZiltagMaps.map(id=>{
+    let ziltagMap = state.entities.ziltagMaps[id]
+    let website = state.entities.websites[ziltagMap.website]
+    let user = state.entities.users[website.user]
+    let avatar = user.avatar
+    let username = user.name
+    let ziltags = ziltagMap.ziltags.map(id => state.entities.ziltags[id])
+    return {...ziltagMap, avatar, username, ziltags}
+  })
+  return {ziltagMaps}
 }
 
 export default connect(mapStateToProps)(RecommendedTags)

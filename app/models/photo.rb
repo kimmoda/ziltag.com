@@ -11,13 +11,14 @@ class Photo < ActiveRecord::Base
     joins('LEFT JOIN ziltags ON ziltags.photo_id = photos.id').where('ziltags.photo_id is NULL')
   end
 
-  # this can be improved by adding a column for couting cache
+  # TODO: this can be improved by adding a column for couting cache
   def self.having_tags_more_than(number=1)
-    joins(ziltags: :user).where.not(users: {confirmed_at: nil}).group('photos.id').having('count(photos.id) > ?', number)
+    joins(ziltags: :user).where.not(users: {confirmed_at: nil}).group('photos.id').having('count(photos.id) > ?', number).uniq
   end
 
+  # TODO: SQL can be improved
   def self.recommended
-    joins(:ziltags).where(id: having_tags_more_than.select(:id)).order('ziltags.created_at DESC')
+    joins(:ziltags).where(id: having_tags_more_than.select(:id)).order('ziltags.created_at DESC').to_a.uniq.first(100)
   end
 
   def self.find_by_token_src_and_href(token:, source:, href:)

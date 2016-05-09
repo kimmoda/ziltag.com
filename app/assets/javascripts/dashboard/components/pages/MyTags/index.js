@@ -18,7 +18,7 @@ class MyTags extends React.Component {
     })
     return (
       <div className="ziltag-my-tags">
-        <PartnerNavBar />
+        <PartnerNavBar/>
         <div className="ziltag-my-tags__body">
           <div className="ziltag-my-tags__title-bar">My images to tag</div>
           <Masonry
@@ -33,8 +33,11 @@ class MyTags extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const me = state.entities.users[state.me]
+  const website = state.entities.websites[state.siteMenu.selected]
+  const ziltagMaps = website.maps_without_tags.map(id => state.entities.ziltagMaps[id])
   return {
-    ziltagMaps: state.me ? state.me.websites[state.siteMenu.selected].maps_without_tags : []
+    ziltagMaps
   }
 }
 

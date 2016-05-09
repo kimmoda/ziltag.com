@@ -29,7 +29,8 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state, ownProps){
-  return state.me ? {avatarURL: state.me.avatar} : {}
+  const user = state.entities.users[state.me]
+  return {avatarURL: user ? user.avatar : null}
 }
 
 function mapDispatchToProps(dispatch){

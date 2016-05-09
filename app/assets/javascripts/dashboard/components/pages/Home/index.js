@@ -5,18 +5,17 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 class Home extends React.Component {
-  static propTypes = {
-    isPartner: PropTypes.bool
-  }
-
   render () {
-    const {isPartner} = this.props
+    const {show, isPartner} = this.props
+    if(!show) return null
     return isPartner ? <MyTags/> : <RecommendedTags/>
   }
 }
 
 function mapStateToProps(state) {
-  return {isPartner: state.me ? state.me.isPartner : false}
+  const me = state.entities.users[state.me]
+  if(!me) return {show: false, isPartner: false}
+  return {show: true, isPartner: me.isPartner}
 }
 
 export default connect(mapStateToProps)(Home)

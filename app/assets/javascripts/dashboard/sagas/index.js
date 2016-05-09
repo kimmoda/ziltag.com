@@ -1,23 +1,24 @@
 import * as actionTypes from '../actions/types'
 import * as actions from '../actions'
 import * as API from '../apis'
+import {user, ziltagMap} from '../schema'
 import { takeEvery } from 'redux-saga'
 import { take, call, put, fork, cancel } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
+import { normalize, arrayOf } from 'normalizr'
 
 function delay(ms){
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-function* fetchProfile() {
-  const result = yield call(API.graphql, '{me{avatar,isPartner,confirmed,email,name,website{token,url,platform},websites{id,token,url,ziltags{id,usr{name}},comments{id,usr{name}},maps_without_tags{id,src}}}}')
-  if(result.data) yield put({type: actionTypes.RECEIVE_ME, me: result.data.me})
-  else if (result.errors) console.error(result.errors)
+function* fetchMe() {
+  const result = yield call(API.fetchMe)
+  yield put({type: actionTypes.RECEIVE_ME, response: normalize(result.me, user)})
 }
 
 function* fetchRecommendedZiltagMaps() {
-  const result = yield call(API.graphql, '{recommended_ziltag_maps{id,src,host,href,website{url,user{avatar,name}},ziltags{id,x,y}}}')
-  if(result.data) yield put({type: actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS, ziltag_maps: result.data.recommended_ziltag_maps})
+  const result = yield call(API.fetchRecommendedZiltagMaps)
+  yield put({type: actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS, response: normalize(result.recommended_ziltag_maps, arrayOf(ziltagMap))})
 }
 
 function* verify(action) {
@@ -77,11 +78,11 @@ function* watchRequestChangePassword() {
 
 export default function* root() {
   yield [
-    fork(fetchProfile),
+    fork(fetchMe),
     fork(fetchRecommendedZiltagMaps),
-    fork(watchVerify),
-    fork(watchSignOut),
-    fork(watchRouterLocationChange),
-    fork(watchRequestChangePassword)
+    // fork(watchVerify),
+    // fork(watchSignOut),
+    // fork(watchRouterLocationChange),
+    // fork(watchRequestChangePassword)
   ]
 }
