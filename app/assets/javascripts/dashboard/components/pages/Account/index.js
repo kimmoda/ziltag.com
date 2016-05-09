@@ -14,6 +14,7 @@ class Account extends React.Component {
           <AccountSetting />
         </div>
         <div className="ziltag-account__section">
+          <DomainSetting />
         </div>
       </div>
     )
