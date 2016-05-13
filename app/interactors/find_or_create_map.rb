@@ -2,7 +2,7 @@ class FindOrCreateMap
   include Interactor
 
   def initialize(token, source, href, width, height)
-    @token, @source, @href, @width, @height = token, source, href, width, height
+    @token, @source, @href, @width, @height = token, source, href, width||0, height||0
     @box = Box.find_by(token: token)
   end
 
