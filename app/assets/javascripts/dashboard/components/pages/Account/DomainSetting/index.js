@@ -1,11 +1,13 @@
 import SettingSection, {SectionBody} from '../../../SettingSection'
 import DomainInfo from '../../../DomainInfo'
+import {openDialog} from '../../../../actions'
 import React, { PropTypes } from 'react'
+import FlatButton from 'material-ui/FlatButton'
 import {connect} from 'react-redux'
 
 class DomainSetting extends React.Component {
   render () {
-    const {websites} = this.props
+    const {websites, onClickAdd} = this.props
     const domainInfoElements = websites.map(website => (
       <SectionBody key={website.id}>
         <DomainInfo
@@ -16,8 +18,18 @@ class DomainSetting extends React.Component {
           comments={website.comments} />
       </SectionBody>
     ))
+    const addDomain = <FlatButton
+      label="＋ Add domain"
+      onTouchTap={onClickAdd}
+      style={{
+        fontSize: 14,
+        color: 'rgba(0, 0, 0, .87)',
+        fontFamily: "'Roboto', sans-serif",
+        fontWeight: 500
+      }}
+      />
     return (
-      <SettingSection title="My plugin" right="right">
+      <SettingSection title="My plugin" right={addDomain}>
         {domainInfoElements}
       </SettingSection>
     )
@@ -38,4 +50,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(DomainSetting)
+function mapDispatchToProps(dispatch) {
+  return {
+    onClickAdd: () => dispatch(openDialog('addDomain'))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DomainSetting)
