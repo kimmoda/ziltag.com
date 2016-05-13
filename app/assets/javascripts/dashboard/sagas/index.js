@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/types'
 import * as actions from '../actions'
 import * as API from '../apis'
-import {user, ziltagMap} from '../schema'
+import {user, ziltagMap, website} from '../schema'
 import { takeEvery } from 'redux-saga'
 import { take, call, put, fork, cancel } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
@@ -76,6 +76,20 @@ function* watchRequestChangePassword() {
   yield* takeEvery(actionTypes.REQUEST_CHANGE_PASSWORD, requestChangePassword)
 }
 
+function* requestAddWebsite(action) {
+  const url = action.url
+  const response = yield call(API.createWebsite, url)
+  if(response.errors); // TODO
+  else {
+    yield put({type: actionTypes.RECEIVE_ADD_WEBSITE, response: normalize(response.data.createWebsite, website)})
+    yield put(actions.openDialog('domainAdded'))
+  }
+}
+
+function* watchRequestAddWebsite() {
+  yield* takeEvery(actionTypes.REQUEST_ADD_WEBSITE, requestAddWebsite)
+}
+
 export default function* root() {
   yield [
     fork(fetchMe),
@@ -83,6 +97,7 @@ export default function* root() {
     fork(watchVerify),
     fork(watchSignOut),
     fork(watchRouterLocationChange),
-    fork(watchRequestChangePassword)
+    fork(watchRequestChangePassword),
+    fork(watchRequestAddWebsite),
   ]
 }

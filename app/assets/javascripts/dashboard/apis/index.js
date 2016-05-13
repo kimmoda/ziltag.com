@@ -45,3 +45,13 @@ export function changePassword(oldPassword, newPassword, confirmPassword){
     }
   `, {oldPassword, newPassword, confirmPassword})
 }
+
+export function createWebsite(url) {
+  return graphql(`
+    mutation createWebsite($url: String!){
+      createWebsite(url: $url){
+        user{id websites{id url token ziltags{id} comments{id} maps_without_tags{id}}}
+      }
+    }
+  `, {url})
+}

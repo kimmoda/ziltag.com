@@ -86,4 +86,14 @@ MutationType = GraphQL::ObjectType.define do
       comment
     end
   end
+
+  field :createWebsite, WebsiteType do
+    argument :url, !types.String
+    resolve -> (_obj, args, ctx) do
+      current_user = ctx[:current_user]
+      url = args[:url]
+      box = current_user.boxes.create url: url
+      box.persisted? ? box : raise(box.errors.full_messages.first)
+    end
+  end
 end

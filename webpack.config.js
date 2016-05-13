@@ -12,7 +12,9 @@ var fileLoader = __PRODUCTION__ ? 'file?name=[name]-[hash].[ext]' : 'file?name=[
 var plugins = [
   function() {
     this.plugin('done', function(stats) {
-      require('fs').writeFileSync(__dirname + '/stats.json', JSON.stringify(stats.toJson()))
+      require('fs').writeFileSync(__dirname + '/stats.json', JSON.stringify(stats.toJson({
+        source: false, chunks: false, modules: false, children: false
+      })))
     })
   },
   new webpack.ProvidePlugin({

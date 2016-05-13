@@ -52,3 +52,22 @@ export function receivePasswordFailure(errors) {
     errors
   }
 }
+
+export function requestAddWebsite(params) {
+  const {platform, url, tumblr, blogger} = params
+  var newURL
+  switch (platform) {
+    case 'tumblr':
+      newURL = `http://${tumblr}.tumblr.com`
+      break;
+    case 'blogger':
+      newURL = `http://${blogger}.blogspot.com`
+      break;
+    default:
+      newURL = url
+  }
+  return {
+    type: actionTypes.REQUEST_ADD_WEBSITE,
+    url: newURL
+  }
+}

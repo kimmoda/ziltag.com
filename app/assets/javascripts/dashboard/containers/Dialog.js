@@ -1,6 +1,7 @@
 import Dialog from '../components/Dialog'
-import PasswordChanged from '../components/PasswordChanged'
+import DialogSuccess from '../components/DialogSuccess'
 import PasswordForm from './forms/Password'
+import DomainForm from './forms/Domain'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import React from 'react'
@@ -8,9 +9,13 @@ import React from 'react'
 function nameToForm(name){
   switch (name) {
     case 'password':
-      return <PasswordForm />
+      return <PasswordForm/>
     case 'password_changed':
-      return <PasswordChanged />
+      return <DialogSuccess message="Password changed!"/>
+    case 'addDomain':
+      return <DomainForm/>
+    case 'domainAdded':
+      return <DialogSuccess message="Domain added!" />
     default:
       return null
   }
