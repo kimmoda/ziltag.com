@@ -90,6 +90,15 @@ function* watchRequestAddWebsite() {
   yield* takeEvery(actionTypes.REQUEST_ADD_WEBSITE, requestAddWebsite)
 }
 
+function* requestDeleteWebsite(action){
+  const response = yield call(API.deleteWebsite, action.id)
+  yield put(actions.receiveDeleteWebsite(action.id))
+}
+
+function* watchRequestDeleteWebsite(){
+  yield* takeEvery(actionTypes.REQUEST_DELETE_WEBSITE, requestDeleteWebsite)
+}
+
 export default function* root() {
   yield [
     fork(fetchMe),

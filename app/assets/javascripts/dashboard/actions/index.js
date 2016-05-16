@@ -1,4 +1,6 @@
 import * as actionTypes from './types'
+import { normalize } from 'normalizr'
+import { website } from '../schema'
 
 export function requestVerify(params) {
   const {password, password_confirmation, confirmation_token} = params
@@ -69,5 +71,19 @@ export function requestAddWebsite(params) {
   return {
     type: actionTypes.REQUEST_ADD_WEBSITE,
     url: newURL
+  }
+}
+
+export function requestDeleteWebsite(id) {
+  return {
+    type: actionTypes.REQUEST_DELETE_WEBSITE,
+    id
+  }
+}
+
+export function receiveDeleteWebsite(id) {
+  return {
+    type: actionTypes.RECEIVE_DELETE_WEBSITE,
+    response: normalize({id, delete: true}, website)
   }
 }

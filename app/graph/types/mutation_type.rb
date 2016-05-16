@@ -96,4 +96,13 @@ MutationType = GraphQL::ObjectType.define do
       box.persisted? ? box : raise(box.errors.full_messages.first)
     end
   end
+
+  field :deleteWebsite, WebsiteType do
+    argument :id, !types.ID
+    resolve -> (_obj, args, _ctx) do
+      website = Box.find(id)
+      website.destroy
+      website
+    end
+  end
 end

@@ -55,3 +55,13 @@ export function createWebsite(url) {
     }
   `, {url})
 }
+
+export function deleteWebsite(id) {
+  return graphql(`
+    mutation deleteWebsite($id: ID!){
+      deleteWebsite(id: $id){
+        id
+      }
+    }
+  `)
+}
