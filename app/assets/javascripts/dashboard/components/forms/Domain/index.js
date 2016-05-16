@@ -19,11 +19,17 @@ export default class Domain extends React.Component {
   }
 
   render () {
-    const {fields: {platform, url, tumblr, blogger}, handleSubmit, error, onChoosePlatform} = this.props
+    const {fields: {platform, url, tumblr, blogger}, handleSubmit, error, action, url: previousURL} = this.props
+    const isUpdate = action == 'update'
+    const title = isUpdate ? 'Edit Domain' : 'Add New Domain'
+    const platformsStyle = {margin: isUpdate ? '25px 0 0' : null}
+    const buttonText = isUpdate ? 'OK' : 'ADD'
     return (
       <form className="ziltag-form-domain" onSubmit={handleSubmit}>
-        <div className="ziltag-form-domain__title">Add New Domain</div>
-        <ul className="ziltag-form-domain__platforms">
+        <div className="ziltag-form-domain__title">{title}</div>
+        {isUpdate ? <div className="ziltag-form-domain__url">{previousURL}</div> : null}
+        {isUpdate ? <div className="ziltag-form-domain__arrow"/> : null}
+        <ul className="ziltag-form-domain__platforms" style={platformsStyle}>
           <li className="ziltag-form-domain__platform">
             <input className="ziltag-form-domain__radio" id="general" type="radio" {...platform} name="platform" value="general" checked={ platform.value === 'general' } />
             <label className="ziltag-form-domain__label" htmlFor="general">General</label>
@@ -39,7 +45,7 @@ export default class Domain extends React.Component {
         </ul>
         <div className="ziltag-form-domain__field">{this.field()}</div>
         <div className="ziltag-form-domain__submit">
-          <Button backgroundColor="#008BF3">ADD</Button>
+          <Button backgroundColor="#008BF3">{buttonText}</Button>
         </div>
       </form>
     )

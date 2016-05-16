@@ -1,6 +1,6 @@
 import * as actionTypes from './types'
 import { normalize } from 'normalizr'
-import { websiteType } from '../schema'
+import { website as websiteType } from '../schema'
 
 export function requestVerify(params) {
   const {password, password_confirmation, confirmation_token} = params
@@ -88,16 +88,29 @@ export function receiveDeleteWebsite(id) {
   }
 }
 
-export function requestUpdateWebsite(id){
+export function requestUpdateWebsite(id, params){
+  const {platform, url, tumblr, blogger} = params
+  var newURL
+  switch (platform) {
+    case 'tumblr':
+      newURL = `http://${tumblr}.tumblr.com`
+      break;
+    case 'blogger':
+      newURL = `http://${blogger}.blogspot.com`
+      break;
+    default:
+      newURL = url
+  }
   return {
     type: actionTypes.REQUEST_UPDATE_WEBSITE,
-    id
+    id,
+    url: newURL
   }
 }
 
 export function receiveUpdateWebsite(website) {
   return {
-    type: actionTypes.RECEIVE_DELETE_WEBSITE,
+    type: actionTypes.RECEIVE_UPDATE_WEBSITE,
     response: normalize(website, websiteType)
   }
 }

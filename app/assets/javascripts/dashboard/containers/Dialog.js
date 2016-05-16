@@ -2,6 +2,7 @@ import Dialog from '../components/Dialog'
 import DialogSuccess from '../components/DialogSuccess'
 import PasswordForm from './forms/Password'
 import DomainForm from './forms/Domain'
+import UpdateDomainForm from './forms/UpdateDomain'
 import DeleteWebsite from './DeleteWebsite'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
@@ -21,6 +22,10 @@ function nameToForm(name){
       return <DeleteWebsite />
     case 'domainDeleted':
       return <DialogSuccess message="Domain deleted!" />
+    case 'updateWebsite':
+      return <UpdateDomainForm/>
+    case 'domainUpdated':
+      return <DialogSuccess message="Domain updated!" />
     default:
       return null
   }

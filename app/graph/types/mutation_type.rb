@@ -108,9 +108,10 @@ MutationType = GraphQL::ObjectType.define do
 
   field :updateWebsite, WebsiteType do
     argument :id, !types.ID
+    argument :url, !types.String
     resolve -> (_obj, args, _ctx) do
       website = Box.find(args[:id])
-      if website.update
+      if website.update url: args[:url]
         website
       else
         raise website.errors.full_messages.first

@@ -10,6 +10,18 @@
     font-weight: 500;
     line-height: 20px;
   }
+  &__url {
+    font-size: 16px;
+    color: rgba(0, 0, 0, .54);
+    line-height: 19px;
+    margin-top: 43px;
+  }
+  &__arrow {
+    background: url('./arrow.png') center/contain no-repeat;
+    width: 34px;
+    height: 34px;
+    margin-top: 16px;
+  }
   &__platforms {
     margin: 43px 0 0;
     list-style: none;

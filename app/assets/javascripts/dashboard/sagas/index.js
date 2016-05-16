@@ -100,6 +100,19 @@ function* watchRequestDeleteWebsite(){
   yield* takeEvery(actionTypes.REQUEST_DELETE_WEBSITE, requestDeleteWebsite)
 }
 
+function* requestUpdateWebsite(action){
+  const response = yield call(API.updateWebsite, action.id, action.url)
+  if(response.errors); // TODO
+  else {
+    yield put(actions.receiveUpdateWebsite(response.data.updateWebsite))
+    yield put(actions.openDialog('domainUpdated'))
+  }
+}
+
+function* watchRequestUpdateWebsite(){
+  yield* takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE, requestUpdateWebsite)
+}
+
 export default function* root() {
   yield [
     fetchMe(),
@@ -110,5 +123,6 @@ export default function* root() {
     watchRequestChangePassword(),
     watchRequestAddWebsite(),
     watchRequestDeleteWebsite(),
+    watchRequestUpdateWebsite()
   ]
 }

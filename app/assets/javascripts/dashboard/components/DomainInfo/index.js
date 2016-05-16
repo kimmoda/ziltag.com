@@ -16,7 +16,7 @@ class DomainInfo extends React.Component {
           <div className="ziltag-domain-info__code">{script}</div>
         </div>
         <div className="ziltag-domain-info__actions">
-          <div className="ziltag-domain-info__edit"></div>
+          <div className="ziltag-domain-info__edit" onClick={_=>onClickEdit(id,domain)}></div>
           <div className="ziltag-domain-info__delete" onClick={_=>onClickDelete(id)}></div>
         </div>
       </div>
@@ -26,6 +26,7 @@ class DomainInfo extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
+    onClickEdit: (id,url) => dispatch(openDialog('updateWebsite', {id, url})),
     onClickDelete: id => dispatch(openDialog('deleteWebsite', id))
   }
 }

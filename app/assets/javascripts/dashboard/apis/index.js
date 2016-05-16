@@ -66,12 +66,12 @@ export function deleteWebsite(id) {
   `, {id})
 }
 
-export function updateWebsite(id) {
+export function updateWebsite(id, url) {
   return graphql(`
-    mutation updateWebsite($id: ID!){
-      updateWebsite(id: $id){
-        url
+    mutation updateWebsite($id: ID!, $url: String!){
+      updateWebsite(id: $id, url: $url){
+        id,url
       }
     }
-  `, {id})
+  `, {id, url})
 }
