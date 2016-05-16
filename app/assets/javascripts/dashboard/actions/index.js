@@ -30,8 +30,8 @@ export function signOut() {
   return { type: actionTypes.REQUEST_SIGN_OUT }
 }
 
-export function openDialog(name) {
-  return {type: actionTypes.OPEN_DIALOG, name}
+export function openDialog(name, payload) {
+  return {type: actionTypes.OPEN_DIALOG, name, payload}
 }
 
 export function closeDialog() {

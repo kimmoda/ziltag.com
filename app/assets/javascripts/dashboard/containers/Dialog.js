@@ -2,6 +2,7 @@ import Dialog from '../components/Dialog'
 import DialogSuccess from '../components/DialogSuccess'
 import PasswordForm from './forms/Password'
 import DomainForm from './forms/Domain'
+import DeleteWebsite from './DeleteWebsite'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import React from 'react'
@@ -16,6 +17,10 @@ function nameToForm(name){
       return <DomainForm/>
     case 'domainAdded':
       return <DialogSuccess message="Domain added!" />
+    case 'deleteWebsite':
+      return <DeleteWebsite />
+    case 'domainDeleted':
+      return <DialogSuccess message="Domain deleted!" />
     default:
       return null
   }
@@ -25,8 +30,9 @@ function mapStateToProps(state) {
   if (state.dialog)
     return {
       open: true,
-      name: state.dialog,
-      children: nameToForm(state.dialog)
+      name: state.dialog.name,
+      children: nameToForm(state.dialog.name),
+      payload: state.dialog.payload
     }
   else return {
     open: false

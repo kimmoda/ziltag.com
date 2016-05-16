@@ -57,7 +57,7 @@ export function siteMenu(state={open: false, selected: null}, action) {
 export function dialog(state=null, action){
   switch (action.type) {
     case actionTypes.OPEN_DIALOG:
-      return action.name
+      return {name: action.name, payload: action.payload}
     case actionTypes.CLOSE_DIALOG:
       return null
     default:

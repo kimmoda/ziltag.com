@@ -11,11 +11,12 @@ class DomainSetting extends React.Component {
     const domainInfoElements = websites.map(website => (
       <SectionBody key={website.id}>
         <DomainInfo
+          id={website.id}
           domain={website.url}
           token={website.token}
           myTags={website.myTags}
           readersTags={website.readersTags}
-          comments={website.comments} />
+          comments={website.comments}/>
       </SectionBody>
     ))
     const addDomain = <FlatButton
@@ -46,7 +47,7 @@ function mapStateToProps(state) {
     return {...website, myTags, readersTags, comments}
   })
   return {
-    websites
+    websites: websites.filter(website=>!website.delete)
   }
 }
 

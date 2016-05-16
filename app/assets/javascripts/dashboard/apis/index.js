@@ -63,5 +63,5 @@ export function deleteWebsite(id) {
         id
       }
     }
-  `)
+  `, {id})
 }

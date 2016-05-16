@@ -93,6 +93,7 @@ function* watchRequestAddWebsite() {
 function* requestDeleteWebsite(action){
   const response = yield call(API.deleteWebsite, action.id)
   yield put(actions.receiveDeleteWebsite(action.id))
+  yield put(actions.openDialog('domainDeleted'))
 }
 
 function* watchRequestDeleteWebsite(){
@@ -108,5 +109,6 @@ export default function* root() {
     fork(watchRouterLocationChange),
     fork(watchRequestChangePassword),
     fork(watchRequestAddWebsite),
+    fork(watchRequestDeleteWebsite)
   ]
 }
