@@ -102,13 +102,13 @@ function* watchRequestDeleteWebsite(){
 
 export default function* root() {
   yield [
-    fork(fetchMe),
-    fork(fetchRecommendedZiltagMaps),
-    fork(watchVerify),
-    fork(watchSignOut),
-    fork(watchRouterLocationChange),
-    fork(watchRequestChangePassword),
-    fork(watchRequestAddWebsite),
-    fork(watchRequestDeleteWebsite)
+    fetchMe(),
+    fetchRecommendedZiltagMaps(),
+    watchVerify(),
+    watchSignOut(),
+    watchRouterLocationChange(),
+    watchRequestChangePassword(),
+    watchRequestAddWebsite(),
+    watchRequestDeleteWebsite(),
   ]
 }
