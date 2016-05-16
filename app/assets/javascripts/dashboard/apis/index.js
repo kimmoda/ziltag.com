@@ -65,3 +65,13 @@ export function deleteWebsite(id) {
     }
   `, {id})
 }
+
+export function updateWebsite(id) {
+  return graphql(`
+    mutation updateWebsite($id: ID!){
+      updateWebsite(id: $id){
+        url
+      }
+    }
+  `, {id})
+}

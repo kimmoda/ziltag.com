@@ -105,4 +105,16 @@ MutationType = GraphQL::ObjectType.define do
       website
     end
   end
+
+  field :updateWebsite, WebsiteType do
+    argument :id, !types.ID
+    resolve -> (_obj, args, _ctx) do
+      website = Box.find(args[:id])
+      if website.update
+        website
+      else
+        raise website.errors.full_messages.first
+      end
+    end
+  end
 end

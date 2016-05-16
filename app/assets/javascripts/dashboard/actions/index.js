@@ -1,6 +1,6 @@
 import * as actionTypes from './types'
 import { normalize } from 'normalizr'
-import { website } from '../schema'
+import { websiteType } from '../schema'
 
 export function requestVerify(params) {
   const {password, password_confirmation, confirmation_token} = params
@@ -84,6 +84,20 @@ export function requestDeleteWebsite(id) {
 export function receiveDeleteWebsite(id) {
   return {
     type: actionTypes.RECEIVE_DELETE_WEBSITE,
-    response: normalize({id, delete: true}, website)
+    response: normalize({id, delete: true}, websiteType)
+  }
+}
+
+export function requestUpdateWebsite(id){
+  return {
+    type: actionTypes.REQUEST_UPDATE_WEBSITE,
+    id
+  }
+}
+
+export function receiveUpdateWebsite(website) {
+  return {
+    type: actionTypes.RECEIVE_DELETE_WEBSITE,
+    response: normalize(website, websiteType)
   }
 }
