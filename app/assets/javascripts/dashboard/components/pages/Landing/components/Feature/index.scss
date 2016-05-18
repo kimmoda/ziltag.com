@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 24px;
   &__title {
     margin-top: 49px;
     font-size: 45px;
@@ -30,5 +29,8 @@
   &__section {
     width: 318px;
     margin-top: 39px;
+  }
+  &__video {
+    margin-top: 48px;
   }
 }

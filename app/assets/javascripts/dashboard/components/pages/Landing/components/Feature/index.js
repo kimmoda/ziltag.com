@@ -1,5 +1,6 @@
 import React from 'react'
 import Intro from '../Intro'
+import Video from '../Video'
 import './index.scss'
 
 export default props => (
@@ -22,6 +23,9 @@ export default props => (
       <div className="ziltag-landing-feature__section">
         <Intro icon="thumbsup" title="SOCIAL MEDIA INTEGRATION" content="We realized that people uses multiple social media platforms, so we integrate ourselves perfectly with them. Your visitors can easily share your tag to other social media platform such as Facebook and Twitter." />
       </div>
+    </div>
+    <div className="ziltag-landing-feature__video">
+      <Video />
     </div>
   </div>
 )
