@@ -1,0 +1,34 @@
+.ziltag-landing-feature {
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0,0,0,.87);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+  &__title {
+    margin-top: 49px;
+    font-size: 45px;
+    line-height: 53px;
+    font-weight: 700;
+    text-align: center;
+  }
+  &__subtitle {
+    font-size: 20px;
+    line-height: 33px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 18px;
+  }
+  &__sections {
+    margin-top: 4px;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    max-width: 1092px;
+    justify-content: center;
+  }
+  &__section {
+    width: 318px;
+    margin-top: 39px;
+  }
+}
