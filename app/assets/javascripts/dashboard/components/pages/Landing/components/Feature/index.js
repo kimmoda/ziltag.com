@@ -27,5 +27,7 @@ export default props => (
     <div className="ziltag-landing-feature__video">
       <Video />
     </div>
+    <div className="ziltag-landing-feature__imagine-title">Imagine…</div>
+    <div className="ziltag-landing-feature__imagine-subtitle">You can use it for all kinds of purposes.</div>
   </div>
 )
