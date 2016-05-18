@@ -1,0 +1,70 @@
+.ziltag-landing-cover{
+  height: 100vh;
+  background: url('./cover.png') center/cover;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  &__left {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 506px;
+    left: 24px;
+    top: 174px;
+  }
+  &__title {
+    font-size: 43px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 700;
+    color: white;
+  }
+  &__subtitle {
+    margin-top: 12px;
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    letter-spacing: .8px;
+    line-height: 24px;
+    width: 446px;
+  }
+  &__buttons {
+    margin-top: 45px;
+  }
+  &__button {
+    width: 385px;
+    &:not(:first-child){
+      margin-top: 18px;
+    }
+  }
+  &__footer{
+    position: absolute;
+    bottom: 28px;
+    left: 85px;
+    width: 301px
+  }
+  &__itmes{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item{
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    line-height: 31px;
+    display: block;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  &__copyright{
+    font-size: 12px;
+    font-weight: 300;
+    color: white;
+    line-height: 14px;
+  }
+}

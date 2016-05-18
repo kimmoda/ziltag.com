@@ -1,6 +1,7 @@
 import Dashboard from './components/Dashboard'
 import Home from './components/pages/Home'
 import Tags from './components/pages/Tags'
+import Landing from './components/pages/Landing'
 import Comments from './components/pages/Comments'
 import Account from './components/pages/Account'
 import Verify from './components/pages/Verify'
@@ -46,7 +47,8 @@ ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Router history={history}>
-        <Route path="/dashboard" component={Dashboard}>
+        <Route path="/" component={Landing} />
+        <Route path="dashboard" component={Dashboard}>
           <IndexRoute component={Home} />
           <Route path="tags" component={Tags} />
           <Route path="comments" component={Comments} />

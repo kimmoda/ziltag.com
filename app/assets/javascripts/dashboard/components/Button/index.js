@@ -1,15 +1,18 @@
 import './index.scss'
 import React from 'react'
+import classNames from 'classnames'
 
 export default class Button extends React.Component {
   render () {
-    const {backgroundColor, style, ...props} = this.props
-    const buttonStyle = {
-      ...style,
-      backgroundColor
-    }
+    const {gray, round, ...props} = this.props
+    const className = classNames(
+      'ziltag-button', {
+        'ziltag-button--gray': gray,
+        'ziltag-button--round': round
+      }
+    )
     return (
-      <button className="ziltag-button" style={buttonStyle} {...props} >
+      <button className={className} {...props} >
         {this.props.children}
       </button>
     )

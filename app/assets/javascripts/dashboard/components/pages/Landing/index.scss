@@ -1,0 +1,13 @@
+.ziltag-landing {
+  height: 100vh;
+  &__header {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 77px;
+    border-bottom: solid 1px rgba(150, 150, 150, .9);
+    z-index: 1;
+  }
+}
