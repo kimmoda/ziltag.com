@@ -4,11 +4,12 @@ import classNames from 'classnames'
 
 export default class Button extends React.Component {
   render () {
-    const {gray, round, ...props} = this.props
+    const {gray, round, white, ...props} = this.props
     const className = classNames(
       'ziltag-button', {
         'ziltag-button--gray': gray,
-        'ziltag-button--round': round
+        'ziltag-button--round': round,
+        'ziltag-button--white': white
       }
     )
     return (
