@@ -7,6 +7,7 @@ import Install from './components/Install'
 import Black from './components/Black'
 import Bottom from './components/Bottom'
 import Footer from './components/Footer'
+import DevTools from '../../../containers/DevTools'
 import './index.scss'
 
 export default props => (
@@ -19,5 +20,6 @@ export default props => (
     <Black/>
     <Bottom/>
     <Footer/>
+    {__PRODUCTION__ ? null : <DevTools/>}
   </div>
 )
