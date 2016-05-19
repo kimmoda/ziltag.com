@@ -1,0 +1,40 @@
+.ziltag-landing-red {
+  height: 443px;
+  width: 100%;
+  background: url('./red_bg.png') center/cover no-repeat;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title{
+    margin-top: 37px;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 1.69px;
+    line-height: 40px;
+    text-align: center;
+    width: 662px;
+  }
+  &__content{
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 300;
+    width: 662px;
+    margin-top: 22px;
+  }
+  &__button{
+    cursor: pointer;
+    margin-top: 39px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1.04px;
+    line-height: 50px;
+    width: 300px;
+    height: 50px;
+    border: solid 3px white;
+    border-radius: 7px;
+    text-align: center;
+  }
+}
