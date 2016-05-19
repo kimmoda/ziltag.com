@@ -35,5 +35,6 @@ export default props => (
       <Usecase icon="pie" name="E-commerce" />
       <Usecase icon="notebook" name="Education" />
     </div>
+    <a className="ziltag-landing-feature__checkout-more" href="#">CHECK OUT MORE ➔</a>
   </div>
 )
