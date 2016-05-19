@@ -7,6 +7,7 @@ set :ssh_options, {forward_agent: true, keys: %w[~/.ssh/ziltag]}
 set :deploy_to, '/home/deploy/ziltag'
 set :linked_files, fetch(:linked_files, []).push('config/application.yml', 'config/database.yml', 'config/secrets.yml', 'config/puma.rb')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :keep_releases, 2
 
 namespace :deploy do
   after :updated, :webpack do
