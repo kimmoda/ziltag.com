@@ -4,6 +4,7 @@ import Cover from './components/Cover'
 import Feature from './components/Feature'
 import Red from './components/Red'
 import Install from './components/Install'
+import Black from './components/Black'
 import './index.scss'
 
 export default props => (
@@ -13,5 +14,6 @@ export default props => (
     <Feature />
     <Red />
     <Install />
+    <Black />
   </div>
 )

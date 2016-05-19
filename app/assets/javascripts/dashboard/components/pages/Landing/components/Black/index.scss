@@ -1,0 +1,36 @@
+.ziltag-landing-black {
+  height: 380px;
+  background: #262626;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title{
+    margin-top: 59px;
+    color: white;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  &__quote{
+    margin-top: 30px;
+    color: white;
+    font-size: 20px;
+    line-height: 42px;
+    width: 542px;
+    text-align: center;
+  }
+  &__person{
+    margin-top: 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 34px;
+  }
+  &__time{
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 42px;
+  }
+}
