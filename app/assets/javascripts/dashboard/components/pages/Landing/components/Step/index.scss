@@ -1,0 +1,43 @@
+.ziltag-landing-step{
+  font-family: 'Roboto', sans-serif;
+  &__icon{
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    &--man {
+      background: url('./man.png') center/contain no-repeat;
+    }
+    &--card {
+      background: url('./card.png') center/contain no-repeat;
+    }
+    &--code {
+      background: url('./code.png') center/contain no-repeat;
+    }
+  }
+  &__bottom{
+    margin-top: 12px;
+  }
+  &__number{
+    display: inline-block;
+    font-size: 60px;
+    color: rgba(0,0,0,.87);
+    font-weight: 900;
+    line-height: 71px;
+  }
+  &__right{
+    display: inline-block;
+    margin-left: 4px;
+  }
+  &__name{
+    font-size: 20px;
+    color: rgba(0,0,0,.87);
+    font-weight: 900;
+    line-height: 20px;
+  }
+  &__summery{
+    font-size: 14px;
+    color: rgba(0,0,0,.87);
+    font-weight: 300;
+    line-height: 20px;
+  }
+}
