@@ -29,11 +29,6 @@ Rails.application.routes.draw do
     patch 'confirm' => 'confirmations#confirm'
   end
 
-  namespace 'mobile', path: 'm' do
-    root 'pages#home'
-    post 'register' => 'pages#register'
-  end
-
   match '/api/:version/*path' => 'api#options', via: 'options'
   namespace :api, format: false, defaults: {format: 'json'} do
     namespace :v1 do
