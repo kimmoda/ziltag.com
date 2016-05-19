@@ -1,0 +1,27 @@
+.ziltag-landing-usecase {
+  &__link {
+    text-decoration: none;
+  }
+  &__icon {
+    width: 100px;
+    height: 100px;
+    &--map {
+      background: url('./map.png') center/contain no-repeat;
+    }
+    &--pie {
+      background: url('./pie.png') center/contain no-repeat;
+    }
+    &--notebook {
+      background: url('./notebook.png') center/contain no-repeat;
+    }
+  }
+  &__name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: rgba(0,0,0,.87);
+    line-height: 24px;
+    font-weight: 300;
+    margin-top: 25px;
+    text-align: center;
+  }
+}
