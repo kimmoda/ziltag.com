@@ -3,7 +3,7 @@
   &__icon{
     width: 70px;
     height: 70px;
-    margin: 0 auto;
+    margin: 0 0 0 25px;
     &--man {
       background: url('./man.png') center/contain no-repeat;
     }
@@ -11,7 +11,7 @@
       background: url('./card.png') center/contain no-repeat;
     }
     &--code {
-      background: url('./code.png') center/contain no-repeat;
+      background: url('./step_code.png') center/contain no-repeat;
     }
   }
   &__bottom{
@@ -26,7 +26,7 @@
   }
   &__right{
     display: inline-block;
-    margin-left: 4px;
+    margin-left: 8px;
   }
   &__name{
     font-size: 20px;

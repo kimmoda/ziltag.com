@@ -19,9 +19,10 @@
     margin-top: 41px;
     width: 696px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
   }
   &__button{
     width: 245px;
+    margin: 0 22.5px;
   }
 }

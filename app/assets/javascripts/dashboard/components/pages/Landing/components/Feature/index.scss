@@ -24,12 +24,12 @@
     display: flex;
     text-align: center;
     flex-wrap: wrap;
-    max-width: 1092px;
+    max-width: 1212px;
     justify-content: center;
   }
   &__section {
-    width: 318px;
-    margin-top: 39px;
+    max-width: 318px;
+    margin: 39px 55px 0 55px;
   }
   &__video {
     margin-top: 48px;
