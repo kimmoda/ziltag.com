@@ -21,6 +21,7 @@ class ZiltagAPI
         user = authenticate_user[:user]
         warden.set_user(user, scope: :user)
         {
+          id: user.id,
           avatar: user.avatar.thumb.url,
           confirmed: user.confirmed?,
           email: user.email,
@@ -49,6 +50,7 @@ class ZiltagAPI
         user = verify_user[:user]
         warden.set_user(verify_user[:user], scope: :user)
         {
+          id: user.id,
           avatar: user.avatar.thumb.url,
           confirmed: user.confirmed?,
           email: user.email,

@@ -13,7 +13,7 @@ function delay(ms){
 
 function* fetchMe() {
   const response = yield call(API.fetchMe)
-  yield put({type: actionTypes.RECEIVE_ME, response: normalize(response.data.me, user)})
+  yield put({type: actionTypes.RECEIVE_ME, response: normalize(response.data.me || {}, user)})
 }
 
 function* fetchRecommendedZiltagMaps() {
@@ -113,6 +113,20 @@ function* watchRequestUpdateWebsite(){
   yield* takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE, requestUpdateWebsite)
 }
 
+function* requestSignIn(action){
+  const response = yield call(API.signIn, action.username, action.password)
+  if(response.errors) yield put(actions.receiveSignInError(response.errors))
+  else{
+    yield put(actions.receiveSignIn(response))
+    yield put(actions.closeDialog())
+    yield put(push('/dashboard'))
+  }
+}
+
+function* watchRequestSignIn(){
+  yield* takeEvery(actionTypes.REQUEST_SIGN_IN, requestSignIn)
+}
+
 export default function* root() {
   yield [
     fetchMe(),
@@ -123,6 +137,7 @@ export default function* root() {
     watchRequestChangePassword(),
     watchRequestAddWebsite(),
     watchRequestDeleteWebsite(),
-    watchRequestUpdateWebsite()
+    watchRequestUpdateWebsite(),
+    watchRequestSignIn()
   ]
 }

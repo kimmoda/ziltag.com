@@ -12,7 +12,7 @@ class Header extends React.Component {
   }
 
   render () {
-    const {avatarURL, onClickSignOut} = this.props
+    const {avatarURL, onClickSignOut, onClickSignIn} = this.props
     const inconMenuProps = {avatarURL, onClickSignOut}
     return(
       <div className="ziltag-header">
@@ -21,7 +21,7 @@ class Header extends React.Component {
           </div>
         </Link>
         <div className="ziltag-header__icon-menu">
-          { avatarURL ? <IconMenu {...inconMenuProps} /> : null }
+          {avatarURL ? <IconMenu {...inconMenuProps} /> : <div onClick={onClickSignIn}>Sign In</div>}
         </div>
       </div>
     )
@@ -30,12 +30,15 @@ class Header extends React.Component {
 
 function mapStateToProps(state, ownProps){
   const user = state.entities.users[state.me]
-  return {avatarURL: user ? user.avatar : null}
+  return {
+    avatarURL: user ? user.avatar : null
+  }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    onClickSignOut: () => dispatch(actions.signOut())
+    onClickSignOut: () => dispatch(actions.signOut()),
+    onClickSignIn: _ => dispatch(actions.openDialog('signIn'))
   }
 }
 

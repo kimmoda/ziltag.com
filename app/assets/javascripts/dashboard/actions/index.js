@@ -114,3 +114,24 @@ export function receiveUpdateWebsite(website) {
     response: normalize(website, websiteType)
   }
 }
+
+export function requestSignIn(params) {
+  return {
+    type: actionTypes.REQUEST_SIGN_IN,
+    ...params
+  }
+}
+
+export function receiveSignInError(errors) {
+  return {
+    type: actionTypes.RECEIVE_SIGN_IN_ERROR,
+    errors
+  }
+}
+
+export function receiveSignIn(user) {
+  return {
+    type: actionTypes.RECEIVE_SIGN_IN,
+    user
+  }
+}

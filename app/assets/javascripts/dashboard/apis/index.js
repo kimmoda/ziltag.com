@@ -75,3 +75,7 @@ export function updateWebsite(id, url) {
     }
   `, {id, url})
 }
+
+export function signIn(username, password) {
+  return api('/api/v2/sign_in', {params: {sign_in: username, password}} )
+}

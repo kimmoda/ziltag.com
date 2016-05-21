@@ -19,6 +19,14 @@ export const form = formReducer.plugin({
       default:
         return state
     }
+  },
+  signIn: (state, action) => {
+    switch (action.type) {
+      case actionTypes.RECEIVE_SIGN_IN_ERROR:
+        return {...state, _error: action.errors[0].message}
+      default:
+        return state
+    }
   }
 })
 
@@ -42,7 +50,7 @@ export function siteMenu(state={open: false, selected: null}, action) {
   switch (action.type) {
     case actionTypes.RECEIVE_ME:
       const me = action.response.entities.users[action.response.result]
-      return {...state, selected: me.websites[0]}
+      return me.websites ? {...state, selected: me.websites[0]} : state
     case actionTypes.SELECT_SITE_MENU_ITEM:
       return {...state, selected: action.selected}
     case actionTypes.OPEN_SITE_MENU:
@@ -66,7 +74,7 @@ export function dialog(state=null, action){
 }
 
 export function me(state=null, action) {
-  if(action.type == actionTypes.RECEIVE_ME) return action.response.result
+  if(action.type == actionTypes.RECEIVE_ME) return action.response.result || state
   else return state
 }
 

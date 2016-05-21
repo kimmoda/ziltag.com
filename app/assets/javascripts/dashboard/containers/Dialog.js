@@ -2,6 +2,7 @@ import Dialog from '../components/Dialog'
 import DialogSuccess from '../components/DialogSuccess'
 import PasswordForm from './forms/Password'
 import DomainForm from './forms/Domain'
+import SignIn from './forms/SignIn'
 import UpdateDomainForm from './forms/UpdateDomain'
 import DeleteWebsite from './DeleteWebsite'
 import * as actions from '../actions'
@@ -26,6 +27,8 @@ function nameToForm(name){
       return <UpdateDomainForm/>
     case 'domainUpdated':
       return <DialogSuccess message="Domain updated!" />
+    case 'signIn':
+      return <SignIn/>
     default:
       return null
   }

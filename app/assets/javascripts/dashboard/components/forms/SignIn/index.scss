@@ -1,0 +1,19 @@
+.ziltag-form-sign-in {
+  width: 380px;
+  font-family: 'Roboto', sans-serif;
+  &__fields{
+
+  }
+  &__field{
+    &:not(:first-child){
+      margin-top: 34px;
+    }
+  }
+  &__error{
+    color: red;
+    text-align: center;
+  }
+  &__button{
+    margin-top: 34px;
+  }
+}
