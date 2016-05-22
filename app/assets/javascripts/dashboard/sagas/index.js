@@ -39,16 +39,16 @@ function* watchVerify() {
   yield* takeEvery(actionTypes.REQUEST_VERIFY, verify)
 }
 
-function* sign_out(action){
+function* signOut(action){
   try {
     yield call(API.sign_out)
-    window.location.replace('/users/sign_in')
+    window.location.replace('/')
   } catch (e) {
   }
 }
 
 function* watchSignOut() {
-  yield* takeEvery(actionTypes.REQUEST_SIGN_OUT, sign_out)
+  yield* takeEvery(actionTypes.REQUEST_SIGN_OUT, signOut)
 }
 
 function* redirectToRoot() {
