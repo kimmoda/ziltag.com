@@ -12,6 +12,7 @@ import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
 import saga from './sagas'
 import initialState from './initialState'
+import * as actions from './actions'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -48,7 +49,7 @@ ReactDOM.render(
     <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Router history={history}>
         <Route path="/" component={Landing} />
-        <Route path="dashboard" component={Dashboard}>
+        <Route path="dashboard" component={Dashboard} onEnter={_=>store.dispatch(actions.me())}>
           <IndexRoute component={Home} />
           <Route path="tags" component={Tags} />
           <Route path="comments" component={Comments} />

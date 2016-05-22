@@ -16,6 +16,10 @@ function* fetchMe() {
   yield put({type: actionTypes.RECEIVE_ME, response: normalize(response.data.me || {}, user)})
 }
 
+function* watchFetchMe() {
+  yield* takeEvery(actionTypes.REQUEST_ME, fetchMe)
+}
+
 function* fetchRecommendedZiltagMaps() {
   const response = yield call(API.fetchRecommendedZiltagMaps)
   yield put({type: actionTypes.RECEIVE_RECOMMENDED_ZILTTAG_MAPS, response: normalize(response.data.recommended_ziltag_maps, arrayOf(ziltagMap))})
@@ -119,6 +123,7 @@ function* requestSignIn(action){
   else{
     yield put(actions.receiveSignIn(response))
     yield put(actions.closeDialog())
+    yield put(actions.me())
     yield put(push('/dashboard'))
   }
 }
@@ -129,8 +134,8 @@ function* watchRequestSignIn(){
 
 export default function* root() {
   yield [
-    fetchMe(),
     fetchRecommendedZiltagMaps(),
+    watchFetchMe(),
     watchVerify(),
     watchSignOut(),
     watchRouterLocationChange(),

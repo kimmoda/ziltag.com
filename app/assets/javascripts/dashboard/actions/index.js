@@ -2,6 +2,12 @@ import * as actionTypes from './types'
 import { normalize } from 'normalizr'
 import { website as websiteType } from '../schema'
 
+export function me() {
+  return {
+    type: actionTypes.REQUEST_ME
+  }
+}
+
 export function requestVerify(params) {
   const {password, password_confirmation, confirmation_token} = params
   return {
