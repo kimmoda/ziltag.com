@@ -3,7 +3,7 @@ $bracking-width: 1111px;
 .ziltag-landing-cover{
   height: 100vh;
   min-height: 800px;
-  background: black;//url('./cover.png') center/cover;
+  background: url('./cover.png') center/cover;
   font-family: 'Roboto', sans-serif;
   position: relative;
   &__left {
