@@ -11,7 +11,7 @@ export default props => {
   })
   return (
     <div className="ziltag-landing-usecase">
-      <a href={link || '#'} className="ziltag-landing-usecase__link">
+      <a href={link || '#'} className="ziltag-landing-usecase__link" target="_blank">
         <div className={iconClass} />
         <div className="ziltag-landing-usecase__name">{name}</div>
       </a>

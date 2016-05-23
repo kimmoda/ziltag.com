@@ -14,7 +14,7 @@ export default props => (
         <Button style={buttonStyle} round>JOIN FORE FREE</Button>
       </div>
       <div className="ziltag-landing-bottom__button">
-        <Button style={{...buttonStyle, padding: 23}} round white>GO TO HELP CENTER</Button>
+        <a href="http://help.ziltag.com" target="_blank"><Button style={{...buttonStyle, padding: 23}} round white>GO TO HELP CENTER</Button></a>
       </div>
     </div>
   </div>

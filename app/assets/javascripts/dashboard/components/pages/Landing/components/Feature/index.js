@@ -31,10 +31,10 @@ export default props => (
     <div className="ziltag-landing-feature__imagine-title">Imagine…</div>
     <div className="ziltag-landing-feature__imagine-subtitle">You can use it for all kinds of purposes.</div>
     <div className="ziltag-landing-feature__usecases">
-      <Usecase icon="map" name="Mapping" />
-      <Usecase icon="pie" name="E-commerce" />
-      <Usecase icon="notebook" name="Education" />
+      <Usecase link="http://blog.ziltag.com/post/142941430640/how-to-use-ziltag-1-mapping" icon="map" name="Mapping" />
+      <Usecase link="http://blog.ziltag.com/post/143003745025/how-to-use-ziltag-2-ecommerce" icon="pie" name="E-commerce" />
+      <Usecase link="http://blog.ziltag.com/post/143324183760/how-to-use-ziltag-3-education" icon="notebook" name="Education" />
     </div>
-    <a className="ziltag-landing-feature__checkout-more" href="#">CHECK OUT MORE ➔</a>
+    <a className="ziltag-landing-feature__checkout-more" href="http://blog.ziltag.com/tagged/usage" target="_blank">CHECK OUT MORE ➔</a>
   </div>
 )
