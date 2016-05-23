@@ -1,15 +1,18 @@
+$breacking-width: 1111px;
 .ziltag-landing-install {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Roboto', sans-serif;
   padding-bottom: 59px;
+  padding: 0 50px 59px 50px;
   &__title {
     margin-top: 44px;
     font-size: 34px;
     color: rgba(0,0,0,.87);
     line-height: 40px;
     font-weight: 700;
+    text-align: center;
   }
   &__subtitle {
     margin-top: 20px;
@@ -17,15 +20,24 @@
     color: rgba(0,0,0,.87);
     line-height: 24px;
     font-weight: 300;
+    text-align: center;
   }
   &__steps {
     margin-top: 58px;
     display: flex;
     justify-content: space-between;
-    width: 865px;
+    max-width: 865px;
+    @media screen and (max-width: $breacking-width) {
+      align-items: center;
+      flex-direction: column;
+    }
   }
   &__step {
-
+    @media screen and (max-width: $breacking-width) {
+      &:not(:first-child){
+        margin-top: 40px;
+      }
+    }
   }
   &__button {
     margin-top: 61px;

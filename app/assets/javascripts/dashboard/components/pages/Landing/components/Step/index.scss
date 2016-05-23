@@ -1,9 +1,13 @@
+$bracking-width: 1111px;
 .ziltag-landing-step{
   font-family: 'Roboto', sans-serif;
   &__icon{
     width: 70px;
     height: 70px;
     margin: 0 0 0 25px;
+    @media screen and (max-width: $bracking-width) {
+      margin: 0 auto;
+    }
     &--man {
       background: url('./man.png') center/contain no-repeat;
     }

@@ -1,13 +1,14 @@
+$bracking-width: 1111px;
 .ziltag-landing-bottom{
   height: 502px;
   background: url('./landing_logo.png') center 81px / 158px no-repeat, white;
-  padding-bottom: 104px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 50px 104px 50px;
   &__slogan{
     margin-top: 221px;
-    width: 696px;
+    max-width: 696px;
     font-family: 'Roboto', sans-serif;
     font-size: 32px;
     font-weight: 300;
@@ -17,12 +18,21 @@
   }
   &__buttons{
     margin-top: 41px;
-    width: 696px;
+    max-width: 696px;
     display: flex;
     justify-content: center;
+    @media screen and (max-width: $bracking-width) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &__button{
     width: 245px;
     margin: 0 22.5px;
+    @media screen and (max-width: $bracking-width) {
+      &:not(:first-child){
+        margin-top: 18px;
+      }
+    }
   }
 }

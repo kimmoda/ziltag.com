@@ -1,3 +1,4 @@
+$bracking-width: 1111px;
 .ziltag-landing-red {
   width: 100%;
   background: url('./red_bg.png') center/cover no-repeat;
@@ -6,7 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 49px;
+  padding: 0 50px 49px 50px;
+  box-sizing: border-box;
   &__title{
     margin-top: 37px;
     font-size: 34px;
@@ -36,5 +38,8 @@
     border: solid 3px white;
     border-radius: 7px;
     text-align: center;
+    @media screen and (max-width: $bracking-width) {
+      width: 100%;
+    }
   }
 }

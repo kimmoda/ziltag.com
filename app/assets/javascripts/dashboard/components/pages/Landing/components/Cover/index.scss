@@ -1,6 +1,9 @@
+$bracking-width: 1111px;
+
 .ziltag-landing-cover{
   height: 100vh;
-  background: url('./cover.png') center/cover;
+  min-height: 800px;
+  background: black;//url('./cover.png') center/cover;
   font-family: 'Roboto', sans-serif;
   position: relative;
   &__left {
@@ -8,9 +11,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 506px;
+    max-width: 506px;
     left: 24px;
     top: 174px;
+    @media screen and (max-width: $bracking-width) {
+      top: 100px;
+      max-width: none;
+      width: 100%;
+      left: auto;
+      padding: 0 50px;
+      box-sizing: border-box;
+    }
   }
   &__title {
     font-size: 43px;
@@ -26,14 +37,18 @@
     text-align: center;
     letter-spacing: .8px;
     line-height: 24px;
-    width: 446px;
+    max-width: 446px;
     font-weight: 300;
   }
   &__buttons {
     margin-top: 45px;
+    width: 385px;
+    @media screen and (max-width: $bracking-width) {
+      width: 100%;
+    }
   }
   &__button {
-    width: 385px;
+    width: 100%;
     &:not(:first-child){
       margin-top: 18px;
     }
@@ -42,7 +57,12 @@
     position: absolute;
     bottom: 28px;
     left: 85px;
-    width: 301px
+    max-width: 301px;
+    @media screen and (max-width: $bracking-width) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+    }
   }
   &__itmes{
     list-style: none;
