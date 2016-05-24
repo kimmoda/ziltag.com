@@ -13,10 +13,10 @@ export default props => (
       <div className="ziltag-landing-cover__subtitle">Connecting readers with every little details on images, we bring contents on your website alive. </div>
       <div className="ziltag-landing-cover__buttons">
         <div className="ziltag-landing-cover__button">
-          <Button style={buttonStyle} round>Join for free</Button>
+          <Button style={buttonStyle} round onClick={props.onClickJoin}>Join for free</Button>
         </div>
         <div className="ziltag-landing-cover__button">
-          <Button style={buttonStyle} round gray>Watch Video</Button>
+          <Button style={buttonStyle} round gray onClick={props.onClickWatchVideo}>Watch Video</Button>
         </div>
       </div>
     </div>
