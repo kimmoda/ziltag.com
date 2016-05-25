@@ -1,6 +1,6 @@
 $bracking-width: 1111px;
 .ziltag-landing-bottom{
-  height: 502px;
+  min-height: 502px;
   background: url('./landing_logo.png') center 81px / 158px no-repeat, white;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,9 @@ $bracking-width: 1111px;
     color: rgba(0,0,0,.87);
     line-height: 40px;
     text-align: center;
+    @media screen and (max-width: $bracking-width) {
+      font-size: 24px;
+    }
   }
   &__buttons{
     margin-top: 41px;

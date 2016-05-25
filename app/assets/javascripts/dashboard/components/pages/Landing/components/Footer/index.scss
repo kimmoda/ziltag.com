@@ -1,11 +1,12 @@
+$bracking-width: 1111px;
 .ziltag-landing-footer{
-  height: 114px;
+  min-height: 114px;
   background: #F9F9F9;
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 50px;
+  padding: 0 25px 23px 25px;
   &__itmes{
     list-style: none;
     padding: 0;
@@ -14,6 +15,10 @@
     justify-content: space-between;
     max-width: 459px;
     width: 100%;
+    @media screen and (max-width: $bracking-width) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
   &__item{
     font-size: 18px;

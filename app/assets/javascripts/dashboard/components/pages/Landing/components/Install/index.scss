@@ -5,7 +5,7 @@ $breacking-width: 1111px;
   align-items: center;
   font-family: 'Roboto', sans-serif;
   padding-bottom: 59px;
-  padding: 0 50px 59px 50px;
+  padding: 0 25px 59px 25px;
   &__title {
     margin-top: 44px;
     font-size: 34px;
@@ -46,5 +46,8 @@ $breacking-width: 1111px;
     line-height: 24px;
     font-weight: 500;
     cursor: pointer;
+    @media screen and (max-width: $breacking-width) {
+      font-size: 17px;
+    }
   }
 }

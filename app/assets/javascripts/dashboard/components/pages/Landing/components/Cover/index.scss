@@ -19,7 +19,7 @@ $bracking-width: 1111px;
       max-width: none;
       width: 100%;
       left: auto;
-      padding: 0 50px;
+      padding: 0 25px;
       box-sizing: border-box;
     }
   }
@@ -29,6 +29,9 @@ $bracking-width: 1111px;
     text-align: center;
     font-weight: 700;
     color: white;
+    @media screen and (max-width: $bracking-width) {
+      font-size: 27px;
+    }
   }
   &__subtitle {
     margin-top: 12px;
@@ -39,6 +42,9 @@ $bracking-width: 1111px;
     line-height: 24px;
     max-width: 446px;
     font-weight: 300;
+    @media screen and (max-width: $bracking-width) {
+      font-size: 15px;
+    }
   }
   &__buttons {
     margin-top: 45px;
@@ -62,6 +68,8 @@ $bracking-width: 1111px;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
+      padding: 0 25px;
+      box-sizing: border-box;
     }
   }
   &__itmes{
