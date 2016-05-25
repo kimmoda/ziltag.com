@@ -2,6 +2,16 @@ MutationType = GraphQL::ObjectType.define do
   name 'Mutation'
   description 'The mutation root'
 
+  field :createPartner, UserType do
+    argument :username, !types.String
+    argument :email, !types.String
+    argument :url, !types.String
+    resolve -> (_obj, args, _ctx) do
+      partner_sign_up = PartnerSignUp.call(args[:username], args[:email], args[:url])
+      partner_sign_up.success? ? partner_sign_up[:user] : raise(partner_sign_up[:error])
+    end
+  end
+
   field :createUser, UserType do
     argument :username, !types.String
     argument :email, !types.String

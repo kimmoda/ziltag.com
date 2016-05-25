@@ -2,6 +2,20 @@ import * as actionTypes from './types'
 import { normalize } from 'normalizr'
 import { website as websiteType } from '../schema'
 
+function composeURL(params){
+  const {platform, url, tumblr, blogger} = params
+  var newURL
+  switch (platform) {
+    case 'tumblr':
+      return `http://${tumblr}.tumblr.com`
+    case 'blogger':
+      return `http://${blogger}.blogspot.com`
+      break;
+    default:
+      return url
+  }
+}
+
 export function me() {
   return {
     type: actionTypes.REQUEST_ME
@@ -139,5 +153,29 @@ export function receiveSignIn(user) {
   return {
     type: actionTypes.RECEIVE_SIGN_IN,
     user
+  }
+}
+
+export function requestPartnerSignUp(params){
+  const {username, email} = params
+  const url = composeURL(params)
+  return {
+    type: actionTypes.REQUEST_PARTNER_SIGN_UP,
+    username,
+    email,
+    url
+  }
+}
+
+export function receivePartnerSignUp(){
+  return {
+    type: actionTypes.RECEIVE_PARTNER_SIGN_UP
+  }
+}
+
+export function receivePartnerSignUpError(errors){
+  return {
+    type: actionTypes.RECEIVE_PARTNER_SIGN_UP_ERROR,
+    errors
   }
 }

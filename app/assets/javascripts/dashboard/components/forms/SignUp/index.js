@@ -7,7 +7,7 @@ import './index.scss'
 export default props => {
   const {fields, fields: {username, email, platform, url, tumblr, blogger}, handleSubmit, error} = props
   return (
-    <div className="ziltag-form-sign-up">
+    <form className="ziltag-form-sign-up" onSubmit={handleSubmit}>
       <div className="ziltag-form-sign-up__title">Partner Account Information</div>
       <div className="ziltag-form-sign-up__fields">
         <div className="ziltag-form-sign-up__field">
@@ -24,9 +24,10 @@ export default props => {
       <div className="ziltag-form-sign-up__note">
         By joining Ziltag Partner, you agree to our <a href="http://blog.ziltag.com/post/136853735385/terms-of-service" target="_blank">term of use</a> and <a href="http://blog.ziltag.com/tagged/policy" target="_blank">privacy policy</a>.
       </div>
+      <div className="ziltag-form-sign-up__error">{error}</div>
       <div className="ziltag-form-sign-up__button">
         <Button>Join</Button>
       </div>
-    </div>
+    </form>
   )
 }

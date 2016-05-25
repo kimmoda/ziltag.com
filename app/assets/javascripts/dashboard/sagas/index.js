@@ -132,6 +132,21 @@ function* watchRequestSignIn(){
   yield* takeEvery(actionTypes.REQUEST_SIGN_IN, requestSignIn)
 }
 
+function* partnerSignUp(action){
+  const response = yield call(API.partnerSignUp, action.username, action.email, action.url)
+  if(response.errors) yield put(actions.receivePartnerSignUpError(response.errors))
+  else {
+    yield put(actions.receivePartnerSignUp())
+    yield put(actions.closeDialog())
+    yield put(actions.me())
+    yield put(push('/dashboard/install'))
+  }
+}
+
+function* watchParterSignUp(){
+  yield* takeEvery(actionTypes.REQUEST_PARTNER_SIGN_UP, partnerSignUp)
+}
+
 export default function* root() {
   yield [
     fetchRecommendedZiltagMaps(),
@@ -143,6 +158,7 @@ export default function* root() {
     watchRequestAddWebsite(),
     watchRequestDeleteWebsite(),
     watchRequestUpdateWebsite(),
-    watchRequestSignIn()
+    watchRequestSignIn(),
+    watchParterSignUp(),
   ]
 }

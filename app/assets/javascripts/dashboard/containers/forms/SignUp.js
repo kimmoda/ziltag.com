@@ -9,5 +9,5 @@ export default reduxForm({
     platform: 'general'
   }
 }, null, dispatch => ({
-  onSubmit: params => dispatch(actions.requestSignUp(params))
+  onSubmit: params => dispatch(actions.requestPartnerSignUp(params))
 }))(SignUp)

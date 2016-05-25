@@ -79,3 +79,13 @@ export function updateWebsite(id, url) {
 export function signIn(username, password) {
   return api('/api/v2/sign_in', {params: {sign_in: username, password}} )
 }
+
+export function partnerSignUp(username, email, url) {
+  return graphql(`
+    mutation createPartner($username: String!, $email: String!, $url: String!){
+      createPartner(username: $username, email: $email, url: $url){
+        id
+      }
+    }
+  `, {username, email, url})
+}

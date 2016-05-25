@@ -27,6 +27,14 @@ export const form = formReducer.plugin({
       default:
         return state
     }
+  },
+  signUp: (state, action) => {
+    switch (action.type) {
+      case actionTypes.RECEIVE_PARTNER_SIGN_UP_ERROR:
+        return {...state, _error: action.errors[0].message}
+      default:
+        return state
+    }
   }
 })
 

@@ -1,5 +1,5 @@
 export default {
   // dialog: {
-  //   name: 'signIn',
+  //   name: 'signUp'
   // }
 }
