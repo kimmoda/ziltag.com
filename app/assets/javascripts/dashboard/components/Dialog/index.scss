@@ -6,6 +6,9 @@
   top: 0;
   left: 0;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &__body {
     width: 621px;
     min-height: 327px;
@@ -19,7 +22,7 @@
     @media screen and (max-width: 600px) {
       margin: 0;
       width: 100%;
-      height: 100%;
+      padding: 25px 50px;
     }
   }
   &__dismiss {
