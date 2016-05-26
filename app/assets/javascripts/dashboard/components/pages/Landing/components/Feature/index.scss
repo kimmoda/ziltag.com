@@ -13,7 +13,7 @@ $bracking-width: 1111px;
     font-weight: 700;
     text-align: center;
     @media screen and (max-width: $bracking-width) {
-      font-size: 37px;
+      font-size: 34px;
     }
   }
   &__subtitle {
@@ -62,6 +62,7 @@ $bracking-width: 1111px;
   }
   &__usecases{
     max-width: 759px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 62px;

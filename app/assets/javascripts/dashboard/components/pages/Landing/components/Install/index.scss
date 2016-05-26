@@ -27,6 +27,7 @@ $breacking-width: 1111px;
     display: flex;
     justify-content: space-between;
     max-width: 865px;
+    width: 100%;
     @media screen and (max-width: $breacking-width) {
       align-items: center;
       flex-direction: column;

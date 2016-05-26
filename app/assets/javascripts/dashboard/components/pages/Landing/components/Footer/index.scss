@@ -29,6 +29,11 @@ $bracking-width: 1111px;
       text-decoration: none;
       color: inherit;
     }
+    @media screen and (max-width: $bracking-width) {
+      &:not(:first-child){
+        margin-top: 20px;
+      }
+    }
   }
   &__copyright{
     margin-top: 22px;

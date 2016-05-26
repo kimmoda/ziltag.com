@@ -1,3 +1,4 @@
+$bracking-width: 1111px;
 .ziltag-landing-black {
   min-height: 380px;
   background: #262626;
@@ -13,6 +14,9 @@
     font-weight: 700;
     line-height: 46px;
     text-align: center;
+    @media screen and (max-width: $bracking-width) {
+      font-size: 29px;
+    }
   }
   &__quote{
     margin-top: 30px;
