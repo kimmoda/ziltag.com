@@ -47,6 +47,8 @@ $breacking-width: 1111px;
     line-height: 24px;
     font-weight: 500;
     cursor: pointer;
+    background: url('./red_play.png') left center/14px 14px no-repeat;
+    padding-left: 30px;
     @media screen and (max-width: $breacking-width) {
       font-size: 17px;
     }

@@ -17,6 +17,6 @@ export default props => (
         <Step icon="code" number="3" name="PASTE" summery="Paste it in HTML."/>
       </div>
     </div>
-    <div className="ziltag-landing-install__button" onClick={props.onClickWatchVideo}>▶ WATCH INSTALLATION GUIDE</div>
+    <div className="ziltag-landing-install__button" onClick={props.onClickWatchVideo}>WATCH INSTALLATION GUIDE</div>
   </div>
 )
