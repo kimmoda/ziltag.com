@@ -41,6 +41,8 @@ $bracking-width: 1111px;
   }
   &__video {
     margin-top: 48px;
+    width: 1008px;
+    height: 567px;
     @media screen and (max-width: $bracking-width) {
       display: none;
     }

@@ -179,3 +179,21 @@ export function receivePartnerSignUpError(errors){
     errors
   }
 }
+
+export function playVideo() {
+  return {
+    type: actionTypes.PLAY_VIDEO
+  }
+}
+
+export function pauseVideo() {
+  return {
+    type: actionTypes.PAUSE_VIDEO
+  }
+}
+
+export function endVideo() {
+  return {
+    type: actionTypes.END_VIDEO
+  }
+}

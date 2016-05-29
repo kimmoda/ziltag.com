@@ -92,3 +92,16 @@ export function entities(state = {users: {}, websites: {}, ziltags: {}, ziltagMa
   }
   return state
 }
+
+export function video(state='begin', action) {
+  switch (action.type) {
+    case actionTypes.PLAY_VIDEO:
+      return 'play'
+    case actionTypes.PAUSE_VIDEO:
+      return 'pause'
+    case actionTypes.END_VIDEO:
+      return 'end'
+    default:
+      return state
+  }
+}

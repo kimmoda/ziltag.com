@@ -1,6 +1,6 @@
 import React from 'react'
 import Intro from '../Intro'
-import Video from '../Video'
+import Video from '../../containers/Video'
 import Usecase from '../Usecase'
 import './index.scss'
 
@@ -26,7 +26,7 @@ export default props => (
       </div>
     </div>
     <div className="ziltag-landing-feature__video">
-      <Video />
+      <Video id="ic2-Ascvte4"/>
     </div>
     <div className="ziltag-landing-feature__imagine-title">Imagine…</div>
     <div className="ziltag-landing-feature__imagine-subtitle">You can use it for all kinds of purposes.</div>
