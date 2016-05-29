@@ -1,0 +1,11 @@
+$bracking-width: 1111px;
+.ziltag-video-layer {
+  &__video {
+    width: 1008px;
+    height: 576px;
+    @media screen and (max-width: $bracking-width) {
+      width: 100%;
+      height: 50vh;
+    }
+  }
+}

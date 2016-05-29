@@ -105,3 +105,20 @@ export function video(state='begin', action) {
       return state
   }
 }
+
+export function videoLayer(state={open: false, state: 'play'}, action) {
+  switch (action.type) {
+    case actionTypes.CLOSE_VIDEO_LAYER:
+      return {...state, open: false}
+    case actionTypes.OPEN_VIDEO_LAYER:
+      return {open: true, state: 'play'}
+    case actionTypes.PLAY_VIDEO_LAYER:
+      return {open: true, state: 'play'}
+    case actionTypes.PAUSE_VIDEO_LAYER:
+      return {open: true, state: 'pause'}
+    case actionTypes.END_VIDEO_LAYER:
+      return {open: true, state: 'end'}
+    default:
+      return state
+  }
+}

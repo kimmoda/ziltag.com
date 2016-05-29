@@ -9,6 +9,7 @@ import Bottom from './containers/Bottom'
 import Footer from './components/Footer'
 import DevTools from '../../../containers/DevTools'
 import Dialog from '../../../containers/Dialog'
+import VideoLayer from './containers/VideoLayer'
 import './index.scss'
 
 export default props => (
@@ -22,6 +23,7 @@ export default props => (
     <Bottom/>
     <Footer/>
     <Dialog/>
+    <VideoLayer id="ic2-Ascvte4" />
     {__PRODUCTION__ ? null : <DevTools/>}
   </div>
 )

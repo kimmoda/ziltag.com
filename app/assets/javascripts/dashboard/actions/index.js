@@ -197,3 +197,31 @@ export function endVideo() {
     type: actionTypes.END_VIDEO
   }
 }
+
+export function playVideoLayer(){
+  return {
+    type: actionTypes.PLAY_VIDEO_LAYER
+  }
+}
+export function pauseVideoLayer(){
+  return {
+    type: actionTypes.PAUSE_VIDEO_LAYER
+  }
+}
+export function endVideoLayer(){
+  return {
+    type: actionTypes.END_VIDEO_LAYER
+  }
+}
+
+export function openVideoLayer(){
+  return {
+    type: actionTypes.OPEN_VIDEO_LAYER
+  }
+}
+
+export function closeVideoLayer(){
+  return {
+    type: actionTypes.CLOSE_VIDEO_LAYER
+  }
+}

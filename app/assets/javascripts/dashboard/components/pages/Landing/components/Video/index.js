@@ -10,7 +10,7 @@ const buttonStyle = {
 
 export default class  extends React.Component {
   render () {
-    const {id, layer, watch, resume, replay, join, onWatch, onResume, onJoin, onReplay, onPause, onEnd} = this.props
+    const {id, layer, watch, resume, replay, join, onWatch, onResume, onJoin, onReplay, onPause, onEnd, playerVars} = this.props
     return (
       <div className="ziltag-landing-video">
         <YouTube
@@ -22,8 +22,9 @@ export default class  extends React.Component {
             allowfullscreen: true,
             playerVars: {
               rel: 0,
-              controls: 1,
-              showinfo: 0
+              controls: 0,
+              showinfo: 0,
+              ...playerVars
             }
           }}
           onReady={event => this.setState({instance: event.target})}
