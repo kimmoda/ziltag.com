@@ -1,11 +1,13 @@
 $bracking-width: 1111px;
-
-.ziltag-landing-cover{
+.ziltag-landing-cover {
   height: 100vh;
   min-height: 800px;
   background: url('./cover.png') center/cover;
   font-family: 'Roboto', sans-serif;
   position: relative;
+  @media screen and (max-width: $bracking-width) {
+    background: url('./cover_mobile.png') center/cover;
+  }
   &__left {
     position: absolute;
     display: flex;
@@ -38,7 +40,7 @@ $bracking-width: 1111px;
     font-size: 17px;
     color: white;
     text-align: center;
-    letter-spacing: .8px;
+    letter-spacing: 0.8px;
     line-height: 24px;
     max-width: 446px;
     font-weight: 300;
@@ -55,11 +57,11 @@ $bracking-width: 1111px;
   }
   &__button {
     width: 100%;
-    &:not(:first-child){
+    &:not(:first-child) {
       margin-top: 18px;
     }
   }
-  &__footer{
+  &__footer {
     position: absolute;
     bottom: 28px;
     left: 85px;
@@ -72,14 +74,14 @@ $bracking-width: 1111px;
       box-sizing: border-box;
     }
   }
-  &__itmes{
+  &__itmes {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: space-between;
   }
-  &__item{
+  &__item {
     font-size: 14px;
     font-weight: 500;
     color: white;
@@ -90,7 +92,7 @@ $bracking-width: 1111px;
       color: inherit;
     }
   }
-  &__copyright{
+  &__copyright {
     font-size: 12px;
     font-weight: 300;
     color: white;
