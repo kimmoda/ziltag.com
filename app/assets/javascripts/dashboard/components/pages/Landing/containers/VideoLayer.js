@@ -4,6 +4,7 @@ import * as actions from '../../../../actions'
 
 export default connect(
   state => ({
+    id: state.videoLayer.id,
     open: state.videoLayer.open,
     layer: state.videoLayer.state == 'pause' || state.videoLayer.state == 'end',
     watch: state.videoLayer.state == 'begin',

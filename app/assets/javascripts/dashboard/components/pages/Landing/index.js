@@ -3,7 +3,7 @@ import Header from '../../Header'
 import Cover from './containers/Cover'
 import Feature from './components/Feature'
 import Red from './containers/Red'
-import Install from './components/Install'
+import Install from './containers/Install'
 import Black from './components/Black'
 import Bottom from './containers/Bottom'
 import Footer from './components/Footer'
@@ -23,7 +23,7 @@ export default props => (
     <Bottom/>
     <Footer/>
     <Dialog/>
-    <VideoLayer id="ic2-Ascvte4" />
+    <VideoLayer />
     {__PRODUCTION__ ? null : <DevTools/>}
   </div>
 )

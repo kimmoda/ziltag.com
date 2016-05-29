@@ -6,6 +6,6 @@ export default connect(
   null,
   dispatch => ({
     onClickJoin: _ => dispatch(actions.openDialog('signUp')),
-    onClickWatchVideo: _ => dispatch(actions.openVideoLayer())
+    onClickWatchVideo: _ => dispatch(actions.openVideoLayer('ic2-Ascvte4'))
   })
 )(Cover)

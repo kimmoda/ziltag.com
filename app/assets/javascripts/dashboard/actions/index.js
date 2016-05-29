@@ -214,9 +214,10 @@ export function endVideoLayer(){
   }
 }
 
-export function openVideoLayer(){
+export function openVideoLayer(videoID){
   return {
-    type: actionTypes.OPEN_VIDEO_LAYER
+    type: actionTypes.OPEN_VIDEO_LAYER,
+    videoID
   }
 }
 
