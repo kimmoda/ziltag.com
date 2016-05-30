@@ -3,7 +3,12 @@ class AuthorizationMiddleware
     case parent_type
     when MutationType
       current_user = query_context[:current_user]
-      raise 'user is not signed in' if current_user.nil?
+      case field_definition.name
+      when 'createPartner', 'createUser'
+      else
+        raise 'user is not signed in' if current_user.nil?
+      end
+
       case field_definition.name
       when 'createZiltag'
       when 'updateZiltag', 'deleteZiltag'
