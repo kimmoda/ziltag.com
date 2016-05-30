@@ -21,18 +21,14 @@ class User < ActiveRecord::Base
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :boxes, dependent: :destroy, after_remove: :nullify_box
+  has_many :boxes, dependent: :destroy
   has_many :photos, through: :boxes, dependent: :destroy
 
   # validations
   validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}, allow_nil: true
   validates :username, presence: true, if: :general_user?
-  validate :url_must_be_valid
 
   # callbacks
-  after_find :set_box_url
-  after_create :create_box!, if: :content_provider?
-  after_update :save_box_url
 
   # other
 
@@ -61,34 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def box
-    @box ||= boxes.first || create_box!
-  end
-
-  private
-
-  def set_box_url
-    @url = box.url
-  end
-
-  def create_box!
-    boxes.create!
-  end
-
-  def save_box_url
-    box.url = @url
-    box.save if box.url_changed?
-  end
-
-  def nullify_box box
-    @box = nil if box == @box
-  end
-
-  def url_must_be_valid
-    case url
-    when URI.regexp(%w[http https]), Box::DOMAIN_REGEX, nil
-    else
-      errors.add(:url, I18n.t('activerecord.errors.models.box.attributes.url.invalid'))
-    end
+    boxes.first
   end
 
 end

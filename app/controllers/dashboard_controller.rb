@@ -1,6 +1,8 @@
 class DashboardController < ApplicationController
   def index
-    authenticate_user! if request.path.start_with? '/dashboard'
+    if request.path.start_with?('/dashboard') && !request.path.start_with?('/dashboard/verify')
+      authenticate_user!
+    end
     render layout: false
   end
 end

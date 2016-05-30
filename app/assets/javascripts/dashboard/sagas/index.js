@@ -30,7 +30,8 @@ function* verify(action) {
   const data = yield call(API.verify, password, password_confirmation, confirmation_token)
   if(data.errors) yield put(actions.requestVerifyFailed(data.errors))
   else {
-    yield put(push('/verified'))
+    yield put(push('/dashboard/verified'))
+    yield put(actions.me())
     yield put({type: actionTypes.REQUEST_VERIFY_SUCCEEDED})
   }
 }
@@ -53,14 +54,14 @@ function* watchSignOut() {
 
 function* redirectToRoot() {
   yield call(delay, 5000)
-  yield put(push('/'))
+  yield put(push('/dashboard'))
 }
 
 function* watchRouterLocationChange() {
   let lastTask
   while(true) {
     const action = yield take('@@router/LOCATION_CHANGE')
-    if(action.payload.pathname == '/verified'){
+    if(action.payload.pathname == '/dashboard/verified'){
       if(lastTask) yield cancel(lastTask)
       lastTask = yield fork(redirectToRoot)
     }
