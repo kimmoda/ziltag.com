@@ -23,7 +23,7 @@ export default props => {
   const {platform, url, tumblr, blogger} = props
   switch (platform.value) {
     case 'general':
-      var field = <GeneralField required name="url" type="url" {...url} />
+      var field = <GeneralField required name="url" {...url} />
       break
     case 'tumblr':
       var field = <DomainField required name="tumblr" platform="tumblr" domain=".tumblr.com" {...tumblr} />
