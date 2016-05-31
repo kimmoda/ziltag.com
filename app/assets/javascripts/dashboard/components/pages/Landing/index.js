@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 import DevTools from '../../../containers/DevTools'
 import Dialog from '../../../containers/Dialog'
 import VideoLayer from './containers/VideoLayer'
+import IframeModal from '../../../components/IframeModal'
 import './index.scss'
 
 export default props => (
@@ -24,6 +25,7 @@ export default props => (
     <Footer/>
     <Dialog/>
     <VideoLayer />
+    <IframeModal/>
     {__PRODUCTION__ ? null : <DevTools/>}
   </div>
 )

@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../../../../Button'
+import Slider from '../../containers/Slider'
 import './index.scss'
 
 const buttonStyle = {
@@ -20,6 +21,14 @@ export default props => (
         </div>
       </div>
     </div>
+    <div
+      className="ziltag-landing-cover__screen"
+      style={{
+        left: props.screen.left,
+        top: props.screen.top,
+        width: props.screen.width,
+        height: props.screen.height
+      }}><Slider sliderHeight={props.screen.height}/></div>
     <div className="ziltag-landing-cover__footer">
       <ul className="ziltag-landing-cover__itmes">
         <li className="ziltag-landing-cover__item"><a target="_blank" href="http://blog.ziltag.com/tagged/about">ABOUT</a></li>

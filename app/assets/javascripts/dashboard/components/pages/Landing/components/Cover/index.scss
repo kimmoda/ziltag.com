@@ -8,6 +8,12 @@ $bracking-width: 1111px;
   @media screen and (max-width: $bracking-width) {
     background: url('./cover_mobile.png') center/cover;
   }
+  &__screen {
+    position: absolute;
+    @media screen and (max-width: $bracking-width) {
+      display: none;
+    }
+  }
   &__left {
     position: absolute;
     display: flex;
@@ -66,6 +72,7 @@ $bracking-width: 1111px;
     bottom: 28px;
     left: 85px;
     max-width: 301px;
+    width: 100%;
     @media screen and (max-width: $bracking-width) {
       left: 50%;
       transform: translateX(-50%);

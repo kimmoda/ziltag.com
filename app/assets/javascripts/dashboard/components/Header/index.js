@@ -16,7 +16,7 @@ class Header extends React.Component {
     const inconMenuProps = {avatarURL, onClickSignOut}
     return(
       <div className="ziltag-header">
-        <Link to="/dashboard">
+        <Link to={avatarURL ? '/dashboard' : '/'}>
           <div className="ziltag-header__logo">
           </div>
         </Link>

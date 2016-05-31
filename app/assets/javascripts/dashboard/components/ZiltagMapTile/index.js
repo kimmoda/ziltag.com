@@ -2,20 +2,23 @@ import * as actions from '../../actions'
 import './index.scss'
 
 import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
 
-class ZiltagMapTile extends React.Component {
+export default class ZiltagMapTile extends React.Component {
   static propTypes = {
     ziltags: PropTypes.arrayOf(PropTypes.object).isRequired,
-    avatarURL: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    siteDomain: PropTypes.string.isRequired,
-    siteURL: PropTypes.string.isRequired,
+    avatarURL: PropTypes.string,
+    username: PropTypes.string,
+    siteDomain: PropTypes.string,
+    siteURL: PropTypes.string,
     onClickZiltag: PropTypes.func
   }
 
+  static defaultProps = {
+    footer: true
+  }
+
   render () {
-    const {ziltags, imageURL, avatarURL, username, siteDomain, onClickZiltag} = this.props
+    const {ziltags, imageURL, avatarURL, username, siteDomain, onClickZiltag, footer} = this.props
 
     const ziltagElements = ziltags.map((ziltag) => {
       let left = `${ziltag.x * 100}%`
@@ -33,25 +36,21 @@ class ZiltagMapTile extends React.Component {
     return (
       <div className="ziltag-ziltag-map-tile">
         <div className="ziltag-ziltag-map-tile__image-container">
-          <img className="ziltag-ziltag-map-tile__image" width="100%" src={imageURL}/>
+          <img className="ziltag-ziltag-map-tile__image" src={imageURL}/>
           {ziltagElements}
         </div>
-        <div className="ziltag-ziltag-map-tile__footer">
-          <div className="ziltag-ziltag-map-tile__avatar" style={{backgroundImage: `url('${avatarURL}')`}}></div>
-          <div className="ziltag-ziltag-map-tile__text-container">
-            <div className="ziltag-ziltag-map-tile__username">{username}</div>
-            <div className="ziltag-ziltag-map-tile__domain">From: {siteDomain}</div>
+        {
+          footer ?
+          <div className="ziltag-ziltag-map-tile__footer">
+            <div className="ziltag-ziltag-map-tile__avatar" style={{backgroundImage: `url('${avatarURL}')`}}></div>
+            <div className="ziltag-ziltag-map-tile__text-container">
+              <div className="ziltag-ziltag-map-tile__username">{username}</div>
+              <div className="ziltag-ziltag-map-tile__domain">From: {siteDomain}</div>
+            </div>
           </div>
-        </div>
+          : null
+        }
       </div>
     )
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    onClickZiltag: (ziltagID) => dispatch(actions.openIframeModal(`/ziltags/${ziltagID}`))
-  }
-}
-
-export default connect(null, mapDispatchToProps)(ZiltagMapTile)

@@ -122,3 +122,12 @@ export function videoLayer(state={open: false, state: 'play'}, action) {
       return state
   }
 }
+
+export function window(state={}, action){
+  switch (action.type) {
+    case actionTypes.RESIZE_WINDOW:
+      return {width: action.width, height: action.height}
+    default:
+      return state
+  }
+}

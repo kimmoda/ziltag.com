@@ -1,5 +1,5 @@
 import './index.scss'
-import Tile from '../../ZiltagMapTile'
+import Tile from '../../../containers/ZiltagMapTile'
 import PageBar from '../../PageBar'
 
 import React, {PropTypes} from 'react'
