@@ -2,10 +2,27 @@ import * as actionTypes from '../actions/types'
 import * as actions from '../actions'
 import * as API from '../apis'
 import {user, ziltagMap, website} from '../schema'
-import { takeEvery } from 'redux-saga'
+import { takeEvery, eventChannel } from 'redux-saga'
 import { take, call, put, fork, cancel } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 import { normalize, arrayOf } from 'normalizr'
+
+function windowResizeChannel(){
+  return eventChannel(listener => {
+    const callback = event => listener({width: event.target.innerWidth, height: event.target.innerHeight})
+    window.addEventListener('resize', callback)
+    return _ => window.removeEventListener('resize', callback)
+  })
+}
+
+export function* watchWindowSize(){
+  const channel = yield call(windowResizeChannel)
+  while(true) {
+    const result = yield take(channel)
+    yield put(actions.resizeWindow(result.width, result.height))
+  }
+}
+
 
 function delay(ms){
   return new Promise(resolve => setTimeout(resolve, ms))
@@ -150,6 +167,7 @@ function* watchParterSignUp(){
 
 export default function* root() {
   yield [
+    watchWindowSize(),
     fetchRecommendedZiltagMaps(),
     watchFetchMe(),
     watchVerify(),

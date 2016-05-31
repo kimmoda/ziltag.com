@@ -226,3 +226,11 @@ export function closeVideoLayer(){
     type: actionTypes.CLOSE_VIDEO_LAYER
   }
 }
+
+export function resizeWindow(width, height){
+  return {
+    type: actionTypes.RESIZE_WINDOW,
+    width,
+    height
+  }
+}
