@@ -10,7 +10,6 @@ $bracking-width: 1111px;
   }
   &__screen {
     position: absolute;
-    background: black;
     @media screen and (max-width: $bracking-width) {
       display: none;
     }

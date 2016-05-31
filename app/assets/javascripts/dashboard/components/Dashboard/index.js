@@ -5,6 +5,8 @@ import Dialog from '../../containers/Dialog'
 import DevTools from '../../containers/DevTools'
 import './index.scss'
 import 'normalize.css/normalize.css'
+import 'slick-carousel/slick/slick.scss'
+import 'slick-carousel/slick/slick-theme.scss'
 
 import React from 'react'
 
