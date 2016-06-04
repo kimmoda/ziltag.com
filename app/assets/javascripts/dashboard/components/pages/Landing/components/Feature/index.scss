@@ -36,7 +36,7 @@ $bracking-width: 1111px;
     max-width: 318px;
     margin: 39px 55px 0 55px;
     @media screen and (max-width: $bracking-width) {
-      margin: 39px 0 0 0;
+      margin: 39px 55px 0 55px;
     }
   }
   &__video {
