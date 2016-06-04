@@ -24,7 +24,7 @@ export default props => (
     <Bottom/>
     <Footer/>
     <Dialog/>
-    <VideoLayer />
+    <VideoLayer/>
     <IframeModal/>
     {__PRODUCTION__ ? null : <DevTools/>}
   </div>

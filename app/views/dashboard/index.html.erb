@@ -4,6 +4,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <title>Ziltag</title>
+  <script type="text/javascript">
+    (function(w,d){
+      w.HelpCrunch=function(){w.HelpCrunch.q.push(arguments)};w.HelpCrunch.q=[];
+      function r(){var s=document.createElement('script');s.async=1;s.type='text/javascript';s.src='https://ziltag.helpcrunch.com/compiled/sdk.js';(d.body||d.head).appendChild(s);}
+      if(w.attachEvent){w.attachEvent('onload',r)}else{w.addEventListener('load',r,false)}
+    })(window, document)
+  </script>
+
+  <script type="text/javascript">
+    HelpCrunch('init', 'ziltag', {
+      applicationId: 836,
+      applicationSecret: 'lUS/w1bQvNaG89iwf3fp0nZ4K26E5TxPp2YeZsf9bJw+h45Hd7ml0yVcG8GoOGOO/7Z63f823HNt1tmiUJpvQw=='
+    });
+    HelpCrunch('showChatWidget');
+  </script>
   <%= stylesheet_link_tag 'dashboard', media: 'all' if Rails.env.production? %>
 </head>
 <body>
