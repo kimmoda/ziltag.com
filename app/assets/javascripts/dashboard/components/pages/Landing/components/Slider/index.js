@@ -16,27 +16,27 @@ const settings = {
 
 const ziltagMaps = [
   {
-    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1916/default_tumblr_inline_o6n53iJ7yE1tg5azs_1280.png',
+    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1896/default_tumblr_o6i3nqSE4i1tpy9oco1_1280.jpg',
     ziltags: [
-      { id: 'f574ba', x: 0.138157894736842, y: 0.834473684210526 },
-      { id: '2127d5', x: 0.866776315789474, y: 0.381315789473684 },
-      { id: '24e52b', x: 0.626644736842105, y: 0.381315789473684 }
+      { id: 'd00887', x: 0.472817133443163, y: 0.292879370309354 },
+    ]
+  },
+  {
+    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1638/default_tumblr_inline_o5rrodt9qv1tg5azs_1280.jpg',
+    ziltags: [
+      { id: '8651d8', x: 0.171334431630972, y: 0.404606021288764},
+      { id: '54f655', x: 0.884678747940692, y: 0.253518962706251},
+      { id: '265257', x: 0.514003294892916, y: 0.314978105180494},
+      { id: 'b0833e', x: 0.113673805601318, y: 0.0563375472680558},
+      { id: 'e05b15', x: 0.71993410214168, y: 0.665807376804295 }
     ]
   },
   {
     imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1872/default_tumblr_inline_o658dm7g5P1tg5azs_1280.jpg',
     ziltags: [
-      { id: 'ba1d78', x: 0.180150125104254, y: 0.261217681401168 },
-      { id: '0a19b6', x: 0.322899505766063, y: 0.73838550247117 },
-      { id: '405ae4', x: 0.807339449541284, y: 0.522435362802335 }
-    ]
-  },
-  {
-    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1633/default_tumblr_inline_o5rrnsDit31tg5azs_1280.jpg',
-    ziltags: [
-      { id: 'b870a7', x: 0.240527182866557, y: 0.437257907080486 },
-      { id: '31aac5', x: 0.453047775947282, y: 0.492908913436185 },
-      { id: '647978', x: 0.797364085667216, y: 0.408107379941787 }
+      {id: 'ba1d78', x: 0.180150125104254, y: 0.261217681401168},
+      {id: '0a19b6', x: 0.322899505766063, y: 0.73838550247117},
+      {id: '405ae4', x: 0.807339449541284, y: 0.522435362802335}
     ]
   }
 ]
