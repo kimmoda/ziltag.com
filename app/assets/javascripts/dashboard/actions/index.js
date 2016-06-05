@@ -234,3 +234,9 @@ export function resizeWindow(width, height){
     height
   }
 }
+
+export function closeModal(){
+  return {
+    type: actionTypes.CLOSE_MODAL
+  }
+}
