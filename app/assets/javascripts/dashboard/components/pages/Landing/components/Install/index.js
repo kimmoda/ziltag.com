@@ -1,5 +1,6 @@
 import React from 'react'
 import Step from '../Step'
+import Demo from '../Demo'
 import './index.scss'
 
 export default props => (
@@ -18,5 +19,6 @@ export default props => (
       </div>
     </div>
     <div className="ziltag-landing-install__button" onClick={props.onClickWatchVideo}>WATCH INSTALLATION GUIDE</div>
+    <Demo />
   </div>
 )
