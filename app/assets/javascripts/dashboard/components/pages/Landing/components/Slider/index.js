@@ -1,9 +1,17 @@
 import React from 'react'
 import Slider from 'react-slick'
 import ZiltagMapTile from '../../../../ZiltagMapTile'
+import LeftArrow from 'material-ui/svg-icons/navigation/chevron-left'
+import RightArrow from 'material-ui/svg-icons/navigation/chevron-right'
+import './index.scss'
 
 const settings = {
-  infinite: true
+  infinite: true,
+  dots: true,
+  className: 'ziltag-slider',
+  dotsClass: 'slick-dots ziltag-slider__dots',
+  prevArrow: <LeftArrow color="white" />,
+  nextArrow: <RightArrow color="white" />,
 }
 
 const ziltagMaps = [
