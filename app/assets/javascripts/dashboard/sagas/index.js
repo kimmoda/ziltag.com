@@ -7,6 +7,22 @@ import { take, call, put, fork, cancel } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 import { normalize, arrayOf } from 'normalizr'
 
+function windowMessageChannel(){
+  return eventChannel(listener => {
+    const callback = ({data}) => listener(data)
+    window.addEventListener('message', callback)
+    return _ => window.removeEventListener('message', callback)
+  })
+}
+
+export function* watchWindowMessage(){
+  const channel = yield call(windowMessageChannel)
+  while(true){
+    const data = yield take(channel)
+    if(data == 'deactivate_ziltag_reader') yield put(actions.closeModal())
+  }
+}
+
 function windowResizeChannel(){
   return eventChannel(listener => {
     const callback = event => listener({width: event.target.innerWidth, height: event.target.innerHeight})
@@ -167,6 +183,7 @@ function* watchParterSignUp(){
 
 export default function* root() {
   yield [
+    watchWindowMessage(),
     watchWindowSize(),
     fetchRecommendedZiltagMaps(),
     watchFetchMe(),
