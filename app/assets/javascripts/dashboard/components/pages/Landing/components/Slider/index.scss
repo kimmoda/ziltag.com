@@ -10,4 +10,10 @@
       opacity: 1;
     }
   }
+  .slick-prev{
+    left: -52px;
+  }
+  .slick-prev:before, .slick-next:before {
+    font-size: 50px;
+  }
 }

@@ -9,9 +9,7 @@ const settings = {
   infinite: true,
   dots: true,
   className: 'ziltag-slider',
-  dotsClass: 'slick-dots ziltag-slider__dots',
-  prevArrow: <LeftArrow color="white" />,
-  nextArrow: <RightArrow color="white" />,
+  dotsClass: 'slick-dots ziltag-slider__dots'
 }
 
 const ziltagMaps = [
