@@ -7,6 +7,7 @@ import './index.scss'
 import 'normalize.css/normalize.css'
 import 'slick-carousel/slick/slick.scss'
 import 'slick-carousel/slick/slick-theme.scss'
+import 'highlight.js/styles/rainbow.css'
 
 import React from 'react'
 

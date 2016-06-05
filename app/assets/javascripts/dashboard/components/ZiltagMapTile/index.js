@@ -36,7 +36,7 @@ export default class ZiltagMapTile extends React.Component {
     return (
       <div className="ziltag-ziltag-map-tile">
         <div className="ziltag-ziltag-map-tile__image-container">
-          <img className="ziltag-ziltag-map-tile__image" src={imageURL}/>
+          <img className="ziltag-ziltag-map-tile__image" src={imageURL} data-ziltag="false"/>
           {ziltagElements}
         </div>
         {
