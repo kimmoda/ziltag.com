@@ -50,6 +50,7 @@ export default props => {
         ziltagMaps.map(ziltagMap => (
           <div key={ziltagMap.imageURL} style={style}>
             <ZiltagMapTile
+              animation
               imageURL={ziltagMap.imageURL}
               ziltags={ziltagMap.ziltags}
               footer={false}

@@ -10,16 +10,17 @@ export default class ZiltagMapTile extends React.Component {
     username: PropTypes.string,
     siteDomain: PropTypes.string,
     siteURL: PropTypes.string,
-    onClickZiltag: PropTypes.func
+    onClickZiltag: PropTypes.func,
+    animation: PropTypes.bool
   }
 
   static defaultProps = {
-    footer: true
+    footer: true,
+    animation: false
   }
 
   render () {
-    const {ziltags, imageURL, avatarURL, username, siteDomain, onClickZiltag, footer} = this.props
-
+    const {animation, ziltags, imageURL, avatarURL, username, siteDomain, onClickZiltag, footer} = this.props
     const ziltagElements = ziltags.map((ziltag) => {
       let left = `${ziltag.x * 100}%`
       let top = `${ziltag.y * 100}%`
@@ -29,6 +30,7 @@ export default class ZiltagMapTile extends React.Component {
           className="ziltag-ziltag-map-tile__tag"
           style={{left, top}}
           onClick={() => onClickZiltag(ziltag.id)}>
+          {animation ? <div className="ziltag-ziltag-map-tile__animation"/> : null}
         </div>
       )
     })
