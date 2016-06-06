@@ -186,6 +186,7 @@ export default function* root() {
     watchWindowMessage(),
     watchWindowSize(),
     fetchRecommendedZiltagMaps(),
+    fetchMe(),
     watchFetchMe(),
     watchVerify(),
     watchSignOut(),
