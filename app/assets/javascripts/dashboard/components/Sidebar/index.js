@@ -37,7 +37,6 @@ class Sidebar extends React.Component {
 
     return(
       <div className="ziltag-sidebar">
-        <SearchField />
         <div className="ziltag-sidebar__menu">
           <Menu
             autoWidth={false}
