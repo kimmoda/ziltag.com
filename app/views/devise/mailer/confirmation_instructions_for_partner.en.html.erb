@@ -20,5 +20,5 @@
 
 <div class="mail__confirm">
   <p>In order to get started, please confirm your email address.</p>
-  <%= link_to 'Confirm Email', "#{Rails.configuration.action_mailer.default_url_options[:host]}/dashboard/verify?confirmation_token=#{URI.encode_www_form_component(@token)}", class: 'mail__button' %>
+  <%= link_to 'Confirm Email', "https://#{Rails.configuration.action_mailer.default_url_options[:host]}/dashboard/verify?confirmation_token=#{URI.encode_www_form_component(@token)}", class: 'mail__button' %>
 </div>
