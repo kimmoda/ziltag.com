@@ -21,8 +21,6 @@ class Sidebar extends React.Component {
   render () {
     const { showRecommendedTags } = this.props
     const links = [
-      { to: '/dashboard/tags', name: 'Tags', },
-      { to: '/dashboard/comments', name: 'Comments', },
       { to: '/dashboard/account', name: 'Account', },
     ]
     if(showRecommendedTags) links.push({to: '/dashboard/recommended_tags', name: 'Recommended'})
