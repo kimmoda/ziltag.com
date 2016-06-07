@@ -1,12 +1,15 @@
 .ziltag-slider{
   &__dots{
+    li {
+      margin: 0 1px;
+    }
     li.slick-active button:before{
       color: grey;
       opacity: 1;
     }
     li button:before{
       color: white;
-      font-size: 18px;
+      font-size: 10px;
       opacity: 1;
     }
   }
