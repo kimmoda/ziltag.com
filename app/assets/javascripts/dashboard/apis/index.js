@@ -89,3 +89,15 @@ export function partnerSignUp(username, email, url) {
     }
   `, {username, email, url})
 }
+
+export function uploadAvatar(file) {
+  const data = new FormData()
+  data.append('file', file)
+  data.append('query', 'mutation uploadAvatar{uploadAvatar{id,avatar}}')
+  return api('/api/v2/graphql', {
+    headers: {
+      'Accept': 'application/json'
+    },
+    body: data
+  })
+}

@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton'
 
 class AccountSetting extends React.Component {
   render () {
-    const {avatar, username, role, email, onClickSignOut, onClickPassword} = this.props
+    const {avatar, username, role, email, onClickSignOut, onClickPassword, onChangeAvatar} = this.props
     const buttonStyle = {
       marginRight: 17,
       fontSize: 14,
@@ -15,7 +15,9 @@ class AccountSetting extends React.Component {
     }
     return (
       <div className="ziltag-account-setting">
-        <div className="ziltag-account-setting__avatar" style={{backgroundImage: `url('${avatar}')`}}></div>
+        <div className="ziltag-account-setting__avatar" style={{backgroundImage: `url('${avatar}')`}} onClick={_ => this.refs.file.click() }>
+          <input ref="file" style={{display: 'none'}} name="file" type="file" onChange={event=>{event.target.files[0] && onChangeAvatar(event.target.files[0])}} />
+        </div>
         <div className="ziltag-account-setting__info">
           <div className="ziltag-account-setting__username">{username}</div>
           <div className="ziltag-account-setting__role">{role}</div>
@@ -55,6 +57,9 @@ function mapDispatchToProps(dispatch) {
     },
     onClickPassword: (e) => {
       dispatch(actions.openDialog('password'))
+    },
+    onChangeAvatar: file => {
+      dispatch(actions.uploadAvatar(file))
     }
   }
 }
