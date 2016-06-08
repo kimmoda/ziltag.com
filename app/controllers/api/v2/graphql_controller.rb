@@ -5,7 +5,16 @@ class Api::V2::GraphqlController < ApplicationController
     headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
     query_string = params[:query]
     query_variables = params[:variables] || {}
-    result = ZiltagSchema.execute(query_string, variables: query_variables, context: {current_user: current_user, warden: env['warden']}, debug: true)
+    result = ZiltagSchema.execute(
+      query_string,
+      variables: query_variables,
+      context: {
+        current_user: current_user,
+        warden: env['warden'],
+        file: params[:file]
+      },
+      debug: true
+    )
     render json: result
   rescue
     headers['Access-Control-Allow-Credentials'] = 'true'

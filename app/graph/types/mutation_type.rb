@@ -2,6 +2,17 @@ MutationType = GraphQL::ObjectType.define do
   name 'Mutation'
   description 'The mutation root'
 
+  field :uploadAvatar, UserType do
+    resolve -> (_obj, _args, ctx) do
+      current_user, file = ctx[:current_user], ctx[:file]
+      if current_user.update avatar: ctx[:file]
+        current_user
+      else
+        raise current_user.errors.messages.values.first.first
+      end
+    end
+  end
+
   field :createPartner, UserType do
     argument :username, !types.String
     argument :email, !types.String

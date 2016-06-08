@@ -9,7 +9,7 @@ user.define({
   ziltags: arrayOf(ziltag),
   comments: arrayOf(comment),
   websites: arrayOf(website),
-  website
+  website,
 })
 
 ziltag.define({

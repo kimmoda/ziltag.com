@@ -1,6 +1,6 @@
 import * as actionTypes from './types'
 import { normalize } from 'normalizr'
-import { website as websiteType } from '../schema'
+import { website as websiteType, user as userType } from '../schema'
 
 function composeURL(params){
   const {platform, url, tumblr, blogger} = params
@@ -238,5 +238,19 @@ export function resizeWindow(width, height){
 export function closeModal(){
   return {
     type: actionTypes.CLOSE_MODAL
+  }
+}
+
+export function uploadAvatar(file) {
+  return {
+    type: actionTypes.UPLOAD_AVATAR,
+    file
+  }
+}
+
+export function receiveAvatar(response) {
+  return {
+    type: actionTypes.RECEIVE_AVATAR,
+    response: normalize(response, userType)
   }
 }

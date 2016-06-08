@@ -181,6 +181,16 @@ function* watchParterSignUp(){
   yield* takeEvery(actionTypes.REQUEST_PARTNER_SIGN_UP, partnerSignUp)
 }
 
+function* uploadAvatar(action){
+  const response = yield call(API.uploadAvatar, action.file)
+  if(response.errors); // TODO
+  else yield put(actions.receiveAvatar(response.data.uploadAvatar))
+}
+
+function* watchUploadAvatar(){
+  yield* takeEvery(actionTypes.UPLOAD_AVATAR, uploadAvatar)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
@@ -197,5 +207,6 @@ export default function* root() {
     watchRequestUpdateWebsite(),
     watchRequestSignIn(),
     watchParterSignUp(),
+    watchUploadAvatar(),
   ]
 }
