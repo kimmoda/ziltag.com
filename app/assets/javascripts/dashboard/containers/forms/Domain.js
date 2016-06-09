@@ -5,14 +5,11 @@ import { reduxForm } from 'redux-form'
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmit: params => dispatch(actions.requestAddWebsite(params))
+    onSubmit: params => dispatch(actions.requestAddWebsite(params.url))
   }
 }
 
 export default reduxForm({
   form: 'domain',
-  fields: ['platform', 'url', 'tumblr', 'blogger'],
-  initialValues: {
-    platform: 'general'
-  }
+  fields: ['url'],
 }, null, mapDispatchToProps)(DomainForm)

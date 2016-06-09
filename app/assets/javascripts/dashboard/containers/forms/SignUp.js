@@ -4,10 +4,7 @@ import { reduxForm } from 'redux-form'
 
 export default reduxForm({
   form: 'signUp',
-  fields: ['username', 'email', 'platform', 'url', 'tumblr', 'blogger'],
-  initialValues: {
-    platform: 'general'
-  }
+  fields: ['username', 'email', 'url']
 }, null, dispatch => ({
-  onSubmit: params => dispatch(actions.requestPartnerSignUp(params))
+  onSubmit: ({username, email, url}) => dispatch(actions.requestPartnerSignUp(username, email, url))
 }))(SignUp)
