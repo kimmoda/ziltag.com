@@ -2,20 +2,6 @@ import * as actionTypes from './types'
 import { normalize } from 'normalizr'
 import { website as websiteType, user as userType } from '../schema'
 
-function composeURL(params){
-  const {platform, url, tumblr, blogger} = params
-  var newURL
-  switch (platform) {
-    case 'tumblr':
-      return `http://${tumblr}.tumblr.com`
-    case 'blogger':
-      return `http://${blogger}.blogspot.com`
-      break;
-    default:
-      return url
-  }
-}
-
 export function me() {
   return {
     type: actionTypes.REQUEST_ME
@@ -75,22 +61,10 @@ export function receivePasswordFailure(errors) {
   }
 }
 
-export function requestAddWebsite(params) {
-  const {platform, url, tumblr, blogger} = params
-  var newURL
-  switch (platform) {
-    case 'tumblr':
-      newURL = `http://${tumblr}.tumblr.com`
-      break;
-    case 'blogger':
-      newURL = `http://${blogger}.blogspot.com`
-      break;
-    default:
-      newURL = url
-  }
+export function requestAddWebsite(url) {
   return {
     type: actionTypes.REQUEST_ADD_WEBSITE,
-    url: newURL
+    url
   }
 }
 
@@ -108,23 +82,10 @@ export function receiveDeleteWebsite(id) {
   }
 }
 
-export function requestUpdateWebsite(id, params){
-  const {platform, url, tumblr, blogger} = params
-  var newURL
-  switch (platform) {
-    case 'tumblr':
-      newURL = `http://${tumblr}.tumblr.com`
-      break;
-    case 'blogger':
-      newURL = `http://${blogger}.blogspot.com`
-      break;
-    default:
-      newURL = url
-  }
+export function requestUpdateWebsite(id, url){
   return {
     type: actionTypes.REQUEST_UPDATE_WEBSITE,
-    id,
-    url: newURL
+    id, url
   }
 }
 
@@ -156,9 +117,7 @@ export function receiveSignIn(user) {
   }
 }
 
-export function requestPartnerSignUp(params){
-  const {username, email} = params
-  const url = composeURL(params)
+export function requestPartnerSignUp(username, email, url){
   return {
     type: actionTypes.REQUEST_PARTNER_SIGN_UP,
     username,

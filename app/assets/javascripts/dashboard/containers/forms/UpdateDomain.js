@@ -13,21 +13,18 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    requestUpdateWebsite: (id, params) => dispatch(actions.requestUpdateWebsite(id, params))
+    requestUpdateWebsite: (id, url) => dispatch(actions.requestUpdateWebsite(id, url))
   }
 }
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
   return Object.assign({}, ownProps, stateProps, dispatchProps, {
-    onSubmit: params => dispatchProps.requestUpdateWebsite(stateProps.id, params)
+    onSubmit: params => dispatchProps.requestUpdateWebsite(stateProps.id, params.url)
   })
 }
 
 
 export default reduxForm({
   form: 'domain',
-  fields: ['platform', 'url', 'tumblr', 'blogger'],
-  initialValues: {
-    platform: 'general'
-  }
+  fields: ['url']
 }, mapStateToProps, mapDispatchToProps, mergeProps)(DomainForm)
