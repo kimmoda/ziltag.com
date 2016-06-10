@@ -1,3 +1,9 @@
 .ziltag-verified {
-  padding: 52px 60px;
+  margin: 52px 60px;
+  background: white;
+  overflow: hidden;
+  &__cheer {
+    margin-top: 46px;
+    margin-bottom: 84px;
+  }
 }
