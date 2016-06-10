@@ -1,29 +1,28 @@
 .ziltag-verify {
-  padding: 52px 60px;
+  margin: 52px 60px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 61px;
+  font-family: 'Roboto', sans-serif;
+  &__cheer {
+    margin-top: 46px;
+  }
   &__form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 37px;
+    margin-top: 61px;
+    width: 380px;
   }
-  &__fields {
-    display: flex;
-    flex-direction: column;
-  }
-  &__field {
-    width: 310px;
-    &:not(:first-child) {
-      margin-top: 13px;
+  &__field{
+    &:not(:first-child){
+      margin-top: 34px;
     }
   }
-  &__button {
-    width: 86px;
-    margin-top: 24px;
+  &__button{
+    margin-top: 38px;
   }
   &__error {
-    margin-top: 12px;
-    color: #EE2E24;
-    font-family: 'Roboto', sans-serif;
+    color: red;
     font-size: 14px;
   }
 }

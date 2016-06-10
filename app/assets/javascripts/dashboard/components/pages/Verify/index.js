@@ -1,5 +1,5 @@
-import { CheerBoard } from '../../../components/MessageBoard'
-import Field from '../../../components/Field'
+import Cheer from '../../../components/Cheer'
+import Field from '../../../components/TextField'
 import Button from '../../../components/Button'
 import * as actionTypes from '../../../actions/types'
 import * as actions from '../../../actions'
@@ -13,14 +13,16 @@ class Verify extends React.Component {
     const {fields: {password, password_confirmation, confirmation_token}, handleSubmit} = this.props
     return(
       <div className="ziltag-verify">
-        <CheerBoard />
+        <div className="ziltag-verify__cheer">
+          <Cheer title="Thank you for verifying your account" subtitle="Please setup the password for your account." />
+        </div>
         <form className="ziltag-verify__form" onSubmit={handleSubmit}>
           <div className="ziltag-verify__fields">
             <div className="ziltag-verify__field">
-              <Field type="password" placeholder="Password" {...password} />
+              <Field required type="password" placeholder="PASSWORD" {...password} />
             </div>
             <div className="ziltag-verify__field">
-              <Field type="password" placeholder="Confirm password" {...password_confirmation} />
+              <Field required type="password" placeholder="CONFIRM PASSWORD" {...password_confirmation} />
             </div>
           </div>
           <input type="hidden" {...confirmation_token} />
