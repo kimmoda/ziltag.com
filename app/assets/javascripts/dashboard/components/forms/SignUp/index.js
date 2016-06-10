@@ -1,5 +1,4 @@
 import React from 'react'
-import DomainFields from '../DomainFields'
 import Field from '../../TextField'
 import Button from '../../Button'
 import './index.scss'
