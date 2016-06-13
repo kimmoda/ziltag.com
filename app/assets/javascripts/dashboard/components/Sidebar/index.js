@@ -19,10 +19,9 @@ class Sidebar extends React.Component {
   }
 
   render () {
-    const { showRecommendedTags } = this.props
-    const links = [
-      { to: '/dashboard/account', name: 'Account', },
-    ]
+    const { showRecommendedTags, showAccount } = this.props
+    const links = []
+    if(showAccount) links.push({ to: '/dashboard/account', name: 'Account', })
     if(showRecommendedTags) links.push({to: '/dashboard/recommended_tags', name: 'Recommended'})
     const menuItems = links.map((obj) => {
       return (
@@ -55,7 +54,10 @@ class Sidebar extends React.Component {
 
 function mapStateToProps(state) {
   const me = state.entities.users[state.me]
-  return { showRecommendedTags: me ? me.isPartner : false }
+  return {
+    showRecommendedTags: me ? me.isPartner : false,
+    showAccount: !!me,
+  }
 }
 
 export default connect(mapStateToProps, null, null, {pure: false})(Sidebar)
