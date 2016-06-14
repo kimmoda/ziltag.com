@@ -7,7 +7,7 @@ QueryType = GraphQL::ObjectType.define do
   end
 
   field :recommended_ziltag_maps, types[!ZiltagMapType] do
-    resolve -> (_obj, _args, _ctx){ Photo.recommended }
+    resolve -> (_obj, _args, _ctx){ Photo.includes(:ziltags, box: :user).recommended }
   end
 
   field :ziltag, ZiltagType, 'Find a ziltag by ID' do
