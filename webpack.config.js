@@ -37,7 +37,6 @@ if (__PRODUCTION__) {
 
 module.exports = {
   entry: {
-    app: './app/assets/javascripts/app.js',
     dashboard: ['babel-polyfill', './app/assets/javascripts/dashboard']
   },
   output: {
