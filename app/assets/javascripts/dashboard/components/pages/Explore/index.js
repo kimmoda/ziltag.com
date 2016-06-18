@@ -6,7 +6,7 @@ import React, {PropTypes} from 'react'
 import Masonry from 'react-masonry-component'
 import {connect} from 'react-redux'
 
-class RecommendedTags extends React.Component {
+class Explore extends React.Component {
   static propTypes = {
     ziltagMaps: PropTypes.array
   }
@@ -15,7 +15,7 @@ class RecommendedTags extends React.Component {
     const {ziltagMaps} = this.props
     const ziltagMapElements = ziltagMaps.map((ziltagMap) => {
       return (
-        <div key={ziltagMap.id} className="ziltag-recommended-tags__tile">
+        <div key={ziltagMap.id} className="ziltag-explore__tile">
           <Tile
             ziltags={ziltagMap.ziltags}
             imageURL={ziltagMap.src}
@@ -28,12 +28,12 @@ class RecommendedTags extends React.Component {
       )
     })
     return(
-      <div className="ziltag-recommended-tags">
+      <div className="ziltag-explore">
         <PageBar>
           Recommended tags
         </PageBar>
         <Masonry
-          className="ziltag-recommended-tags__body"
+          className="ziltag-explore__body"
           options={{columnWidth: 340, gutter: 15}}>
           {ziltagMapElements}
         </Masonry>
@@ -55,4 +55,4 @@ function mapStateToProps(state) {
   return {ziltagMaps}
 }
 
-export default connect(mapStateToProps)(RecommendedTags)
+export default connect(mapStateToProps)(Explore)

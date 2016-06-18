@@ -1,5 +1,5 @@
 import MyTags from '../MyTags'
-import RecommendedTags from '../RecommendedTags'
+import Explore from '../Explore'
 
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
@@ -8,7 +8,7 @@ class Home extends React.Component {
   render () {
     const {show, isPartner} = this.props
     if(!show) return null
-    return isPartner ? <MyTags/> : <RecommendedTags/>
+    return isPartner ? <MyTags/> : <Explore/>
   }
 }
 
