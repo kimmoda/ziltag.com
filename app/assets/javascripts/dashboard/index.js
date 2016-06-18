@@ -49,7 +49,12 @@ ReactDOM.render(
     <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Router history={history}>
         <Route path="/" component={Landing} />
-        <Route path="dashboard" component={Dashboard} onEnter={_=>store.dispatch(actions.me())}>
+        <Route path="dashboard" component={Dashboard} onEnter={
+            _=>{
+              store.dispatch(actions.me())
+              store.dispatch(actions.retrieveRecommendedZiltagMaps())
+            }
+          }>
           <IndexRoute component={Home} />
           <Route path="tags" component={Tags} />
           <Route path="comments" component={Comments} />
