@@ -3,21 +3,26 @@ import DomainInfo from '../../../DomainInfo'
 import {openDialog} from '../../../../actions'
 import React, { PropTypes } from 'react'
 import FlatButton from 'material-ui/FlatButton'
+import ScriptInfo from '../ScriptInfo'
 import {connect} from 'react-redux'
 
 class DomainSetting extends React.Component {
   render () {
     const {websites, onClickAdd} = this.props
     const domainInfoElements = websites.map(website => (
-      <SectionBody key={website.id}>
-        <DomainInfo
-          id={website.id}
-          domain={website.url}
-          token={website.token}
-          myTags={website.myTags}
-          readersTags={website.readersTags}
-          comments={website.comments}/>
-      </SectionBody>
+      <div key={website.id}>
+        <SectionBody>
+          <DomainInfo
+            id={website.id}
+            domain={website.url}
+            myTags={website.myTags}
+            readersTags={website.readersTags}
+            comments={website.comments}/>
+        </SectionBody>
+        <SectionBody dark>
+          <ScriptInfo token={website.token} />
+        </SectionBody>
+      </div>
     ))
     const addDomain = <FlatButton
       label="＋ Add domain"
