@@ -6,14 +6,12 @@ import {openDialog} from '../../actions'
 
 class DomainInfo extends React.Component {
   render () {
-    const {id, domain, myTags, readersTags, comments, token, onClickDelete, onClickEdit} = this.props
-    const script = `<script src="https://ziltag.com/plugin.js" data-ziltag="${token}"></script>`
+    const {id, domain, myTags, readersTags, comments, onClickDelete, onClickEdit} = this.props
     return (
       <div className="ziltag-domain-info">
         <div className="ziltag-domain-info__data">
           <div className="ziltag-domain-info__home">{domain}</div>
           <div style={{marginTop: 16}}><WebsiteStats myTags={myTags} readersTags={readersTags} comments={comments} /></div>
-          <div className="ziltag-domain-info__code">{script}</div>
         </div>
         <div className="ziltag-domain-info__actions">
           <div className="ziltag-domain-info__edit" onClick={_=>onClickEdit(id,domain)}></div>

@@ -1,0 +1,17 @@
+.ziltag-account-script-info {
+  display: flex;
+  align-items: center;
+  &__body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    flex-grow: 1;
+    padding-left: 38px;
+  }
+  &__script {
+    margin-top: 13px;
+  }
+  &__copy-button {
+    width: 105px;
+    margin-right: 18px;
+  }
+}

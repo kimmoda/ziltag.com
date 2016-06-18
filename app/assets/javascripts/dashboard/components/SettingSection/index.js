@@ -16,10 +16,10 @@ export class SettingSection extends React.Component {
   }
 }
 
-export class SectionBody extends React.Component {
-  render () {
-    return <div className="ziltag-setting-section-body">{this.props.children}</div>
-  }
+export function SectionBody(props){
+  let className = 'ziltag-setting-section-body'
+  if(props.dark) className += ' ziltag-setting-section-body--dark'
+  return <div className={className}>{props.children}</div>
 }
 
 export default SettingSection
