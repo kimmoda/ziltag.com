@@ -213,3 +213,9 @@ export function receiveAvatar(response) {
     response: normalize(response, userType)
   }
 }
+
+export function retrieveRecommendedZiltagMaps(){
+  return {
+    type: actionTypes.RETRIEVE_RECOMMENDED_ZILTAG_MAPS
+  }
+}

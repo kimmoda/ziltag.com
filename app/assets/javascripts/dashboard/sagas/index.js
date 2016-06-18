@@ -191,11 +191,14 @@ function* watchUploadAvatar(){
   yield* takeEvery(actionTypes.UPLOAD_AVATAR, uploadAvatar)
 }
 
+function* watchRequestRecommendedZiltagMaps(){
+  yield* takeEvery(actionTypes.RETRIEVE_RECOMMENDED_ZILTAG_MAPS, fetchRecommendedZiltagMaps)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
     watchWindowSize(),
-    fetchRecommendedZiltagMaps(),
     fetchMe(),
     watchFetchMe(),
     watchVerify(),
@@ -208,5 +211,6 @@ export default function* root() {
     watchRequestSignIn(),
     watchParterSignUp(),
     watchUploadAvatar(),
+    watchRequestRecommendedZiltagMaps()
   ]
 }
