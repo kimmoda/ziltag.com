@@ -19,6 +19,7 @@ export default function(props){
       targetOrigin={{horizontal: 'right', vertical: 'top'}}
       >
       <Link className="ziltag-header__link" to="/dashboard"><MenuItem primaryText="Dashboard" /></Link>
+      <Link className="ziltag-header__link" to="/dashboard/guide"><MenuItem primaryText="Guide" /></Link>
       <MenuItem primaryText="Sign out" onClick={onClickSignOut} />
     </IconMenu>
   )

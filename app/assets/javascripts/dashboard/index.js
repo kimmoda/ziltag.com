@@ -8,6 +8,7 @@ import Verify from './components/pages/Verify'
 import Verified from './components/pages/Verified'
 import Install from './components/pages/Install'
 import Explore from './components/pages/Explore'
+import Guide from './components/pages/Guide'
 import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
 import saga from './sagas'
@@ -25,9 +26,12 @@ import createSagaMiddleware from 'redux-saga'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { Tabs } from 'react-tabs'
 import '../../images/favicon.png'
+import './tabs.scss'
 
 injectTapEventPlugin()
+Tabs.setUseDefaultStyles(false)
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -64,6 +68,7 @@ ReactDOM.render(
           <Route path="verified" component={Verified} />
           <Route path="install" component={Install} />
           <Route path="explore" component={Explore} />
+          <Route path="guide" component={Guide} />
         </Route>
       </Router>
     </MuiThemeProvider>
