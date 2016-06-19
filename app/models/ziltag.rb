@@ -63,6 +63,7 @@ private
     {
       _slug: photo.ziltags.pluck(:slug),
       _map_id: photo.slug,
+      map_id: photo.slug,
       content: content,
       id: slug,
       x: x.to_f, y: y.to_f,
