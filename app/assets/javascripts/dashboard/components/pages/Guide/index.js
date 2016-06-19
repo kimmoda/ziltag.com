@@ -1,5 +1,5 @@
 import React from 'react'
-import Guide from '../../Guide'
+import Guide from '../../../containers/Guide'
 import './index.scss'
 
 export default props => (

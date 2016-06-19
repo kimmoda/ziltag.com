@@ -1,0 +1,25 @@
+.ReactTabs {
+  font-family: 'Roboto', sans-serif;
+  &__TabList {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 8px 0;
+    border-bottom: solid 1px rgba(0,0,0,.12);
+  }
+  &__Tab {
+    display: inline-block;
+    color: rgba(0,0,0,.87);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    &:not(:last-child){
+      margin-right: 20px;
+    }
+    &--selected {
+      color: #008BF3;
+    }
+  }
+  &__TabPanel {
+    margin-top: 20px
+  }
+}
