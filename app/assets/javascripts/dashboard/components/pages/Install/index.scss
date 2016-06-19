@@ -1,9 +1,50 @@
 .ziltag-install {
-  padding: 52px 59px;
-  &__container {
-    min-width: 850px;
+  background-color: white;
+  margin: 0 65px;
+  overflow: auto;
+  &__body {
+    width: 669px;
+    margin: 0 auto;
   }
   &__guide {
-    margin-top: 59px;
+    margin-top: 68px;
+  }
+  &__bar{
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__text{
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0,0,0,.87);
+  }
+  &__title{
+    font-size: 36px;
+    line-height: 50px;
+    font-weight: 500;
+  }
+  &__subtitle{
+    font-size: 20px;
+    line-height: 24px;
+  }
+  &__buttons{}
+  &__button{
+    width: 116px;
+    height: 51px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: inline-block;
+    cursor: pointer;
+    &:not(:first-child){
+      margin-left: 18px;
+    }
+    &--twitter{
+      background-image: url('./twitter_share.png');
+    }
+    &--facebook{
+      background-image: url('./facebook_share.png');
+    }
   }
 }
