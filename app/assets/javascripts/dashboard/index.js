@@ -8,6 +8,7 @@ import Verify from './components/pages/Verify'
 import Verified from './components/pages/Verified'
 import Install from './components/pages/Install'
 import Explore from './components/pages/Explore'
+import Guide from './components/pages/Guide'
 import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
 import saga from './sagas'
@@ -64,6 +65,7 @@ ReactDOM.render(
           <Route path="verified" component={Verified} />
           <Route path="install" component={Install} />
           <Route path="explore" component={Explore} />
+          <Route path="guide" component={Guide} />
         </Route>
       </Router>
     </MuiThemeProvider>
