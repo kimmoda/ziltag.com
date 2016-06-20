@@ -1,4 +1,3 @@
-import WebsiteStats from '../WebsiteStats'
 import './index.scss'
 import React, { PropTypes } from 'react'
 import {connect} from 'react-redux'
@@ -11,7 +10,6 @@ class DomainInfo extends React.Component {
       <div className="ziltag-domain-info">
         <div className="ziltag-domain-info__data">
           <div className="ziltag-domain-info__home">{domain}</div>
-          <div style={{marginTop: 16}}><WebsiteStats myTags={myTags} readersTags={readersTags} comments={comments} /></div>
         </div>
         <div className="ziltag-domain-info__actions">
           <div className="ziltag-domain-info__edit" onClick={_=>onClickEdit(id,domain)}></div>

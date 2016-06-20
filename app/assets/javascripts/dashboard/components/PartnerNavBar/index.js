@@ -1,5 +1,4 @@
 import PageBar from '../PageBar'
-import WebsiteStats from '../WebsiteStats'
 import * as actionTypes from '../../actions/types'
 import './index.scss'
 
@@ -57,9 +56,6 @@ class PartnerNavBar extends React.Component {
               {websites.map((website) => <MenuItem key={website.id} value={website.id}><div style={{...menuItemStyle}}>{website.url}</div></MenuItem>)}
             </Menu>
           </Popover>
-          <div style={{marginLeft: 21}}>
-            <WebsiteStats myTags={myTags} readersTags={readersTags} comments={comments} />
-          </div>
         </PageBar>
       </div>
     )
