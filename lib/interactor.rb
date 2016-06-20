@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #    class AddToCart
 #      include Interactor
 #      def call cart, product
@@ -17,10 +18,10 @@ module Interactor
     mod.extend ClassMethods
   end
 
-  module ClassMethods
-    def call *args
+  module ClassMethods #:nodoc:
+    def call(*args)
       obj = new(*args)
-      catch(:fail){ obj.call }
+      catch(:fail) { obj.call }
       obj
     end
   end
@@ -29,7 +30,7 @@ module Interactor
     raise NotImplementedError
   end
 
-  def [] key
+  def [](key)
     context[key]
   end
 
@@ -41,7 +42,7 @@ module Interactor
     !context[:error]
   end
 
-  def fail! message
+  def fail!(message)
     context[:error] = message
     throw :fail
   end
