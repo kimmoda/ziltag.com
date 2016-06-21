@@ -49,7 +49,7 @@ export default props => (
     <div className="ziltag-guide__video-button" onClick={props.onClickVideo}>Watch Tutorial Video</div>
     <div className="ziltag-guide__tips">
       Tips: Having trouble installing? Click the live chat button on bottom-right for 1-on-1 support.<br/>
-      Wish to know more? Visit <a style={{color: 'inherit'}} href="http://help.ziltag.com/" target="_blank">help</a> center.
+      Wish to know more? Visit <a style={{color: 'inherit'}} href="https://ziltag.zendesk.com/" target="_blank">help</a> center.
     </div>
   </div>
 )
