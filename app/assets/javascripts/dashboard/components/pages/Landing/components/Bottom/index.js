@@ -14,7 +14,7 @@ export default props => (
         <Button style={buttonStyle} round onClick={props.onClickJoin}>Join for free</Button>
       </div>
       <div className="ziltag-landing-bottom__button">
-        <a href="http://help.ziltag.com" target="_blank"><Button style={{...buttonStyle, padding: 23}} round white>Go to help center</Button></a>
+        <a href="https://ziltag.zendesk.com/" target="_blank"><Button style={{...buttonStyle, padding: 23}} round white>Go to help center</Button></a>
       </div>
     </div>
   </div>

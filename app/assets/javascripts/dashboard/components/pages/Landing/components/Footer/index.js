@@ -6,7 +6,7 @@ export default props => (
     <ul className="ziltag-landing-footer__itmes">
       <li className="ziltag-landing-footer__item"><a target="_blank" href="http://blog.ziltag.com/tagged/about">ABOUT</a></li>
       <li className="ziltag-landing-footer__item"><a target="_blank" href="http://blog.ziltag.com/">BLOG</a></li>
-      <li className="ziltag-landing-footer__item"><a target="_blank" href="http://help.ziltag.com">HELP</a></li>
+      <li className="ziltag-landing-footer__item"><a target="_blank" href="https://ziltag.zendesk.com/">HELP</a></li>
       <li className="ziltag-landing-footer__item"><a target="_blank" href="http://blog.ziltag.com/post/136853735385/terms-of-service">TERMS</a></li>
       <li className="ziltag-landing-footer__item"><a target="_blank" href="http://blog.ziltag.com/tagged/policy">PRIVACY</a></li>
     </ul>
