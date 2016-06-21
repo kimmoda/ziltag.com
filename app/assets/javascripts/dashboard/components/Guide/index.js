@@ -22,7 +22,7 @@ export default props => (
         <TabPanel>
           <ol className="ziltag-guide__list" >
             <li className="ziltag-guide__list-item" >Go to <b>Administration Screens</b> > <b>Plugins</b> > <b>Add New</b>.</li>
-            <li className="ziltag-guide__list-item" >Search for Ziltag app or upload the .zip file downloaded <a style={{color: '#008BF3'}} href="#">here</a>. Click Install Now.</li>
+            <li className="ziltag-guide__list-item" >Search for Ziltag app or upload the .zip file downloaded <a style={{color: '#008BF3'}} href="https://github.com/ziltag/ziltag-wp/releases/latest" target="_blank">here</a>. Click Install Now.</li>
             <li className="ziltag-guide__list-item" >After the plugin is installed, click <b>Activate Plugin</b>.</li>
             <li className="ziltag-guide__list-item" >Select <b>Ziltag Widget</b> > <b>Account Setup</b>.</li>
             <li className="ziltag-guide__list-item" >Enter your Plugin Token as shown above. </li>
