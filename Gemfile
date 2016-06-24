@@ -21,6 +21,7 @@ gem 'premailer'
 gem 'graphql'
 gem 'graphiql-rails'
 gem 'grape'
+gem 'gibbon'
 
 group :development do
   gem 'capistrano'

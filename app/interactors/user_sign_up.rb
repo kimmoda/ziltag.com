@@ -13,6 +13,7 @@ class UserSignUp
     user = User.new username: @username, email: @email
     if user.save
       context[:user] = user
+      SubscribeNewsletterJob.perform_later(user)
     else
       fail! user.errors.full_messages.first
     end
