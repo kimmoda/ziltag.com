@@ -14,14 +14,14 @@ class SubscribeNewsletter
               else
                 'b4afffcd4b'
               end
-    Gibbon::Request.lists(list_id).members.create(body: gibbon_body)
+    Gibbon::Request.lists(list_id).members.create(body: body)
   rescue
     fail! $ERROR_INFO
   end
 
   private
 
-  def gibbon_body
+  def body
     {
       email_address: @user.email,
       status: 'subscribed',
