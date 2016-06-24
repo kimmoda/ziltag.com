@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
+# sign up as nromal user
 class UserSignUp
   include Interactor
 
-  def initialize username, email
-    @username, @email = username, email
+  def initialize(username, email)
+    @username = username
+    @email = email
   end
 
   def call
