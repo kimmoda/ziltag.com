@@ -12,8 +12,7 @@ class Api::V2::GraphqlController < ApplicationController
         current_user: current_user,
         warden: env['warden'],
         file: params[:file]
-      },
-      debug: true
+      }
     )
     render json: result
   rescue

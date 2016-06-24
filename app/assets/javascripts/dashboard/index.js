@@ -28,6 +28,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Tabs } from 'react-tabs'
 import '../../images/favicon.png'
+import '../../images/social_media_logo.png'
 import './tabs.scss'
 
 injectTapEventPlugin()
