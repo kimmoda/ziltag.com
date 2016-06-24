@@ -1,8 +1,13 @@
-class PartnerSignUp
+
+# frozen_string_literal: true
+
+class PartnerSignUp #:nodoc:
   include Interactor
 
-  def initialize username, email, url
-    @username, @email, @url = username, email, url
+  def initialize(username, email, url)
+    @username = username
+    @email = email
+    @url = url
     @user = ContentProvider.new username: @username, email: @email
     @box = Box.new url: url, user: @user
   end
@@ -12,6 +17,7 @@ class PartnerSignUp
       if @user.save && @box.save
         context[:user] = @user
         context[:box] = @box
+        SubscribeNewsletterJob.perform_later(@user)
       else
         raise ActiveRecord::Rollback
       end
