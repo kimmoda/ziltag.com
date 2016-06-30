@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 class PartnerSignUp #:nodoc:
@@ -18,6 +17,7 @@ class PartnerSignUp #:nodoc:
         context[:user] = @user
         context[:box] = @box
         SubscribeNewsletterJob.perform_later(@user)
+        SendNurtureEmailJob.set(wait: 1.week).perform_later(@user)
       else
         raise ActiveRecord::Rollback
       end
