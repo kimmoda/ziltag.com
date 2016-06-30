@@ -13,8 +13,7 @@ class CreateZiltag
     if ziltag.save
       NotifyOfZiltag.call(ziltag)
       unless @user.has_created_first_ziltag
-        SendProductFeedbackEmailJob.set(wait: 2.weeks)
-                                   .perform_later(@user)
+        SendProductFeedbackEmailJob.perform_later(@user)
         @user.update_column(:has_created_first_ziltag, true)
       end
       context[:ziltag] = ziltag

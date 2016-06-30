@@ -11,7 +11,10 @@ class SendProductFeedbackEmail #:nodoc:
   def call
     context[:result] = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
                                                               [],
-                                                              message
+                                                              message,
+                                                              nil,
+                                                              nil,
+                                                              2.weeks.from_now
   rescue
     fail! $ERROR_INFO
   end
