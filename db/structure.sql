@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.1
--- Dumped by pg_dump version 9.5.1
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -337,7 +337,8 @@ CREATE TABLE users (
     updated_at timestamp without time zone,
     avatar character varying,
     username character varying,
-    type character varying
+    type character varying,
+    has_created_first_ziltag boolean DEFAULT false
 );
 
 
@@ -846,4 +847,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160226055302');
 INSERT INTO schema_migrations (version) VALUES ('20160226063409');
 
 INSERT INTO schema_migrations (version) VALUES ('20160311073414');
+
+INSERT INTO schema_migrations (version) VALUES ('20160630162048');
 
