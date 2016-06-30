@@ -18,7 +18,7 @@ class SendProductFeedbackEmail #:nodoc:
 
   def message
     {
-      subject: "Hi #{@user.username}! We want to hear from you!",
+      subject: "Hi #{@user.username}! We need your feedback!",
       from_email: 'robot@ziltag.com',
       from_name: 'Ziltag Robot',
       to: [{ email: @user.email, name: @user.username }],
