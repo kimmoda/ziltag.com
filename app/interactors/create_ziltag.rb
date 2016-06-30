@@ -12,6 +12,10 @@ class CreateZiltag
 
     if ziltag.save
       NotifyOfZiltag.call(ziltag)
+      unless @user.has_created_first_ziltag
+        SendProductFeedbackEmailJob.perform_later(@user)
+        @user.update_column(:has_created_first_ziltag, true)
+      end
       context[:ziltag] = ziltag
     else
       fail! ziltag.errors.full_messages.first

@@ -24,6 +24,7 @@ gem 'graphql'
 gem 'graphiql-rails'
 gem 'grape'
 gem 'gibbon'
+gem 'mandrill-api', require: 'mandrill'
 
 group :development do
   gem 'capistrano'
