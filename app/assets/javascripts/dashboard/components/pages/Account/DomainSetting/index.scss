@@ -1,0 +1,10 @@
+.ziltag-domain-setting {
+  &__website {
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-top: none;
+    box-sizing: border-box;
+    &:not(:first-child){
+      margin-top: 10px;
+    }
+  }
+}

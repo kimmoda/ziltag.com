@@ -4,11 +4,21 @@
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, .12);
+  &--no-border {
+    border-left: none;
+    border-right: none;
+    background-color: inherit;
+    .ziltag-setting-section__bar {
+      border-left: 1px solid rgba(0, 0, 0, .12);
+      border-right: 1px solid rgba(0, 0, 0, .12);
+    }
+  }
   &__bar {
     height: 39px;
     position: relative;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0, 0, 0, .12);
+    background-color: white;
   }
   &__title {
     position: absolute;
@@ -30,6 +40,7 @@
   padding: 18px 28px;
   box-sizing: border-box;
   border-top: 1px solid rgba(0, 0, 0, .12);
+  background-color: white;
   &--dark {
     background-color: #F9F9F9;
   }
