@@ -6,23 +6,32 @@ import {connect} from 'react-redux'
 
 class Account extends React.Component {
   render () {
-    const {show} = this.props
+    const {show, showDomainSetting} = this.props
     if(!show) return null
     return (
       <div className="ziltag-account">
         <div className="ziltag-account__section">
           <AccountSetting />
         </div>
-        <div className="ziltag-account__section">
-          <DomainSetting />
-        </div>
+        {
+          showDomainSetting ?
+            <div className="ziltag-account__section">
+              <DomainSetting />
+            </div>
+          :
+            null
+        }
+
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return {show: !!state.me}
+  return {
+    show: !!state.me,
+    showDomainSetting: state.me && state.entities.users[state.me].isPartner
+  }
 }
 
 export default connect(mapStateToProps)(Account)
