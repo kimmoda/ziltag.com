@@ -5,12 +5,13 @@ import React, { PropTypes } from 'react'
 import FlatButton from 'material-ui/FlatButton'
 import ScriptInfo from '../ScriptInfo'
 import {connect} from 'react-redux'
+import './index.scss'
 
 class DomainSetting extends React.Component {
   render () {
     const {websites, onClickAdd} = this.props
     const domainInfoElements = websites.map(website => (
-      <div key={website.id}>
+      <div key={website.id} className="ziltag-domain-setting__website">
         <SectionBody>
           <DomainInfo
             id={website.id}
@@ -35,9 +36,11 @@ class DomainSetting extends React.Component {
       }}
       />
     return (
-      <SettingSection title="My plugin" right={addDomain}>
-        {domainInfoElements}
-      </SettingSection>
+      <div className="ziltag-domain-setting">
+        <SettingSection title="My plugin" right={addDomain} noBorder>
+          {domainInfoElements}
+        </SettingSection>
+      </div>
     )
   }
 }

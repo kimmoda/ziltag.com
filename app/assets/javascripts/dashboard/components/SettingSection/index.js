@@ -3,9 +3,11 @@ import React, { PropTypes } from 'react'
 
 export class SettingSection extends React.Component {
   render () {
-    const {children, title, right} = this.props
+    const {children, title, right, noBorder} = this.props
+    let className = 'ziltag-setting-section'
+    if(noBorder) className += ' ziltag-setting-section--no-border'
     return (
-      <div className="ziltag-setting-section">
+      <div className={className}>
         <div className="ziltag-setting-section__bar">
           <div className="ziltag-setting-section__title">{title}</div>
           <div className="ziltag-setting-section__right">{right}</div>
