@@ -33,7 +33,7 @@ class SendProductFeedbackEmail #:nodoc:
     [
       {
         rcpt: @user.email,
-        vars: [{ name: '*|FNAME|*', content: @user.username }]
+        vars: [{ name: 'FNAME', content: @user.username }]
       }
     ]
   end
