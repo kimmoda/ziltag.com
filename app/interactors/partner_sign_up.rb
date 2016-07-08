@@ -16,6 +16,7 @@ class PartnerSignUp #:nodoc:
       if @user.save && @box.save
         context[:user] = @user
         context[:box] = @box
+        SendWelcomeEmailJob.perform_later(@user)
         SubscribeNewsletterJob.perform_later(@user)
         SendNurtureEmailJob.set(wait: 1.week).perform_later(@user)
       else
