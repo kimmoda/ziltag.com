@@ -60,4 +60,7 @@ class User < ActiveRecord::Base
     boxes.first
   end
 
+  def send_on_create_confirmation_instructions
+    # override to do nothing to prevent send confirmatil email from devise.
+  end
 end

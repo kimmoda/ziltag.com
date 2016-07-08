@@ -5,6 +5,7 @@ class SendWelcomeEmail #:nodoc:
 
   def initialize(user)
     @user = user
+    @box = user.box
   end
 
   def call
@@ -37,11 +38,40 @@ class SendWelcomeEmail #:nodoc:
     [
       {
         rcpt: @user.email,
-        vars: [
-          { name: 'FNAME', content: @user.username },
-          { name: 'CONFIRM_URL', content: "https://#{Rails.configuration.action_mailer.default_url_options[:host]}/dashboard/verify?confirmation_token=#{URI.encode_www_form_component(@user.confirmation_token)}" }
-        ]
+        vars: vars
       }
     ]
+  end
+
+  def vars
+    ret = [
+      { name: 'USERNAME', content: @user.username },
+      { name: 'CONFIRM_URL', content: confirm_url }
+    ]
+    if @user.content_provider?
+      ret.push(
+        { name: 'DOMAIN', content: @box.url },
+        { name: 'SCRIPT', content: escaped_script_html }
+      )
+    end
+    ret
+  end
+
+  def confirm_url
+    "#{host}/dashboard/verify?confirmation_token=#{encoded_token}"
+  end
+
+  def host
+    "https://#{Rails.configuration.action_mailer.default_url_options[:host]}"
+  end
+
+  def encoded_token
+    URI.encode_www_form_component(@user.confirmation_token)
+  end
+
+  def escaped_script_html
+    CGI.escapeHTML(
+      %(<script src="#{host}/plugin.js" data-ziltag="#{@box.token}"></script>)
+    )
   end
 end
