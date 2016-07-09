@@ -11,13 +11,8 @@ class Api::V1::Users::ConfirmationsController < Devise::ConfirmationsController
     end
 
     if user
-      send_welcome_email = SendWelcomeEmailJob.perform_later(user)
-
-      if send_welcome_email.success?
-        render json: {}
-      else
-        render json: { error: send_welcome_email.context[:error] }
-      end
+      SendWelcomeEmailJob.perform_later(user)
+      render json: {}
     else
       render json: { error: 'user not found' }
     end
