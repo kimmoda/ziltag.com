@@ -5,15 +5,21 @@ class Api::V1::Users::ConfirmationsController < Devise::ConfirmationsController
 
   def resend
     user = if user_signed_in?
-      current_user.send_confirmation_instructions
       current_user
     else
-      User.send_confirmation_instructions(email: params[:email])
+      User.find_by(email: params[:email])
     end
-    if successfully_sent?(user)
-      render json: {}
+
+    if user
+      send_welcome_email = SendWelcomeEmailJob.perform_later(user)
+
+      if send_welcome_email.success?
+        render json: {}
+      else
+        render json: { error: send_welcome_email.context[:error] }
+      end
     else
-      render json: {error: user.errors.full_messages.first}
+      render json: { error: 'user not found' }
     end
   end
 
