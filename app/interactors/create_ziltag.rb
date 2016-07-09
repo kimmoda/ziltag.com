@@ -15,7 +15,7 @@ class CreateZiltag
 
     if ziltag.save
       unless ziltag.user == owner || ziltag.unsubscribers.include?(owner.id)
-        SendZiltagNotificationJob.call(ziltag)
+        SendZiltagNotificationJob.perform_later(ziltag)
       end
       unless @user.has_created_first_ziltag
         SendProductFeedbackEmailJob.perform_later(@user)
