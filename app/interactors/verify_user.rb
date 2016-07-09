@@ -14,7 +14,7 @@ class VerifyUser
     if user.update password: @password, password_confirmation: @password_confirmation
       user.confirm
       user.comments.each do |comment|
-        NotifyOfComment.call(comment)
+        SendCommentNotificationJob.perform_later(comment)
       end
       context[:user] = user
     else
