@@ -10,7 +10,7 @@ class SubscribeNewsletter
 
   def call
     list_id = if Rails.env.production?
-                Settings.gibbon.list_id
+                list_name
               else
                 'b4afffcd4b'
               end
@@ -20,6 +20,14 @@ class SubscribeNewsletter
   end
 
   private
+
+  def list_name
+    if @user.content_provider?
+      Settings.gibbon.user_list_id
+    else
+      Settings.gibbon.partner_list_id
+    end
+  end
 
   def body
     {
