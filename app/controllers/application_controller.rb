@@ -13,9 +13,9 @@ protected
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username << :email << :type
-    devise_parameter_sanitizer.for(:sign_in) << :sign_in
-    devise_parameter_sanitizer.for(:account_update).concat %i[email avatar avatar_cache remove_avatar url]
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username email type])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[sign_in])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[email avatar avatar_cache remove_avatar url])
   end
 
   def set_locale

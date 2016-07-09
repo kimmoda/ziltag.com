@@ -11,10 +11,10 @@ class CreateZiltag
     ziltag = Ziltag.new(
       user: @user, photo: @photo, x: @x, y: @y, content: @content
     )
-    owner = photo.box.user
+    owner = @photo.box.user
 
     if ziltag.save
-      unless ziltag.author == owner || ziltag.unsubscribers.include?(owner.id)
+      unless ziltag.user == owner || ziltag.unsubscribers.include?(owner.id)
         SendZiltagNotificationJob.call(ziltag)
       end
       unless @user.has_created_first_ziltag

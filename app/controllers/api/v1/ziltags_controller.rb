@@ -21,7 +21,7 @@ class Api::V1::ZiltagsController < ApiController
       ziltag_params[:map_id], ziltag_params[:x], ziltag_params[:y],
       ziltag_params[:content]
     )
-    if create_ziltag.context[:error]
+    if create_ziltag.success?
       @ziltag = create_ziltag.context[:ziltag]
       render :show
     else
