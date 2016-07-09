@@ -10,7 +10,9 @@ class CreateComment
     ActiveRecord::Base.transaction do
       if @comment.save
         Subscribe.call(@user, @comment.ziltag)
-        NotifyOfComment.call(@comment)
+        if @comment.user.confirmed?
+          SendCommentNotificationJob.perform_later(@comment)
+        end
         context[:comment] = @comment
       else
         raise ActiveRecord::Rollback
