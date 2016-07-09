@@ -8,10 +8,15 @@ class CreateZiltag
     @photo = Photo.find_by(slug: @map_id)
     fail! "map ID '#{@map_id}' not found" if @photo.nil?
 
-    ziltag = Ziltag.new(user: @user, photo: @photo, x: @x, y: @y, content: @content)
+    ziltag = Ziltag.new(
+      user: @user, photo: @photo, x: @x, y: @y, content: @content
+    )
+    owner = photo.box.user
 
     if ziltag.save
-      NotifyOfZiltag.call(ziltag)
+      unless ziltag.author == owner || ziltag.unsubscribers.include?(owner.id)
+        SendZiltagNotificationJob.call(ziltag)
+      end
       unless @user.has_created_first_ziltag
         SendProductFeedbackEmailJob.perform_later(@user)
         @user.update_column(:has_created_first_ziltag, true)
