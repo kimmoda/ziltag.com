@@ -23,9 +23,9 @@ class SubscribeNewsletter
 
   def list_name
     if @user.content_provider?
-      Settings.gibbon.user_list_id
-    else
       Settings.gibbon.partner_list_id
+    else
+      Settings.gibbon.user_list_id
     end
   end
 
