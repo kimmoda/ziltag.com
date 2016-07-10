@@ -15,6 +15,7 @@ class UserSignUp
       context[:user] = user
       SendWelcomeEmailJob.perform_later(user)
       SubscribeNewsletterJob.perform_later(user)
+      SendProductFeedbackToGeneralUserJob.perform_later(user)
     else
       fail! user.errors.full_messages.first
     end
