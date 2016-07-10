@@ -41,7 +41,9 @@ class SendCommentNotification #:nodoc:
   def users_to_send
     @users_to_send ||= (
       users = @sibling_commenters.dup
-      users << @ziltag_author unless @sibling_commenters.include?(@ziltag_author)
+      unless @ziltag_author == @author
+        users << @ziltag_author unless @sibling_commenters.include?(@ziltag_author)
+      end
       users.reject! { |user| @unsubscriber_ids.include?(user.id) }
       users
     )
