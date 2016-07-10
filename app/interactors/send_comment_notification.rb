@@ -63,13 +63,13 @@ class SendCommentNotification #:nodoc:
       { name: 'AUTHOR_AVATAR', content: @author.avatar.thumb.url },
       { name: 'ZILTAG_IMAGE', content: @ziltag.share_image_url },
       { name: 'ZILTAG_URL', content: ziltag_url },
-      { name: 'CONTENT', content: @ziltag.content },
+      { name: 'CONTENT', content: @comment.content },
       { name: 'TIME_AGO_IN_WORDS', content: time_ago }
     ]
   end
 
   def time_ago
-    time_ago_in_words(@ziltag.created_at)
+    time_ago_in_words(@comment.created_at)
   end
 
   def host
