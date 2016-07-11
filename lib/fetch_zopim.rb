@@ -19,9 +19,13 @@ visitors = res['chats']
 the_sent = Visitor
            .where(email: visitors.map { |visitor| visitor['email'] })
            .to_a
+signed_up_users = User
+                  .where(email: visitors.map { |visitor| visitor['email'] })
+                  .to_a
 
 visitors.delete_if do |visitor|
-  the_sent.index { |x| x.email == visitor['email'] }
+  the_sent.index { |x| x.email == visitor['email'] } ||
+    signed_up_users.index { |x| x.email == visitor['email'] }
 end
 
 if Rails.env.production?
