@@ -26,5 +26,8 @@ end
 
 if Rails.env.production?
   send_visitor_nurture_email = SendVisitorNurtureEmail.call(visitors)
-  Visitor.create(email: sending['email']) if send_visitor_nurture_email.success?
+  Visitor.create(
+    send_visitor_nurture_email.context[:result]
+                              .map { |sending| { email: sending['email'] } }
+  ) if send_visitor_nurture_email.success?
 end
