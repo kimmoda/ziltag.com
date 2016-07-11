@@ -362,6 +362,37 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: visitors; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE visitors (
+    id integer NOT NULL,
+    email character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: visitors_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE visitors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: visitors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE visitors_id_seq OWNED BY visitors.id;
+
+
+--
 -- Name: ziltags; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -445,6 +476,13 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY visitors ALTER COLUMN id SET DEFAULT nextval('visitors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY ziltags ALTER COLUMN id SET DEFAULT nextval('ziltags_id_seq'::regclass);
 
 
@@ -494,6 +532,14 @@ ALTER TABLE ONLY tracks
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: visitors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY visitors
+    ADD CONSTRAINT visitors_pkey PRIMARY KEY (id);
 
 
 --
@@ -849,4 +895,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160226063409');
 INSERT INTO schema_migrations (version) VALUES ('20160311073414');
 
 INSERT INTO schema_migrations (version) VALUES ('20160630162048');
+
+INSERT INTO schema_migrations (version) VALUES ('20160711040036');
 
