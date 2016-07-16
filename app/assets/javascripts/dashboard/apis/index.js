@@ -101,3 +101,13 @@ export function uploadAvatar(file) {
     body: data
   })
 }
+
+export function upgradeUser(url) {
+  return graphql(`
+    mutation upgradeUser($url: String!){
+      upgradeUser(url: $url){
+        id
+      }
+    }
+  `, {url})
+}
