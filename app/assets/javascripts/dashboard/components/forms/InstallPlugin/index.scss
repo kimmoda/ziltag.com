@@ -1,0 +1,29 @@
+.ziltag-forms-upgrade {
+  font-family: 'Roboto', sans-serif;
+  &__title {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 500;
+    color: rgba(0,0,0,.87);
+    text-align: center;
+  }
+  &__subtitle {
+    font-size: 14px;
+    color: rgba(0,0,0,.54);
+    margin-top: 16px;
+    text-align: center;
+  }
+  &__footer {
+    margin-top: 8px;
+    font-size: 12px;
+    color: rgba(0,0,0,.54);
+    a {
+      color: inherit;
+    }
+  }
+  &__error {
+    font-size: 12px;
+    color: red;
+    text-align: center;
+  }
+}

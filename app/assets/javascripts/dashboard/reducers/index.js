@@ -35,6 +35,14 @@ export const form = formReducer.plugin({
       default:
         return state
     }
+  },
+  installPlugin: (state, action) => {
+    switch (action.type) {
+    case actionTypes.RECEIVE_UPGRADE_USER_ERROR:
+      return {...state, _error: action.errors[0].message}
+    default:
+      return state
+    }
   }
 })
 

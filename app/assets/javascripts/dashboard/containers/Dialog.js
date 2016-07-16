@@ -9,6 +9,7 @@ import DeleteWebsite from './DeleteWebsite'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import React from 'react'
+import InstallPlugin from './forms/InstallPlugin'
 
 function nameToForm(name){
   switch (name) {
@@ -32,6 +33,8 @@ function nameToForm(name){
       return <SignIn/>
     case 'signUp':
       return <SignUp/>
+    case 'installPlugin':
+      return <InstallPlugin />
     default:
       return null
   }

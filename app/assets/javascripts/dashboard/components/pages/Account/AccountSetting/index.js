@@ -3,16 +3,11 @@ import './index.scss'
 import React, { PropTypes } from 'react'
 import {connect} from 'react-redux'
 import FlatButton from 'material-ui/FlatButton'
+import Button from 'Button'
 
 class AccountSetting extends React.Component {
   render () {
-    const {avatar, username, role, email, onClickSignOut, onClickPassword, onChangeAvatar} = this.props
-    const buttonStyle = {
-      marginRight: 17,
-      fontSize: 14,
-      fontWeight: 500,
-      color: 'rgba(0, 0, 0, .87)',
-    }
+    const {isPartner, avatar, username, role, email, onClickSignOut, onClickPassword, onClickUpgrade, onChangeAvatar} = this.props
     return (
       <div className="ziltag-account-setting">
         <div className="ziltag-account-setting__avatar" style={{backgroundImage: `url('${avatar}')`}} onClick={_ => this.refs.file.click() }>
@@ -34,7 +29,22 @@ class AccountSetting extends React.Component {
             </div>
           </div>
         </div>
-        <FlatButton style={buttonStyle} onClick={onClickSignOut} label="SIGN OUT"/>
+        <div style={{marginRight: 38}}>
+          {
+            isPartner ? null : <Button style={{
+                                  padding: 10, fontSize: 14,
+                                  fontWeight: 500, width: 120
+                                }} onClick={onClickUpgrade}>Install Plugin</Button>
+          }
+          <FlatButton style={{
+            fontSize: 14,
+            fontWeight: 500,
+            color: 'rgba(0, 0, 0, .87)',
+            display: 'block',
+            width: 120,
+            marginTop: 37
+          }} onClick={onClickSignOut} label="SIGN OUT"/>
+        </div>
       </div>
     )
   }
@@ -47,11 +57,15 @@ function mapStateToProps(state) {
     role: me.isPartner ? 'Ziltag Partner' : 'General User',
     username: me.name,
     email: me.email,
+    isPartner: me.isPartner
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    onClickUpgrade: () => {
+      dispatch(actions.openDialog('installPlugin'))
+    },
     onClickSignOut: () => {
       dispatch(actions.signOut())
     },

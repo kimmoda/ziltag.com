@@ -1,0 +1,19 @@
+.ziltag-install-script{
+  display: flex;
+  background-color: #F9F9F9;
+  padding: 26px 41px 26px 26px;
+
+  &__text{
+    font-family: 'Roboto', sans-serif;
+    flex-grow: 1;
+  }
+  &__token{
+    font-size: 16px;
+    color: rgba(0,0,0,.87);
+  }
+  &__script{
+    margin-top: 15px;
+    font-size: 14px;
+    color: #008BF3;
+  }
+}
