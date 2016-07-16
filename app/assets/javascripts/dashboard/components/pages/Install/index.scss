@@ -8,7 +8,7 @@
     margin: 0 auto;
   }
   &__guide {
-    margin-top: 68px;
+    margin-top: 60px;
   }
   &__bar{
     margin-top: 36px;
@@ -47,5 +47,8 @@
     &--facebook{
       background-image: url('./facebook_share.png');
     }
+  }
+  &__script{
+    margin-top: 60px;
   }
 }

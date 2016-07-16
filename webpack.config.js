@@ -1,5 +1,6 @@
 const __PRODUCTION__ = process.env.WEBPACK_ENV == 'production'
 var webpack = require('webpack')
+var path = require('path')
 
 if (__PRODUCTION__) {
   var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
@@ -43,6 +44,15 @@ module.exports = {
     path: __dirname + '/public/assets',
     filename: filename,
     publicPath: '/assets/'
+  },
+  resolve: {
+    root: [
+      path.resolve('./app/assets/javascripts/dashboard')
+    ],
+    modulesDirectories: [
+      'containers', 'components',
+      'web_modules', 'node_modules'
+    ]
   },
   plugins: plugins,
   module: {
