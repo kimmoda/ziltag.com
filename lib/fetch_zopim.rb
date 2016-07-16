@@ -19,6 +19,7 @@ visitors = res['chats']
 the_sent = Visitor
            .where(email: visitors.map { |visitor| visitor['email'] })
            .to_a
+
 signed_up_users = User
                   .where(email: visitors.map { |visitor| visitor['email'] })
                   .to_a
@@ -30,8 +31,9 @@ end
 
 if Rails.env.production?
   send_visitor_nurture_email = SendVisitorNurtureEmail.call(visitors)
-  Visitor.create(
-    send_visitor_nurture_email.context[:result]
-                              .map { |sending| { email: sending['email'] } }
-  ) if send_visitor_nurture_email.success?
+  if send_visitor_nurture_email.success?
+    send_visitor_nurture_email.context[:result].each do |sending|
+      Visitor.create email: sending['email']
+    end
+  end
 end
