@@ -219,3 +219,17 @@ export function retrieveRecommendedZiltagMaps(){
     type: actionTypes.RETRIEVE_RECOMMENDED_ZILTAG_MAPS
   }
 }
+
+export function requestUpgradeUser(url){
+  return {
+    type: actionTypes.REQUEST_UPGRADE_USER,
+    url
+  }
+}
+
+export function receiveUpgradeUserError(errors) {
+  return {
+    type: actionTypes.RECEIVE_UPGRADE_USER_ERROR,
+    errors
+  }
+}

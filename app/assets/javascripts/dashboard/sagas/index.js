@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/types'
 import * as actions from '../actions'
 import * as API from '../apis'
 import {user, ziltagMap, website} from '../schema'
-import { takeEvery, eventChannel } from 'redux-saga'
+import { takeEvery, takeLatest, eventChannel } from 'redux-saga'
 import { take, call, put, fork, cancel } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
 import { normalize, arrayOf } from 'normalizr'
@@ -195,6 +195,20 @@ function* watchRequestRecommendedZiltagMaps(){
   yield* takeEvery(actionTypes.RETRIEVE_RECOMMENDED_ZILTAG_MAPS, fetchRecommendedZiltagMaps)
 }
 
+function* upgradeUser(action){
+  const response = yield call(API.upgradeUser, action.url)
+  if(response.errors) yield put(actions.receiveUpgradeUserError(response.errors))
+  else {
+    yield put(actions.closeDialog())
+    yield put(actions.me())
+    yield put(push('/dashboard/install'))
+  }
+}
+
+function* watchUpgradeUser(){
+  yield* takeLatest(actionTypes.REQUEST_UPGRADE_USER, upgradeUser)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
@@ -211,6 +225,7 @@ export default function* root() {
     watchRequestSignIn(),
     watchParterSignUp(),
     watchUploadAvatar(),
-    watchRequestRecommendedZiltagMaps()
+    watchRequestRecommendedZiltagMaps(),
+    watchUpgradeUser(),
   ]
 }
