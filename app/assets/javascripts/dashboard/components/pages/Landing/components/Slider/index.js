@@ -1,8 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
 import ZiltagMapTile from '../../../../ZiltagMapTile'
-import LeftArrow from 'material-ui/svg-icons/navigation/chevron-left'
-import RightArrow from 'material-ui/svg-icons/navigation/chevron-right'
 import './index.scss'
 
 const settings = {

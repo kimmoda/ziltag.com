@@ -3,6 +3,7 @@ import Intro from '../Intro'
 import Video from '../../containers/Video'
 import Usecase from '../Usecase'
 import './index.scss'
+import Tracker from 'Tracker'
 
 export default props => (
   <div className="ziltag-landing-feature">
@@ -32,13 +33,19 @@ export default props => (
     <div className="ziltag-landing-feature__imagine-subtitle">You can use it for all kinds of purposes.</div>
     <div className="ziltag-landing-feature__usecases">
       <div className="ziltag-landing-feature__usecase">
-        <Usecase link="http://blog.ziltag.com/post/142941430640/how-to-use-ziltag-1-mapping" icon="map" name="Mapping" />
+        <Tracker event="mapping">
+          <Usecase link="http://blog.ziltag.com/2016/06/18/ziltag_for_mapping/" icon="map" name="Mapping" />
+        </Tracker>
       </div>
       <div className="ziltag-landing-feature__usecase">
-        <Usecase link="http://blog.ziltag.com/post/143003745025/how-to-use-ziltag-2-ecommerce" icon="pie" name="E-commerce" />
+        <Tracker event="e-commerce">
+          <Usecase link="http://blog.ziltag.com/2016/04/18/how-to-use-ziltag-2-ecommerce/" icon="pie" name="E-commerce" />
+        </Tracker>
       </div>
       <div className="ziltag-landing-feature__usecase">
-        <Usecase link="http://blog.ziltag.com/post/143324183760/how-to-use-ziltag-3-education" icon="notebook" name="Education" />
+        <Tracker event="education">
+          <Usecase link="http://blog.ziltag.com/2016/04/24/how-to-use-ziltag-3-education/" icon="notebook" name="Education" />
+        </Tracker>
       </div>
     </div>
     <a className="ziltag-landing-feature__checkout-more" href="http://blog.ziltag.com/tagged/usage" target="_blank">CHECK OUT MORE ➔</a>

@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '../../../../Button'
 import Slider from '../../containers/Slider'
 import './index.scss'
+import Tracker from 'Tracker'
 
 const buttonStyle = {
   height: 70
@@ -14,10 +15,12 @@ export default props => (
       <div className="ziltag-landing-cover__subtitle">Connecting readers with every little details on images, we bring contents on your website alive. </div>
       <div className="ziltag-landing-cover__buttons">
         <div className="ziltag-landing-cover__button">
-          <Button style={buttonStyle} round onClick={props.onClickJoin}>Join for free</Button>
+          <Tracker event="join_for_free"><Button style={buttonStyle} round onClick={props.onClickJoin}>Join for free</Button></Tracker>
         </div>
         <div className="ziltag-landing-cover__button">
-          <Button style={buttonStyle} round gray onClick={props.onClickWatchVideo}>Watch Video</Button>
+          <Tracker event="watch_video">
+            <Button style={buttonStyle} round gray onClick={props.onClickWatchVideo}>Watch Video</Button>
+          </Tracker>
         </div>
       </div>
     </div>
@@ -31,11 +34,21 @@ export default props => (
       }}><Slider sliderHeight={props.screen.height}/></div>
     <div className="ziltag-landing-cover__footer">
       <ul className="ziltag-landing-cover__itmes">
-        <li className="ziltag-landing-cover__item"><a target="_blank" href="http://blog.ziltag.com/tagged/about">ABOUT</a></li>
-        <li className="ziltag-landing-cover__item"><a target="_blank" href="http://blog.ziltag.com/">BLOG</a></li>
-        <li className="ziltag-landing-cover__item"><a target="_blank" href="https://ziltag.zendesk.com/">HELP</a></li>
-        <li className="ziltag-landing-cover__item"><a target="_blank" href="http://blog.ziltag.com/post/136853735385/terms-of-service">TERMS</a></li>
-        <li className="ziltag-landing-cover__item"><a target="_blank" href="http://blog.ziltag.com/tagged/policy">PRIVACY</a></li>
+        <li className="ziltag-landing-cover__item">
+          <Tracker event="about"><a target="_blank" href="http://blog.ziltag.com/tagged/about">ABOUT</a></Tracker>
+        </li>
+        <li className="ziltag-landing-cover__item">
+          <Tracker event="blog"><a target="_blank" href="http://blog.ziltag.com/">BLOG</a></Tracker>
+        </li>
+        <li className="ziltag-landing-cover__item">
+          <Tracker event="help"><a target="_blank" href="https://ziltag.zendesk.com/">HELP</a></Tracker>
+        </li>
+        <li className="ziltag-landing-cover__item">
+          <Tracker event="terms"><a target="_blank" href="http://blog.ziltag.com/post/136853735385/terms-of-service">TERMS</a></Tracker>
+        </li>
+        <li className="ziltag-landing-cover__item">
+          <Tracker event="privacy"><a target="_blank" href="http://blog.ziltag.com/tagged/policy">PRIVACY</a></Tracker>
+        </li>
       </ul>
       <div className="ziltag-landing-cover__copyright">© Ziltag Inc., 2016. All Rights Reserved. </div>
     </div>
