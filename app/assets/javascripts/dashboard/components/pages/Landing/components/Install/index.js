@@ -1,6 +1,7 @@
 import React from 'react'
 import Step from '../Step'
 import './index.scss'
+import Tracker from 'Tracker'
 
 export default props => (
   <div className="ziltag-landing-install">
@@ -17,6 +18,8 @@ export default props => (
         <Step icon="code" number="3" name="PASTE" summery="Paste it in HTML."/>
       </div>
     </div>
-    <div className="ziltag-landing-install__button" onClick={props.onClickWatchVideo}>WATCH INSTALLATION GUIDE</div>
+    <Tracker event="watch_installation_guide">
+      <div className="ziltag-landing-install__button" onClick={props.onClickWatchVideo}>WATCH INSTALLATION GUIDE</div>
+    </Tracker>
   </div>
 )

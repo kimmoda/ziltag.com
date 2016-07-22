@@ -2,6 +2,7 @@ import React from 'react'
 import YouTube from 'react-youtube'
 import Button from '../../../../Button'
 import './index.scss'
+import Tracker from 'Tracker'
 
 const buttonStyle = {
   height: 77,
@@ -40,37 +41,45 @@ export default class  extends React.Component {
           {
             watch ?
             <div className="ziltag-landing-video__button">
-              <Button style={{backgroundColor: 'rgba(0,0,0,.7)', ...buttonStyle}} round white onClick={_ => onWatch(this.state.instance)}>
-                <div className="ziltag-landing-video__icon"></div>
-                Watch video
-              </Button>
+              <Tracker event="watch_video_2">
+                <Button style={{backgroundColor: 'rgba(0,0,0,.7)', ...buttonStyle}} round white onClick={_ => onWatch(this.state.instance)}>
+                  <div className="ziltag-landing-video__icon"></div>
+                  Watch video
+                </Button>
+              </Tracker>
             </div>
             : null
           }
           {
             resume ?
             <div className="ziltag-landing-video__button">
-              <Button style={buttonStyle} round gray onClick={_ => onResume(this.state.instance)}>
-                <div className="ziltag-landing-video__icon ziltag-landing-video__icon--dark"></div>
-                Resume
-              </Button>
+              <Tracker event="resume">
+                <Button style={buttonStyle} round gray onClick={_ => onResume(this.state.instance)}>
+                  <div className="ziltag-landing-video__icon ziltag-landing-video__icon--dark"></div>
+                  Resume
+                </Button>
+              </Tracker>
             </div>
             : null
           }
           {
             replay ?
             <div className="ziltag-landing-video__button">
-              <Button style={buttonStyle} round gray onClick={_=>onReplay(this.state.instance)}>
-                <div className="ziltag-landing-video__icon ziltag-landing-video__icon--replay"></div>
-                Replay
-              </Button>
+              <Tracker event="replay">
+                <Button style={buttonStyle} round gray onClick={_=>onReplay(this.state.instance)}>
+                  <div className="ziltag-landing-video__icon ziltag-landing-video__icon--replay"></div>
+                  Replay
+                </Button>
+              </Tracker>
             </div>
             : null
           }
           {
             join ?
             <div className="ziltag-landing-video__button">
-              <Button style={buttonStyle} round onClick={onJoin}>Join for free</Button>
+              <Tracker event="join_for_free_2">
+                <Button style={buttonStyle} round onClick={onJoin}>Join for free</Button>
+              </Tracker>
             </div>
             : null
           }
