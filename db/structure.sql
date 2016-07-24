@@ -154,7 +154,8 @@ CREATE TABLE boxes (
     user_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying
+    url character varying,
+    restricted boolean DEFAULT false NOT NULL
 );
 
 
@@ -897,4 +898,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160311073414');
 INSERT INTO schema_migrations (version) VALUES ('20160630162048');
 
 INSERT INTO schema_migrations (version) VALUES ('20160711040036');
+
+INSERT INTO schema_migrations (version) VALUES ('20160724045410');
 
