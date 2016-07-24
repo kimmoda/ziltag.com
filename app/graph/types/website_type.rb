@@ -5,6 +5,7 @@ WebsiteType = GraphQL::ObjectType.define do
   field :token, !types.String
   field :user, !UserType
   field :url, !types.String, property: :url_with_http
+  field :restricted, !types.Boolean
   field :platform, !types.String
   field :comments, types[!CommentType]
   field :ziltags, types[!ZiltagType]

@@ -110,10 +110,12 @@ MutationType = GraphQL::ObjectType.define do
 
   field :createWebsite, WebsiteType do
     argument :url, !types.String
+    argument :restricted, !types.Boolean
     resolve -> (_obj, args, ctx) do
       current_user = ctx[:current_user]
       url = args[:url]
-      box = current_user.boxes.create url: url
+      restricted = args[:restricted]
+      box = current_user.boxes.create url: url, restricted: restricted
       box.persisted? ? box : raise(box.errors.full_messages.first)
     end
   end
@@ -129,10 +131,11 @@ MutationType = GraphQL::ObjectType.define do
 
   field :updateWebsite, WebsiteType do
     argument :id, !types.ID
-    argument :url, !types.String
+    argument :url, types.String
+    argument :restricted, types.Boolean
     resolve -> (_obj, args, _ctx) do
       website = Box.find(args[:id])
-      if website.update url: args[:url]
+      if website.update url: args[:url], restricted: args[:restricted]
         website
       else
         raise website.errors.full_messages.first
