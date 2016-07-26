@@ -209,6 +209,18 @@ function* watchUpgradeUser(){
   yield* takeLatest(actionTypes.REQUEST_UPGRADE_USER, upgradeUser)
 }
 
+function* requestUpdateWebsitePermission(action){
+  const response = yield call(API.updateWebsitePermission, action.id, action.restricted)
+  if(response.errors); // TODO
+  else {
+    yield put(actions.receiveUpdateWebsitePermission(response.data.updateWebsitePermission))
+  }
+}
+
+function* watchRequestUpdateWebsitePermission(){
+  yield* takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE_PERMISSION, requestUpdateWebsitePermission)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
@@ -227,5 +239,6 @@ export default function* root() {
     watchUploadAvatar(),
     watchRequestRecommendedZiltagMaps(),
     watchUpgradeUser(),
+    watchRequestUpdateWebsitePermission(),
   ]
 }

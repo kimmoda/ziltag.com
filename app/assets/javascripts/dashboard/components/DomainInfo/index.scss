@@ -31,4 +31,12 @@
     display: inline-block;
     cursor: pointer;
   }
+  &__more{
+    background: url('./more.png') center/contain no-repeat;
+    width: 24px;
+    height: 24px;
+    margin-left: 40px;
+    display: inline-block;
+    cursor: pointer;
+  }
 }
