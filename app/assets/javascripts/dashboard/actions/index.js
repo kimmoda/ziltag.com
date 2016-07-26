@@ -233,3 +233,17 @@ export function receiveUpgradeUserError(errors) {
     errors
   }
 }
+
+export function requestUpdateWebsitePermission(id, restricted){
+  return {
+    type: actionTypes.REQUEST_UPDATE_WEBSITE_PERMISSION,
+    id, restricted
+  }
+}
+
+export function receiveUpdateWebsitePermission(website){
+  return {
+    type: actionTypes.RECEIVE_UPDATE_WEBSITE_PERMISSION,
+    response: normalize(website, websiteType)
+  }
+}

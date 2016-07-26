@@ -15,6 +15,7 @@ class DomainSetting extends React.Component {
         <SectionBody>
           <DomainInfo
             id={website.id}
+            restricted={!website.restricted}
             domain={website.url}
             myTags={website.myTags}
             readersTags={website.readersTags}

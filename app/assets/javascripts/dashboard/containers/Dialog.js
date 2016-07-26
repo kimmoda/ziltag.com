@@ -10,6 +10,7 @@ import * as actions from '../actions'
 import {connect} from 'react-redux'
 import React from 'react'
 import InstallPlugin from './forms/InstallPlugin'
+import WebsiteAdvancedSetting from './forms/WebsiteAdvancedSetting'
 
 function nameToForm(name){
   switch (name) {
@@ -35,6 +36,8 @@ function nameToForm(name){
       return <SignUp/>
     case 'installPlugin':
       return <InstallPlugin />
+    case 'websiteAdvancedSetting':
+      return <WebsiteAdvancedSetting />
     default:
       return null
   }

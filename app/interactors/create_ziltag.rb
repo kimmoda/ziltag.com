@@ -13,6 +13,10 @@ class CreateZiltag
     )
     owner = @photo.box.user
 
+    if owner != @user && @photo.box.restricted
+      fail! 'tagging operation is not permitted'
+    end
+
     if ziltag.save
       unless ziltag.user == owner || ziltag.unsubscribers.include?(owner.id)
         SendZiltagNotificationJob.perform_later(ziltag)

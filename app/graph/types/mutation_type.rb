@@ -129,7 +129,7 @@ MutationType = GraphQL::ObjectType.define do
 
   field :updateWebsite, WebsiteType do
     argument :id, !types.ID
-    argument :url, !types.String
+    argument :url, types.String
     resolve -> (_obj, args, _ctx) do
       website = Box.find(args[:id])
       if website.update url: args[:url]
@@ -145,6 +145,16 @@ MutationType = GraphQL::ObjectType.define do
     resolve -> (_obj, args, ctx) do
       upgrade_user = UpgradeUser.call(ctx[:current_user], args[:url])
       upgrade_user.success? ? upgrade_user[:user] : raise(upgrade_user[:error])
+    end
+  end
+
+  field :updateWebsitePermission, WebsiteType do
+    argument :id, !types.ID
+    argument :restricted, types.Boolean
+    resolve -> (obj, args, ctx) do
+      website = Box.find(args[:id])
+      website.update_column :restricted, args[:restricted]
+      website
     end
   end
 end

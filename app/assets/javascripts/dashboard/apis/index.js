@@ -27,11 +27,11 @@ export function sign_out() {
 }
 
 export function fetchMe() {
-  return graphql('{me{id,avatar,isPartner,confirmed,email,name,website{id,token,url,platform},websites{id,token,url,ziltags{id,usr{id,name}},comments{id,usr{id,name}},maps_without_tags{id,src}}}}')
+  return graphql('{me{id,avatar,isPartner,confirmed,email,name,website{id,restricted,token,url,platform},websites{id,restricted,token,url,ziltags{id,usr{id,name}},comments{id,usr{id,name}},maps_without_tags{id,src}}}}')
 }
 
 export function fetchRecommendedZiltagMaps(){
-  return graphql('{recommended_ziltag_maps{id,src,host,href,website{id,url,user{id,avatar,name}},ziltags{id,x,y}}}')
+  return graphql('{recommended_ziltag_maps{id,src,host,href,website{id,restricted,url,user{id,avatar,name}},ziltags{id,x,y}}}')
 }
 
 export function changePassword(oldPassword, newPassword, confirmPassword){
@@ -50,7 +50,7 @@ export function createWebsite(url) {
   return graphql(`
     mutation createWebsite($url: String!){
       createWebsite(url: $url){
-        user{id websites{id url token ziltags{id} comments{id} maps_without_tags{id}}}
+        user{id websites{id restricted url token ziltags{id} comments{id} maps_without_tags{id}}}
       }
     }
   `, {url})
@@ -110,4 +110,14 @@ export function upgradeUser(url) {
       }
     }
   `, {url})
+}
+
+export function updateWebsitePermission(id, restricted) {
+  return graphql(`
+    mutation updateWebsitePermission($id: ID!, $restricted: Boolean!){
+      updateWebsitePermission(id: $id, restricted: $restricted){
+        id,restricted
+      }
+    }
+  `, {id, restricted})
 }
