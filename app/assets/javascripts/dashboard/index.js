@@ -26,6 +26,7 @@ import createSagaMiddleware from 'redux-saga'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import customTheme from './customTheme'
 import { Tabs } from 'react-tabs'
 import '../../images/favicon.png'
 import '../../images/fallback/thumb_guest.png'
@@ -55,7 +56,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
       <Router history={history}>
         <Route path="/" component={Landing} />
         <Route path="dashboard" component={Dashboard} onEnter={
