@@ -5,12 +5,16 @@ import PageBar from '../../PageBar'
 import React, {PropTypes} from 'react'
 import Masonry from 'react-masonry-component'
 import {connect} from 'react-redux'
+import Spinner from 'Spinner'
 
 class Explore extends React.Component {
   static propTypes = {
     ziltagMaps: PropTypes.array
   }
-
+  constructor(props) {
+    super(props);
+    this.state = {loaded: false}
+  }
   render () {
     const {ziltagMaps} = this.props
     const ziltagMapElements = ziltagMaps.map((ziltagMap) => {
@@ -32,8 +36,11 @@ class Explore extends React.Component {
         <PageBar>
           Recommended tags
         </PageBar>
+        {this.state.loaded || <div style={{width: 100, margin: '160px auto'}}><Spinner /></div>}
         <Masonry
           className="ziltag-explore__body"
+          style={{display: this.state.loaded ? 'inherit' : 'none'}}
+          onImagesLoaded={_=>this.setState({loaded: true})}
           options={{columnWidth: 340, gutter: 15}}>
           {ziltagMapElements}
         </Masonry>
