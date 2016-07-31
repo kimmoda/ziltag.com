@@ -1,0 +1,26 @@
+.ziltag-forms-forget-password {
+  width: 100%;
+  max-width: 380px;
+  &__title{
+    color: rgba(0, 0, 0, .87);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    line-height: 19px;
+    text-align: center;
+  }
+  &__subtitle{
+    color: rgba(0, 0, 0, .87);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    line-height: 19px;
+    text-align: center;
+  }
+  &__error{
+    color: red;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 12px;
+  }
+}
