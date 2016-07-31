@@ -15,7 +15,7 @@ class SendResetPassword < Interactor2
 
   def message
     {
-      subject: "Hi #{@user.username}! What can we do better for you?",
+      subject: "Reset Password Instructions",
       from_email: 'robot@ziltag.com',
       from_name: 'Ziltag Robot',
       to: [{ email: @user.email, name: @user.username }],
