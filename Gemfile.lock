@@ -275,6 +275,7 @@ GEM
     i18n (0.7.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
+    interactor2 (1.0.1)
     ipaddress (0.8.3)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -451,6 +452,7 @@ DEPENDENCIES
   grape
   graphiql-rails
   graphql
+  interactor2
   jbuilder (~> 2.0)
   mandrill-api
   mini_magick
