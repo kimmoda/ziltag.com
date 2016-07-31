@@ -157,4 +157,20 @@ MutationType = GraphQL::ObjectType.define do
       website
     end
   end
+
+  field :updateZiltagNotification, UserType do
+    argument :ziltagNotification, !types.Boolean
+    resolve -> (obj, args, ctx) do
+      ctx[:current_user].update_column :ziltag_notification, args[:ziltagNotification]
+      ctx[:current_user]
+    end
+  end
+
+  field :updateCommentNotification, UserType do
+    argument :commentNotification, !types.Boolean
+    resolve -> (obj, args, ctx) do
+      ctx[:current_user].update_column :comment_notification, args[:commentNotification]
+      ctx[:current_user]
+    end
+  end
 end

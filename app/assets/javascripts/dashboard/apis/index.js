@@ -27,7 +27,7 @@ export function sign_out() {
 }
 
 export function fetchMe() {
-  return graphql('{me{id,avatar,isPartner,confirmed,email,name,website{id,restricted,token,url,platform},websites{id,restricted,token,url,ziltags{id,usr{id,name}},comments{id,usr{id,name}},maps_without_tags{id,src}}}}')
+  return graphql('{me{ziltagNotification,commentNotification,id,avatar,isPartner,confirmed,email,name,website{id,restricted,token,url,platform},websites{id,restricted,token,url,ziltags{id,usr{id,name}},comments{id,usr{id,name}},maps_without_tags{id,src}}}}')
 }
 
 export function fetchRecommendedZiltagMaps(){
@@ -120,4 +120,24 @@ export function updateWebsitePermission(id, restricted) {
       }
     }
   `, {id, restricted})
+}
+
+export function updateZiltagNotification(ziltagNotification){
+  return graphql(`
+    mutation updateZiltagNotification($ziltagNotification: Boolean!){
+      updateZiltagNotification(ziltagNotification: $ziltagNotification){
+        id
+      }
+    }
+  `, {ziltagNotification})
+}
+
+export function updateCommentNotification(commentNotification){
+  return graphql(`
+    mutation updateCommentNotification($commentNotification: Boolean!){
+      updateCommentNotification(commentNotification: $commentNotification){
+        id
+      }
+    }
+  `, {commentNotification})
 }

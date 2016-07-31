@@ -1,5 +1,6 @@
 import AccountSetting from './AccountSetting'
 import DomainSetting from './DomainSetting'
+import NotificationSetting from './NotificationSetting'
 import './index.scss'
 import React from 'react'
 import {connect} from 'react-redux'
@@ -21,7 +22,9 @@ class Account extends React.Component {
           :
             null
         }
-
+        <div className="ziltag-account__section">
+          <NotificationSetting />
+        </div>
       </div>
     )
   }

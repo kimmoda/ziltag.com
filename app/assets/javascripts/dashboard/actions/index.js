@@ -247,3 +247,31 @@ export function receiveUpdateWebsitePermission(website){
     response: normalize(website, websiteType)
   }
 }
+
+export function requestUpdateZiltagNotification(ziltagNotification){
+  return {
+    type: actionTypes.REQUEST_UPDATE_ZILTAG_NOTIFICATION,
+    ziltagNotification
+  }
+}
+
+export function receiveUpdateZiltagNotification(user){
+  return {
+    type: actionTypes.RECEIVE_UPDATE_ZILTAG_NOTIFICATION,
+    response: normalize(user, userType)
+  }
+}
+
+export function requestUpdateCommentNotification(commentNotification){
+  return {
+    type: actionTypes.REQUEST_UPDATE_COMMENT_NOTIFICATION,
+    commentNotification
+  }
+}
+
+export function receiveUpdateCommentNotification(user){
+  return {
+    type: actionTypes.RECEIVE_UPDATE_COMMENT_NOTIFICATION,
+    response: normalize(user, userType)
+  }
+}

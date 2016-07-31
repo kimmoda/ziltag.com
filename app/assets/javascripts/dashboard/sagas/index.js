@@ -221,6 +221,26 @@ function* watchRequestUpdateWebsitePermission(){
   yield* takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE_PERMISSION, requestUpdateWebsitePermission)
 }
 
+function* requestUpdateZiltagNotification(action){
+  const response = yield call(API.updateZiltagNotification, action.ziltagNotification)
+  if(response.errors);
+  else yield put(actions.receiveUpdateZiltagNotification(response.data.updateZiltagNotification))
+}
+
+function* watchRequestUpdateZiltagNotification(){
+  yield* takeEvery(actionTypes.REQUEST_UPDATE_ZILTAG_NOTIFICATION, requestUpdateZiltagNotification)
+}
+
+function* requestUpdateCommentNotification(action){
+  const response = yield call(API.updateCommentNotification, action.commentNotification)
+  if(response.errors);
+  else yield put(actions.receiveUpdateCommentNotification(response.data.updateCommentNotification))
+}
+
+function* watchRequestUpdateCommentNotification(){
+  yield* takeEvery(actionTypes.REQUEST_UPDATE_COMMENT_NOTIFICATION, requestUpdateCommentNotification)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
@@ -240,5 +260,7 @@ export default function* root() {
     watchRequestRecommendedZiltagMaps(),
     watchUpgradeUser(),
     watchRequestUpdateWebsitePermission(),
+    watchRequestUpdateZiltagNotification(),
+    watchRequestUpdateCommentNotification()
   ]
 }
