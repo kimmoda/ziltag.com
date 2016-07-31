@@ -339,7 +339,9 @@ CREATE TABLE users (
     avatar character varying,
     username character varying,
     type character varying,
-    has_created_first_ziltag boolean DEFAULT false
+    has_created_first_ziltag boolean DEFAULT false,
+    ziltag_notification boolean DEFAULT true NOT NULL,
+    comment_notification boolean DEFAULT true NOT NULL
 );
 
 
@@ -900,4 +902,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160630162048');
 INSERT INTO schema_migrations (version) VALUES ('20160711040036');
 
 INSERT INTO schema_migrations (version) VALUES ('20160724045410');
+
+INSERT INTO schema_migrations (version) VALUES ('20160731131546');
 

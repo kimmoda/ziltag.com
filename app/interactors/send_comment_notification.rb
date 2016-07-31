@@ -44,7 +44,9 @@ class SendCommentNotification #:nodoc:
       unless @ziltag_author == @author
         users << @ziltag_author unless @sibling_commenters.include?(@ziltag_author)
       end
-      users.reject! { |user| @unsubscriber_ids.include?(user.id) }
+      users.reject! do |user|
+        !user.comment_notification? || @unsubscriber_ids.include?(user.id)
+      end
       users
     )
   end
