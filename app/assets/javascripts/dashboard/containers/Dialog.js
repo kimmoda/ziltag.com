@@ -41,6 +41,8 @@ function nameToForm(name){
       return <WebsiteAdvancedSetting />
     case 'forgetPassword':
       return <ForgetPassword />
+    case 'passwordResetSent':
+      return <DialogSuccess message="Email sent!"/>
     default:
       return null
   }

@@ -1,6 +1,6 @@
 import * as schema from '../schema'
 
-function api(input, options) {
+function api(input, options={}) {
   const body = JSON.stringify(options.params)
   return fetch(input, {
     method: 'POST',
@@ -154,4 +154,8 @@ export function resetPassword(password, passwordConfirmation, resetPasswordToken
       }
     }
   )
+}
+
+export function forgetPassword(email){
+  return api('/api/v2/password', {params: {email}})
 }

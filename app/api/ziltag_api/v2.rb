@@ -41,6 +41,24 @@ class ZiltagAPI # :nodoc:
       {}
     end
 
+    desc 'Crete Password Reset Request'
+    params do
+      requires :email, type: String, allow_blank: false
+    end
+    post :password do
+      user = User.find_by(email: params[:email])
+      if user
+        send_reset_password = SendResetPassword.perform(user)
+        if send_reset_password.success?
+          {}
+        else
+          { errors: [{ message: send_reset_password.error }] }
+        end
+      else
+        { errors: [{ message: 'user not found' }] }
+      end
+    end
+
     desc 'Reset Password'
     params do
       requires :reset_password_token, type: String, allow_blank: false

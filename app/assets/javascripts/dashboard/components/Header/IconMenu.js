@@ -20,7 +20,7 @@ export default function(props){
       >
       <Link className="ziltag-header__link" to="/dashboard"><MenuItem primaryText="Dashboard" /></Link>
       <Link className="ziltag-header__link" to="/dashboard/guide"><MenuItem primaryText="Guide" /></Link>
-      <MenuItem primaryText="Sign out" onClick={onClickSignOut} />
+      <MenuItem style={{cursor: 'pointer'}} primaryText="Sign out" onClick={onClickSignOut} />
     </IconMenu>
   )
 }

@@ -15,7 +15,7 @@ export default props => {
       <div style={{marginTop: 30}}>
         <Button>Send</Button>
       </div>
-      {error && <div className="ziltag-forms-forget-password__error">error</div>}
+      {error && <div className="ziltag-forms-forget-password__error">{error}</div>}
     </form>
   )
 }

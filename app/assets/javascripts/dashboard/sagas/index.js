@@ -74,11 +74,8 @@ function* watchVerify() {
 }
 
 function* signOut(action){
-  try {
-    yield call(API.sign_out)
-    window.location.replace('/')
-  } catch (e) {
-  }
+  yield call(API.sign_out)
+  window.location.replace('/')
 }
 
 function* watchSignOut() {
@@ -256,6 +253,19 @@ function* watchRequestResetPassword(){
   yield* takeLatest(actionTypes.REQUEST_RESET_PASSWORD, requestResetPassword)
 }
 
+function* requestForgetPassword(action){
+  const response = yield call(API.forgetPassword, action.email)
+  if(response.errors)
+    yield put(actions.receiveForgetPasswordError(response.errors))
+  else {
+    yield put(actions.openDialog('passwordResetSent'))
+  }
+}
+
+function* watchRequestForgetPassword(){
+  yield* takeLatest(actionTypes.REQUEST_FORGET_PASSWORD, requestForgetPassword)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
@@ -277,6 +287,7 @@ export default function* root() {
     watchRequestUpdateWebsitePermission(),
     watchRequestUpdateZiltagNotification(),
     watchRequestUpdateCommentNotification(),
-    watchRequestResetPassword()
+    watchRequestResetPassword(),
+    watchRequestForgetPassword()
   ]
 }
