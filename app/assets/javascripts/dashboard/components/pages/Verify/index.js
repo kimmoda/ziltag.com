@@ -1,12 +1,11 @@
-import Cheer from '../../../components/Cheer'
-import Field from '../../../components/TextField'
-import Button from '../../../components/Button'
-import * as actionTypes from '../../../actions/types'
-import * as actions from '../../../actions'
+import Cheer from 'Cheer'
+import Field from 'TextField'
+import Button from 'Button'
+import * as actionTypes from 'actions/types'
+import * as actions from 'actions'
 import './index.scss'
 import React from 'react'
-import { reduxForm } from 'redux-form';
-import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form'
 
 class Verify extends React.Component {
   render () {

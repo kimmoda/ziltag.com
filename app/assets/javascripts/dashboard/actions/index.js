@@ -275,3 +275,36 @@ export function receiveUpdateCommentNotification(user){
     response: normalize(user, userType)
   }
 }
+
+export function requestResetPassword(data){
+  const {
+    password,
+    password_confirmation: passwordConfirmation,
+    reset_password_token: resetPasswordToken
+  } = data
+  return {
+    type: actionTypes.REQUEST_RESET_PASSWORD,
+    password, passwordConfirmation, resetPasswordToken
+  }
+}
+
+export function receiveResetPasswordError(errors){
+  return {
+    type: actionTypes.RECEIVE_RESET_PASSWORD_ERROR,
+    error: errors[0].message
+  }
+}
+
+export function requestForgetPassword(email){
+  return {
+    type: actionTypes.REQUEST_FORGET_PASSWORD,
+    email
+  }
+}
+
+export function receiveForgetPasswordError(errors){
+  return {
+    type: actionTypes.RECEIVE_FORGET_PASSWORD_ERROR,
+    error: errors[0].message
+  }
+}

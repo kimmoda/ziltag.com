@@ -6,5 +6,6 @@ export default reduxForm({
   form: 'signIn',
   fields: ['username', 'password']
 }, null, dispatch => ({
-  onSubmit: params => dispatch(actions.requestSignIn(params))
+  onSubmit: params => dispatch(actions.requestSignIn(params)),
+  onClickForgetPassword: () => dispatch(actions.openDialog('forgetPassword'))
 }))(SignIn)

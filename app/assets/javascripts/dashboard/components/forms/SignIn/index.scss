@@ -17,4 +17,14 @@
   &__button{
     margin-top: 34px;
   }
+  &__forget-password{
+    color: rgba(0,0,0,.87);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    line-height: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 14px;
+  }
 }

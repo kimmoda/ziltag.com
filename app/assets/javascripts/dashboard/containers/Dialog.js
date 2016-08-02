@@ -4,6 +4,7 @@ import PasswordForm from './forms/Password'
 import DomainForm from './forms/Domain'
 import SignIn from './forms/SignIn'
 import SignUp from './forms/SignUp'
+import ForgetPassword from './forms/ForgetPassword'
 import UpdateDomainForm from './forms/UpdateDomain'
 import DeleteWebsite from './DeleteWebsite'
 import * as actions from '../actions'
@@ -38,6 +39,10 @@ function nameToForm(name){
       return <InstallPlugin />
     case 'websiteAdvancedSetting':
       return <WebsiteAdvancedSetting />
+    case 'forgetPassword':
+      return <ForgetPassword />
+    case 'passwordResetSent':
+      return <DialogSuccess message="Email sent!"/>
     default:
       return null
   }
