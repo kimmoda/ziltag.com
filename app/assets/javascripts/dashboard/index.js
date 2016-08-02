@@ -9,6 +9,7 @@ import Verified from './components/pages/Verified'
 import Install from './components/pages/Install'
 import Explore from './components/pages/Explore'
 import Guide from './components/pages/Guide'
+import Password from './components/pages/Password'
 import * as reducers from './reducers'
 import DevTools from './containers/DevTools'
 import saga from './sagas'
@@ -71,6 +72,7 @@ ReactDOM.render(
           <Route path="account" component={Account} />
           <Route path="verify" component={Verify} />
           <Route path="verified" component={Verified} />
+          <Route path="password" component={Password} />
           <Route path="install" component={Install} />
           <Route path="explore" component={Explore} />
           <Route path="guide" component={Guide} />

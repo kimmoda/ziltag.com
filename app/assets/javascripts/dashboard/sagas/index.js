@@ -241,6 +241,21 @@ function* watchRequestUpdateCommentNotification(){
   yield* takeEvery(actionTypes.REQUEST_UPDATE_COMMENT_NOTIFICATION, requestUpdateCommentNotification)
 }
 
+function* requestResetPassword(action){
+  const {password, passwordConfirmation, resetPasswordToken} = action
+  const response = yield call(API.resetPassword, password, passwordConfirmation, resetPasswordToken)
+  if(response.errors)
+    yield put(actions.receiveResetPasswordError(response.errors))
+  else {
+    yield put(push('/dashboard/account'))
+    yield put(actions.me())
+  }
+}
+
+function* watchRequestResetPassword(){
+  yield* takeLatest(actionTypes.REQUEST_RESET_PASSWORD, requestResetPassword)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
@@ -261,6 +276,7 @@ export default function* root() {
     watchUpgradeUser(),
     watchRequestUpdateWebsitePermission(),
     watchRequestUpdateZiltagNotification(),
-    watchRequestUpdateCommentNotification()
+    watchRequestUpdateCommentNotification(),
+    watchRequestResetPassword()
   ]
 }

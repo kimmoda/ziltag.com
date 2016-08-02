@@ -141,3 +141,17 @@ export function updateCommentNotification(commentNotification){
     }
   `, {commentNotification})
 }
+
+export function resetPassword(password, passwordConfirmation, resetPasswordToken){
+  return api(
+    '/api/v2/reset_password',
+    {
+      method: 'PUT',
+      params: {
+        password,
+        password_confirmation: passwordConfirmation,
+        reset_password_token: resetPasswordToken
+      }
+    }
+  )
+}

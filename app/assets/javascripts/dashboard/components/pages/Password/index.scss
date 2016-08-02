@@ -1,0 +1,32 @@
+.ziltag-pages-password {
+  margin: 52px 60px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 61px;
+  font-family: 'Roboto', sans-serif;
+  &__title {
+    margin-top: 66px;
+    font-weight: 500;
+    font-size: 32.55px;
+    line-height: 38px;
+  }
+  &__form {
+    margin-top: 61px;
+    width: 380px;
+  }
+  &__field{
+    &:not(:first-child){
+      margin-top: 34px;
+    }
+  }
+  &__button{
+    margin-top: 38px;
+  }
+  &__error {
+    color: red;
+    font-size: 14px;
+    margin-top: 12px;
+  }
+}
