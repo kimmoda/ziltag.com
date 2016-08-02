@@ -22,13 +22,13 @@ export default props => (
       </li>
       <li className="ziltag-landing-footer__item">
         <Tracker event="footer_terms">
-          <a target="_blank" href="http://blog.ziltag.com/post/136853735385/terms-of-service">TERMS</a>
+          <a target="_blank" href="http://blog.ziltag.com/2016/08/02/term-of-service/">TERMS</a>
         </Tracker>
       </li>
       <li className="ziltag-landing-footer__item">
         <Tracker event="footer_privacy">
         </Tracker>
-        <a target="_blank" href="http://blog.ziltag.com/tagged/policy">PRIVACY</a>
+        <a target="_blank" href="http://blog.ziltag.com/2016/08/02/privacy-policy">PRIVACY</a>
       </li>
     </ul>
     <div className="ziltag-landing-footer__copyright">© Ziltag Inc., 2016. All Rights Reserved.</div>
