@@ -44,10 +44,10 @@ export default props => (
           <Tracker event="help"><a target="_blank" href="https://ziltag.zendesk.com/">HELP</a></Tracker>
         </li>
         <li className="ziltag-landing-cover__item">
-          <Tracker event="terms"><a target="_blank" href="http://blog.ziltag.com/post/136853735385/terms-of-service">TERMS</a></Tracker>
+          <Tracker event="terms"><a target="_blank" href="http://blog.ziltag.com/2016/08/02/term-of-service/">TERMS</a></Tracker>
         </li>
         <li className="ziltag-landing-cover__item">
-          <Tracker event="privacy"><a target="_blank" href="http://blog.ziltag.com/tagged/policy">PRIVACY</a></Tracker>
+          <Tracker event="privacy"><a target="_blank" href="http://blog.ziltag.com/2016/08/02/privacy-policy">PRIVACY</a></Tracker>
         </li>
       </ul>
       <div className="ziltag-landing-cover__copyright">© Ziltag Inc., 2016. All Rights Reserved. </div>

@@ -10,7 +10,7 @@ export default props => {
       <div className="ziltag-forms-upgrade__subtitle">Please provide your website URL for plugin to work. </div>
       <TextField style={{marginTop: 50}} placeholder="WEBSITE URL (ex. http://example.com)" {...url}/>
       <Button style={{marginTop: 46}}>Join</Button>
-      <div className="ziltag-forms-upgrade__footer">By joining Ziltag Partner, you agree to our <a href="http://blog.ziltag.com/post/136853735385/terms-of-service" target="_blank">term of use</a> and <a href="http://blog.ziltag.com/tagged/policy" target="_blank">privacy policy</a>.</div>
+      <div className="ziltag-forms-upgrade__footer">By joining Ziltag Partner, you agree to our <a href="http://blog.ziltag.com/2016/08/02/term-of-service/" target="_blank">term of use</a> and <a href="http://blog.ziltag.com/2016/08/02/privacy-policy" target="_blank">privacy policy</a>.</div>
       {error ? <div className="ziltag-forms-upgrade__error">{error}</div> : null}
     </form>
   )
