@@ -155,3 +155,14 @@ export function window(state={}, action){
       return state
   }
 }
+
+export function unsubscribe(state={subscribed: false, error: false}, action) {
+  switch (action.type) {
+  case actionTypes.RECEIVE_SUBSCRIBE:
+    return {...state, subscribed: true}
+  case actionTypes.RECEIVE_SUBSCRIBE_ERROR:
+    return {...state, error: action.error}
+  default:
+    return state
+  }
+}

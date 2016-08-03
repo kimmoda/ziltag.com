@@ -159,3 +159,7 @@ export function resetPassword(password, passwordConfirmation, resetPasswordToken
 export function forgetPassword(email){
   return api('/api/v2/password', {params: {email}})
 }
+
+export function subscribe(token){
+  return api('/api/v2/subscribe', {params: {token}})
+}

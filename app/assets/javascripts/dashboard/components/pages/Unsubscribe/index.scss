@@ -1,0 +1,46 @@
+.ziltag-pages-unsubscribe{
+  background-color: white;
+  margin: 0 65px;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, .87);
+  padding: 43px 150px;
+  &__title{
+    margin-top: 43px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  &__subtitle{
+    font-size: 14px;
+    line-height: 25px;
+  }
+  &__undo{
+    margin-top: 52px;
+    width: 298px;
+    height: 83px;
+    line-height: 83px;
+    background: #F9F9F9;
+    text-align: center;
+    font-size: 16px;
+  }
+  &__hr {
+    margin-top: 48px;
+    border-color: rgba(0,0,0,.12);
+  }
+  &__footer {
+    margin-top: 27px;
+    font-size: 12px;
+  }
+  &__undo-btn {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  &__back-account-btn {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  &__error{
+    color: red;
+    font-size: 12px;
+  }
+}
