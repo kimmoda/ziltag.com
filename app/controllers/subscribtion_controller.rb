@@ -3,8 +3,10 @@ class SubscribtionController < ApplicationController
     user_id, ziltag_id = Unsubscribe.verify params[:token]
     user = User.find(user_id)
     ziltag = Ziltag.find(ziltag_id)
+    p user, ziltag
     Unsubscribe.new(user, ziltag).call
-  rescue ActiveSupport::MessageVerifier::InvalidSignature, ActiveRecord::RecordNotFound
+    redirect_to "/dashboard/unsubscribe?token=#{params[:token]}"
+  rescue
     redirect_to root_path
   end
 end

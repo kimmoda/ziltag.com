@@ -19,6 +19,8 @@ class SendCommentNotification #:nodoc:
                                                               [],
                                                               message
   rescue
+    Rails.logger.error $!
+    Rails.logger.error $@.join($/)
     fail! $ERROR_INFO
   end
 
@@ -68,8 +70,15 @@ class SendCommentNotification #:nodoc:
       { name: 'ZILTAG_IMAGE', content: @ziltag.share_image_url },
       { name: 'ZILTAG_URL', content: ziltag_url },
       { name: 'CONTENT', content: @comment.content },
-      { name: 'TIME_AGO_IN_WORDS', content: time_ago }
+      { name: 'TIME_AGO_IN_WORDS', content: time_ago },
+      { name: 'UNSUBSCRIBE_URL', content: unsubscribe_url(user, @ziltag) }
     ]
+  end
+
+  def unsubscribe_url(user, ziltag)
+    token = Unsubscribe.new(user, ziltag).token
+    encoded_token = URI.encode_www_form_component(token)
+    "#{host}/unsubscribe?token=#{encoded_token}"
   end
 
   def time_ago
