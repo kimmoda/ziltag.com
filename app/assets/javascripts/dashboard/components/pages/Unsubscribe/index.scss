@@ -39,4 +39,8 @@
     text-decoration: underline;
     cursor: pointer;
   }
+  &__error{
+    color: red;
+    font-size: 12px;
+  }
 }

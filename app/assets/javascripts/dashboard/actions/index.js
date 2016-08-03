@@ -308,3 +308,23 @@ export function receiveForgetPasswordError(errors){
     error: errors[0].message
   }
 }
+
+export function requestSubscribe(token){
+  return {
+    type: actionTypes.REQUEST_SUBSCRIBE,
+    token
+  }
+}
+
+export function receiveSubscribe() {
+  return {
+    type: actionTypes.RECEIVE_SUBSCRIBE
+  }
+}
+
+export function receiveSubscribeError(errors) {
+  return {
+    type: actionTypes.RECEIVE_SUBSCRIBE_ERROR,
+    error: errors[0].message
+  }
+}

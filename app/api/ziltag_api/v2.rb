@@ -11,6 +11,26 @@ class ZiltagAPI # :nodoc:
       end
     end
 
+    desc 'subscribe ziltag notification'
+    params do
+      requires :token, type: String, allow_blank: false
+    end
+    post :subscribe do
+      begin
+        user_id, ziltag_id = Unsubscribe.verify params[:token]
+        user = User.find(user_id)
+        ziltag = Ziltag.find(ziltag_id)
+        subscribe = Subscribe.call(user, ziltag)
+        if subscribe.success?
+          {}
+        else
+          { errors: [{ message: subscribe[:error] }] }
+        end
+      rescue
+        { errors: [{ message: 'token not valid' }] }
+      end
+    end
+
     desc 'Sign user in'
     params do
       requires :sign_in, type: String, desc: 'email or username'
@@ -31,7 +51,7 @@ class ZiltagAPI # :nodoc:
           name: user.username
         }
       else
-        { errors: [message: authenticate_user[:error]] }
+        { errors: [{ message: authenticate_user[:error] }] }
       end
     end
 

@@ -266,6 +266,18 @@ function* watchRequestForgetPassword(){
   yield* takeLatest(actionTypes.REQUEST_FORGET_PASSWORD, requestForgetPassword)
 }
 
+function* requestSubscribe(action){
+  const response = yield call(API.subscribe, action.token)
+  if(response.errors)
+    yield put(actions.receiveSubscribeError(response.errors))
+  else
+    yield put(actions.receiveSubscribe())
+}
+
+function* watchRequestSubscribe(){
+  yield* takeLatest(actionTypes.REQUEST_SUBSCRIBE, requestSubscribe)
+}
+
 export default function* root() {
   yield [
     watchWindowMessage(),
@@ -288,6 +300,7 @@ export default function* root() {
     watchRequestUpdateZiltagNotification(),
     watchRequestUpdateCommentNotification(),
     watchRequestResetPassword(),
-    watchRequestForgetPassword()
+    watchRequestForgetPassword(),
+    watchRequestSubscribe()
   ]
 }
