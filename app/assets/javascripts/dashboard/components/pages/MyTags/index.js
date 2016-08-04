@@ -5,8 +5,15 @@ import './index.scss'
 import React from 'react'
 import Masonry from 'react-masonry-component'
 import { connect } from 'react-redux'
+import Spinner from 'Spinner'
 
 class MyTags extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {loaded: false}
+  }
+
   render () {
     const { ziltagMaps, onClickZiltagMap } = this.props
     const imageElements = ziltagMaps.map((ziltagMap)=>{
@@ -21,9 +28,13 @@ class MyTags extends React.Component {
         <PartnerNavBar/>
         <div className="ziltag-my-tags__body">
           <div className="ziltag-my-tags__title-bar">My images to tag</div>
+          {this.state.loaded || <div style={{width: 100, margin: '160px auto'}}><Spinner /></div>}
           <Masonry
             className="ziltag-my-tags__images-container"
-            options={{columnWidth: 253}}>
+            options={{columnWidth: 253}}
+            style={{display: this.state.loaded ? 'inherit' : 'none'}}
+            onImagesLoaded={_=>this.setState({loaded: true})}
+            >
             {imageElements}
           </Masonry>
         </div>
