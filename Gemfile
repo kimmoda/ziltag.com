@@ -26,6 +26,7 @@ gem 'grape'
 gem 'gibbon'
 gem 'mandrill-api', require: 'mandrill'
 gem 'interactor2'
+gem 'flowdock'
 
 group :development do
   gem 'capistrano'
