@@ -1,19 +1,11 @@
 module Admin
   class ContentProvidersController < Admin::ApplicationController
-    # To customize the behavior of this controller,
-    # simply overwrite any of the RESTful actions. For example:
-    #
-    # def index
-    #   super
-    #   @resources = ContentProvider.all.paginate(10, params[:page])
-    # end
-
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   ContentProvider.find_by!(slug: param)
-    # end
-
-    # See https://administrate-docs.herokuapp.com/customizing_controller_actions
-    # for more information
+    def order
+      if params[:order] && params[:direction]
+        super
+      else
+        Administrate::Order.new(:id, :desc)
+      end
+    end
   end
 end
