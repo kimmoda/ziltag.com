@@ -61,7 +61,7 @@ class ZiltagAPI # :nodoc:
       {}
     end
 
-    desc 'Crete Password Reset Request'
+    desc 'Create Password Reset Request'
     params do
       requires :email, type: String, allow_blank: false
     end
