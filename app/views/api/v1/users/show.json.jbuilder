@@ -3,4 +3,5 @@ json.usr do
   json.avatar @user.avatar.thumb.url
   json.confirmed @user.confirmed?
   json.email @user.email
+  json.permissions @permissions
 end

@@ -7,16 +7,14 @@ class GetUserPermissions < Interactor2 #:nodoc:
                                .map! { |pair| "#{pair.first}_#{pair.last}" }
                                .freeze
 
-  def initialize(user, token)
+  def initialize(user, box)
     @user = user
-    @token = token
+    @box = box
     @permissions = DEFAULT_PERMISSIONS.dup
   end
 
   def perform
-    box = Box.find_by(token: @token)
-    fail! 'toke not found' if box.nil?
-    if box.restricted && @user != box.user
+    if @box.restricted && @user != @box.user
       @permissions -= %w(create_ziltag update_ziltag delete_ziltag)
     end
   end
