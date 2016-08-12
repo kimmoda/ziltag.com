@@ -44,9 +44,9 @@ export const form = formReducer.plugin({
       return state
     }
   },
-  forgetPassword: (state, action) => {
+  forgotPassword: (state, action) => {
     switch (action.type) {
-    case actionTypes.RECEIVE_FORGET_PASSWORD_ERROR:
+    case actionTypes.RECEIVE_FORGOT_PASSWORD_ERROR:
       return {...state, _error: action.error}
     default:
       return state

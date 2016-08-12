@@ -295,16 +295,16 @@ export function receiveResetPasswordError(errors){
   }
 }
 
-export function requestForgetPassword(email){
+export function requestForgotPassword(email){
   return {
-    type: actionTypes.REQUEST_FORGET_PASSWORD,
+    type: actionTypes.REQUEST_FORGOT_PASSWORD,
     email
   }
 }
 
-export function receiveForgetPasswordError(errors){
+export function receiveForgotPasswordError(errors){
   return {
-    type: actionTypes.RECEIVE_FORGET_PASSWORD_ERROR,
+    type: actionTypes.RECEIVE_FORGOT_PASSWORD_ERROR,
     error: errors[0].message
   }
 }

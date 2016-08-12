@@ -156,7 +156,7 @@ export function resetPassword(password, passwordConfirmation, resetPasswordToken
   )
 }
 
-export function forgetPassword(email){
+export function forgotPassword(email){
   return api('/api/v2/password', {params: {email}})
 }
 
