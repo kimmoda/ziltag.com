@@ -4,7 +4,7 @@ import Button from '../../Button'
 import './index.scss'
 
 export default props => {
-  const {fields: {username, password}, handleSubmit, error, onClickForgetPassword} = props
+  const {fields: {username, password}, handleSubmit, error, onClickForgotPassword} = props
   return (
     <form className="ziltag-form-sign-in" onSubmit={handleSubmit}>
       <div className="ziltag-form-sign-in__fields">
@@ -15,7 +15,7 @@ export default props => {
           <Field required placeholder="PASSWORD" type="password" {...password}/>
         </div>
       </div>
-      <div className="ziltag-form-sign-in__forget-password" onClick={onClickForgetPassword}>Forget Password</div>
+      <div className="ziltag-form-sign-in__forgot-password" onClick={onClickForgotPassword}>Forgot Password</div>
       <div className="ziltag-form-sign-in__button">
         <div className="ziltag-form-sign-in__error">{error}</div>
         <Button>SIGN IN</Button>
