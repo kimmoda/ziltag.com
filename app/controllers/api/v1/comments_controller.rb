@@ -18,6 +18,7 @@ class Api::V1::CommentsController < ApiController
 
   def update
     if @comment.update comment_params
+      NotifySSE.perform(:update, @comment)
       render :show
     else
       render json: {errors: @comment.errors.full_messages}
@@ -26,6 +27,7 @@ class Api::V1::CommentsController < ApiController
 
   def destroy
     @comment.destroy
+    NotifySSE.perform(:delete, @comment)
     head :no_content
   end
 

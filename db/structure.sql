@@ -280,6 +280,37 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: sse_notifications; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sse_notifications (
+    id integer NOT NULL,
+    body json NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sse_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sse_notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sse_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sse_notifications_id_seq OWNED BY sse_notifications.id;
+
+
+--
 -- Name: tracks; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -465,6 +496,13 @@ ALTER TABLE ONLY queue_classic_jobs ALTER COLUMN id SET DEFAULT nextval('queue_c
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY sse_notifications ALTER COLUMN id SET DEFAULT nextval('sse_notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
 
 
@@ -519,6 +557,14 @@ ALTER TABLE ONLY photos
 
 ALTER TABLE ONLY queue_classic_jobs
     ADD CONSTRAINT queue_classic_jobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sse_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sse_notifications
+    ADD CONSTRAINT sse_notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -904,4 +950,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160711040036');
 INSERT INTO schema_migrations (version) VALUES ('20160724045410');
 
 INSERT INTO schema_migrations (version) VALUES ('20160731131546');
+
+INSERT INTO schema_migrations (version) VALUES ('20160813135507');
 

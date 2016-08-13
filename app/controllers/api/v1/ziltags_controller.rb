@@ -31,6 +31,7 @@ class Api::V1::ZiltagsController < ApiController
 
   def update
     if @ziltag.update ziltag_params
+      NotifySSE.perform(:update, @ziltag)
       render :show
     else
       render json: {errors: @ziltag.errors.full_messages}
@@ -39,6 +40,7 @@ class Api::V1::ZiltagsController < ApiController
 
   def destroy
     @ziltag.destroy
+    NotifySSE.perform(:delete, @ziltag)
     head :no_content
   end
 
