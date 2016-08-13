@@ -18,6 +18,7 @@ class CreateZiltag
     end
 
     if ziltag.save
+      NotifySSE.perform(:create, ziltag)
       if owner.ziltag_notification?
         unless ziltag.user == owner || ziltag.unsubscribers.include?(owner.id)
           SendZiltagNotificationJob.perform_later(ziltag)

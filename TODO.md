@@ -1,0 +1,77 @@
+- [x] general user feedback email
+- [x] zopim API integration
+- [x] user upgrading
+- [x] zopim fetching
+- [x] Enable/disable user tagging
+- [x] Tracking on new landing page and blog
+
+- [x] Flowdock integration
+- [x] default ordering of User and ContentProvider in admin panel
+- [x] show spinner while loading images in dashboard home
+- [x] fix links in landing page
+- [x] track visit-home
+- [x] API doc: forgot password
+- [x] access control
+- [x] notification settings
+  - [x] backend logic
+  - [x] dashboard view
+- [x] password recovery
+- [x] comment email: button to unsubscribe
+- [x] unsubscribe successfully page
+
+- [ ] API: add permission information in to /me
+- [ ] typo: forgot -> forgot
+
+- Hardening (proxy, backend)
+  - SSE refactor, there is a limitation of 1000 concurrency
+    - [ ] replace thin with goliath
+    - [ ] make up the abuse of PostgreSQL notify
+  - code cleaning, remove useless/legacy codes
+    - [ ] routing
+    - [ ] models
+    - [ ] views
+    - [ ] controllers
+    - [ ] lib
+    - [ ] test
+    - [ ] Gemfile
+  - database/code renaming
+    - [ ] ContentProvicer -> Partner
+    - [ ] Box -> Website
+    - [ ] slug -> natural_id (since slug should be human-readable)
+  - API refactor
+    - [ ] graphql error message handling
+    - [ ] test
+    - [ ] reducing executor, ref: https://github.com/graphql/graphql-js/issues/26
+  - [ ] integrate Docker
+  - [ ] integrate interactor2
+  - Front-end
+    - [ ] combine landing page and dashboard
+    - [ ] refactor react-router
+    - [ ] separate component and container
+    - [ ] rename box/domain to website
+    - [ ] data fetching per page
+    - [ ] integrate css-module
+- [ ] Dashboard rest
+
+- [ ] i18n
+- [ ] Switch to enable/disable Ziltag on specific images
+- [ ] Permalink share
+- [ ] Basic analytics platform
+
+- [ ] Ziltag on iOS
+- [ ] Ziltag on Android
+- [ ] Tracking on plugin/reader
+- [ ] Advanced analytics platform
+- [ ] More digital content support (links, vimeo, etc).
+- [ ] Embed entire webpage/blog post on single tag.
+- [ ] Tag embedding via share (as Thinglink does—hit the play video button and all tags appear)
+- [ ] [Platform support] Blogger (widget)
+- [ ] [Platform support] Wix
+- [ ] [Platform support] Squarespace
+- [ ] [Platform support] Shopify
+- [ ] Push notification of mobile
+- [ ] Search engine/ be able to use old tag
+- [ ] Dev page
+- [ ] Recommendation system
+- [ ] Animation
+- [ ] Chrome extension

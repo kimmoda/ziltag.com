@@ -19,45 +19,9 @@ class Comment < ActiveRecord::Base
   validates :content, length: { maximum: 5000 }
 
   # callbacks
-  after_create :notify_create
-  after_update :notify_update, if: :content_changed?
-  after_destroy :notify_destroy
 
   # other
   def to_s
     content
   end
-
-private
-
-  def notify_stream action, payload
-    Ziltag.connection.execute "NOTIFY #{action}_comment, '#{payload.to_json.gsub("'", "''")}'"
-  end
-
-  def notify_create
-    notify_stream :create, sse_json
-  end
-
-  def notify_update
-    notify_stream :update, sse_json
-  end
-
-  def sse_json
-    {
-      _slug: ziltag.slug,
-      ziltag_id: ziltag.slug,
-      id: id,
-      content: content,
-      created_at: created_at,
-      usr: {
-        avatar: user.avatar.thumb.url,
-        name: user.username
-      }
-    }
-  end
-
-  def notify_destroy
-    notify_stream 'delete', {_slug: ziltag.slug, id: id}
-  end
-
 end

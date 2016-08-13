@@ -9,6 +9,7 @@ class CreateComment
   def call
     ActiveRecord::Base.transaction do
       if @comment.save
+        NotifySSE.perform(:create, @comment)
         Subscribe.call(@user, @comment.ziltag)
         if @comment.user.confirmed?
           SendCommentNotificationJob.perform_later(@comment)

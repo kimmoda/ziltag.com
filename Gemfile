@@ -48,6 +48,5 @@ group :test do
 end
 
 group :sse do
-  gem 'thin'
-  gem 'sinatra'
+  gem 'goliath'
 end
