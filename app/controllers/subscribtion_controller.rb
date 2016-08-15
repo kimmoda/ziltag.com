@@ -3,7 +3,6 @@ class SubscribtionController < ApplicationController
     user_id, ziltag_id = Unsubscribe.verify params[:token]
     user = User.find(user_id)
     ziltag = Ziltag.find(ziltag_id)
-    p user, ziltag
     Unsubscribe.new(user, ziltag).call
     redirect_to "/dashboard/unsubscribe?token=#{params[:token]}"
   rescue
