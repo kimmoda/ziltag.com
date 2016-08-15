@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class PhotoJobTest < ActiveJob::TestCase
@@ -35,5 +36,4 @@ class PhotoJobTest < ActiveJob::TestCase
     PhotoJob.perform_now photo, source
     refute photo.persisted?
   end
-
 end

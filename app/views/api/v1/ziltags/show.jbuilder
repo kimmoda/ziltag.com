@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 json.id @ziltag.slug
 json.map_id @ziltag.photo.slug
 json.content @ziltag.content

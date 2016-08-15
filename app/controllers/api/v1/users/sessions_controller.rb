@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::Users::SessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token
   before_action :set_headers
@@ -10,11 +11,11 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
       sign_in(@user)
       render
     else
-      render json: {error: authenticate_user[:error]}
+      render json: { error: authenticate_user[:error] }
     end
   end
 
-private
+  private
 
   def set_headers
     headers['Access-Control-Allow-Credentials'] = 'true'

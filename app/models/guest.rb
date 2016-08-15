@@ -1,9 +1,12 @@
+# frozen_string_literal: true
 class Guest
   attr_accessor :email, :username, :url
   attr_reader :user, :box
 
   def initialize(email: nil, username: nil, url: nil)
-    @email, @username, @url = email, username, url
+    @email = email
+    @username = username
+    @url = url
     @user = ContentProvider.new(email: email, username: username, url: url)
     @box = Box.new(url: url)
   end

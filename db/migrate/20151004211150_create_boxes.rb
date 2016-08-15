@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateBoxes < ActiveRecord::Migration
   def change
     create_table :boxes do |t|

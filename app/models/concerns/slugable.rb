@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Slugable
   extend ActiveSupport::Concern
 
@@ -11,5 +12,4 @@ module Slugable
       break unless self.class.exists? slug: slug
     end
   end
-
 end

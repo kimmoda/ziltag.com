@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -6,7 +7,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_database_authentication(sign_in: nil, username: nil, email: nil, **conditions)
     if sign_in
-      where(conditions).where(["lower(username) = lower(:value) OR lower(email) = :value", { :value => sign_in.downcase }]).first
+      where(conditions).where(['lower(username) = lower(:value) OR lower(email) = :value', { value: sign_in.downcase }]).first
     elsif username || email
       where(conditions).first
     end
@@ -25,14 +26,14 @@ class User < ActiveRecord::Base
   has_many :photos, through: :boxes, dependent: :destroy
 
   # validations
-  validates :username, uniqueness: {case_sensitive: false}, format: {with: /\A\w+\z/}, length: {maximum: 30, minimum: 6}, allow_nil: true
+  validates :username, uniqueness: { case_sensitive: false }, format: { with: /\A\w+\z/ }, length: { maximum: 30, minimum: 6 }, allow_nil: true
   validates :username, presence: true, if: :general_user?
 
   # callbacks
 
   # other
 
-  def own? record
+  def own?(record)
     record.respond_to?(:user) && record.user == self
   end
 

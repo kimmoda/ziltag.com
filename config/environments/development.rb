@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -15,7 +16,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {host: 'ziltag.dev'}
+  config.action_mailer.default_url_options = { host: 'ziltag.dev' }
 
   # There is a free hinet SMTP server, it's convenient for testing stylesheets
   # in web mails like GMail, Yahoo, etc.

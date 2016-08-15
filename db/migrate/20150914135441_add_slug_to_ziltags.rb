@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddSlugToZiltags < ActiveRecord::Migration
   def change
     add_column :ziltags, :slug, :string

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateZiltaggings < ActiveRecord::Migration
   def change
     create_table :ziltaggings do |t|

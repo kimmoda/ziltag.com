@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateCollectings < ActiveRecord::Migration
   def change
     create_table :collectings do |t|

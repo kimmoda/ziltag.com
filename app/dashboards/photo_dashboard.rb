@@ -1,4 +1,5 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+require 'administrate/base_dashboard'
 
 class PhotoDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -19,8 +20,8 @@ class PhotoDashboard < Administrate::BaseDashboard
     box: Field::BelongsTo,
     ziltags: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-  }
+    updated_at: Field::DateTime
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -31,8 +32,8 @@ class PhotoDashboard < Administrate::BaseDashboard
     :id,
     :image,
     :href,
-    :ziltags,
-  ]
+    :ziltags
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -46,6 +47,6 @@ class PhotoDashboard < Administrate::BaseDashboard
     :source,
     :href,
     :box,
-    :ziltags,
-  ]
+    :ziltags
+  ].freeze
 end

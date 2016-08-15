@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 module ServiceURLConverter
   class UnknownPlatform < StandardError; end
   class BlankBlogID < StandardError; end
 
-  def self.convert params
+  def self.convert(params)
     raise BlankBlogID if params[:platform] != 'general' && params[:blog_id].blank?
     case params[:platform]
     when 'general' then params[:url]

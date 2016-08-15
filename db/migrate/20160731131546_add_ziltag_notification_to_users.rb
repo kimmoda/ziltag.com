@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddZiltagNotificationToUsers < ActiveRecord::Migration
   def change
     add_column :users, :ziltag_notification, :boolean, null: false, default: true

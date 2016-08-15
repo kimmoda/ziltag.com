@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V2::GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
   def execute
@@ -18,8 +19,8 @@ class Api::V2::GraphqlController < ApplicationController
   rescue
     headers['Access-Control-Allow-Credentials'] = 'true'
     headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
-    Rails.logger.error $!.to_s
-    Rails.logger.error $@.join($/)
-    render json: {errors: [{message: $!.to_s}]}
+    Rails.logger.error $ERROR_INFO.to_s
+    Rails.logger.error $ERROR_POSITION.join($INPUT_RECORD_SEPARATOR)
+    render json: { errors: [{ message: $ERROR_INFO.to_s }] }
   end
 end

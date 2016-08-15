@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_headers
@@ -5,22 +6,21 @@ class ApiController < ApplicationController
 
   rescue_from Exception do |exception|
     Rails.logger.error exception.to_s
-    Rails.logger.error exception.backtrace.join($/)
-    render json: {error: exception.to_s}, status: 200
+    Rails.logger.error exception.backtrace.join($INPUT_RECORD_SEPARATOR)
+    render json: { error: exception.to_s }, status: 200
   end
 
   def options
     headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
     headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
-    headers['Access-Control-Max-Age'] = "1728000"
+    headers['Access-Control-Max-Age'] = '1728000'
     head 200
   end
 
-private
+  private
 
   def set_headers
     headers['Access-Control-Allow-Credentials'] = 'true'
     headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
   end
-
 end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddHasCreatedFirstZiltagToUsers < ActiveRecord::Migration
   def change
     add_column :users, :has_created_first_ziltag, :boolean, default: false

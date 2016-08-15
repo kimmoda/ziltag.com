@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # https://github.com/bblimke/webmock
 module StubRequests
   def stub_request_for_image
@@ -5,7 +6,7 @@ module StubRequests
       .to_return(
         body: File.new(Rails.root.join('test', 'fixtures', 'images', '1.jpg')),
         status: 200,
-        headers: {'Content-Type' => 'image/jpeg'}
+        headers: { 'Content-Type' => 'image/jpeg' }
       )
   end
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 json.id ziltag.slug
 json.x ziltag.x.to_f
 json.y ziltag.y.to_f

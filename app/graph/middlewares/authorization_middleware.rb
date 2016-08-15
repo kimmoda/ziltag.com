@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class AuthorizationMiddleware
-  def call(parent_type, parent_object, field_definition, field_args, query_context, next_middleware)
+  def call(parent_type, _parent_object, field_definition, field_args, query_context, next_middleware)
     case parent_type
     when MutationType
       current_user = query_context[:current_user]

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ZiltagMapType = GraphQL::ObjectType.define do
   name 'ZiltagMap'
   description 'A ziltag map entry'
@@ -7,10 +8,10 @@ ZiltagMapType = GraphQL::ObjectType.define do
   field :href, !types.String
   field :id, !types.String, property: :slug
   field :src, !types.String do
-    resolve ->(obj, args, ctx){ obj&.image&.default&.url }
+    resolve ->(obj, _args, _ctx) { obj&.image&.default&.url }
   end
   field :ziltags, types[!ZiltagType]
   field :website, WebsiteType do
-    resolve ->(obj, _args, _ctx){ obj.box }
+    resolve ->(obj, _args, _ctx) { obj.box }
   end
 end

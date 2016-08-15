@@ -1,7 +1,12 @@
+# frozen_string_literal: true
 class CreateZiltag
   include Interactor
-  def initialize user, map_id, x, y, content
-    @user, @map_id, @x, @y, @content = user, map_id, x, y, content
+  def initialize(user, map_id, x, y, content)
+    @user = user
+    @map_id = map_id
+    @x = x
+    @y = y
+    @content = content
   end
 
   def call

@@ -19,9 +19,7 @@ class PartnerSignUp #:nodoc:
         SendWelcomeEmailJob.perform_later(@user)
         SubscribeNewsletterJob.perform_later(@user)
         SendNurtureEmailJob.set(wait: 1.week).perform_later(@user)
-        if Rails.env.production?
-          NotifyFlowdockOfSignUpJob.perform_later(@user)
-        end
+        NotifyFlowdockOfSignUpJob.perform_later(@user) if Rails.env.production?
       else
         raise ActiveRecord::Rollback
       end

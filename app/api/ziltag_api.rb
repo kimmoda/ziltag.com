@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 class ZiltagAPI < Grape::API
-  error_formatter :json, ->(message, backtrace, options, env) {
-    {errors: [{message: message}]}.to_json
+  error_formatter :json, ->(message, _backtrace, _options, _env) {
+    { errors: [{ message: message }] }.to_json
   }
 
-  rescue_from Grape::Exceptions::ValidationErrors do |e, b|
+  rescue_from Grape::Exceptions::ValidationErrors do |e, _b|
     headers = {
       'Access-Control-Allow-Credentials' => 'true',
       'Access-Control-Allow-Origin' => env['HTTP_ORIGIN'] || '*'

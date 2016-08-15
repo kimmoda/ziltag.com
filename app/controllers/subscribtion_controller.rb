@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SubscribtionController < ApplicationController
   def unsubscribe
     user_id, ziltag_id = Unsubscribe.verify params[:token]

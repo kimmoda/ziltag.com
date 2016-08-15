@@ -1,4 +1,5 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+require 'administrate/base_dashboard'
 
 class BoxDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -14,8 +15,8 @@ class BoxDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     photos: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-  }
+    updated_at: Field::DateTime
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -27,8 +28,8 @@ class BoxDashboard < Administrate::BaseDashboard
     :token,
     :url,
     :user,
-    :photos,
-  ]
+    :photos
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -41,6 +42,6 @@ class BoxDashboard < Administrate::BaseDashboard
     :token,
     :url,
     :user,
-    :photos,
-  ]
+    :photos
+  ].freeze
 end

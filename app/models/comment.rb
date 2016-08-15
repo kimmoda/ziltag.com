@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 class Comment < ActiveRecord::Base
   include Confirmable
   # scopes
-  default_scope ->{ order('comments.id desc') }
+  default_scope -> { order('comments.id desc') }
 
   # constants
 
@@ -11,8 +12,8 @@ class Comment < ActiveRecord::Base
   # associations
   belongs_to :user
   belongs_to :ziltag
-  has_many :siblings, ->(comment){ where.not(id: comment.id) }, through: :ziltag, source: :comments
-  has_many :sibling_commenters, ->(comment){ where.not('users.id': comment.user_id) }, through: :siblings, source: :user
+  has_many :siblings, ->(comment) { where.not(id: comment.id) }, through: :ziltag, source: :comments
+  has_many :sibling_commenters, ->(comment) { where.not('users.id': comment.user_id) }, through: :siblings, source: :user
 
   # validations
   validates :ziltag, :user, :content, presence: true

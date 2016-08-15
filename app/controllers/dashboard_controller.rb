@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class DashboardController < ApplicationController
   def index
     if request.path.start_with?('/dashboard') &&

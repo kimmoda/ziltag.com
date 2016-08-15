@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CorrectPhotosIndex < ActiveRecord::Migration
   def up
     remove_index :photos, :href
@@ -7,7 +8,7 @@ class CorrectPhotosIndex < ActiveRecord::Migration
 
   def down
     remove_index :photos, [:source, :href]
-    add_index :photos, :href, name: "index_photos_on_href", using: :btree
-    add_index :photos, :source, name: "index_photos_on_source", unique: true, using: :btree
+    add_index :photos, :href, name: 'index_photos_on_href', using: :btree
+    add_index :photos, :source, name: 'index_photos_on_source', unique: true, using: :btree
   end
 end

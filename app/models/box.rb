@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 require 'tumblr_identifier'
 class Box < ActiveRecord::Base
-  BLOGSPOT_DOMAINS = %w[com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug].map!{|c| 'blogspot.' + c}.freeze
+  BLOGSPOT_DOMAINS = %w(com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug).map! { |c| 'blogspot.' + c }.freeze
   PLATFORMS = {
     'tumblr.com' => 'tumblr',
     'wordpress.com' => 'wordpress',
     'logdown.com' => 'logdown',
     'pixnet.net' => 'pixnet',
     'blog.xuite.net' => 'xuite',
-    BLOGSPOT_DOMAINS => 'blogger',
-  }
+    BLOGSPOT_DOMAINS => 'blogger'
+  }.freeze
   DOMAIN_REGEX = /\A[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}\z/i
 
   # scopes
@@ -63,7 +63,7 @@ class Box < ActiveRecord::Base
     service || 'general'
   end
 
-  def match_href? href
+  def match_href?(href)
     case service
     when 'blogger'
       URI(href).host.split('.').first == host_name.split('.').first
@@ -80,10 +80,9 @@ class Box < ActiveRecord::Base
 
   def url_must_be_valid
     case url
-    when URI.regexp(%w[http https]), DOMAIN_REGEX, nil
+    when URI.regexp(%w(http https)), DOMAIN_REGEX, nil
     else
       errors.add(:url, I18n.t('activerecord.errors.models.box.attributes.url.invalid'))
     end
   end
-
 end

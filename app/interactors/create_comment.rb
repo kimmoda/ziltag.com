@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 class CreateComment
   include Interactor
 
-  def initialize user, comment_params
+  def initialize(user, comment_params)
     @user = user
     @comment = Comment.new comment_params.merge(user: user)
   end
@@ -21,5 +22,4 @@ class CreateComment
     end
     fail! @comment.errors.full_messages.first unless @comment.valid?
   end
-
 end

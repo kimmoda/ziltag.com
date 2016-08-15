@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 module Recognizers
   class YouTube
     attr_reader :video_id
-    def initialize content
+    def initialize(content)
       @content = content
       @video_id = content[%r{www\.youtube\.com/watch\?v=([\w-]+)}, 1] || content[%r{youtu\.be/([\w-]+)}, 1]
     end

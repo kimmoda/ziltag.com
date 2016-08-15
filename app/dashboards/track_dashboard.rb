@@ -1,4 +1,5 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+require 'administrate/base_dashboard'
 
 class TrackDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,8 +14,8 @@ class TrackDashboard < Administrate::BaseDashboard
     token: Field::String,
     status: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-  }
+    updated_at: Field::DateTime
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -25,8 +26,8 @@ class TrackDashboard < Administrate::BaseDashboard
     :id,
     :event,
     :token,
-    :status,
-  ]
+    :status
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -38,8 +39,8 @@ class TrackDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :event,
     :token,
-    :status,
-  ]
+    :status
+  ].freeze
 
   # Overwrite this method to customize how tracks are displayed
   # across all pages of the admin dashboard.

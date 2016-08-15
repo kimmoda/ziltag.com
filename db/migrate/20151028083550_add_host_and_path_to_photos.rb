@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddHostAndPathToPhotos < ActiveRecord::Migration
   def change
     add_column :photos, :host, :string

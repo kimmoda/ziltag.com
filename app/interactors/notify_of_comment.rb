@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 class NotifyOfComment
   include Interactor
 
-  def initialize comment
+  def initialize(comment)
     @comment = comment
     @comment_author = comment.user
     @sibling_commenters = @comment.sibling_commenters.to_a

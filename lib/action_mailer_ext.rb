@@ -1,11 +1,11 @@
+# frozen_string_literal: true
 module ActionMailerExt
-  def render_inline_css *args, &block
+  def render_inline_css(*args, &block)
     premailer = Premailer.new(render_to_string(*args, &block),
-      with_html_string: true,
-      remove_classes: true,
-      css_string: css_string,
-      remove_scripts: false
-    )
+                              with_html_string: true,
+                              remove_classes: true,
+                              css_string: css_string,
+                              remove_scripts: false)
     render html: premailer.to_inline_css.html_safe
   end
 

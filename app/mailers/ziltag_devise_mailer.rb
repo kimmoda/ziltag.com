@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ZiltagDeviseMailer < Devise::Mailer
   layout 'mailer'
 
@@ -26,11 +27,10 @@ class ZiltagDeviseMailer < Devise::Mailer
 
   private
 
-  def confirmation_template user
+  def confirmation_template(user)
     case user
     when ContentProvider then :confirmation_instructions_for_partner
     else :confirmation_instructions_for_user
     end
   end
-
 end

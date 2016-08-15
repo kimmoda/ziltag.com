@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RedesignPhotos < ActiveRecord::Migration
   def change
     change_column_null :photos, :user_id, true
@@ -6,8 +7,8 @@ class RedesignPhotos < ActiveRecord::Migration
     add_reference :ziltaggings, :photo, index: true, foreign_key: true
     add_reference :comments, :photo, index: true, foreign_key: true
 
-    Photo.find_each{ |photo| photo.update_column :source, photo.read_attribute_before_type_cast(:url) } if Photo.const_defined? :Photo
-    Ziltagging.find_each{ |ziltagging| ziltagging.update_column :photo_id, Photo.find_by!(url: ziltagging.read_attribute_before_type_cast(:image_url)).id } if Object.const_defined? :Ziltagging
+    Photo.find_each { |photo| photo.update_column :source, photo.read_attribute_before_type_cast(:url) } if Photo.const_defined? :Photo
+    Ziltagging.find_each { |ziltagging| ziltagging.update_column :photo_id, Photo.find_by!(url: ziltagging.read_attribute_before_type_cast(:image_url)).id } if Object.const_defined? :Ziltagging
     Comment.find_each { |comment| comment.update_column :photo_id, Photo.find_by!(url: comment.read_attribute_before_type_cast(:image_url)).id } if Comment.const_defined? :Comment
 
     change_column_null :ziltaggings, :photo_id, false
@@ -17,5 +18,4 @@ class RedesignPhotos < ActiveRecord::Migration
     remove_column :ziltaggings, :image_url, :string, null: false
     remove_column :comments, :image_url, :string, null: false
   end
-
 end

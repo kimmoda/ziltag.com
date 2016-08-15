@@ -1,8 +1,10 @@
+# frozen_string_literal: true
 class Subscribe
   include Interactor
 
-  def initialize user, ziltag
-    @user, @ziltag = user, ziltag
+  def initialize(user, ziltag)
+    @user = user
+    @ziltag = ziltag
   end
 
   def call

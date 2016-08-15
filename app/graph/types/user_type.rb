@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 UserType = GraphQL::ObjectType.define do
   name 'User'
   description 'A user entry'
@@ -7,22 +8,22 @@ UserType = GraphQL::ObjectType.define do
   field :ziltagNotification, !types.Boolean, property: :ziltag_notification?
   field :commentNotification, !types.Boolean, property: :comment_notification?
   field :avatar, !types.String, 'The avatar URL of this user' do
-    resolve ->(obj, args, ctx){ obj.avatar.thumb.url }
+    resolve ->(obj, _args, _ctx) { obj.avatar.thumb.url }
   end
   field :confirmed, !types.Boolean, 'This user is verified or not', property: :confirmed?
   field :email, !types.String, "User's email"
-  field :ziltags, ->{ types[!ZiltagType] } do
+  field :ziltags, -> { types[!ZiltagType] } do
     argument :page, types.Int, default_value: 1
-    resolve ->(obj, args, _ctx){ obj.ziltags.page(args[:page]) }
+    resolve ->(obj, args, _ctx) { obj.ziltags.page(args[:page]) }
   end
-  field :comments, ->{ types[!CommentType] } do
+  field :comments, -> { types[!CommentType] } do
     argument :page, types.Int, default_value: 1
-    resolve ->(obj, args, _ctx){ obj.comments.page(args[:page]) }
+    resolve ->(obj, args, _ctx) { obj.comments.page(args[:page]) }
   end
-  field :website, ->{ WebsiteType } do
-    resolve ->(obj, _args, _ctx){ obj.boxes.first }
+  field :website, -> { WebsiteType } do
+    resolve ->(obj, _args, _ctx) { obj.boxes.first }
   end
-  field :websites, ->{ types[!WebsiteType] } do
-    resolve ->(obj, _args, _ctx){ obj.boxes.includes(ziltags: :user, comments: :user) }
+  field :websites, -> { types[!WebsiteType] } do
+    resolve ->(obj, _args, _ctx) { obj.boxes.includes(ziltags: :user, comments: :user) }
   end
 end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RedesignComments < ActiveRecord::Migration
   def change
     change_table :comments do |t|

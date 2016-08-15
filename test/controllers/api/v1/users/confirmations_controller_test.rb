@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class Api::V1::Users::ConfirmationsControllerTest < ActionController::TestCase
   def setup
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
   def test_resend_confirmation

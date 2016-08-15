@@ -1,10 +1,12 @@
+# frozen_string_literal: true
 class Unsubscribe
-  def self.verify token
+  def self.verify(token)
     Rails.application.message_verifier(:unsubscribe).verify(token)
   end
 
-  def initialize user, ziltag
-    @user, @ziltag = user, ziltag
+  def initialize(user, ziltag)
+    @user = user
+    @ziltag = ziltag
   end
 
   def token
