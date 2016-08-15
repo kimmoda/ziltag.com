@@ -13,22 +13,7 @@ Rails.application.routes.draw do
 
   get :unsubscribe, controller: :subscribtion
 
-  controller :pages do
-    get :username, :platform, :install
-    post :username, action: 'update_username'
-    post :platform, action: 'update_platform'
-    post :register
-  end
-
-  controller :upgrade do
-    get :upgrade, action: :show
-    post :upgrade
-  end
-
   devise_for :users, controllers: { confirmations: 'confirmations', registrations: 'registrations', passwords: 'passwords' }
-  devise_scope :user do
-    patch 'confirm' => 'confirmations#confirm'
-  end
 
   match '/api/:version/*path' => 'api#options', via: 'options'
   namespace :api, format: false, defaults: { format: 'json' } do
