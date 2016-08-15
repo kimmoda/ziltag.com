@@ -12,4 +12,4 @@ class ActiveSupport::TestCase
   include StubRequests
 end
 
-ActionController::TestCase.include(Devise::TestHelpers)
+ActionController::TestCase.include(Devise::Test::ControllerHelpers)
