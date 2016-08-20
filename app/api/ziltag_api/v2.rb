@@ -112,14 +112,14 @@ class ZiltagAPI # :nodoc:
       requires :password_confirmation, type: String, allow_blank: false
     end
     post :verify do
-      verify_user = VerifyUser.call(
+      verify_user = VerifyUser.perform(
         params[:confirmation_token],
         params[:password],
         params[:password_confirmation]
       )
       if verify_user.success?
-        user = verify_user[:user]
-        warden.set_user(verify_user[:user], scope: :user)
+        user = verify_user.user
+        warden.set_user(user, scope: :user)
         {
           id: user.id,
           avatar: user.avatar.thumb.url,
@@ -128,7 +128,7 @@ class ZiltagAPI # :nodoc:
           name: user.username
         }
       else
-        { errors: [message: verify_user[:error]] }
+        { errors: [message: verify_user.error] }
       end
     end
   end
