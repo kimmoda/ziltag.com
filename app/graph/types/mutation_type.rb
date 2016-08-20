@@ -20,8 +20,8 @@ MutationType = GraphQL::ObjectType.define do
     argument :email, !types.String
     argument :url, !types.String
     resolve -> (_obj, args, _ctx) do
-      partner_sign_up = PartnerSignUp.call(args[:username], args[:email], args[:url])
-      partner_sign_up.success? ? partner_sign_up[:user] : raise(partner_sign_up[:error])
+      partner_sign_up = PartnerSignUp.perform(args[:username], args[:email], args[:url])
+      partner_sign_up.success? ? partner_sign_up.user : raise(partner_sign_up.error)
     end
   end
 
