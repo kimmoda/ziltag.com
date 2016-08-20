@@ -5,9 +5,11 @@ class ApiController < ApplicationController
   skip_after_action :enable_iframe
 
   rescue_from Exception do |exception|
+    error_id = SecureRandom.hex
+    Rails.logger.error error_id
     Rails.logger.error exception.to_s
     Rails.logger.error exception.backtrace.join($INPUT_RECORD_SEPARATOR)
-    render json: { error: exception.to_s }, status: 200
+    render json: { error: "something went wrong, error id: #{error_id}" }, status: 200
   end
 
   def options
