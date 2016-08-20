@@ -1,8 +1,10 @@
+# frozen_string_literal: true
 class AuthenticateUser
   include Interactor
 
-  def initialize username_or_email, password
-    @username_or_email, @password = username_or_email, password
+  def initialize(username_or_email, password)
+    @username_or_email = username_or_email
+    @password = password
   end
 
   def call

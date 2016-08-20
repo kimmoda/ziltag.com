@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::UsersController < ApiController
   def me
     if @user = current_user

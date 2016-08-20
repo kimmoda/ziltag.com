@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 QueryType = GraphQL::ObjectType.define do
   name 'Query'
   description 'The query root'
@@ -7,7 +8,7 @@ QueryType = GraphQL::ObjectType.define do
   end
 
   field :recommended_ziltag_maps, types[!ZiltagMapType] do
-    resolve -> (_obj, _args, _ctx){ Photo.includes(:ziltags, box: :user).recommended }
+    resolve -> (_obj, _args, _ctx) { Photo.includes(:ziltags, box: :user).recommended }
   end
 
   field :ziltag, ZiltagType, 'Find a ziltag by ID' do

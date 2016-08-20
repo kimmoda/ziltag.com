@@ -2,7 +2,7 @@
 require 'sse/notify_handler'
 module SSE
   class Plugin
-    def initialize(address, port, config, status, logger)
+    def initialize(_address, _port, config, _status, _logger)
       @channel = config['channel']
     end
 

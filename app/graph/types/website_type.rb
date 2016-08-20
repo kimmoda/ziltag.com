@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 WebsiteType = GraphQL::ObjectType.define do
   name 'Website'
   description 'A website entry'
@@ -9,7 +10,7 @@ WebsiteType = GraphQL::ObjectType.define do
   field :platform, !types.String
   field :comments, types[!CommentType]
   field :ziltags, types[!ZiltagType]
-  field :maps_without_tags, ->{ types[!ZiltagMapType] } do
-    resolve ->(obj, _args, _ctx){ obj.photos.without_tags.limit(100) }
+  field :maps_without_tags, -> { types[!ZiltagMapType] } do
+    resolve ->(obj, _args, _ctx) { obj.photos.without_tags.limit(100) }
   end
 end

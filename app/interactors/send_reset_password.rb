@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SendResetPassword < Interactor2
   TEMPLATE_NAME = 'password-reset'
   def initialize(user)
@@ -8,14 +9,14 @@ class SendResetPassword < Interactor2
     @token = @user.send(:set_reset_password_token)
     MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME, [], message
   rescue
-    Rails.logger.error $!.to_s
-    Rails.logger.error $@.join
+    Rails.logger.error $ERROR_INFO.to_s
+    Rails.logger.error $ERROR_POSITION.join
     fail! 'something went wrong'
   end
 
   def message
     {
-      subject: "Reset Password Instructions",
+      subject: 'Reset Password Instructions',
       from_email: 'robot@ziltag.com',
       from_name: 'Ziltag Robot',
       to: [{ email: @user.email, name: @user.username }],
@@ -29,7 +30,7 @@ class SendResetPassword < Interactor2
         rcpt: @user.email,
         vars: [
           { name: 'USERNAME', content: @user.username },
-          { name: 'RESET_PASSWORD_URL', content: reset_password_url },
+          { name: 'RESET_PASSWORD_URL', content: reset_password_url }
         ]
       }
     ]

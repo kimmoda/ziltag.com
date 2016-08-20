@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AlterComments < ActiveRecord::Migration
   def change
     reversible do |dir|

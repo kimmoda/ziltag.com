@@ -1,4 +1,5 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+require 'administrate/base_dashboard'
 
 class ZiltagDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -18,8 +19,8 @@ class ZiltagDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     comments: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-  }
+    updated_at: Field::DateTime
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -31,8 +32,8 @@ class ZiltagDashboard < Administrate::BaseDashboard
     :share_image,
     :photo,
     :user,
-    :comments,
-  ]
+    :comments
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -48,6 +49,6 @@ class ZiltagDashboard < Administrate::BaseDashboard
     :content,
     :photo,
     :user,
-    :comments,
-  ]
+    :comments
+  ].freeze
 end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Admin
   class ContentProvidersController < Admin::ApplicationController
     def order

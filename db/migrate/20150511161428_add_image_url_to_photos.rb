@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddImageUrlToPhotos < ActiveRecord::Migration
   def change
     add_column :photos, :url, :string

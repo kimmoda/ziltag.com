@@ -1,2 +1,0 @@
-class MobileController < ApplicationController
-end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddGeoToPhotos < ActiveRecord::Migration
   def change
     add_column :photos, :width, :integer, default: 0

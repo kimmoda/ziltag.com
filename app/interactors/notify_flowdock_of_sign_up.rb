@@ -18,9 +18,9 @@ class NotifyFlowdockOfSignUp < Interactor2
       tags: ['@David']
     )
   rescue
-    Rails.logger.error $!
-    Rails.logger.error $@.join
-    fail! $!.to_s
+    Rails.logger.error $ERROR_INFO
+    Rails.logger.error $ERROR_POSITION.join
+    fail! $ERROR_INFO.to_s
   end
 
   def content

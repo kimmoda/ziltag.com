@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 json.id @photo.slug
 json.src @photo.image.default.url
 json.host @photo.host

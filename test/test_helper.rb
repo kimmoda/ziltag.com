@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'webmock/minitest'
 require 'stub_requests'
 
@@ -11,4 +12,4 @@ class ActiveSupport::TestCase
   include StubRequests
 end
 
-ActionController::TestCase.include(Devise::TestHelpers)
+ActionController::TestCase.include(Devise::Test::ControllerHelpers)

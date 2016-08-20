@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::Users::ConfirmationsController < Devise::ConfirmationsController
   skip_before_action :verify_authenticity_token
   before_action :set_headers
@@ -5,9 +6,9 @@ class Api::V1::Users::ConfirmationsController < Devise::ConfirmationsController
 
   def resend
     user = if user_signed_in?
-      current_user
-    else
-      User.find_by(email: params[:email])
+             current_user
+           else
+             User.find_by(email: params[:email])
     end
 
     if user

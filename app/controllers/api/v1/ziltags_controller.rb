@@ -1,13 +1,14 @@
+# frozen_string_literal: true
 class Api::V1::ZiltagsController < ApiController
-  before_action :authenticate_user!, only: %i[create update destroy]
-  before_action :set_ziltag, only: %i[update destroy]
+  before_action :authenticate_user!, only: %i(create update destroy)
+  before_action :set_ziltag, only: %i(update destroy)
 
   def index
     find_or_create_map = FindOrCreateMap.call(params[:token], params[:src], params[:href], params[:width], params[:height])
     if find_or_create_map.success?
       @photo = find_or_create_map[:photo]
     else
-      render json: {error: find_or_create_map[:error]}
+      render json: { error: find_or_create_map[:error] }
     end
   end
 
@@ -25,7 +26,7 @@ class Api::V1::ZiltagsController < ApiController
       @ziltag = create_ziltag.context[:ziltag]
       render :show
     else
-      render json: {errors: [create_ziltag.context[:error]]}
+      render json: { errors: [create_ziltag.context[:error]] }
     end
   end
 
@@ -34,7 +35,7 @@ class Api::V1::ZiltagsController < ApiController
       NotifySSE.perform(:update, @ziltag)
       render :show
     else
-      render json: {errors: @ziltag.errors.full_messages}
+      render json: { errors: @ziltag.errors.full_messages }
     end
   end
 
@@ -44,7 +45,7 @@ class Api::V1::ZiltagsController < ApiController
     head :no_content
   end
 
-private
+  private
 
   def ziltag_params
     params.require(:ziltag).permit(:x, :y, :map_id, :content)
@@ -53,5 +54,4 @@ private
   def set_ziltag
     @ziltag = current_user.ziltags.find_by! slug: params[:id]
   end
-
 end

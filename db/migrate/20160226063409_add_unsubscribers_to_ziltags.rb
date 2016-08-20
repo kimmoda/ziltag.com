@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddUnsubscribersToZiltags < ActiveRecord::Migration
   def change
     add_column :ziltags, :unsubscribers, :integer, array: true, default: []

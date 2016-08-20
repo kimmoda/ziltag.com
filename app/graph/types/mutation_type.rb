@@ -1,10 +1,12 @@
+# frozen_string_literal: true
 MutationType = GraphQL::ObjectType.define do
   name 'Mutation'
   description 'The mutation root'
 
   field :uploadAvatar, UserType do
     resolve -> (_obj, _args, ctx) do
-      current_user, file = ctx[:current_user], ctx[:file]
+      current_user = ctx[:current_user]
+      file = ctx[:file]
       if current_user.update avatar: ctx[:file]
         current_user
       else
@@ -151,7 +153,7 @@ MutationType = GraphQL::ObjectType.define do
   field :updateWebsitePermission, WebsiteType do
     argument :id, !types.ID
     argument :restricted, types.Boolean
-    resolve -> (obj, args, ctx) do
+    resolve -> (_obj, args, _ctx) do
       website = Box.find(args[:id])
       website.update_column :restricted, args[:restricted]
       website
@@ -160,7 +162,7 @@ MutationType = GraphQL::ObjectType.define do
 
   field :updateZiltagNotification, UserType do
     argument :ziltagNotification, !types.Boolean
-    resolve -> (obj, args, ctx) do
+    resolve -> (_obj, args, ctx) do
       ctx[:current_user].update_column :ziltag_notification, args[:ziltagNotification]
       ctx[:current_user]
     end
@@ -168,7 +170,7 @@ MutationType = GraphQL::ObjectType.define do
 
   field :updateCommentNotification, UserType do
     argument :commentNotification, !types.Boolean
-    resolve -> (obj, args, ctx) do
+    resolve -> (_obj, args, ctx) do
       ctx[:current_user].update_column :comment_notification, args[:commentNotification]
       ctx[:current_user]
     end

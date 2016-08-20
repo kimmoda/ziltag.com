@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class FixIndexOfPhotos < ActiveRecord::Migration
   def up
     remove_index :photos, [:source, :href]

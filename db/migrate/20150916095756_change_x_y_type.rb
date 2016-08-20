@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ChangeXYType < ActiveRecord::Migration
   def change
     change_column :ziltags, :x, :decimal

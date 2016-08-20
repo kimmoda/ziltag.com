@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # TODO: duplicated: app/views/api/v1/users/sessions/create.json.jbuilder
 json.extract! @user, :id, :email, :username, :confirmed?
 json.avatar do

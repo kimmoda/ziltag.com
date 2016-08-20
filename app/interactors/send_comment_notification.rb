@@ -19,8 +19,8 @@ class SendCommentNotification #:nodoc:
                                                               [],
                                                               message
   rescue
-    Rails.logger.error $!
-    Rails.logger.error $@.join($/)
+    Rails.logger.error $ERROR_INFO
+    Rails.logger.error $ERROR_POSITION.join($INPUT_RECORD_SEPARATOR)
     fail! $ERROR_INFO
   end
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddSlugToPhotos < ActiveRecord::Migration
   def change
     add_column :photos, :slug, :string
@@ -13,6 +14,5 @@ class AddSlugToPhotos < ActiveRecord::Migration
     end
 
     change_column_null :photos, :slug, false
-
   end
 end

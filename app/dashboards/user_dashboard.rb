@@ -1,4 +1,5 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+require 'administrate/base_dashboard'
 
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -27,8 +28,8 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_at: Field::DateTime,
     remember_created_at: Field::DateTime,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-  }
+    updated_at: Field::DateTime
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -44,8 +45,8 @@ class UserDashboard < Administrate::BaseDashboard
     :ziltags,
     :comments,
     :boxes,
-    :confirmed_at,
-  ]
+    :confirmed_at
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -62,5 +63,5 @@ class UserDashboard < Administrate::BaseDashboard
     :avatar,
     :username,
     :type
-  ]
+  ].freeze
 end

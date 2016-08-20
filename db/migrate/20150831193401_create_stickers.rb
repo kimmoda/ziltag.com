@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateStickers < ActiveRecord::Migration
   def change
     create_table :stickers do |t|

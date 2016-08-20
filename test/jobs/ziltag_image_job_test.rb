@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class ZiltagImageJobTest < ActiveJob::TestCase
@@ -7,7 +8,7 @@ class ZiltagImageJobTest < ActiveJob::TestCase
       .to_return(
         body: File.new(Rails.root.join('test', 'fixtures', 'images', '1.jpg')),
         status: 200,
-        headers: {'Content-Type' => 'image/jpeg'}
+        headers: { 'Content-Type' => 'image/jpeg' }
       )
     refute ziltag.share_image?
     ZiltagImageJob.perform_now ziltag

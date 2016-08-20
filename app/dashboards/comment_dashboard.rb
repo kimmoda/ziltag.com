@@ -1,4 +1,5 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+require 'administrate/base_dashboard'
 
 class CommentDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,8 +14,8 @@ class CommentDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     ziltag: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-  }
+    updated_at: Field::DateTime
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -26,8 +27,8 @@ class CommentDashboard < Administrate::BaseDashboard
     :content,
     :user,
     :ziltag,
-    :created_at,
-  ]
+    :created_at
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -39,6 +40,6 @@ class CommentDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :content,
     :user,
-    :ziltag,
-  ]
+    :ziltag
+  ].freeze
 end

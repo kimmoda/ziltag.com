@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RemoveUselessTables < ActiveRecord::Migration
   def up
     drop_table :subscribers

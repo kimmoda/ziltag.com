@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 class Api::V1::CommentsController < ApiController
-  before_action :authenticate_user!, only: %i[create update destroy]
-  before_action :set_comment, only: %i[update destroy]
+  before_action :authenticate_user!, only: %i(create update destroy)
+  before_action :set_comment, only: %i(update destroy)
 
   def show
     @comment = Comment.find_by(id: params[:id])
@@ -12,7 +13,7 @@ class Api::V1::CommentsController < ApiController
       @comment = create_comment[:comment]
       render :show
     else
-      render json: {error: create_comment[:error]}
+      render json: { error: create_comment[:error] }
     end
   end
 
@@ -21,7 +22,7 @@ class Api::V1::CommentsController < ApiController
       NotifySSE.perform(:update, @comment)
       render :show
     else
-      render json: {errors: @comment.errors.full_messages}
+      render json: { errors: @comment.errors.full_messages }
     end
   end
 
@@ -31,7 +32,7 @@ class Api::V1::CommentsController < ApiController
     head :no_content
   end
 
-private
+  private
 
   def set_comment
     @comment = Comment.find params[:id]
@@ -42,5 +43,4 @@ private
     ret[:ziltag_id] = Ziltag.find_by!(slug: ret.delete(:ziltag_id)).id if ret[:ziltag_id]
     ret
   end
-
 end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token
   before_action :set_headers
@@ -24,7 +25,7 @@ class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      render json: {error: resource.errors.full_messages.first}
+      render json: { error: resource.errors.full_messages.first }
     end
   end
 
@@ -32,7 +33,7 @@ class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-private
+  private
 
   def set_headers
     headers['Access-Control-Allow-Credentials'] = 'true'

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Ziltag < ActiveRecord::Base
   include Slugable
   include Confirmable
@@ -19,7 +20,7 @@ class Ziltag < ActiveRecord::Base
   validates :content, length: { maximum: 5000 }
 
   # callbacks
-  after_save :generate_share_image_later, if: ->{ photo.image? && (!share_image? || x_changed? || y_changed?) }
+  after_save :generate_share_image_later, if: -> { photo.image? && (!share_image? || x_changed? || y_changed?) }
 
   # other
   def to_param
@@ -38,7 +39,7 @@ class Ziltag < ActiveRecord::Base
     photo.slug
   end
 
-  def map_id= value
+  def map_id=(value)
     self.photo = Photo.find_by(slug: value)
   end
 end

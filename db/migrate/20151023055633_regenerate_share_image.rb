@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RegenerateShareImage < ActiveRecord::Migration
   def change
     Ziltag.find_each do |ziltag|

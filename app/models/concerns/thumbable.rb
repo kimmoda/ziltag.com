@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Thumbable
   extend ActiveSupport::Concern
 
@@ -20,6 +21,6 @@ module Thumbable
   end
 
   def extension_white_list
-    %w[jpg jpeg gif png]
+    %w(jpg jpeg gif png)
   end
 end # module Thumbable

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 CarrierWave.configure do |config|
   if Rails.env.production?
     Settings.carrierwave.each do |key, value|

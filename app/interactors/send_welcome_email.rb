@@ -51,7 +51,7 @@ class SendWelcomeEmail #:nodoc:
     if @user.content_provider?
       ret.push(
         { name: 'DOMAIN', content: @box.url },
-        { name: 'SCRIPT', content: escaped_script_html }
+        name: 'SCRIPT', content: escaped_script_html
       )
     end
     ret
