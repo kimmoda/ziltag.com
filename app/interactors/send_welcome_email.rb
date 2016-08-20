@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
-class SendWelcomeEmail #:nodoc:
-  include Interactor
+class SendWelcomeEmail < Interactor2 #:nodoc:
+  attr_reader :result
 
   def initialize(user)
     @user = user
     @website = user.website
   end
 
-  def call
-    context[:result] = MANDRILL_CLIENT.messages.send_template template_name,
-                                                              [],
-                                                              message
-  rescue
-    fail! $ERROR_INFO
+  def perform
+    @result = MANDRILL_CLIENT.messages.send_template template_name,
+                                                     [],
+                                                     message
   end
 
   def template_name
