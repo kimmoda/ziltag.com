@@ -37,11 +37,11 @@ class ZiltagAPI # :nodoc:
       requires :password, type: String
     end
     post :sign_in do
-      authenticate_user = AuthenticateUser.call(
+      authenticate_user = AuthenticateUser.perform(
         params[:sign_in], params[:password]
       )
       if authenticate_user.success?
-        user = authenticate_user[:user]
+        user = authenticate_user.user
         warden.set_user(user, scope: :user)
         {
           id: user.id,
@@ -51,7 +51,7 @@ class ZiltagAPI # :nodoc:
           name: user.username
         }
       else
-        { errors: [{ message: authenticate_user[:error] }] }
+        { errors: [{ message: authenticate_user.error }] }
       end
     end
 
