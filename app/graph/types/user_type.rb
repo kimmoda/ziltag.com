@@ -4,7 +4,7 @@ UserType = GraphQL::ObjectType.define do
   description 'A user entry'
   field :id, !types.ID
   field :name, !types.String, 'The username of this user', property: :username
-  field :isPartner, !types.Boolean, property: :content_provider?
+  field :isPartner, !types.Boolean, property: :partner?
   field :ziltagNotification, !types.Boolean, property: :ziltag_notification?
   field :commentNotification, !types.Boolean, property: :comment_notification?
   field :avatar, !types.String, 'The avatar URL of this user' do

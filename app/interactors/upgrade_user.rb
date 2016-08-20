@@ -11,7 +11,7 @@ class UpgradeUser
 
   def call
     box = Box.new user: @user, url: @url
-    @user.update_column :type, 'ContentProvider'
+    @user.update_column :type, 'Partner'
     if box.save
       context[:user] = @user
       ChangeMailchimpRoleJob.perform_later(user, 'partner')

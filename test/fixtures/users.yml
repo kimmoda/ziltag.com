@@ -2,7 +2,7 @@ tony:
   username: tonytonyjan
   email: tonytonyjan@ziltag.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  type: ContentProvider
+  type: Partner
   confirmed_at: <%= Time.now.to_s(:db) %>
 
 david:

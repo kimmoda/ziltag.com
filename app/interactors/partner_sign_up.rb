@@ -7,7 +7,7 @@ class PartnerSignUp #:nodoc:
     @username = username
     @email = email
     @url = url
-    @user = ContentProvider.new username: @username, email: @email
+    @user = Partner.new username: @username, email: @email
     @box = Box.new url: url, user: @user
   end
 

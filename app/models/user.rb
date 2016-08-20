@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
     type.blank?
   end
 
-  def content_provider?
-    type == 'ContentProvider'
+  def partner?
+    type == 'Partner'
   end
 
   def send_devise_notification(notification, *args)

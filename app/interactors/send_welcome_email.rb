@@ -17,7 +17,7 @@ class SendWelcomeEmail #:nodoc:
   end
 
   def template_name
-    if @user.content_provider?
+    if @user.partner?
       'welcome-email-partner'
     else
       'welcome-email-normal-user'
@@ -48,7 +48,7 @@ class SendWelcomeEmail #:nodoc:
       { name: 'USERNAME', content: @user.username },
       { name: 'CONFIRM_URL', content: confirm_url }
     ]
-    if @user.content_provider?
+    if @user.partner?
       ret.push(
         { name: 'DOMAIN', content: @box.url },
         name: 'SCRIPT', content: escaped_script_html
