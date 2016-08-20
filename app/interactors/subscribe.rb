@@ -1,13 +1,11 @@
 # frozen_string_literal: true
-class Subscribe
-  include Interactor
-
+class Subscribe < Interactor2 #:nodoc:
   def initialize(user, ziltag)
     @user = user
     @ziltag = ziltag
   end
 
-  def call
+  def perform
     subscribe
     fail! @ziltag.errors.full_messages.first unless @ziltag.save
   end

@@ -11,7 +11,7 @@ class CreateComment < Interactor2 #:nodoc:
     ActiveRecord::Base.transaction do
       if @comment.save
         NotifySSE.perform(:create, @comment)
-        Subscribe.call(@user, @comment.ziltag)
+        Subscribe.perform(@user, @comment.ziltag)
         if @comment.user.confirmed?
           SendCommentNotificationJob.perform_later(@comment)
         end

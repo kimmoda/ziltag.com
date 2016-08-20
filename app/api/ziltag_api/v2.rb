@@ -20,7 +20,7 @@ class ZiltagAPI # :nodoc:
         user_id, ziltag_id = Unsubscribe.verify params[:token]
         user = User.find(user_id)
         ziltag = Ziltag.find(ziltag_id)
-        subscribe = Subscribe.call(user, ziltag)
+        subscribe = Subscribe.perform(user, ziltag)
         if subscribe.success?
           {}
         else
