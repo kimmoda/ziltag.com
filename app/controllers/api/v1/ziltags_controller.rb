@@ -4,11 +4,11 @@ class Api::V1::ZiltagsController < ApiController
   before_action :set_ziltag, only: %i(update destroy)
 
   def index
-    find_or_create_map = FindOrCreateMap.call(params[:token], params[:src], params[:href], params[:width], params[:height])
+    find_or_create_map = FindOrCreateMap.perform(params[:token], params[:src], params[:href], params[:width], params[:height])
     if find_or_create_map.success?
-      @photo = find_or_create_map[:photo]
+      @photo = find_or_create_map.photo
     else
-      render json: { error: find_or_create_map[:error] }
+      render json: { error: find_or_create_map.error }
     end
   end
 
