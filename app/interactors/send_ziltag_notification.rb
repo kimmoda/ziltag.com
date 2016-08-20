@@ -1,19 +1,20 @@
 # frozen_string_literal: true
 require 'action_view/helpers'
-class SendZiltagNotification #:nodoc:
-  include Interactor
-  include ActionView::Helpers::DateHelper
+class SendZiltagNotification < Interactor2 #:nodoc:
   TEMPLATE_NAME = 'ziltag-notification-email'
+  include ActionView::Helpers::DateHelper
+  attr_reader :result
+
   def initialize(ziltag)
     @ziltag = ziltag
     @author = ziltag.user
     @website_owner = @ziltag.photo.website.user
   end
 
-  def call
-    context[:result] = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
-                                                              [],
-                                                              message
+  def perform
+    @result = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
+                                                     [],
+                                                     message
   rescue
     fail! $ERROR_INFO
   end
