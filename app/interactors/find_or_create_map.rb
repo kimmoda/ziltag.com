@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-class FindOrCreateMap
-  include Interactor
+class FindOrCreateMap < Interactor2
+  attr_reader :photo
 
   def initialize(token, source, href, width, height)
     @token = token
@@ -11,7 +11,7 @@ class FindOrCreateMap
     @website = Website.find_by(token: token)
   end
 
-  def call
+  def perform
     fail! 'token not found' if @website.nil?
     url_regex = URI.regexp(%w(http https))
     fail! "source '#{@source}' is not a valid URL." unless @source =~ url_regex
@@ -19,9 +19,9 @@ class FindOrCreateMap
     fail! "'#{@href}' is not permitted by given token '#{@token}'" unless @website.match_href? @href
 
     if photo = Photo.find_by_token_src_and_href(token: @token, source: @source, href: @href)
-      context[:photo] = photo
+      @photo = photo
     elsif photo = Photo.create(source: @source, href: @href, width: @width, height: @height, website: @website)
-      photo.valid? ? context[:photo] = photo : fail!(photo.errors.full_messages.first)
+      photo.persisted? ? @photo = photo : fail!(photo.errors.full_messages.first)
     end
     PhotoJob.perform_later photo, photo.source unless photo.image?
   end

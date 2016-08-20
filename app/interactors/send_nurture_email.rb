@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-class SendNurtureEmail #:nodoc:
-  include Interactor
+class SendNurtureEmail < Interactor2 #:nodoc:
   TEMPLATE_NAME = 'nurture-2'
+  attr_reader :result
 
   def initialize(user)
     @user = user
   end
 
-  def call
-    context[:result] = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
-                                                              [],
-                                                              message
+  def perform
+    @result = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
+                                                     [],
+                                                     message
   rescue
     fail! $ERROR_INFO
   end

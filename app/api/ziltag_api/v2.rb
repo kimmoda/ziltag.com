@@ -20,11 +20,11 @@ class ZiltagAPI # :nodoc:
         user_id, ziltag_id = Unsubscribe.verify params[:token]
         user = User.find(user_id)
         ziltag = Ziltag.find(ziltag_id)
-        subscribe = Subscribe.call(user, ziltag)
+        subscribe = Subscribe.perform(user, ziltag)
         if subscribe.success?
           {}
         else
-          { errors: [{ message: subscribe[:error] }] }
+          { errors: [{ message: subscribe.error }] }
         end
       rescue
         { errors: [{ message: 'token not valid' }] }
@@ -37,11 +37,11 @@ class ZiltagAPI # :nodoc:
       requires :password, type: String
     end
     post :sign_in do
-      authenticate_user = AuthenticateUser.call(
+      authenticate_user = AuthenticateUser.perform(
         params[:sign_in], params[:password]
       )
       if authenticate_user.success?
-        user = authenticate_user[:user]
+        user = authenticate_user.user
         warden.set_user(user, scope: :user)
         {
           id: user.id,
@@ -51,7 +51,7 @@ class ZiltagAPI # :nodoc:
           name: user.username
         }
       else
-        { errors: [{ message: authenticate_user[:error] }] }
+        { errors: [{ message: authenticate_user.error }] }
       end
     end
 
@@ -112,14 +112,14 @@ class ZiltagAPI # :nodoc:
       requires :password_confirmation, type: String, allow_blank: false
     end
     post :verify do
-      verify_user = VerifyUser.call(
+      verify_user = VerifyUser.perform(
         params[:confirmation_token],
         params[:password],
         params[:password_confirmation]
       )
       if verify_user.success?
-        user = verify_user[:user]
-        warden.set_user(verify_user[:user], scope: :user)
+        user = verify_user.user
+        warden.set_user(user, scope: :user)
         {
           id: user.id,
           avatar: user.avatar.thumb.url,
@@ -128,7 +128,7 @@ class ZiltagAPI # :nodoc:
           name: user.username
         }
       else
-        { errors: [message: verify_user[:error]] }
+        { errors: [message: verify_user.error] }
       end
     end
   end

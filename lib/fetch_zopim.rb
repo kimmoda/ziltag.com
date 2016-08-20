@@ -30,9 +30,9 @@ visitors.delete_if do |visitor|
 end
 
 if Rails.env.production?
-  send_visitor_nurture_email = SendVisitorNurtureEmail.call(visitors)
+  send_visitor_nurture_email = SendVisitorNurtureEmail.perform(visitors)
   if send_visitor_nurture_email.success?
-    send_visitor_nurture_email.context[:result].each do |sending|
+    send_visitor_nurture_email.result.each do |sending|
       Visitor.create email: sending['email']
     end
   end

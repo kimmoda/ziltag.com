@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-class PartnerSignUp #:nodoc:
-  include Interactor
-
+class PartnerSignUp < Interactor2 #:nodoc:
+  attr_reader :user, :website
   def initialize(username, email, url)
     @username = username
     @email = email
@@ -11,11 +10,9 @@ class PartnerSignUp #:nodoc:
     @website = Website.new url: url, user: @user
   end
 
-  def call
+  def perform
     ActiveRecord::Base.transaction do
       if @user.save && @website.save
-        context[:user] = @user
-        context[:website] = @website
         SendWelcomeEmailJob.perform_later(@user)
         SubscribeNewsletterJob.perform_later(@user)
         SendNurtureEmailJob.set(wait: 1.week).perform_later(@user)

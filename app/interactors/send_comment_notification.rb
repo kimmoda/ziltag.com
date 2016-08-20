@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 require 'action_view/helpers'
-class SendCommentNotification #:nodoc:
-  include Interactor
-  include ActionView::Helpers::DateHelper
+class SendCommentNotification < Interactor2 #:nodoc:
   TEMPLATE_NAME = 'comment-notification-email'
+  include ActionView::Helpers::DateHelper
+  attr_reader :result
+
   def initialize(comment)
     @comment = comment
     @ziltag = comment.ziltag
@@ -14,14 +15,10 @@ class SendCommentNotification #:nodoc:
     @unsubscriber_ids = comment.ziltag.unsubscribers
   end
 
-  def call
-    context[:result] = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
-                                                              [],
-                                                              message
-  rescue
-    Rails.logger.error $ERROR_INFO
-    Rails.logger.error $ERROR_POSITION.join($INPUT_RECORD_SEPARATOR)
-    fail! $ERROR_INFO
+  def perform
+    @result = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
+                                                     [],
+                                                     message
   end
 
   def message

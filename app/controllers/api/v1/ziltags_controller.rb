@@ -4,11 +4,11 @@ class Api::V1::ZiltagsController < ApiController
   before_action :set_ziltag, only: %i(update destroy)
 
   def index
-    find_or_create_map = FindOrCreateMap.call(params[:token], params[:src], params[:href], params[:width], params[:height])
+    find_or_create_map = FindOrCreateMap.perform(params[:token], params[:src], params[:href], params[:width], params[:height])
     if find_or_create_map.success?
-      @photo = find_or_create_map[:photo]
+      @photo = find_or_create_map.photo
     else
-      render json: { error: find_or_create_map[:error] }
+      render json: { error: find_or_create_map.error }
     end
   end
 
@@ -17,16 +17,16 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def create
-    create_ziltag = CreateZiltag.call(
+    create_ziltag = CreateZiltag.perform(
       current_user,
       ziltag_params[:map_id], ziltag_params[:x], ziltag_params[:y],
       ziltag_params[:content]
     )
     if create_ziltag.success?
-      @ziltag = create_ziltag.context[:ziltag]
+      @ziltag = create_ziltag.ziltag
       render :show
     else
-      render json: { errors: [create_ziltag.context[:error]] }
+      render json: { errors: [create_ziltag.error] }
     end
   end
 

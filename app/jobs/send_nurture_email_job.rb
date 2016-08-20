@@ -4,7 +4,7 @@ class SendNurtureEmailJob < ActiveJob::Base #:nodoc:
 
   def perform(user)
     unless user.has_created_first_ziltag
-      error = SendNurtureEmail.call(user).context[:error]
+      error = SendNurtureEmail.call(user).error
       raise error if error
     end
   end

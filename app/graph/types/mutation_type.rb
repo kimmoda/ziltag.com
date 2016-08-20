@@ -20,8 +20,8 @@ MutationType = GraphQL::ObjectType.define do
     argument :email, !types.String
     argument :url, !types.String
     resolve -> (_obj, args, _ctx) do
-      partner_sign_up = PartnerSignUp.call(args[:username], args[:email], args[:url])
-      partner_sign_up.success? ? partner_sign_up[:user] : raise(partner_sign_up[:error])
+      partner_sign_up = PartnerSignUp.perform(args[:username], args[:email], args[:url])
+      partner_sign_up.success? ? partner_sign_up.user : raise(partner_sign_up.error)
     end
   end
 
@@ -29,8 +29,8 @@ MutationType = GraphQL::ObjectType.define do
     argument :username, !types.String
     argument :email, !types.String
     resolve -> (_obj, args, _ctx) do
-      user_sign_up = UserSignUp.call(args[:username], args[:email])
-      user_sign_up.success? ? user_sign_up[:user] : raise(user_sign_up[:error])
+      user_sign_up = UserSignUp.perform(args[:username], args[:email])
+      user_sign_up.success? ? user_sign_up.user : raise(user_sign_up.error)
     end
   end
 
@@ -59,8 +59,8 @@ MutationType = GraphQL::ObjectType.define do
     argument :content, !types.String
     argument :map_id, !types.ID
     resolve -> (_obj, args, ctx) do
-      create_ziltag = CreateZiltag.call(ctx[:current_user], args[:map_id], args[:x], args[:y], args[:content])
-      create_ziltag.success? ? create_ziltag[:ziltag] : raise(create_ziltag[:error])
+      create_ziltag = CreateZiltag.perform(ctx[:current_user], args[:map_id], args[:x], args[:y], args[:content])
+      create_ziltag.success? ? create_ziltag.ziltag : raise(create_ziltag.error)
     end
   end
 
@@ -87,8 +87,8 @@ MutationType = GraphQL::ObjectType.define do
     argument :content, !types.String
     resolve -> (_obj, args, ctx) do
       ziltag = Ziltag.find_by! natural_id: args[:ziltag_id]
-      create_comment = CreateComment.call(ctx[:current_user], content: args[:content], ziltag: ziltag)
-      create_comment.success? ? create_comment[:comment] : raise(create_comment[:error])
+      create_comment = CreateComment.perform(ctx[:current_user], content: args[:content], ziltag: ziltag)
+      create_comment.success? ? create_comment.comment : raise(create_comment.error)
     end
   end
 
@@ -145,8 +145,8 @@ MutationType = GraphQL::ObjectType.define do
   field :upgradeUser, UserType do
     argument :url, !types.String
     resolve -> (_obj, args, ctx) do
-      upgrade_user = UpgradeUser.call(ctx[:current_user], args[:url])
-      upgrade_user.success? ? upgrade_user[:user] : raise(upgrade_user[:error])
+      upgrade_user = UpgradeUser.perform(ctx[:current_user], args[:url])
+      upgrade_user.success? ? upgrade_user.user : raise(upgrade_user.error)
     end
   end
 

@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
-class SendVisitorNurtureEmail #:nodoc:
-  include Interactor
+class SendVisitorNurtureEmail < Interactor2 #:nodoc:
+  attr_reader :result
   TEMPLATE_NAME = 'nurture-1'
 
   def initialize(visitors = [])
     @visitors = Array(visitors)
   end
 
-  def call
-    context[:result] = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
-                                                              [],
-                                                              message,
-                                                              false,
-                                                              nil,
-                                                              2.days.from_now
-  rescue
-    fail! $ERROR_INFO
+  def perform
+    @result = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
+                                                     [],
+                                                     message,
+                                                     false,
+                                                     nil,
+                                                     2.days.from_now
   end
 
   def message

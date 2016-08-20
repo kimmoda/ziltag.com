@@ -3,7 +3,7 @@ class SendWelcomeEmailJob < ActiveJob::Base #:nodoc:
   queue_as :default
 
   def perform(user)
-    error = SendWelcomeEmail.call(user).context[:error]
+    error = SendWelcomeEmail.perform(user).error
     raise error if error
   end
 end

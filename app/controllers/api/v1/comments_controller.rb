@@ -8,12 +8,12 @@ class Api::V1::CommentsController < ApiController
   end
 
   def create
-    create_comment = CreateComment.call(current_user, comment_params)
+    create_comment = CreateComment.perform(current_user, comment_params)
     if create_comment.success?
-      @comment = create_comment[:comment]
+      @comment = create_comment.comment
       render :show
     else
-      render json: { error: create_comment[:error] }
+      render json: { error: create_comment.error }
     end
   end
 

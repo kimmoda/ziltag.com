@@ -1,22 +1,18 @@
 # frozen_string_literal: true
 
 # subscribe ziltag's mailchimp
-class SubscribeNewsletter
-  include Interactor
-
+class SubscribeNewsletter < Interactor2
   def initialize(user)
     @user = user
   end
 
-  def call
+  def perform
     list_id = if Rails.env.production?
                 Settings.gibbon.list_id
               else
                 'b4afffcd4b'
               end
     Gibbon::Request.lists(list_id).members.create(body: body)
-  rescue
-    fail! $ERROR_INFO
   end
 
   private

@@ -1,21 +1,20 @@
 # frozen_string_literal: true
-class CreateComment
-  include Interactor
+class CreateComment < Interactor2 #:nodoc:
+  attr_reader :comment
 
   def initialize(user, comment_params)
     @user = user
     @comment = Comment.new comment_params.merge(user: user)
   end
 
-  def call
+  def perform
     ActiveRecord::Base.transaction do
       if @comment.save
         NotifySSE.perform(:create, @comment)
-        Subscribe.call(@user, @comment.ziltag)
+        Subscribe.perform(@user, @comment.ziltag)
         if @comment.user.confirmed?
           SendCommentNotificationJob.perform_later(@comment)
         end
-        context[:comment] = @comment
       else
         raise ActiveRecord::Rollback
       end

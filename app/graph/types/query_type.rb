@@ -39,11 +39,11 @@ QueryType = GraphQL::ObjectType.define do
     argument :width, !types.Int, 'The client width of the image'
     argument :height, !types.Int, 'The client height of the image'
     resolve ->(_obj, args, _ctx) {
-      find_or_create_map = FindOrCreateMap.call(args[:token], args[:src], args[:href], args[:width], args[:height])
+      find_or_create_map = FindOrCreateMap.perform(args[:token], args[:src], args[:href], args[:width], args[:height])
       if find_or_create_map.success?
-        find_or_create_map[:photo]
+        find_or_create_map.photo
       else
-        raise find_or_create_map[:error]
+        raise find_or_create_map.error
       end
     }
   end

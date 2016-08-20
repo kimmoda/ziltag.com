@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
-class SendProductFeedbackEmail #:nodoc:
-  include Interactor
+class SendProductFeedbackEmail < Interactor2 #:nodoc:
   TEMPLATE_NAME = 'product-feedback'
+  attr_reader :result
 
   def initialize(user)
     @user = user
   end
 
-  def call
-    context[:result] = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
-                                                              [],
-                                                              message,
-                                                              nil,
-                                                              nil,
-                                                              2.weeks.from_now
-  rescue
-    fail! $ERROR_INFO
+  def perform
+    @result = MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME,
+                                                     [],
+                                                     message,
+                                                     nil,
+                                                     nil,
+                                                     2.weeks.from_now
   end
 
   def message
