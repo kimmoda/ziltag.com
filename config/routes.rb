@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get :unsubscribe, controller: :subscribtion
 
-  devise_for :users, controllers: { confirmations: 'confirmations', registrations: 'registrations', passwords: 'passwords' }
+  devise_for :users, skip: :all
 
   match '/api/:version/*path' => 'api#options', via: 'options'
   namespace :api, format: false, defaults: { format: 'json' } do

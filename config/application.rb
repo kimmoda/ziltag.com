@@ -17,9 +17,7 @@ Bundler.require(*Rails.groups)
 
 module ZiltagApp
   class Application < Rails::Application
-    require 'action_mailer_ext'
     require 'interactor'
-    require 'custom_failure'
     require 'English'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
