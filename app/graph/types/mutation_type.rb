@@ -87,8 +87,8 @@ MutationType = GraphQL::ObjectType.define do
     argument :content, !types.String
     resolve -> (_obj, args, ctx) do
       ziltag = Ziltag.find_by! natural_id: args[:ziltag_id]
-      create_comment = CreateComment.call(ctx[:current_user], content: args[:content], ziltag: ziltag)
-      create_comment.success? ? create_comment[:comment] : raise(create_comment[:error])
+      create_comment = CreateComment.perform(ctx[:current_user], content: args[:content], ziltag: ziltag)
+      create_comment.success? ? create_comment.comment : raise(create_comment.error)
     end
   end
 
