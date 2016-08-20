@@ -59,8 +59,8 @@ MutationType = GraphQL::ObjectType.define do
     argument :content, !types.String
     argument :map_id, !types.ID
     resolve -> (_obj, args, ctx) do
-      create_ziltag = CreateZiltag.call(ctx[:current_user], args[:map_id], args[:x], args[:y], args[:content])
-      create_ziltag.success? ? create_ziltag[:ziltag] : raise(create_ziltag[:error])
+      create_ziltag = CreateZiltag.perform(ctx[:current_user], args[:map_id], args[:x], args[:y], args[:content])
+      create_ziltag.success? ? create_ziltag.ziltag : raise(create_ziltag.error)
     end
   end
 

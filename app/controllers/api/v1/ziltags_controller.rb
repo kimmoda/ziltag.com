@@ -17,16 +17,16 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def create
-    create_ziltag = CreateZiltag.call(
+    create_ziltag = CreateZiltag.perform(
       current_user,
       ziltag_params[:map_id], ziltag_params[:x], ziltag_params[:y],
       ziltag_params[:content]
     )
     if create_ziltag.success?
-      @ziltag = create_ziltag.context[:ziltag]
+      @ziltag = create_ziltag.ziltag
       render :show
     else
-      render json: { errors: [create_ziltag.context[:error]] }
+      render json: { errors: [create_ziltag.error] }
     end
   end
 
