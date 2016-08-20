@@ -24,7 +24,7 @@ class ZiltagAPI # :nodoc:
         if subscribe.success?
           {}
         else
-          { errors: [{ message: subscribe[:error] }] }
+          { errors: [{ message: subscribe.error }] }
         end
       rescue
         { errors: [{ message: 'token not valid' }] }
