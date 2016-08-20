@@ -145,8 +145,8 @@ MutationType = GraphQL::ObjectType.define do
   field :upgradeUser, UserType do
     argument :url, !types.String
     resolve -> (_obj, args, ctx) do
-      upgrade_user = UpgradeUser.call(ctx[:current_user], args[:url])
-      upgrade_user.success? ? upgrade_user[:user] : raise(upgrade_user[:error])
+      upgrade_user = UpgradeUser.perform(ctx[:current_user], args[:url])
+      upgrade_user.success? ? upgrade_user.user : raise(upgrade_user.error)
     end
   end
 
