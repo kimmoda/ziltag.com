@@ -8,10 +8,6 @@ class SendResetPassword < Interactor2
   def perform
     @token = @user.send(:set_reset_password_token)
     MANDRILL_CLIENT.messages.send_template TEMPLATE_NAME, [], message
-  rescue
-    Rails.logger.error $ERROR_INFO.to_s
-    Rails.logger.error $ERROR_POSITION.join
-    fail! 'something went wrong'
   end
 
   def message
