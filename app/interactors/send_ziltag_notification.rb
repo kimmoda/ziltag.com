@@ -7,7 +7,7 @@ class SendZiltagNotification #:nodoc:
   def initialize(ziltag)
     @ziltag = ziltag
     @author = ziltag.user
-    @website_owner = @ziltag.photo.box.user
+    @website_owner = @ziltag.photo.website.user
   end
 
   def call

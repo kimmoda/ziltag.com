@@ -17,7 +17,7 @@ class PhotoDashboard < Administrate::BaseDashboard
     host: Field::String,
     path: Field::String,
     # user: Field::BelongsTo,
-    box: Field::BelongsTo,
+    website: Field::BelongsTo,
     ziltags: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -46,7 +46,7 @@ class PhotoDashboard < Administrate::BaseDashboard
     :slug,
     :source,
     :href,
-    :box,
+    :website,
     :ziltags
   ].freeze
 end

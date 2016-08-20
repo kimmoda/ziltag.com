@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
   # associations
   has_many :ziltags, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :boxes, dependent: :destroy
-  has_many :photos, through: :boxes, dependent: :destroy
+  has_many :websites, dependent: :destroy
+  has_many :photos, through: :websites, dependent: :destroy
 
   # validations
   validates :username, uniqueness: { case_sensitive: false }, format: { with: /\A\w+\z/ }, length: { maximum: 30, minimum: 6 }, allow_nil: true
@@ -57,8 +57,8 @@ class User < ActiveRecord::Base
     devise_mailer.send(notification, self, *args).deliver_later(wait: 5.seconds)
   end
 
-  def box
-    boxes.first
+  def website
+    websites.first
   end
 
   def send_on_create_confirmation_instructions

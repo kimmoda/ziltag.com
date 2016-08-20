@@ -14,19 +14,19 @@ namespace 'dev:fake' do
 
     fakeup '產生圖片' do
       @photos = []
-      @boxes = Box.all
+      @websites = Website.all
       20.times do
         image = @images.sample
         width, height = ::MiniMagick::Image.open(image.path)[:dimensions]
         url = Faker::Internet.url
-        @photos << Photo.create!(image: image, href: url, width: width, height: height, box: Box.create(user: @users.sample, url: URI(url).host))
+        @photos << Photo.create!(image: image, href: url, width: width, height: height, website: Website.create(user: @users.sample, url: URI(url).host))
       end
       80.times do
         image = @images.sample
         width, height = ::MiniMagick::Image.open(image.path)[:dimensions]
         url = Faker::Internet.url
-        box = @users.first.boxes.first
-        Photo.create!(image: image, href: url, width: width, height: height, box: box)
+        website = @users.first.websites.first
+        Photo.create!(image: image, href: url, width: width, height: height, website: website)
       end
     end
 

@@ -5,7 +5,7 @@ class SendWelcomeEmail #:nodoc:
 
   def initialize(user)
     @user = user
-    @box = user.box
+    @website = user.website
   end
 
   def call
@@ -50,7 +50,7 @@ class SendWelcomeEmail #:nodoc:
     ]
     if @user.partner?
       ret.push(
-        { name: 'DOMAIN', content: @box.url },
+        { name: 'DOMAIN', content: @website.url },
         name: 'SCRIPT', content: escaped_script_html
       )
     end
@@ -71,7 +71,7 @@ class SendWelcomeEmail #:nodoc:
 
   def escaped_script_html
     CGI.escapeHTML(
-      %(<script src="#{host}/plugin.js" data-ziltag="#{@box.token}"></script>)
+      %(<script src="#{host}/plugin.js" data-ziltag="#{@website.token}"></script>)
     )
   end
 end

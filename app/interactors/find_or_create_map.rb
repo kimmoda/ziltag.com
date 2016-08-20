@@ -8,19 +8,19 @@ class FindOrCreateMap
     @href = href
     @width = width || 0
     @height = height || 0
-    @box = Box.find_by(token: token)
+    @website = Website.find_by(token: token)
   end
 
   def call
-    fail! 'token not found' if @box.nil?
+    fail! 'token not found' if @website.nil?
     url_regex = URI.regexp(%w(http https))
     fail! "source '#{@source}' is not a valid URL." unless @source =~ url_regex
     fail! "href '#{@href}' if nost a valid URL." unless @href =~ url_regex
-    fail! "'#{@href}' is not permitted by given token '#{@token}'" unless @box.match_href? @href
+    fail! "'#{@href}' is not permitted by given token '#{@token}'" unless @website.match_href? @href
 
     if photo = Photo.find_by_token_src_and_href(token: @token, source: @source, href: @href)
       context[:photo] = photo
-    elsif photo = Photo.create(source: @source, href: @href, width: @width, height: @height, box: @box)
+    elsif photo = Photo.create(source: @source, href: @href, width: @width, height: @height, website: @website)
       photo.valid? ? context[:photo] = photo : fail!(photo.errors.full_messages.first)
     end
     PhotoJob.perform_later photo, photo.source unless photo.image?

@@ -4,7 +4,7 @@ one:
   source: http://webmock.me/jpeg
   href: http://localhost:3000
   host: localhost
-  box: localhost
+  website: localhost
   width: 200
   height: 200
 two:
@@ -13,7 +13,7 @@ two:
   source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/two.jpg" %>
   href: http://localhost:3000
   host: localhost
-  box: localhost
+  website: localhost
   width: 200
   height: 200
 tumblr:
@@ -22,7 +22,7 @@ tumblr:
   source: http://38.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_540.gif
   href: http://localhost:3000
   host: localhost
-  box: localhost
+  website: localhost
   width: 200
   height: 200
 blogger:
@@ -31,6 +31,6 @@ blogger:
   source: http://webmock.me/jpeg
   href: http://tony.blogspot.tw/ccc
   host: tony.blogspot.com
-  box: blogger
+  website: blogger
   width: 200
   height: 200

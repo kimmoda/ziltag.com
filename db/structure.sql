@@ -145,40 +145,6 @@ end $$;
 
 
 --
--- Name: boxes; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE boxes (
-    id integer NOT NULL,
-    token character varying NOT NULL,
-    user_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    url character varying,
-    restricted boolean DEFAULT false NOT NULL
-);
-
-
---
--- Name: boxes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE boxes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: boxes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE boxes_id_seq OWNED BY boxes.id;
-
-
---
 -- Name: comments; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -224,7 +190,7 @@ CREATE TABLE photos (
     source character varying,
     href character varying,
     slug character varying NOT NULL,
-    box_id integer,
+    website_id integer,
     host character varying,
     path character varying,
     width integer DEFAULT 0 NOT NULL,
@@ -427,6 +393,40 @@ ALTER SEQUENCE visitors_id_seq OWNED BY visitors.id;
 
 
 --
+-- Name: websites; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE websites (
+    id integer NOT NULL,
+    token character varying NOT NULL,
+    user_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    url character varying,
+    restricted boolean DEFAULT false NOT NULL
+);
+
+
+--
+-- Name: websites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE websites_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: websites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE websites_id_seq OWNED BY websites.id;
+
+
+--
 -- Name: ziltags; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -462,13 +462,6 @@ CREATE SEQUENCE ziltags_id_seq
 --
 
 ALTER SEQUENCE ziltags_id_seq OWNED BY ziltags.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY boxes ALTER COLUMN id SET DEFAULT nextval('boxes_id_seq'::regclass);
 
 
 --
@@ -524,15 +517,14 @@ ALTER TABLE ONLY visitors ALTER COLUMN id SET DEFAULT nextval('visitors_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY websites ALTER COLUMN id SET DEFAULT nextval('websites_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY ziltags ALTER COLUMN id SET DEFAULT nextval('ziltags_id_seq'::regclass);
-
-
---
--- Name: boxes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY boxes
-    ADD CONSTRAINT boxes_pkey PRIMARY KEY (id);
 
 
 --
@@ -592,6 +584,14 @@ ALTER TABLE ONLY visitors
 
 
 --
+-- Name: websites_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY websites
+    ADD CONSTRAINT websites_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: ziltags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -614,27 +614,6 @@ CREATE INDEX idx_qc_on_scheduled_at_only_unlocked ON queue_classic_jobs USING bt
 
 
 --
--- Name: index_boxes_on_token; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_boxes_on_token ON boxes USING btree (token);
-
-
---
--- Name: index_boxes_on_url; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_boxes_on_url ON boxes USING btree (url);
-
-
---
--- Name: index_boxes_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_boxes_on_user_id ON boxes USING btree (user_id);
-
-
---
 -- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -646,13 +625,6 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 --
 
 CREATE INDEX index_comments_on_ziltag_id ON comments USING btree (ziltag_id);
-
-
---
--- Name: index_photos_on_box_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_photos_on_box_id ON photos USING btree (box_id);
 
 
 --
@@ -677,10 +649,10 @@ CREATE INDEX index_photos_on_slug ON photos USING btree (slug);
 
 
 --
--- Name: index_photos_on_source_and_href_and_box_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_photos_on_source_and_href_and_website_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_photos_on_source_and_href_and_box_id ON photos USING btree (source, href, box_id);
+CREATE UNIQUE INDEX index_photos_on_source_and_href_and_website_id ON photos USING btree (source, href, website_id);
 
 
 --
@@ -688,6 +660,13 @@ CREATE UNIQUE INDEX index_photos_on_source_and_href_and_box_id ON photos USING b
 --
 
 CREATE INDEX index_photos_on_user_id ON photos USING btree (user_id);
+
+
+--
+-- Name: index_photos_on_website_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_photos_on_website_id ON photos USING btree (website_id);
 
 
 --
@@ -723,6 +702,27 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 --
 
 CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
+
+
+--
+-- Name: index_websites_on_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_websites_on_token ON websites USING btree (token);
+
+
+--
+-- Name: index_websites_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_websites_on_url ON websites USING btree (url);
+
+
+--
+-- Name: index_websites_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_websites_on_user_id ON websites USING btree (user_id);
 
 
 --
@@ -803,7 +803,7 @@ ALTER TABLE ONLY ziltags
 -- Name: fk_rails_6e9f17f192; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY boxes
+ALTER TABLE ONLY websites
     ADD CONSTRAINT fk_rails_6e9f17f192 FOREIGN KEY (user_id) REFERENCES users(id);
 
 
@@ -812,7 +812,7 @@ ALTER TABLE ONLY boxes
 --
 
 ALTER TABLE ONLY photos
-    ADD CONSTRAINT fk_rails_c0ad8f36e2 FOREIGN KEY (box_id) REFERENCES boxes(id);
+    ADD CONSTRAINT fk_rails_c0ad8f36e2 FOREIGN KEY (website_id) REFERENCES websites(id);
 
 
 --
@@ -954,4 +954,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160731131546');
 INSERT INTO schema_migrations (version) VALUES ('20160813135507');
 
 INSERT INTO schema_migrations (version) VALUES ('20160820034544');
+
+INSERT INTO schema_migrations (version) VALUES ('20160820040305');
 

@@ -16,9 +16,9 @@ class CreateZiltag
     ziltag = Ziltag.new(
       user: @user, photo: @photo, x: @x, y: @y, content: @content
     )
-    owner = @photo.box.user
+    owner = @photo.website.user
 
-    if owner != @user && @photo.box.restricted
+    if owner != @user && @photo.website.restricted
       fail! 'tagging operation is not permitted'
     end
 

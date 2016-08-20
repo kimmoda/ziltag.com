@@ -13,7 +13,7 @@ class DashboardManifest
   DASHBOARDS = [
     :users,
     :partners,
-    :boxes,
+    :websites,
     :ziltags,
     :comments,
     :photos,

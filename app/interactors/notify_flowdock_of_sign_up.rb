@@ -6,7 +6,7 @@ class NotifyFlowdockOfSignUp < Interactor2
 
   def initialize(user)
     @user = user
-    @box = user.box
+    @website = user.website
   end
 
   def perform
@@ -27,8 +27,8 @@ class NotifyFlowdockOfSignUp < Interactor2
     <<~EOS
     new partner：#{@user.username}
     email: #{@user.email}
-    url: #{@box.url}
-    token: #{@box.token}
+    url: #{@website.url}
+    token: #{@website.token}
     EOS
   end
 end

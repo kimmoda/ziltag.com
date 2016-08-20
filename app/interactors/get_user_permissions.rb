@@ -2,13 +2,13 @@
 class GetUserPermissions < Interactor2 #:nodoc:
   attr_reader :permissions
 
-  def initialize(user, box)
+  def initialize(user, website)
     @user = user
-    @box = box
+    @website = website
   end
 
   def perform
-    @permissions = if @box.restricted && @user != @box.user
+    @permissions = if @website.restricted && @user != @website.user
                      []
                    else
                      ['create_ziltag']
