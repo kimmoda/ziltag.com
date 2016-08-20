@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-json.id @ziltag.slug
-json.map_id @ziltag.photo.slug
+json.id @ziltag.natural_id
+json.map_id @ziltag.photo.natural_id
 json.content @ziltag.content
 json.created_at @ziltag.created_at
 json.usr @ziltag.user, partial: 'user', as: :user

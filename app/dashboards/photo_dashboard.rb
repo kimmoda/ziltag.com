@@ -11,7 +11,7 @@ class PhotoDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     image: Field::Image,
-    slug: Field::String,
+    natural_id: Field::String,
     source: Field::String,
     href: Field::String,
     host: Field::String,
@@ -43,7 +43,7 @@ class PhotoDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :slug,
+    :natural_id,
     :source,
     :href,
     :website,

@@ -58,6 +58,6 @@ class SendZiltagNotification #:nodoc:
   end
 
   def ziltag_url
-    "#{host}/ziltags/#{@ziltag.slug}"
+    "#{host}/ziltags/#{@ziltag.natural_id}"
   end
 end

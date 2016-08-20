@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base #:nodoc:
     is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug
   ).map! { |c| 'blogspot.' + c }.freeze
 
-  include Slugable
+  include Natural
 
   # scopes
 
@@ -75,7 +75,7 @@ class Photo < ActiveRecord::Base #:nodoc:
   # other
 
   def to_param
-    slug
+    natural_id
   end
 
   def to_s

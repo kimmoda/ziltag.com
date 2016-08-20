@@ -189,7 +189,7 @@ CREATE TABLE photos (
     updated_at timestamp without time zone NOT NULL,
     source character varying,
     href character varying,
-    slug character varying NOT NULL,
+    natural_id character varying NOT NULL,
     website_id integer,
     host character varying,
     path character varying,
@@ -439,7 +439,7 @@ CREATE TABLE ziltags (
     content text NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    slug character varying NOT NULL,
+    natural_id character varying NOT NULL,
     share_image character varying,
     unsubscribers integer[] DEFAULT '{}'::integer[]
 );
@@ -635,17 +635,17 @@ CREATE INDEX index_photos_on_host ON photos USING btree (host);
 
 
 --
+-- Name: index_photos_on_natural_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_photos_on_natural_id ON photos USING btree (natural_id);
+
+
+--
 -- Name: index_photos_on_path; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_photos_on_path ON photos USING btree (path);
-
-
---
--- Name: index_photos_on_slug; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_photos_on_slug ON photos USING btree (slug);
 
 
 --
@@ -726,17 +726,17 @@ CREATE INDEX index_websites_on_user_id ON websites USING btree (user_id);
 
 
 --
+-- Name: index_ziltags_on_natural_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_ziltags_on_natural_id ON ziltags USING btree (natural_id);
+
+
+--
 -- Name: index_ziltags_on_photo_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_ziltags_on_photo_id ON ziltags USING btree (photo_id);
-
-
---
--- Name: index_ziltags_on_slug; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_ziltags_on_slug ON ziltags USING btree (slug);
 
 
 --
@@ -956,4 +956,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160813135507');
 INSERT INTO schema_migrations (version) VALUES ('20160820034544');
 
 INSERT INTO schema_migrations (version) VALUES ('20160820040305');
+
+INSERT INTO schema_migrations (version) VALUES ('20160820043133');
 

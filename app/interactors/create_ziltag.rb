@@ -10,7 +10,7 @@ class CreateZiltag
   end
 
   def call
-    @photo = Photo.find_by(slug: @map_id)
+    @photo = Photo.find_by(natural_id: @map_id)
     fail! "map ID '#{@map_id}' not found" if @photo.nil?
 
     ziltag = Ziltag.new(

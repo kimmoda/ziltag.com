@@ -2,9 +2,9 @@
 ZiltagType = GraphQL::ObjectType.define do
   name 'Ziltag'
   description 'A ziltag entry'
-  field :id, !types.ID, 'The unique ID for this ziltag', property: :slug
+  field :id, !types.ID, 'The unique ID for this ziltag', property: :natural_id
   field :map_id, !types.ID, 'The ziltag map ID which this ziltag belongs to' do
-    resolve ->(obj, _args, _ctx) { obj.photo.slug }
+    resolve ->(obj, _args, _ctx) { obj.photo.natural_id }
   end
   field :content, !types.String, 'The content of this zitlag'
   field :usr, !UserType, 'The owner of this ziltag', property: :user

@@ -21,7 +21,7 @@ class GetUserPermissionsByParams < Interactor2 #:nodoc:
         _website = Website.find_by(token: @token)
         _website || fail!('token is not valid')
       elsif @ziltag_map_id
-        photo = Photo.find_by(slug: @ziltag_map_id)
+        photo = Photo.find_by(natural_id: @ziltag_map_id)
         photo || fail!('zilag_map id is not valid')
         _website = photo.website
         _website || fail!("can't get plugin token from ziltag_map #{@ziltag_map_id}")

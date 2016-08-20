@@ -68,7 +68,7 @@ MutationType = GraphQL::ObjectType.define do
     argument :id, !types.ID, 'Ziltag ID'
     argument :content, !types.String
     resolve -> (_obj, args, _ctx) do
-      ziltag = Ziltag.find_by!(slug: args[:id])
+      ziltag = Ziltag.find_by!(natural_id: args[:id])
       ziltag.update(content: args[:content]) ? ziltag : raise(ziltag.errors.full_messages.first)
     end
   end
@@ -76,7 +76,7 @@ MutationType = GraphQL::ObjectType.define do
   field :deleteZiltag, ZiltagType do
     argument :id, !types.ID, 'Ziltag ID'
     resolve -> (_obj, args, _ctx) do
-      ziltag = Ziltag.find_by! slug: args[:id]
+      ziltag = Ziltag.find_by! natural_id: args[:id]
       ziltag.destroy
       ziltag
     end
@@ -86,7 +86,7 @@ MutationType = GraphQL::ObjectType.define do
     argument :ziltag_id, !types.ID
     argument :content, !types.String
     resolve -> (_obj, args, ctx) do
-      ziltag = Ziltag.find_by! slug: args[:ziltag_id]
+      ziltag = Ziltag.find_by! natural_id: args[:ziltag_id]
       create_comment = CreateComment.call(ctx[:current_user], content: args[:content], ziltag: ziltag)
       create_comment.success? ? create_comment[:comment] : raise(create_comment[:error])
     end

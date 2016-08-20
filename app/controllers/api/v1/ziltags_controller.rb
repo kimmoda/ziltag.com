@@ -13,7 +13,7 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def show
-    @ziltag = Ziltag.find_by!(slug: params[:id])
+    @ziltag = Ziltag.find_by!(natural_id: params[:id])
   end
 
   def create
@@ -52,6 +52,6 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def set_ziltag
-    @ziltag = current_user.ziltags.find_by! slug: params[:id]
+    @ziltag = current_user.ziltags.find_by! natural_id: params[:id]
   end
 end

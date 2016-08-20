@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Ziltag < ActiveRecord::Base
-  include Slugable
+  include Natural
   include Confirmable
   # scopes
 
@@ -24,7 +24,7 @@ class Ziltag < ActiveRecord::Base
 
   # other
   def to_param
-    slug
+    natural_id
   end
 
   def generate_share_image_later
@@ -36,10 +36,10 @@ class Ziltag < ActiveRecord::Base
   end
 
   def map_id
-    photo.slug
+    photo.natural_id
   end
 
   def map_id=(value)
-    self.photo = Photo.find_by(slug: value)
+    self.photo = Photo.find_by(natural_id: value)
   end
 end

@@ -14,7 +14,7 @@ QueryType = GraphQL::ObjectType.define do
   field :ziltag, ZiltagType, 'Find a ziltag by ID' do
     argument :id, !types.ID
     resolve -> (_obj, args, _ctx) {
-      Ziltag.find_by!(slug: args['id'])
+      Ziltag.find_by!(natural_id: args['id'])
     }
   end
 
@@ -28,7 +28,7 @@ QueryType = GraphQL::ObjectType.define do
   field :ziltag_map, ZiltagMapType, 'Find a ziltag map by ID' do
     argument :id, !types.ID
     resolve -> (_obj, args, _ctx) {
-      Photo.find_by!(slug: args['id'])
+      Photo.find_by!(natural_id: args['id'])
     }
   end
 

@@ -40,7 +40,7 @@ class Api::V1::CommentsController < ApiController
 
   def comment_params
     ret = params.require(:comment).permit(:content, :ziltag_id)
-    ret[:ziltag_id] = Ziltag.find_by!(slug: ret.delete(:ziltag_id)).id if ret[:ziltag_id]
+    ret[:ziltag_id] = Ziltag.find_by!(natural_id: ret.delete(:ziltag_id)).id if ret[:ziltag_id]
     ret
   end
 end
