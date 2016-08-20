@@ -11,20 +11,20 @@ class GetUserPermissionsByParams < Interactor2 #:nodoc:
   end
 
   def perform
-    result = GetUserPermissions.perform(@user, box)
+    result = GetUserPermissions.perform(@user, website)
     result.success? ? @permissions = result.permissions : fail!(result.error)
   end
 
-  def box
-    @_box ||= (
+  def website
+    @_website ||= (
       if @token
-        _box = Box.find_by(token: @token)
-        _box || fail!('token is not valid')
+        _website = Website.find_by(token: @token)
+        _website || fail!('token is not valid')
       elsif @ziltag_map_id
-        photo = Photo.find_by(slug: @ziltag_map_id)
+        photo = Photo.find_by(natural_id: @ziltag_map_id)
         photo || fail!('zilag_map id is not valid')
-        _box = photo.box
-        _box || fail!("can't get plugin token from ziltag_map #{@ziltag_map_id}")
+        _website = photo.website
+        _website || fail!("can't get plugin token from ziltag_map #{@ziltag_map_id}")
       else
         fail! 'missing parameters: either `token` (for plugin) or `ziltag_map_id` (for ziltag and ziltag map page)'
       end

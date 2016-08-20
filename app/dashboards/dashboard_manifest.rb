@@ -12,8 +12,8 @@ class DashboardManifest
   # to work correctly.
   DASHBOARDS = [
     :users,
-    :content_providers,
-    :boxes,
+    :partners,
+    :websites,
     :ziltags,
     :comments,
     :photos,

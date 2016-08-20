@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require 'tumblr_identifier'
-class Box < ActiveRecord::Base
+class Website < ActiveRecord::Base
   BLOGSPOT_DOMAINS = %w(com ae am be bg ca ch co.at co.il co.ke co.nz co.uk cz de dk fi fr hk ie in is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug).map! { |c| 'blogspot.' + c }.freeze
   PLATFORMS = {
     'tumblr.com' => 'tumblr',
@@ -82,7 +82,7 @@ class Box < ActiveRecord::Base
     case url
     when URI.regexp(%w(http https)), DOMAIN_REGEX, nil
     else
-      errors.add(:url, I18n.t('activerecord.errors.models.box.attributes.url.invalid'))
+      errors.add(:url, I18n.t('activerecord.errors.models.website.attributes.url.invalid'))
     end
   end
 end

@@ -16,7 +16,7 @@ class UserDashboard < Administrate::BaseDashboard
     type: Field::String,
     ziltags: Field::HasMany,
     comments: Field::HasMany,
-    boxes: Field::HasMany,
+    websites: Field::HasMany,
     sign_in_count: Field::Number,
     current_sign_in_at: Field::DateTime,
     current_sign_in_ip: InetField,
@@ -44,7 +44,7 @@ class UserDashboard < Administrate::BaseDashboard
     :username,
     :ziltags,
     :comments,
-    :boxes,
+    :websites,
     :confirmed_at
   ].freeze
 
@@ -58,7 +58,7 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :ziltags,
     :comments,
-    :boxes,
+    :websites,
     :email,
     :avatar,
     :username,

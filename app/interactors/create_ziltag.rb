@@ -10,15 +10,15 @@ class CreateZiltag
   end
 
   def call
-    @photo = Photo.find_by(slug: @map_id)
+    @photo = Photo.find_by(natural_id: @map_id)
     fail! "map ID '#{@map_id}' not found" if @photo.nil?
 
     ziltag = Ziltag.new(
       user: @user, photo: @photo, x: @x, y: @y, content: @content
     )
-    owner = @photo.box.user
+    owner = @photo.website.user
 
-    if owner != @user && @photo.box.restricted
+    if owner != @user && @photo.website.restricted
       fail! 'tagging operation is not permitted'
     end
 

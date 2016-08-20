@@ -10,7 +10,7 @@ class SendCommentNotification #:nodoc:
     @author = comment.user
     @sibling_commenters = comment.sibling_commenters.to_a
     @ziltag_author = comment.ziltag.user
-    @website_owner = comment.ziltag.photo.box.user
+    @website_owner = comment.ziltag.photo.website.user
     @unsubscriber_ids = comment.ziltag.unsubscribers
   end
 
@@ -90,6 +90,6 @@ class SendCommentNotification #:nodoc:
   end
 
   def ziltag_url
-    "#{host}/ziltags/#{@ziltag.slug}"
+    "#{host}/ziltags/#{@ziltag.natural_id}"
   end
 end

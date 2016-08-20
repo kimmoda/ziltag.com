@@ -11,7 +11,7 @@ class ZiltagDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     share_image: Field::Image,
-    slug: Field::String,
+    natural_id: Field::String,
     content: Field::Text,
     x: Field::Number,
     y: Field::Number,
@@ -43,7 +43,7 @@ class ZiltagDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :slug,
+    :natural_id,
     :x,
     :y,
     :content,

@@ -21,12 +21,12 @@ class NotifySSE < Interactor2 #:nodoc:
     @notification = SseNotification.create body: {
       event: "#{@action}_ziltag",
       receivers: {
-        ziltags: ziltag.photo.ziltags.pluck(:slug) << ziltag.slug,
-        ziltag_maps: [ziltag.photo.slug]
+        ziltags: ziltag.photo.ziltags.pluck(:natural_id) << ziltag.natural_id,
+        ziltag_maps: [ziltag.photo.natural_id]
       },
       payload: {
-        map_id: ziltag.photo.slug, content: ziltag.content,
-        id: ziltag.slug, x: ziltag.x.to_f, y: ziltag.y.to_f,
+        map_id: ziltag.photo.natural_id, content: ziltag.content,
+        id: ziltag.natural_id, x: ziltag.x.to_f, y: ziltag.y.to_f,
         usr: {
           avatar: ziltag.user.avatar.thumb.url, name: ziltag.user.username
         }
@@ -43,9 +43,9 @@ class NotifySSE < Interactor2 #:nodoc:
     comment = @record
     @notification = SseNotification.create body: {
       event: "#{@action}_comment",
-      receivers: { ziltags: [comment.ziltag.slug] },
+      receivers: { ziltags: [comment.ziltag.natural_id] },
       payload: {
-        ziltag_id: comment.ziltag.slug, id: comment.id,
+        ziltag_id: comment.ziltag.natural_id, id: comment.id,
         content: comment.content, created_at: comment.created_at,
         usr: {
           avatar: comment.user.avatar.thumb.url, name: comment.user.username

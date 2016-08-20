@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base #:nodoc:
     is it jp kr li lt lu md mx nl no pe ro rs ru se sg si sk sn tw ug
   ).map! { |c| 'blogspot.' + c }.freeze
 
-  include Slugable
+  include Natural
 
   # scopes
 
@@ -32,7 +32,7 @@ class Photo < ActiveRecord::Base #:nodoc:
   def self.find_by_token_src_and_href(token:, source:, href:)
     uri = URI(href)
     host = uri.host
-    scope = Photo.joins(:box).where(boxes: { token: token })
+    scope = Photo.joins(:website).where(websites: { token: token })
     scope = if host.end_with?(*BLOGSPOT_DOMAINS)
               blog_id = host.split('.').first
               scope.where(source: source).in_blogspot(blog_id)
@@ -60,10 +60,10 @@ class Photo < ActiveRecord::Base #:nodoc:
 
   # attributes
   mount_uploader :image, ImageUploader
-  delegate :token, :user, to: :box
+  delegate :token, :user, to: :website
 
   # associations
-  belongs_to :box
+  belongs_to :website
   has_many :ziltags, dependent: :destroy
 
   # validations
@@ -75,7 +75,7 @@ class Photo < ActiveRecord::Base #:nodoc:
   # other
 
   def to_param
-    slug
+    natural_id
   end
 
   def to_s

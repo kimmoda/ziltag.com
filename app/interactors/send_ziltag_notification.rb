@@ -7,7 +7,7 @@ class SendZiltagNotification #:nodoc:
   def initialize(ziltag)
     @ziltag = ziltag
     @author = ziltag.user
-    @website_owner = @ziltag.photo.box.user
+    @website_owner = @ziltag.photo.website.user
   end
 
   def call
@@ -58,6 +58,6 @@ class SendZiltagNotification #:nodoc:
   end
 
   def ziltag_url
-    "#{host}/ziltags/#{@ziltag.slug}"
+    "#{host}/ziltags/#{@ziltag.natural_id}"
   end
 end

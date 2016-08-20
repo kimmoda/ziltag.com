@@ -1,4 +1,4 @@
 # frozen_string_literal: true
-class ContentProvider < User
+class Partner < User
   validates :username, presence: true, on: :update
 end

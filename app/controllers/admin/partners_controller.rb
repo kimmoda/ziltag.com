@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Admin
-  class ContentProvidersController < Admin::ApplicationController
+  class PartnersController < Admin::ApplicationController
     def order
       if params[:order] && params[:direction]
         super

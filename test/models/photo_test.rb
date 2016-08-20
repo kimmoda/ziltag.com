@@ -3,9 +3,9 @@ require 'test_helper'
 
 class PhotoTest < ActiveSupport::TestCase
   def setup
-    @token = boxes(:tony).token
-    @blogger_token = boxes(:blogger).token
-    @localhost_token = boxes(:localhost).token
+    @token = websites(:tony).token
+    @blogger_token = websites(:blogger).token
+    @localhost_token = websites(:localhost).token
   end
 
   def test_find_by_token_src_and_href

@@ -11,7 +11,7 @@ module Admin
 
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
-    #   Track.find_by!(slug: param)
+    #   Track.find_by!(natural_id: param)
     # end
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions

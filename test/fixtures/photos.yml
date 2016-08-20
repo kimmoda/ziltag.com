@@ -1,36 +1,36 @@
 one:
-  slug: oneone
+  natural_id: oneone
   image: one.jpg
   source: http://webmock.me/jpeg
   href: http://localhost:3000
   host: localhost
-  box: localhost
+  website: localhost
   width: 200
   height: 200
 two:
-  slug: twotwo
+  natural_id: twotwo
   image: two.jpg
   source: <%= "http://localhost:3000/uploads/photos/image/#{@id}/two.jpg" %>
   href: http://localhost:3000
   host: localhost
-  box: localhost
+  website: localhost
   width: 200
   height: 200
 tumblr:
-  slug: tumblr
+  natural_id: tumblr
   image: tumblr.jpg
   source: http://38.media.tumblr.com/31bc9b6e03697efd9c171a1607b5b26f/tumblr_inline_nqpg3pMhqd1rrdigq_540.gif
   href: http://localhost:3000
   host: localhost
-  box: localhost
+  website: localhost
   width: 200
   height: 200
 blogger:
-  slug: blogger
+  natural_id: blogger
   image: blogger.jpg
   source: http://webmock.me/jpeg
   href: http://tony.blogspot.tw/ccc
   host: tony.blogspot.com
-  box: blogger
+  website: blogger
   width: 200
   height: 200

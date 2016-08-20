@@ -27,7 +27,7 @@ class SubscribeNewsletter
       status: 'subscribed',
       merge_fields: {
         USERNAME: @user.username,
-        ROLE: @user.content_provider? ? 'partner' : 'general'
+        ROLE: @user.partner? ? 'partner' : 'general'
       }
     }
   end

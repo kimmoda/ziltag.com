@@ -68,7 +68,7 @@ MutationType = GraphQL::ObjectType.define do
     argument :id, !types.ID, 'Ziltag ID'
     argument :content, !types.String
     resolve -> (_obj, args, _ctx) do
-      ziltag = Ziltag.find_by!(slug: args[:id])
+      ziltag = Ziltag.find_by!(natural_id: args[:id])
       ziltag.update(content: args[:content]) ? ziltag : raise(ziltag.errors.full_messages.first)
     end
   end
@@ -76,7 +76,7 @@ MutationType = GraphQL::ObjectType.define do
   field :deleteZiltag, ZiltagType do
     argument :id, !types.ID, 'Ziltag ID'
     resolve -> (_obj, args, _ctx) do
-      ziltag = Ziltag.find_by! slug: args[:id]
+      ziltag = Ziltag.find_by! natural_id: args[:id]
       ziltag.destroy
       ziltag
     end
@@ -86,7 +86,7 @@ MutationType = GraphQL::ObjectType.define do
     argument :ziltag_id, !types.ID
     argument :content, !types.String
     resolve -> (_obj, args, ctx) do
-      ziltag = Ziltag.find_by! slug: args[:ziltag_id]
+      ziltag = Ziltag.find_by! natural_id: args[:ziltag_id]
       create_comment = CreateComment.call(ctx[:current_user], content: args[:content], ziltag: ziltag)
       create_comment.success? ? create_comment[:comment] : raise(create_comment[:error])
     end
@@ -115,15 +115,15 @@ MutationType = GraphQL::ObjectType.define do
     resolve -> (_obj, args, ctx) do
       current_user = ctx[:current_user]
       url = args[:url]
-      box = current_user.boxes.create url: url
-      box.persisted? ? box : raise(box.errors.full_messages.first)
+      website = current_user.websites.create url: url
+      website.persisted? ? website : raise(website.errors.full_messages.first)
     end
   end
 
   field :deleteWebsite, WebsiteType do
     argument :id, !types.ID
     resolve -> (_obj, args, _ctx) do
-      website = Box.find(args[:id])
+      website = Website.find(args[:id])
       website.destroy
       website
     end
@@ -133,7 +133,7 @@ MutationType = GraphQL::ObjectType.define do
     argument :id, !types.ID
     argument :url, types.String
     resolve -> (_obj, args, _ctx) do
-      website = Box.find(args[:id])
+      website = Website.find(args[:id])
       if website.update url: args[:url]
         website
       else
@@ -154,7 +154,7 @@ MutationType = GraphQL::ObjectType.define do
     argument :id, !types.ID
     argument :restricted, types.Boolean
     resolve -> (_obj, args, _ctx) do
-      website = Box.find(args[:id])
+      website = Website.find(args[:id])
       website.update_column :restricted, args[:restricted]
       website
     end
