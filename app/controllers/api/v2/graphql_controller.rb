@@ -19,10 +19,6 @@ class Api::V2::GraphqlController < ApplicationController
   rescue
     headers['Access-Control-Allow-Credentials'] = 'true'
     headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
-    error_id = SecureRandom.hex
-    Rails.logger.error error_id
-    Rails.logger.error $ERROR_INFO.to_s
-    Rails.logger.error $ERROR_POSITION.join($INPUT_RECORD_SEPARATOR)
-    render json: { errors: [{ message: "something went wrong, error id: #{error_id}" }] }
+    render json: { errors: [{ message: $ERROR_INFO.to_s}] }
   end
 end
