@@ -10,7 +10,7 @@ MutationType = GraphQL::ObjectType.define do
       if current_user.update avatar: ctx[:file]
         current_user
       else
-        raise current_user.errors.messages.values.first.first
+        raise GraphQL::ExecutionError, current_user.errors.messages.values.first.first
       end
     end
   end
@@ -21,7 +21,11 @@ MutationType = GraphQL::ObjectType.define do
     argument :url, !types.String
     resolve -> (_obj, args, _ctx) do
       partner_sign_up = PartnerSignUp.perform(args[:username], args[:email], args[:url])
-      partner_sign_up.success? ? partner_sign_up.user : raise(partner_sign_up.error)
+      if partner_sign_up.success?
+        partner_sign_up.user
+      else
+        raise GraphQL::ExecutionError, partner_sign_up.error
+      end
     end
   end
 
@@ -30,7 +34,11 @@ MutationType = GraphQL::ObjectType.define do
     argument :email, !types.String
     resolve -> (_obj, args, _ctx) do
       user_sign_up = UserSignUp.perform(args[:username], args[:email])
-      user_sign_up.success? ? user_sign_up.user : raise(user_sign_up.error)
+      if user_sign_up.success?
+        user_sign_up.user
+      else
+        raise GraphQL::ExecutionError, user_sign_up.error
+      end
     end
   end
 
@@ -48,7 +56,7 @@ MutationType = GraphQL::ObjectType.define do
         ctx[:warden].set_user(ctx[:current_user], scope: :user)
         ctx[:current_user]
       else
-        raise ctx[:current_user].errors.messages.values.first.first
+        raise GraphQL::ExecutionError, ctx[:current_user].errors.messages.values.first.first
       end
     end
   end
@@ -60,7 +68,11 @@ MutationType = GraphQL::ObjectType.define do
     argument :map_id, !types.ID
     resolve -> (_obj, args, ctx) do
       create_ziltag = CreateZiltag.perform(ctx[:current_user], args[:map_id], args[:x], args[:y], args[:content])
-      create_ziltag.success? ? create_ziltag.ziltag : raise(create_ziltag.error)
+      if create_ziltag.success?
+        create_ziltag.ziltag
+      else
+        raise GraphQL::ExecutionError, create_ziltag.error
+      end
     end
   end
 
@@ -69,7 +81,11 @@ MutationType = GraphQL::ObjectType.define do
     argument :content, !types.String
     resolve -> (_obj, args, _ctx) do
       ziltag = Ziltag.find_by!(natural_id: args[:id])
-      ziltag.update(content: args[:content]) ? ziltag : raise(ziltag.errors.full_messages.first)
+      if ziltag.update(content: args[:content])
+        ziltag
+      else
+        raise GraphQL::ExecutionError, ziltag.errors.full_messages.first
+      end
     end
   end
 
@@ -88,7 +104,11 @@ MutationType = GraphQL::ObjectType.define do
     resolve -> (_obj, args, ctx) do
       ziltag = Ziltag.find_by! natural_id: args[:ziltag_id]
       create_comment = CreateComment.perform(ctx[:current_user], content: args[:content], ziltag: ziltag)
-      create_comment.success? ? create_comment.comment : raise(create_comment.error)
+      if create_comment.success?
+        create_comment.comment
+      else
+        raise GraphQL::ExecutionError, create_comment.error
+      end
     end
   end
 
@@ -97,7 +117,11 @@ MutationType = GraphQL::ObjectType.define do
     argument :content, !types.String
     resolve -> (_obj, args, _ctx) do
       comment = Comment.find(args[:id])
-      comment.update(content: args[:content]) ? comment : raise(comment.errors.full_messages.first)
+      if comment.update(content: args[:content])
+        comment
+      else
+        raise GraphQL::ExecutionError, comment.errors.full_messages.first
+      end
     end
   end
 
@@ -116,7 +140,11 @@ MutationType = GraphQL::ObjectType.define do
       current_user = ctx[:current_user]
       url = args[:url]
       website = current_user.websites.create url: url
-      website.persisted? ? website : raise(website.errors.full_messages.first)
+      if website.persisted?
+        website
+      else
+        raise GraphQL::ExecutionError, website.errors.full_messages.first
+      end
     end
   end
 
@@ -137,7 +165,7 @@ MutationType = GraphQL::ObjectType.define do
       if website.update url: args[:url]
         website
       else
-        raise website.errors.full_messages.first
+        raise GraphQL::ExecutionError, website.errors.full_messages.first
       end
     end
   end
@@ -146,7 +174,11 @@ MutationType = GraphQL::ObjectType.define do
     argument :url, !types.String
     resolve -> (_obj, args, ctx) do
       upgrade_user = UpgradeUser.perform(ctx[:current_user], args[:url])
-      upgrade_user.success? ? upgrade_user.user : raise(upgrade_user.error)
+      if upgrade_user.success?
+        upgrade_user.user
+      else
+        raise GraphQL::ExecutionError, upgrade_user.error
+      end
     end
   end
 
