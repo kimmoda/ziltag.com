@@ -403,7 +403,7 @@ CREATE TABLE websites (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     url character varying,
-    restricted boolean DEFAULT false NOT NULL
+    restricted boolean DEFAULT true NOT NULL
 );
 
 
@@ -958,4 +958,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160820034544');
 INSERT INTO schema_migrations (version) VALUES ('20160820040305');
 
 INSERT INTO schema_migrations (version) VALUES ('20160820043133');
+
+INSERT INTO schema_migrations (version) VALUES ('20160822044809');
 
