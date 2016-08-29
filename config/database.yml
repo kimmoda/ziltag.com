@@ -5,6 +5,14 @@ default: &default
 development:
   <<: *default
   database: ziltag_development
+  pool: 5
+  username: postgres
+  password:
+  host: db
 test:
   <<: *default
   database: ziltag_test
+  pool: 5
+  username: postgres
+  password:
+  host: db_test

@@ -1,0 +1,48 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: ziltag_development
+  app:
+    build: .
+    image: ziltag
+    volumes:
+     - .:/ziltag
+    depends_on:
+     - db
+  web:
+    image: ziltag
+    command: bundle exec puma
+    volumes:
+     - .:/ziltag
+    ports:
+      - 3000:3000
+    depends_on:
+     - app
+  sse:
+    image: ziltag
+    command: ruby lib/sse.rb -svp 3310 --ssl --ssl-key ../config/ssl/localhost.key --ssl-cert ../config/ssl/localhost.crt -c ./sse/config.rb
+    volumes:
+      - .:/ziltag
+    ports:
+      - 3310:3310
+    depends_on:
+      - app
+  worker:
+    image: ziltag
+    command: bundle exec rake qc:work
+    environment:
+      QUEUES: "mailers,default"
+      QC_MEASURE: "true"
+    volumes:
+      - .:/ziltag
+    depends_on:
+      - app
+  webpack:
+    image: ziltag
+    command: /node_modules/.bin/webpack --watch
+    volumes:
+      - .:/ziltag
+    depends_on:
+      - app

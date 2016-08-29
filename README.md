@@ -1,63 +1,29 @@
 [![Build Status](https://semaphoreci.com/api/v1/projects/a08f57bd-e891-4bb0-8e0f-60b00a5d993d/402412/badge.svg)](https://semaphoreci.com/billtag/ziltag-com)
 
-# 相依套件
-
-- ruby 2.2.3
-- graphicsmagick
-- postgresql
-
-## Ubuntu
-
-- libreadline-dev
-- libssl-dev
-- libgdbm-dev
-- nodejs
-- libpq-dev
-- clang
-- binutils
-- make
-- graphicsmagick
-
-# 開發
+# dev
 
 ```
-$ bundle install
-$ npm install
-$ bin/rake dev:setup
-$ foreman start
+$ docker-compose build
+$ docker-compose run --rm app bin/rake dev:setup # for the first time
+$ docker-compose up
 ```
 
-**請跟 `frontend-ziltag.com` 同步開啟 server 做開發**
+**You must clone [ziltag/frontend-ziltag.com](https://github.com/ziltag/frontend-ziltag.com) and launch with [hotel](https://github.com/typicode/hotel) first**
 
 # GraphQL IDE
 
 http://ziltag.dev/graphiql
 
-# Worker
+# Sign In/Out
 
 ```
-$ env QUEUES="mailers,default" QC_MEASURE=true bundle exec rake qc:work
-```
-
-# Git 流程
-
-- 一律在 `dev` 分支上開發
-- 一律使用 `git pull --rebase`。
-- 1 個 issue 1 個 branch，命名方式為 `issues/#ID`。
-- branch 開發好後送 pull request，只有 PM 可以 merge
-
-# 登入登出
-
-可再網址加上 `sign_in` 或 `sign_out` 改變登入狀態，例：
-
-```
-http://localhost:3000?sign_in
-http://localhost:3000?sign_out
+http://ziltag.dev?sign_in
+http://ziltag.dev?sign_out
 ```
 
 # Commit Message Hook
 
-此 `.git/hooks/commit-msg` 腳本會根據分支名稱，自動在 commit message 上面加上 issue number，便於在 Github 上索引：
+Save the follwing script in `.git/hooks/commit-msg`, it will add issue number to commit message automatically.
 
 ```sh
 #!/bin/sh
@@ -67,8 +33,6 @@ if [[ $CURRENT_BRANCH =~ ^issues[^[:digit:]]*([[:digit:]]+)$ ]]; then
   grep -vE '^\s*#' $1 | grep -q $ISSUE_NUMBER || echo [\#${BASH_REMATCH[1]}] >> $1
 fi
 ```
-
-設定該檔案可執行：
 
 ```sh
 chmod +x .git/hooks/commit-msg

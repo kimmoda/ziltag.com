@@ -49,5 +49,8 @@ module ZiltagApp
     end
 
     config.autoload_paths << Rails.root.join('app', 'graph', 'types') << Rails.root.join('app', 'graph', 'middlewares')
+    config.log_level = :debug
+    config.log_tags  = [:subdomain, :uuid]
+    config.logger    = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
   end
 end
