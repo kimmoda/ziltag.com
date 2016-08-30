@@ -14,9 +14,11 @@ RUN curl -SL https://nodejs.org/dist/v6.4.0/node-v${NODE_VERSION}-linux-x64.tar.
 
 RUN mkdir /ziltag
 WORKDIR /ziltag
+
 COPY Gemfile /ziltag/Gemfile
 COPY Gemfile.lock /ziltag/Gemfile.lock
 RUN echo 'gem: --no-rdoc --no-ri' > ~/.gemrc && bundle install
-COPY package.json /package.json
-RUN cd / && npm install
+
+COPY package.json /ziltag/package.json
+RUN npm install
 COPY . /ziltag

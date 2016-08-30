@@ -8,18 +8,19 @@ services:
     build: .
     image: ziltag
     volumes:
-     - .:/ziltag
+      - .:/ziltag
+      - /ziltag/node_modules
     depends_on:
-     - db
+      - db
   web:
     image: ziltag
     command: bundle exec puma
     volumes:
-     - .:/ziltag
+      - .:/ziltag
     ports:
       - 3000:3000
     depends_on:
-     - app
+      - app
   sse:
     image: ziltag
     command: ruby lib/sse.rb -svp 3310 --ssl --ssl-key ../config/ssl/localhost.key --ssl-cert ../config/ssl/localhost.crt -c ./sse/config.rb
@@ -41,8 +42,9 @@ services:
       - app
   webpack:
     image: ziltag
-    command: /node_modules/.bin/webpack --watch
+    command: npm run dev
     volumes:
       - .:/ziltag
+      - /ziltag/node_modules
     depends_on:
       - app
