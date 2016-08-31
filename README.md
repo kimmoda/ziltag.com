@@ -3,7 +3,6 @@
 # dev
 
 ```
-$ docker-compose build
 $ docker-compose run --rm app bin/rake dev:setup # for the first time
 $ docker-compose up
 ```
