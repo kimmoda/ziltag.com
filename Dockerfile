@@ -22,3 +22,5 @@ RUN echo 'gem: --no-rdoc --no-ri' > ~/.gemrc && bundle install
 COPY package.json /ziltag/package.json
 RUN npm install
 COPY . /ziltag
+
+RUN npm run build

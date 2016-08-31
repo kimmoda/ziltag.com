@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "WEBPACK_ENV=dev webpack --watch",
-    "build": "webpack"
+    "build": "WEBPACK_ENV=production webpack"
   },
   "dependencies": {
     "babel-loader": "^6.2.4",
