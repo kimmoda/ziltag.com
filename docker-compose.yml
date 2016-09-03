@@ -1,25 +1,30 @@
 version: '2'
+volumes:
+  pgdata:
+  node_modules:
 services:
   db:
-    image: postgres
+    image: postgres:9.4
     container_name: db-ziltag.com
     environment:
       POSTGRES_DB: ziltag_development
+    volumes:
+      - pgdata:/var/lib/postgresql/data
   app:
     build: .
     image: ziltag
     container_name: app-ziltag.com
     volumes:
       - .:/ziltag
-      - /ziltag/node_modules
+      - node_modules:/ziltag/node_modules
     depends_on:
       - db
   web:
     image: ziltag
     command: bundle exec puma
     container_name: web-ziltag.com
-    volumes:
-      - .:/ziltag
+    volumes_from:
+      - app
     ports:
       - 3000:3000
     depends_on:
@@ -28,8 +33,8 @@ services:
     image: ziltag
     command: ruby lib/sse.rb -svp 3310 --ssl --ssl-key ../config/ssl/localhost.key --ssl-cert ../config/ssl/localhost.crt -c ./sse/config.rb
     container_name: sse-ziltag.com
-    volumes:
-      - .:/ziltag
+    volumes_from:
+      - app
     ports:
       - 3310:3310
     depends_on:
@@ -41,16 +46,15 @@ services:
     environment:
       QUEUES: "mailers,default"
       QC_MEASURE: "true"
-    volumes:
-      - .:/ziltag
+    volumes_from:
+      - app
     depends_on:
       - app
   webpack:
     image: ziltag
     command: npm run dev
     container_name: webpack-ziltag.com
-    volumes:
-      - .:/ziltag
-      - /ziltag/node_modules
+    volumes_from:
+      - app
     depends_on:
       - app

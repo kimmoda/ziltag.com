@@ -5,7 +5,7 @@ ENV CC clang
 ENV CXX clang++
 
 RUN apt-get update -qq \
-    && apt-get install -y libpq-dev postgresql-client graphicsmagick clang
+    && apt-get install -y libpq-dev postgresql-client=9.4+165+deb8u1 graphicsmagick clang
 
 # node
 RUN curl -SL https://nodejs.org/dist/v6.4.0/node-v${NODE_VERSION}-linux-x64.tar.xz \
