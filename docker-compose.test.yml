@@ -1,0 +1,13 @@
+version: '2'
+services:
+  db_test:
+    image: postgres:9.4
+    environment:
+      POSTGRES_DB: ziltag_test
+  app:
+    build: .
+    image: ziltag
+    volumes:
+     - .:/ziltag
+    depends_on:
+     - db_test
