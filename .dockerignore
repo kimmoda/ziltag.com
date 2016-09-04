@@ -5,25 +5,24 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-!/log/.keep
-/tmp
-/config/application.yml
-/public/uploads
-/coverage
-/node_modules
-/.byebug_history
-/doc
+log
+tmp
+!tmp/pids
+config/application.yml
+public/uploads
+node_modules
+.byebug_history
+doc
 *.sublime-*
-/public/assets
-/stats.json
-/npm-debug.log
+public/assets
+stats.json
+npm-debug.log
 .git
 .gitignore
-/Dockerfile
-/docker-compose.yml
-/docker-compose
+Dockerfile
+docker-compose.yml
+docker-compose
 .semaphore-cache
