@@ -4,9 +4,10 @@ services:
     image: postgres:9.4
     environment:
       POSTGRES_DB: ziltag_test
-  app:
+  test:
     build: .
     image: ziltag
+    command: bin/rake test
     volumes:
      - .:/ziltag
     depends_on:
