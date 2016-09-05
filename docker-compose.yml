@@ -6,15 +6,23 @@ services:
       POSTGRES_DB: ziltag_development
     volumes:
       - pgdata:/var/lib/postgresql/data
+  front:
+    image: ziltag/frontend-ziltag.com:latest
+    command: npm run serve
+    ports:
+      - "${PORT}:2000"
+      - "${SSL_PORT}:2001"
+      - "${DEBUG_PORT}:1999"
+    volumes:
+      - ./env.js:/usr/src/app/env.js
+    depends_on:
+      - app
   app:
     build: .
     image: ziltag
     volumes:
       - .:/ziltag
       - node_modules:/ziltag/node_modules
-    ports:
-      - 3000:3000
-      - 3310:3310
     depends_on:
       - db
 volumes:
