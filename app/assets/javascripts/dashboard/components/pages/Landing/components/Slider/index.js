@@ -12,7 +12,7 @@ const settings = {
 
 const ziltagMaps = [
   {
-    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1638/default_tumblr_inline_o5rrodt9qv1tg5azs_1280.jpg',
+    imageURL: '//ziltag.s3.amazonaws.com/uploads/photos/image/1638/default_tumblr_inline_o5rrodt9qv1tg5azs_1280.jpg',
     ziltags: [
       { id: '8651d8', x: 0.171334431630972, y: 0.404606021288764},
       { id: '54f655', x: 0.884678747940692, y: 0.253518962706251},
@@ -22,13 +22,13 @@ const ziltagMaps = [
     ]
   },
   {
-    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1896/default_tumblr_o6i3nqSE4i1tpy9oco1_1280.jpg',
+    imageURL: '//ziltag.s3.amazonaws.com/uploads/photos/image/1896/default_tumblr_o6i3nqSE4i1tpy9oco1_1280.jpg',
     ziltags: [
       { id: 'd00887', x: 0.472817133443163, y: 0.292879370309354 },
     ]
   },
   {
-    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1872/default_tumblr_inline_o658dm7g5P1tg5azs_1280.jpg',
+    imageURL: '//ziltag.s3.amazonaws.com/uploads/photos/image/1872/default_tumblr_inline_o658dm7g5P1tg5azs_1280.jpg',
     ziltags: [
       {id: 'ba1d78', x: 0.180150125104254, y: 0.261217681401168},
       {id: '0a19b6', x: 0.322899505766063, y: 0.73838550247117},

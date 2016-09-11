@@ -18,7 +18,7 @@ export default props => (
       </div>
       <div className="ziltag-landing-bottom__button">
         <Tracker event="go_to_help_center">
-          <a href="https://ziltag.zendesk.com/" target="_blank"><Button style={{...buttonStyle, padding: 23}} round white>Go to help center</Button></a>
+          <a href="//ziltag.zendesk.com/" target="_blank"><Button style={{...buttonStyle, padding: 23}} round white>Go to help center</Button></a>
         </Tracker>
       </div>
     </div>

@@ -23,13 +23,13 @@ const Install = props => (
           <div
             className="ziltag-install__button ziltag-install__button--twitter"
             onClick={_=>{
-              popupwindow(`https://twitter.com/intent/tweet?text=${encodeURIComponent('I just become partner of @ZiltagApp! Get the simple and powerful #plugin for images now. https://ziltag.com')}`, 'twitter', 550, 211)
+              popupwindow(`//twitter.com/intent/tweet?text=${encodeURIComponent('I just become partner of @ZiltagApp! Get the simple and powerful #plugin for images now. //ziltag.com')}`, 'twitter', 550, 211)
             }}
           />
           <div
             className="ziltag-install__button ziltag-install__button--facebook"
             onClick={_=>{
-              popupwindow(`http://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://ziltag.com')}`, 'facebook', 550, 211)
+              popupwindow(`//www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('//ziltag.com')}`, 'facebook', 550, 211)
             }}
           />
         </div>

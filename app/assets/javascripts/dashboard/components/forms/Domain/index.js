@@ -16,7 +16,7 @@ export default class Domain extends React.Component {
         {isUpdate ? <div className="ziltag-form-domain__url">{previousURL}</div> : null}
         {isUpdate ? <div className="ziltag-form-domain__arrow"/> : null}
         <div className="ziltag-form-domain__field">
-          <TextField style={{textAlign: 'center'}} required name="url" placeholder="WEBSITE URL (ex. http://example.com)" {...url} />
+          <TextField style={{textAlign: 'center'}} required name="url" placeholder="WEBSITE URL (ex. //example.com)" {...url} />
         </div>
         <div className="ziltag-form-domain__submit">
           <Button backgroundColor="#008BF3">{buttonText}</Button>
