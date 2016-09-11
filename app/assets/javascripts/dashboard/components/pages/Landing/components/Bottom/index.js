@@ -9,7 +9,7 @@ const buttonStyle = {
 
 export default props => (
   <div className="ziltag-landing-bottom">
-    <div className="ziltag-landing-bottom__slogan">Engage your readers with the most intuitive way to explore photos.</div>
+    <div className="ziltag-landing-bottom__slogan">Join our open beta. Your images will tell the rest.</div>
     <div className="ziltag-landing-bottom__buttons">
       <div className="ziltag-landing-bottom__button">
         <Tracker event="join_for_free_3">

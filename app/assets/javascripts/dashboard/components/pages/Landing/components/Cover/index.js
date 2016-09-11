@@ -11,8 +11,8 @@ const buttonStyle = {
 export default props => (
   <div className="ziltag-landing-cover">
     <div className="ziltag-landing-cover__left">
-      <div className="ziltag-landing-cover__title">The Ultimate Plugin<br/>Built for Your Website</div>
-      <div className="ziltag-landing-cover__subtitle">Connecting readers with every little details on images, we bring contents on your website alive. </div>
+      <div className="ziltag-landing-cover__title">Discover & Discuss<br/>over Images</div>
+      <div className="ziltag-landing-cover__subtitle">Add notes everywhere on images. Start multiple discussion in one click.</div>
       <div className="ziltag-landing-cover__buttons">
         <div className="ziltag-landing-cover__button">
           <Tracker event="join_for_free"><Button style={buttonStyle} round onClick={props.onClickJoin}>Join for free</Button></Tracker>

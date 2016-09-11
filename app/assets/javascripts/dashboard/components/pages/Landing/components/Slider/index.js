@@ -12,12 +12,6 @@ const settings = {
 
 const ziltagMaps = [
   {
-    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1896/default_tumblr_o6i3nqSE4i1tpy9oco1_1280.jpg',
-    ziltags: [
-      { id: 'd00887', x: 0.472817133443163, y: 0.292879370309354 },
-    ]
-  },
-  {
     imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1638/default_tumblr_inline_o5rrodt9qv1tg5azs_1280.jpg',
     ziltags: [
       { id: '8651d8', x: 0.171334431630972, y: 0.404606021288764},
@@ -25,6 +19,12 @@ const ziltagMaps = [
       { id: '265257', x: 0.514003294892916, y: 0.314978105180494},
       { id: 'b0833e', x: 0.113673805601318, y: 0.0563375472680558},
       { id: 'e05b15', x: 0.71993410214168, y: 0.665807376804295 }
+    ]
+  },
+  {
+    imageURL: 'https://ziltag.s3.amazonaws.com/uploads/photos/image/1896/default_tumblr_o6i3nqSE4i1tpy9oco1_1280.jpg',
+    ziltags: [
+      { id: 'd00887', x: 0.472817133443163, y: 0.292879370309354 },
     ]
   },
   {
