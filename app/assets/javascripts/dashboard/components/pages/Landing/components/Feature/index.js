@@ -7,8 +7,8 @@ import Tracker from 'Tracker'
 
 export default props => (
   <div className="ziltag-landing-feature">
-    <div className="ziltag-landing-feature__title">A Picture Worth a Thousand Tags</div>
-    <div className="ziltag-landing-feature__subtitle">Ziltag is a visual tagging plugin that helps you discover and discuss wonderful things.<br/>It gives you the power to tag and write on anything in images.</div>
+    <div className="ziltag-landing-feature__title">Turn Images into Conversation</div>
+    <div className="ziltag-landing-feature__subtitle">Despite a picture is worth a thousand words, sometimes it’s just not enough. Ziltag allows you to annotate on anything over images.</div>
     <div className="ziltag-landing-feature__sections">
       <div className="ziltag-landing-feature__section">
         <Intro icon="gallery" title="Intuitive" content="Click tags to read. Click anywhere to post. No learning needed." />
@@ -48,6 +48,6 @@ export default props => (
         </Tracker>
       </div>
     </div>
-    <a className="ziltag-landing-feature__checkout-more" href="http://blog.ziltag.com/tagged/usage" target="_blank">CHECK OUT MORE ➔</a>
+    <a className="ziltag-landing-feature__checkout-more" href="//blog.ziltag.com/benefits/" target="_blank">CHECK OUT MORE ➔</a>
   </div>
 )
