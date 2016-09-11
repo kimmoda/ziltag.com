@@ -13,7 +13,7 @@ export default function(props){
           iconClassName="ziltag-header__avatar"
           style={{width: 40, height: 40, padding: 30}}
           iconStyle={{backgroundImage: `url("${avatarURL}")`}}/>
-        // TODO https://github.com/callemall/material-ui/issues/2913
+        // TODO //github.com/callemall/material-ui/issues/2913
       }
       anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
       targetOrigin={{horizontal: 'right', vertical: 'top'}}

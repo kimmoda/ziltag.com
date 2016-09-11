@@ -61,4 +61,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, null, null, {pure: false})(Sidebar)
-// # https://github.com/reactjs/react-redux/blob/v4.0.0/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
+// # //github.com/reactjs/react-redux/blob/v4.0.0/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux

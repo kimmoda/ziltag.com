@@ -5,6 +5,6 @@ import * as actions from '../../../../actions'
 export default connect(
   null,
   dispatch => ({
-    onClickZiltag: (ziltagID) => dispatch(actions.openIframeModal(`https://ziltag.com/ziltags/${ziltagID}`))
+    onClickZiltag: (ziltagID) => dispatch(actions.openIframeModal(`//ziltag.com/ziltags/${ziltagID}`))
   })
 )(Slider)

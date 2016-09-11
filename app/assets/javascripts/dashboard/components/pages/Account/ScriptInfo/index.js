@@ -20,7 +20,7 @@ export default class ScriptInfo extends React.Component{
 
   render(){
     const {token, onClickCopy} = this.props
-    const script = `<script src="https://ziltag.com/plugin.js" data-ziltag="${token}"></script>`
+    const script = `<script src="//ziltag.com/plugin.js" data-ziltag="${token}"></script>`
     return (
       <div className="ziltag-account-script-info">
         <div className="ziltag-account-script-info__body">

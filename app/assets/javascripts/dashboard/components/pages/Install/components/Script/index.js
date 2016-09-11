@@ -13,7 +13,7 @@ export default class Script extends React.Component{
 
   render(){
     const {token} = this.props
-    const script = `<script src="https://ziltag.com/plugin.js" data-ziltag="${token}"></script>`
+    const script = `<script src="//ziltag.com/plugin.js" data-ziltag="${token}"></script>`
     const buttonStyle = {
       width: 116,
       fontSize: 14,

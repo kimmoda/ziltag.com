@@ -39,7 +39,7 @@ export default class InstallGuide extends React.Component {
           <ol className="ziltag-install-guide__steps">
             {guides[this.props.platform]}
           </ol>
-          <iframe className="ziltag-install-guide__video" width="560" height="300" src="https://www.youtube.com/embed/M-r2lnyQ8-M?rel=0" frameBorder="0" allowFullScreen></iframe>
+          <iframe className="ziltag-install-guide__video" width="560" height="300" src="//www.youtube.com/embed/M-r2lnyQ8-M?rel=0" frameBorder="0" allowFullScreen></iframe>
         </div>
       </div>
     )

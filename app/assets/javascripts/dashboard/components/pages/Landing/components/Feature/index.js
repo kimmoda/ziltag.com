@@ -34,17 +34,17 @@ export default props => (
     <div className="ziltag-landing-feature__usecases">
       <div className="ziltag-landing-feature__usecase">
         <Tracker event="mapping">
-          <Usecase link="http://blog.ziltag.com/2016/06/18/ziltag_for_mapping/" icon="map" name="Mapping" />
+          <Usecase link="//blog.ziltag.com/2016/06/18/ziltag_for_mapping/" icon="map" name="Mapping" />
         </Tracker>
       </div>
       <div className="ziltag-landing-feature__usecase">
         <Tracker event="e-commerce">
-          <Usecase link="http://blog.ziltag.com/2016/04/18/how-to-use-ziltag-2-ecommerce/" icon="pie" name="E-commerce" />
+          <Usecase link="//blog.ziltag.com/2016/04/18/how-to-use-ziltag-2-ecommerce/" icon="pie" name="E-commerce" />
         </Tracker>
       </div>
       <div className="ziltag-landing-feature__usecase">
         <Tracker event="education">
-          <Usecase link="http://blog.ziltag.com/2016/04/24/how-to-use-ziltag-3-education/" icon="notebook" name="Education" />
+          <Usecase link="//blog.ziltag.com/2016/04/24/how-to-use-ziltag-3-education/" icon="notebook" name="Education" />
         </Tracker>
       </div>
     </div>

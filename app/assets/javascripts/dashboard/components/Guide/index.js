@@ -22,7 +22,7 @@ export default props => (
         <TabPanel>
           <ol className="ziltag-guide__list" >
             <li className="ziltag-guide__list-item">Go to <b>Administration Screens</b> > <b>Plugins</b> > <b>Add New</b>.</li>
-            <li className="ziltag-guide__list-item">Search for Ziltag app or upload the .zip file downloaded <a style={{color: '#008BF3'}} href="https://github.com/ziltag/ziltag-wp/releases/latest" target="_blank">here</a>. Click Install Now.</li>
+            <li className="ziltag-guide__list-item">Search for Ziltag app or upload the .zip file downloaded <a style={{color: '#008BF3'}} href="//github.com/ziltag/ziltag-wp/releases/latest" target="_blank">here</a>. Click Install Now.</li>
             <li className="ziltag-guide__list-item">After the plugin is installed, click <b>Activate Plugin</b>.</li>
             <li className="ziltag-guide__list-item">Click <b>Settings</b>.</li>
             <li className="ziltag-guide__list-item">Enter your Plugin Token as shown above. </li>
@@ -49,7 +49,7 @@ export default props => (
     <div className="ziltag-guide__video-button" onClick={props.onClickVideo}>Watch Tutorial Video</div>
     <div className="ziltag-guide__tips">
       Tips: Having trouble installing? Click the live chat button on bottom-right for 1-on-1 support.<br/>
-      Wish to know more? Visit <a style={{color: 'inherit'}} href="https://ziltag.zendesk.com/" target="_blank">help</a> center.
+      Wish to know more? Visit <a style={{color: 'inherit'}} href="//ziltag.zendesk.com/" target="_blank">help</a> center.
     </div>
   </div>
 )
