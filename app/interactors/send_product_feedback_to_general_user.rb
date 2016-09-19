@@ -19,8 +19,8 @@ class SendProductFeedbackToGeneralUser < Interactor2 #:nodoc:
   def message
     {
       subject: "Hi #{@user.username}! Help us to make Ziltag better.",
-      from_email: 'robot@ziltag.com',
-      from_name: 'Ziltag Robot',
+      from_email: 'david@ziltag.com',
+      from_name: 'David Chang',
       to: [{ email: @user.email, name: @user.username }],
       merge_vars: merge_vars
     }

@@ -20,8 +20,8 @@ class SendProductFeedbackEmail < Interactor2 #:nodoc:
   def message
     {
       subject: "Hi #{@user.username}! What can we do better for you?",
-      from_email: 'robot@ziltag.com',
-      from_name: 'Ziltag Robot',
+      from_email: 'david@ziltag.com',
+      from_name: 'David Chang',
       to: [{ email: @user.email, name: @user.username }],
       merge_vars: merge_vars
     }
