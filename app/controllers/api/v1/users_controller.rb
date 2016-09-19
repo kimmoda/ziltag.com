@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApiController
         render json: { error: result.error }
       end
     else
-      render json: { permissions: [] }
+      render json: { permissions: ['create_ziltag'] }
     end
   end
 
