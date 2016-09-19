@@ -21,3 +21,4 @@
 /public/assets
 /stats.json
 /npm-debug.log
+/.env
