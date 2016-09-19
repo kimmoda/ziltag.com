@@ -16,10 +16,11 @@ const Install = props => (
     <div className="ziltag-install__body">
       <div className="ziltag-install__bar">
         <div className="ziltag-install__text">
-          <div className="ziltag-install__title">Your plugin is ready!</div>
-          <div className="ziltag-install__subtitle">Please check your inbox for verification.</div>
+          <div className="ziltag-install__title">Thank you for joining us!</div>
+          <div className="ziltag-install__subtitle">A verification email has been sent. Please follow the steps to setup your password.</div>
         </div>
         <div className="ziltag-install__buttons">
+          <div className="ziltag-install__share-text">Tell your friends about Ziltag</div>
           <div
             className="ziltag-install__button ziltag-install__button--twitter"
             onClick={_=>{
@@ -37,7 +38,7 @@ const Install = props => (
       {
         props.token ?
           <div className="ziltag-install__script">
-            <Script token={props.token}/>
+            <Script title="Plugin Information" token={props.token}/>
           </div>
         : null
       }

@@ -12,7 +12,7 @@ export default class Script extends React.Component{
   }
 
   render(){
-    const {token} = this.props
+    const {title, token} = this.props
     const script = `<script src="//ziltag.com/plugin.js" data-ziltag="${token}"></script>`
     const buttonStyle = {
       width: 116,
@@ -22,6 +22,7 @@ export default class Script extends React.Component{
     return (
       <div className="ziltag-install-script">
         <div className="ziltag-install-script__text">
+          <div className="ziltag-install-script__title">{title}</div>
           <div className="ziltag-install-script__token">Plugin Token: <b>{token}</b></div>
           <div className="ziltag-install-script__script">{script}</div>
         </div>

@@ -8,7 +8,7 @@
     margin: 0 auto;
   }
   &__guide {
-    margin-top: 60px;
+    margin-top: 21px;
   }
   &__bar{
     margin-top: 36px;
@@ -19,18 +19,28 @@
   &__text{
     font-family: 'Roboto', sans-serif;
     color: rgba(0,0,0,.87);
+    width: 305px;
   }
   &__title{
-    font-size: 36px;
-    line-height: 50px;
+    font-size: 25px;
+    line-height: 43px;
     font-weight: 500;
   }
   &__subtitle{
-    font-size: 20px;
+    margin-top: 18px;
+    font-size: 16px;
     line-height: 24px;
   }
-  &__buttons{}
+  &__buttons {
+    padding: 22px;
+    background-color: #F9F9F9;
+    text-align: center;
+  }
+  &__share-text {
+    font-size: 20px;
+  }
   &__button{
+    margin-top: 30px;
     width: 116px;
     height: 51px;
     background-repeat: no-repeat;
@@ -49,6 +59,6 @@
     }
   }
   &__script{
-    margin-top: 60px;
+    margin-top: 24px;
   }
 }
