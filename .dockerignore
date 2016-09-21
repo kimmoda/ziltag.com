@@ -26,3 +26,4 @@ Dockerfile
 docker-compose.yml
 docker-compose
 .semaphore-cache
+lib/server.js

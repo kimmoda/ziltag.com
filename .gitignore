@@ -22,3 +22,4 @@
 /stats.json
 /npm-debug.log
 /.env
+/lib/server.js

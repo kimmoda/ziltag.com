@@ -36,47 +36,49 @@ if (__PRODUCTION__) {
   )
 }
 
-module.exports = {
-  entry: {
-    dashboard: ['babel-polyfill', './app/assets/javascripts/dashboard'],
-    landing: './app/assets/landing',
-    server: './app/assets/landing/server'
+module.exports = [
+  {
+    entry: {
+      dashboard: ['babel-polyfill', './app/assets/javascripts/dashboard'],
+      landing: './app/assets/landing'
+    },
+    output: {
+      path: __dirname + '/public/assets',
+      filename: filename,
+      publicPath: '/assets/'
+    },
+    resolve: {
+      root: [
+        path.resolve('./app/assets/javascripts/dashboard')
+      ],
+      modulesDirectories: [
+        'containers', 'components',
+        'web_modules', 'node_modules'
+      ]
+    },
+    plugins: plugins,
+    module: {
+      loaders: [{
+        test: /\.s?css$/,
+        loader: styleLoader
+      }, {
+        test: /\.(jpg|png|gif|ttf|eot|svg|woff2?|swf)(\?.+)?$/,
+        loader: fileLoader
+      }, {
+        test: /\.coffee$/,
+        loader: 'coffee'
+      }, {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015', 'stage-0', 'stage-2']
+        }
+      }]
+    },
+    postcss: function() {
+      return [require('autoprefixer')]
+    }
   },
-  output: {
-    path: __dirname + '/public/assets',
-    filename: filename,
-    publicPath: '/assets/'
-  },
-  resolve: {
-    root: [
-      path.resolve('./app/assets/javascripts/dashboard')
-    ],
-    modulesDirectories: [
-      'containers', 'components',
-      'web_modules', 'node_modules'
-    ]
-  },
-  plugins: plugins,
-  module: {
-    loaders: [{
-      test: /\.s?css$/,
-      loader: styleLoader
-    }, {
-      test: /\.(jpg|png|gif|ttf|eot|svg|woff2?|swf)(\?.+)?$/,
-      loader: fileLoader
-    }, {
-      test: /\.coffee$/,
-      loader: 'coffee'
-    }, {
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-0', 'stage-2']
-      }
-    }]
-  },
-  postcss: function() {
-    return [require('autoprefixer')]
-  }
-}
+  require('./webpack/webpack.config.server')
+]

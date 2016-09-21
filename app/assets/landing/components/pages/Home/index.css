@@ -21,6 +21,11 @@
   background-color: #EDEDED;
 }
 
+.p-home__title {
+  font-size: 42px;
+  color: #333333;
+}
+
 .p-home__footer {
   padding: 20px 107px;
   background-color: white;

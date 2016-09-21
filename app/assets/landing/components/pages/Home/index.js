@@ -1,17 +1,17 @@
 import React from 'react'
 
-if(typeof window !== 'undefined') {
-  require('./index.css')
-  const coverImage = require('./cover.jpg')
-}
+require('./index.css')
 
 export default () => (
   <div className="p-home">
     <div className="p-home__cover">
-      <img className="p-home__image" src={coverImage}/>
+      <img className="p-home__image" src={require('./cover.jpg')}/>
     </div>
     <div className="p-home__usage"></div>
-    <div className="p-home__get-start"></div>
+    <div className="p-home__get-start">
+      <div className="p-home__title">Get Started Now.</div>
+      <div className="p-home__code"></div>
+    </div>
     <div className="p-home__footer">
       <div className="p-home__copyright">© Ziltag Inc., 2016. All Rights Reserved.</div>
       <ul className="p-home__links">
