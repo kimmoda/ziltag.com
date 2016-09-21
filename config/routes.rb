@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/api/v2/graphql'
   end
 
-  root 'dashboard#index'
+  root 'pages#home'
   get 'dashboard/(*path)', to: 'dashboard#index'
 
   mount ZiltagAPI => '/'
