@@ -52,6 +52,14 @@ class PagesController < ApplicationController
   end
 
   def context
+    if Rails.env.production?
+      @@_js_context ||= load_context
+    else
+      load_context
+    end
+  end
+
+  def load_context
     path = Rails.root.join('public' + WebpackStats.assets['landing_server.js'])
     ExecJS.compile(File.read(path))
   end
