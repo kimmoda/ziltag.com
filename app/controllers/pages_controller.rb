@@ -60,7 +60,7 @@ class PagesController < ApplicationController
   end
 
   def load_context
-    path = Rails.root.join('public' + WebpackStats.assets['landing_server.js'])
+    path = Rails.root.join('public' + WebpackStats.assets['server.js'])
     ExecJS.compile(File.read(path))
   end
 end
