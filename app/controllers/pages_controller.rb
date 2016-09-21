@@ -23,7 +23,7 @@ class PagesController < ApplicationController
       var store = Store.getStore()
       var error, redirectLocation, renderProps
 
-      ReactRouter.match({routes: Routes.getRoutes(), location: '/'}, function(_error, _redirectLocation, _renderProps){
+      ReactRouter.match({routes: Routes.getRoutes(), location: #{request.path.to_json}}, function(_error, _redirectLocation, _renderProps){
         error = _error
         redirectLocation = _redirectLocation
         renderProps = _renderProps
