@@ -1,10 +1,15 @@
 import React from 'react'
 
-if(typeof window !== 'undefined') require('./index.css')
+if(typeof window !== 'undefined') {
+  require('./index.css')
+  const coverImage = require('./cover.jpg')
+}
 
 export default () => (
   <div className="p-home">
-    <div className="p-home__cover"></div>
+    <div className="p-home__cover">
+      <img className="p-home__image" src={coverImage}/>
+    </div>
     <div className="p-home__usage"></div>
     <div className="p-home__get-start"></div>
     <div className="p-home__footer">

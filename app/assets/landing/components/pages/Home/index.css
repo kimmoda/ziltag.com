@@ -1,7 +1,14 @@
 .p-home__cover {
   height: 100vh;
   width: 100vw;
-  background: url('./cover.jpg') center / cover;
+}
+
+.p-home__image {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .p-home__usage {
