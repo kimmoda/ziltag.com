@@ -1,6 +1,1 @@
-import 'expose?Store!./store'
-import 'expose?Routes!./routes'
-import 'expose?ReactRedux!react-redux'
-import 'expose?React!react'
-import 'expose?ReactDOMServer!react-dom/server'
-import 'expose?ReactRouter!react-router'
+import 'expose?renderApp!./renderApp'

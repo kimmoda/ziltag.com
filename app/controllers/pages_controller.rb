@@ -19,36 +19,7 @@ class PagesController < ApplicationController
   private
 
   def render_jsx
-    context.exec <<~EOS
-      var store = Store.getStore()
-      var error, redirectLocation, renderProps
-
-      ReactRouter.match({routes: Routes.getRoutes(), location: #{request.path.to_json}}, function(_error, _redirectLocation, _renderProps){
-        error = _error
-        redirectLocation = _redirectLocation
-        renderProps = _renderProps
-      })
-      var ret
-      if (error) {
-        return { status: 500, error: error }
-      } else if (redirectLocation) {
-        return {status: 302, location: redirectLocation}
-      } else if (renderProps) {
-        return {
-          status: 200,
-          body: ReactDOMServer.renderToString(
-            React.createElement(
-              ReactRedux.Provider, { store: store }, React.createElement(ReactRouter.RouterContext, renderProps)
-            )
-          ),
-          state: store.getState()
-        }
-      } else {
-        return {
-          status: 404
-        }
-      }
-    EOS
+    context.eval("renderApp(#{request.path.to_json})")
   end
 
   def context
