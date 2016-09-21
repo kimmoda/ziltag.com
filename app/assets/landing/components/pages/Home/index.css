@@ -1,0 +1,20 @@
+.p-home__cover {
+  height: 100vh;
+  width: 100vw;
+  background: url('./cover.jpg') center / cover;
+}
+
+.p-home__usage {
+  padding: 100px 0;
+  background-color: white;
+}
+
+.p-home__get-start {
+  padding: 42px 0 47px 0;
+  background-color: #EDEDED;
+}
+
+.p-home__footer {
+  padding: 20px 0;
+  background-color: white;
+}

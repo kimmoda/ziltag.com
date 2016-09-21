@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
 
+import 'normalize.css/normalize.css'
+
 const store = getStore(window.__PRELOADED_STATE__)
 const history = syncHistoryWithStore(browserHistory, store)
 const routes = getRoutes(history)
