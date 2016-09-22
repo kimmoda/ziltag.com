@@ -1,4 +1,5 @@
 import Modal from 'Modal'
+import SignUpButton from 'SignUpButton'
 
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
@@ -10,7 +11,7 @@ export default () => (
     <div className="p-home__cover">
       <img className="p-home__cover-image" src={require('./cover.jpg')}/>
       <div className="p-home__auth-buttons">
-        <Button text="Sign up"/>
+        <SignUpButton text="Sign Up"/>
         <Button text="Sign in" color="gray"/>
       </div>
       <div className="p-home__intro">
@@ -32,7 +33,7 @@ export default () => (
     </div>
     <div className="p-home__get-start">
       <div style={{textAlign: 'center'}}><div className="p-home__title">Get Started Now.</div></div>
-      <div style={{marginTop: 26}}><Button width={164} text="Sign Up"/></div>
+      <div style={{marginTop: 26}}><SignUpButton width={164} text="Sign Up"/></div>
       <div style={{marginTop: 16}}><Button width={164} text="Watch Video" color="gray"/></div>
     </div>
     <div className="p-home__footer">
@@ -44,6 +45,6 @@ export default () => (
         <li className="p-home__link"><a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">Privacy</a></li>
       </ul>
     </div>
-    <Modal>Hello</Modal>
+    <Modal/>
   </div>
 )
