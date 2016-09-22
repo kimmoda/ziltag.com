@@ -51,6 +51,7 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "whatwg-fetch": "^1.0.0",
-    "zeroclipboard": "^2.2.0"
+    "zeroclipboard": "^2.2.0",
+    "ziltag-elements": "github:ziltag/elements"
   }
 }

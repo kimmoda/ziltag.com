@@ -1,0 +1,3 @@
+Host github.com
+  StrictHostKeyChecking no
+  IdentityFile /ziltag/config/github/ziltag

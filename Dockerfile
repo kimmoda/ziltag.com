@@ -15,6 +15,8 @@ RUN curl -SL https://nodejs.org/dist/v6.4.0/node-v${NODE_VERSION}-linux-x64.tar.
 RUN mkdir /ziltag
 WORKDIR /ziltag
 
+COPY config/github/ssh_config /root/.ssh/config
+
 # Gemfile
 RUN echo 'gem: --no-rdoc --no-ri' > ~/.gemrc
 RUN gem install bundler
