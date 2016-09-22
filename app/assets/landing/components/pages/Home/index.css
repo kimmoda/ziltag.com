@@ -5,6 +5,15 @@
   justify-content: center;
 }
 
+.p-home__auth-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+}
+
 .p-home__cover-image {
   position: absolute;
   height: 100vh;
@@ -110,6 +119,9 @@
 @media screen and (max-width: 650px){
   .p-home__intro {
     margin-top: 50px;
+  }
+  .p-home__auth-buttons {
+    display: none;
   }
   .p-home__footer {
     flex-direction: column-reverse;

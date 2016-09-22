@@ -7,6 +7,10 @@ export default () => (
   <div className="p-home">
     <div className="p-home__cover">
       <img className="p-home__cover-image" src={require('./cover.jpg')}/>
+      <div className="p-home__auth-buttons">
+        <Button text="Sign up"/>
+        <Button text="Sign in" color="gray"/>
+      </div>
       <div className="p-home__intro">
         <div className="p-home__logo"/>
         <div style={{textAlign: 'center', marginTop: 48}}><div className="p-home__title">Discuss & Discover Over Images</div></div>
