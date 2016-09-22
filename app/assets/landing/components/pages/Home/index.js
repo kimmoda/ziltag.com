@@ -1,3 +1,5 @@
+import Modal from 'Modal'
+
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
 
@@ -42,5 +44,6 @@ export default () => (
         <li className="p-home__link"><a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">Privacy</a></li>
       </ul>
     </div>
+    <Modal>Hello</Modal>
   </div>
 )
