@@ -3,7 +3,7 @@
   width: 100vw;
 }
 
-.p-home__image {
+.p-home__cover-image {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -12,8 +12,27 @@
 }
 
 .p-home__usage {
-  padding: 100px 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 100px 107px;
   background-color: white;
+  justify-content: center;
+}
+
+.p-home__usage-example {
+  width: 500px;
+}
+
+.p-home__code {
+  color: black;
+  background-color: #EDEDED;
+  padding: 22px 55px;
+  margin: 48px 0 0 0;
+}
+
+.p-home__sample-image {
+  width: 500px;
+  margin-left: 66px;
 }
 
 .p-home__get-start {
@@ -74,5 +93,15 @@
   }
   .p-home__links {
     flex-basis: 32px;
+  }
+}
+
+@media screen and (max-width: 1080px){
+  .p-home__usage {
+    flex-direction: column;
+    align-items: center;
+  }
+  .p-home__sample-image {
+    margin: 66px 0 0 0;
   }
 }
