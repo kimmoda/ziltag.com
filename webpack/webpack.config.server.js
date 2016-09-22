@@ -22,7 +22,7 @@ module.exports = {
       test: /\.css$/,
       loader: 'css'
     }, {
-      test: /\.jpg$/,
+      test: /\.(jpg|png)$/,
       loader: 'file',
       query: {
         emitFile: false,
