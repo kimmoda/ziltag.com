@@ -1,5 +1,5 @@
-import {getStore} from './store'
-import {getRoutes} from './routes'
+import {getStore} from 'store'
+import {getRoutes} from 'routes'
 
 import {Provider} from 'react-redux'
 import React from 'react'

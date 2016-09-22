@@ -10,7 +10,7 @@ module.exports = {
   },
   resolve: {
     root: [
-      path.resolve('../app/assets')
+      path.resolve(__dirname, '../app/assets/landing')
     ],
     modulesDirectories: [
       'containers', 'components',
