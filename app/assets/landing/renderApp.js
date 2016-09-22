@@ -2,7 +2,7 @@ import {getStore} from './store'
 import {getRoutes} from './routes'
 
 import {Provider} from 'react-redux'
-import {createElement} from 'react'
+import React from 'react'
 import {renderToString} from 'react-dom/server'
 import {match, RouterContext} from 'react-router'
 
@@ -15,7 +15,6 @@ module.exports = function(path){
     redirectLocation = _redirectLocation
     renderProps = _renderProps
   })
-  var ret
 
   if (error) {
     return { status: 500, error: error }
@@ -25,9 +24,9 @@ module.exports = function(path){
     return {
       status: 200,
       body: renderToString(
-        createElement(
-          Provider, { store: store }, createElement(RouterContext, renderProps)
-        )
+        <Provider store={store}>
+          <RouterContext {...renderProps}/>
+        </Provider>
       ),
       state: store.getState()
     }
