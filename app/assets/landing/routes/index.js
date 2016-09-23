@@ -1,6 +1,6 @@
 import React from 'react'
 import {Router, IndexRoute, Route, browserHistory} from 'react-router'
-import Home from 'pages/Home'
+import Home from './Home'
 
 export const getRoutes = (history=browserHistory) => (
   <Router history={browserHistory}>
