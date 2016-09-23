@@ -2,18 +2,20 @@ import {openModal} from '../actions'
 import Button from 'ziltag-elements/dist/Button'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import React from 'react'
 
 export default connect(
   null,
   mapDispatchToProps
-)(Button)
+)(ModalButton)
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch, ownProps){
   return bindActionCreators({
-    onClick: openSignUpModal
+    openModal
   }, dispatch)
 }
 
-function openSignUpModal(){
-  return openModal('signUp')
+function ModalButton(props){
+  const {modal, openModal, ...others} = props
+  return <Button onClick={() => openModal(modal)} {...others}/>
 }
