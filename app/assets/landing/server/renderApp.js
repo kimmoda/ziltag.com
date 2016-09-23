@@ -6,8 +6,8 @@ import React from 'react'
 import {renderToString} from 'react-dom/server'
 import {match, RouterContext} from 'react-router'
 
-module.exports = function(path){
-  var store = getStore()
+module.exports = function(path, initState={}){
+  var store = getStore(initState)
   var error, redirectLocation, renderProps
 
   match({routes: getRoutes(), location: path}, function(_error, _redirectLocation, _renderProps){

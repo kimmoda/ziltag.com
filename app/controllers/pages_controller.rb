@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @html = nil
     @state = {}
-    result = render_jsx
+    result = render_jsx(@state)
     case result['status']
     when 500 then head 500
     when 302
@@ -18,8 +18,8 @@ class PagesController < ApplicationController
 
   private
 
-  def render_jsx
-    context.eval("renderApp(#{request.path.to_json})")
+  def render_jsx(initState)
+    context.eval("renderApp(#{request.path.to_json}, #{initState.to_json})")
   end
 
   def context
