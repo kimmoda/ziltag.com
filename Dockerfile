@@ -23,7 +23,7 @@ RUN echo 'gem: --no-rdoc --no-ri' > ~/.gemrc
 RUN gem install bundler
 COPY Gemfile /ziltag/Gemfile
 COPY Gemfile.lock /ziltag/Gemfile.lock
-RUN bundle install
+RUN bundle install --retry 3 --jobs 2
 
 # package.json
 COPY package.json /ziltag/package.json
