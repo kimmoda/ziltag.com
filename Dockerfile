@@ -16,6 +16,7 @@ RUN mkdir /ziltag
 WORKDIR /ziltag
 
 COPY config/github/ziltag /ziltag/config/github/ziltag
+RUN chmod 400 /ziltag/config/github/ziltag
 COPY config/github/ssh_config /root/.ssh/config
 
 # Gemfile
