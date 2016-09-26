@@ -9,5 +9,6 @@
     <div id="app"><%= raw @html %></div>
     <script>window.__PRELOADED_STATE__ = <%= raw @state.to_json %></script>
     <%= javascript_include_tag 'landing' %>
+    <%= stylesheet_link_tag 'landing' if Rails.env.production? %>
   </body>
 </html>
