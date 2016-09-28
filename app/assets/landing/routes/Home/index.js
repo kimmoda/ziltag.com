@@ -34,7 +34,7 @@ export default () => (
     <div className="p-home__get-start">
       <div style={{textAlign: 'center'}}><div className="p-home__title">Get Started Now.</div></div>
       <div style={{marginTop: 26}}><ModalButton width={164} text="Sign Up" modalName="signUp"/></div>
-      <div style={{marginTop: 16}}><ModalButton width={164} text="Watch Video" color="gray" modalName="video"/></div>
+      <div style={{marginTop: 16}}><ModalButton width={164} text="Watch Video" color="gray" modalName="video" modalMode="center"/></div>
     </div>
     <div className="p-home__footer">
       <div className="p-home__copyright">© Ziltag Inc., 2016. All Rights Reserved.</div>
