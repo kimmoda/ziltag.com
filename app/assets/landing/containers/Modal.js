@@ -13,8 +13,9 @@ export default connect(
 
 function mapStateToProps(state){
   return {
-    children: modals[state.modal] && createElement(modals[state.modal]),
-    isOpen: modals[state.modal] && !!state.modal
+    mode: state.modal.mode,
+    children: modals[state.modal.name] && createElement(modals[state.modal.name]),
+    isOpen: modals[state.modal.name] && !!state.modal.name
   }
 }
 

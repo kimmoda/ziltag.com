@@ -1,7 +1,7 @@
-export function openModal(name) {
+export function openModal(name, mode='normal') {
   return {
     type: 'OPEN_MODAL',
-    name
+    name, mode
   }
 }
 

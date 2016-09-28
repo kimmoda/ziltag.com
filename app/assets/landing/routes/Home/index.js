@@ -11,8 +11,8 @@ export default () => (
     <div className="p-home__cover">
       <img className="p-home__cover-image" src={require('./cover.jpg')}/>
       <div className="p-home__auth-buttons">
-        <ModalButton text="Sign Up" modal="signUp" style={{fontSize: 14}}/>
-        <ModalButton text="Sign In" color="gray" modal="signIn" style={{fontSize: 14}}/>
+        <ModalButton text="Sign Up" modalName="signUp" style={{fontSize: 14}}/>
+        <ModalButton text="Sign In" color="gray" modalName="signIn" style={{fontSize: 14}}/>
       </div>
       <div className="p-home__intro">
         <div className="p-home__logo"/>
@@ -33,8 +33,8 @@ export default () => (
     </div>
     <div className="p-home__get-start">
       <div style={{textAlign: 'center'}}><div className="p-home__title">Get Started Now.</div></div>
-      <div style={{marginTop: 26}}><ModalButton width={164} text="Sign Up" modal="signUp"/></div>
-      <div style={{marginTop: 16}}><ModalButton width={164} text="Watch Video" color="gray" modal="video"/></div>
+      <div style={{marginTop: 26}}><ModalButton width={164} text="Sign Up" modalName="signUp"/></div>
+      <div style={{marginTop: 16}}><ModalButton width={164} text="Watch Video" color="gray" modalName="video"/></div>
     </div>
     <div className="p-home__footer">
       <div className="p-home__copyright">© Ziltag Inc., 2016. All Rights Reserved.</div>
