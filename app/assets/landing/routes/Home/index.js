@@ -11,8 +11,8 @@ export default () => (
     <div className="p-home__cover">
       <img className="p-home__cover-image" src={require('./cover.jpg')}/>
       <div className="p-home__auth-buttons">
-        <ModalButton text="Sign Up" modal="signUp"/>
-        <ModalButton text="Sign In" color="gray" modal="signIn"/>
+        <ModalButton text="Sign Up" modal="signUp" style={{fontSize: 14}}/>
+        <ModalButton text="Sign In" color="gray" modal="signIn" style={{fontSize: 14}}/>
       </div>
       <div className="p-home__intro">
         <div className="p-home__logo"/>
