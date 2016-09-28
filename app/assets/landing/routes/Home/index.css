@@ -39,7 +39,7 @@
 
 .p-home__demo-form {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   margin-top: 44px;
   max-width: 600px;
   width: 100%;
@@ -47,7 +47,10 @@
 
 .p-home__demo-field {
   font-size: 16px;
-  padding: 16px;
+  padding: 0 16px;
+  height: 36px;
+  box-sizing: border-box;
+  border: none;
   flex-grow: 1;
 }
 
@@ -151,10 +154,12 @@
   .p-home__demo-form {
     flex-direction: column;
   }
+  .p-home__demo-field {
+    width: 100%;
+  }
   .p-home__demo-button {
-    margin: 0;
-    margin-top: 10px;
-    height: 54px;
+    margin: 20px 0 0 0;
+    width: 100%;
   }
   .p-home__auth-buttons {
     display: none;

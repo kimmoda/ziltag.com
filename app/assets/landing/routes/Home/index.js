@@ -20,7 +20,7 @@ export default () => (
         <div style={{textAlign: 'center', marginTop: 17}}><div className="p-home__subtitle">A simple one-line script to annotate on images.</div></div>
         <form className="p-home__demo-form">
           <input className="p-home__demo-field" placeholder="Paste your URL to see how Ziltag works…"/>
-          <div className="p-home__demo-button"><Button text="Live Demo" style={{width: '100%', height: '100%'}}/></div>
+          <div className="p-home__demo-button"><Button text="Live Demo" width="100%"/></div>
         </form>
       </div>
     </div>
