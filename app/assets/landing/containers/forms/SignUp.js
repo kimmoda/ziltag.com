@@ -1,5 +1,5 @@
 import SignUp from '../../components/forms/SignUp'
-import {openModal} from '../../actions'
+import {openModal, requestSignUp} from '../../actions'
 import {bindActionCreators} from 'redux'
 import {reduxForm} from 'redux-form'
 
@@ -11,10 +11,15 @@ export default reduxForm({
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     onSignIn: signIn,
-    onSubmit: params => console.log(params)
+    onSubmit: signUp
   }, dispatch)
 }
 
 function signIn(){
   return openModal('signIn')
+}
+
+function signUp(params){
+  const {username, email, url} = params
+  return requestSignUp(username, email, url)
 }

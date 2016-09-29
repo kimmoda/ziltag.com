@@ -1,3 +1,17 @@
+export function signIn(username, password) {
+  return api('/api/v2/sign_in', {params: {sign_in: username, password}})
+}
+
+export function signUp(username, email, url) {
+  return graphql(`
+    mutation createPartner($username: String!, $email: String!, $url: String!){
+      createPartner(username: $username, email: $email, url: $url){
+        id
+      }
+    }
+  `, {username, email, url})
+}
+
 function api(input, options={}) {
   const body = JSON.stringify(options.params)
   return fetch(input, {
@@ -12,6 +26,6 @@ function api(input, options={}) {
   }).then(response => response.json())
 }
 
-export function signIn(username, password) {
-  return api('/api/v2/sign_in', {params: {sign_in: username, password}})
+function graphql(query, variables = null) {
+  return api('/api/v2/graphql', {params: {query, variables}})
 }
