@@ -6,7 +6,7 @@ import Button from 'ziltag-elements/dist/Button'
 function SignIn(props) {
   const {
     fields: {username, password},
-    handleSubmit, onForgotPassword, onSignUp,
+    handleSubmit, onForgotPassword, onSignUp, error,
     ...others
   } = props
   return (
@@ -19,6 +19,7 @@ function SignIn(props) {
       button={<Button width="100%" text="Sign In"/>}
       tip={<a href="javascript:void(0)" onClick={onForgotPassword}>Forgot Password?</a>}
       footer={<div>Don’t have an account? <a href="javascript:void(0)" onClick={onSignUp}>Sign Up</a></div>}
+      error={error}
       />
   )
 }

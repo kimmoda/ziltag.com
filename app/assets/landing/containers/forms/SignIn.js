@@ -1,5 +1,5 @@
 import {reduxForm} from 'redux-form'
-import {openModal} from '../../actions'
+import {openModal, requestSignIn} from '../../actions'
 import {bindActionCreators} from 'redux'
 import SignIn from '../../components/forms/SignIn'
 
@@ -12,7 +12,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     onSignUp: signUp,
     onForgotPassword: forgotPassword,
-    onSubmit: params => console.log(params)
+    onSubmit: signIn
   }, dispatch)
 }
 
@@ -22,4 +22,9 @@ function signUp(){
 
 function forgotPassword(){
   return openModal('forgotPassword')
+}
+
+function signIn(params){
+  const {username, password} = params
+  return requestSignIn(username, password)
 }
