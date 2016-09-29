@@ -1,5 +1,4 @@
 import SignUp from '../../components/forms/SignUp'
-import * as actions from '../../actions'
 import {reduxForm} from 'redux-form'
 
 export default reduxForm({
