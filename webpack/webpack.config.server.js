@@ -2,7 +2,7 @@ const __PRODUCTION__ = process.env.WEBPACK_ENV == 'production'
 var path = require('path')
 
 module.exports = {
-  entry: './app/assets/landing/server',
+  entry: ['babel-polyfill', './app/assets/landing/server'],
   output: {
     path: path.resolve(__dirname, '../lib'),
     filename: 'server.js',

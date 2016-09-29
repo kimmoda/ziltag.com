@@ -40,7 +40,7 @@ module.exports = [
   {
     entry: {
       dashboard: ['babel-polyfill', './app/assets/javascripts/dashboard'],
-      landing: './app/assets/landing'
+      landing: ['babel-polyfill', './app/assets/landing']
     },
     output: {
       path: __dirname + '/public/assets',
