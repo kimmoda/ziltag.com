@@ -9,7 +9,9 @@ require('./index.css')
 export default () => (
   <div className="p-home">
     <div className="p-home__cover">
-      <img className="p-home__cover-image" src={require('./cover.jpg')}/>
+      <div className="p-home__cover-image-container">
+        <img className="p-home__cover-image" src={require('./cover.jpg')}/>
+      </div>
       <div className="p-home__auth-buttons">
         <ModalButton text="Sign Up" modalName="signUp" style={{fontSize: 14}}/>
         <ModalButton text="Sign In" color="gray" modalName="signIn" style={{fontSize: 14}}/>
