@@ -21,10 +21,10 @@
   left: 0;
   top: 0;
   object-fit: cover;
-  z-index: -1;
 }
 
 .p-home__intro {
+  position: absolute;
   margin-top: 185px;
   display: flex;
   flex-direction: column;
