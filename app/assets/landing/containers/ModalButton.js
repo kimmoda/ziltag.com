@@ -17,5 +17,5 @@ function mapDispatchToProps(dispatch, ownProps){
 
 function ModalButton(props){
   const {modalName, modalMode, openModal, ...others} = props
-  return <Button onClick={() => openModal(modalName, modalMode)} {...others}/>
+  return <Button onClick={() => openModal(modalName, {mode: modalMode})} {...others}/>
 }

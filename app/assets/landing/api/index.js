@@ -1,3 +1,7 @@
+export function forgotPassword(email){
+  return api('/api/v2/password', {params: {email}})
+}
+
 export function signIn(username, password) {
   return api('/api/v2/sign_in', {params: {sign_in: username, password}})
 }

@@ -1,7 +1,8 @@
-export function openModal(name, mode='normal') {
+export function openModal(name, payload={}) {
+  payload.mode = payload.mode || 'normal'
   return {
     type: 'OPEN_MODAL',
-    name, mode
+    name, ...payload
   }
 }
 

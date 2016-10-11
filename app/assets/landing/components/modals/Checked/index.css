@@ -1,0 +1,18 @@
+.l-checked {
+  padding: 24px 0;
+}
+
+.l-checked__icon {
+  color: #EE2E24;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  display: block;
+}
+
+.l-checked__text {
+  margin-top: 24px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
