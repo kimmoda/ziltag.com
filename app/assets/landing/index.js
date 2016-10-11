@@ -9,6 +9,7 @@ import {browserHistory} from 'react-router'
 import saga, {sagaMiddleware} from './saga'
 
 import 'normalize.css/normalize.css'
+import './global.css'
 
 const store = getStore(window.__PRELOADED_STATE__)
 const history = syncHistoryWithStore(browserHistory, store)
