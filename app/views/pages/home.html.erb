@@ -10,6 +10,8 @@
     <div id="app"><%= raw @html %></div>
     <script>window.__PRELOADED_STATE__ = <%= raw @state.to_json %></script>
     <%= javascript_include_tag 'landing' %>
-    <script src="//ziltag.com/plugin.js" data-ziltag="b6261c" data-ziltag-autoplay="true"></script>
+    <% if Rails.env.production? %>
+      <script src="//ziltag.com/plugin.js" data-ziltag="<%= Settings.plugin_token %>"></script>
+    <% end %>
   </body>
 </html>
