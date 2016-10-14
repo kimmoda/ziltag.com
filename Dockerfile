@@ -1,6 +1,6 @@
 FROM ruby:2.3.1
 
-ENV NODE_VERSION 6.4.0
+ENV NODE_VERSION 6.8.0
 ENV CC clang
 ENV CXX clang++
 
