@@ -8,7 +8,7 @@ RUN apt-get update -qq \
     && apt-get install -y libpq-dev postgresql-client=9.4+165+deb8u1 graphicsmagick clang
 
 # node
-RUN curl -SL https://nodejs.org/dist/v6.4.0/node-v${NODE_VERSION}-linux-x64.tar.xz \
+RUN curl -SL https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz \
     | tar --strip-components 1 -xJC /usr/local
     # && npm i npm -g issue # big bug: https://github.com/npm/npm/issues/9863
 
