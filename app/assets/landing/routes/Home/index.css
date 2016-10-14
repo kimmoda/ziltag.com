@@ -37,36 +37,6 @@
   background: url('./logo.png') center / contain no-repeat;
 }
 
-.p-home__demo-form {
-  display: flex;
-  align-items: center;
-  margin-top: 44px;
-  max-width: 600px;
-  width: 100%;
-}
-
-.p-home__demo-field {
-  font-size: 16px;
-  padding: 0 16px;
-  height: 36px;
-  box-sizing: border-box;
-  border: none;
-  flex-grow: 1;
-}
-
-.p-home__demo-field:focus {
-  outline: none;
-}
-
-.p-home__demo-field::placeholder {
-  color: #979797;
-}
-
-.p-home__demo-button {
-  flex-shrink: 0;
-  margin-left: 10px;
-}
-
 .p-home__subtitle {
   font-size: 24px;
   color: #333333;

@@ -1,6 +1,8 @@
 import Modal from 'Modal'
 import ModalButton from 'ModalButton'
 import Highlight from 'highlight.js'
+import Demo from 'Demo'
+import DemoForm from 'forms/Demo'
 
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
@@ -27,10 +29,7 @@ export default () => (
         <div className="p-home__logo"/>
         <div style={{textAlign: 'center', marginTop: 48}}><div className="p-home__title">Discuss & Discover Over Images</div></div>
         <div style={{textAlign: 'center', marginTop: 17}}><div className="p-home__subtitle">A simple one-line script to annotate on images.</div></div>
-        <form className="p-home__demo-form">
-          <input className="p-home__demo-field" placeholder="Paste your URL to see how Ziltag works…"/>
-          <div className="p-home__demo-button"><Button text="Live Demo" width="100%"/></div>
-        </form>
+        <DemoForm/>
       </div>
     </div>
     <div className="p-home__usage">
@@ -54,6 +53,7 @@ export default () => (
         <li className="p-home__link"><a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">Privacy</a></li>
       </ul>
     </div>
+    <Demo/>
     <Modal/>
   </div>
 )
