@@ -1,10 +1,19 @@
 import Modal from 'Modal'
 import ModalButton from 'ModalButton'
+import Highlight from 'highlight.js'
 
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
 
+require('highlight.js/styles/atom-one-light.css')
 require('./index.css')
+
+const example = `<img src="sample.jpg">
+
+<script
+  src="https://ziltag.com/plugin.js"
+  data-ziltag="YOUR_TOKEN">
+</script>`
 
 export default () => (
   <div className="p-home">
@@ -26,13 +35,13 @@ export default () => (
     </div>
     <div className="p-home__usage">
       <div className="p-home__usage-example">
-        <div className="p-home__title" style={{textAlign: 'center'}}>Dead-Simple Installation!</div>
-        <pre className="p-home__code"><span style={{color: '#a65700'}}>&lt;</span><span style={{color: '#800000', fontWeight: 'bold'}}>img</span><span style={{color: '#274796'}}> </span><span style={{color: '#074726'}}>src</span><span style={{color: '#808030'}}>=</span><span style={{color: '#0000e6'}}>"sample.jpg"</span><span style={{color: '#a65700'}}>&gt;</span>{"\n"}{"\n"}<span style={{color: '#a65700'}}>&lt;</span><span style={{color: '#800000', fontWeight: 'bold'}}>script</span><span style={{color: '#5f5035'}} />{"\n"}<span style={{color: '#274796'}}>&nbsp;&nbsp;</span><span style={{color: '#074726'}}>src</span><span style={{color: '#808030'}}>=</span><span style={{color: '#0000e6'}}>"https://ziltag.com/plugin.js"</span><span style={{color: '#274796'}} />{"\n"}<span style={{color: '#274796'}}>&nbsp;&nbsp;</span><span style={{color: '#074726'}}>data</span><span style={{color: '#274796'}}>-ziltag</span><span style={{color: '#808030'}}>=</span><span style={{color: '#0000e6'}}>"xxxxxx"</span><span style={{color: '#a65700'}}>&gt;</span>{"\n"}<span style={{color: '#a65700'}}>&lt;/</span><span style={{color: '#800000', fontWeight: 'bold'}}>script</span><span style={{color: '#a65700'}}>&gt;</span>{"\n"}</pre>
+        <div className="p-home__title" style={{textAlign: 'center'}}>Dead-Simple Installation</div>
+        <pre className="p-home__code hljs html" dangerouslySetInnerHTML={{__html: Highlight.highlight('html', example).value}}/>
       </div>
       <div><img className="p-home__sample-image" src={require('./sample.jpg')}/></div>
     </div>
     <div className="p-home__get-start">
-      <div style={{textAlign: 'center'}}><div className="p-home__title">Get Started Now.</div></div>
+      <div style={{textAlign: 'center'}}><div className="p-home__title">Get Started Now</div></div>
       <div style={{marginTop: 26}}><ModalButton width={164} text="Sign Up" modalName="signUp"/></div>
       <div style={{marginTop: 16}}><ModalButton width={164} text="Watch Video" color="gray" modalName="video" modalMode="center"/></div>
     </div>

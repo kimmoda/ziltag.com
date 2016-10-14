@@ -74,7 +74,7 @@
 
 .p-home__usage {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 100px 107px;
   background-color: white;
   justify-content: center;
@@ -87,9 +87,8 @@
 }
 
 .p-home__code {
-  color: black;
-  background-color: #EDEDED;
-  padding: 22px 55px;
+  background: #EDEDED;
+  padding: 55px;
   margin: 48px 0 0 0;
 }
 
