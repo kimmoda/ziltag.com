@@ -4,7 +4,7 @@ import Button from 'ziltag-elements/dist/Button'
 import './index.css'
 
 const Demo = props => {
-  const {isOpen, url, onClose, onClickSignUp} = props
+  const {isOpen, url, onClose, onClickSignUp, tip} = props
   return isOpen && (
     <div className="l-demo">
       <iframe className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}`}/>
@@ -17,6 +17,10 @@ const Demo = props => {
           <Button text="Sign Up" onClick={onClickSignUp}/>
           <Close className="l-demo__close" size={40} onClick={onClose}/>
         </div>
+        <div className="l-demo__tip">
+          <div className="l-demo__tip-title">TIP</div>
+          <div className="l-demo__tip-text">{tip}</div>
+        </div>
       </div>
     </div>
   )
@@ -26,11 +30,13 @@ Demo.propTypes = {
   isOpen: PropTypes.bool,
   url: PropTypes.string,
   onClose: PropTypes.func,
-  onClickSignUp: PropTypes.func
+  onClickSignUp: PropTypes.func,
+  tip: PropTypes.string
 }
 
 Demo.defaultProps = {
-  isOpen: true
+  isOpen: true,
+  tip: 'Hover on an image.'
 }
 
 export default Demo

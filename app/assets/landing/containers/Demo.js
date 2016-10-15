@@ -11,7 +11,8 @@ export default connect(
 function mapStateToProps(state) {
   return {
     isOpen: state.demo.isOpen,
-    url: state.demo.url
+    url: state.demo.url,
+    tip: state.demo.tip
   }
 }
 
