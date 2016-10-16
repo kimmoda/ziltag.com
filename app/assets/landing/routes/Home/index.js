@@ -27,8 +27,8 @@ export default () => (
       </div>
       <div className="p-home__intro">
         <div className="p-home__logo"/>
-        <div style={{textAlign: 'center', marginTop: 48}}><div className="p-home__title">Discuss & Discover Over Images</div></div>
-        <div style={{textAlign: 'center', marginTop: 17}}><div className="p-home__subtitle">A simple one-line script to annotate on images.</div></div>
+        <div style={{textAlign: 'center', marginTop: 48}}><div className="p-home__title">Discussion Board on Images</div></div>
+        <div style={{textAlign: 'center', marginTop: 17}}><div className="p-home__subtitle">A simple one-line script for any website.</div></div>
         <DemoForm/>
       </div>
     </div>
