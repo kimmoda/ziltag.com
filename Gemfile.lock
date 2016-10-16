@@ -293,6 +293,7 @@ GEM
     hashdiff (0.3.0)
     hashie (3.4.4)
     htmlentities (4.3.4)
+    http_accept_language (2.0.5)
     http_parser.rb (0.6.0)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
@@ -475,6 +476,7 @@ DEPENDENCIES
   grape
   graphiql-rails
   graphql
+  http_accept_language
   interactor2
   jbuilder (~> 2.0)
   mandrill-api
@@ -494,4 +496,4 @@ DEPENDENCIES
   webpack_stats
 
 BUNDLED WITH
-   1.12.5
+   1.13.1

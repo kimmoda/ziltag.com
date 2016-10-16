@@ -27,6 +27,7 @@ gem 'gibbon'
 gem 'mandrill-api', require: 'mandrill'
 gem 'interactor2'
 gem 'flowdock'
+gem 'http_accept_language'
 
 group :development do
   gem 'capistrano'
