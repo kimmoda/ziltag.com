@@ -27,3 +27,16 @@
   flex-shrink: 0;
   margin-left: 10px;
 }
+
+@media screen and (max-width: 650px) {
+  .l-demo-form {
+    flex-direction: column;
+  }
+  .l-demo-form__field {
+    width: 100%;
+  }
+  .l-demo-form__button {
+    margin: 20px 0 0 0;
+    width: 100%;
+  }
+}

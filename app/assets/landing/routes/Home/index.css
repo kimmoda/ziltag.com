@@ -86,66 +86,81 @@
   background-color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .p-home__copyright {
-  flex-basis: 300px;
   font-size: 12px;
   color: #979797;
 }
 
 .p-home__links {
   display: flex;
-  justify-content: space-between;
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 256px;
-  min-width: 170px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .p-home__link {
-  display: inline;
+  display: inline-block;
 }
 
-.p-home__link > a {
+.p-home__link:not(:first-child) {
+  margin-left: 20px;
+}
+
+.p-home__link>a {
   text-decoration: none;
   color: #333333;
   font-size: 12px;
 }
 
-@media screen and (max-width: 650px){
+.p-home__icon-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-basis: 240px;
+}
+
+.p-home__icon-link {
+  display: inline-block;
+}
+
+.p-home__icon-link:not(:first-child) {
+  margin-left: 23px;
+}
+
+.p-home__icon-link>a {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+}
+
+.p-home__icon-link--github>a {
+  background-image: url('./github.png');
+}
+
+.p-home__icon-link--twitter>a {
+  background-image: url('./twitter.png');
+}
+
+@media screen and (max-width: 650px) {
   .p-home__intro {
     margin-top: 50px;
     padding: 0 16px;
   }
-  .p-home__demo-form {
-    flex-direction: column;
-  }
-  .p-home__demo-field {
-    width: 100%;
-  }
-  .p-home__demo-button {
-    margin: 20px 0 0 0;
-    width: 100%;
-  }
   .p-home__auth-buttons {
     display: none;
   }
-  .p-home__footer {
-    flex-direction: column-reverse;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .p-home__copyright {
-    flex-basis: auto;
-  }
-  .p-home__links {
-    flex-basis: 32px;
-  }
 }
 
-@media screen and (max-width: 1080px){
+@media screen and (max-width: 1080px) {
   .p-home__usage {
     flex-direction: column;
     align-items: center;
@@ -156,5 +171,23 @@
   }
   .p-home__sample-image {
     margin: 50px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .p-home__footer {
+    flex-direction: column-reverse;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 120px;
+  }
+  .p-home__copyright {
+    flex-basis: auto;
+  }
+  .p-home__links {
+    flex-basis: 32px;
+  }
+  .p-home__icon-links {
+    flex-basis: inherit;
   }
 }
