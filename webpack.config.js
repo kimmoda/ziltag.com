@@ -49,7 +49,8 @@ module.exports = [
     },
     resolve: {
       root: [
-        path.resolve('./app/assets/javascripts/dashboard')
+        path.resolve('./app/assets/javascripts/dashboard'),
+        path.resolve('./app/assets/landing')
       ],
       modulesDirectories: [
         'containers', 'components',

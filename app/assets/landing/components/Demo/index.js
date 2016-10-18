@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react'
 import Close from 'react-icons/lib/md/close'
 import Button from 'ziltag-elements/dist/Button'
+
 import './index.css'
 
 const Demo = props => {

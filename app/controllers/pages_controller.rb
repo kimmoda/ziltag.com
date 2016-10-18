@@ -2,8 +2,9 @@
 require 'execjs'
 class PagesController < ApplicationController
   def home
+    lang = http_accept_language.compatible_language_from(I18n.available_locales)
     @html = nil
-    @state = {}
+    @state = {lang: lang}
     result = render_jsx(@state)
     case result['status']
     when 500 then head 500
