@@ -19,7 +19,7 @@ function SignUp(props) {
         <TextField width="100%" placeholder={t('url')} {...url}/>
       ]}
       button={<Button width="100%" text={t('sign_up')}/>}
-      tip={<div>By signing up, you agree to our <a href="http://blog.ziltag.com/terms" target="_blank" rel="noopener">terms</a> and <a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">privacy policy</a>.</div>}
+      tip={<div dangerouslySetInnerHTML={{__html: t('agree_terms_and_privacy')}}/>}
       footer={<div>{t('already_have_an_account')} <a href="javascript:void(0)" onClick={onSignIn}>{t('sign_in')}</a></div>}
       error={error}
       />

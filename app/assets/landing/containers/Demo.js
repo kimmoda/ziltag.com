@@ -9,11 +9,7 @@ export default connect(
 )(Demo)
 
 function mapStateToProps(state) {
-  return {
-    isOpen: state.demo.isOpen,
-    url: state.demo.url,
-    tip: state.demo.tip
-  }
+  return state.demo
 }
 
 function mapDispatchToProps(dispatch) {

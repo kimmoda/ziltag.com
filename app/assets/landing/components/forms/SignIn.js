@@ -19,7 +19,7 @@ function SignIn(props) {
       ]}
       button={<Button width="100%" text={t('sign_in')}/>}
       tip={<a href="javascript:void(0)" onClick={onForgotPassword}>{t('forgot_password')}</a>}
-      footer={<div>Don’t have an account? <a href="javascript:void(0)" onClick={onSignUp}>{t('sign_up')}</a></div>}
+      footer={<div>{t('dont_have_an_account')} <a href="javascript:void(0)" onClick={onSignUp}>{t('sign_up')}</a></div>}
       error={error}
       />
   )
