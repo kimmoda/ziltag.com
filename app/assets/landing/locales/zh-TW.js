@@ -13,7 +13,15 @@ export default {
     blog: '部落格',
     support: '支援',
     suggest_new_features: '新功能建議',
+    username: '使用者名稱',
+    email: 'Email 信箱',
+    url: '網址（例如：https://example.com）',
     terms: '條款',
-    privacy: '隱私權'
+    privacy: '隱私權',
+    already_have_an_account: '已經有帳號了？',
+    username_or_email: '用戶名稱或 Email 信箱',
+    password: '密碼',
+    forgot_password: '忘記密碼？',
+    dont_have_an_account: '還沒有帳號？'
   }
 }

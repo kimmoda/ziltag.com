@@ -5,6 +5,7 @@ import zhTW from 'locales/zh-TW'
 export default i18next.init({
   fallbackLng: 'en-US',
   initImmediate: false,
+  debug: true,
   interpolation: {
     escapeValue: false, // not needed for react
   },

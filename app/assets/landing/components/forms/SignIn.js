@@ -2,23 +2,24 @@ import React from 'react'
 import Form from 'ziltag-elements/dist/Form'
 import TextField from 'ziltag-elements/dist/TextField'
 import Button from 'ziltag-elements/dist/Button'
+import translate from 'hoc/translate'
 
 function SignIn(props) {
   const {
     fields: {username, password},
-    handleSubmit, onForgotPassword, onSignUp, error,
+    handleSubmit, onForgotPassword, onSignUp, error, t,
     ...others
   } = props
   return (
     <Form
       onSubmit={handleSubmit}
       fields={[
-        <TextField width="100%" placeholder="Username or Email" {...username}/>,
-        <TextField width="100%" placeholder="Password" type="password" {...password}/>
+        <TextField width="100%" placeholder={t('username_or_email')} {...username}/>,
+        <TextField width="100%" placeholder={t(t('password'))} type="password" {...password}/>
       ]}
-      button={<Button width="100%" text="Sign In"/>}
-      tip={<a href="javascript:void(0)" onClick={onForgotPassword}>Forgot Password?</a>}
-      footer={<div>Don’t have an account? <a href="javascript:void(0)" onClick={onSignUp}>Sign Up</a></div>}
+      button={<Button width="100%" text={t('sign_in')}/>}
+      tip={<a href="javascript:void(0)" onClick={onForgotPassword}>{t('forgot_password')}</a>}
+      footer={<div>Don’t have an account? <a href="javascript:void(0)" onClick={onSignUp}>{t('sign_up')}</a></div>}
       error={error}
       />
   )
@@ -28,4 +29,4 @@ SignIn.defaultProps = {
   fields: {}
 }
 
-export default SignIn
+export default translate(SignIn)

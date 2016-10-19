@@ -13,7 +13,15 @@ export default {
     blog: 'Blog',
     support: 'Support',
     suggest_new_features: 'Suggest New Features',
+    username: 'Username',
+    email: 'Email',
+    url: 'Website URL (Ex. https://example.com)',
     terms: 'Terms',
-    privacy: 'Privacy'
+    privacy: 'Privacy',
+    already_have_an_account: 'Already have an account?',
+    username_or_email: 'Username or Email',
+    password: 'Password',
+    forgot_password: 'Forgot Password?',
+    dont_have_an_account: 'Don’t have an account?'
   }
 }
