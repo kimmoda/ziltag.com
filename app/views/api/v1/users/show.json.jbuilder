@@ -6,3 +6,4 @@ json.usr do
   json.email @user.email
   json.permissions @permissions
 end
+json.permissions @permissions
