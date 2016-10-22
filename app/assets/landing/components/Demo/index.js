@@ -19,10 +19,10 @@ const Demo = props => {
           <Button text={t('join_now')} onClick={onClickSignUp}/>
           <Close className="l-demo__close" size={40} onClick={onClose}/>
         </div>
-        <div className="l-demo__tip">
-          <div className="l-demo__tip-title">{t('tip')}</div>
-          <div className="l-demo__tip-text">{t(tip)}</div>
-        </div>
+      </div>
+      <div className="l-demo__tip">
+        <div className="l-demo__tip-title">{t('tip')}</div>
+        <div className="l-demo__tip-text">{t(tip)}</div>
       </div>
     </div>
   )
