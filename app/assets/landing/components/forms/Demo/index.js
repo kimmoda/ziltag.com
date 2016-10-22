@@ -1,21 +1,33 @@
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
 import translate from 'hoc/translate'
+import FieldButton from 'ziltag-elements/dist/FieldButton'
 
-import './index.css'
+class Demo extends React.Component {
+  constructor(props){
+    super(props)
+    this.boundRef = c => this._form = c
+    this.boundOnRequestSend = url => {this._form.checkValidity() && this.props.onRequestSend(url)}
+  }
 
-function Demo(props) {
-  const {fields: {url}, handleSubmit, t} = props
-  return (
-    <form className="l-demo-form" onSubmit={handleSubmit}>
-      <input className="l-demo-form__field" name="url" placeholder={t('paste_your_url')} type="url" {...url}/>
-      <div className="l-demo-form__button"><Button text={t('live_demo')} width="100%"/></div>
-    </form>
-  )
+  render() {
+    const {onRequestSend, t} = this.props
+    return (
+      <form ref={this.boundRef} onSubmit={preventDefault}>
+        <FieldButton
+          name="url"
+          buttonText={t('preview_on_your_website')}
+          placeholder={t('please_enter_your_websites_url')}
+          onRequestSend={this.boundOnRequestSend}
+          type="url"
+          required
+          />
+        <button style={{display: 'none'}}/>
+      </form>
+    )
+  }
 }
 
-Demo.defaultProps = {
-  fields: {}
-}
+function preventDefault(e){e.preventDefault()}
 
 export default translate(Demo)

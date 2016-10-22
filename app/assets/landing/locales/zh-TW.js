@@ -13,9 +13,7 @@ export default {
     get_started_now: '立刻開始使用',
     hover_on_an_image: '請將鼠標移至任一張相片上。',
     join_now: '立即加入',
-    live_demo: '立刻體驗',
     password: '密碼',
-    paste_your_url: '輸入連結體驗 Ziltag⋯⋯',
     privacy: '隱私權',
     send: '送出',
     sign_in: '登入',
@@ -30,6 +28,8 @@ export default {
     username_or_email: '用戶名稱或 Email 信箱',
     username: '使用者名稱',
     watch_video: '觀看介紹影片',
-    we_will_send_you_a_password_reset_instruction: '我們將寄送有關重設密碼步驟的信件'
+    we_will_send_you_a_password_reset_instruction: '我們將寄送有關重設密碼步驟的信件',
+    preview_on_your_website: '體驗你的網站',
+    please_enter_your_websites_URL: '請輸入你的網站的網址'
   }
 }

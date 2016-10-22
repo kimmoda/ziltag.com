@@ -1,21 +1,17 @@
-import {reduxForm} from 'redux-form'
 import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import {openDemo} from '../../actions/demo'
 import Demo from '../../components/forms/Demo'
 
-export default reduxForm({
-  form: 'demo',
-  fields: ['url']
-}, null, mapDispatchToProps)(Demo)
+export default connect(null, mapDispatchToProps)(Demo)
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    onSubmit: demo
+    onRequestSend: demo
   }, dispatch)
 }
 
 
-function demo(params){
-  const {url} = params
+function demo(url){
   return openDemo(url)
 }

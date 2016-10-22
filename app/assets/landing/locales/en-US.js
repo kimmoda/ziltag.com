@@ -13,14 +13,12 @@ export default {
     get_started_now: 'Get Started Now',
     hover_on_an_image: 'Hover on an image.',
     join_now: 'Sign Up',
-    live_demo: 'Live Demo',
     password: 'Password',
-    paste_your_url: 'Paste your URL to try Ziltag in action...',
     privacy: 'Privacy',
     send: 'Send',
     sign_in: 'Sign In',
     sign_up: 'Sign Up',
-    subtitle: 'A simple one-line script for any website.',
+    subtitle: 'Ziltag is a web plugin to discuss & discover on images.',
     suggest_new_features: 'Suggest New Features',
     support: 'Support',
     terms: 'Terms',
@@ -30,6 +28,8 @@ export default {
     username_or_email: 'Username or Email',
     username: 'Username',
     watch_video: 'Watch Video',
-    we_will_send_you_a_password_reset_instruction: "We'll send you a password reset instruction."
+    we_will_send_you_a_password_reset_instruction: "We'll send you a password reset instruction.",
+    preview_on_your_website: 'Preview on your website',
+    please_enter_your_websites_URL: 'Please enter your website’s URL...'
   }
 }

@@ -23,16 +23,16 @@ const Home = props => {
   return (
     <div className="p-home">
       <div className="p-home__cover">
-        <img className="p-home__cover-image" src={require('./cover.jpg')} data-ziltag-switch="false"/>
+        <img className="p-home__cover-image" src={require('./cat.jpg')} data-ziltag-switch="false"/>
+        <div className="p-home__logo"/>
         <div className="p-home__auth-buttons">
           <ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/>
           <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14, marginLeft: 18}}/>
         </div>
         <div className="p-home__intro">
-          <div className="p-home__logo"/>
-          <div style={{textAlign: 'center', marginTop: 48}}><div className="p-home__title">{t('title')}</div></div>
-          <div style={{textAlign: 'center', marginTop: 17}}><div className="p-home__subtitle">{t('subtitle')}</div></div>
-          <DemoForm/>
+          <div style={{textAlign: 'center'}}><div className="p-home__title">{t('title')}</div></div>
+          <div style={{textAlign: 'center', marginTop: 14}}><div className="p-home__subtitle">{t('subtitle')}</div></div>
+          <div style={{marginTop: 45}}><DemoForm/></div>
         </div>
       </div>
       <div className="p-home__usage">
