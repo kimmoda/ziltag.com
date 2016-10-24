@@ -30,6 +30,6 @@ export default {
     watch_video: 'Watch Video',
     we_will_send_you_a_password_reset_instruction: "We'll send you a password reset instruction.",
     preview_on_your_website: 'Preview on your website',
-    please_enter_your_websites_URL: 'Please enter your website’s URL...'
+    please_enter_your_websites_url: 'Please enter your website’s URL...'
   }
 }

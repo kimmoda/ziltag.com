@@ -30,6 +30,6 @@ export default {
     watch_video: '觀看介紹影片',
     we_will_send_you_a_password_reset_instruction: '我們將寄送有關重設密碼步驟的信件',
     preview_on_your_website: '體驗你的網站',
-    please_enter_your_websites_URL: '請輸入你的網站的網址'
+    please_enter_your_websites_url: '請輸入你的網站的網址'
   }
 }
