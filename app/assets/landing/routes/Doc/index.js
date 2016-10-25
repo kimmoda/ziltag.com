@@ -12,8 +12,9 @@ export default translate(props => {
     <div>
       <Link to="/"><div className="p-doc__logo"/></Link>
       <div className="p-doc__buttons">
+        <Link to="/" style={{textDecoration: 'none', color: 'black', fontSize: 20, fontWeight: 900}}>Home</Link>
         <ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/>
-        <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14, marginLeft: 18}}/>
+        <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/>
       </div>
       <div className="p-doc__body">
         <h1>Plugin Configuration</h1>

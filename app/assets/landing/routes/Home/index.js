@@ -7,6 +7,7 @@ import translate from 'hoc/translate'
 
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
+import {Link} from 'react-router'
 
 require('highlight.js/styles/atom-one-light.css')
 require('./index.css')
@@ -26,8 +27,9 @@ const Home = props => {
         <img className="p-home__cover-image" src={require('./cat.jpg')} data-ziltag-switch="false"/>
         <div className="p-home__logo"/>
         <div className="p-home__auth-buttons">
+          <Link to="/doc" style={{textDecoration: 'none', color: 'white', fontSize: 20, fontWeight: 900}}>Doc</Link>
           <ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/>
-          <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14, marginLeft: 18}}/>
+          <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/>
         </div>
         <div className="p-home__intro">
           <div style={{textAlign: 'center'}}><div className="p-home__title">{t('title')}</div></div>

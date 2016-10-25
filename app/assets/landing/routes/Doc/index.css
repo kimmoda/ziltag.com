@@ -8,9 +8,15 @@
 }
 
 .p-doc__buttons {
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.p-doc__buttons > *:not(:first-child) {
+  margin-left: 18px;
 }
 
 .p-doc__body {

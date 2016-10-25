@@ -10,7 +10,11 @@
   top: 20px;
   right: 20px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+}
+
+.p-home__auth-buttons > *:not(:first-child) {
+  margin-left: 18px;
 }
 
 .p-home__cover-image {
