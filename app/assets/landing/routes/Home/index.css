@@ -165,7 +165,7 @@
 @media screen and (max-width: 650px) {
   .p-home__intro {
     margin-top: 50px;
-    padding: 0 16px;
+    padding: 10px 10px;
   }
   .p-home__auth-buttons {
     display: none;
