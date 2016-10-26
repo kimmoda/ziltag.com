@@ -24,6 +24,7 @@ const Demo = props => {
         <div className="l-demo__tip-title">{t('tip')}</div>
         <div className="l-demo__tip-text">{t(tip)}</div>
       </div>
+      <div className="l-demo__snackbar">This is a demo applied to <b>{url}</b> using Ziltag Plugin. The plugin might not work for this site due to technical issues. If you have any problem, please <a href="mailto:hi@ziltag.com"><b>contact us</b></a>. Wish to install it? Please <a href="javascript:void(0)" onClick={onClickSignUp}><b>sign up</b></a>.</div>
     </div>
   )
 }

@@ -79,6 +79,25 @@
   margin-left: 18px;
 }
 
+.l-demo__snackbar {
+  position: absolute;
+  bottom: 0;
+  background-color: #FAFAFA;
+  color: #333333;
+  font-size: 14px;
+  border-radius: 2px;
+  box-shadow: 0 15px 12px rgba(0,0,0,.22);
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 19px;
+  box-sizing: border-box;
+  line-height: 24px;
+}
+
+.l-demo__snackbar a {
+  color: inherit;
+}
+
 @media screen and (max-width: 425px) {
   .l-demo__header {
     padding: 0 10px;
