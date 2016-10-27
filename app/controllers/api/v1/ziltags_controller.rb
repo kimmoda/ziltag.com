@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Api::V1::ZiltagsController < ApiController
-  before_action :authenticate_user!, only: %i(create update destroy)
   before_action :set_ziltag, only: %i(update destroy)
 
   def index
@@ -21,6 +20,7 @@ class Api::V1::ZiltagsController < ApiController
               demo_token == Photo.find_by(natural_id: ziltag_params[:map_id])&.website&.token
       demo_user
     else
+      authenticate_user!
       current_user
     end
     create_ziltag = CreateZiltag.perform(
@@ -62,6 +62,7 @@ class Api::V1::ZiltagsController < ApiController
               demo_token == Ziltag.find_by(natural_id: params[:id])&.photo&.website&.token
       demo_user
     else
+      authenticate_user!
       current_user
     end
     @ziltag = user.ziltags.find_by! natural_id: params[:id]
