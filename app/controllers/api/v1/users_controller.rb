@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Api::V1::UsersController < ApiController
   def me
-    @user = if Rails.env.production? && (
+    @user = if Rails.env.production? && Settings.host == 'ziltag.com' && (
                  demo_token == me_params[:token] ||
                  demo_token == Photo.find_by(natural_id: me_params[:ziltag_map_id])&.website&.token
                )

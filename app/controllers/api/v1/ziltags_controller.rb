@@ -16,7 +16,7 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def create
-    user = if Rails.env.production? &&
+    user = if Rails.env.production? && Settings.host == 'ziltag.com'
               demo_token == Photo.find_by(natural_id: ziltag_params[:map_id])&.website&.token
       demo_user
     else
@@ -58,7 +58,7 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def set_ziltag
-    user = if Rails.env.production? &&
+    user = if Rails.env.production? && Settings.host == 'ziltag.com'
               demo_token == Ziltag.find_by(natural_id: params[:id])&.photo&.website&.token
       demo_user
     else
