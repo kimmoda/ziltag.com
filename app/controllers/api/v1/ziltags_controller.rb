@@ -17,8 +17,14 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def create
+    user = if Rails.env.production? &&
+              demo_token == Photo.find_by(natural_id: ziltag_params[:map_id])&.website&.token
+      demo_user
+    else
+      current_user
+    end
     create_ziltag = CreateZiltag.perform(
-      current_user,
+      user,
       ziltag_params[:map_id], ziltag_params[:x], ziltag_params[:y],
       ziltag_params[:content]
     )
@@ -52,6 +58,12 @@ class Api::V1::ZiltagsController < ApiController
   end
 
   def set_ziltag
-    @ziltag = current_user.ziltags.find_by! natural_id: params[:id]
+    user = if Rails.env.production? &&
+              demo_token == Ziltag.find_by(natural_id: params[:id])&.photo&.website&.token
+      demo_user
+    else
+      current_user
+    end
+    @ziltag = user.ziltags.find_by! natural_id: params[:id]
   end
 end

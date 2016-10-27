@@ -8,7 +8,13 @@ class Api::V1::CommentsController < ApiController
   end
 
   def create
-    create_comment = CreateComment.perform(current_user, comment_params)
+    user = if Rails.env.production? &&
+              demo_token == Ziltag.find_by(natural_id: comment_params[:ziltag_id])&.photo&.website&.token
+      demo_user
+    else
+      current_user
+    end
+    create_comment = CreateComment.perform(user, comment_params)
     if create_comment.success?
       @comment = create_comment.comment
       render :show

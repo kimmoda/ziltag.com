@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 class Api::V1::UsersController < ApiController
   def me
-    @user = current_user
+    @user = if Rails.env.production? && (
+                 demo_token == me_params[:token] ||
+                 demo_token == Photo.find_by(natural_id: me_params[:ziltag_map_id])&.website&.token
+               )
+      demo_user
+    else
+      current_user
+    end
+
     result = GetUserPermissionsByParams.perform(@user, me_params)
     if result.success?
       @permissions = result.permissions
