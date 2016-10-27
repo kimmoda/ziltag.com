@@ -13,7 +13,11 @@ class Api::V1::UsersController < ApiController
     result = GetUserPermissionsByParams.perform(@user, me_params)
     if result.success?
       @permissions = result.permissions
-      render :show
+      if @user
+        render :show
+      else
+        render json: { permissions: @permissions }
+      end
     else
       render json: { error: result.error }
     end
