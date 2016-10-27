@@ -32,6 +32,7 @@ export default translate(props => {
         <p>The <code>img</code>&#39;s width must be greater than or equal to <code>200px</code>, height must be greater than or equal to <code>100px</code>.</p>
       </div>
       <Modal/>
+      <style>{".ziltag-app{display:none;}"}</style>
     </div>
   )
 })
