@@ -26,6 +26,7 @@ class Photo < ActiveRecord::Base #:nodoc:
   def self.recommended
     joins(ziltags: :user).where(id: having_tags_more_than.select(:id))
                          .where.not('users.username = ?', 'ziltag')
+                         .where.not(host: ['ziltag.com', 'staging.ziltag.com', 'ziltag-preview.dev', 'preview.ziltag.com'])
                          .order('ziltags.created_at DESC').to_a.uniq.first(100)
   end
 
