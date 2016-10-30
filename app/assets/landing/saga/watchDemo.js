@@ -7,6 +7,6 @@ export default function* () {
 }
 
 function* delayClose(action){
-  yield delay(5000)
+  yield delay(30000)
   yield put(closeSnackBar())
 }
