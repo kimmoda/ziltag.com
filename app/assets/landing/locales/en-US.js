@@ -30,6 +30,7 @@ export default {
     watch_video: 'Watch Video',
     we_will_send_you_a_password_reset_instruction: "We'll send you a password reset instruction.",
     preview_on_your_website: 'Preview on your website',
-    please_enter_your_websites_url: 'Please enter your website’s URL...'
+    please_enter_your_websites_url: 'Please enter your website’s URL...',
+    demo_snackbar: 'This is a demo applied to <b>{{url}}</b> using Ziltag Plugin. All rights belong to their respective owners. The plugin might not work for this site due to technical issues. If you have any problem, please <a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">contact us</a>. Wish to install it? Please <a data-action="signUp" href="javascript:void(0)">sign up.</a>'
   }
 }

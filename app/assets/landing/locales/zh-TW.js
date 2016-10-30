@@ -30,6 +30,7 @@ export default {
     watch_video: '觀看介紹影片',
     we_will_send_you_a_password_reset_instruction: '我們將寄送有關重設密碼步驟的信件',
     preview_on_your_website: '體驗你的網站',
-    please_enter_your_websites_url: '請輸入你的網站的網址'
+    please_enter_your_websites_url: '請輸入你的網站的網址',
+    demo_snackbar: '您目前是以 Ziltag 的體驗模式訪問 <b>{{url}}</b>，該網站之所有內容的著作權皆屬於其原作者。由於技術問題，Ziltag 的外掛可能無法在您提供的網站上運作。如果您有任何問題，歡迎與<a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">我們聯絡</a>。如想要在您的網站上安裝 Ziltag，請先<a data-action="signUp" href="javascript:void(0)">註冊</a>。'
   }
 }

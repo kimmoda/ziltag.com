@@ -8,6 +8,7 @@ import './index.css'
 
 const Demo = props => {
   const {isOpen, url, loading, onClose, onClickSignUp, tip, t, onIframeLoaded} = props
+  const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
   return isOpen && (
     <div className="l-demo">
       <iframe ref={iframeRef(onIframeLoaded)} style={{display: loading && 'none'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}`}/>
@@ -30,7 +31,15 @@ const Demo = props => {
         )
       }
       {
-        loading || <div className="l-demo__snackbar">This is a demo applied to <b>{url}</b> using Ziltag Plugin. The plugin might not work for this site due to technical issues. If you have any problem, please <a href="mailto:hi@ziltag.com"><b>contact us</b></a>. Wish to install it? Please <a href="javascript:void(0)" onClick={onClickSignUp}><b>sign up</b></a>.</div>
+        loading || (
+          <div
+            className="l-demo__snackbar"
+            onClick={handleClickSnackBar}
+            dangerouslySetInnerHTML={{
+              __html: t('demo_snackbar', {url: new URL(url).host})
+            }}
+            />
+        )
       }
       { loading && <div className="l-demo__spinner"><Spinner/></div>}
     </div>

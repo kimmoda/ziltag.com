@@ -4,6 +4,6 @@ import i18n from 'i18n'
 
 export default Component => connect(
   state => ({
-    t: (...args) => i18n.t(...args, {lng: state.lang})
+    t: (key, options) => i18n.t(key, {...options, lng: state.lang})
   })
 )(Component)
