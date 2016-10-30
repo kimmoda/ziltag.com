@@ -7,7 +7,7 @@ import Spinner from 'ziltag-elements/dist/Spinner'
 import './index.css'
 
 const Demo = props => {
-  const {isOpen, url, loading, onClose, onClickSignUp, tip, t, onIframeLoaded} = props
+  const {isOpen, url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, tip, t, onIframeLoaded} = props
   const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
   return isOpen && (
     <div className="l-demo">
@@ -31,14 +31,11 @@ const Demo = props => {
         )
       }
       {
-        loading || (
-          <div
-            className="l-demo__snackbar"
-            onClick={handleClickSnackBar}
-            dangerouslySetInnerHTML={{
-              __html: t('demo_snackbar', {url: new URL(url).host})
-            }}
-            />
+        snackbar && (
+          <div className="l-demo__snackbar" onClick={handleClickSnackBar}>
+            <div dangerouslySetInnerHTML={{__html: t('demo_snackbar', {url: new URL(url).host})}}/>
+            <Close className="l-demo__snackbar-close" onClick={onSnackBarClose} size={14}/>
+          </div>
         )
       }
       { loading && <div className="l-demo__spinner"><Spinner/></div>}

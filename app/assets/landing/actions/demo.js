@@ -18,6 +18,12 @@ export function showIframe(){
   }
 }
 
+export function closeSnackBar(){
+  return {
+    type: 'CLOSE_SNACKBAR'
+  }
+}
+
 export function hoverIn(){
   return {
     type: 'DEMO_HOVER_IN'

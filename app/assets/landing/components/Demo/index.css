@@ -95,6 +95,13 @@
   line-height: 24px;
 }
 
+.l-demo__snackbar-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
 .l-demo__snackbar a {
   color: inherit;
 }
