@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   z-index: 2147483644;
+  background-color: white;
 }
 
 .l-demo__header {
@@ -96,6 +97,13 @@
 
 .l-demo__snackbar a {
   color: inherit;
+}
+
+.l-demo__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media screen and (max-width: 425px) {

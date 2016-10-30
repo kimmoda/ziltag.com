@@ -1,13 +1,20 @@
 export function openDemo(url){
   return {
     type: 'OPEN_DEMO',
-    url
+    url,
+    loading: true
   }
 }
 
 export function closeDemo(){
   return {
     type: 'CLOSE_DEMO'
+  }
+}
+
+export function showIframe(){
+  return {
+    type: 'SHOW_IFRAME'
   }
 }
 
