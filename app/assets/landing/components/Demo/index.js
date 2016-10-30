@@ -11,7 +11,7 @@ const Demo = props => {
   const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
   return isOpen && (
     <div className="l-demo">
-      <iframe ref={iframeRef(onIframeLoaded)} style={{display: loading && 'none'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}`}/>
+      <iframe ref={iframeRef(onIframeLoaded)} style={{visibility: loading && 'hidden'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}`}/>
       <div className="l-demo__header">
         <div className="l-demo__left-container">
           <div className="l-demo__logo"/>
