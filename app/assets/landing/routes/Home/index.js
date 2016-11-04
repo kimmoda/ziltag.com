@@ -27,7 +27,7 @@ const Home = props => {
         <img className="p-home__cover-image" src={require('./cat.jpg')} data-ziltag-switch="false"/>
         <div className="p-home__logo"/>
         <div className="p-home__auth-buttons">
-          <Link to="/doc" style={{textDecoration: 'none', color: 'white', fontSize: 14, fontWeight: 500}}>Doc</Link>
+          <Link to="/doc" style={{textDecoration: 'none', color: 'white', fontSize: 14, fontWeight: 500}}>{t('doc')}</Link>
           <ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/>
           <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/>
         </div>
