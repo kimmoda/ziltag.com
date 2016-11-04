@@ -12,6 +12,7 @@ function SignIn(props) {
   } = props
   return (
     <Form
+      title={t('sign_in')}
       onSubmit={handleSubmit}
       fields={[
         <TextField width="100%" placeholder={t('username_or_email')} {...username}/>,

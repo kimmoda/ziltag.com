@@ -12,6 +12,7 @@ function SignUp(props) {
   } = props
   return (
     <Form
+      title={t('sign_up')}
       onSubmit={handleSubmit}
       fields={[
         <TextField width="100%" placeholder={t('username')} {...username}/>,
