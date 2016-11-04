@@ -33,7 +33,7 @@ class MyTags extends React.Component {
             className="ziltag-my-tags__images-container"
             options={{columnWidth: 253}}
             style={{display: this.state.loaded ? 'inherit' : 'none'}}
-            onImagesLoaded={_=>this.setState({loaded: true})}
+            onImagesLoaded={this.state.loaded ? null : _=>this.setState({loaded: true})}
             >
             {imageElements}
           </Masonry>

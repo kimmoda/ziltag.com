@@ -40,7 +40,7 @@ class Explore extends React.Component {
         <Masonry
           className="ziltag-explore__body"
           style={{display: this.state.loaded ? 'inherit' : 'none'}}
-          onImagesLoaded={_=>this.setState({loaded: true})}
+          onImagesLoaded={this.state.loaded ? null : _=>this.setState({loaded: true})}
           options={{columnWidth: 340, gutter: 15}}>
           {ziltagMapElements}
         </Masonry>
