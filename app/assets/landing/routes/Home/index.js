@@ -8,6 +8,7 @@ import translate from 'hoc/translate'
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
 import {Link} from 'react-router'
+import {connect} from 'react-redux'
 
 require('highlight.js/styles/atom-one-light.css')
 require('./index.css')
@@ -20,7 +21,7 @@ const example = `<img src="sample.jpg">
 </script>`
 
 const Home = props => {
-  const {t} = props
+  const {t, isSignedIn} = props
   return (
     <div className="p-home">
       <div className="p-home__cover">
@@ -28,8 +29,9 @@ const Home = props => {
         <div className="p-home__logo"/>
         <div className="p-home__auth-buttons">
           <Link to="/doc" style={{textDecoration: 'none', color: 'white', fontSize: 14, fontWeight: 500}}>{t('doc')}</Link>
-          <ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/>
-          <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/>
+            {isSignedIn || <ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/>}
+            {isSignedIn || <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/>}
+            {isSignedIn && <a href="/dashboard/account/"><Button style={{fontSize: 14}} text={t('dashboard')}/></a>}
         </div>
         <div className="p-home__intro">
           <div style={{textAlign: 'center'}}><div className="p-home__title">{t('title')}</div></div>
@@ -69,4 +71,8 @@ const Home = props => {
   )
 }
 
-export default translate(Home)
+export default connect(
+  state => ({
+    isSignedIn: state.isSignedIn
+  })
+)(translate(Home))

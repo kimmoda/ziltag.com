@@ -5,6 +5,7 @@ export default {
     blog: '部落格',
     click_anywhere: '點擊相片中的任何位置即可開始寫作。',
     click_the_z_button: '點擊右上角的紅色 Z 按鈕。',
+    dashboard: '後台',
     dead_simple_install: '安裝，無法更簡單',
     demo_snackbar: '您目前是以 Ziltag 的體驗模式訪問 <b>{{url}}</b>，該網站之所有內容的著作權皆屬於其原作者。由於技術問題，Ziltag 的外掛可能無法在您提供的網站上運作。如果您有任何問題，歡迎與<a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">我們聯絡</a>。如想要在您的網站上安裝 Ziltag，請先<a data-action="signUp" href="javascript:void(0)">註冊</a>。',
     demo: '體驗模式',

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     lang = http_accept_language.compatible_language_from(I18n.available_locales)
     @html = nil
-    @state = {lang: lang}
+    @state = {lang: lang, isSignedIn: user_signed_in?}
     result = render_jsx(@state)
     case result['status']
     when 500 then head 500

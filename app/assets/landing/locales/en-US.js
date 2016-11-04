@@ -5,6 +5,7 @@ export default {
     blog: 'Blog',
     click_anywhere: 'Click anywhere on the image to start writing.',
     click_the_z_button: 'Click the Z button.',
+    dashboard: 'Dashboard',
     dead_simple_install: 'Dead-Simple Installation',
     demo_snackbar: 'This is a demo applied to <b>{{url}}</b> using Ziltag Plugin. All rights belong to their respective owners. The plugin might not work for this site due to technical issues. If you have any problem, please <a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">contact us</a>. Wish to install it? Please <a data-action="signUp" href="javascript:void(0)">sign up.</a>',
     demo: 'Demo',
