@@ -39,7 +39,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .p-doc__buttons {
+  .p-doc__button.p-doc__button--home,.p-doc__button.p-doc__button--sign-in,.p-doc__button.p-doc__button--dashboard {
     display: none;
   }
 }

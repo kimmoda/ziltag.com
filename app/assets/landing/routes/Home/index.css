@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.p-home__auth-buttons > *:not(:first-child) {
+.p-home__auth-buttons>*:not(:first-child) {
   margin-left: 18px;
 }
 
@@ -42,7 +42,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(255,255,255,.85);
+  background-color: rgba(255, 255, 255, .85);
   padding: 36px 55px;
   border-radius: 8px;
 }
@@ -162,11 +162,15 @@
 }
 
 @media screen and (max-width: 650px) {
+  .p-home__logo {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
   .p-home__intro {
     margin-top: 50px;
     padding: 10px 10px;
   }
-  .p-home__auth-buttons {
+  .p-home__auth-button.p-home__auth-button--sign-in, .p-home__auth-button.p-home__auth-button--doc, .p-home__auth-button.p-home__auth-button--dashboard {
     display: none;
   }
 }

@@ -40,10 +40,10 @@ class Home extends React.Component {
           <img ref={c=>{this._cover = c}} className="p-home__cover-image" src={require('./cat.jpg')} data-ziltag-switch="false"/>
           <div className="p-home__logo"/>
           <div className="p-home__auth-buttons">
-            <Link to="/doc" style={{textDecoration: 'none', color: 'white', fontSize: 14, fontWeight: 500}}>{t('doc')}</Link>
-              {isSignedIn || <ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/>}
-              {isSignedIn || <ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/>}
-              {isSignedIn && <a href="/dashboard/account/"><Button style={{fontSize: 14}} text={t('dashboard')}/></a>}
+            <Link className="p-home__auth-button p-home__auth-button--doc" to="/doc" style={{textDecoration: 'none', color: 'white', fontSize: 14, fontWeight: 500}}>{t('doc')}</Link>
+            {isSignedIn || <div className="p-home__auth-button"><ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/></div>}
+            {isSignedIn || <div className="p-home__auth-button p-home__auth-button--sign-in"><ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/></div>}
+            {isSignedIn && <a className="p-home__auth-button p-home__auth-button--dashboard" href="/dashboard/account/"><Button style={{fontSize: 14}} text={t('dashboard')}/></a>}
           </div>
           <div className="p-home__intro">
             <div style={{textAlign: 'center'}}><div className="p-home__title">{t('title')}</div></div>
