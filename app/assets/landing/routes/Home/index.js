@@ -37,7 +37,7 @@ class Home extends React.Component {
     return (
       <div className="p-home">
         <div className="p-home__cover">
-          <img ref={c=>{this._cover = c}} className="p-home__cover-image" src={require('./cat.jpg')} data-ziltag-switch="false"/>
+          <img ref={c=>{this._cover = c}} className="p-home__cover-image" src={require('./girl.jpg')} data-ziltag-switch="false"/>
           <div className="p-home__logo"/>
           <div className="p-home__auth-buttons">
             <Link className="p-home__auth-button p-home__auth-button--doc" to="/doc" style={{textDecoration: 'none', color: 'white', fontSize: 14, fontWeight: 500}}>{t('doc')}</Link>
