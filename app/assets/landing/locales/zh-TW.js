@@ -18,7 +18,7 @@ export default {
     hover_on_an_image: '請將鼠標移至任一張相片上。',
     join_now: '立即加入',
     password: '密碼',
-    please_enter_your_websites_url: '請輸入你的網站的網址',
+    please_enter_your_websites_url: '請輸入你的網站的網址（如：http://example.com）',
     preview_on_your_website: '體驗你的網站',
     privacy: '隱私權',
     send: '送出',
