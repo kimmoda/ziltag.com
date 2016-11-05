@@ -8,7 +8,9 @@ export function demo(state={isOpen: false, loading: true, snackbar: false}, acti
     case 'DEMO_HOVER_IN':
       return {...state, tip: 'click_the_z_button'}
     case 'DEMO_HOVER_OUT':
-      return {...state, tip: 'hover_on_an_image'}
+      if(state.tip == 'click_the_z_button') {
+        return {...state, tip: 'hover_on_an_image'}
+      } else return state
     case 'DEMO_READER_OPENED':
       return {...state, tip: 'click_anywhere'}
     case 'DEMO_READER_CLOSED':
