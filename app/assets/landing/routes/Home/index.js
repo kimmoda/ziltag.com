@@ -67,7 +67,7 @@ class Home extends React.Component {
           <div className="p-home__copyright">© Ziltag Inc., 2016. All Rights Reserved.</div>
           <ul className="p-home__links">
             <li className="p-home__link"><a href="http://blog.ziltag.com" target="_blank" rel="noopener">{t('blog')}</a></li>
-            <li className="p-home__link"><a href="https://help.ziltag.com" target="_blank" rel="noopener">{t('support')}</a></li>
+            <li className="p-home__link"><a href="http://help.ziltag.com" target="_blank" rel="noopener">{t('support')}</a></li>
             <li className="p-home__link"><a href="https://ziltag.zendesk.com/hc/en-us/requests/new" target="_blank" rel="noopener">{t('suggest_new_features')}</a></li>
             <li className="p-home__link"><a href="http://blog.ziltag.com/terms" target="_blank" rel="noopener">{t('terms')}</a></li>
             <li className="p-home__link"><a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">{t('privacy')}</a></li>
