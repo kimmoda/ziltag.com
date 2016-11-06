@@ -34,7 +34,7 @@ import '../../images/favicon.png'
 import '../../images/fallback/thumb_guest.png'
 import '../../images/fallback/guest.png'
 import '../../images/fallback/default_guest.png'
-import '../../images/social_media_logo.png'
+import '../../images/social_media_cover.png'
 import './tabs.scss'
 
 injectTapEventPlugin()
