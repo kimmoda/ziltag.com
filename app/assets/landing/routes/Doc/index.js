@@ -18,7 +18,7 @@ export default connect(
     <div>
       <Link to="/"><div className="p-doc__logo"/></Link>
       <div className="p-doc__buttons">
-        <Link className="p-doc__button p-doc__button--home" to="/" style={{textDecoration: 'none', color: 'black', fontSize: 14, fontWeight: 500}}>{t('home')}</Link>
+        <Link className="p-doc__button p-doc__button--home" to="/" style={{textDecoration: 'none', color: '#333333', fontSize: 14, fontWeight: 500}}>{t('home')}</Link>
         {isSignedIn || <div className="p-doc__button"><ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/></div>}
         {isSignedIn || <div className="p-doc__button p-doc__button--sign-in"><ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/></div>}
         {isSignedIn && <a className="p-doc__button p-doc__button--dashboard" href="/dashboard/account/"><Button style={{fontSize: 14}} text={t('dashboard')}/></a>}
