@@ -74,10 +74,7 @@
 
 .l-demo__tip-title {
   font-weight: bold;
-}
-
-.l-demo__tip-text {
-  margin-left: 18px;
+  flex-basis: 48px;
 }
 
 .l-demo__snackbar {
