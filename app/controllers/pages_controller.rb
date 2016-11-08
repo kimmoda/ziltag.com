@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 require 'execjs'
 class PagesController < ApplicationController
+  before_action do
+    @state ||= {}
+  end
+
   def home
     lang = http_accept_language.compatible_language_from(I18n.available_locales)
     @html = nil
-    @state = {lang: lang, isSignedIn: user_signed_in?}
+    @state.merge! lang: lang, isSignedIn: user_signed_in?
     result = render_jsx(@state)
     case result['status']
     when 500 then head 500
@@ -14,6 +18,21 @@ class PagesController < ApplicationController
     when 200
       @html = result['body']
       @state = result['state']
+    end
+    render :home
+  end
+
+  def preview
+    if shorten_url = ShortenUrl.find_by(natural_id: params[:id])
+      @state.merge! demo: {
+        url: shorten_url.url,
+        loading: true,
+        tip: :hover_on_an_image,
+        snackbar: false
+      }
+      home
+    else
+      redirect_to root_path
     end
   end
 

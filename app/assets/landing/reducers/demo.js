@@ -1,10 +1,8 @@
-export function demo(state={isOpen: false, loading: true, snackbar: false}, action) {
+export function demo(state={loading: true, snackbar: false}, action) {
   const {url} = action
   switch (action.type) {
-    case 'OPEN_DEMO':
-      return {isOpen: true, url, tip: 'hover_on_an_image', loading: true, snackbar: false}
-    case 'CLOSE_DEMO':
-      return {isOpen: false}
+    case 'RECEIVE_SHORTEN_URL':
+      return {...state, url: action.url, tip: 'hover_on_an_image', loading: true, snackbar: false}
     case 'DEMO_HOVER_IN':
       return {...state, tip: 'click_the_z_button'}
     case 'DEMO_HOVER_OUT':

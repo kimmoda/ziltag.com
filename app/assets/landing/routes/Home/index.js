@@ -1,7 +1,6 @@
 import Modal from 'Modal'
 import ModalButton from 'ModalButton'
 import Highlight from 'highlight.js'
-import Demo from 'Demo'
 import DemoForm from 'forms/Demo'
 import translate from 'hoc/translate'
 
@@ -77,7 +76,6 @@ class Home extends React.Component {
             <li className="p-home__icon-link p-home__icon-link--twitter"><a href="https://twitter.com/ziltagapp" target="_blank" rel="noopener"></a></li>
           </ul>
         </div>
-        <Demo/>
         <Modal/>
       </div>
     )

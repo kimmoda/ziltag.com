@@ -3,13 +3,18 @@ import Close from 'react-icons/lib/md/close'
 import Button from 'ziltag-elements/dist/Button'
 import translate from 'hoc/translate'
 import Spinner from 'ziltag-elements/dist/Spinner'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {openModal, showIframe, closeSnackBar} from '../../actions'
+import Modal from 'Modal'
+import {push} from 'react-router-redux'
 
 import './index.css'
 
 const Demo = props => {
-  const {isOpen, url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, tip, t, onIframeLoaded} = props
+  const {url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, tip, t, onIframeLoaded} = props
   const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
-  return isOpen && (
+  return (
     <div className="l-demo">
       <iframe ref={iframeRef(onIframeLoaded)} style={{visibility: loading && 'hidden'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}`}/>
       <div className="l-demo__header">
@@ -39,20 +44,16 @@ const Demo = props => {
         )
       }
       { loading && <div className="l-demo__spinner"><Spinner/></div>}
+      <Modal/>
     </div>
   )
 }
 
 Demo.propTypes = {
-  isOpen: PropTypes.bool,
   url: PropTypes.string,
   onClose: PropTypes.func,
   onClickSignUp: PropTypes.func,
   tip: PropTypes.string
-}
-
-Demo.defaultProps = {
-  isOpen: true
 }
 
 function iframeRef(handler){
@@ -63,4 +64,28 @@ function iframeRef(handler){
   }
 }
 
-export default translate(Demo)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(translate(Demo))
+
+function mapStateToProps(state) {
+  return state.demo
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    onClickSignUp: signUp,
+    onClose: backToHome,
+    onSnackBarClose: closeSnackBar,
+    onIframeLoaded: showIframe
+  }, dispatch)
+}
+
+function signUp() {
+  return openModal('signUp')
+}
+
+function backToHome(){
+  return push('/')
+}
