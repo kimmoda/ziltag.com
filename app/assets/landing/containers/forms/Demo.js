@@ -1,6 +1,6 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {openDemo} from '../../actions/demo'
+import {requestShortenURL} from '../../actions'
 import Demo from '../../components/forms/Demo'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Demo)
@@ -13,11 +13,6 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    onRequestSend: demo
+    onRequestSend: requestShortenURL
   }, dispatch)
-}
-
-
-function demo(url){
-  return openDemo(url)
 }

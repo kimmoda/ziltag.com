@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   root 'pages#home'
+  get '/preview/:id', to: 'pages#preview'
   get 'doc', to: 'pages#home'
   get 'dashboard/(*path)', to: 'dashboard#index'
 

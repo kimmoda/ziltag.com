@@ -2,16 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.3
--- Dumped by pg_dump version 9.5.3
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
@@ -34,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: queue_classic_jobs; Type: TABLE; Schema: public; Owner: -
+-- Name: queue_classic_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE queue_classic_jobs (
@@ -145,7 +141,7 @@ end $$;
 
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: -
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE comments (
@@ -178,7 +174,7 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
--- Name: photos; Type: TABLE; Schema: public; Owner: -
+-- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE photos (
@@ -237,7 +233,7 @@ ALTER SEQUENCE queue_classic_jobs_id_seq OWNED BY queue_classic_jobs.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -246,7 +242,37 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: sse_notifications; Type: TABLE; Schema: public; Owner: -
+-- Name: shorten_urls; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE shorten_urls (
+    id integer NOT NULL,
+    url character varying NOT NULL,
+    natural_id character varying NOT NULL
+);
+
+
+--
+-- Name: shorten_urls_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE shorten_urls_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: shorten_urls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE shorten_urls_id_seq OWNED BY shorten_urls.id;
+
+
+--
+-- Name: sse_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sse_notifications (
@@ -277,7 +303,7 @@ ALTER SEQUENCE sse_notifications_id_seq OWNED BY sse_notifications.id;
 
 
 --
--- Name: tracks; Type: TABLE; Schema: public; Owner: -
+-- Name: tracks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE tracks (
@@ -312,7 +338,7 @@ ALTER SEQUENCE tracks_id_seq OWNED BY tracks.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE users (
@@ -362,7 +388,7 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: visitors; Type: TABLE; Schema: public; Owner: -
+-- Name: visitors; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE visitors (
@@ -393,7 +419,7 @@ ALTER SEQUENCE visitors_id_seq OWNED BY visitors.id;
 
 
 --
--- Name: websites; Type: TABLE; Schema: public; Owner: -
+-- Name: websites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE websites (
@@ -427,7 +453,7 @@ ALTER SEQUENCE websites_id_seq OWNED BY websites.id;
 
 
 --
--- Name: ziltags; Type: TABLE; Schema: public; Owner: -
+-- Name: ziltags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE ziltags (
@@ -489,6 +515,13 @@ ALTER TABLE ONLY queue_classic_jobs ALTER COLUMN id SET DEFAULT nextval('queue_c
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY shorten_urls ALTER COLUMN id SET DEFAULT nextval('shorten_urls_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY sse_notifications ALTER COLUMN id SET DEFAULT nextval('sse_notifications_id_seq'::regclass);
 
 
@@ -528,7 +561,7 @@ ALTER TABLE ONLY ziltags ALTER COLUMN id SET DEFAULT nextval('ziltags_id_seq'::r
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY comments
@@ -536,7 +569,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY photos
@@ -544,7 +577,7 @@ ALTER TABLE ONLY photos
 
 
 --
--- Name: queue_classic_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: queue_classic_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY queue_classic_jobs
@@ -552,7 +585,15 @@ ALTER TABLE ONLY queue_classic_jobs
 
 
 --
--- Name: sse_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: shorten_urls_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY shorten_urls
+    ADD CONSTRAINT shorten_urls_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sse_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sse_notifications
@@ -560,7 +601,7 @@ ALTER TABLE ONLY sse_notifications
 
 
 --
--- Name: tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY tracks
@@ -568,7 +609,7 @@ ALTER TABLE ONLY tracks
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -576,7 +617,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: visitors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: visitors_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY visitors
@@ -584,7 +625,7 @@ ALTER TABLE ONLY visitors
 
 
 --
--- Name: websites_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: websites_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY websites
@@ -592,7 +633,7 @@ ALTER TABLE ONLY websites
 
 
 --
--- Name: ziltags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: ziltags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY ziltags
@@ -600,161 +641,175 @@ ALTER TABLE ONLY ziltags
 
 
 --
--- Name: idx_qc_on_name_only_unlocked; Type: INDEX; Schema: public; Owner: -
+-- Name: idx_qc_on_name_only_unlocked; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX idx_qc_on_name_only_unlocked ON queue_classic_jobs USING btree (q_name, id) WHERE (locked_at IS NULL);
 
 
 --
--- Name: idx_qc_on_scheduled_at_only_unlocked; Type: INDEX; Schema: public; Owner: -
+-- Name: idx_qc_on_scheduled_at_only_unlocked; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX idx_qc_on_scheduled_at_only_unlocked ON queue_classic_jobs USING btree (scheduled_at, id) WHERE (locked_at IS NULL);
 
 
 --
--- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
--- Name: index_comments_on_ziltag_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_comments_on_ziltag_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_comments_on_ziltag_id ON comments USING btree (ziltag_id);
 
 
 --
--- Name: index_photos_on_host; Type: INDEX; Schema: public; Owner: -
+-- Name: index_photos_on_host; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_photos_on_host ON photos USING btree (host);
 
 
 --
--- Name: index_photos_on_natural_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_photos_on_natural_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_photos_on_natural_id ON photos USING btree (natural_id);
 
 
 --
--- Name: index_photos_on_path; Type: INDEX; Schema: public; Owner: -
+-- Name: index_photos_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_photos_on_path ON photos USING btree (path);
 
 
 --
--- Name: index_photos_on_source_and_href_and_website_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_photos_on_source_and_href_and_website_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_photos_on_source_and_href_and_website_id ON photos USING btree (source, href, website_id);
 
 
 --
--- Name: index_photos_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_photos_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_photos_on_user_id ON photos USING btree (user_id);
 
 
 --
--- Name: index_photos_on_website_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_photos_on_website_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_photos_on_website_id ON photos USING btree (website_id);
 
 
 --
--- Name: index_tracks_on_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_shorten_urls_on_natural_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_shorten_urls_on_natural_id ON shorten_urls USING btree (natural_id);
+
+
+--
+-- Name: index_shorten_urls_on_url; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_shorten_urls_on_url ON shorten_urls USING btree (url);
+
+
+--
+-- Name: index_tracks_on_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_tracks_on_token ON tracks USING btree (token);
 
 
 --
--- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 
 --
--- Name: index_websites_on_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_websites_on_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_websites_on_token ON websites USING btree (token);
 
 
 --
--- Name: index_websites_on_url; Type: INDEX; Schema: public; Owner: -
+-- Name: index_websites_on_url; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_websites_on_url ON websites USING btree (url);
 
 
 --
--- Name: index_websites_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_websites_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_websites_on_user_id ON websites USING btree (user_id);
 
 
 --
--- Name: index_ziltags_on_natural_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_ziltags_on_natural_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_ziltags_on_natural_id ON ziltags USING btree (natural_id);
 
 
 --
--- Name: index_ziltags_on_photo_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_ziltags_on_photo_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_ziltags_on_photo_id ON ziltags USING btree (photo_id);
 
 
 --
--- Name: index_ziltags_on_unsubscribers; Type: INDEX; Schema: public; Owner: -
+-- Name: index_ziltags_on_unsubscribers; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_ziltags_on_unsubscribers ON ziltags USING btree (unsubscribers);
 
 
 --
--- Name: index_ziltags_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_ziltags_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_ziltags_on_user_id ON ziltags USING btree (user_id);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
@@ -827,7 +882,7 @@ ALTER TABLE ONLY photos
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public;
+SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20150407064303');
 
@@ -960,4 +1015,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160820040305');
 INSERT INTO schema_migrations (version) VALUES ('20160820043133');
 
 INSERT INTO schema_migrations (version) VALUES ('20160822044809');
+
+INSERT INTO schema_migrations (version) VALUES ('20161108042731');
 
