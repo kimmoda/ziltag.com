@@ -5,6 +5,7 @@ import watchSignUp from './watchSignUp'
 import watchForgotPassword from './watchForgotPassword'
 import watchMessage from './watchMessage'
 import watchDemo from './watchDemo'
+import watchShortenURL from './watchShortenURL'
 
 export const sagaMiddleware = createSagaMiddleware()
 
@@ -15,6 +16,7 @@ export default function* () {
     watchSignUp(),
     watchForgotPassword(),
     watchMessage(),
-    watchDemo()
+    watchDemo(),
+    watchShortenURL()
   ]
 }

@@ -5,7 +5,7 @@ class AuthorizationMiddleware
     when MutationType
       current_user = query_context[:current_user]
       case field_definition.name
-      when 'createPartner', 'createUser'
+      when 'createPartner', 'createUser', 'findOrCreateShortenURL'
       else
         raise 'user is not signed in' if current_user.nil?
       end

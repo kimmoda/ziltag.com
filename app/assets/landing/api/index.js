@@ -16,6 +16,16 @@ export function signUp(username, email, url) {
   `, {username, email, url})
 }
 
+export function findOrCreateShortenURL(url) {
+  return graphql(`
+    mutation findOrCreateShortenURL($url: String!){
+      findOrCreateShortenURL(url: $url){
+        id, url
+      }
+    }
+  `, {url})
+}
+
 function api(input, options={}) {
   const body = JSON.stringify(options.params)
   return fetch(input, {
