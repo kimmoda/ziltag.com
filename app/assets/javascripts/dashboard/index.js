@@ -7,7 +7,6 @@ import Account from './components/pages/Account'
 import Verify from './components/pages/Verify'
 import Verified from './components/pages/Verified'
 import Install from './components/pages/Install'
-import Explore from './components/pages/Explore'
 import Guide from './components/pages/Guide'
 import Unsubscribe from './components/pages/Unsubscribe'
 import Password from './components/pages/Password'
@@ -75,7 +74,6 @@ ReactDOM.render(
           <Route path="verified" component={Verified} />
           <Route path="password" component={Password} />
           <Route path="install" component={Install} />
-          <Route path="explore" component={Explore} />
           <Route path="guide" component={Guide} />
           <Route path="unsubscribe" component={Unsubscribe} />
         </Route>

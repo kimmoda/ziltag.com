@@ -9,20 +9,10 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 class Sidebar extends React.Component {
-
-  static propTypes = {
-    showRecommendedTags: PropTypes.bool.isRequired
-  }
-
-  static defaultProps = {
-    showRecommendedTags: false
-  }
-
   render () {
-    const { showRecommendedTags, showAccount } = this.props
+    const {showAccount } = this.props
     const links = []
     if(showAccount) links.push({ to: '/dashboard/account', name: 'Account', })
-    if(showRecommendedTags) links.push({to: '/dashboard/explore', name: 'Explore'})
     const menuItems = links.map((obj) => {
       return (
         <MenuItem key={obj.name}>
@@ -55,7 +45,6 @@ class Sidebar extends React.Component {
 function mapStateToProps(state) {
   const me = state.entities.users[state.me]
   return {
-    showRecommendedTags: me ? me.isPartner : false,
     showAccount: !!me,
   }
 }
