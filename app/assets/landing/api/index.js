@@ -26,6 +26,10 @@ export function findOrCreateShortenURL(url) {
   `, {url})
 }
 
+export function verify(password, password_confirmation, confirmation_token) {
+  return api('/api/v2/verify', {params: {password, password_confirmation, confirmation_token}})
+}
+
 function api(input, options={}) {
   const body = JSON.stringify(options.params)
   return fetch(input, {

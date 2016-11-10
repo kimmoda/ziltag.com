@@ -39,7 +39,7 @@ class PagesController < ApplicationController
   private
 
   def render_jsx(initState)
-    context.eval("renderApp(#{request.path.to_json}, #{initState.to_json})")
+    context.eval("renderApp(#{request.original_fullpath.to_json}, #{initState.to_json})")
   end
 
   def context
