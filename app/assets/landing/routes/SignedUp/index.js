@@ -2,7 +2,7 @@ import React from 'react'
 import './index.css'
 
 export default () => (
-  <div style={{height: '100vh'}}>
+  <div style={{height: '100vh', backgroundColor: '#F9F9F9'}}>
     <div className="m-thanks">
       <div className="m-thanks__logo"/>
       <div className="m-thanks__title">Thanks for signing up!</div>

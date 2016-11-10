@@ -6,7 +6,7 @@ import Demo from './Demo'
 import SignedUp from './SignedUp'
 
 export const getRoutes = (history=browserHistory) => (
-  <Router history={browserHistory}>
+  <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)}>
     <Route path="/" component={Home}/>
     <Route path="/doc" component={Doc}/>
     <Route path="/preview/:id" component={Demo}/>
