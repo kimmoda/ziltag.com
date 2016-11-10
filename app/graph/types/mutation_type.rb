@@ -19,10 +19,11 @@ MutationType = GraphQL::ObjectType.define do
     argument :username, !types.String
     argument :email, !types.String
     argument :url, !types.String
-    resolve -> (_obj, args, _ctx) do
+    resolve -> (_obj, args, ctx) do
       partner_sign_up = PartnerSignUp.perform(args[:username], args[:email], args[:url])
       if partner_sign_up.success?
         partner_sign_up.user
+        ctx[:warden].set_user(partner_sign_up.user, scope: :user)
       else
         raise GraphQL::ExecutionError, partner_sign_up.error
       end
@@ -32,10 +33,9 @@ MutationType = GraphQL::ObjectType.define do
   field :createUser, UserType do
     argument :username, !types.String
     argument :email, !types.String
-    resolve -> (_obj, args, ctx) do
+    resolve -> (_obj, args, _ctx) do
       user_sign_up = UserSignUp.perform(args[:username], args[:email])
       if user_sign_up.success?
-        ctx[:warden].set_user(user_sign_up.user, scope: :user)
         user_sign_up.user
       else
         raise GraphQL::ExecutionError, user_sign_up.error
