@@ -1,0 +1,67 @@
+.m-thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  color: black;
+  padding: 38.8px 0 20px 0;
+  text-align: center;
+}
+
+.m-thanks__logo {
+  width: 45px;
+  height: 45px;
+  background: url('./m_logo.png') center/contain no-repeat;
+}
+
+.m-thanks__title {
+  margin-top: 24px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.m-thanks__subtitle {
+  margin-top: 29px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  width: 280px;
+}
+
+.m-share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F9F9F9;
+  padding: 48px 0 43px 0;
+  height: 100%;
+}
+
+.m-share__title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.m-share__subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.m-share-button {
+  display: block;
+  color: white;
+  padding: 18px 15px 18px 52px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.m-share-button--twitter {
+  background: url('./m_twitter.png') 15px center/25px 21px no-repeat, #32A7E0;
+}
+
+.m-share-button--fb {
+  background: url('./m_fb.png') 21px center/13px 25px no-repeat, #3B5791;
+}
