@@ -13,6 +13,6 @@ function* requestVerify(action){
   const response = yield call(verify, password, password_confirmation, confirmation_token)
   if(response.errors) yield put(failVerify(response.errors[0].message))
   else {
-    // yield put(push('/m/verified/'))
+    yield put(push('/m/verified/'))
   }
 }
