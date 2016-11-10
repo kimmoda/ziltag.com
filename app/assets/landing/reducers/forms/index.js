@@ -24,3 +24,12 @@ export function signUp(state, action){
       return state
   }
 }
+
+export function mobileVerify(state, action){
+  switch (action.type) {
+    case 'FAIL_VERIFY':
+      return {...state, _error: action.error}
+    default:
+      return state
+  }
+}

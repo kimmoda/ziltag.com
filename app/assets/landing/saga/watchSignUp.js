@@ -14,7 +14,6 @@ function* requestSignUp(action){
   if(response.errors) yield put(failSignUp(response.errors[0].message))
   else {
     const state = yield select()
-    console.log(state)
     if(state.window.width <= 650) yield put(push('/m/signed_up/'))
     else window.location = '/dashboard/install'
   }
