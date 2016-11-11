@@ -18,14 +18,14 @@ export default translate(props => {
           <a
             className="m-share-button m-share-button--twitter"
             href="https://twitter.com/intent/tweet?text=I%20just%20become%20partner%20of%20%40ZiltagApp!%20Get%20the%20simple%20and%20powerful%20%23plugin%20for%20images%20now.%20https%3A%2F%2Fziltag.com%2F"
-            >SHARE</a>
+            >{t('share')}</a>
         </div>
         <div style={{marginTop: 20}}>
           <a
             className="m-share-button m-share-button--fb"
             href="https://www.facebook.com/dialog/share?app_id=1601838906791253&display=popup&href=https%3A%2F%2Fziltag.com%2F&mobile_iframe=true&hashtag=%23ziltag"
           >
-            SHARE
+            {t('share')}
           </a>
         </div>
       </div>
