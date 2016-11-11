@@ -1,5 +1,9 @@
 export default {
   translation: {
+    thanks_for_signing_up: 'Thanks for signing up!',
+    a_verification_email_has_been_sent: 'A verification email has been sent. Please check your email to activate your account.',
+    spread_the_word: 'Spread the word!',
+    tell_your_friends: 'Tell your friends about Ziltag!',
     agree_terms_and_privacy: 'By signing up, you agree to our <a href="http://blog.ziltag.com/terms" target="_blank" rel="noopener">terms</a> and <a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">privacy policy</a>.',
     already_have_an_account: 'Already have an account?',
     blog: 'Blog',

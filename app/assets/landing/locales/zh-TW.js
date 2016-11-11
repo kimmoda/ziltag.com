@@ -1,5 +1,9 @@
 export default {
   translation: {
+    thanks_for_signing_up: '感謝您的註冊！',
+    a_verification_email_has_been_sent: '我們將寄送一封確認信至您的信箱，請點擊信中的確認按鈕以啟用您的帳號。',
+    spread_the_word: '分享 Zitlag 給您的朋友！',
+    tell_your_friends: '',
     agree_terms_and_privacy: '當您點擊註冊按鈕，代表您同意我們的<a href="http://blog.ziltag.com/terms" target="_blank" rel="noopener">服務條款</a>與<a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">隱私權政策</a>。',
     already_have_an_account: '已經有帳號了？',
     blog: '部落格',
