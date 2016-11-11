@@ -5,9 +5,11 @@ class DashboardController < ApplicationController
        !request.path.start_with?('/dashboard/verify') &&
        !request.path.start_with?('/dashboard/password')
       authenticate_user!
-    else
-      track 'visit-home'
     end
-    render layout: false
+    if request.path.start_with?('/dashboard/verify') && mobile?
+      redirect_to "/m/password?#{request.query_string}"
+    else
+      render layout: false
+    end
   end
 end

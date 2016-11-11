@@ -37,4 +37,8 @@ class ApplicationController < ActionController::Base
       referer: request.headers['Referer']
     )
   end
+
+  def mobile?
+    request.user_agent =~ /Mobile|Android|BlackBerry/
+  end
 end
