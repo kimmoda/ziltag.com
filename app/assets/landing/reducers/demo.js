@@ -1,20 +1,20 @@
-export function demo(state={loading: true, snackbar: false}, action) {
+export function demo(state={url: null, step: 1, loading: true, snackbar: false}, action) {
   const {url} = action
   switch (action.type) {
     case 'RECEIVE_SHORTEN_URL':
-      return {...state, url: action.url, tip: 'hover_on_an_image', loading: true, snackbar: false}
+      return {...state, url: action.url, step: 1, loading: true, snackbar: false}
     case 'DEMO_HOVER_IN':
-      return {...state, tip: 'click_the_z_button'}
+      return {...state, step: 2}
     case 'DEMO_HOVER_OUT':
-      if(state.tip == 'click_the_z_button') {
-        return {...state, tip: 'hover_on_an_image'}
+      if(state.step == 2) {
+        return {...state, step: 1}
       } else return state
     case 'DEMO_READER_OPENED':
-      return {...state, tip: 'click_anywhere'}
+      return {...state, step: 3}
     case 'DEMO_READER_CLOSED':
-      return {...state, tip: 'hover_on_an_image'}
+      return {...state, step: 1}
     case 'SHOW_IFRAME':
-      return {...state, loading: false, snackbar: true}
+      return {...state, step: 1, loading: false, snackbar: true}
     case 'CLOSE_SNACKBAR':
       return {...state, snackbar: false}
     default:

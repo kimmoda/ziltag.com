@@ -27,6 +27,7 @@ export default {
     sign_in: '登入',
     sign_up: '註冊',
     spread_the_word: '分享 Zitlag 給您的朋友！',
+    step: '步驟',
     subtitle: '鉅細靡遺討論、探索相片中的一切',
     suggest_new_features: '新功能建議',
     support: '支援',
@@ -40,6 +41,7 @@ export default {
     username: '使用者名稱',
     watch_video: '觀看介紹影片',
     we_will_send_you_a_password_reset_instruction: '我們將寄送有關重設密碼步驟的信件',
+    welcome_please_follow_our_tutorial: '歡迎進入體驗模式！請按照以下簡單的教學來了解 Ziltag 的基本操作。',
     doc_body: `<h1>組態</h1>
     <h2>屬性設定</h2>
     <h3>停用外掛</h3>
