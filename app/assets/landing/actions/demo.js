@@ -15,18 +15,27 @@ export function hoverIn(){
     type: 'DEMO_HOVER_IN'
   }
 }
+
 export function hoverOut(){
   return {
     type: 'DEMO_HOVER_OUT'
   }
 }
+
 export function readerOpened(){
   return {
     type: 'DEMO_READER_OPENED'
   }
 }
+
 export function readerClosed(){
   return {
     type: 'DEMO_READER_CLOSED'
+  }
+}
+
+export function inputOpened(){
+  return {
+    type: 'DEMO_INPUT_OPENED'
   }
 }

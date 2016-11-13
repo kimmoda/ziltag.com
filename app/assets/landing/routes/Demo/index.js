@@ -15,7 +15,9 @@ const mapStepsToKey = [
   {null}, // dummy element, steps begin with 1 instead of 0
   {headKey: 'welcome_please_follow_our_tutorial', stepKey: 'hover_on_an_image'},
   {headKey: null, stepKey: 'click_the_z_button'},
-  {headKey: null, stepKey: 'click_anywhere'},
+  {headKey: null, stepKey: 'find_anything'},
+  {headKey: null, stepKey: 'write_anything'},
+  {headKey: 'congratulation_you_have_learned', stepKey: null},
 ]
 
 const Demo = props => {
@@ -39,8 +41,8 @@ const Demo = props => {
           <div className="l-demo__tip">
             {mapStepsToKey[step].headKey && <div className="l-demo__tip-head">{t(mapStepsToKey[step].headKey)}</div>}
             <div className="l-demo__tip-container">
-              <div className="l-demo__tip-step">{t('step')} {step}.</div>
-              <div className="l-demo__tip-text">{t(mapStepsToKey[step].stepKey)}</div>
+              {mapStepsToKey[step].stepKey && <div className="l-demo__tip-step">{t('step')} {step}.</div>}
+              {mapStepsToKey[step].stepKey && <div className="l-demo__tip-text">{t(mapStepsToKey[step].stepKey)}</div>}
             </div>
           </div>
         )
