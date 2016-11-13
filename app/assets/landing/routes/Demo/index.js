@@ -11,8 +11,15 @@ import {push} from 'react-router-redux'
 
 import './index.css'
 
+const mapStepsToKey = [
+  {null}, // dummy element, steps begin with 1 instead of 0
+  {headKey: 'welcome_please_follow_our_tutorial', stepKey: 'hover_on_an_image'},
+  {headKey: null, stepKey: 'click_the_z_button'},
+  {headKey: null, stepKey: 'click_anywhere'},
+]
+
 const Demo = props => {
-  const {url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, tip, t, onIframeLoaded} = props
+  const {url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, step, t, onIframeLoaded} = props
   const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
   return (
     <div className="l-demo">
@@ -30,8 +37,11 @@ const Demo = props => {
       {
         loading || (
           <div className="l-demo__tip">
-            <div className="l-demo__tip-title">{t('tip')}</div>
-            <div className="l-demo__tip-text">{t(tip)}</div>
+            {mapStepsToKey[step].headKey && <div className="l-demo__tip-head">{t(mapStepsToKey[step].headKey)}</div>}
+            <div className="l-demo__tip-container">
+              <div className="l-demo__tip-step">{t('step')} {step}.</div>
+              <div className="l-demo__tip-text">{t(mapStepsToKey[step].stepKey)}</div>
+            </div>
           </div>
         )
       }
@@ -53,7 +63,7 @@ Demo.propTypes = {
   url: PropTypes.string,
   onClose: PropTypes.func,
   onClickSignUp: PropTypes.func,
-  tip: PropTypes.string
+  step: PropTypes.number
 }
 
 function iframeRef(handler){

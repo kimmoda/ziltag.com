@@ -64,17 +64,25 @@
   box-shadow: 0 15px 12px rgba(0,0,0,.22);
   left: 50%;
   transform: translate(-50%, 0);
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   padding: 19px;
   box-sizing: border-box;
   line-height: 24px;
 }
 
-.l-demo__tip-title {
+.l-demo__tip-head {
+  margin-bottom: 18px;
+  line-height: 20px;
+}
+
+.l-demo__tip-container {
+  display: flex;
+}
+
+.l-demo__tip-step {
   font-weight: bold;
-  flex-basis: 48px;
+  flex-basis: 52px;
+  color: #EE2E24;
+  flex-shrink: 0;
 }
 
 .l-demo__snackbar {
