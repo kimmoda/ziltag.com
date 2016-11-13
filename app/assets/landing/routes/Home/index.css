@@ -200,7 +200,8 @@
     flex-basis: auto;
   }
   .p-home__links {
-    flex-basis: 32px;
+    flex-basis: 55px;
+    flex-wrap: wrap;
   }
   .p-home__icon-links {
     flex-basis: inherit;
