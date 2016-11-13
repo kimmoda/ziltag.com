@@ -3,8 +3,6 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
 }
 
 .p-home__auth-buttons {
@@ -23,6 +21,9 @@
   position: absolute;
   left: 0;
   top: 0;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
 .p-home__logo {
