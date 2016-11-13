@@ -13,6 +13,8 @@ export function demo(state={url: null, step: 1, loading: true, snackbar: false},
       return {...state, step: 3}
     case 'DEMO_READER_CLOSED':
       return {...state, step: 1}
+    case 'DEMO_INPUT_OPENED':
+      return {...state, step: 4}
     case 'SHOW_IFRAME':
       return {...state, step: 1, loading: false, snackbar: true}
     case 'CLOSE_SNACKBAR':
