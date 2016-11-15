@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
     if request.path.start_with?('/dashboard/account') &&
        request.referer &&
        URI(request.referer).path =~ %r{^/ziltag_maps/(\w+)/?} &&
-       Photo.select(:natural_id, :website_id).joins(:website).find_by(natural_id: 'c4e182', websites: {user_id: demo_user.id})
+       Photo.select(:natural_id, :website_id).joins(:website).find_by(natural_id: $1, websites: {user_id: demo_user.id})
       redirect_to dashboard_redirect_path
     end
   end
