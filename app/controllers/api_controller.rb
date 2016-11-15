@@ -25,12 +25,4 @@ class ApiController < ApplicationController
     headers['Access-Control-Allow-Credentials'] = 'true'
     headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
   end
-
-  def demo_user
-    Website.find_by(token: Settings.demo_token).user
-  end
-
-  def demo_token
-    Settings.demo_token
-  end
 end

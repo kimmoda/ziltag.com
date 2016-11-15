@@ -41,4 +41,12 @@ class ApplicationController < ActionController::Base
   def mobile?
     request.user_agent =~ /Mobile|Android|BlackBerry/
   end
+
+  def demo_user
+    @demo_user ||= Website.find_by(token: Settings.demo_token).user
+  end
+
+  def demo_token
+    @demo_token ||= Settings.demo_token
+  end
 end

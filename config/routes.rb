@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'doc', to: 'pages#home'
   get 'm/(*path)', to: 'pages#home'
   get '/preview/:id', to: 'pages#preview'
+  get 'dashboard/redirect', to: 'dashboard#redirect'
   get 'dashboard/(*path)', to: 'dashboard#index'
 
   mount ZiltagAPI => '/'
