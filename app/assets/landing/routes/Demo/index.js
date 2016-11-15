@@ -21,7 +21,7 @@ const mapStepsToKey = [
 ]
 
 const Demo = props => {
-  const {url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, step, t, onIframeLoaded} = props
+  const {tip, url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, step, t, onIframeLoaded} = props
   const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
   return (
     <div className="l-demo">
@@ -37,7 +37,7 @@ const Demo = props => {
         </div>
       </div>
       {
-        loading || (
+        tip && (loading || (
           <div className="l-demo__tip">
             {mapStepsToKey[step].headKey && <div className="l-demo__tip-head">{t(mapStepsToKey[step].headKey)}</div>}
             {mapStepsToKey[step].stepKey && (
@@ -47,7 +47,7 @@ const Demo = props => {
               </div>
             )}
           </div>
-        )
+        ))
       }
       {
         snackbar && (

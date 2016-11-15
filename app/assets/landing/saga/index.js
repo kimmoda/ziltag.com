@@ -7,6 +7,7 @@ import watchMessage from './watchMessage'
 import watchDemo from './watchDemo'
 import watchShortenURL from './watchShortenURL'
 import watchVerify from './watchVerify'
+import watchDemoZiltagCreated from './watchDemoZiltagCreated'
 
 export const sagaMiddleware = createSagaMiddleware()
 
@@ -19,6 +20,7 @@ export default function* () {
     watchMessage(),
     watchDemo(),
     watchShortenURL(),
-    watchVerify()
+    watchVerify(),
+    watchDemoZiltagCreated()
   ]
 }

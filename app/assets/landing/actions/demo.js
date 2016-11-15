@@ -45,3 +45,9 @@ export function ziltagCreated(){
     type: 'DEMO_ZILTAG_CREATED'
   }
 }
+
+export function disableTip() {
+  return {
+    type: 'DISABLE_TIP'
+  }
+}

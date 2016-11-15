@@ -6,7 +6,7 @@ export default function* () {
   yield* takeLatest('SHOW_IFRAME', delayClose)
 }
 
-function* delayClose(action){
+function* delayClose(){
   yield delay(30000)
   yield put(closeSnackBar())
 }
