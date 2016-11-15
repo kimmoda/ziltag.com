@@ -39,3 +39,9 @@ export function inputOpened(){
     type: 'DEMO_INPUT_OPENED'
   }
 }
+
+export function ziltagCreated(){
+  return {
+    type: 'DEMO_ZILTAG_CREATED'
+  }
+}

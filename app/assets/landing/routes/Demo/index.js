@@ -40,10 +40,12 @@ const Demo = props => {
         loading || (
           <div className="l-demo__tip">
             {mapStepsToKey[step].headKey && <div className="l-demo__tip-head">{t(mapStepsToKey[step].headKey)}</div>}
-            <div className="l-demo__tip-container">
-              {mapStepsToKey[step].stepKey && <div className="l-demo__tip-step">{t('step')} {step}.</div>}
-              {mapStepsToKey[step].stepKey && <div className="l-demo__tip-text">{t(mapStepsToKey[step].stepKey)}</div>}
-            </div>
+            {mapStepsToKey[step].stepKey && (
+              <div className="l-demo__tip-container" style={{marginTop: (mapStepsToKey[step].headKey && 18)}}>
+                <div className="l-demo__tip-step">{t('step')} {step}.</div>
+                <div className="l-demo__tip-text">{t(mapStepsToKey[step].stepKey)}</div>
+              </div>
+            )}
           </div>
         )
       }
