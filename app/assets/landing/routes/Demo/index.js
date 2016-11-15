@@ -5,7 +5,7 @@ import translate from 'hoc/translate'
 import Spinner from 'ziltag-elements/dist/Spinner'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {openModal, showIframe, closeSnackBar} from '../../actions'
+import {openModal, showIframe, closeSnackBar, closeSignOutAlert} from '../../actions'
 import Modal from 'Modal'
 import {push} from 'react-router-redux'
 
@@ -21,7 +21,7 @@ const mapStepsToKey = [
 ]
 
 const Demo = props => {
-  const {tip, url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, step, t, onIframeLoaded} = props
+  const {tip, url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, step, t, onIframeLoaded, signOutAlert, handleCloseSignOutAlert} = props
   const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
   return (
     <div className="l-demo">
@@ -48,6 +48,16 @@ const Demo = props => {
             )}
           </div>
         ))
+      }
+      {
+        signOutAlert && (
+          <div className="l-demo__alert">
+            <div className="l-demo__alert-body">{t('sign_out_function')}</div>
+            <div className="l-demo__alert-action">
+              <div><Button text="OK" onClick={handleCloseSignOutAlert}/></div>
+            </div>
+          </div>
+        )
       }
       {
         snackbar && (
@@ -92,7 +102,8 @@ function mapDispatchToProps(dispatch) {
     onClickSignUp: signUp,
     onClose: backToHome,
     onSnackBarClose: closeSnackBar,
-    onIframeLoaded: showIframe
+    onIframeLoaded: showIframe,
+    handleCloseSignOutAlert: closeSignOutAlert
   }, dispatch)
 }
 
