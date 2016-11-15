@@ -1,6 +1,6 @@
 import {eventChannel} from 'redux-saga'
 import {call, take, put} from 'redux-saga/effects'
-import {hoverIn, hoverOut, readerOpened, readerClosed, inputOpened} from '../actions'
+import {hoverIn, hoverOut, readerOpened, readerClosed, inputOpened, ziltagCreated} from '../actions'
 
 function message() {
   return eventChannel(emitter => {
@@ -34,6 +34,9 @@ export default function* watchMessage() {
       break
     case 'ZILTAG_INPUT_ACTIVATED':
       yield put(inputOpened())
+      break
+    case 'ZILTAG_CREATED':
+      yield put(ziltagCreated())
       break
     }
   }

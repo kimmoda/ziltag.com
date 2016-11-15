@@ -27,7 +27,7 @@ class PagesController < ApplicationController
       @state.merge! demo: {
         url: shorten_url.url,
         loading: true,
-        tip: :hover_on_an_image,
+        step: 1,
         snackbar: false
       }
       home
