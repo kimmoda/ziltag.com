@@ -1,4 +1,4 @@
-export function demo(state={url: null, step: 1, loading: true, snackbar: false}, action) {
+export function demo(state={tip: true, url: null, step: 1, loading: true, snackbar: false}, action) {
   const {url} = action
   switch (action.type) {
     case 'RECEIVE_SHORTEN_URL':
@@ -18,9 +18,11 @@ export function demo(state={url: null, step: 1, loading: true, snackbar: false},
     case 'DEMO_ZILTAG_CREATED':
       return {...state, step: 5}
     case 'SHOW_IFRAME':
-      return {...state, step: 1, loading: false, snackbar: true}
+      return {...state, tip: true, step: 1, loading: false, snackbar: true}
     case 'CLOSE_SNACKBAR':
       return {...state, snackbar: false}
+    case 'DISABLE_TIP':
+      return {...state, tip: false}
     default:
       return state
   }
