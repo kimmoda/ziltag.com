@@ -1,4 +1,4 @@
-export function demo(state={tip: true, url: null, step: 1, loading: true, snackbar: false}, action) {
+export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, loading: true, snackbar: false}, action) {
   const {url} = action
   switch (action.type) {
     case 'RECEIVE_SHORTEN_URL':
@@ -23,6 +23,10 @@ export function demo(state={tip: true, url: null, step: 1, loading: true, snackb
       return {...state, snackbar: false}
     case 'DISABLE_TIP':
       return {...state, tip: false}
+    case 'OPEN_SIGN_OUT_ALERT':
+      return {...state, signOutAlert: true}
+    case 'CLOSE_SIGN_OUT_ALERT':
+      return {...state, signOutAlert: false}
     default:
       return state
   }

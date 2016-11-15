@@ -51,3 +51,16 @@ export function disableTip() {
     type: 'DISABLE_TIP'
   }
 }
+
+export function openSignOutAlert(){
+  return {
+    type: 'OPEN_SIGN_OUT_ALERT'
+  }
+}
+
+
+export function closeSignOutAlert(){
+  return {
+    type: 'CLOSE_SIGN_OUT_ALERT'
+  }
+}
