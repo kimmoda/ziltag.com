@@ -1,6 +1,6 @@
 import {takeEvery} from 'redux-saga'
 import {call, put} from 'redux-saga/effects'
-import {findOrCreateShortenURL} from '../api'
+import {createShortenURL} from '../api'
 import {requestShortenURL, receiveShortenURL} from '../actions'
 import {push} from 'react-router-redux'
 
@@ -9,8 +9,8 @@ export default function* watchShortenURL() {
 }
 
 function* shortenURL(action){
-  const response = yield call(findOrCreateShortenURL, action.url)
-  const {id, url} = response.data.findOrCreateShortenURL
+  const response = yield call(createShortenURL, action.url)
+  const {id, url} = response.data.createShortenURL
   yield put(receiveShortenURL(id, url))
   yield put(push(`/preview/${id}`))
 }

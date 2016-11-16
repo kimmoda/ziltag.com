@@ -30,10 +30,10 @@ class Photo < ActiveRecord::Base #:nodoc:
                          .order('ziltags.created_at DESC').to_a.uniq.first(100)
   end
 
-  def self.find_by_token_src_and_href(token:, source:, href:)
+  def self.find_by_token_src_and_href(token:, source:, href:, namespace: nil)
     uri = URI(href)
     host = uri.host
-    scope = Photo.joins(:website).where(websites: { token: token })
+    scope = Photo.joins(:website).where(websites: { token: token }, namespace: namespace)
     scope = if host.end_with?(*BLOGSPOT_DOMAINS)
               blog_id = host.split('.').first
               scope.where(source: source).in_blogspot(blog_id)

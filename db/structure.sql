@@ -190,7 +190,8 @@ CREATE TABLE photos (
     host character varying,
     path character varying,
     width integer DEFAULT 0 NOT NULL,
-    height integer DEFAULT 0 NOT NULL
+    height integer DEFAULT 0 NOT NULL,
+    namespace character varying
 );
 
 
@@ -676,6 +677,13 @@ CREATE INDEX index_photos_on_host ON photos USING btree (host);
 
 
 --
+-- Name: index_photos_on_namespace; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_photos_on_namespace ON photos USING btree (namespace);
+
+
+--
 -- Name: index_photos_on_natural_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1017,4 +1025,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160820043133');
 INSERT INTO schema_migrations (version) VALUES ('20160822044809');
 
 INSERT INTO schema_migrations (version) VALUES ('20161108042731');
+
+INSERT INTO schema_migrations (version) VALUES ('20161116100526');
 
