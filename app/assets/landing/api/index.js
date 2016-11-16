@@ -16,10 +16,10 @@ export function signUp(username, email, url) {
   `, {username, email, url})
 }
 
-export function findOrCreateShortenURL(url) {
+export function createShortenURL(url) {
   return graphql(`
-    mutation findOrCreateShortenURL($url: String!){
-      findOrCreateShortenURL(url: $url){
+    mutation createShortenURL($url: String!){
+      createShortenURL(url: $url){
         id, url
       }
     }

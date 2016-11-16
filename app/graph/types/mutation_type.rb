@@ -209,10 +209,10 @@ MutationType = GraphQL::ObjectType.define do
     end
   end
 
-  field :findOrCreateShortenURL, ShortenURLType do
+  field :createShortenURL, ShortenURLType do
     argument :url, !types.String
     resolve ->(obj, args, ctx) do
-      ShortenUrl.find_or_create_by url: args[:url]
+      ShortenUrl.create url: args[:url]
     end
   end
 end
