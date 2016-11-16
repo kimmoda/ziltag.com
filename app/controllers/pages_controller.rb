@@ -28,7 +28,8 @@ class PagesController < ApplicationController
         url: shorten_url.url,
         loading: true,
         step: 1,
-        snackbar: false
+        snackbar: false,
+        tip: true
       }
       home
     else

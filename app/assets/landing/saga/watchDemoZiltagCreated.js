@@ -7,6 +7,6 @@ export default function* () {
 }
 
 function* delayDisableTip(){
-  yield delay(30000)
+  yield delay(10000)
   yield put(disableTip())
 }

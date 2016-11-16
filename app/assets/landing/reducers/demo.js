@@ -4,21 +4,19 @@ export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, 
     case 'RECEIVE_SHORTEN_URL':
       return {...state, url: action.url, step: 1, loading: true, snackbar: false}
     case 'DEMO_HOVER_IN':
-      return {...state, step: 2}
+      return state.step != 5 ? {...state, step: 2} : state
     case 'DEMO_HOVER_OUT':
-      if(state.step == 2) {
-        return {...state, step: 1}
-      } else return state
+      return state.step == 2 ? {...state, step: 1} : state
     case 'DEMO_READER_OPENED':
-      return {...state, step: 3}
+      return state.step != 5 ? {...state, step: 3} : state
     case 'DEMO_READER_CLOSED':
-      return {...state, step: 1}
+      return state.step != 5 ? {...state, step: 1} : state
     case 'DEMO_INPUT_OPENED':
-      return {...state, step: 4}
+      return state.step != 5 ? {...state, step: 4} : state
     case 'DEMO_ZILTAG_CREATED':
       return {...state, step: 5}
     case 'SHOW_IFRAME':
-      return {...state, tip: true, step: 1, loading: false, snackbar: true}
+      return {...state, step: 1, loading: false, snackbar: true}
     case 'CLOSE_SNACKBAR':
       return {...state, snackbar: false}
     case 'DISABLE_TIP':
