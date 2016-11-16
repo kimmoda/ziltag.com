@@ -726,13 +726,6 @@ CREATE UNIQUE INDEX index_shorten_urls_on_natural_id ON shorten_urls USING btree
 
 
 --
--- Name: index_shorten_urls_on_url; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_shorten_urls_on_url ON shorten_urls USING btree (url);
-
-
---
 -- Name: index_tracks_on_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1027,4 +1020,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160822044809');
 INSERT INTO schema_migrations (version) VALUES ('20161108042731');
 
 INSERT INTO schema_migrations (version) VALUES ('20161116100526');
+
+INSERT INTO schema_migrations (version) VALUES ('20161116102122');
 
