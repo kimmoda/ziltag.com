@@ -8,7 +8,7 @@ class Api::V1::CommentsController < ApiController
 
   def create
     user = if Rails.env.production? && Settings.host == 'ziltag.com' &&
-              demo_token == Ziltag.find_by(natural_id: comment_params[:ziltag_id])&.photo&.website&.token
+              demo_token == Ziltag.find_by(id: comment_params[:ziltag_id])&.photo&.website&.token
       demo_user
     else
       authenticate_user!
