@@ -10,7 +10,7 @@ export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, 
     case 'DEMO_READER_OPENED':
       return state.step != 5 ? {...state, step: 3} : state
     case 'DEMO_READER_CLOSED':
-      return state.step != 5 ? {...state, step: 1} : state
+      return state.step != 5 ? {...state, step: 1} : {...state, tip: false}
     case 'DEMO_INPUT_OPENED':
       return state.step != 5 ? {...state, step: 4} : state
     case 'DEMO_ZILTAG_CREATED':
