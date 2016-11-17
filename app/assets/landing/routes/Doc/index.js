@@ -25,7 +25,6 @@ export default connect(
       </div>
       <div className="p-doc__body" dangerouslySetInnerHTML={{__html: t('doc_body')}}/>
       <Modal/>
-      <style>{".ziltag-app{display:none;}"}</style>
     </div>
   )
 }))
