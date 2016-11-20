@@ -65,6 +65,10 @@
   color: #333333;
 }
 
+.p-home__demo-form {
+  margin-top: 40px;
+}
+
 .p-home__usage {
   display: flex;
   align-items: flex-start;
@@ -174,6 +178,54 @@
   background-image: url('./twitter.png');
 }
 
+@media screen and (max-width: 1200px) {
+  .p-home__footer {
+    flex-direction: column-reverse;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 120px;
+  }
+  .p-home__copyright {
+    flex-basis: auto;
+  }
+  .p-home__links {
+    flex-basis: 55px;
+    flex-wrap: wrap;
+  }
+  .p-home__icon-links {
+    flex-basis: inherit;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .p-home__usage {
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 10px;
+  }
+  .p-home__code {
+    padding: 10px;
+  }
+  .p-home__sample-image {
+    margin: 50px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .p-home__title {
+    font-size: 40px;
+    padding: 0 15px;
+  }
+  .p-home__subtitle {
+    font-size: 18px;
+    padding: 0 30px;
+  }
+  .p-home__demo-form {
+    padding: 0 40px;
+    margin-top: 25px;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .p-home__header {
     background-color: white;
@@ -194,35 +246,14 @@
   }
 }
 
-@media screen and (max-width: 1080px) {
-  .p-home__usage {
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 10px;
+@media screen and (max-width: 350px) {
+  .p-home__title {
+    font-size: 30px;
   }
-  .p-home__code {
-    padding: 10px;
+  .p-home__subtitle {
+    font-size: 14px;
   }
-  .p-home__sample-image {
-    margin: 50px 0 0 0;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .p-home__footer {
-    flex-direction: column-reverse;
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 120px;
-  }
-  .p-home__copyright {
-    flex-basis: auto;
-  }
-  .p-home__links {
-    flex-basis: 55px;
-    flex-wrap: wrap;
-  }
-  .p-home__icon-links {
-    flex-basis: inherit;
+  .p-home__demo-form {
+    padding: 0;
   }
 }

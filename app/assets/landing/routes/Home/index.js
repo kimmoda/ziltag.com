@@ -42,7 +42,7 @@ class Home extends React.Component {
           <div className="p-home__intro">
             <div style={{textAlign: 'center'}}><div className="p-home__title">{t('title')}</div></div>
             <div style={{textAlign: 'center', marginTop: 14}}><div className="p-home__subtitle">{t('subtitle')}</div></div>
-            <div style={{marginTop: 45}}><DemoForm/></div>
+            <div className="p-home__demo-form"><DemoForm/></div>
           </div>
         </div>
         <div className="p-home__usage">
