@@ -32,8 +32,12 @@
     "node-sass": "^3.7.0",
     "normalize.css": "^3.0.3",
     "normalizr": "^2.1.0",
+    "object-fit-images": "^2.5.9",
     "postcss-loader": "^0.13.0",
     "react": "15.3.2",
+    "react-addons-create-fragment": "15.3.2",
+    "react-addons-shallow-compare": "15.3.2",
+    "react-addons-transition-group": "15.3.2",
     "react-dom": "15.3.2",
     "react-icons": "^2.2.1",
     "react-masonry-component": "^4.0.4",
@@ -55,9 +59,6 @@
     "webpack": "^1.13.0",
     "whatwg-fetch": "^1.0.0",
     "zeroclipboard": "^2.2.0",
-    "ziltag-elements": "github:ziltag/elements",
-    "react-addons-create-fragment": "15.3.2",
-    "react-addons-shallow-compare": "15.3.2",
-    "react-addons-transition-group": "15.3.2"
+    "ziltag-elements": "github:ziltag/elements"
   }
 }
