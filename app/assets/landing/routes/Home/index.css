@@ -63,6 +63,8 @@
 .p-home__subtitle {
   font-size: 24px;
   color: #333333;
+  text-align: center;
+  margin-top: 14px;
 }
 
 .p-home__demo-form {
@@ -78,9 +80,8 @@
 }
 
 .p-home__usage-example {
-  max-width: 500px;
-  width: 100%;
-  flex-shrink: 0;
+  flex-basis: 50%;
+  flex-grow: 1;
 }
 
 .p-home__code {
@@ -89,10 +90,14 @@
   margin: 48px 0 0 0;
 }
 
-.p-home__sample-image {
-  max-width: 500px;
-  width: 100%;
+.p-home__sample-image-wrapper {
+  flex-basis: 50%;
+  flex-grow: 1;
   margin-left: 66px;
+}
+
+.p-home__sample-image {
+  width: 100%;
 }
 
 .p-home__get-start {
@@ -178,6 +183,83 @@
   background-image: url('./twitter.png');
 }
 
+@media screen and (min-width: 2048px) {
+  .p-home__auth-buttons>*:not(:first-child) {
+    margin-left: 1vw;
+  }
+  .p-home__intro {
+    padding: 3vw 2vw;
+  }
+  .p-home__title {
+    font-size: 3vw;
+    padding: 0 3.5vw;
+  }
+  .p-home__subtitle {
+    font-size: 1.84vw;
+    padding: 0 0.1vw;
+    margin-top: 1vw;
+  }
+  .p-home__header {
+    height: 10vh;
+  }
+  .p-home__logo {
+    width: 30vw;
+    height: 5vh;
+    background-position: left;
+  }
+  .p-home__demo-form {
+    margin-top: 2vw;
+  }
+  .z-field-button__send {
+    right: 1vw;
+  }
+  .z-field-button__input--focus+.z-field-button__send {
+    width: 2vw;
+    height: 2vw;
+  }
+  .z-field-button__input {
+    font-size: 1vw;
+    padding: 1vw 2vw 1vw 1vw;
+  }
+  .z-button {
+    font-size: 2vw;
+    padding: 1vw 1.5vw;
+    height: 3vw;
+    width: 16vw;
+  }
+  .p-home__code {
+    font-size: 2vw;
+    margin: 4vw 0 0 0;
+  }
+  .p-home__usage {
+    padding: 4vw 4vw;
+  }
+  .p-home__get-start {
+    padding: 4vw 1vw 4vw 1vw;
+  }
+  .p-home__copyright {
+    font-size: 1vw;
+  }
+  .p-home__link:not(:first-child) {
+    margin-left: 2vw;
+  }
+  .p-home__link>a {
+    font-size: 1vw;
+  }
+
+  .p-home__icon-links {
+    flex-basis: 16vw;
+  }
+  .p-home__icon-link:not(:first-child) {
+    margin-left: 2vw;
+  }
+
+  .p-home__icon-link>a {
+    width: 2vw;
+    height: 2vw;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .p-home__footer {
     flex-direction: column-reverse;
@@ -203,21 +285,26 @@
     align-items: center;
     padding: 50px 10px;
   }
+  .p-home__usage-example {
+    width: 100%;
+  }
   .p-home__code {
     padding: 10px;
+    margin: 20px 0 0 0;
   }
-  .p-home__sample-image {
-    margin: 50px 0 0 0;
+  .p-home__sample-image-wrapper {
+    margin-left: 0;
+    margin-top: 20px;
   }
 }
 
 @media screen and (max-width: 850px) {
   .p-home__title {
-    font-size: 40px;
+    font-size: 36px;
     padding: 0 15px;
   }
   .p-home__subtitle {
-    font-size: 18px;
+    font-size: 16px;
     padding: 0 30px;
   }
   .p-home__demo-form {
@@ -229,7 +316,7 @@
 @media screen and (max-width: 650px) {
   .p-home__header {
     background-color: white;
-    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.24);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.24);
   }
   .p-home__logo {
     left: 50%;
@@ -255,5 +342,8 @@
   }
   .p-home__demo-form {
     padding: 0;
+  }
+  .p-home__code{
+    font-size: 13px;
   }
 }
