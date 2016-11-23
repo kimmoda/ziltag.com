@@ -25,7 +25,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const {t, isSignedIn} = this.props
+    const {t, isSignedIn, isWide} = this.props
     return (
       <div className="p-home">
         <div className="p-home__cover">
@@ -33,15 +33,15 @@ class Home extends React.Component {
           <div className="p-home__header">
             <div className="p-home__logo"/>
             <div className="p-home__auth-buttons">
-              <Link className="p-home__auth-button p-home__auth-button--doc" to="/doc" style={{textDecoration: 'none', color: '#333333', fontSize: 14, fontWeight: 500}}>{t('doc')}</Link>
-              {isSignedIn || <div className="p-home__auth-button"><ModalButton text={t('sign_up')} width={76} modalName="signUp" style={{fontSize: 14}}/></div>}
-              {isSignedIn || <div className="p-home__auth-button p-home__auth-button--sign-in"><ModalButton text={t('sign_in')} width={76} color="gray" modalName="signIn" style={{fontSize: 14}}/></div>}
-              {isSignedIn && <a className="p-home__auth-button p-home__auth-button--dashboard" href="/dashboard/account/"><Button style={{fontSize: 14}} text={t('dashboard')}/></a>}
+              <Link className="p-home__auth-button p-home__auth-button--doc" to="/doc" style={{textDecoration: 'none', color: '#333333', fontSize: isWide ? '2vw' : 14, fontWeight: 500}}>{t('doc')}</Link>
+              {isSignedIn || <div className="p-home__auth-button"><ModalButton text={t('sign_up')} width={isWide ? '10vw' : 76} modalName="signUp" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
+              {isSignedIn || <div className="p-home__auth-button p-home__auth-button--sign-in"><ModalButton text={t('sign_in')} width={isWide ? '10vw' : 76} color="gray" modalName="signIn" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
+              {isSignedIn && <a className="p-home__auth-button p-home__auth-button--dashboard" href="/dashboard/account/"><Button style={{fontSize: isWide ? '2vw' : 14}} text={t('dashboard')}/></a>}
             </div>
           </div>
           <div className="p-home__intro">
             <div style={{textAlign: 'center'}}><div className="p-home__title">{t('title')}</div></div>
-            <div style={{textAlign: 'center', marginTop: 14}}><div className="p-home__subtitle">{t('subtitle')}</div></div>
+            <div className="p-home__subtitle">{t('subtitle')}</div>
             <div className="p-home__demo-form"><DemoForm/></div>
           </div>
         </div>
@@ -50,12 +50,12 @@ class Home extends React.Component {
             <div className="p-home__title" style={{textAlign: 'center'}}>{t('dead_simple_install')}</div>
             <pre className="p-home__code hljs html" dangerouslySetInnerHTML={{__html: Highlight.highlight('html', example).value}}/>
           </div>
-          <div><img className="p-home__sample-image" src={require('./sample.jpg')}/></div>
+          <div className="p-home__sample-image-wrapper"><img className="p-home__sample-image" src={require('./sample.jpg')}/></div>
         </div>
         <div className="p-home__get-start">
           <div style={{textAlign: 'center'}}><div className="p-home__title">{t('get_started_now')}</div></div>
-          <div style={{marginTop: 26}}><ModalButton width={164} text={t('join_now')} modalName="signUp"/></div>
-          <div style={{marginTop: 16}}><ModalButton width={164} text={t('watch_video')} color="gray" modalName="video" modalMode="center"/></div>
+          <div style={{marginTop: isWide ? '2vw' : 26}}><ModalButton width={isWide ? null : 164} text={t('join_now')} modalName="signUp"/></div>
+          <div style={{marginTop: isWide ? '1vw' : 16}}><ModalButton width={isWide ? null : 164} text={t('watch_video')} color="gray" modalName="video" modalMode="center"/></div>
         </div>
         <div className="p-home__footer">
           <div className="p-home__copyright">© Ziltag Inc., 2016. All Rights Reserved.</div>
@@ -80,6 +80,7 @@ class Home extends React.Component {
 
 export default connect(
   state => ({
-    isSignedIn: state.isSignedIn
+    isSignedIn: state.isSignedIn,
+    isWide: state.window.width >= 2048
   })
 )(translate(Home))

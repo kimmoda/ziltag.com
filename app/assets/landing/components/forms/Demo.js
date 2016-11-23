@@ -11,13 +11,14 @@ class Demo extends React.Component {
   }
 
   render() {
-    const {extendedWidth, onRequestSend, t} = this.props
+    const {defaultWidth, extendedWidth, onRequestSend, t} = this.props
     return (
       <form ref={this.boundRef} onSubmit={preventDefault}>
         <FieldButton
           name="url"
           buttonText={t('preview_on_your_website')}
           placeholder={t('please_enter_your_websites_url')}
+          defaultWidth={defaultWidth}
           extendedWidth={extendedWidth}
           onRequestSend={this.boundOnRequestSend}
           type="url"
