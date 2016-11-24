@@ -1,6 +1,6 @@
 import {takeEvery} from 'redux-saga'
 import {call, put} from 'redux-saga/effects'
-import {createShortenURL} from '../api'
+import {forgotPassword} from '../api'
 import {failForgotPassword, openModal} from '../actions'
 
 export default function* () {
