@@ -1,12 +1,13 @@
-export function showIframe(){
+export function requestDemoLink(email, preview_id){
   return {
-    type: 'SHOW_IFRAME'
+    type: 'REQUEST_DEMO_LINK',
+    email, preview_id
   }
 }
 
-export function closeSnackBar(){
+export function showIframe(){
   return {
-    type: 'CLOSE_SNACKBAR'
+    type: 'SHOW_IFRAME'
   }
 }
 

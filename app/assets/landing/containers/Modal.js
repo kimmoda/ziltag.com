@@ -15,7 +15,10 @@ function mapStateToProps(state){
   return {
     mode: state.modal.mode,
     children: modals[state.modal.name] && createElement(modals[state.modal.name]),
-    isOpen: modals[state.modal.name] && !!state.modal.name
+    isOpen: modals[state.modal.name] && !!state.modal.name,
+    size: state.modal.size,
+    showClose: state.modal.showClose,
+    overlayClose: state.modal.overlayClose
   }
 }
 

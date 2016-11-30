@@ -1,0 +1,41 @@
+.l-demo-greeting {
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.l-demo-greeting__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.l-demo-greeting__body {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  padding: 0 21px;
+}
+
+.l-demo-greeting__button-wrapper {
+  margin-top: 32px;
+  width: 76px;
+}
+
+.l-demo-greeting__hr {
+  margin-top: 32px;
+  width: 100%;
+  border: none;
+  border-top: rgba(0,0,0,.12) solid 1px;
+}
+
+.l-demo-greeting__footer {
+  margin-top: 13px;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.l-demo-greeting__footer a {
+  color: inherit;
+}

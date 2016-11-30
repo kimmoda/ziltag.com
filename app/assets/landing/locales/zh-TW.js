@@ -1,5 +1,11 @@
 export default {
   translation: {
+    email_sent: '已寄出郵件！',
+    welcome_to_ziltag_demo: '歡迎來到 Ziltag 體驗模式！很抱歉，本模式暫時無法在手機上執行。麻煩請留下您的 email，我們會將專屬的體驗超連結寄至您的信箱，方便您使用桌機的網頁瀏覽器觀看，謝謝！',
+    send_link: '寄送連結',
+    start: '開始',
+    this_is_a_demo_applied_to: '*您目前是以 Ziltag 的體驗模式訪問 <b>{{url}}</b>，該網站之所有內容的著作權皆屬於其原作者，並非由 Ziltag 所持有。由於技術問題，Ziltag 的外掛程式可能無法在您提供的網站上運作，如果您有任何問題，歡迎與我們<a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">聯絡</a>。',
+    welcome_we_re_excited: '歡迎使用 Ziltag 的體驗模式！您將能夠在您提供的網頁上實際操作與體驗 Ziltag，無需安裝任何程式。請點擊按鈕開始體驗教學。',
     sign_out_function: '體驗模式沒有登出功能。',
     a_verification_email_has_been_sent: '我們將寄送一封確認信至您的信箱，請點擊信中的確認按鈕以啟用您的帳號。',
     agree_terms_and_privacy: '當您點擊註冊按鈕，代表您同意我們的<a href="http://blog.ziltag.com/terms" target="_blank" rel="noopener">服務條款</a>與<a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">隱私權政策</a>。',
@@ -11,7 +17,6 @@ export default {
     click_the_z_button: '點擊右上角的紅色 Z 按鈕。',
     dashboard: '後台',
     dead_simple_install: '安裝，無法更簡單',
-    demo_snackbar: '您目前是以 Ziltag 的體驗模式訪問 <b>{{url}}</b>，該網站之所有內容的著作權皆屬於其原作者。由於技術問題，Ziltag 的外掛可能無法在您提供的網站上運作。如果您有任何問題，歡迎與<a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">我們聯絡</a>。如想要在您的網站上安裝 Ziltag，請先<a data-action="signUp" href="javascript:void(0)">註冊</a>。',
     demo: '體驗模式',
     doc: '文件',
     dont_have_an_account: '還沒有帳號？',
@@ -23,6 +28,7 @@ export default {
     join_now: '立即加入',
     password: '密碼',
     please_enter_your_websites_url: '請輸入您的網址（如：http://example.com）',
+    please_enter_your_email: '請輸入您的 email',
     preview_on_your_website: '在您的網站上體驗',
     privacy: '隱私權',
     send: '送出',

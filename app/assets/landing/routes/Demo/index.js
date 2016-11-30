@@ -5,7 +5,7 @@ import translate from 'hoc/translate'
 import Spinner from 'ziltag-elements/dist/Spinner'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {openModal, showIframe, closeSnackBar, closeSignOutAlert} from '../../actions'
+import {openModal, showIframe, closeSignOutAlert} from '../../actions'
 import Modal from 'Modal'
 import {push} from 'react-router-redux'
 
@@ -21,8 +21,7 @@ const mapStepsToKey = [
 ]
 
 const Demo = props => {
-  const {tip, url, loading, snackbar, onClose, onSnackBarClose, onClickSignUp, step, t, onIframeLoaded, signOutAlert, handleCloseSignOutAlert, params} = props
-  const handleClickSnackBar = e => e.target.dataset.action == 'signUp' && onClickSignUp()
+  const {tip, url, loading, onClose, onClickSignUp, step, t, onIframeLoaded, signOutAlert, handleCloseSignOutAlert, params} = props
   return (
     <div className="l-demo">
       <iframe ref={iframeRef(onIframeLoaded)} style={{visibility: loading && 'hidden'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}&ns=${params.id}`}/>
@@ -56,14 +55,6 @@ const Demo = props => {
             <div className="l-demo__alert-action">
               <div><Button text="OK" onClick={handleCloseSignOutAlert}/></div>
             </div>
-          </div>
-        )
-      }
-      {
-        snackbar && (
-          <div className="l-demo__snackbar" onClick={handleClickSnackBar}>
-            <div dangerouslySetInnerHTML={{__html: t('demo_snackbar', {url: new URL(url).host})}}/>
-            <Close className="l-demo__snackbar-close" onClick={onSnackBarClose} size={14}/>
           </div>
         )
       }
@@ -101,7 +92,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     onClickSignUp: signUp,
     onClose: backToHome,
-    onSnackBarClose: closeSnackBar,
     onIframeLoaded: showIframe,
     handleCloseSignOutAlert: closeSignOutAlert
   }, dispatch)

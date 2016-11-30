@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 require 'execjs'
 class PagesController < ApplicationController
-  before_action do
-    @state ||= {}
-  end
+  before_action :set_state
 
   def home
     lang = http_accept_language.compatible_language_from(I18n.available_locales)
     @html = nil
-    @state.merge! lang: lang, isSignedIn: user_signed_in?
+    @state.merge! lang: lang, isSignedIn: user_signed_in?, isMobile: mobile?
     result = render_jsx(@state)
     case result['status']
     when 500 then head 500
@@ -24,14 +22,22 @@ class PagesController < ApplicationController
 
   def preview
     if shorten_url = ShortenUrl.find_by(natural_id: params[:id])
-      @state.merge! demo: {
-        url: shorten_url.url,
-        loading: true,
-        step: 1,
-        snackbar: false,
-        tip: true
-      }
-      home
+      if mobile?
+        redirect_to "/m/demo?preview=#{shorten_url.natural_id}"
+      else
+        @state.merge! demo: {
+          url: shorten_url.url,
+          loading: true,
+          step: 1,
+          tip: true
+        }, modal: {
+          name: 'demoGreeting',
+          size: 'small',
+          showClose: false,
+          overlayClose: false
+        }
+        home
+      end
     else
       redirect_to root_path
     end
@@ -54,5 +60,9 @@ class PagesController < ApplicationController
   def load_context
     path = Rails.root.join('lib', 'server.js')
     ExecJS.compile(File.read(path))
+  end
+
+  def set_state
+    @state ||= {}
   end
 end

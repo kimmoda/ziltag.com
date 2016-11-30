@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def mobile?
-    request.user_agent =~ /Mobile|Android|BlackBerry/
+    !!(request.user_agent =~ /Mobile|Android|BlackBerry/)
   end
 
   def demo_user

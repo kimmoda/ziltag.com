@@ -1,7 +1,7 @@
 import {takeEvery} from 'redux-saga'
-import {call, put} from 'redux-saga/effects'
+import {call, put, select} from 'redux-saga/effects'
 import {createShortenURL} from '../api'
-import {requestShortenURL, receiveShortenURL} from '../actions'
+import {requestShortenURL, receiveShortenURL, openModal} from '../actions'
 import {push} from 'react-router-redux'
 
 export default function* watchShortenURL() {
@@ -11,6 +11,16 @@ export default function* watchShortenURL() {
 function* shortenURL(action){
   const response = yield call(createShortenURL, action.url)
   const {id, url} = response.data.createShortenURL
-  yield put(receiveShortenURL(id, url))
-  yield put(push(`/preview/${id}`))
+  const state = yield select()
+  if(state.isMobile) {
+    yield put(push(`/m/demo?preview=${encodeURIComponent(id)}`))
+  } else {
+    yield put(receiveShortenURL(id, url))
+    yield put(openModal('demoGreeting', {
+      size: 'small',
+      showClose: false,
+      overlayClose: false
+    }))
+    yield put(push(`/preview/${id}`))
+  }
 }
