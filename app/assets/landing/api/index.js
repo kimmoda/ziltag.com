@@ -1,3 +1,7 @@
+export function sendDemoLink(email, preview_id){
+  return api('/api/v2/send_demo_link', {params: {email, preview_id}})
+}
+
 export function forgotPassword(email){
   return api('/api/v2/password', {params: {email}})
 }

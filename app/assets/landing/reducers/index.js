@@ -11,3 +11,7 @@ export const form = formReducer.plugin(forms)
 export function isSignedIn(state=false, action){
   return state
 }
+
+export function isMobile(state=false, action) {
+  return state
+}

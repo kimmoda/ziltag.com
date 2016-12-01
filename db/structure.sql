@@ -249,7 +249,8 @@ CREATE TABLE schema_migrations (
 CREATE TABLE shorten_urls (
     id integer NOT NULL,
     url character varying NOT NULL,
-    natural_id character varying NOT NULL
+    natural_id character varying NOT NULL,
+    display_name character varying
 );
 
 
@@ -1022,4 +1023,6 @@ INSERT INTO schema_migrations (version) VALUES ('20161108042731');
 INSERT INTO schema_migrations (version) VALUES ('20161116100526');
 
 INSERT INTO schema_migrations (version) VALUES ('20161116102122');
+
+INSERT INTO schema_migrations (version) VALUES ('20161130070658');
 

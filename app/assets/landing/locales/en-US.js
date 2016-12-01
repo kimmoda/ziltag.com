@@ -1,5 +1,11 @@
 export default {
   translation: {
+    email_sent: 'Email Sent!',
+    welcome_to_ziltag_demo: 'Welcome to Ziltag Demo! Unfortunately, the demo is currently not available on mobile devices, please leave your email and we will send the link to your mailbox to view on desktop. Thanks!',
+    send_link: 'Send Link',
+    start: 'Start',
+    this_is_a_demo_applied_to: '*This is a demo applied to <b>{{url}}</b> using Ziltag Plugin. Ziltag does not own any rights of the demo website. All rights belong to their respective owners. The plugin might not work for this site due to technical issues. If you have any problem, please <a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">contact us</a>.',
+    welcome_we_re_excited: 'Welcome! We’re excited to demonstrate how Ziltag will work on your webpage. Please click the button to start the tutorial.',
     sign_out_function: 'Sign Out action is not available in demo.',
     a_verification_email_has_been_sent: 'A verification email has been sent. Please check your email to activate your account.',
     agree_terms_and_privacy: 'By signing up, you agree to our <a href="http://blog.ziltag.com/terms" target="_blank" rel="noopener">terms</a> and <a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">privacy policy</a>.',
@@ -11,7 +17,6 @@ export default {
     click_the_z_button: 'Click the Z button.',
     dashboard: 'Dashboard',
     dead_simple_install: 'Dead-Simple Installation',
-    demo_snackbar: 'This is a demo applied to <b>{{url}}</b> using Ziltag Plugin. All rights belong to their respective owners. The plugin might not work for this site due to technical issues. If you have any problem, please <a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">contact us</a>. Wish to install it? Please <a data-action="signUp" href="javascript:void(0)">sign up.</a>',
     demo: 'Demo',
     doc: 'Doc',
     dont_have_an_account: 'Don’t have an account?',
@@ -23,6 +28,7 @@ export default {
     join_now: 'Sign Up',
     password: 'Password',
     please_enter_your_websites_url: 'Please enter your website’s URL...',
+    please_enter_your_email: 'Please enter your email...',
     preview_on_your_website: 'Preview on your website',
     privacy: 'Privacy',
     send: 'Send',

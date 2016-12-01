@@ -131,5 +131,15 @@ class ZiltagAPI # :nodoc:
         { errors: [message: verify_user.error] }
       end
     end
+
+    desc 'Send Demo Link'
+    params do
+      requires :email, type: String, allow_blank: false
+      requires :preview_id, type: String, allow_blank: false
+    end
+    post :send_demo_link do
+      SendDemoLinkJob.perform_later(params[:email], params[:preview_id])
+      {}
+    end
   end
 end

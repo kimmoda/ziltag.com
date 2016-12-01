@@ -17,7 +17,8 @@ class DashboardManifest
     :ziltags,
     :comments,
     :photos,
-    :tracks
+    :tracks,
+    :shorten_urls
   ].freeze
 
   # `ROOT_DASHBOARD`
