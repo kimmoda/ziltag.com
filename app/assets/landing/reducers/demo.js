@@ -1,3 +1,5 @@
+import {LOCATION_CHANGE} from 'react-router-redux'
+
 export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, loading: true, name: null}, action) {
   const {url} = action
   switch (action.type) {
@@ -23,6 +25,15 @@ export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, 
       return {...state, signOutAlert: true}
     case 'CLOSE_SIGN_OUT_ALERT':
       return {...state, signOutAlert: false}
+    case LOCATION_CHANGE:
+      switch (action.payload.query.ref) {
+        case 'producthunt':
+          return {...state, name: 'Product Hunter'}
+        case 'hackernews':
+          return {...state, name: 'HackerNews Friend'}
+        default:
+          return state
+      }
     default:
       return state
   }
