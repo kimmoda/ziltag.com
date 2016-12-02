@@ -20,6 +20,13 @@ class PagesController < ApplicationController
     render :home
   end
 
+  def m_demo
+    if shorten_url = ShortenUrl.find_by(natural_id: params[:preview])
+      @state.merge! demo: {name: shorten_url.display_name}
+    end
+    home
+  end
+
   def preview
     if shorten_url = ShortenUrl.find_by(natural_id: params[:id])
       if mobile?
