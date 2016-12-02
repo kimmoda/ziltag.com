@@ -29,7 +29,8 @@ class PagesController < ApplicationController
           url: shorten_url.url,
           loading: true,
           step: 1,
-          tip: true
+          tip: true,
+          name: shorten_url.display_name
         }, modal: {
           name: 'demoGreeting',
           size: 'small',

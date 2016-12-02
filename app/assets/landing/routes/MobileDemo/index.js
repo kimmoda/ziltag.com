@@ -32,9 +32,15 @@ const MobileDemo = props => {
   )
 }
 
-export default connect(null, mapDispatchToProps)(translate(MobileDemo))
+export default connect(mapStateToProps, mapDispatchToProps)(translate(MobileDemo))
 
 function preventDefault(e){e.preventDefault()}
+
+function mapStateToProps(state){
+  return {
+    name: state.demo.name
+  }
+}
 
 function mapDispatchToProps(dispatch, ownProps) {
   return bindActionCreators({
