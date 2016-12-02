@@ -1,4 +1,4 @@
-export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, loading: true}, action) {
+export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, loading: true, name: null}, action) {
   const {url} = action
   switch (action.type) {
     case 'RECEIVE_SHORTEN_URL':
