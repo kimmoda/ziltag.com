@@ -32,6 +32,7 @@ class Photo < ActiveRecord::Base #:nodoc:
 
   def self.find_by_token_src_and_href(token:, source:, href:, namespace: nil)
     uri = URI(href)
+    source_uri = URI(source)
     host = uri.host
     scope = Photo.joins(:website).where(websites: { token: token }, namespace: namespace)
     scope = if host.end_with?(*BLOGSPOT_DOMAINS)
@@ -39,6 +40,10 @@ class Photo < ActiveRecord::Base #:nodoc:
               scope.where(source: source).in_blogspot(blog_id)
             elsif tumblr_image_id = TumblrIdentifier.identify(source)
               scope.in_tumblr(tumblr_image_id)
+            elsif source_uri.host == 'tctechcrunch2011.files.wordpress.com'
+              source_uri.query = nil
+              # TODO using LIKE is not a good approach
+              scope.where('host = ? AND source LIKE ?', host, "#{source_uri.to_s}%")
             else
               scope.where(host: host, source: source)
             end
