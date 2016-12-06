@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'execjs'
 class PagesController < ApplicationController
-  before_action :set_state
+  before_action :allow_iframe, :set_state
 
   def home
     lang = http_accept_language.compatible_language_from(I18n.available_locales)
@@ -72,5 +72,9 @@ class PagesController < ApplicationController
 
   def set_state
     @state ||= {}
+  end
+
+  def allow_iframe
+    response.headers.delete 'X-Frame-Options'
   end
 end
