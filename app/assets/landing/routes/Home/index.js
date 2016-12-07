@@ -29,7 +29,7 @@ class Home extends React.Component {
     return (
       <div className="p-home">
         <div className="p-home__cover">
-          <img ref={cover => this._cover = cover} className="p-home__cover-image" src={require('./girl.jpg')} data-ziltag-switch="false"/>
+          <img ref={cover => this._cover = cover} className="p-home__cover-image" src={require('./loli_2048.jpg')} data-ziltag-switch="false"/>
           <div className="p-home__header">
             <div className="p-home__logo"/>
             <div className="p-home__auth-buttons">
