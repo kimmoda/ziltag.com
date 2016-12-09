@@ -17,12 +17,28 @@ class DataURL
   def initialize(url)
     raise InvalidDataURL unless match_data = PARSER.match(url)
     @mime = MIME::Types[match_data[:mime]].first
-    @ext = @mime.preferred_extension
-    @data = if match_data[:base64]
-      ::Base64.decode64(URI.unescape(match_data[:data]))
-    else
-      match_data[:data]
-    end
-    @filename = "#{SecureRandom.hex(3)}.#{@ext}"
+  end
+
+  def ext
+    @ext ||= mime.preferred_extension
+  end
+
+  def data
+    @data ||= if match_data[:base64]
+                ::Base64.decode64(URI.unescape(match_data[:data]))
+              else
+                match_data[:data]
+              end
+  end
+
+  def filename
+    @filename ||= "#{SecureRandom.hex(3)}.#{@ext}"
+  end
+
+  # used with carrierwave
+  def to_string_io
+    string_io = StringIO.new(data)
+    def s.original_filename; filename; end
+    string_io
   end
 end
