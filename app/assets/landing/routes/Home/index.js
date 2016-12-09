@@ -3,7 +3,7 @@ import ModalButton from 'ModalButton'
 import Highlight from 'highlight.js'
 import DemoForm from 'forms/Demo'
 import translate from 'hoc/translate'
-import Header from 'header'
+import Header from 'Header'
 
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
