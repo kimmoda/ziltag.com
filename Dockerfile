@@ -1,16 +1,11 @@
 FROM ruby:2.3.1
 
-ENV NODE_VERSION 6.8.0
 ENV CC clang
 ENV CXX clang++
 
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get update -qq \
-    && apt-get install -y libpq-dev postgresql-client=9.4+165+deb8u1 graphicsmagick clang
-
-# node
-RUN curl -SL https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz \
-    | tar --strip-components 1 -xJC /usr/local
-    # && npm i npm -g issue # big bug: https://github.com/npm/npm/issues/9863
+    && apt-get install -y nodejs libpq-dev postgresql-client=9.4+165+deb8u1 graphicsmagick clang
 
 RUN mkdir /ziltag
 WORKDIR /ziltag
@@ -28,6 +23,7 @@ RUN bundle install --retry 3 --jobs 2
 
 # package.json
 COPY package.json /ziltag/package.json
+RUN npm install node-gyp -g
 RUN npm install
 
 COPY . /ziltag
