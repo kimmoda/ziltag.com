@@ -26,7 +26,7 @@ class SendWelcomeEmail < Interactor2 #:nodoc:
     {
       subject: 'Welcome to Ziltag - just one more step!',
       from_email: 'robot@ziltag.com',
-      from_name: 'Ziltag Robot',
+      from_name: 'Ziltag',
       to: [{ email: @user.email, name: @user.username }],
       merge_vars: merge_vars
     }

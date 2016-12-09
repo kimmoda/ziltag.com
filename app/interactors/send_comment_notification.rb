@@ -25,7 +25,7 @@ class SendCommentNotification < Interactor2 #:nodoc:
     {
       subject: "#{@author.username} has commented on your ziltag!",
       from_email: 'robot@ziltag.com',
-      from_name: 'Ziltag Robot',
+      from_name: 'Ziltag',
       to: to,
       merge_vars: merge_vars
     }
