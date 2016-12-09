@@ -34,8 +34,8 @@ class Home extends React.Component {
             <div className="p-home__logo"/>
             <div className="p-home__auth-buttons">
               <Link className="p-home__auth-button p-home__auth-button--doc" to="/doc" style={{textDecoration: 'none', color: '#333333', fontSize: isWide ? '2vw' : 14, fontWeight: 500}}>{t('doc')}</Link>
-              {isSignedIn || <div className="p-home__auth-button"><ModalButton text={t('sign_up')} width={isWide ? '20vw' : 137} modalName="signUp" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
-              {isSignedIn || <div className="p-home__auth-button p-home__auth-button--sign-in"><ModalButton text={t('sign_in')} width={isWide ? '10vw' : 76} color="gray" modalName="signIn" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
+              {isSignedIn || <div className="p-home__auth-button"><ModalButton text={t('sign_up')} width={isWide ? '20vw' : null} modalName="signUp" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
+              {isSignedIn || <div className="p-home__auth-button p-home__auth-button--sign-in"><ModalButton text={t('sign_in')} width={isWide ? '10vw' : null} color="gray" modalName="signIn" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
               {isSignedIn && <a className="p-home__auth-button p-home__auth-button--dashboard" href="/dashboard/account/"><Button style={{fontSize: isWide ? '2vw' : 14}} text={t('dashboard')}/></a>}
             </div>
           </div>
