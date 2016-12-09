@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'data_url'
 class FindOrCreateMap < Interactor2
   attr_reader :photo
 
@@ -15,7 +16,7 @@ class FindOrCreateMap < Interactor2
   def perform
     fail! 'token not found' if @website.nil?
     url_regex = URI.regexp(%w(http https))
-    fail! "source '#{@source}' is not a valid URL." unless @source =~ url_regex
+    fail! "source '#{@source}' is not a valid URL." unless @source =~ url_regex || @source =~ DataURL::PARSER
     fail! "href '#{@href}' if nost a valid URL." unless @href =~ url_regex
     fail! "'#{@href}' is not permitted by given token '#{@token}'" unless @website.match_href? @href
 
