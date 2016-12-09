@@ -22,7 +22,9 @@ class FindOrCreateMap < Interactor2
 
     if photo = Photo.find_by_token_src_and_href(token: @token, source: @source, href: @href, namespace: @namespace)
       @photo = photo
-    elsif photo = Photo.create(source: @source, href: @href, width: @width, height: @height, website: @website, namespace: @namespace)
+    else
+      DataURL.new(@source).to_string_io
+      photo = Photo.create(source: @source, href: @href, width: @width, height: @height, website: @website, namespace: @namespace)
       photo.persisted? ? @photo = photo : fail!(photo.errors.full_messages.first)
     end
     PhotoJob.perform_later photo, photo.source unless photo.image?
