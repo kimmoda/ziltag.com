@@ -50,7 +50,6 @@ export default {
     username: 'Username',
     watch_video: 'Watch Video',
     we_will_send_you_a_password_reset_instruction: "We'll send you a password reset instruction.",
-    welcome_please_follow_our_tutorial: 'Welcome! Please follow our tutorial to learn what Ziltag is without hassle!',
     doc_body: `<h1>Plugin Configuration</h1>
     <h2>Attributes</h2>
     <h3>Disable</h3>

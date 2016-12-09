@@ -13,7 +13,7 @@ import './index.css'
 
 const mapStepsToKey = [
   {null}, // dummy element, steps begin with 1 instead of 0
-  {headKey: 'welcome_please_follow_our_tutorial', stepKey: 'hover_on_an_image'},
+  {headKey: null, stepKey: 'hover_on_an_image'},
   {headKey: null, stepKey: 'click_the_z_button'},
   {headKey: null, stepKey: 'find_anything'},
   {headKey: null, stepKey: 'write_anything'},
