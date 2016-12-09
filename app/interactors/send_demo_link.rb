@@ -20,7 +20,7 @@ class SendDemoLink < Interactor2 #:nodoc:
     {
       subject: 'Welcome to Ziltag - Your Ziltag Demo is Here.',
       from_email: 'robot@ziltag.com',
-      from_name: 'Ziltag Robot',
+      from_name: 'Ziltag',
       to: [{ email: @user_email }],
       merge_vars: merge_vars
     }

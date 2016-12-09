@@ -23,7 +23,7 @@ class SendZiltagNotification < Interactor2 #:nodoc:
     {
       subject: "#{@author.username} has posted a new ziltag on your image!",
       from_email: 'robot@ziltag.com',
-      from_name: 'Ziltag Robot',
+      from_name: 'Ziltag',
       to: [{ email: @website_owner.email, name: @website_owner.username }],
       merge_vars: merge_vars
     }

@@ -14,7 +14,7 @@ class SendResetPassword < Interactor2
     {
       subject: 'Reset Password Instructions',
       from_email: 'robot@ziltag.com',
-      from_name: 'Ziltag Robot',
+      from_name: 'Ziltag',
       to: [{ email: @user.email, name: @user.username }],
       merge_vars: merge_vars
     }
