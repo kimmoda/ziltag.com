@@ -3,6 +3,7 @@ import ModalButton from 'ModalButton'
 import Highlight from 'highlight.js'
 import DemoForm from 'forms/Demo'
 import translate from 'hoc/translate'
+import Header from 'header'
 
 import React from 'react'
 import Button from 'ziltag-elements/dist/Button'
@@ -30,15 +31,9 @@ class Home extends React.Component {
       <div className="p-home">
         <div className="p-home__cover">
           <img ref={cover => this._cover = cover} className="p-home__cover-image" src={require('./loli_2048.jpg')} data-ziltag-switch="false"/>
-          <div className="p-home__header">
-            <div className="p-home__logo"/>
-            <div className="p-home__auth-buttons">
-              <Link className="p-home__auth-button p-home__auth-button--doc" to="/doc" style={{textDecoration: 'none', color: '#333333', fontSize: isWide ? '2vw' : 14, fontWeight: 500}}>{t('doc')}</Link>
-              {isSignedIn || <div className="p-home__auth-button"><ModalButton text={t('sign_up')} width={isWide ? '20vw' : null} modalName="signUp" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
-              {isSignedIn || <div className="p-home__auth-button p-home__auth-button--sign-in"><ModalButton text={t('sign_in')} width={isWide ? '10vw' : null} color="gray" modalName="signIn" style={{fontSize: isWide ? '2vw' : 14}}/></div>}
-              {isSignedIn && <a className="p-home__auth-button p-home__auth-button--dashboard" href="/dashboard/account/"><Button style={{fontSize: isWide ? '2vw' : 14}} text={t('dashboard')}/></a>}
-            </div>
-          </div>
+          <Header>
+            <Link className="p-home__auth-button p-home__auth-button--doc" to="/doc" style={{textDecoration: 'none', color: '#333333', fontSize: isWide ? '2vw' : 14, fontWeight: 500}}>{t('doc')}</Link>
+          </Header>
           <div className="p-home__intro">
             <div style={{textAlign: 'center'}}><div className="p-home__title">{t('title')}</div></div>
             <div className="p-home__subtitle">{t('subtitle')}</div>
