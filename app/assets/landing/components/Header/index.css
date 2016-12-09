@@ -1,0 +1,59 @@
+.c-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+}
+
+.c-header__logo {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 108px;
+  background: url('./black_logo.png') center/contain no-repeat;
+  width: 111px;
+  height: 35px;
+}
+
+.c-header__auth-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.c-header__auth-buttons>*:not(:first-child) {
+  margin-left: 18px;
+}
+
+@media screen and (min-width: 2048px) {
+  .c-header__auth-buttons>*:not(:first-child) {
+    margin-left: 1vw;
+  }
+  .c-header__header {
+    height: 10vh;
+  }
+  .c-header__logo {
+    width: 30vw;
+    height: 5vh;
+    background-position: left;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .c-header__header {
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.24);
+  }
+  .c-header__logo {
+    left: 20px;
+    width: 80px;
+    height: 25.225px;
+  }
+  .c-header__auth-button.c-header__auth-button--sign-in, .c-header__auth-button.c-header__auth-button--doc, .c-header__auth-button.c-header__auth-button--dashboard {
+    display: none;
+  }
+}

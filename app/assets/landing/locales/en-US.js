@@ -25,7 +25,7 @@ export default {
     get_started_now: 'Get Started Now',
     home: 'Home',
     hover_on_an_image: 'Hover on an image.',
-    join_now: 'Create Account',
+    join_now: 'Get it now',
     password: 'Password',
     please_enter_your_websites_url: 'Please enter your website’s URL...',
     please_enter_your_email: 'Please enter your email...',
@@ -34,7 +34,7 @@ export default {
     send: 'Send',
     share: 'SHARE',
     sign_in: 'Log in',
-    sign_up: 'Create Account',
+    sign_up: 'Get it now',
     spread_the_word: 'Spread the word!',
     step: 'Step',
     subtitle: 'Ziltag is a web plugin to discuss & discover on images.',
@@ -50,7 +50,6 @@ export default {
     username: 'Username',
     watch_video: 'Watch Video',
     we_will_send_you_a_password_reset_instruction: "We'll send you a password reset instruction.",
-    welcome_please_follow_our_tutorial: 'Welcome! Please follow our tutorial to learn what Ziltag is without hassle!',
     doc_body: `<h1>Plugin Configuration</h1>
     <h2>Attributes</h2>
     <h3>Disable</h3>

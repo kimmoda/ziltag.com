@@ -25,7 +25,7 @@ export default {
     get_started_now: '立刻開始使用',
     home: '首頁',
     hover_on_an_image: '請將鼠標移至任一張相片上。',
-    join_now: '立即加入',
+    join_now: '立即取得',
     password: '密碼',
     please_enter_your_websites_url: '請輸入您的網址（如：http://example.com）',
     please_enter_your_email: '請輸入您的 email',
@@ -50,7 +50,6 @@ export default {
     username: '使用者名稱',
     watch_video: '觀看介紹影片',
     we_will_send_you_a_password_reset_instruction: '我們將寄送有關重設密碼步驟的信件',
-    welcome_please_follow_our_tutorial: '歡迎進入體驗模式！請按照以下簡單的教學來了解 Ziltag 的基本操作。',
     doc_body: `<h1>組態</h1>
     <h2>屬性設定</h2>
     <h3>停用外掛</h3>
