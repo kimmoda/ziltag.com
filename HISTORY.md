@@ -1,4 +1,3 @@
-
 # 2016-12-12
 
 It's the first release of Ziltag. These notes cover major features, known issues and limitations for the Ziltag release. While our plugin service works well enough to be relied upon as your primary browser in most cases, we make no guarantees of its performance or stability in all the browsers (especially IE).
