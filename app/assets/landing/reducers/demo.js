@@ -30,7 +30,7 @@ export function demo(state={signOutAlert: false, tip: true, url: null, step: 1, 
         case 'producthunt':
           return {...state, name: 'Product Hunter'}
         case 'hackernews':
-          return {...state, name: 'HackerNews Friend'}
+          return {...state, name: 'HN Hacker'}
         default:
           return state
       }
