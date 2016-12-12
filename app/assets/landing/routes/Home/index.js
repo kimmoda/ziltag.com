@@ -63,7 +63,7 @@ class Home extends React.Component {
             <li className="p-home__link"><a href="https://www.dropbox.com/sh/a123sehmataicuo/AAAQGPJAELXaSrdLOphnttR7a" target="_blank" rel="noopener">Press Kit</a></li>
           </ul>
           <ul className="p-home__icon-links">
-            <li className="p-home__icon-link p-home__icon-link--github"><a href="https://github.com/ziltag" target="_blank" rel="noopener"></a></li>
+            <li className="p-home__icon-link p-home__icon-link--github"><a href="https://github.com/ziltag/ziltag-community" target="_blank" rel="noopener"></a></li>
             <li className="p-home__icon-link p-home__icon-link--twitter"><a href="https://twitter.com/ziltagapp" target="_blank" rel="noopener"></a></li>
           </ul>
         </div>
