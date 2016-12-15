@@ -2,7 +2,7 @@
 require 'flowdock'
 class NotifyFlowdockOfSignUp < Interactor2
   API_TOKEN = 'efec586b1fff5b17e0cb6c477f3a246c'
-  DEV_FLOW = '185a6ee8-36fa-4f46-9727-ad4e99076545'
+  FLOW_ID = '2c9eff05-f00e-4444-9384-aa79b29ec266'
 
   def initialize(user)
     @user = user
@@ -12,7 +12,7 @@ class NotifyFlowdockOfSignUp < Interactor2
   def perform
     client = Flowdock::Client.new(api_token: API_TOKEN)
     client.chat_message(
-      flow: DEV_FLOW,
+      flow: FLOW_ID,
       content: content,
       external_user_name: 'ZiltagRobot',
       tags: ['@David']
