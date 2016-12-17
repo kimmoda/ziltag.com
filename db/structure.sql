@@ -174,6 +174,39 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: http_requests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE http_requests (
+    id integer NOT NULL,
+    env json DEFAULT '{}'::json NOT NULL,
+    session_id character varying,
+    referer character varying,
+    params json DEFAULT '{}'::json NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: http_requests_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE http_requests_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: http_requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE http_requests_id_seq OWNED BY http_requests.id;
+
+
+--
 -- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -503,6 +536,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY http_requests ALTER COLUMN id SET DEFAULT nextval('http_requests_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
 
 
@@ -568,6 +608,14 @@ ALTER TABLE ONLY ziltags ALTER COLUMN id SET DEFAULT nextval('ziltags_id_seq'::r
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: http_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY http_requests
+    ADD CONSTRAINT http_requests_pkey PRIMARY KEY (id);
 
 
 --
@@ -668,6 +716,13 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 --
 
 CREATE INDEX index_comments_on_ziltag_id ON comments USING btree (ziltag_id);
+
+
+--
+-- Name: index_http_requests_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_http_requests_on_session_id ON http_requests USING btree (session_id);
 
 
 --
@@ -1025,4 +1080,6 @@ INSERT INTO schema_migrations (version) VALUES ('20161116100526');
 INSERT INTO schema_migrations (version) VALUES ('20161116102122');
 
 INSERT INTO schema_migrations (version) VALUES ('20161130070658');
+
+INSERT INTO schema_migrations (version) VALUES ('20161217174516');
 
