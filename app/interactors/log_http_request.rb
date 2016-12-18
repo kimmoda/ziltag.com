@@ -19,7 +19,7 @@ class LogHTTPRequest < Interactor2 #:nodoc:
   end
 
   def perform
-    @request = HttpRequest.create(
+    @request = HTTPRequest.create(
       env: @env.select { |k, _| k.start_with?('HTTP_') || ENV_KEYS.include?(k) },
       session_id: @env['rack.session']['session_id'],
       referer: @env['HTTP_REFERER'],

@@ -1,2 +1,2 @@
-class HttpRequest < ActiveRecord::Base
+class HTTPRequest < ActiveRecord::Base
 end
