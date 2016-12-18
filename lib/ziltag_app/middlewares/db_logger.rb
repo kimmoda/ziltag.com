@@ -12,6 +12,10 @@ module ZiltagApp
         result = LogHTTPRequest.perform(env)
         Rails.logger.error result.error unless result.success?
         response
+      rescue
+        Rails.logger.error $ERROR_INFO
+        Rails.logger.error $ERROR_POSITION.join($RS)
+        response
       end
     end
   end
