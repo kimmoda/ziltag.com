@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :photos, through: :websites, dependent: :destroy
 
   # validations
-  validates :username, uniqueness: { case_sensitive: false }, format: { with: /\A\w+\z/ }, length: { maximum: 30, minimum: 6 }, allow_nil: true
+  validates :username, uniqueness: { case_sensitive: false }, format: { with: /\A\w+\z/ }, length: { maximum: 30, minimum: 4 }, allow_nil: true
   validates :username, presence: true, if: :general_user?
 
   # callbacks
