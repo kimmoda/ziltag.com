@@ -38,10 +38,10 @@ class ShareImageUploader < CarrierWave::Uploader::Base
       image.combine_options do |b|
         b.quality 100
         b.geometry "#{CROP_WIDTH}x#{CROP_HEIGHT}^"
-        b.stroke 'red'
+        b.stroke 'white'
         b.strokewidth 2
-        b.fill 'rgba(255,255,255,30)'
-        b.draw "circle #{ziltag_x},#{ziltag_y} #{ziltag_x},#{ziltag_y + 10}"
+        b.fill 'rgba(238, 46, 36,30)'
+        b.draw "circle #{ziltag_x},#{ziltag_y} #{ziltag_x},#{ziltag_y + 20}"
         b.crop "#{CROP_WIDTH}x#{CROP_HEIGHT}#{'%+d' % crop_x}#{'%+d' % crop_y}"
       end
       image.format 'jpg'
