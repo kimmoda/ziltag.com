@@ -183,7 +183,8 @@ CREATE TABLE http_requests (
     session_id character varying,
     referer character varying,
     params json DEFAULT '{}'::json NOT NULL,
-    created_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone NOT NULL,
+    path character varying
 );
 
 
@@ -719,6 +720,13 @@ CREATE INDEX index_comments_on_ziltag_id ON comments USING btree (ziltag_id);
 
 
 --
+-- Name: index_http_requests_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_http_requests_on_path ON http_requests USING btree (path);
+
+
+--
 -- Name: index_http_requests_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1082,4 +1090,6 @@ INSERT INTO schema_migrations (version) VALUES ('20161116102122');
 INSERT INTO schema_migrations (version) VALUES ('20161130070658');
 
 INSERT INTO schema_migrations (version) VALUES ('20161217174516');
+
+INSERT INTO schema_migrations (version) VALUES ('20161223174639');
 
