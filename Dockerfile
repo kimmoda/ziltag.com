@@ -1,4 +1,4 @@
-FROM ruby:2.3.1
+FROM ruby:2.3.3
 
 ENV CC clang
 ENV CXX clang++
