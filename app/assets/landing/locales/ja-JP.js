@@ -29,7 +29,7 @@
     password: 'パスワード',
     please_enter_your_websites_url: 'URLを入力して下さい。（例：http://example.com）',
     please_enter_your_email: 'メールアドレスを入力して下さい。',
-    preview_on_your_website: 'あなたのウェブサイトにZiltagを適用する結果のプレビューです', // I'd like to know what time to use this sentence, if possible.
+    preview_on_your_website: 'プレビュー', // I'd like to know what time to use this sentence, if possible.
     privacy: 'プライバシー政策',
     send: '送信する',
     share: 'シェア',
