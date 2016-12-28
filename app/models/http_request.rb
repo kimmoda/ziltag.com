@@ -27,7 +27,8 @@ class HTTPRequest < ActiveRecord::Base
           'https://ziltag.com',
           'https://staging.ziltag.com',
           'https://tonytonyjan.net',
-          'http://localhost'
+          'http://localhost',
+          'http://reviewmonster.org'
         )
     end
     data.map! do |params|

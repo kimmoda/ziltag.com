@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 class CreateZiltag < Interactor2 #:nodoc
+  NOTIFICATION_BLACK_LIST = {
+    urls: %w(http://reviewmonster.org/zoho_forms/)
+  }
   attr_reader :ziltag
   def initialize(user, map_id, x, y, content)
     @user = user
@@ -24,7 +27,9 @@ class CreateZiltag < Interactor2 #:nodoc
 
     if @ziltag.save
       NotifySSE.perform(:create, @ziltag)
-      NotifyFlowdockOfZiltagJob.perform_later @ziltag
+      unless @ziltag.photo&.href.start_with?(*NOTIFICATION_BLACK_LIST['urls'])
+        NotifyFlowdockOfZiltagJob.perform_later @ziltag
+      end
       if owner.ziltag_notification?
         unless @ziltag.user == owner || @ziltag.unsubscribers.include?(owner.id)
           SendZiltagNotificationJob.perform_later(@ziltag)
