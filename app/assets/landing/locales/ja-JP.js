@@ -25,7 +25,7 @@
     get_started_now: '今すぐ始める',
     home: 'ホームページ',
     hover_on_an_image: '画像にカーソルを合わせる。',
-    join_now: '今すぐZiltagをゲット',
+    join_now: '今すぐゲット',
     password: 'パスワード',
     please_enter_your_websites_url: 'URLを入力して下さい。（例：http://example.com）',
     please_enter_your_email: 'メールアドレスを入力して下さい。',
