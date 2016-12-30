@@ -24,7 +24,7 @@ const Demo = props => {
   const {tip, url, loading, onClose, onClickSignUp, step, t, onIframeLoaded, signOutAlert, handleCloseSignOutAlert, params} = props
   return (
     <div className="l-demo">
-      <iframe ref={iframeRef(onIframeLoaded)} style={{visibility: loading && 'hidden'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}&ns=${params.id}`}/>
+      <iframe ref={iframeRef(onIframeLoaded)} style={{visibility: loading && 'hidden'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}&ns=${params.id}`} sandbox="allow-same-origin allow-scripts"/>
       <div className="l-demo__header">
         <div className="l-demo__left-container">
           <div className="l-demo__logo"/>
