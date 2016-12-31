@@ -23,7 +23,8 @@ class LogHTTPRequest < Interactor2 #:nodoc:
       env: @env.select { |k, _| k.start_with?('HTTP_') || ENV_KEYS.include?(k) },
       session_id: @env['rack.session']['session_id'],
       referer: @env['HTTP_REFERER'],
-      params: params
+      params: params,
+      path: @env['PATH_INFO']
     )
     unless @request.persisted?
       fail! "can't log request: #{@request.errors.full_messages.join(', ')}"
