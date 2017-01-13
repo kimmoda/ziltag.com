@@ -27,7 +27,7 @@ class CreateZiltag < Interactor2 #:nodoc
 
     if @ziltag.save
       NotifySSE.perform(:create, @ziltag)
-      unless @ziltag.photo&.href.start_with?(*NOTIFICATION_BLACK_LIST['urls'])
+      unless @ziltag.photo&.href.start_with?(*NOTIFICATION_BLACK_LIST[:urls])
         NotifyFlowdockOfZiltagJob.perform_later @ziltag
       end
       if owner.ziltag_notification?
