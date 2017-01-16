@@ -1,6 +1,6 @@
 import {eventChannel} from 'redux-saga'
 import {call, take, put} from 'redux-saga/effects'
-import {hoverIn, hoverOut, readerOpened, readerClosed, inputOpened, ziltagCreated, openSignOutAlert} from '../actions'
+import {showIframe, hoverIn, hoverOut, readerOpened, readerClosed, inputOpened, ziltagCreated, openSignOutAlert} from '../actions'
 
 function message() {
   return eventChannel(emitter => {
@@ -40,6 +40,9 @@ export default function* watchMessage() {
       break
     case 'CURRENT_USER_SIGNED_OUT':
       yield put(openSignOutAlert())
+      break
+    case 'DOMContentLoaded':
+      yield put(showIframe())
       break
     }
   }

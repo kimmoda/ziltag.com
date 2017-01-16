@@ -5,7 +5,7 @@ import translate from 'hoc/translate'
 import Spinner from 'ziltag-elements/dist/Spinner'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {openModal, showIframe, closeSignOutAlert} from '../../actions'
+import {openModal, closeSignOutAlert} from '../../actions'
 import Modal from 'Modal'
 import {push} from 'react-router-redux'
 
@@ -21,10 +21,10 @@ const mapStepsToKey = [
 ]
 
 const Demo = props => {
-  const {tip, url, loading, onClose, onClickSignUp, step, t, onIframeLoaded, signOutAlert, handleCloseSignOutAlert, params} = props
+  const {tip, url, loading, onClose, onClickSignUp, step, t, signOutAlert, handleCloseSignOutAlert, params} = props
   return (
     <div className="l-demo">
-      <iframe ref={iframeRef(onIframeLoaded)} style={{visibility: loading && 'hidden'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}&ns=${params.id}`} sandbox="allow-same-origin allow-scripts"/>
+      <iframe style={{visibility: loading && 'hidden'}} className="l-demo__iframe" src={`https://preview.ziltag.com?url=${encodeURIComponent(url)}&ns=${params.id}`} sandbox="allow-same-origin allow-scripts"/>
       <div className="l-demo__header">
         <div className="l-demo__left-container">
           <div className="l-demo__logo"/>
@@ -92,7 +92,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     onClickSignUp: signUp,
     onClose: backToHome,
-    onIframeLoaded: showIframe,
     handleCloseSignOutAlert: closeSignOutAlert
   }, dispatch)
 }
