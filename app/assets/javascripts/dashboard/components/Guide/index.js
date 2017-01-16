@@ -22,11 +22,12 @@ export default props => (
         <TabPanel>
           <ol className="ziltag-guide__list" >
             <li className="ziltag-guide__list-item">Go to <b>Administration Screens</b> > <b>Plugins</b> > <b>Add New</b>.</li>
-            <li className="ziltag-guide__list-item">Upload the .zip file downloaded <a style={{color: '#008BF3'}} href="//github.com/ziltag/ziltag-wp/releases/latest" target="_blank">here</a>. Click Install Now.</li>
-            <li className="ziltag-guide__list-item">After the plugin is installed, click <b>Activate Plugin</b>.</li>
-            <li className="ziltag-guide__list-item">Click <b>Settings</b>.</li>
-            <li className="ziltag-guide__list-item">Enter your Plugin Token as shown above. </li>
+            <li className="ziltag-guide__list-item">Download the <a style={{color: '#008BF3'}} href="//github.com/ziltag/ziltag-wp/releases/latest" target="_blank">plugin</a> and click <b>Upload Plugin</b>. After uploading the file, click <b>Install Now</b>.</li>
+            <li className="ziltag-guide__list-item">When installed, go back to <b>Administration Screens</b> > <b>Plugins</b>. Find Ziltag Plugin and click <b>Activate</b>.</li>
+            <li className="ziltag-guide__list-item">Click <b>Settings</b> and enter your Token.</li>
+            <li className="ziltag-guide__list-item">Click <b>Save Changes</b>.</li>
           </ol>
+          <div className="ziltag-guide__video-button" onClick={props.onClickVideo}>Watch Tutorial Video</div>
         </TabPanel>
         <TabPanel>
           <ol className="ziltag-guide__list">
@@ -46,7 +47,6 @@ export default props => (
         </TabPanel>
       </Tabs>
     </div>
-    <div className="ziltag-guide__video-button" onClick={props.onClickVideo}>Watch Tutorial Video</div>
     <div className="ziltag-guide__tips">
       Tips: Having trouble installing? Click the live chat button on bottom-right for 1-on-1 support.<br/>
       Wish to know more? Visit <a style={{color: 'inherit'}} href="//ziltag.zendesk.com/" target="_blank">help</a> center.
