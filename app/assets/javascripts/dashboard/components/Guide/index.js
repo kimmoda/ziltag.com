@@ -27,6 +27,7 @@ export default props => (
             <li className="ziltag-guide__list-item">Click <b>Settings</b> and enter your Token.</li>
             <li className="ziltag-guide__list-item">Click <b>Save Changes</b>.</li>
           </ol>
+          <div className="ziltag-guide__video-button" onClick={props.onClickVideo}>Watch Tutorial Video</div>
         </TabPanel>
         <TabPanel>
           <ol className="ziltag-guide__list">
@@ -46,7 +47,6 @@ export default props => (
         </TabPanel>
       </Tabs>
     </div>
-    <div className="ziltag-guide__video-button" onClick={props.onClickVideo}>Watch Tutorial Video</div>
     <div className="ziltag-guide__tips">
       Tips: Having trouble installing? Click the live chat button on bottom-right for 1-on-1 support.<br/>
       Wish to know more? Visit <a style={{color: 'inherit'}} href="//ziltag.zendesk.com/" target="_blank">help</a> center.
