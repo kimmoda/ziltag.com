@@ -84,7 +84,7 @@ function* watchSignOut() {
 
 function* redirectToRoot() {
   yield call(delay, 5000)
-  yield put(push('/dashboard'))
+  yield put(push('/dashboard/account'))
 }
 
 function* watchRouterLocationChange() {
