@@ -5,7 +5,7 @@ ENV CXX clang++
 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get update -qq \
-    && apt-get install -y nodejs libpq-dev postgresql-client=9.4+165+deb8u1 graphicsmagick clang
+    && apt-get install -y nodejs libpq-dev postgresql-client=9.4+165+deb8u2 graphicsmagick clang
 
 RUN mkdir /ziltag
 WORKDIR /ziltag
