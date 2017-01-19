@@ -12,7 +12,7 @@ export default {
     already_have_an_account: 'Already have an account?',
     blog: 'Blog',
     find_anything: 'Find anything interesting in image and click on it to start writing.',
-    write_anything: 'Write anything you like and click post (or cmd + enter) to publish. You can also paste Youtube links to display videos.',
+    write_anything: 'Write anything you like and click post (or cmd/ctrl + enter) to publish. You can also paste Youtube links to display videos.',
     congratulation_you_have_learned: '🎉 Congratulation, you have learned all the basics! Please play around and create account to install Ziltag on your website.',
     click_the_z_button: 'Click the Z button.',
     dashboard: 'Dashboard',
