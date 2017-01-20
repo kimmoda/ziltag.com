@@ -465,7 +465,7 @@ CREATE TABLE websites (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     url character varying,
-    restricted boolean DEFAULT true NOT NULL
+    restricted boolean DEFAULT false NOT NULL
 );
 
 
@@ -1092,4 +1092,6 @@ INSERT INTO schema_migrations (version) VALUES ('20161130070658');
 INSERT INTO schema_migrations (version) VALUES ('20161217174516');
 
 INSERT INTO schema_migrations (version) VALUES ('20161223174639');
+
+INSERT INTO schema_migrations (version) VALUES ('20170120163630');
 
