@@ -4,7 +4,7 @@ export default {
     welcome_to_ziltag_demo: '歡迎來到 Ziltag 體驗模式！很抱歉，本模式暫時無法在手機上執行。麻煩請留下您的 email，我們會將專屬的體驗超連結寄至您的信箱，方便您使用桌機的網頁瀏覽器觀看，謝謝！',
     send_link: '寄送連結',
     start: '開始',
-    this_is_a_demo_applied_to: '*您目前是以 Ziltag 的體驗模式訪問 <b>{{url}}</b>，該網站之所有內容的著作權皆屬於其原作者，並非由 Ziltag 所持有。由於技術問題，Ziltag 的外掛程式可能無法在您提供的網站上運作，如果您有任何問題，歡迎與我們<a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">聯絡</a>。',
+    this_is_a_demo_applied_to: '*您目前正以 Ziltag 的體驗模式訪問 <b>{{url}}</b>。當您按下開始按鈕，表示您同意有關 Ziltag 體驗模式的<a href="http://blog.ziltag.com/terms/" target="_blank" rel="noopener">服務</a>條款與<a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">隱私政策</a>。請注意，您必須確保您使用本體驗模式時所產生之內容並無觸犯當地法律、並不得為相關侵犯智慧財產權之行為。由於技術問題，本體驗模式可能無法在您提供的網站上運作，如果您有任何問題，請與我們<a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">聯絡</a>。',
     welcome_we_re_excited: '歡迎使用 Ziltag 的體驗模式！您將能夠在您提供的網頁上實際操作與體驗 Ziltag，無需安裝任何程式。請點擊按鈕開始體驗教學。',
     sign_out_function: '體驗模式沒有登出功能。',
     a_verification_email_has_been_sent: '我們將寄送一封確認信至您的信箱，請點擊信中的確認按鈕以啟用您的帳號。',
