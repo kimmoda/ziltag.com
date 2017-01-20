@@ -4,7 +4,7 @@ export default {
     welcome_to_ziltag_demo: 'Welcome to Ziltag Demo! Unfortunately, the demo is currently not available on mobile devices, please leave your email and we will send the link to your mailbox to view on desktop. Thanks!',
     send_link: 'Send Link',
     start: 'Start',
-    this_is_a_demo_applied_to: '*This is a demo applied to <b>{{url}}</b> using Ziltag Plugin. Ziltag does not own any rights of the demo website. All rights belong to their respective owners. The plugin might not work for this site due to technical issues. If you have any problem, please <a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">contact us</a>.',
+    this_is_a_demo_applied_to: 'You are browsing a webpage of <b>{{url}}</b> with Ziltag Demo. By clicking the Start button, you agree to <a href="http://blog.ziltag.com/terms/" target="_blank" rel="noopener">Terms</a> and <a href="http://blog.ziltag.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a> of Ziltag Demo. Please be aware that you are responsible for your use of the Demo and for any content you provide, including compliance with laws, rules, and regulations. The Demo might not work for this website due to technical issues, if there’s any problem, please <a href="mailto:hi@ziltag.com" target="_blank" rel="noopener">contact us</a>.',
     welcome_we_re_excited: 'Welcome! We’re excited to demonstrate how Ziltag will work on your webpage. Please click the button to start the tutorial.',
     sign_out_function: 'Log out action is not available in demo.',
     a_verification_email_has_been_sent: 'A verification email has been sent. Please check your email to activate your account.',
