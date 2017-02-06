@@ -47,10 +47,7 @@ class SendWelcomeEmail < Interactor2 #:nodoc:
       { name: 'CONFIRM_URL', content: confirm_url }
     ]
     if @user.partner?
-      ret.push(
-        { name: 'DOMAIN', content: @website.url },
-        name: 'SCRIPT', content: escaped_script_html
-      )
+      ret.push name: 'DOMAIN', content: @website.url
     end
     ret
   end
@@ -65,11 +62,5 @@ class SendWelcomeEmail < Interactor2 #:nodoc:
 
   def encoded_token
     URI.encode_www_form_component(@user.confirmation_token)
-  end
-
-  def escaped_script_html
-    CGI.escapeHTML(
-      %(<script src="#{host}/plugin.js" data-ziltag="#{@website.token}"></script>)
-    )
   end
 end
