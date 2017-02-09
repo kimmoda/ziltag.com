@@ -44,6 +44,8 @@ class Photo < ActiveRecord::Base #:nodoc:
               source_uri.query = nil
               # TODO using LIKE is not a good approach
               scope.where('host = ? AND source LIKE ?', host, "#{source_uri.to_s}%")
+            elsif source_uri.host =~ %r{\Acdn[0-3]\.tnwcdn\.com\z}
+              scope.where('host = ? AND source SIMILAR TO ?', host, 'https://cdn0.tnwcdn.com%|https://cdn1.tnwcdn.com%|https://cdn2.tnwcdn.com%|https://cdn3.tnwcdn.com%')
             else
               scope.where(host: host, source: source)
             end
