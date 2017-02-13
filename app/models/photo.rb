@@ -32,7 +32,12 @@ class Photo < ActiveRecord::Base #:nodoc:
 
   def self.find_by_token_src_and_href(token:, source:, href:, namespace: nil)
     uri = URI(href)
-    source_uri = URI(source)
+    source_uri = begin
+      URI(source)
+    rescue URI::InvalidURIError => e
+      raise e unless e.message =~ /must be ascii/
+      URI(URI.encode(source))
+    end
     host = uri.host
     scope = Photo.joins(:website).where(websites: { token: token }, namespace: namespace)
     scope = if host.end_with?(*BLOGSPOT_DOMAINS)
