@@ -50,7 +50,8 @@ class Photo < ActiveRecord::Base #:nodoc:
               # TODO using LIKE is not a good approach
               scope.where('host = ? AND source LIKE ?', host, "#{source_uri.to_s}%")
             elsif source_uri.host =~ %r{\Acdn[0-3]\.tnwcdn\.com\z}
-              scope.where('host = ? AND source SIMILAR TO ?', host, 'https://cdn0.tnwcdn.com%|https://cdn1.tnwcdn.com%|https://cdn2.tnwcdn.com%|https://cdn3.tnwcdn.com%')
+              sources = 1.upto(3).map{|i| "https://cdn#{i}.tnwcdn.com#{source_uri.path}"}
+              scope.where(host: host, source: sources)
             else
               scope.where(host: host, source: source)
             end
