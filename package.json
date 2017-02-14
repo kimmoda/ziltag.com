@@ -17,7 +17,7 @@
     "coffee-script": "^1.10.0",
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
-    "expose-loader": "^0.7.1",
+    "expose-loader": "0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "fetch": "^1.0.1",
     "file-loader": "0.*.*",
