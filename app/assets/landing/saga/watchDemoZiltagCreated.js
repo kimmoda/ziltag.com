@@ -1,5 +1,5 @@
-import {takeEvery, delay} from 'redux-saga'
-import {put} from 'redux-saga/effects'
+import {delay} from 'redux-saga'
+import {takeEvery, put} from 'redux-saga/effects'
 import {disableTip} from '../actions'
 
 export default function* () {
