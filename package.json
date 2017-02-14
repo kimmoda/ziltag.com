@@ -60,6 +60,6 @@
     "webpack": "^1.13.0",
     "whatwg-fetch": "^1.0.0",
     "zeroclipboard": "^2.2.0",
-    "ziltag-elements": "github:ziltag/elements"
+    "ziltag-elements": "git+ssh://git@github.com/ziltag/elements.git"
   }
 }
