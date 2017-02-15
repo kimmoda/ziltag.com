@@ -4,7 +4,7 @@ import {requestShortenURL, receiveShortenURL, openModal} from '../actions'
 import {push} from 'react-router-redux'
 
 export default function* watchShortenURL() {
-  yield* takeEvery('REQUEST_SHORTEN_URL', shortenURL)
+  yield takeEvery('REQUEST_SHORTEN_URL', shortenURL)
 }
 
 function* shortenURL(action){

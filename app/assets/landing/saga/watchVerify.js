@@ -4,7 +4,7 @@ import {failVerify} from '../actions'
 import {push} from 'react-router-redux'
 
 export default function* () {
-  yield* takeEvery('REQUEST_VERIFY', requestVerify)
+  yield takeEvery('REQUEST_VERIFY', requestVerify)
 }
 
 function* requestVerify(action){

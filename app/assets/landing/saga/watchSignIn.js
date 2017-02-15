@@ -3,7 +3,7 @@ import {signIn} from '../api'
 import {failSignIn} from '../actions'
 
 export default function* () {
-  yield* takeEvery('REQUEST_SIGN_IN', requestSignIn)
+  yield takeEvery('REQUEST_SIGN_IN', requestSignIn)
 }
 
 function* requestSignIn(action){

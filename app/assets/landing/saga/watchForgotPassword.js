@@ -3,7 +3,7 @@ import {forgotPassword} from '../api'
 import {failForgotPassword, openModal} from '../actions'
 
 export default function* () {
-  yield* takeEvery('REQUEST_FORGOT_PASSWORD', requestForgotPassword)
+  yield takeEvery('REQUEST_FORGOT_PASSWORD', requestForgotPassword)
 }
 
 function* requestForgotPassword(action){

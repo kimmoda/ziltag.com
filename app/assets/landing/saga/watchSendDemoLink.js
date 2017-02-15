@@ -3,7 +3,7 @@ import {sendDemoLink} from '../api'
 import {push} from 'react-router-redux'
 
 export default function* () {
-  yield* takeEvery('REQUEST_DEMO_LINK', requestSendDemoLink)
+  yield takeEvery('REQUEST_DEMO_LINK', requestSendDemoLink)
 }
 
 function* requestSendDemoLink(action){

@@ -4,7 +4,7 @@ import {failSignUp} from '../actions'
 import {push} from 'react-router-redux'
 
 export default function* () {
-  yield* takeEvery('REQUEST_SIGN_UP', requestSignUp)
+  yield takeEvery('REQUEST_SIGN_UP', requestSignUp)
 }
 
 function* requestSignUp(action){

@@ -50,7 +50,7 @@ function* fetchMe() {
 }
 
 function* watchFetchMe() {
-  yield* takeEvery(actionTypes.REQUEST_ME, fetchMe)
+  yield takeEvery(actionTypes.REQUEST_ME, fetchMe)
 }
 
 function* fetchRecommendedZiltagMaps() {
@@ -70,7 +70,7 @@ function* verify(action) {
 }
 
 function* watchVerify() {
-  yield* takeEvery(actionTypes.REQUEST_VERIFY, verify)
+  yield takeEvery(actionTypes.REQUEST_VERIFY, verify)
 }
 
 function* signOut(action){
@@ -79,7 +79,7 @@ function* signOut(action){
 }
 
 function* watchSignOut() {
-  yield* takeEvery(actionTypes.REQUEST_SIGN_OUT, signOut)
+  yield takeEvery(actionTypes.REQUEST_SIGN_OUT, signOut)
 }
 
 function* redirectToRoot() {
@@ -108,7 +108,7 @@ function* requestChangePassword(action) {
 }
 
 function* watchRequestChangePassword() {
-  yield* takeEvery(actionTypes.REQUEST_CHANGE_PASSWORD, requestChangePassword)
+  yield takeEvery(actionTypes.REQUEST_CHANGE_PASSWORD, requestChangePassword)
 }
 
 function* requestAddWebsite(action) {
@@ -122,7 +122,7 @@ function* requestAddWebsite(action) {
 }
 
 function* watchRequestAddWebsite() {
-  yield* takeEvery(actionTypes.REQUEST_ADD_WEBSITE, requestAddWebsite)
+  yield takeEvery(actionTypes.REQUEST_ADD_WEBSITE, requestAddWebsite)
 }
 
 function* requestDeleteWebsite(action){
@@ -132,7 +132,7 @@ function* requestDeleteWebsite(action){
 }
 
 function* watchRequestDeleteWebsite(){
-  yield* takeEvery(actionTypes.REQUEST_DELETE_WEBSITE, requestDeleteWebsite)
+  yield takeEvery(actionTypes.REQUEST_DELETE_WEBSITE, requestDeleteWebsite)
 }
 
 function* requestUpdateWebsite(action){
@@ -145,7 +145,7 @@ function* requestUpdateWebsite(action){
 }
 
 function* watchRequestUpdateWebsite(){
-  yield* takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE, requestUpdateWebsite)
+  yield takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE, requestUpdateWebsite)
 }
 
 function* requestSignIn(action){
@@ -160,7 +160,7 @@ function* requestSignIn(action){
 }
 
 function* watchRequestSignIn(){
-  yield* takeEvery(actionTypes.REQUEST_SIGN_IN, requestSignIn)
+  yield takeEvery(actionTypes.REQUEST_SIGN_IN, requestSignIn)
 }
 
 function* partnerSignUp(action){
@@ -175,7 +175,7 @@ function* partnerSignUp(action){
 }
 
 function* watchParterSignUp(){
-  yield* takeEvery(actionTypes.REQUEST_PARTNER_SIGN_UP, partnerSignUp)
+  yield takeEvery(actionTypes.REQUEST_PARTNER_SIGN_UP, partnerSignUp)
 }
 
 function* uploadAvatar(action){
@@ -185,11 +185,11 @@ function* uploadAvatar(action){
 }
 
 function* watchUploadAvatar(){
-  yield* takeEvery(actionTypes.UPLOAD_AVATAR, uploadAvatar)
+  yield takeEvery(actionTypes.UPLOAD_AVATAR, uploadAvatar)
 }
 
 function* watchRequestRecommendedZiltagMaps(){
-  yield* takeEvery(actionTypes.RETRIEVE_RECOMMENDED_ZILTAG_MAPS, fetchRecommendedZiltagMaps)
+  yield takeEvery(actionTypes.RETRIEVE_RECOMMENDED_ZILTAG_MAPS, fetchRecommendedZiltagMaps)
 }
 
 function* upgradeUser(action){
@@ -203,7 +203,7 @@ function* upgradeUser(action){
 }
 
 function* watchUpgradeUser(){
-  yield* takeLatest(actionTypes.REQUEST_UPGRADE_USER, upgradeUser)
+  yield takeLatest(actionTypes.REQUEST_UPGRADE_USER, upgradeUser)
 }
 
 function* requestUpdateWebsitePermission(action){
@@ -215,7 +215,7 @@ function* requestUpdateWebsitePermission(action){
 }
 
 function* watchRequestUpdateWebsitePermission(){
-  yield* takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE_PERMISSION, requestUpdateWebsitePermission)
+  yield takeEvery(actionTypes.REQUEST_UPDATE_WEBSITE_PERMISSION, requestUpdateWebsitePermission)
 }
 
 function* requestUpdateZiltagNotification(action){
@@ -225,7 +225,7 @@ function* requestUpdateZiltagNotification(action){
 }
 
 function* watchRequestUpdateZiltagNotification(){
-  yield* takeEvery(actionTypes.REQUEST_UPDATE_ZILTAG_NOTIFICATION, requestUpdateZiltagNotification)
+  yield takeEvery(actionTypes.REQUEST_UPDATE_ZILTAG_NOTIFICATION, requestUpdateZiltagNotification)
 }
 
 function* requestUpdateCommentNotification(action){
@@ -235,7 +235,7 @@ function* requestUpdateCommentNotification(action){
 }
 
 function* watchRequestUpdateCommentNotification(){
-  yield* takeEvery(actionTypes.REQUEST_UPDATE_COMMENT_NOTIFICATION, requestUpdateCommentNotification)
+  yield takeEvery(actionTypes.REQUEST_UPDATE_COMMENT_NOTIFICATION, requestUpdateCommentNotification)
 }
 
 function* requestResetPassword(action){
@@ -250,7 +250,7 @@ function* requestResetPassword(action){
 }
 
 function* watchRequestResetPassword(){
-  yield* takeLatest(actionTypes.REQUEST_RESET_PASSWORD, requestResetPassword)
+  yield takeLatest(actionTypes.REQUEST_RESET_PASSWORD, requestResetPassword)
 }
 
 function* requestForgotPassword(action){
@@ -263,7 +263,7 @@ function* requestForgotPassword(action){
 }
 
 function* watchRequestForgotPassword(){
-  yield* takeLatest(actionTypes.REQUEST_FORGOT_PASSWORD, requestForgotPassword)
+  yield takeLatest(actionTypes.REQUEST_FORGOT_PASSWORD, requestForgotPassword)
 }
 
 function* requestSubscribe(action){
@@ -275,7 +275,7 @@ function* requestSubscribe(action){
 }
 
 function* watchRequestSubscribe(){
-  yield* takeLatest(actionTypes.REQUEST_SUBSCRIBE, requestSubscribe)
+  yield takeLatest(actionTypes.REQUEST_SUBSCRIBE, requestSubscribe)
 }
 
 export default function* root() {
